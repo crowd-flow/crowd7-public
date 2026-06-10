@@ -1,0 +1,126 @@
+{
+  "_meta": {
+    "page": "Belleville Farm Field Access | 2026",
+    "page_key": "eckerts-belleville-field-access",
+    "client": "Eckerts",
+    "location": "Belleville",
+    "sibling_page_html": "belleville-farm-field-access-2026.html",
+    "ticketspice_url": null,
+    "purpose": "Local mirror of the TicketSpice 'Actions' tab (conditional show/hide logic) for THIS page. One actions file per TicketSpice page, sibling to the page HTML.",
+    "sync_protocol": "Mat is the source of truth on the live TicketSpice page. When he adds/edits/removes an Action there, he reports it and Crowdly updates this file to match. Crowdly never invents an Action Mat hasn't confirmed live.",
+    "last_synced": "2026-06-08",
+    "schema_version": 1,
+    "changelog": [
+      "2026-06-08 (initial): captured 12 actions from screenshot.",
+      "2026-06-08 (Mat edits, blackberry go-live): Mat DELETED the 3 blackberry date-gate actions (hide-blackberry-before-jun20, hide-blackberry-aug4-sep30, hide-blackberry-boxoffice-before-jun2) — crop date windowing now handled at the Ticket Date Selection range (Jun 12 -> Aug 1 placeholder) instead of per-pass rules. Mat also REMOVED 'Blackberry Fun Pass' (online) from the after-May-24 teardown so the online blackberry pass now shows. Net: 12 actions -> 9."
+    ],
+    "field_guide": {
+      "match": "'any' (When Any...) = OR across conditions; 'all' (When All...) = AND across conditions",
+      "conditions": "list of {field, operator, value}",
+      "effect": "'show' or 'hide' (the 'Do This...' verb)",
+      "targets": "list of ticket/field/element names affected",
+      "enabled": "true if currently active on the live page"
+    }
+  },
+  "actions": [
+    {
+      "id": "show-weekend-tickets",
+      "match": "any",
+      "conditions": [
+        {"field": "Ticket Date Selection", "operator": "day-of-week-is", "value": ["Sunday", "Saturday"]}
+      ],
+      "effect": "show",
+      "targets": ["Pick-Your-Own Field Access (Weekend Ticket)", "Strawberry Fun Pass", "Pick-Your-Own Field Access (Weekend Ticket) - Box Office"],
+      "enabled": true,
+      "notes": "Still SHOWS 'Strawberry Fun Pass' (strawberry season is over). Conflicts with the after-May-24 hide (action hide-spring-items-after-may24). Verify on the live preview that Strawberry Fun Pass does NOT actually appear; if it does, remove it from this Show list."
+    },
+    {
+      "id": "show-weekday-tickets",
+      "match": "any",
+      "conditions": [
+        {"field": "Ticket Date Selection", "operator": "day-of-week-is", "value": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]}
+      ],
+      "effect": "show",
+      "targets": ["Strawberry Fun Pass", "Pick-Your-Own Field Access (Weekday Ticket) - Box Office", "Pick-Your-Own Field Access (Weekday Ticket)"],
+      "enabled": true,
+      "notes": "Includes Monday, but farm is closed Mondays — the Ticket Date Selection date picker must block Mondays as the backstop. Also still SHOWS 'Strawberry Fun Pass' (see weekend rule note)."
+    },
+    {
+      "id": "hide-items-oct18-2025",
+      "match": "any",
+      "conditions": [
+        {"field": "Ticket Date Selection", "operator": "date-is", "value": "2025-10-18"}
+      ],
+      "effect": "hide",
+      "targets": ["Pick-Your-Own Field Access (Weekend Ticket)", "Season Pass - Box Office", "Picking Pass"],
+      "enabled": true,
+      "notes": "DEAD rule — triggers only on the exact past date 2025-10-18, which no customer can select. Harmless cruft; delete to declutter."
+    },
+    {
+      "id": "hide-pyo-block-after-apr14",
+      "match": "any",
+      "conditions": [
+        {"field": "Date", "operator": "is-after", "value": "2026-04-14T00:00:00"}
+      ],
+      "effect": "hide",
+      "targets": ["Pick-Your-Own Field Access & Passes (Eckert's...) [TRUNCATED in screenshot - confirm full name]", "Location", "Image"],
+      "enabled": true,
+      "notes": "Target name cut off in screenshot; appears to hide an old strawberry content block (Location + Image). Confirm exact element."
+    },
+    {
+      "id": "show-addons-when-merch-complete",
+      "match": "all",
+      "conditions": [
+        {"field": "Merchandise Only", "operator": "is-completed", "value": true}
+      ],
+      "effect": "show",
+      "targets": ["Mine Bags", "Drinks", "Carnival Rides - 1 or 3 Ticket Options"],
+      "enabled": true,
+      "notes": "Shows Carnival Rides on merch-complete, but action hide-rides-after-may31 hides Carnival Rides after May 31 — confirm whether rides apply during blackberry season."
+    },
+    {
+      "id": "show-weekday-kiosk",
+      "match": "any",
+      "conditions": [
+        {"field": "Ticket Date Selection", "operator": "day-of-week-is", "value": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]}
+      ],
+      "effect": "show",
+      "targets": ["Field Access (Weekday Ticket) KIOSK"],
+      "enabled": true,
+      "notes": "Includes Monday — same closed-Monday backstop via the date picker."
+    },
+    {
+      "id": "show-weekend-kiosk",
+      "match": "any",
+      "conditions": [
+        {"field": "Ticket Date Selection", "operator": "day-of-week-is", "value": ["Sunday", "Saturday"]}
+      ],
+      "effect": "show",
+      "targets": ["Field Access Ticket (Weekend) KIOSK"],
+      "enabled": true,
+      "notes": ""
+    },
+    {
+      "id": "hide-spring-items-after-may24",
+      "match": "any",
+      "conditions": [
+        {"field": "Date", "operator": "is-after", "value": "2026-05-24T00:00:00"}
+      ],
+      "effect": "hide",
+      "targets": ["Strawberry Fun Pass", "Strawberry Fun Pass - Box Office", "Strawberry Fun Pass - KIOSK", "Blackberry Fun Pass - KIOSK", "Black Raspberries (6oz)", "Black Raspberries (6oz)", "Strawberry Glasses"],
+      "enabled": true,
+      "notes": "Mat removed 'Blackberry Fun Pass' (online) from this list on 2026-06-08 so the online pass shows. BUT 'Blackberry Fun Pass - KIOSK' is STILL hidden here — confirm intentional (if blackberry passes are sold at the on-site kiosk, this needs removing too). Also still lists 'Black Raspberries (6oz)' TWICE (dedupe)."
+    },
+    {
+      "id": "hide-rides-after-may31",
+      "match": "any",
+      "conditions": [
+        {"field": "Ticket Date Selection", "operator": "date-is-after", "value": "2026-05-31"}
+      ],
+      "effect": "hide",
+      "targets": ["Unlimited Ride Ticket", "Carnival Rides - 1 or 3 Ticket Options"],
+      "enabled": true,
+      "notes": ""
+    }
+  ]
+}

@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eckert's Grafton Farm — Apple Season — Preview</title>
+<style>
+  html, body { margin: 0; padding: 0; background: #FFF8F8; }
+  #sbv-funnel .sbvr { opacity: 1 !important; transform: none !important; }
+  #sbv-funnel .sbv-hero-eyebrow,
+  #sbv-funnel .sbv-hero-title { opacity: 1 !important; animation: none !important; }
+</style>
+</head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+    .bold {
+        font-weight: bold;
+    }
+
+    #sbv-funnel {
+        width: 100vw !important;
+        position: relative !important;
+        left: 50% !important;
+        right: 50% !important;
+        margin-left: -50vw !important;
+        margin-right: -50vw !important;
+        overflow: hidden !important;
+        font-family: 'Open Sans', sans-serif !important;
+        background: #FFF8F8 !important;
+        color: #1a0808 !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    /* ── BANNER ── */
+    #sbv-funnel .sbv-banner {
+        width: 100% !important;
+        background: #7A0020 !important;
+        color: white !important;
+        text-align: center !important;
+        padding: 11px 20px !important;
+        font-size: 0.8rem !important;
+        letter-spacing: 0.06em !important;
+        display: block !important;
+        box-sizing: border-box !important;
+    }
+    #sbv-funnel .sbv-banner, #sbv-funnel .sbv-banner * { color: #ffffff !important; }
+    #sbv-funnel .sbv-banner-inner {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 10px !important;
+        flex-wrap: wrap !important;
+    }
+    #sbv-funnel .sbv-dot {
+        width: 3px !important; height: 3px !important;
+        background: rgba(255,255,255,0.4) !important;
+        border-radius: 50% !important;
+        display: inline-block !important;
+        flex-shrink: 0 !important;
+    }
+
+    /* ── NAV ── */
+    #sbv-funnel .sbv-nav {
+        width: 100% !important;
+        padding: 0 40px !important;
+        height: 64px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        background: rgba(176,16,48,0.97) !important;
+        position: sticky !important;
+        top: 0 !important;
+        z-index: 100 !important;
+        box-sizing: border-box !important;
+        box-shadow: 0 2px 16px rgba(176,16,48,0.35) !important;
+    }
+    #sbv-funnel .sbv-logo-wrap {
+        display: flex !important;
+        align-items: center !important;
+        height: 44px !important; width: 160px !important;
+        flex-shrink: 0 !important; overflow: hidden !important;
+    }
+    #sbv-funnel .sbv-logo-wrap img {
+        height: 44px !important; width: 160px !important;
+        max-width: 160px !important; max-height: 44px !important;
+        object-fit: contain !important; object-position: left center !important;
+        display: block !important;
+    }
+    #sbv-funnel .sbv-nav-right {
+        display: flex !important; align-items: center !important; gap: 16px !important;
+    }
+    #sbv-funnel .sbv-nav-loc {
+        font-size: 0.78rem !important;
+        color: rgba(255,255,255,0.65) !important;
+        display: flex !important; align-items: center !important; gap: 5px !important;
+    }
+    #sbv-funnel .sbv-nav-cta {
+        background: white !important;
+        color: #B01030 !important;
+        padding: 9px 22px !important;
+        border-radius: 50px !important;
+        font-size: 0.83rem !important;
+        font-weight: 700 !important;
+        text-decoration: none !important;
+        letter-spacing: 0.03em !important;
+        transition: all 0.3s ease !important;
+        white-space: nowrap !important;
+        display: inline-block !important;
+    }
+    #sbv-funnel .sbv-nav-cta:hover {
+        background: #FFD6DC !important;
+        color: #B01030 !important;
+        text-decoration: none !important;
+    }
+
+    /* ── HERO ── */
+    #sbv-funnel .sbv-hero {
+        width: 100% !important;
+        min-height: clamp(320px, 55vw, 580px) !important;
+        position: relative !important;
+        display: flex !important;
+        align-items: flex-end !important;
+        overflow: hidden !important;
+        background-image: url('https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-apples/apple-hero.jpg') !important;
+        background-size: cover !important;
+        background-position: center 45% !important;
+    }
+    #sbv-funnel .sbv-hero-overlay {
+        position: absolute !important;
+        inset: 0 !important;
+        background: linear-gradient(to bottom, rgba(122,0,32,0.1) 0%, rgba(122,0,32,0.15) 40%, rgba(122,0,32,0.65) 100%) !important;
+        z-index: 1 !important;
+    }
+    #sbv-funnel .sbv-hero-content {
+        position: relative !important;
+        z-index: 2 !important;
+        padding: 0 48px 48px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    #sbv-funnel .sbv-hero-eyebrow {
+        font-size: 0.7rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.2em !important;
+        text-transform: uppercase !important;
+        color: rgba(255,255,255,0.75) !important;
+        margin-bottom: 10px !important;
+        display: block !important;
+        opacity: 0;
+        animation: sbvFadeUp 0.6s ease 0.2s forwards;
+    }
+    #sbv-funnel .sbv-hero-title {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: clamp(2.6rem, 8vw, 5rem) !important;
+        font-weight: 700 !important;
+        color: white !important;
+        line-height: 1.0 !important;
+        display: block !important;
+        text-shadow: 0 2px 20px rgba(0,0,0,0.3) !important;
+        opacity: 0;
+        animation: sbvFadeUp 0.7s ease 0.35s forwards;
+    }
+    #sbv-funnel .sbv-hero-title em { font-style: italic !important; color: #FFB3BF !important; }
+    @keyframes sbvFadeUp {
+        from { opacity: 0; transform: translateY(16px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── BENEFITS ── */
+    #sbv-funnel .sbv-benefits {
+        width: 100% !important;
+        background: white !important;
+        padding: 36px 48px !important;
+        display: block !important;
+        box-sizing: border-box !important;
+        border-bottom: 1px solid rgba(176,16,48,0.08) !important;
+    }
+    #sbv-funnel .sbv-benefits-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+    #sbv-funnel .sbv-benefit {
+        text-align: center !important;
+        padding: 8px 20px !important;
+        position: relative !important;
+    }
+    #sbv-funnel .sbv-benefit:not(:last-child)::after {
+        content: '' !important;
+        position: absolute !important;
+        right: 0 !important; top: 15% !important; bottom: 15% !important;
+        width: 1px !important;
+        background: rgba(176,16,48,0.1) !important;
+    }
+    #sbv-funnel .sbv-benefit-icon { font-size: 1.7rem !important; margin-bottom: 8px !important; display: block !important; }
+    #sbv-funnel .sbv-benefit-title {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 1rem !important; font-weight: 600 !important;
+        color: #1a0808 !important; margin-bottom: 3px !important; display: block !important;
+    }
+    #sbv-funnel .sbv-benefit-desc {
+        font-size: 0.75rem !important; color: #9a6060 !important;
+        line-height: 1.4 !important; display: block !important;
+    }
+
+    /* ── GALLERY ── */
+    #sbv-funnel .sbv-gallery {
+        width: 100% !important;
+        background: #FFF8F8 !important;
+        padding: 64px 0 !important;
+        overflow: hidden !important;
+        display: block !important;
+    }
+    #sbv-funnel .sbv-gallery-header {
+        text-align: center !important;
+        padding: 0 48px !important;
+        margin-bottom: 40px !important;
+    }
+    #sbv-funnel .sbv-eye {
+        font-size: 0.7rem !important; font-weight: 600 !important;
+        letter-spacing: 0.22em !important; text-transform: uppercase !important;
+        color: #3D7A4F !important; margin-bottom: 8px !important; display: block !important;
+    }
+    #sbv-funnel .sbv-title {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: clamp(1.8rem, 4.5vw, 2.8rem) !important;
+        font-weight: 700 !important; color: #1a0808 !important;
+        line-height: 1.15 !important; display: block !important;
+    }
+    #sbv-funnel .sbv-title em { font-style: italic !important; color: #B01030 !important; }
+    #sbv-funnel .sbv-gallery-mask {
+        width: 100% !important; overflow: hidden !important;
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%) !important;
+        mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%) !important;
+    }
+    #sbv-funnel .sbv-gallery-track {
+        display: flex !important; gap: 16px !important;
+        width: max-content !important;
+        animation: sbvMarquee 24s linear infinite !important;
+        padding: 8px 0 !important;
+    }
+    #sbv-funnel .sbv-gallery-track:hover { animation-play-state: paused !important; }
+    @keyframes sbvMarquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    #sbv-funnel .sbv-gcard {
+        width: 380px !important; height: 260px !important;
+        border-radius: 20px !important; overflow: hidden !important;
+        flex-shrink: 0 !important; position: relative !important;
+        cursor: pointer !important;
+        background: linear-gradient(135deg, #FFD6DC, #FFB3BF) !important;
+        display: flex !important; align-items: center !important;
+        justify-content: center !important; font-size: 3rem !important;
+        transition: transform 0.4s ease, box-shadow 0.4s ease !important;
+    }
+    #sbv-funnel .sbv-gcard:hover {
+        transform: scale(1.03) translateY(-5px) !important;
+        box-shadow: 0 24px 50px rgba(176,16,48,0.2) !important; z-index: 2 !important;
+    }
+    #sbv-funnel .sbv-gcard img {
+        width: 100% !important; height: 100% !important;
+        object-fit: cover !important; display: block !important;
+        position: absolute !important; inset: 0 !important;
+        transition: transform 0.6s ease !important;
+    }
+    #sbv-funnel .sbv-gcard:hover img { transform: scale(1.08) !important; }
+    #sbv-funnel .sbv-gcard-label {
+        position: absolute !important; bottom: 12px !important; left: 12px !important;
+        background: rgba(26,8,8,0.55) !important; backdrop-filter: blur(8px) !important;
+        color: white !important; font-size: 0.68rem !important; letter-spacing: 0.1em !important;
+        text-transform: uppercase !important; font-weight: 700 !important;
+        padding: 5px 12px !important; border-radius: 20px !important;
+        opacity: 0 !important; transform: translateY(4px) !important;
+        transition: opacity 0.3s ease, transform 0.3s ease !important; z-index: 2 !important;
+    }
+    #sbv-funnel .sbv-gcard:hover .sbv-gcard-label { opacity: 1 !important; transform: none !important; }
+
+    /* ── TICKET CARDS ── */
+    #sbv-funnel .sbv-tickets {
+        width: 100% !important;
+        background: #FFF0F2 !important;
+        padding: 72px 48px !important;
+        display: block !important; box-sizing: border-box !important;
+    }
+    #sbv-funnel .sbv-tickets-header { text-align: center !important; margin-bottom: 48px !important; }
+    #sbv-funnel .sbv-grid {
+        display: grid !important;
+        /* 2-up: PYO Field Access Pass (dark) + Opening Day info card (pink). Grafton is PYO-only (no playground / mega slide). */
+        grid-template-columns: repeat(2, minmax(0, 440px)) !important;
+        gap: 24px !important;
+        justify-content: center !important;
+        max-width: 1280px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    /* Base card */
+    #sbv-funnel .sbv-card {
+        border-radius: 20px !important;
+        padding: 36px 32px !important;
+        position: relative !important;
+        overflow: hidden !important;
+        transition: transform 0.35s ease, box-shadow 0.35s ease !important;
+        display: flex !important; flex-direction: column !important;
+    }
+    #sbv-funnel .sbv-card:hover { transform: translateY(-6px) !important; }
+
+    #sbv-funnel .sbv-card-dark {
+        background: #1a0808 !important; color: white !important;
+    }
+    #sbv-funnel .sbv-card-dark:hover { box-shadow: 0 20px 44px rgba(0,0,0,0.35) !important; }
+
+    #sbv-funnel .sbv-card-red {
+        background: #B01030 !important; color: white !important;
+    }
+    #sbv-funnel .sbv-card-red:hover { box-shadow: 0 20px 44px rgba(176,16,48,0.35) !important; }
+
+    #sbv-funnel .sbv-card-pink {
+        background: linear-gradient(145deg, #FFD6DC, #FFF0F2) !important;
+        border: 1px solid rgba(176,16,48,0.12) !important;
+    }
+    #sbv-funnel .sbv-card-pink:hover { box-shadow: 0 20px 44px rgba(176,16,48,0.12) !important; }
+
+    /* Card internals */
+    #sbv-funnel .sbv-card-badge {
+        display: inline-block !important;
+        font-size: 0.62rem !important; font-weight: 700 !important;
+        letter-spacing: 0.14em !important; text-transform: uppercase !important;
+        padding: 4px 10px !important; border-radius: 20px !important;
+        margin-bottom: 14px !important; width: fit-content !important;
+    }
+    #sbv-funnel .sbv-badge-light { background: rgba(255,255,255,0.18) !important; color: white !important; }
+    #sbv-funnel .sbv-badge-red { background: #B01030 !important; color: white !important; }
+    #sbv-funnel .sbv-badge-green { background: #2D5016 !important; color: white !important; }
+
+    #sbv-funnel .sbv-card-icon { font-size: 2.6rem !important; margin-bottom: 14px !important; display: block !important; }
+
+    #sbv-funnel .sbv-card h3 {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 1.55rem !important; font-weight: 700 !important;
+        line-height: 1.15 !important; margin-bottom: 14px !important; display: block !important;
+    }
+    #sbv-funnel .sbv-card-pink h3 { color: #1a0808 !important; }
+    #sbv-funnel .sbv-card-red h3,
+    #sbv-funnel .sbv-card-dark h3 { color: white !important; }
+
+    #sbv-funnel .sbv-card-bullets {
+        list-style: none !important; padding: 0 !important; margin: 0 0 auto !important;
+        display: flex !important; flex-direction: column !important; gap: 6px !important;
+    }
+    #sbv-funnel .sbv-card-bullets li {
+        font-size: 0.95rem !important; line-height: 1.55 !important;
+        display: flex !important; align-items: flex-start !important; gap: 8px !important;
+    }
+    #sbv-funnel .sbv-card-pink .sbv-card-bullets li { color: #5a2828 !important; }
+    #sbv-funnel .sbv-card-red .sbv-card-bullets li,
+    #sbv-funnel .sbv-card-dark .sbv-card-bullets li { color: rgba(255,255,255,0.82) !important; }
+
+    #sbv-funnel .sbv-card-note {
+        font-size: 0.72rem !important; font-style: italic !important;
+        margin-top: 10px !important; display: block !important; line-height: 1.5 !important;
+    }
+    #sbv-funnel .sbv-card-red .sbv-card-note,
+    #sbv-funnel .sbv-card-dark .sbv-card-note { color: rgba(255,255,255,0.4) !important; }
+    #sbv-funnel .sbv-card-pink .sbv-card-note { color: #bbb !important; }
+
+    /* Pricing rows inside field access cards */
+    #sbv-funnel .sbv-price-rows {
+        margin-top: 20px !important; padding-top: 16px !important;
+        border-top: 1px solid rgba(176,16,48,0.1) !important;
+    }
+    #sbv-funnel .sbv-price-row {
+        display: flex !important; justify-content: space-between !important;
+        align-items: center !important; padding: 12px 0 !important;
+    }
+    #sbv-funnel .sbv-price-row:not(:last-child) { border-bottom: 1px solid rgba(176,16,48,0.07) !important; }
+    #sbv-funnel .sbv-price-row-label {
+        font-family: 'Zilla Slab', serif !important;
+        font-size: 1rem !important; font-weight: 700 !important; color: #1a0808 !important;
+        display: block !important; line-height: 1.2 !important;
+    }
+    #sbv-funnel .sbv-price-row-sub {
+        font-size: 0.82rem !important; color: #9a6060 !important; display: block !important;
+    }
+    #sbv-funnel .sbv-price-row-amt {
+        font-family: 'Zilla Slab', serif !important;
+        font-size: 2.4rem !important; font-weight: 700 !important;
+        color: #B01030 !important; flex-shrink: 0 !important;
+    }
+    /* Slashed (gate → online) pricing for the dark pass card */
+    #sbv-funnel .sbv-price-row-slash {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-end !important;
+        gap: 2px !important;
+        flex-shrink: 0 !important;
+    }
+    #sbv-funnel .sbv-price-row-was {
+        font-size: 0.78rem !important;
+        font-weight: 600 !important;
+        text-decoration: line-through !important;
+        color: rgba(255,255,255,0.35) !important;
+        line-height: 1 !important;
+        display: block !important;
+    }
+
+    /* ── CALLOUT (buy-online-and-save) ── */
+    #sbv-funnel .sbv-slide {
+        width: 100% !important;
+        background: #FFF8F8 !important;
+        padding: 44px 48px !important;
+        box-sizing: border-box !important;
+        display: block !important;
+        border-top: 1px solid rgba(176,16,48,0.08) !important;
+    }
+    #sbv-funnel .sbv-slide-inner {
+        max-width: 760px !important;
+        margin: 0 auto !important;
+        background: white !important;
+        border-radius: 18px !important;
+        padding: 32px 36px !important;
+        border: 1px solid rgba(176,16,48,0.1) !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 28px !important;
+    }
+    #sbv-funnel .sbv-slide-icon { font-size: 3rem !important; flex-shrink: 0 !important; }
+    #sbv-funnel .sbv-slide-text h4 {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 1.3rem !important; font-weight: 700 !important;
+        color: #1a0808 !important; margin-bottom: 6px !important; display: block !important;
+    }
+    #sbv-funnel .sbv-slide-text p {
+        font-size: 0.88rem !important; color: #7a4040 !important;
+        line-height: 1.6 !important; display: block !important; margin: 0 !important;
+    }
+
+    /* ── INFO ROW ── */
+    #sbv-funnel .sbv-info {
+        width: 100% !important;
+        background: #B01030 !important;
+        padding: 0 !important; display: block !important; box-sizing: border-box !important;
+    }
+    #sbv-funnel .sbv-info-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+    #sbv-funnel .sbv-info-item {
+        text-align: center !important;
+        padding: 28px 20px !important;
+        position: relative !important;
+    }
+    #sbv-funnel .sbv-info-item:not(:last-child)::after {
+        content: '' !important; position: absolute !important;
+        right: 0 !important; top: 20% !important; bottom: 20% !important;
+        width: 1px !important; background: rgba(255,255,255,0.15) !important;
+    }
+    #sbv-funnel .sbv-info-icon { font-size: 1.5rem !important; display: block !important; margin-bottom: 6px !important; }
+    #sbv-funnel .sbv-info-label {
+        font-size: 0.62rem !important; font-weight: 700 !important;
+        letter-spacing: 0.16em !important; text-transform: uppercase !important;
+        color: rgba(255,255,255,0.55) !important; display: block !important; margin-bottom: 4px !important;
+    }
+    #sbv-funnel .sbv-info-value {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 0.95rem !important; font-weight: 600 !important;
+        color: white !important; display: block !important; line-height: 1.3 !important;
+    }
+    #sbv-funnel .sbv-info-link {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 0.88rem !important; font-weight: 600 !important;
+        color: #FFD6DC !important; display: block !important;
+        line-height: 1.3 !important; text-decoration: underline !important;
+    }
+    #sbv-funnel .sbv-info-link:hover { color: white !important; }
+
+    /* ── REVEAL ── */
+    #sbv-funnel .sbvr {
+        opacity: 0 !important; transform: translateY(28px) !important;
+        transition: opacity 0.7s cubic-bezier(.16,1,.3,1), transform 0.7s cubic-bezier(.16,1,.3,1) !important;
+    }
+    #sbv-funnel .sbvr.sbvon { opacity: 1 !important; transform: none !important; }
+    #sbv-funnel .sbvr.d1 { transition-delay: 0.1s !important; }
+    #sbv-funnel .sbvr.d2 { transition-delay: 0.2s !important; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1000px) {
+        #sbv-funnel .sbv-grid { grid-template-columns: repeat(2, minmax(0, 420px)) !important; }
+    }
+    @media (max-width: 860px) {
+        #sbv-funnel .sbv-nav { padding: 0 24px !important; }
+        #sbv-funnel .sbv-benefits { padding: 32px 24px !important; }
+        #sbv-funnel .sbv-tickets { padding: 56px 24px !important; }
+        #sbv-funnel .sbv-slide { padding: 36px 24px !important; }
+        #sbv-funnel .sbv-slide-inner { flex-direction: column !important; text-align: center !important; gap: 16px !important; }
+        #sbv-funnel .sbv-info-grid { grid-template-columns: 1fr 1fr !important; }
+        #sbv-funnel .sbv-info-item:nth-child(2n)::after { display: none !important; }
+        #sbv-funnel .sbv-gallery-header { padding: 0 24px !important; }
+        #sbv-funnel .sbv-gcard { width: 300px !important; height: 210px !important; }
+    }
+    @media (max-width: 560px) {
+        #sbv-funnel .sbv-nav { padding: 0 16px !important; }
+        #sbv-funnel .sbv-nav-loc { display: none !important; }
+        #sbv-funnel .sbv-benefits { padding: 24px 16px !important; }
+        #sbv-funnel .sbv-benefits-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 14px 0 !important; }
+        #sbv-funnel .sbv-benefit:nth-child(2n)::after { display: none !important; }
+        #sbv-funnel .sbv-tickets { padding: 48px 16px !important; }
+        #sbv-funnel .sbv-grid { grid-template-columns: 1fr !important; }
+        #sbv-funnel .sbv-slide { padding: 32px 16px !important; }
+        #sbv-funnel .sbv-gallery-header { padding: 0 16px !important; }
+        #sbv-funnel .sbv-gcard { width: 240px !important; height: 170px !important; }
+    }
+</style>
+
+<div id="sbv-funnel">
+
+    <!-- BANNER -->
+    <div class="sbv-banner">
+        <div class="sbv-banner-inner">
+            <span>🍎 <strong>Eckert's Grafton Farm</strong></span>
+            <span class="sbv-dot"></span>
+            <span>Pick-Your-Own Field Access · 2026</span>
+            <span class="sbv-dot"></span>
+            <span>Tue – Sun · 9 AM – 5 PM</span>
+        </div>
+    </div>
+
+    <!-- NAV -->
+    <div class="sbv-nav">
+        <div class="sbv-logo-wrap">
+            <img src="https://s3.amazonaws.com/uploads.webconnex.com/147655%2F1771785967751-Untitled+design+%28100%29.png" alt="Eckert's Farm">
+        </div>
+        <div class="sbv-nav-right">
+            <div class="sbv-nav-loc">
+                <svg width="12" height="12" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                    <circle cx="12" cy="11" r="3"/>
+                </svg>
+                Grafton, IL
+            </div>
+            <a href="#tickets" class="sbv-nav-cta">Get Tickets</a>
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <div class="sbv-hero">
+        <div class="sbv-hero-overlay"></div>
+        <div class="sbv-hero-content">
+            <span class="sbv-hero-eyebrow">Eckert's Grafton Farm · Grafton, IL · Apple Season</span>
+            <span class="sbv-hero-title">Pick Your Own<br><em>Apples</em></span>
+        </div>
+    </div>
+
+    <!-- BENEFITS -->
+    <div class="sbv-benefits">
+        <div class="sbv-benefits-grid">
+            <div class="sbv-benefit">
+                <span class="sbv-benefit-icon">🚜</span>
+                <span class="sbv-benefit-title">Wagon Ride to the Fields</span>
+                <span class="sbv-benefit-desc">Ride out to the orchard &amp; back · Last wagon 4:30 PM</span>
+            </div>
+            <div class="sbv-benefit">
+                <span class="sbv-benefit-icon">🍎</span>
+                <span class="sbv-benefit-title">Pick-Your-Own Apples</span>
+                <span class="sbv-benefit-desc">Fresh from the tree to your basket</span>
+            </div>
+            <div class="sbv-benefit">
+                <span class="sbv-benefit-icon">🕘</span>
+                <span class="sbv-benefit-title">Open Tue – Sun</span>
+                <span class="sbv-benefit-desc">9 AM – 5 PM at the orchard</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- GALLERY -->
+    <div class="sbv-gallery">
+        <div class="sbv-gallery-header sbvr">
+            <span class="sbv-eye">On the Farm</span>
+            <span class="sbv-title">A day at the <em>orchard</em></span>
+        </div>
+        <div class="sbv-gallery-mask">
+            <div class="sbv-gallery-track">
+                <div class="sbv-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-apples/apple-baby.jpg" alt="A little one enjoying the apple orchard" loading="lazy"><div class="sbv-gcard-label">Farm Fresh</div></div>
+                <div class="sbv-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-apples/apple-tree-basket.jpg" alt="A basket of apples by the tree" loading="lazy"><div class="sbv-gcard-label">On the Tree</div></div>
+                <div class="sbv-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-apples/apples-family.jpg" alt="A family picking apples together" loading="lazy"><div class="sbv-gcard-label">Family Day</div></div>
+                <div class="sbv-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-apples/apples-kids.jpg" alt="Kids picking apples in the orchard" loading="lazy"><div class="sbv-gcard-label">Little Pickers</div></div>
+                <div class="sbv-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-apples/apples-mom-and-daughter.jpg" alt="Mom and daughter picking apples" loading="lazy"><div class="sbv-gcard-label">Pick Together</div></div>
+                <!-- Duplicate for loop -->
+                <div class="sbv-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-apples/apple-baby.jpg" alt="A little one enjoying the apple orchard" loading="lazy"><div class="sbv-gcard-label">Farm Fresh</div></div>
+                <div class="sbv-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-apples/apple-tree-basket.jpg" alt="A basket of apples by the tree" loading="lazy"><div class="sbv-gcard-label">On the Tree</div></div>
+                <div class="sbv-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-apples/apples-family.jpg" alt="A family picking apples together" loading="lazy"><div class="sbv-gcard-label">Family Day</div></div>
+                <div class="sbv-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-apples/apples-kids.jpg" alt="Kids picking apples in the orchard" loading="lazy"><div class="sbv-gcard-label">Little Pickers</div></div>
+                <div class="sbv-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-apples/apples-mom-and-daughter.jpg" alt="Mom and daughter picking apples" loading="lazy"><div class="sbv-gcard-label">Pick Together</div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TICKETS -->
+    <div class="sbv-tickets" id="tickets">
+        <div class="sbv-tickets-header sbvr">
+            <span class="sbv-eye">Field Access Pass</span>
+            <span class="sbv-title">Get ready for your <em>day in the fields</em></span>
+        </div>
+        <div class="sbv-grid">
+
+            <!-- PYO FIELD ACCESS PASS -->
+            <div class="sbv-card sbv-card-dark sbvr">
+                <span class="sbv-card-icon">🍎</span>
+                <h3>PYO Field Access Pass</h3>
+                <ul class="sbv-card-bullets">
+                    <li>🚜 Wagon ride out to the fields &amp; back</li>
+                    <li>🍎 Pick your own apples</li>
+                    <li>🧺 Bring home what you pick — fruit sold by weight at the barn</li>
+                    <li>🌱 Required for everyone ages 2 &amp; up</li>
+                </ul>
+                <div class="sbv-price-rows" style="border-top: 1px solid rgba(255,255,255,0.12) !important;">
+                    <div class="sbv-price-row">
+                        <div>
+                            <span class="sbv-price-row-label" style="color: white !important;">Tue – Fri</span>
+                            <span class="sbv-price-row-sub" style="color: rgba(255,255,255,0.5) !important;">9 AM – 5 PM</span>
+                        </div>
+                        <div class="sbv-price-row-slash">
+                            <span class="sbv-price-row-was">$6 gate</span>
+                            <span class="sbv-price-row-amt" style="color: #F5D080 !important;">$3</span>
+                        </div>
+                    </div>
+                    <div class="sbv-price-row">
+                        <div>
+                            <span class="sbv-price-row-label" style="color: white !important;">Sat &amp; Sun</span>
+                            <span class="sbv-price-row-sub" style="color: rgba(255,255,255,0.5) !important;">9 AM – 5 PM</span>
+                        </div>
+                        <div class="sbv-price-row-slash">
+                            <span class="sbv-price-row-was">$8 gate</span>
+                            <span class="sbv-price-row-amt" style="color: #F5D080 !important;">$5</span>
+                        </div>
+                    </div>
+                </div>
+                <span class="sbv-card-note">Per person · + applicable fees at checkout. PYO fruit is priced by the pound and paid for at the farm.</span>
+            </div>
+
+            <!-- OPENING DAY INFO CARD -->
+            <div class="sbv-card sbv-card-pink sbvr d1">
+                <span class="sbv-card-badge sbv-badge-green">Now Picking</span>
+                <span class="sbv-card-icon">🗓️</span>
+                <h3>Apple Season Is Here</h3>
+                <ul class="sbv-card-bullets">
+                    <li>🍎 Fields are open with fresh-picked apples</li>
+                    <li>🌤️ Picking depends on weather &amp; ripeness — it changes daily</li>
+                    <li>🎟️ Buy online and save vs. the gate price</li>
+                    <li>📍 20995 Eckert Orchard Road, Grafton, IL</li>
+                </ul>
+                <span class="sbv-card-note">Check today's crop updates before you visit so you know exactly what's ready to pick. 📸 Tag us on Facebook &amp; Instagram — we'd love to see your farm-fresh haul!</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- INFO ROW -->
+    <div class="sbv-info">
+        <div class="sbv-info-grid">
+            <div class="sbv-info-item">
+                <span class="sbv-info-icon">📍</span>
+                <span class="sbv-info-label">Location</span>
+                <span class="sbv-info-value">20995 Eckert Orchard Road<br>Grafton, IL 62037</span>
+            </div>
+            <div class="sbv-info-item">
+                <span class="sbv-info-icon">🕘</span>
+                <span class="sbv-info-label">Hours</span>
+                <span class="sbv-info-value">Tue – Sun · 9 AM – 5 PM<br>Last wagon 4:30 PM</span>
+            </div>
+            <div class="sbv-info-item">
+                <span class="sbv-info-icon">🌱</span>
+                <span class="sbv-info-label">Who Needs a Pass</span>
+                <span class="sbv-info-value">Everyone Ages 2 &amp; Up</span>
+            </div>
+            <div class="sbv-info-item">
+                <span class="sbv-info-icon">🌾</span>
+                <span class="sbv-info-label">Crop Availability</span>
+                <a href="https://eckerts.com/crop-updates/" class="sbv-info-link" target="_blank">eckerts.com/crop-updates</a>
+            </div>
+        </div>
+    </div>
+
+</div><!-- end #sbv-funnel -->
+
+<script>
+    (function() {
+        var obs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) {
+                if (e.isIntersecting) { e.target.classList.add('sbvon'); obs.unobserve(e.target); }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('#sbv-funnel .sbvr').forEach(function(el) {
+            obs.observe(el);
+            if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('sbvon');
+        });
+        document.querySelectorAll('#sbv-funnel a[href^="#"]').forEach(function(a) {
+            a.addEventListener('click', function(e) {
+                e.preventDefault();
+                var t = document.querySelector(a.getAttribute('href'));
+                if (t) t.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    })();
+</script>
+
+<!-- ════ SLASH-THROUGH PRICING (TS native ticket block) ════
+     Field-access gates standardized (weekday $6 / weekend $8) — same as peach; no change. -->
+<script>
+(function(){
+  var GATE = {
+    "Pick-Your-Own Field Access (Weekday Ticket)": "$6.00",
+    "Pick-Your-Own Field Access (Weekend Ticket)": "$8.00"
+  };
+  function tag(){
+    document.querySelectorAll('#ticketBlock .ticket-type').forEach(function(row){
+      var h4 = row.querySelector('h4');
+      var cost = row.querySelector('.ticket-cost');
+      if(!h4 || !cost) return;
+      var g = GATE[h4.textContent.trim()];
+      if(g) cost.setAttribute('data-gate', g);
+    });
+  }
+  var tb = document.getElementById('ticketBlock') || document.body;
+  new MutationObserver(tag).observe(tb, {childList:true, subtree:true});
+  tag();
+})();
+</script>
+<style>
+  #ticketBlock .ticket-cost[data-gate]::before{
+    content: attr(data-gate) " "; text-decoration: line-through;
+    color:#212121; font-weight:200;
+  }
+  #ticketBlock .ticket-cost[data-gate]{ color:#5db75b !important; }
+</style>
+</body>
+</html>

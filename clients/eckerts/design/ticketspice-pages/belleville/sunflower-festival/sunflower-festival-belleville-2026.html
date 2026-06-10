@@ -1,0 +1,498 @@
+<!-- ════════════════════════════════════════════════════════════════════
+     ECKERT SUNFLOWER FESTIVAL · BELLEVILLE · 2026  —  TS SNIPPET (SKELETON)
+     Standalone rebranded festival. Forked from belleville-farm-field-access
+     structure, re-skinned sunflower-gold. PLACEHOLDER content — package
+     names, prices, hours, and imagery are NOT final. Drop locked specs in
+     once the Amanda<->Bryan strategy convo lands.
+     ════════════════════════════════════════════════════════════════════ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+    #sf-funnel {
+        width: 100vw !important;
+        position: relative !important;
+        left: 50% !important; right: 50% !important;
+        margin-left: -50vw !important; margin-right: -50vw !important;
+        overflow: hidden !important;
+        font-family: 'Open Sans', sans-serif !important;
+        background: #FFFBEF !important;
+        color: #241A08 !important;
+        padding: 0 !important; box-sizing: border-box !important;
+    }
+
+    /* ── BANNER ── */
+    #sf-funnel .sf-banner {
+        width: 100% !important;
+        background: #C98A14 !important;
+        color: white !important;
+        text-align: center !important;
+        padding: 11px 20px !important;
+        font-size: 0.8rem !important;
+        letter-spacing: 0.06em !important;
+        display: block !important; box-sizing: border-box !important;
+    }
+    #sf-funnel .sf-banner-inner {
+        display: flex !important; align-items: center !important;
+        justify-content: center !important; gap: 10px !important; flex-wrap: wrap !important;
+    }
+    #sf-funnel .sf-dot {
+        width: 3px !important; height: 3px !important;
+        background: rgba(255,255,255,0.45) !important;
+        border-radius: 50% !important; display: inline-block !important; flex-shrink: 0 !important;
+    }
+
+    /* ── NAV ── */
+    #sf-funnel .sf-nav {
+        width: 100% !important;
+        padding: 0 40px !important;
+        height: 64px !important;
+        display: flex !important; align-items: center !important;
+        justify-content: space-between !important;
+        background: rgba(224,162,31,0.97) !important;
+        position: sticky !important; top: 0 !important; z-index: 100 !important;
+        box-sizing: border-box !important;
+        box-shadow: 0 2px 16px rgba(176,120,10,0.35) !important;
+    }
+    #sf-funnel .sf-logo-wrap {
+        display: flex !important; align-items: center !important;
+        height: 44px !important; width: 160px !important;
+        flex-shrink: 0 !important; overflow: hidden !important;
+    }
+    #sf-funnel .sf-logo-wrap img {
+        height: 44px !important; width: 160px !important;
+        max-width: 160px !important; max-height: 44px !important;
+        object-fit: contain !important; object-position: left center !important; display: block !important;
+    }
+    #sf-funnel .sf-nav-right { display: flex !important; align-items: center !important; gap: 16px !important; }
+    #sf-funnel .sf-nav-loc {
+        font-size: 0.78rem !important; color: rgba(255,255,255,0.8) !important;
+        display: flex !important; align-items: center !important; gap: 5px !important;
+    }
+    #sf-funnel .sf-nav-cta {
+        background: #241A08 !important; color: #FFD86B !important;
+        padding: 9px 22px !important; border-radius: 50px !important;
+        font-size: 0.83rem !important; font-weight: 700 !important;
+        text-decoration: none !important; letter-spacing: 0.03em !important;
+        transition: all 0.3s ease !important; white-space: nowrap !important; display: inline-block !important;
+    }
+    #sf-funnel .sf-nav-cta:hover { background: #000 !important; color: #FFE08A !important; text-decoration: none !important; }
+
+    /* ── HERO ── (placeholder gradient — swap to a sunflower photo from Amanda's Dropbox set) */
+    #sf-funnel .sf-hero {
+        width: 100% !important;
+        min-height: clamp(320px, 55vw, 580px) !important;
+        position: relative !important;
+        display: flex !important; align-items: flex-end !important;
+        overflow: hidden !important;
+        background: linear-gradient(135deg, #F2B705 0%, #E0A21F 45%, #9C6B0E 100%) !important;
+    }
+    #sf-funnel .sf-hero-overlay {
+        position: absolute !important; inset: 0 !important;
+        background: linear-gradient(to bottom, rgba(40,30,8,0.05) 0%, rgba(40,30,8,0.15) 40%, rgba(40,30,8,0.6) 100%) !important;
+        z-index: 1 !important;
+    }
+    #sf-funnel .sf-hero-placeholder-tag {
+        position: absolute !important; top: 14px !important; right: 16px !important; z-index: 3 !important;
+        background: rgba(36,26,8,0.7) !important; color: #FFE08A !important;
+        font-size: 0.6rem !important; letter-spacing: 0.12em !important; text-transform: uppercase !important;
+        font-weight: 700 !important; padding: 5px 11px !important; border-radius: 20px !important;
+    }
+    #sf-funnel .sf-hero-content {
+        position: relative !important; z-index: 2 !important;
+        padding: 0 48px 48px !important; width: 100% !important; box-sizing: border-box !important;
+    }
+    #sf-funnel .sf-hero-eyebrow {
+        font-size: 0.7rem !important; font-weight: 700 !important;
+        letter-spacing: 0.2em !important; text-transform: uppercase !important;
+        color: rgba(255,255,255,0.85) !important; margin-bottom: 10px !important; display: block !important;
+        opacity: 0; animation: sfFadeUp 0.6s ease 0.2s forwards;
+    }
+    #sf-funnel .sf-hero-title {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: clamp(2.6rem, 8vw, 5rem) !important; font-weight: 700 !important;
+        color: white !important; line-height: 1.0 !important; display: block !important;
+        text-shadow: 0 2px 20px rgba(0,0,0,0.35) !important;
+        opacity: 0; animation: sfFadeUp 0.7s ease 0.35s forwards;
+    }
+    #sf-funnel .sf-hero-title em { font-style: italic !important; color: #FFE08A !important; }
+    @keyframes sfFadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ── BENEFITS ── */
+    #sf-funnel .sf-benefits {
+        width: 100% !important; background: white !important;
+        padding: 36px 48px !important; display: block !important; box-sizing: border-box !important;
+        border-bottom: 1px solid rgba(201,138,20,0.1) !important;
+    }
+    #sf-funnel .sf-benefits-grid { display: grid !important; grid-template-columns: repeat(4, 1fr) !important; }
+    #sf-funnel .sf-benefit { text-align: center !important; padding: 8px 20px !important; position: relative !important; }
+    #sf-funnel .sf-benefit:not(:last-child)::after {
+        content: '' !important; position: absolute !important;
+        right: 0 !important; top: 15% !important; bottom: 15% !important;
+        width: 1px !important; background: rgba(201,138,20,0.14) !important;
+    }
+    #sf-funnel .sf-benefit-icon { font-size: 1.7rem !important; margin-bottom: 8px !important; display: block !important; }
+    #sf-funnel .sf-benefit-title {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 1rem !important; font-weight: 600 !important;
+        color: #241A08 !important; margin-bottom: 3px !important; display: block !important;
+    }
+    #sf-funnel .sf-benefit-desc { font-size: 0.75rem !important; color: #8a6a2a !important; line-height: 1.4 !important; display: block !important; }
+
+    /* ── GALLERY ── (placeholder cards — swap to sunflower photos from Amanda's Dropbox set) */
+    #sf-funnel .sf-gallery { width: 100% !important; background: #FFFBEF !important; padding: 64px 0 !important; overflow: hidden !important; display: block !important; }
+    #sf-funnel .sf-gallery-header { text-align: center !important; padding: 0 48px !important; margin-bottom: 40px !important; }
+    #sf-funnel .sf-eye {
+        font-size: 0.7rem !important; font-weight: 600 !important;
+        letter-spacing: 0.22em !important; text-transform: uppercase !important;
+        color: #3D7A4F !important; margin-bottom: 8px !important; display: block !important;
+    }
+    #sf-funnel .sf-title {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: clamp(1.8rem, 4.5vw, 2.8rem) !important; font-weight: 700 !important;
+        color: #241A08 !important; line-height: 1.15 !important; display: block !important;
+    }
+    #sf-funnel .sf-title em { font-style: italic !important; color: #C98A14 !important; }
+    #sf-funnel .sf-gallery-mask {
+        width: 100% !important; overflow: hidden !important;
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%) !important;
+        mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%) !important;
+    }
+    #sf-funnel .sf-gallery-track {
+        display: flex !important; gap: 16px !important; width: max-content !important;
+        animation: sfMarquee 24s linear infinite !important; padding: 8px 0 !important;
+    }
+    #sf-funnel .sf-gallery-track:hover { animation-play-state: paused !important; }
+    @keyframes sfMarquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    #sf-funnel .sf-gcard {
+        width: 380px !important; height: 260px !important;
+        border-radius: 20px !important; overflow: hidden !important;
+        flex-shrink: 0 !important; position: relative !important; cursor: pointer !important;
+        background: linear-gradient(135deg, #FFE08A, #E0A21F) !important;
+        display: flex !important; align-items: center !important; justify-content: center !important;
+        font-size: 3rem !important; transition: transform 0.4s ease, box-shadow 0.4s ease !important;
+    }
+    #sf-funnel .sf-gcard:hover { transform: scale(1.03) translateY(-5px) !important; box-shadow: 0 24px 50px rgba(201,138,20,0.25) !important; z-index: 2 !important; }
+    #sf-funnel .sf-gcard-label {
+        position: absolute !important; bottom: 12px !important; left: 12px !important;
+        background: rgba(36,26,8,0.6) !important; backdrop-filter: blur(8px) !important;
+        color: white !important; font-size: 0.68rem !important; letter-spacing: 0.1em !important;
+        text-transform: uppercase !important; font-weight: 700 !important;
+        padding: 5px 12px !important; border-radius: 20px !important; z-index: 2 !important;
+    }
+
+    /* ── TICKET CARDS ── */
+    #sf-funnel .sf-tickets { width: 100% !important; background: #FBF1D6 !important; padding: 72px 48px !important; display: block !important; box-sizing: border-box !important; }
+    #sf-funnel .sf-tickets-header { text-align: center !important; margin-bottom: 18px !important; }
+    #sf-funnel .sf-pending {
+        text-align: center !important; max-width: 640px !important; margin: 0 auto 40px !important;
+        background: rgba(201,138,20,0.1) !important; border: 1px dashed rgba(201,138,20,0.5) !important;
+        border-radius: 14px !important; padding: 14px 20px !important;
+        font-size: 0.82rem !important; color: #8a6a2a !important; line-height: 1.5 !important;
+    }
+    #sf-funnel .sf-grid {
+        display: grid !important; grid-template-columns: repeat(3, minmax(0, 400px)) !important;
+        gap: 24px !important; justify-content: center !important;
+        max-width: 1280px !important; margin-left: auto !important; margin-right: auto !important;
+    }
+    #sf-funnel .sf-card {
+        border-radius: 20px !important; padding: 36px 32px !important;
+        position: relative !important; overflow: hidden !important;
+        transition: transform 0.35s ease, box-shadow 0.35s ease !important;
+        display: flex !important; flex-direction: column !important;
+    }
+    #sf-funnel .sf-card:hover { transform: translateY(-6px) !important; }
+    #sf-funnel .sf-card-dark { background: #241A08 !important; color: white !important; }
+    #sf-funnel .sf-card-dark:hover { box-shadow: 0 20px 44px rgba(0,0,0,0.35) !important; }
+    #sf-funnel .sf-card-gold { background: #E0A21F !important; color: #241A08 !important; }
+    #sf-funnel .sf-card-gold:hover { box-shadow: 0 20px 44px rgba(201,138,20,0.4) !important; }
+    #sf-funnel .sf-card-cream { background: linear-gradient(145deg, #FFF3CF, #FFFBEF) !important; border: 1px solid rgba(201,138,20,0.16) !important; }
+    #sf-funnel .sf-card-cream:hover { box-shadow: 0 20px 44px rgba(201,138,20,0.14) !important; }
+
+    #sf-funnel .sf-card-badge {
+        display: inline-block !important; font-size: 0.62rem !important; font-weight: 700 !important;
+        letter-spacing: 0.14em !important; text-transform: uppercase !important;
+        padding: 4px 10px !important; border-radius: 20px !important; margin-bottom: 14px !important; width: fit-content !important;
+    }
+    #sf-funnel .sf-card-badge-light { background: rgba(255,255,255,0.18) !important; color: white !important; }
+    #sf-funnel .sf-card-badge-dark { background: rgba(36,26,8,0.16) !important; color: #241A08 !important; }
+    #sf-funnel .sf-card-badge-gold { background: #FFD86B !important; color: #7a5208 !important; }
+
+    #sf-funnel .sf-card-icon { font-size: 2.6rem !important; margin-bottom: 14px !important; display: block !important; }
+    #sf-funnel .sf-card h3 {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 1.55rem !important; font-weight: 700 !important;
+        line-height: 1.15 !important; margin-bottom: 14px !important; display: block !important;
+    }
+    #sf-funnel .sf-card-cream h3 { color: #241A08 !important; }
+    #sf-funnel .sf-card-gold h3 { color: #241A08 !important; }
+    #sf-funnel .sf-card-dark h3 { color: white !important; }
+    #sf-funnel .sf-card-bullets { list-style: none !important; padding: 0 !important; margin: 0 0 auto !important; display: flex !important; flex-direction: column !important; gap: 6px !important; }
+    #sf-funnel .sf-card-bullets li { font-size: 0.95rem !important; line-height: 1.55 !important; display: flex !important; align-items: flex-start !important; gap: 8px !important; }
+    #sf-funnel .sf-card-cream .sf-card-bullets li { color: #5a4516 !important; }
+    #sf-funnel .sf-card-gold .sf-card-bullets li { color: #3a2c0c !important; }
+    #sf-funnel .sf-card-dark .sf-card-bullets li { color: rgba(255,255,255,0.85) !important; }
+
+    #sf-funnel .sf-card-price { display: flex !important; align-items: baseline !important; gap: 6px !important; margin-top: 20px !important; padding-top: 16px !important; }
+    #sf-funnel .sf-card-gold .sf-card-price { border-top: 1px solid rgba(36,26,8,0.2) !important; }
+    #sf-funnel .sf-card-cream .sf-card-price { border-top: 1px solid rgba(201,138,20,0.16) !important; }
+    #sf-funnel .sf-card-dark .sf-card-price { border-top: 1px solid rgba(255,255,255,0.15) !important; }
+    #sf-funnel .sf-price-num { font-family: 'Zilla Slab', 'Times New Roman', serif !important; font-size: 2.8rem !important; font-weight: 700 !important; line-height: 1 !important; }
+    #sf-funnel .sf-card-cream .sf-price-num { color: #C98A14 !important; }
+    #sf-funnel .sf-card-gold .sf-price-num { color: #241A08 !important; }
+    #sf-funnel .sf-card-dark .sf-price-num { color: #FFD86B !important; }
+    #sf-funnel .sf-price-label { font-size: 0.88rem !important; line-height: 1.4 !important; }
+    #sf-funnel .sf-card-cream .sf-price-label { color: #a98a4a !important; }
+    #sf-funnel .sf-card-gold .sf-price-label { color: #5a4516 !important; }
+    #sf-funnel .sf-card-dark .sf-price-label { color: rgba(255,255,255,0.55) !important; }
+    #sf-funnel .sf-card-note { font-size: 0.72rem !important; font-style: italic !important; margin-top: 10px !important; display: block !important; line-height: 1.5 !important; }
+    #sf-funnel .sf-card-dark .sf-card-note { color: rgba(255,255,255,0.4) !important; }
+    #sf-funnel .sf-card-gold .sf-card-note { color: #5a4516 !important; }
+    #sf-funnel .sf-card-cream .sf-card-note { color: #a98a4a !important; }
+
+    /* ── INFO ROW ── */
+    #sf-funnel .sf-info { width: 100% !important; background: #C98A14 !important; padding: 0 !important; display: block !important; box-sizing: border-box !important; }
+    #sf-funnel .sf-info-grid { display: grid !important; grid-template-columns: repeat(4, 1fr) !important; }
+    #sf-funnel .sf-info-item { text-align: center !important; padding: 28px 20px !important; position: relative !important; }
+    #sf-funnel .sf-info-item:not(:last-child)::after { content: '' !important; position: absolute !important; right: 0 !important; top: 20% !important; bottom: 20% !important; width: 1px !important; background: rgba(255,255,255,0.18) !important; }
+    #sf-funnel .sf-info-icon { font-size: 1.5rem !important; display: block !important; margin-bottom: 6px !important; }
+    #sf-funnel .sf-info-label { font-size: 0.62rem !important; font-weight: 700 !important; letter-spacing: 0.16em !important; text-transform: uppercase !important; color: rgba(255,255,255,0.65) !important; display: block !important; margin-bottom: 4px !important; }
+    #sf-funnel .sf-info-value { font-family: 'Zilla Slab', 'Times New Roman', serif !important; font-size: 0.95rem !important; font-weight: 600 !important; color: white !important; display: block !important; line-height: 1.3 !important; }
+
+    /* ── REVEAL ── */
+    #sf-funnel .sfr { opacity: 0 !important; transform: translateY(28px) !important; transition: opacity 0.7s cubic-bezier(.16,1,.3,1), transform 0.7s cubic-bezier(.16,1,.3,1) !important; }
+    #sf-funnel .sfr.sfon { opacity: 1 !important; transform: none !important; }
+    #sf-funnel .sfr.d1 { transition-delay: 0.1s !important; }
+    #sf-funnel .sfr.d2 { transition-delay: 0.2s !important; }
+    #sf-funnel .sfr.d3 { transition-delay: 0.3s !important; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1000px) { #sf-funnel .sf-grid { grid-template-columns: repeat(2, minmax(0, 420px)) !important; } }
+    @media (max-width: 860px) {
+        #sf-funnel .sf-nav { padding: 0 24px !important; }
+        #sf-funnel .sf-benefits { padding: 32px 24px !important; }
+        #sf-funnel .sf-tickets { padding: 56px 24px !important; }
+        #sf-funnel .sf-info-grid { grid-template-columns: 1fr 1fr !important; }
+        #sf-funnel .sf-info-item:nth-child(2n)::after { display: none !important; }
+        #sf-funnel .sf-gallery-header { padding: 0 24px !important; }
+        #sf-funnel .sf-gcard { width: 300px !important; height: 210px !important; }
+    }
+    @media (max-width: 560px) {
+        #sf-funnel .sf-nav { padding: 0 16px !important; }
+        #sf-funnel .sf-nav-loc { display: none !important; }
+        #sf-funnel .sf-benefits { padding: 24px 16px !important; }
+        #sf-funnel .sf-benefits-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 14px 0 !important; }
+        #sf-funnel .sf-benefit:nth-child(2n)::after { display: none !important; }
+        #sf-funnel .sf-tickets { padding: 48px 16px !important; }
+        #sf-funnel .sf-grid { grid-template-columns: 1fr !important; }
+        #sf-funnel .sf-gallery-header { padding: 0 16px !important; }
+        #sf-funnel .sf-gcard { width: 240px !important; height: 170px !important; }
+    }
+</style>
+
+<div id="sf-funnel">
+
+    <!-- BANNER -->
+    <div class="sf-banner">
+        <div class="sf-banner-inner">
+            <span>🌻 <strong>Eckert Sunflower Festival</strong></span>
+            <span class="sf-dot"></span>
+            <span>Belleville Farm · 2026</span>
+            <span class="sf-dot"></span>
+            <span>Opens ~July 25 · 3 Weekends Only</span>
+        </div>
+    </div>
+
+    <!-- NAV -->
+    <div class="sf-nav">
+        <div class="sf-logo-wrap">
+            <img src="https://s3.amazonaws.com/uploads.webconnex.com/147655%2F1771785967751-Untitled+design+%28100%29.png" alt="Eckert's Farm">
+        </div>
+        <div class="sf-nav-right">
+            <div class="sf-nav-loc">
+                <svg width="12" height="12" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                    <circle cx="12" cy="11" r="3"/>
+                </svg>
+                Belleville, IL
+            </div>
+            <a href="#tickets" class="sf-nav-cta">Get Tickets</a>
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <div class="sf-hero">
+        <div class="sf-hero-overlay"></div>
+        <span class="sf-hero-placeholder-tag">Placeholder — sunflower hero photo pending</span>
+        <div class="sf-hero-content">
+            <span class="sf-hero-eyebrow">Eckert's Belleville Farm · 2026</span>
+            <span class="sf-hero-title">Eckert<br><em>Sunflower Festival</em></span>
+        </div>
+    </div>
+
+    <!-- BENEFITS -->
+    <div class="sf-benefits">
+        <div class="sf-benefits-grid">
+            <div class="sf-benefit">
+                <span class="sf-benefit-icon">🌻</span>
+                <span class="sf-benefit-title">Acres of Sunflowers</span>
+                <span class="sf-benefit-desc">Walk the rows in peak bloom</span>
+            </div>
+            <div class="sf-benefit">
+                <span class="sf-benefit-icon">✂️</span>
+                <span class="sf-benefit-title">Cut-Your-Own</span>
+                <span class="sf-benefit-desc">Take home a fresh-cut stem</span>
+            </div>
+            <div class="sf-benefit">
+                <span class="sf-benefit-icon">📸</span>
+                <span class="sf-benefit-title">Photo Scenes</span>
+                <span class="sf-benefit-desc">Picture-perfect backdrops</span>
+            </div>
+            <div class="sf-benefit">
+                <span class="sf-benefit-icon">🌅</span>
+                <span class="sf-benefit-title">Golden-Hour Hours</span>
+                <span class="sf-benefit-desc">Sunset time slots available</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- GALLERY (placeholder cards) -->
+    <div class="sf-gallery">
+        <div class="sf-gallery-header sfr">
+            <span class="sf-eye">In the Fields</span>
+            <span class="sf-title">A field of <em>gold</em></span>
+        </div>
+        <div class="sf-gallery-mask">
+            <div class="sf-gallery-track">
+                <div class="sf-gcard">🌻<div class="sf-gcard-label">Photo pending</div></div>
+                <div class="sf-gcard">🌻<div class="sf-gcard-label">Photo pending</div></div>
+                <div class="sf-gcard">🌻<div class="sf-gcard-label">Photo pending</div></div>
+                <div class="sf-gcard">🌻<div class="sf-gcard-label">Photo pending</div></div>
+                <div class="sf-gcard">🌻<div class="sf-gcard-label">Photo pending</div></div>
+                <!-- Duplicate for seamless loop -->
+                <div class="sf-gcard">🌻<div class="sf-gcard-label">Photo pending</div></div>
+                <div class="sf-gcard">🌻<div class="sf-gcard-label">Photo pending</div></div>
+                <div class="sf-gcard">🌻<div class="sf-gcard-label">Photo pending</div></div>
+                <div class="sf-gcard">🌻<div class="sf-gcard-label">Photo pending</div></div>
+                <div class="sf-gcard">🌻<div class="sf-gcard-label">Photo pending</div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TICKETS (placeholder package cards — drop locked specs in after the strategy convo) -->
+    <div class="sf-tickets" id="tickets">
+        <div class="sf-tickets-header sfr">
+            <span class="sf-eye">Festival Tickets</span>
+            <span class="sf-title">Pick your <em>sunflower experience</em></span>
+        </div>
+        <div class="sf-pending sfr">
+            ⛔ <strong>Placeholder packages.</strong> Final ticket types, inclusions, and pricing land after the
+            Amanda&nbsp;↔&nbsp;Bryan strategy convo (mirroring the Tulip Trail winners). Card slots below are wired and
+            ready — drop the locked specs straight in.
+        </div>
+        <div class="sf-grid">
+
+            <!-- DATE NIGHT / GOLDEN HOUR -->
+            <div class="sf-card sf-card-dark sfr">
+                <span class="sf-card-badge sf-card-badge-gold">Sunset Slot</span>
+                <span class="sf-card-icon">🌅</span>
+                <h3>Golden-Hour Date Night</h3>
+                <ul class="sf-card-bullets">
+                    <li>🌻 Evening field access at peak light</li>
+                    <li>✂️ 2 cut-your-own sunflowers</li>
+                    <li>📸 Photo-scene access</li>
+                    <li>🍷 <em>(bar add-on TBD)</em></li>
+                </ul>
+                <div class="sf-card-price">
+                    <span class="sf-price-num">$TBD</span>
+                    <span class="sf-price-label">per couple<br>pending strategy convo</span>
+                </div>
+                <span class="sf-card-note">Placeholder — confirm inclusions &amp; price.</span>
+            </div>
+
+            <!-- GENERAL ADMISSION + CUT-YOUR-OWN -->
+            <div class="sf-card sf-card-gold sfr d1">
+                <span class="sf-card-badge sf-card-badge-dark">Most Popular</span>
+                <span class="sf-card-icon">🌻</span>
+                <h3>Festival Admission</h3>
+                <ul class="sf-card-bullets">
+                    <li>🌻 Sunflower field access</li>
+                    <li>✂️ 1 cut-your-own sunflower</li>
+                    <li>📸 Photo scenes &amp; observation deck</li>
+                </ul>
+                <div class="sf-card-price">
+                    <span class="sf-price-num">$TBD</span>
+                    <span class="sf-price-label">per person<br>flash sale 7/20</span>
+                </div>
+                <span class="sf-card-note">Placeholder — historically a higher price point than field access.</span>
+            </div>
+
+            <!-- FAMILY / PHOTO PACKAGE -->
+            <div class="sf-card sf-card-cream sfr d2">
+                <span class="sf-card-badge sf-card-badge-gold">Photo Package</span>
+                <span class="sf-card-icon">📸</span>
+                <h3>Family Fun &amp; Photo Pack</h3>
+                <ul class="sf-card-bullets">
+                    <li>👨‍👩‍👧‍👦 Admission for the family</li>
+                    <li>✂️ Cut-your-own sunflowers</li>
+                    <li>📸 Reserved photo-scene time</li>
+                </ul>
+                <div class="sf-card-price">
+                    <span class="sf-price-num">$TBD</span>
+                    <span class="sf-price-label">per pack<br>pending strategy convo</span>
+                </div>
+                <span class="sf-card-note">Placeholder — mirror the Tulip Trail family/photo winners.</span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- INFO ROW -->
+    <div class="sf-info">
+        <div class="sf-info-grid">
+            <div class="sf-info-item">
+                <span class="sf-info-icon">📍</span>
+                <span class="sf-info-label">Location</span>
+                <span class="sf-info-value">Eckert's Belleville Farm</span>
+            </div>
+            <div class="sf-info-item">
+                <span class="sf-info-icon">📅</span>
+                <span class="sf-info-label">Dates</span>
+                <span class="sf-info-value">Opens ~July 25<br>3 weekends · thru ~Aug 9</span>
+            </div>
+            <div class="sf-info-item">
+                <span class="sf-info-icon">🕘</span>
+                <span class="sf-info-label">Hours</span>
+                <span class="sf-info-value">TBD · sunset slots planned</span>
+            </div>
+            <div class="sf-info-item">
+                <span class="sf-info-icon">⚡</span>
+                <span class="sf-info-label">Flash Sale</span>
+                <span class="sf-info-value">8 AM CST · July 20</span>
+            </div>
+        </div>
+    </div>
+
+</div><!-- end #sf-funnel -->
+
+<script>
+    (function() {
+        var obs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) {
+                if (e.isIntersecting) { e.target.classList.add('sfon'); obs.unobserve(e.target); }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('#sf-funnel .sfr').forEach(function(el) {
+            obs.observe(el);
+            if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('sfon');
+        });
+        document.querySelectorAll('#sf-funnel a[href^="#"]').forEach(function(a) {
+            a.addEventListener('click', function(e) {
+                e.preventDefault();
+                var t = document.querySelector(a.getAttribute('href'));
+                if (t) t.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    })();
+</script>

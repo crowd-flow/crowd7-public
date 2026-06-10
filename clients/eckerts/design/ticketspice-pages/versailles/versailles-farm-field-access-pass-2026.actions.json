@@ -1,0 +1,584 @@
+{
+  "_meta": {
+    "page": "Versailles Farm Field Access Pass | 2026",
+    "page_key": "eckerts-versailles-field-access",
+    "client": "Eckerts",
+    "location": "Versailles",
+    "sibling_page_html": "versailles-farm-field-access-pass-2026.html",
+    "ticketspice_url": "https://manage.webconnex.com/a/147655/pages/1000122/edit/actions",
+    "ticketspice_page_id": "1000122",
+    "purpose": "Local mirror of the TicketSpice 'Actions' tab (conditional show/hide/price logic) for THIS page. One actions file per TicketSpice page, sibling to the page HTML.",
+    "sync_protocol": "Mat is the source of truth on the live TicketSpice page. When he adds/edits/removes an Action there, he reports it and Crowdly updates this file to match. Crowdly never invents an Action Mat hasn't confirmed live.",
+    "last_synced": "2026-06-08",
+    "schema_version": 2,
+    "source": "Captured from screenshot PDF screencapture-manage-webconnex-a-147655-pages-1000122-edit-actions-2026-06-08-15_48_19.pdf",
+    "changelog": [
+      "2026-06-08 (initial): captured 49 actions from the TicketSpice Actions-tab screenshot PDF.",
+      "2026-06-08 (peach go-live prep): Mat DELETED 'hide-fieldaccess-after-may25' on the live page to open the general Field Access pass for peach season (PYO peaches opens Jun 12). Field Access now shows via the summer window show-rules and is hidden again after Sep 5 by the fall changeover rules (show-weekday-fall-after-sep5 / show-weekend-fall-after-sep5 hide_also lists). Per 6/5 Eckert's check-in w/ Amanda. Sunflower stays hidden (moving to a standalone Sunflower Festival) and the 2025-dated blackberry show-rule is left as-is pending Amanda's blackberry gate date. Net: 49 -> 48 actions. OPEN GAP: no Peach Fun Pass ($16 online/$20 box office) exists in the actions — confirm whether the ticket type exists on the live page before the 6/11 cut-over."
+    ],
+    "field_guide": {
+      "match": "'any' (When Any...) = OR across conditions; 'all' (When All...) = AND across conditions",
+      "conditions": "list of {field, operator, value}",
+      "fields": {
+        "Ticket Date Selection": "the date the BUYER picks (the visit date) — drives nearly all seasonal show/hide logic",
+        "Date": "the live SUBMISSION date (today) — drives time-based teardowns relative to now",
+        "Purchase Date": "purchase-date condition scoped to a specific ticket type (named in the condition value's _ticket)"
+      },
+      "operators": "date-is | date-is-before | date-is-after | date-is-between (value = [start, end]) | day-of-week-is (value = list of weekdays)",
+      "effect": "'show' | 'hide' | 'apply-discount' (discount_percent) | 'decrease-price' (price_decrease, in dollars)",
+      "targets": "list of ticket/field/element names affected",
+      "enabled": "true if currently active on the live page"
+    }
+  },
+  "actions": [
+    {
+      "id": "show-pg-fieldaccess-tuefri-spring-summer",
+      "match": "all",
+      "conditions": [
+        {"field": "Ticket Date Selection", "operator": "day-of-week-is", "value": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]},
+        {"field": "Date", "operator": "date-is-between", "value": ["2026-03-12T21:00:00", "2026-09-03T21:00:00"]}
+      ],
+      "effect": "show",
+      "targets": ["Playground Admission + Field Access (Tuesday-Friday)"],
+      "enabled": true,
+      "notes": "Weekday spring/summer window. Includes Monday in the weekday list but the farm is closed Mondays — backstopped by hide-all-monday-closed."
+    },
+    {
+      "id": "show-fieldaccess-weekday-spring-summer",
+      "match": "all",
+      "conditions": [
+        {"field": "Ticket Date Selection", "operator": "day-of-week-is", "value": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]},
+        {"field": "Date", "operator": "date-is-between", "value": ["2026-03-12T21:00:00", "2026-09-03T21:00:00"]}
+      ],
+      "effect": "show",
+      "targets": ["Field Access"],
+      "enabled": true,
+      "notes": ""
+    },
+    {
+      "id": "show-fieldaccess-pg-tuefri-window",
+      "match": "all",
+      "conditions": [
+        {"field": "Ticket Date Selection", "operator": "day-of-week-is", "value": ["Tuesday", "Wednesday", "Thursday", "Friday"]},
+        {"field": "Date", "operator": "date-is-between", "value": ["2026-03-13T00:00:00", "2026-09-04T00:00:00"]}
+      ],
+      "effect": "show",
+      "targets": ["Field Access", "Playground Admission + Field Access (Tuesday-Friday)"],
+      "enabled": true,
+      "notes": "Near-duplicate of the two prior rules but Tue-Fri only (no Monday) and a 12:00 AM window. Possible redundancy — confirm whether all three are needed."
+    },
+    {
+      "id": "show-fieldaccess-pg-satsun-window",
+      "match": "all",
+      "conditions": [
+        {"field": "Ticket Date Selection", "operator": "day-of-week-is", "value": ["Sunday", "Saturday"]},
+        {"field": "Date", "operator": "date-is-between", "value": ["2026-03-13T00:00:00", "2026-09-04T00:00:00"]}
+      ],
+      "effect": "show",
+      "targets": ["Field Access", "Field Access & Playground Admission (Saturday - Sunday)"],
+      "enabled": true,
+      "notes": ""
+    },
+    {
+      "id": "hide-fieldaccess-before-may25",
+      "match": "all",
+      "conditions": [
+        {"field": "Ticket Date Selection", "operator": "date-is-before", "value": "2026-05-25"}
+      ],
+      "effect": "hide",
+      "targets": ["Field Access"],
+      "enabled": true,
+      "notes": "Strawberry season — standalone Field Access hidden before May 25 (Strawberry Fun Pass sells instead)."
+    },
+    {
+      "id": "hide-adult-kiosk-before-may25",
+      "match": "all",
+      "conditions": [
+        {"field": "Ticket Date Selection", "operator": "date-is-before", "value": "2026-05-25"}
+      ],
+      "effect": "hide",
+      "targets": ["Adult Ticket (17 years & older) KIOSK"],
+      "enabled": true,
+      "notes": ""
+    },
+    {
+      "id": "hide-adult-kiosk-after-may25",
+      "match": "all",
+      "conditions": [
+        {"field": "Ticket Date Selection", "operator": "date-is-after", "value": "2026-05-25"}
+      ],
+      "effect": "hide",
+      "targets": ["Adult Ticket (17 years & older) KIOSK"],
+      "enabled": true,
+      "notes": "Paired with hide-adult-kiosk-before-may25 — together they hide the Adult KIOSK ticket everywhere EXCEPT exactly May 25. See show-items-may25 / show-items-may30 which re-show it on those dates."
+    },
+    {
+      "id": "hide-strawberry-kiosk-before-may25",
+      "match": "all",
+      "conditions": [
+        {"field": "Ticket Date Selection", "operator": "date-is-before", "value": "2026-05-25"}
+      ],
+      "effect": "hide",
+      "targets": ["Strawberry Fun Pass (Field Access Included) KIOSK"],
+      "enabled": true,
+      "notes": ""
+    },
+    {
+      "id": "hide-strawberry-kiosk-after-may25",
+      "match": "all",
+      "conditions": [
+        {"field": "Ticket Date Selection", "operator": "date-is-after", "value": "2026-05-25"}
+      ],
+      "effect": "hide",
+      "targets": ["Strawberry Fun Pass (Field Access Included) KIOSK"],
+      "enabled": true,
+      "notes": "Duplicated again at hide-strawberry-kiosk-may25 (When Any, Date Is May 25) — confirm which is canonical."
+    },
+    {
+      "id": "hide-breakfast-berries-kiosk-after-may10",
+      "match": "all",
+      "conditions": [
+        {"field": "Ticket Date Selection", "operator": "date-is-after", "value": "2026-05-10"}
+      ],
+      "effect": "hide",
+      "targets": ["Breakfast & Berries (Field Access Included) KIOSK"],
+      "enabled": true,
+      "notes": "Breakfast & Berries is a one-day May 9/10 event — hidden for all visit dates after May 10."
+    },
+    {
+      "id": "show-strawberry-pass-may21-25",
+      "match": "all",
+      "conditions": [
+        {"field": "Ticket Date Selection", "operator": "date-is-after", "value": "2026-05-21"},
+        {"field": "Ticket Date Selection", "operator": "date-is-before", "value": "2026-05-25"}
+      ],
+      "effect": "show",
+      "targets": ["Strawberry Fun Pass (Field Access Included)"],
+      "enabled": true,
+      "notes": "Narrow May 21-25 strawberry window."
+    },
+    {
+      "id": "show-blackberry-jul4-7-2025",
+      "match": "all",
+      "conditions": [
+        {"field": "Ticket Date Selection", "operator": "date-is-after", "value": "2025-07-04"},
+        {"field": "Ticket Date Selection", "operator": "date-is-before", "value": "2025-07-07"}
+      ],
+      "effect": "show",
+      "targets": ["Blackberry Fun Pass"],
+      "enabled": true,
+      "notes": "DEAD rule — dates are 2025 (past). No 2026 customer can trigger it. Candidate for deletion or re-dating to 2026 if a blackberry window is still wanted."
+    },
+    {
+      "id": "hide-sunflower-after-aug21-2025",
+      "match": "any",
+      "conditions": [
+        {"field": "Ticket Date Selection", "operator": "date-is-after", "value": "2025-08-21"}
+      ],
+      "effect": "hide",
+      "targets": ["Sunflower Farm Experience - With Field Admission"],
+      "enabled": true,
+      "notes": "Condition dated 2025 — effectively hides Sunflower for every 2026 visit date (all are after Aug 21 2025). Confirm intent: if Sunflower should sell in 2026, this needs re-dating; if it's retired, fine as a permanent hide."
+    },
+    {
+      "id": "show-weekday-fall-after-sep5",
+      "match": "all",
+      "conditions": [
+        {"field": "Ticket Date Selection", "operator": "date-is-after", "value": "2026-09-05"},
+        {"field": "Ticket Date Selection", "operator": "day-of-week-is", "value": ["Tuesday", "Wednesday", "Thursday"]}
+      ],
+      "effect": "show",
+      "targets": ["Weekday Fall Field Access & Playground Admission"],
+      "enabled": true,
+      "hide_also": ["Playground Admission + Field Access (Tuesday-Friday)", "Field Access & Playground Admission (Saturday - Sunday)", "Field Access", "Weekend Fall Field Access & Playground Admission", "Sunflower Farm Experience - With Field Admission"],
+      "notes": "Fall changeover (weekday). Single TS action with BOTH a Show and a Hide list — the Show target is in 'targets', the Hide list is in 'hide_also'."
+    },
+    {
+      "id": "show-weekend-fall-after-sep5",
+      "match": "all",
+      "conditions": [
+        {"field": "Ticket Date Selection", "operator": "date-is-after", "value": "2026-09-05"},
+        {"field": "Ticket Date Selection", "operator": "day-of-week-is", "value": ["Sunday", "Friday", "Saturday"]}
+      ],
+      "effect": "show",
+      "targets": ["Weekend Fall Field Access & Playground Admission"],
+      "enabled": true,
+      "hide_also": ["Playground Admission + Field Access (Tuesday-Friday)", "Field Access & Playground Admission (Saturday - Sunday)", "Field Access", "Strawberry Fun Pass (Field Access Included)", "Blackberry Fun Pass", "Weekday Fall Field Access & Playground Admission", "Sunflower Farm Experience - With Field Admission"],
+      "notes": "Fall changeover (weekend). Show target in 'targets', Hide list in 'hide_also'."
+    },
+    {
+      "id": "show-laborday-sep7",
+      "match": "any",
+      "conditions": [
+        {"field": "Ticket Date Selection", "operator": "date-is", "value": "2026-09-07"}
+      ],
+      "effect": "show",
+      "targets": ["Field Access & Playground Admission (Labor Day)", "Field Access"],
+      "enabled": true,
+      "hide_also": ["Weekend Fall Field Access & Playground Admission"],
+      "notes": "Labor Day (Sep 7) special — shows the Labor Day pass + Field Access, hides the weekend fall pass for that one day."
+    },
+    {
+      "id": "hide-pg-passes-aug3-10",
+      "match": "all",
+      "conditions": [
+        {"field": "Ticket Date Selection", "operator": "date-is-after", "value": "2026-08-03"},
+        {"field": "Ticket Date Selection", "operator": "date-is-before", "value": "2026-08-10"}
+      ],
+      "effect": "hide",
+      "targets": ["Playground Admission + Field Access (Tuesday-Friday)", "Field Access & Playground Admission (Saturday - Sunday)"],
+      "enabled": true,
+      "notes": "Aug 3-10 blackout for the playground+field combo passes (likely a closed/maintenance window)."
+    },
+    {
+      "id": "hide-fieldaccess-aug17-22",
+      "match": "all",
+      "conditions": [
+        {"field": "Ticket Date Selection", "operator": "date-is-after", "value": "2026-08-17"},
+        {"field": "Ticket Date Selection", "operator": "date-is-before", "value": "2026-08-22"}
+      ],
+      "effect": "hide",
+      "targets": ["Field Access"],
+      "enabled": true,
+      "notes": "Aug 17-22 blackout for standalone Field Access."
+    },
+    {
+      "id": "show-apple-aug28-oct1",
+      "match": "all",
+      "conditions": [
+        {"field": "Ticket Date Selection", "operator": "date-is-after", "value": "2026-08-28"},
+        {"field": "Ticket Date Selection", "operator": "date-is-before", "value": "2026-10-01"}
+      ],
+      "effect": "show",
+      "targets": ["Apple Fun Pass"],
+      "enabled": true,
+      "notes": "Apple season window (late Aug - Sep)."
+    },
+    {
+      "id": "show-pumpkin-sep30-nov1",
+      "match": "all",
+      "conditions": [
+        {"field": "Ticket Date Selection", "operator": "date-is-after", "value": "2026-09-30"},
+        {"field": "Ticket Date Selection", "operator": "date-is-before", "value": "2026-11-01"}
+      ],
+      "effect": "show",
+      "targets": ["Pumpkin Fun Pass"],
+      "enabled": true,
+      "notes": "Pumpkin season window (October)."
+    },
+    {
+      "id": "show-weekend-fall-oct6",
+      "match": "any",
+      "conditions": [
+        {"field": "Ticket Date Selection", "operator": "date-is", "value": "2026-10-06"}
+      ],
+      "effect": "show",
+      "targets": ["Weekend Fall Field Access & Playground Admission"],
+      "enabled": true,
+      "notes": "Oct 6 (a Tuesday) treated as a weekend-rate day — paired with hide-weekday-fall-oct6 to swap weekday->weekend pass. Likely a fall-break / holiday override."
+    },
+    {
+      "id": "show-weekend-fall-oct7",
+      "match": "any",
+      "conditions": [
+        {"field": "Ticket Date Selection", "operator": "date-is", "value": "2026-10-07"}
+      ],
+      "effect": "show",
+      "targets": ["Weekend Fall Field Access & Playground Admission"],
+      "enabled": true,
+      "notes": "Oct 7 weekend-rate override — paired with hide-weekday-fall-oct7."
+    },
+    {
+      "id": "show-weekend-fall-oct8",
+      "match": "any",
+      "conditions": [
+        {"field": "Ticket Date Selection", "operator": "date-is", "value": "2026-10-08"}
+      ],
+      "effect": "show",
+      "targets": ["Weekend Fall Field Access & Playground Admission"],
+      "enabled": true,
+      "notes": "Oct 8 weekend-rate override — paired with hide-weekday-fall-oct8."
+    },
+    {
+      "id": "hide-all-monday-closed",
+      "match": "any",
+      "conditions": [
+        {"field": "Ticket Date Selection", "operator": "day-of-week-is", "value": ["Monday"]}
+      ],
+      "effect": "hide",
+      "targets": ["Playground Admission + Field Access (Tuesday-Friday)", "Field Access & Playground Admission (Saturday - Sunday)", "Field Access & Playground Admission (Labor Day)", "Weekend Fall Field Access & Playground Admission", "Strawberry Fun Pass (Field Access Included)", "Blackberry Fun Pass", "Field Access", "Sunflower Farm Experience - With Field Admission", "Weekday Fall Field Access & Playground Admission", "Apple Fun Pass", "Pumpkin Fun Pass"],
+      "enabled": true,
+      "notes": "Closed-Monday backstop — hides every main admission pass when the picked day is a Monday. NOTE: Labor Day (Mon Sep 7) is handled by show-laborday-sep7, which would conflict — confirm Labor Day still shows correctly given this Monday hide."
+    },
+    {
+      "id": "show-weekday-fall-sep7",
+      "match": "any",
+      "conditions": [
+        {"field": "Ticket Date Selection", "operator": "date-is", "value": "2026-09-07"}
+      ],
+      "effect": "show",
+      "targets": ["Weekday Fall Field Access & Playground Admission"],
+      "enabled": true,
+      "notes": "Sep 7 (Labor Day, a Monday) also shows the weekday fall pass. Overlaps with show-laborday-sep7 and hide-all-monday-closed — three rules touch Sep 7; verify the live result."
+    },
+    {
+      "id": "show-weekend-fall-weekend-after-sep4",
+      "match": "all",
+      "conditions": [
+        {"field": "Ticket Date Selection", "operator": "day-of-week-is", "value": ["Sunday", "Friday", "Saturday"]},
+        {"field": "Ticket Date Selection", "operator": "date-is-after", "value": "2026-09-04"}
+      ],
+      "effect": "show",
+      "targets": ["Weekend Fall Field Access & Playground Admission"],
+      "enabled": true,
+      "notes": "Near-duplicate of show-weekend-fall-after-sep5 (Sep 4 vs Sep 5 cutoff, no hide_also list). Confirm both are needed."
+    },
+    {
+      "id": "show-weekday-fall-weekday-after-sep4",
+      "match": "all",
+      "conditions": [
+        {"field": "Ticket Date Selection", "operator": "day-of-week-is", "value": ["Tuesday", "Wednesday", "Thursday"]},
+        {"field": "Ticket Date Selection", "operator": "date-is-after", "value": "2026-09-04"}
+      ],
+      "effect": "show",
+      "targets": ["Weekday Fall Field Access & Playground Admission"],
+      "enabled": true,
+      "notes": "Near-duplicate of show-weekday-fall-after-sep5 (Sep 4 vs Sep 5 cutoff). Confirm both are needed."
+    },
+    {
+      "id": "hide-weekday-fall-oct7",
+      "match": "any",
+      "conditions": [
+        {"field": "Ticket Date Selection", "operator": "date-is", "value": "2026-10-07"}
+      ],
+      "effect": "hide",
+      "targets": ["Weekday Fall Field Access & Playground Admission"],
+      "enabled": true,
+      "notes": "Swaps weekday->weekend pass on Oct 7 (paired with show-weekend-fall-oct7)."
+    },
+    {
+      "id": "hide-weekday-fall-oct8",
+      "match": "any",
+      "conditions": [
+        {"field": "Ticket Date Selection", "operator": "date-is", "value": "2026-10-08"}
+      ],
+      "effect": "hide",
+      "targets": ["Weekday Fall Field Access & Playground Admission"],
+      "enabled": true,
+      "notes": "Swaps weekday->weekend pass on Oct 8 (paired with show-weekend-fall-oct8)."
+    },
+    {
+      "id": "hide-weekday-fall-oct6",
+      "match": "any",
+      "conditions": [
+        {"field": "Ticket Date Selection", "operator": "date-is", "value": "2026-10-06"}
+      ],
+      "effect": "hide",
+      "targets": ["Weekday Fall Field Access & Playground Admission"],
+      "enabled": true,
+      "notes": "Swaps weekday->weekend pass on Oct 6 (paired with show-weekend-fall-oct6)."
+    },
+    {
+      "id": "discount-spring-presale-before-apr27",
+      "match": "any",
+      "conditions": [
+        {"field": "Ticket Date Selection", "operator": "date-is-before", "value": "2026-04-27"}
+      ],
+      "effect": "apply-discount",
+      "discount_percent": 50,
+      "targets": ["Playground Admission + Field Access (Tuesday-Friday)", "Field Access & Playground Admission (Saturday - Sunday)"],
+      "enabled": true,
+      "notes": "50% early-season discount on the combo passes for visit dates before Apr 27."
+    },
+    {
+      "id": "hide-old-strawberry-content-after-apr19",
+      "match": "any",
+      "conditions": [
+        {"field": "Date", "operator": "date-is-after", "value": "2026-04-19T21:00:00"}
+      ],
+      "effect": "hide",
+      "targets": ["Location", "Visit our Versailles Orchard to enjoy fun on the f... [content block — full text truncated in screenshot]"],
+      "enabled": true,
+      "notes": "Field is 'Date' (submission/today), not visit date — hides an old content block (Location + intro paragraph) for all submissions after Apr 19. Confirm the full element name on the live page."
+    },
+    {
+      "id": "show-child-kiosk-weekend",
+      "match": "any",
+      "conditions": [
+        {"field": "Ticket Date Selection", "operator": "day-of-week-is", "value": ["Sunday", "Saturday"]}
+      ],
+      "effect": "show",
+      "targets": ["Child Ticket (2-16 years old) KIOSK Weekend"],
+      "enabled": true,
+      "notes": ""
+    },
+    {
+      "id": "show-breakfast-berries-may9",
+      "match": "any",
+      "conditions": [
+        {"field": "Ticket Date Selection", "operator": "date-is", "value": "2026-05-09"}
+      ],
+      "effect": "show",
+      "targets": ["Breakfast & Berries (Field Access Pass Included)"],
+      "enabled": true,
+      "notes": "One-day Breakfast & Berries event (May 9)."
+    },
+    {
+      "id": "hide-strawberry-kiosk-may25",
+      "match": "any",
+      "conditions": [
+        {"field": "Ticket Date Selection", "operator": "date-is", "value": "2026-05-25"}
+      ],
+      "effect": "hide",
+      "targets": ["Strawberry Fun Pass (Field Access Included) KIOSK"],
+      "enabled": true,
+      "notes": "Overlaps hide-strawberry-kiosk-after-may25 / -before-may25 — this one fires on exactly May 25. Net effect: Strawberry KIOSK pass hidden on May 25 too. Confirm intent (see show-items-may25 which lists the non-KIOSK strawberry pass to show)."
+    },
+    {
+      "id": "hide-adult-kiosk-may25",
+      "match": "any",
+      "conditions": [
+        {"field": "Ticket Date Selection", "operator": "date-is", "value": "2026-05-25"}
+      ],
+      "effect": "hide",
+      "targets": ["Adult Ticket (17 years & older) KIOSK"],
+      "enabled": true,
+      "notes": "Conflicts with show-items-may25 (which SHOWS Adult KIOSK on May 25). Two rules touch Adult KIOSK on May 25 with opposite effects — RESOLVE before publish."
+    },
+    {
+      "id": "show-all-inclusive-child-weekday",
+      "match": "any",
+      "conditions": [
+        {"field": "Ticket Date Selection", "operator": "day-of-week-is", "value": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]}
+      ],
+      "effect": "show",
+      "targets": ["All Inclusive Children's Ticket (2-16)"],
+      "enabled": true,
+      "notes": ""
+    },
+    {
+      "id": "decrease-pg-fieldaccess-may19",
+      "match": "all",
+      "conditions": [
+        {"field": "Ticket Date Selection", "operator": "date-is", "value": "2026-05-19"}
+      ],
+      "effect": "decrease-price",
+      "price_decrease": 2.50,
+      "targets": ["Playground Admission + Field Access (Tuesday-Friday)"],
+      "enabled": true,
+      "notes": "$2.50 price cut on May 19 visits."
+    },
+    {
+      "id": "show-items-may25",
+      "match": "any",
+      "conditions": [
+        {"field": "Ticket Date Selection", "operator": "date-is", "value": "2026-05-25"}
+      ],
+      "effect": "show",
+      "targets": ["Field Access", "Field Access & Playground Admission (Saturday - Sunday)", "Strawberry Fun Pass (Field Access Included)", "Strawberry Fun Pass (Field Access Included) KIOSK", "Child Ticket (2-16 years old) KIOSK Weekend", "Adult Ticket (17 years & older) KIOSK"],
+      "enabled": true,
+      "notes": "May 25 (Memorial Day) re-shows a bundle of items. CONFLICTS with hide-strawberry-kiosk-may25 (Strawberry KIOSK) and hide-adult-kiosk-may25 (Adult KIOSK) — same date, opposite effects on the same two targets. RESOLVE the May 25 KIOSK conflict before publish."
+    },
+    {
+      "id": "show-items-may30",
+      "match": "any",
+      "conditions": [
+        {"field": "Ticket Date Selection", "operator": "date-is", "value": "2026-05-30"}
+      ],
+      "effect": "show",
+      "targets": ["Field Access & Playground Admission (Saturday - Sunday)", "Child Ticket (2-16 years old) KIOSK Weekend", "Adult Ticket (17 years & older) KIOSK", "Field Access"],
+      "enabled": true,
+      "notes": "May 30 re-show bundle."
+    },
+    {
+      "id": "hide-pg-fieldaccess-may29",
+      "match": "any",
+      "conditions": [
+        {"field": "Ticket Date Selection", "operator": "date-is", "value": "2026-05-29"}
+      ],
+      "effect": "hide",
+      "targets": ["Playground Admission + Field Access (Tuesday-Friday)"],
+      "enabled": true,
+      "notes": ""
+    },
+    {
+      "id": "show-all-inclusive-child-may29",
+      "match": "any",
+      "conditions": [
+        {"field": "Ticket Date Selection", "operator": "date-is", "value": "2026-05-29"}
+      ],
+      "effect": "show",
+      "targets": ["All Inclusive Children's Ticket (2-16)"],
+      "enabled": true,
+      "notes": ""
+    },
+    {
+      "id": "hide-pg-weekday-may30-a",
+      "match": "any",
+      "conditions": [
+        {"field": "Ticket Date Selection", "operator": "date-is", "value": "2026-05-30"}
+      ],
+      "effect": "hide",
+      "targets": ["Playground Admission- Weekday"],
+      "enabled": true,
+      "notes": "DUPLICATE of hide-pg-weekday-may30-b — two identical 'hide Playground Admission- Weekday on May 30' actions. Dedupe (delete one)."
+    },
+    {
+      "id": "hide-pg-weekday-may30-b",
+      "match": "any",
+      "conditions": [
+        {"field": "Ticket Date Selection", "operator": "date-is", "value": "2026-05-30"}
+      ],
+      "effect": "hide",
+      "targets": ["Playground Admission- Weekday"],
+      "enabled": true,
+      "notes": "DUPLICATE of hide-pg-weekday-may30-a — dedupe."
+    },
+    {
+      "id": "decrease-child-kiosk-weekend-may30",
+      "match": "any",
+      "conditions": [
+        {"field": "Purchase Date", "operator": "date-is", "value": "2026-05-30", "_ticket": "Child Ticket (2-16 years old) KIOSK Weekend"}
+      ],
+      "effect": "decrease-price",
+      "price_decrease": 3.00,
+      "targets": ["Child Ticket (2-16 years old) KIOSK Weekend"],
+      "enabled": true,
+      "notes": "Condition is scoped to the ticket's PURCHASE date (not visit date) — $3.00 cut for purchases made May 30."
+    },
+    {
+      "id": "decrease-adult-kiosk-may30",
+      "match": "any",
+      "conditions": [
+        {"field": "Purchase Date", "operator": "date-is", "value": "2026-05-30", "_ticket": "Adult Ticket (17 years & older) KIOSK"}
+      ],
+      "effect": "decrease-price",
+      "price_decrease": 2.00,
+      "targets": ["Adult Ticket (17 years & older) KIOSK"],
+      "enabled": true,
+      "notes": "Purchase-date scoped — $2.00 cut for purchases made May 30."
+    },
+    {
+      "id": "hide-spring-items-may31",
+      "match": "any",
+      "conditions": [
+        {"field": "Ticket Date Selection", "operator": "date-is", "value": "2026-05-31"}
+      ],
+      "effect": "hide",
+      "targets": ["Playground Admission + Field Access (Tuesday-Friday)", "Field Access & Playground Admission (Saturday - Sunday)", "Field Access & Playground Admission (Labor Day)", "Weekend Fall Field Access & Playground Admission", "Playground Admission- Weekday"],
+      "enabled": true,
+      "notes": "May 31 hide bundle."
+    },
+    {
+      "id": "hide-pg-weekday-always",
+      "match": "any",
+      "conditions": [
+        {"field": "Date", "operator": "date-is-after", "value": "2000-01-01T00:00:00"}
+      ],
+      "effect": "hide",
+      "targets": ["Playground Admission- Weekday"],
+      "enabled": true,
+      "notes": "Permanent hide — condition 'Date is after Jan 01 2000' is always true, so 'Playground Admission- Weekday' is effectively retired/hidden site-wide. The May 30 / May 31 rules touching this same item are then redundant. Confirm whether this item should ever appear."
+    }
+  ]
+}
