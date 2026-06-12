@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Montpelier Farms · Fall Festival 2026 — Preview</title>
+    <!--
+        Browser-eyeball preview wrapper for fall-festival-2026.html.
+        The body below mirrors the TicketSpice "Custom HTML" snippet exactly —
+        keep these two files in sync. To toggle the flash-sale slash-through
+        state, add the class .mfp-flash-active to #mfp-funnel below.
+        To preview the in-season Family 4-Pack Superpass Bundle 4th card,
+        remove the style="display: none;" on <!-- FAMILY-4PACK-CARD --> and add
+        .mfp-grid-4 to the parent .mfp-grid.
+    -->
+    <style>
+        html, body { margin: 0; padding: 0; background: #fff; font-family: 'Open Sans', sans-serif; }
+    </style>
+</head>
+<body>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+    /* ===========================================================
+       MONTPELIER FARMS · FALL FESTIVAL 2026 · #mfp-funnel
+       Placeholder palette (lifted from Colony Acres):
+       barn green / warm orange / cream / centennial gold.
+       <!-- ADRIANNE-ASSET-PLACEHOLDER --> brand-palette swap point:
+       update the :root variables below when Adrianne sends brand
+       colors / fonts / logo — every component reads from here.
+       =========================================================== */
+    #mfp-funnel {
+        --mfp-brand-green: #006B35;
+        --mfp-brand-green-bright: #009A4D;
+        --mfp-brand-green-light: #00B85B;
+        --mfp-brand-green-deep: #1F5C2E;
+        --mfp-brand-green-mid: #2D7541;
+        --mfp-brand-orange: #E8743C;
+        --mfp-brand-orange-hover: #D85F28;
+        --mfp-brand-orange-light: #FF8A52;
+        --mfp-brand-cream: #FBF6EC;
+        --mfp-brand-cream-warm: #F5EDD9;
+        --mfp-brand-cream-soft: #FFF4E0;
+        --mfp-brand-gold: #C19A47;
+        --mfp-brand-gold-bright: #F2C66A;
+        --mfp-brand-ink: #2A1A0E;
+        --mfp-brand-ink-soft: #5A4128;
+        --mfp-brand-warm-tan: #5A3E22;
+        --mfp-font-display: 'Zilla Slab', 'Times New Roman', serif;
+        --mfp-font-body: 'Open Sans', sans-serif;
+        --mfp-font-script: 'Caveat', cursive;
+        --mfp-font-eyebrow: 'Oswald', sans-serif;
+    }
+
+    #mfp-funnel .bold { font-weight: bold; }
+
+    #mfp-funnel {
+        width: 100vw !important;
+        position: relative !important;
+        left: 50% !important;
+        right: 50% !important;
+        margin-left: -50vw !important;
+        margin-right: -50vw !important;
+        overflow: hidden !important;
+        font-family: var(--mfp-font-body) !important;
+        background: var(--mfp-brand-cream) !important;
+        color: var(--mfp-brand-ink) !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    /* ── BANNER ── */
+    #mfp-funnel .mfp-banner {
+        width: 100% !important;
+        background: var(--mfp-brand-green) !important;
+        color: white !important;
+        text-align: center !important;
+        padding: 12px 20px !important;
+        font-size: 0.95rem !important;
+        letter-spacing: 0.06em !important;
+        display: block !important;
+        box-sizing: border-box !important;
+    }
+    #mfp-funnel .mfp-banner-inner {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 10px !important;
+        flex-wrap: wrap !important;
+        color: white !important;
+    }
+    #mfp-funnel .mfp-banner-inner span,
+    #mfp-funnel .mfp-banner-inner strong { color: white !important; }
+    #mfp-funnel .mfp-dot {
+        width: 3px !important; height: 3px !important;
+        background: rgba(255,255,255,0.45) !important;
+        border-radius: 50% !important;
+        display: inline-block !important;
+        flex-shrink: 0 !important;
+    }
+    #mfp-funnel .mfp-banner-flash {
+        color: var(--mfp-brand-gold-bright) !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.12em !important;
+    }
+
+    /* ── NAV ── */
+    #mfp-funnel .mfp-nav {
+        width: 100% !important;
+        padding: 0 40px !important;
+        height: 96px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        background: rgba(0,154,77,0.97) !important;
+        position: sticky !important;
+        top: 0 !important;
+        z-index: 100 !important;
+        box-sizing: border-box !important;
+        box-shadow: 0 2px 16px rgba(0,154,77,0.35) !important;
+    }
+    #mfp-funnel .mfp-logo-wrap {
+        display: flex !important;
+        align-items: center !important;
+        width: 180px !important;
+        flex-shrink: 0 !important;
+    }
+    #mfp-funnel .mfp-logo-wrap img {
+        width: 180px !important;
+        max-width: 180px !important;
+        object-fit: contain !important;
+        object-position: left center !important;
+        display: block !important;
+    }
+    #mfp-funnel .mfp-logo-text {
+        font-family: var(--mfp-font-display) !important;
+        font-weight: 700 !important;
+        font-size: 1.3rem !important;
+        color: white !important;
+        letter-spacing: 0.02em !important;
+        line-height: 1.1 !important;
+        display: block !important;
+    }
+    #mfp-funnel .mfp-nav-right {
+        display: flex !important; align-items: center !important; gap: 16px !important;
+    }
+    #mfp-funnel .mfp-nav-loc {
+        font-size: 0.92rem !important;
+        color: rgba(255,255,255,0.85) !important;
+        display: flex !important; align-items: center !important; gap: 5px !important;
+    }
+    #mfp-funnel .mfp-nav-cta {
+        background: var(--mfp-brand-orange) !important;
+        color: white !important;
+        padding: 12px 26px !important;
+        border-radius: 50px !important;
+        font-size: 1rem !important;
+        font-weight: 700 !important;
+        text-decoration: none !important;
+        letter-spacing: 0.04em !important;
+        text-transform: uppercase !important;
+        transition: all 0.3s ease !important;
+        white-space: nowrap !important;
+        display: inline-block !important;
+    }
+    #mfp-funnel .mfp-nav-cta:hover {
+        background: var(--mfp-brand-orange-light) !important;
+        color: white !important;
+        text-decoration: none !important;
+        transform: translateY(-1px);
+    }
+
+    /* ── HERO ── */
+    #mfp-funnel .mfp-hero {
+        width: 100% !important;
+        min-height: clamp(340px, 58vw, 620px) !important;
+        position: relative !important;
+        display: flex !important;
+        align-items: flex-end !important;
+        overflow: hidden !important;
+        background: linear-gradient(135deg, var(--mfp-brand-green-deep) 0%, var(--mfp-brand-green-mid) 50%, var(--mfp-brand-ink) 100%) !important;
+        background-color: var(--mfp-brand-ink) !important;
+    }
+    #mfp-funnel .mfp-hero-overlay {
+        position: absolute !important;
+        inset: 0 !important;
+        background: linear-gradient(to bottom, rgba(31,69,36,0.10) 0%, rgba(42,26,14,0.25) 45%, rgba(31,69,36,0.75) 100%) !important;
+        z-index: 1 !important;
+    }
+    #mfp-funnel .mfp-hero-content {
+        position: relative !important;
+        z-index: 2 !important;
+        padding: 0 48px 56px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    #mfp-funnel .mfp-hero-eyebrow {
+        font-size: 0.88rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.2em !important;
+        text-transform: uppercase !important;
+        color: rgba(255,255,255,0.92) !important;
+        margin-bottom: 10px !important;
+        display: block !important;
+        opacity: 0;
+        animation: mfpFadeUp 0.6s ease 0.3s forwards;
+    }
+    #mfp-funnel .mfp-hero-title {
+        font-family: var(--mfp-font-display) !important;
+        font-size: clamp(3rem, 9vw, 5.6rem) !important;
+        font-weight: 700 !important;
+        color: white !important;
+        line-height: 1.0 !important;
+        display: block !important;
+        text-shadow: 0 2px 24px rgba(0,0,0,0.35) !important;
+        opacity: 0;
+        animation: mfpFadeUp 0.7s ease 0.45s forwards;
+    }
+    #mfp-funnel .mfp-hero-title em {
+        font-family: var(--mfp-font-script) !important;
+        font-style: normal !important;
+        font-weight: 700 !important;
+        color: var(--mfp-brand-gold-bright) !important;
+        font-size: 0.85em !important;
+        letter-spacing: 0.01em !important;
+    }
+    #mfp-funnel .mfp-hero-tagline {
+        font-family: var(--mfp-font-script) !important;
+        font-size: clamp(1.2rem, 2.6vw, 1.8rem) !important;
+        color: #FFE9C8 !important;
+        margin-top: 12px !important;
+        display: block !important;
+        opacity: 0;
+        animation: mfpFadeUp 0.7s ease 0.6s forwards;
+    }
+    @keyframes mfpFadeUp {
+        from { opacity: 0; transform: translateY(16px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── BENEFITS ── */
+    #mfp-funnel .mfp-benefits {
+        width: 100% !important;
+        background: white !important;
+        padding: 36px 48px !important;
+        display: block !important;
+        box-sizing: border-box !important;
+        border-bottom: 1px solid rgba(0,154,77,0.08) !important;
+    }
+    #mfp-funnel .mfp-benefits-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+    #mfp-funnel .mfp-benefit {
+        text-align: center !important;
+        padding: 8px 20px !important;
+        position: relative !important;
+    }
+    #mfp-funnel .mfp-benefit:not(:last-child)::after {
+        content: '' !important;
+        position: absolute !important;
+        right: 0 !important; top: 15% !important; bottom: 15% !important;
+        width: 1px !important;
+        background: rgba(0,154,77,0.1) !important;
+    }
+    #mfp-funnel .mfp-benefit-title {
+        font-family: var(--mfp-font-display) !important;
+        font-size: 1.2rem !important; font-weight: 600 !important;
+        color: var(--mfp-brand-ink) !important; margin-bottom: 4px !important; display: block !important;
+    }
+    #mfp-funnel .mfp-benefit-desc {
+        font-size: 0.92rem !important; color: var(--mfp-brand-ink-soft) !important;
+        line-height: 1.45 !important; display: block !important;
+    }
+
+    /* ── GALLERY ── */
+    #mfp-funnel .mfp-gallery {
+        width: 100% !important;
+        background: var(--mfp-brand-cream) !important;
+        padding: 64px 0 !important;
+        overflow: hidden !important;
+        display: block !important;
+    }
+    #mfp-funnel .mfp-gallery-header {
+        text-align: center !important;
+        padding: 0 48px !important;
+        margin-bottom: 40px !important;
+    }
+    #mfp-funnel .mfp-eye {
+        font-size: 0.85rem !important; font-weight: 600 !important;
+        letter-spacing: 0.22em !important; text-transform: uppercase !important;
+        color: var(--mfp-brand-orange) !important; margin-bottom: 8px !important; display: block !important;
+    }
+    #mfp-funnel .mfp-section-title {
+        font-family: var(--mfp-font-display) !important;
+        font-size: clamp(2.1rem, 5vw, 3.2rem) !important;
+        font-weight: 700 !important; color: var(--mfp-brand-ink) !important;
+        line-height: 1.15 !important; display: block !important;
+    }
+    #mfp-funnel .mfp-section-title em {
+        font-family: var(--mfp-font-script) !important;
+        font-style: normal !important;
+        font-weight: 700 !important;
+        color: var(--mfp-brand-green-bright) !important;
+        font-size: 1.05em !important;
+    }
+    #mfp-funnel .mfp-gallery-mask {
+        width: 100% !important; overflow: hidden !important;
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%) !important;
+        mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%) !important;
+    }
+    #mfp-funnel .mfp-gallery-track {
+        display: flex !important; gap: 16px !important;
+        width: max-content !important;
+        animation: mfpMarquee 26s linear infinite !important;
+        padding: 8px 0 !important;
+    }
+    #mfp-funnel .mfp-gallery-track:hover { animation-play-state: paused !important; }
+    @keyframes mfpMarquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    #mfp-funnel .mfp-gcard {
+        width: 380px !important; height: 260px !important;
+        border-radius: 20px !important; overflow: hidden !important;
+        flex-shrink: 0 !important; position: relative !important;
+        cursor: pointer !important;
+        display: flex !important; align-items: center !important;
+        justify-content: center !important;
+        transition: transform 0.4s ease, box-shadow 0.4s ease !important;
+    }
+    #mfp-funnel .mfp-gcard:hover {
+        transform: scale(1.03) translateY(-5px) !important;
+        box-shadow: 0 24px 50px rgba(0,154,77,0.22) !important; z-index: 2 !important;
+    }
+    #mfp-funnel .mfp-gcard-g1 { background: linear-gradient(135deg, #F5DCAA, var(--mfp-brand-orange)) !important; }
+    #mfp-funnel .mfp-gcard-g2 { background: linear-gradient(135deg, var(--mfp-brand-green-light), var(--mfp-brand-green-deep)) !important; }
+    #mfp-funnel .mfp-gcard-g3 { background: linear-gradient(135deg, var(--mfp-brand-gold-bright), var(--mfp-brand-gold)) !important; }
+    #mfp-funnel .mfp-gcard-g4 { background: linear-gradient(135deg, #FFB375, var(--mfp-brand-orange-hover)) !important; }
+    #mfp-funnel .mfp-gcard-g5 { background: linear-gradient(135deg, var(--mfp-brand-cream-soft), var(--mfp-brand-gold)) !important; }
+    #mfp-funnel .mfp-gcard-g6 { background: linear-gradient(135deg, var(--mfp-brand-green-bright), var(--mfp-brand-ink)) !important; }
+    #mfp-funnel .mfp-gcard-label {
+        position: absolute !important; bottom: 12px !important; left: 12px !important;
+        background: rgba(42,26,14,0.6) !important; backdrop-filter: blur(8px) !important;
+        color: white !important; font-size: 0.68rem !important; letter-spacing: 0.1em !important;
+        text-transform: uppercase !important; font-weight: 700 !important;
+        padding: 5px 12px !important; border-radius: 20px !important;
+        opacity: 0.85 !important; transform: none !important;
+        transition: opacity 0.3s ease, transform 0.3s ease !important; z-index: 2 !important;
+    }
+    #mfp-funnel .mfp-gcard:hover .mfp-gcard-label { opacity: 1 !important; }
+
+    /* ── TICKET CARDS ── */
+    #mfp-funnel .mfp-tickets {
+        width: 100% !important;
+        background: var(--mfp-brand-cream-warm) !important;
+        padding: 72px 48px !important;
+        display: block !important; box-sizing: border-box !important;
+    }
+    #mfp-funnel .mfp-tickets-header { text-align: center !important; margin-bottom: 48px !important; }
+    #mfp-funnel .mfp-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(0, 400px)) !important;
+        gap: 24px !important;
+        justify-content: center !important;
+        max-width: 1280px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+    #mfp-funnel .mfp-grid.mfp-grid-4 {
+        grid-template-columns: repeat(4, minmax(0, 320px)) !important;
+        max-width: 1440px !important;
+    }
+
+    #mfp-funnel .mfp-card {
+        border-radius: 20px !important;
+        padding: 36px 32px !important;
+        position: relative !important;
+        overflow: hidden !important;
+        transition: transform 0.35s ease, box-shadow 0.35s ease !important;
+        display: flex !important; flex-direction: column !important;
+    }
+    #mfp-funnel .mfp-card:hover { transform: translateY(-6px) !important; }
+    #mfp-funnel .mfp-card-dark { background: var(--mfp-brand-ink) !important; color: white !important; }
+    #mfp-funnel .mfp-card-dark:hover { box-shadow: 0 20px 44px rgba(0,0,0,0.35) !important; }
+    #mfp-funnel .mfp-card-green {
+        background: linear-gradient(160deg, var(--mfp-brand-green-bright) 0%, var(--mfp-brand-green-light) 100%) !important;
+        color: white !important;
+        border: 2px solid var(--mfp-brand-gold) !important;
+    }
+    #mfp-funnel .mfp-card-green:hover { box-shadow: 0 20px 44px rgba(0,154,77,0.35) !important; }
+    #mfp-funnel .mfp-card-cream {
+        background: linear-gradient(145deg, var(--mfp-brand-cream-soft), var(--mfp-brand-cream)) !important;
+        border: 1px solid rgba(0,154,77,0.14) !important;
+    }
+    #mfp-funnel .mfp-card-cream:hover { box-shadow: 0 20px 44px rgba(0,154,77,0.14) !important; }
+    #mfp-funnel .mfp-card-gold {
+        background: linear-gradient(160deg, var(--mfp-brand-gold-bright) 0%, var(--mfp-brand-gold) 100%) !important;
+        color: var(--mfp-brand-ink) !important;
+        border: 2px solid var(--mfp-brand-orange) !important;
+    }
+    #mfp-funnel .mfp-card-gold:hover { box-shadow: 0 20px 44px rgba(193,154,71,0.35) !important; }
+
+    #mfp-funnel .mfp-card-badge {
+        display: inline-block !important;
+        font-size: 0.78rem !important; font-weight: 700 !important;
+        letter-spacing: 0.14em !important; text-transform: uppercase !important;
+        padding: 5px 12px !important; border-radius: 20px !important;
+        margin-bottom: 14px !important; width: fit-content !important;
+    }
+    #mfp-funnel .mfp-badge-light { background: rgba(255,255,255,0.18) !important; color: white !important; }
+    #mfp-funnel .mfp-badge-gold { background: var(--mfp-brand-gold) !important; color: var(--mfp-brand-ink) !important; }
+    #mfp-funnel .mfp-badge-orange { background: var(--mfp-brand-orange) !important; color: white !important; }
+    #mfp-funnel .mfp-badge-dark { background: var(--mfp-brand-ink) !important; color: white !important; }
+
+    #mfp-funnel .mfp-card h3 {
+        font-family: var(--mfp-font-display) !important;
+        font-size: 1.88rem !important; font-weight: 700 !important;
+        line-height: 1.15 !important; margin-bottom: 14px !important; display: block !important;
+    }
+    #mfp-funnel .mfp-card-cream h3,
+    #mfp-funnel .mfp-card-gold h3 { color: var(--mfp-brand-ink) !important; }
+    #mfp-funnel .mfp-card-green h3,
+    #mfp-funnel .mfp-card-dark h3 { color: white !important; }
+
+    #mfp-funnel .mfp-card-bullets {
+        list-style: none !important; padding: 0 !important; margin: 0 0 auto !important;
+        display: flex !important; flex-direction: column !important; gap: 6px !important;
+    }
+    #mfp-funnel .mfp-card-bullets li {
+        font-size: 1.12rem !important; line-height: 1.55 !important;
+        display: flex !important; align-items: flex-start !important; gap: 8px !important;
+    }
+    #mfp-funnel .mfp-card-cream .mfp-card-bullets li,
+    #mfp-funnel .mfp-card-gold .mfp-card-bullets li { color: var(--mfp-brand-warm-tan) !important; }
+    #mfp-funnel .mfp-card-green .mfp-card-bullets li,
+    #mfp-funnel .mfp-card-dark .mfp-card-bullets li { color: rgba(255,255,255,0.86) !important; }
+
+    #mfp-funnel .mfp-card-price {
+        display: flex !important; align-items: baseline !important;
+        gap: 6px !important; margin-top: 20px !important; padding-top: 16px !important;
+    }
+    #mfp-funnel .mfp-card-green .mfp-card-price { border-top: 1px solid rgba(255,255,255,0.18) !important; }
+    #mfp-funnel .mfp-card-dark .mfp-card-price { border-top: 1px solid rgba(255,255,255,0.14) !important; }
+    #mfp-funnel .mfp-card-cream .mfp-card-price { border-top: 1px solid rgba(0,154,77,0.12) !important; }
+    #mfp-funnel .mfp-card-gold .mfp-card-price { border-top: 1px solid rgba(42,26,14,0.14) !important; }
+
+    #mfp-funnel .mfp-price-num {
+        font-family: var(--mfp-font-display) !important;
+        font-size: 3.3rem !important; font-weight: 700 !important; line-height: 1 !important;
+    }
+    #mfp-funnel .mfp-card-cream .mfp-price-num { color: var(--mfp-brand-green-bright) !important; }
+    #mfp-funnel .mfp-card-green .mfp-price-num,
+    #mfp-funnel .mfp-card-dark .mfp-price-num { color: var(--mfp-brand-gold-bright) !important; }
+    #mfp-funnel .mfp-card-gold .mfp-price-num { color: var(--mfp-brand-ink) !important; }
+
+    #mfp-funnel .mfp-price-slash {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 2px !important;
+        justify-content: center !important;
+    }
+    #mfp-funnel .mfp-price-online {
+        font-size: 0.82rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.1em !important;
+        text-transform: uppercase !important;
+        display: block !important;
+    }
+    #mfp-funnel .mfp-card-green .mfp-price-online,
+    #mfp-funnel .mfp-card-dark .mfp-price-online { color: rgba(255,255,255,0.55) !important; }
+    #mfp-funnel .mfp-card-cream .mfp-price-online { color: var(--mfp-brand-green-bright) !important; opacity: 0.6 !important; }
+    #mfp-funnel .mfp-card-gold .mfp-price-online { color: var(--mfp-brand-ink) !important; opacity: 0.7 !important; }
+
+    #mfp-funnel .mfp-price-was {
+        font-size: 1.05rem !important;
+        font-weight: 600 !important;
+        text-decoration: line-through !important;
+        display: none !important;
+        line-height: 1 !important;
+    }
+    #mfp-funnel.mfp-flash-active .mfp-price-was { display: block !important; }
+    #mfp-funnel .mfp-card-green .mfp-price-was,
+    #mfp-funnel .mfp-card-dark .mfp-price-was { color: rgba(255,255,255,0.45) !important; }
+    #mfp-funnel .mfp-card-cream .mfp-price-was { color: rgba(0,154,77,0.45) !important; }
+    #mfp-funnel .mfp-card-gold .mfp-price-was { color: rgba(42,26,14,0.45) !important; }
+
+    #mfp-funnel .mfp-card-note {
+        font-size: 0.88rem !important; font-style: italic !important;
+        margin-top: 10px !important; display: block !important; line-height: 1.5 !important;
+    }
+    #mfp-funnel .mfp-card-green .mfp-card-note,
+    #mfp-funnel .mfp-card-dark .mfp-card-note { color: rgba(255,255,255,0.55) !important; }
+    #mfp-funnel .mfp-card-cream .mfp-card-note { color: #8A6A4A !important; }
+    #mfp-funnel .mfp-card-gold .mfp-card-note { color: rgba(42,26,14,0.7) !important; }
+
+    #mfp-funnel .mfp-card-fees {
+        font-size: 0.72rem !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.02em !important;
+        margin-top: 6px !important;
+        display: block !important;
+        line-height: 1.4 !important;
+        opacity: 0.85 !important;
+    }
+    #mfp-funnel .mfp-card-cream .mfp-card-fees { color: #8A6A4A !important; }
+    #mfp-funnel .mfp-card-green .mfp-card-fees,
+    #mfp-funnel .mfp-card-dark .mfp-card-fees { color: rgba(255,255,255,0.75) !important; }
+    #mfp-funnel .mfp-card-gold .mfp-card-fees { color: rgba(42,26,14,0.7) !important; }
+
+    #mfp-funnel .mfp-card-peak {
+        font-size: 0.78rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.04em !important;
+        margin-top: 8px !important;
+        display: block !important;
+        line-height: 1.4 !important;
+    }
+    #mfp-funnel .mfp-card-cream .mfp-card-peak { color: var(--mfp-brand-orange) !important; }
+    #mfp-funnel .mfp-card-green .mfp-card-peak,
+    #mfp-funnel .mfp-card-dark .mfp-card-peak { color: var(--mfp-brand-gold-bright) !important; }
+    #mfp-funnel .mfp-card-gold .mfp-card-peak { color: var(--mfp-brand-orange-hover) !important; }
+
+    /* ── INFO ROW ── */
+    #mfp-funnel .mfp-info {
+        width: 100% !important;
+        background: var(--mfp-brand-green-deep) !important;
+        padding: 0 !important; display: block !important; box-sizing: border-box !important;
+    }
+    #mfp-funnel .mfp-info-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+    #mfp-funnel .mfp-info-item {
+        text-align: center !important;
+        padding: 28px 20px !important;
+        position: relative !important;
+    }
+    #mfp-funnel .mfp-info-item:not(:last-child)::after {
+        content: '' !important; position: absolute !important;
+        right: 0 !important; top: 20% !important; bottom: 20% !important;
+        width: 1px !important; background: rgba(255,255,255,0.15) !important;
+    }
+    #mfp-funnel .mfp-info-grid span,
+    #mfp-funnel .mfp-info-grid strong { color: white !important; }
+    #mfp-funnel .mfp-info-item .mfp-info-label {
+        font-size: 0.78rem !important; font-weight: 700 !important;
+        letter-spacing: 0.16em !important; text-transform: uppercase !important;
+        color: rgba(255,255,255,0.88) !important; display: block !important; margin-bottom: 4px !important;
+    }
+    #mfp-funnel .mfp-info-item .mfp-info-value {
+        font-family: var(--mfp-font-display) !important;
+        font-size: 1.12rem !important; font-weight: 600 !important;
+        color: white !important; display: block !important; line-height: 1.3 !important;
+    }
+    #mfp-funnel .mfp-info-item .mfp-info-link {
+        font-family: var(--mfp-font-display) !important;
+        font-size: 0.88rem !important; font-weight: 600 !important;
+        color: var(--mfp-brand-gold-bright) !important; display: block !important;
+        line-height: 1.3 !important; text-decoration: underline !important;
+    }
+    #mfp-funnel .mfp-info-link:hover { color: white !important; }
+
+    /* ── REVEAL ── */
+    #mfp-funnel .mfpr {
+        opacity: 0 !important; transform: translateY(28px) !important;
+        transition: opacity 0.7s cubic-bezier(.16,1,.3,1), transform 0.7s cubic-bezier(.16,1,.3,1) !important;
+    }
+    #mfp-funnel .mfpr.mfpon { opacity: 1 !important; transform: none !important; }
+    #mfp-funnel .mfpr.d1 { transition-delay: 0.1s !important; }
+    #mfp-funnel .mfpr.d2 { transition-delay: 0.2s !important; }
+    #mfp-funnel .mfpr.d3 { transition-delay: 0.3s !important; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1200px) {
+        #mfp-funnel .mfp-grid.mfp-grid-4 { grid-template-columns: repeat(2, minmax(0, 420px)) !important; }
+    }
+    @media (max-width: 1000px) {
+        #mfp-funnel .mfp-grid { grid-template-columns: repeat(2, minmax(0, 420px)) !important; }
+    }
+    @media (max-width: 860px) {
+        #mfp-funnel .mfp-nav { padding: 0 24px !important; }
+        #mfp-funnel .mfp-nav-cta { padding: 14px 24px !important; }
+        #mfp-funnel .mfp-benefits { padding: 32px 24px !important; }
+        #mfp-funnel .mfp-tickets { padding: 56px 24px !important; }
+        #mfp-funnel .mfp-info-grid { grid-template-columns: 1fr 1fr !important; }
+        #mfp-funnel .mfp-info-item:nth-child(2n)::after { display: none !important; }
+        #mfp-funnel .mfp-gallery-header { padding: 0 24px !important; }
+        #mfp-funnel .mfp-gcard { width: 300px !important; height: 210px !important; }
+        #mfp-funnel .mfp-hero-content { padding: 0 32px 44px !important; }
+    }
+    @media (max-width: 560px) {
+        #mfp-funnel .mfp-nav { padding: 0 16px !important; height: 72px !important; }
+        #mfp-funnel .mfp-logo-wrap,
+        #mfp-funnel .mfp-logo-wrap img { width: 135px !important; max-width: 135px !important; }
+        #mfp-funnel .mfp-nav-loc { display: none !important; }
+        #mfp-funnel .mfp-benefits { padding: 24px 16px !important; }
+        #mfp-funnel .mfp-benefits-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 14px 0 !important; }
+        #mfp-funnel .mfp-benefit:nth-child(2n)::after { display: none !important; }
+        #mfp-funnel .mfp-tickets { padding: 48px 16px !important; }
+        #mfp-funnel .mfp-grid,
+        #mfp-funnel .mfp-grid.mfp-grid-4 { grid-template-columns: 1fr !important; }
+        #mfp-funnel .mfp-gallery-header { padding: 0 16px !important; }
+        #mfp-funnel .mfp-gcard { width: 240px !important; height: 170px !important; }
+        #mfp-funnel .mfp-hero-content { padding: 0 20px 36px !important; }
+    }
+
+    @media (max-width: 768px) {
+        #mfp-funnel .mfp-card { padding: 32px 28px !important; }
+        #mfp-funnel .mfp-card h3 { font-size: 2rem !important; }
+        #mfp-funnel .mfp-card-bullets li { font-size: 1.18rem !important; line-height: 1.55 !important; }
+        #mfp-funnel .mfp-card-badge { font-size: 0.85rem !important; padding: 6px 14px !important; }
+        #mfp-funnel .mfp-price-num { font-size: 3.5rem !important; }
+        #mfp-funnel .mfp-price-was { font-size: 1.15rem !important; }
+        #mfp-funnel .mfp-price-online { font-size: 0.88rem !important; }
+        #mfp-funnel .mfp-card-note { font-size: 0.95rem !important; }
+        #mfp-funnel .mfp-card-fees { font-size: 0.85rem !important; }
+        #mfp-funnel .mfp-card-peak { font-size: 0.88rem !important; }
+    }
+</style>
+
+<div id="mfp-funnel">
+
+    <!-- BANNER -->
+    <div class="mfp-banner">
+        <div class="mfp-banner-inner">
+            <span class="mfp-banner-flash">★ FALL FESTIVAL 2026 ★</span>
+            <span class="mfp-dot"></span>
+            <span><strong>Sept 12 – Nov 8</strong></span>
+            <span class="mfp-dot"></span>
+            <span>Weekends · October Play Days · Halloween</span>
+        </div>
+    </div>
+
+    <!-- NAV -->
+    <div class="mfp-nav">
+        <div class="mfp-logo-wrap">
+            <span class="mfp-logo-text">Montpelier<br>Farms</span>
+        </div>
+        <div class="mfp-nav-right">
+            <div class="mfp-nav-loc">
+                <svg width="12" height="12" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                    <circle cx="12" cy="11" r="3"/>
+                </svg>
+                Upper Marlboro, MD
+            </div>
+            <a href="#tickets" class="mfp-nav-cta">Buy Tickets</a>
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <div class="mfp-hero">
+        <div class="mfp-hero-overlay"></div>
+        <div class="mfp-hero-content">
+            <span class="mfp-hero-eyebrow">Fall Festival · Sept 12 – Nov 8, 2026</span>
+            <span class="mfp-hero-title">A Family <em>Fall Tradition</em></span>
+            <span class="mfp-hero-tagline">— Slides, pumpkins, paint &amp; more, all season long. —</span>
+        </div>
+    </div>
+
+    <!-- BENEFITS -->
+    <div class="mfp-benefits">
+        <div class="mfp-benefits-grid">
+            <div class="mfp-benefit">
+                <span class="mfp-benefit-title">Super Mega Slide</span>
+                <span class="mfp-benefit-desc">Unlimited rides down the headliner attraction</span>
+            </div>
+            <div class="mfp-benefit">
+                <span class="mfp-benefit-title">Paint-a-Pumpkin</span>
+                <span class="mfp-benefit-desc">Take home a pumpkin you decorated yourself</span>
+            </div>
+            <div class="mfp-benefit">
+                <span class="mfp-benefit-title">Mining Mania</span>
+                <span class="mfp-benefit-desc">Sift for gems, fossils &amp; treasure</span>
+            </div>
+            <div class="mfp-benefit">
+                <span class="mfp-benefit-title">100-Shot Paintball</span>
+                <span class="mfp-benefit-desc">Take aim at the festival range</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- GALLERY -->
+    <div class="mfp-gallery">
+        <div class="mfp-gallery-header mfpr">
+            <span class="mfp-eye">Two months of fall fun</span>
+            <span class="mfp-section-title">Make it a <em>family tradition</em></span>
+        </div>
+        <div class="mfp-gallery-mask">
+            <div class="mfp-gallery-track">
+                <div class="mfp-gcard mfp-gcard-g1"><div class="mfp-gcard-label">On the Farm</div></div>
+                <div class="mfp-gcard mfp-gcard-g2"><div class="mfp-gcard-label">Super Mega Slide</div></div>
+                <div class="mfp-gcard mfp-gcard-g3"><div class="mfp-gcard-label">Paint-a-Pumpkin</div></div>
+                <div class="mfp-gcard mfp-gcard-g4"><div class="mfp-gcard-label">Mining Mania</div></div>
+                <div class="mfp-gcard mfp-gcard-g5"><div class="mfp-gcard-label">Family Memories</div></div>
+                <div class="mfp-gcard mfp-gcard-g6"><div class="mfp-gcard-label">Paintball Range</div></div>
+                <div class="mfp-gcard mfp-gcard-g1"><div class="mfp-gcard-label">On the Farm</div></div>
+                <div class="mfp-gcard mfp-gcard-g2"><div class="mfp-gcard-label">Super Mega Slide</div></div>
+                <div class="mfp-gcard mfp-gcard-g3"><div class="mfp-gcard-label">Paint-a-Pumpkin</div></div>
+                <div class="mfp-gcard mfp-gcard-g4"><div class="mfp-gcard-label">Mining Mania</div></div>
+                <div class="mfp-gcard mfp-gcard-g5"><div class="mfp-gcard-label">Family Memories</div></div>
+                <div class="mfp-gcard mfp-gcard-g6"><div class="mfp-gcard-label">Paintball Range</div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TICKETS -->
+    <div class="mfp-tickets" id="tickets">
+        <div class="mfp-tickets-header mfpr">
+            <span class="mfp-eye">Admission</span>
+            <span class="mfp-section-title">Pick the <em>perfect pass</em> for your crew</span>
+        </div>
+        <div class="mfp-grid">
+
+            <div class="mfp-card mfp-card-cream mfpr">
+                <span class="mfp-card-badge mfp-badge-orange">Best Value</span>
+                <h3>General Admission</h3>
+                <ul class="mfp-card-bullets">
+                    <li>✓ Full Fall Festival admission</li>
+                    <li>✓ Access to most attractions</li>
+                    <li>📅 Sept 12 – Nov 8 · weekends &amp; Play Days</li>
+                    <li>🅿️ Free parking — always</li>
+                </ul>
+                <div class="mfp-card-price">
+                    <span class="mfp-price-num">$19.95</span>
+                    <div class="mfp-price-slash">
+                        <span class="mfp-price-online">Online Price</span>
+                        <span class="mfp-price-was">$24.95 gate</span>
+                    </div>
+                </div>
+                <span class="mfp-card-fees">*plus applicable taxes and fees</span>
+                <span class="mfp-card-peak">Peak weekends (Oct 17–18, 23–24): +$5</span>
+                <span class="mfp-card-note">Per person · ages 3 &amp; up</span>
+            </div>
+
+            <div class="mfp-card mfp-card-green mfpr d1">
+                <span class="mfp-card-badge mfp-badge-gold">★ Best Opportunity ★</span>
+                <h3>Superpass</h3>
+                <ul class="mfp-card-bullets">
+                    <li>✓ Everything in General Admission</li>
+                    <li>🎃 Free Pumpkin Pad access</li>
+                    <li>⛏ Mining Mania included</li>
+                    <li>✨ <em>Plus exclusive Superpass perks</em></li>
+                </ul>
+                <div class="mfp-card-price">
+                    <span class="mfp-price-num">$35.95</span>
+                    <div class="mfp-price-slash">
+                        <span class="mfp-price-online">Online Price</span>
+                        <span class="mfp-price-was">$43.95 gate</span>
+                    </div>
+                </div>
+                <span class="mfp-card-fees">*plus applicable taxes and fees</span>
+                <span class="mfp-card-peak">Peak weekends (Oct 17–18, 23–24): +$5</span>
+                <span class="mfp-card-note">Per person · ages 3 &amp; up</span>
+            </div>
+
+            <div class="mfp-card mfp-card-dark mfpr d2">
+                <span class="mfp-card-badge mfp-badge-light">Most Fun Package</span>
+                <h3>Ultimate Pass</h3>
+                <ul class="mfp-card-bullets">
+                    <li>✓ Everything in General Admission</li>
+                    <li>🏔 Unlimited Super Mega Slide</li>
+                    <li>🦆 1 Duck Race</li>
+                    <li>🎨 1 Paint-a-Pumpkin</li>
+                    <li>⛏ 1 Mining Mania</li>
+                    <li>🎯 100-Shot Paintball</li>
+                    <li>👥 1 Buddy Pass — bring a friend</li>
+                </ul>
+                <div class="mfp-card-price">
+                    <span class="mfp-price-num">$68</span>
+                    <div class="mfp-price-slash">
+                        <span class="mfp-price-online">Online Price</span>
+                        <span class="mfp-price-was">$73.95 peak</span>
+                    </div>
+                </div>
+                <span class="mfp-card-fees">*plus applicable taxes and fees</span>
+                <span class="mfp-card-peak">Peak weekends (Oct 17–18, 23–24): +$5</span>
+                <span class="mfp-card-note">Per person · ages 3 &amp; up</span>
+            </div>
+
+            <!-- FAMILY-4PACK-CARD · stub · display: none until A3/D1 lock -->
+            <div class="mfp-card mfp-card-gold mfpr d3" style="display: none;">
+                <span class="mfp-card-badge mfp-badge-dark">★ Family Pack ★</span>
+                <h3>Family 4-Pack Superpass Bundle</h3>
+                <ul class="mfp-card-bullets">
+                    <li>✓ 4 Superpass admissions</li>
+                    <li>💰 $15 savings vs 4 × peak Superpass</li>
+                    <li>📅 October dates only</li>
+                    <li>🎃 Plus one little extra <em>(TBD — Adrianne lock)</em></li>
+                </ul>
+                <div class="mfp-card-price">
+                    <span class="mfp-price-num">$159.95</span>
+                    <div class="mfp-price-slash">
+                        <span class="mfp-price-online">Bundle Price</span>
+                        <span class="mfp-price-was">$175.80 individual</span>
+                    </div>
+                </div>
+                <span class="mfp-card-fees">*plus applicable taxes and fees</span>
+                <span class="mfp-card-peak">October date selection only</span>
+                <span class="mfp-card-note">4 admissions · check in individually</span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- INFO ROW -->
+    <div class="mfp-info">
+        <div class="mfp-info-grid">
+            <div class="mfp-info-item">
+                <span class="mfp-info-label">Location</span>
+                <span class="mfp-info-value">Montpelier Farms<br>Upper Marlboro, MD</span>
+            </div>
+            <div class="mfp-info-item">
+                <span class="mfp-info-label">Season</span>
+                <span class="mfp-info-value">Sept 12 – Nov 8, 2026<br><em style="font-size:0.85rem;opacity:0.85;font-style:normal;">Weekends &amp; October Play Days</em></span>
+            </div>
+            <div class="mfp-info-item">
+                <span class="mfp-info-label">Who Needs a Pass</span>
+                <span class="mfp-info-value">Ages 3 &amp; up<br><em style="font-size:0.85rem;opacity:0.85;font-style:normal;">Children 2 &amp; under free</em></span>
+            </div>
+        </div>
+    </div>
+
+</div><!-- end #mfp-funnel -->
+
+<script>
+    (function() {
+        var obs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) {
+                if (e.isIntersecting) { e.target.classList.add('mfpon'); obs.unobserve(e.target); }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('#mfp-funnel .mfpr').forEach(function(el) {
+            obs.observe(el);
+            if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('mfpon');
+        });
+        document.querySelectorAll('#mfp-funnel a[href^="#"]').forEach(function(a) {
+            a.addEventListener('click', function(e) {
+                var target = document.querySelector(a.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    })();
+</script>
+
+<!-- Floating Buy Tickets button -->
+<style>
+    #mfp-float-btn {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 9999 !important;
+        padding: 12px 16px 20px !important;
+        background: linear-gradient(to top, rgba(251,246,236,0.97) 55%, transparent) !important;
+        display: flex !important;
+        justify-content: center !important;
+        transition: opacity 0.35s ease, transform 0.35s ease !important;
+    }
+    #mfp-float-btn.mfp-float-hidden {
+        opacity: 0 !important;
+        transform: translateY(24px) !important;
+        pointer-events: none !important;
+    }
+    #mfp-float-btn a {
+        display: block !important;
+        width: 100% !important;
+        max-width: 480px !important;
+        background: #E8743C !important;
+        color: #ffffff !important;
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 24px !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.06em !important;
+        text-align: center !important;
+        text-decoration: none !important;
+        padding: 20px 28px !important;
+        border-radius: 50px !important;
+        box-shadow: 0 8px 32px rgba(216,95,40,0.40) !important;
+        transition: transform 0.15s, box-shadow 0.15s, background 0.2s !important;
+        border: none !important;
+        cursor: pointer !important;
+    }
+    #mfp-float-btn a:hover {
+        background: #D85F28 !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 14px 40px rgba(216,95,40,0.55) !important;
+        color: #ffffff !important;
+        text-decoration: none !important;
+    }
+</style>
+
+<div id="mfp-float-btn">
+    <a href="#tickets">Buy Tickets</a>
+</div>
+
+<script>
+    (function() {
+        var floatBtn = document.getElementById('mfp-float-btn');
+        if (floatBtn) {
+            floatBtn.querySelector('a').addEventListener('click', function() {
+                floatBtn.classList.add('mfp-float-hidden');
+            });
+        }
+    })();
+</script>
+
+</body>
+</html>

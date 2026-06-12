@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Versailles 6/21 Popup — TEST HARNESS</title>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<style>
+  body { font-family: 'Open Sans', system-ui, sans-serif; max-width: 640px; margin: 40px auto; padding: 0 20px; color:#1a0808; }
+  .note { background:#FFF8F8; border:1px solid #eecdcd; border-radius:10px; padding:16px 18px; font-size:.9rem; line-height:1.5; }
+  .demo-field { margin:26px 0; }
+  .demo-field label { display:block; font-weight:700; margin-bottom:8px; }
+  #demoDate { padding:10px 12px; font-size:1rem; border:1px solid #B01030; border-radius:6px; width:200px; }
+  .hint { font-size:.8rem; color:#9a6060; margin-top:8px; }
+</style>
+</head>
+<body>
+  <h2>Versailles 6/21 Pop-up — Test Harness</h2>
+  <div class="note">
+    This page mimics TicketSpice's real date selector (the same <code>jQuery UI datepicker</code> /
+    <code>input.hasDatepicker</code> TS renders). Pick a date below.<br><br>
+    👉 Pick <strong>June 21, 2026</strong> — the modal should pop. Pick any other date — it should not (and
+    dismisses if it was open). Open the browser console to see the date value our detector reads on each change.
+  </div>
+
+  <div class="demo-field">
+    <label for="demoDate">Choose Date (mimics TS):</label>
+    <input type="text" id="demoDate" class="hasDatepicker" placeholder="Choose Date" readonly>
+    <div class="hint">Navigate to June 2026 and click the 21st.</div>
+  </div>
+
+  <!-- =================== SHIPPABLE BLOCK START =================== -->
+  <!-- Versailles "opens at noon on June 21" pop-up. Self-contained: paste into the Versailles
+       page HTML (production snippet). Namespaced v621pop-* + IIFE so it can't clash with TS.
+       FULL CONTROL stays in our HTML — change copy/styling/disable here, never touch TicketSpice.
+       To DISABLE: set window.V621_ENABLED = false (or delete this block). -->
+  <div id="v621pop-overlay" class="v621pop-overlay" role="dialog" aria-modal="true" aria-labelledby="v621pop-title" hidden>
+    <div class="v621pop-card">
+      <button class="v621pop-close" aria-label="Close">&times;</button>
+      <div class="v621pop-icon">⏰</div>
+      <h3 id="v621pop-title" class="v621pop-h">Heads up — Sunday, June 21 opens at <em>noon</em></h3>
+      <p class="v621pop-p">
+        On <strong>Sunday, June&nbsp;21</strong>, pick-your-own at Eckert&rsquo;s Versailles Farm opens at
+        <strong>12:00&nbsp;PM (noon)</strong> — <strong>not</strong> 9&nbsp;AM — because of a morning event at the farm.
+        Please plan your visit for noon or later that day so you&rsquo;re not waiting at the gate.
+      </p>
+      <button class="v621pop-ok">Got it</button>
+    </div>
+  </div>
+
+  <style>
+    .v621pop-overlay{position:fixed;inset:0;z-index:2147483000;display:flex;align-items:center;justify-content:center;
+      background:rgba(26,8,8,.62);padding:20px;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+    .v621pop-overlay[hidden]{display:none;}
+    .v621pop-card{position:relative;background:#fff;max-width:430px;width:100%;border-radius:16px;padding:30px 26px 26px;
+      box-shadow:0 24px 60px rgba(0,0,0,.4);text-align:center;font-family:'Open Sans',system-ui,sans-serif;
+      animation:v621pop-in .25s ease;box-sizing:border-box;}
+    @keyframes v621pop-in{from{opacity:0;transform:translateY(14px) scale(.97);}to{opacity:1;transform:none;}}
+    .v621pop-icon{font-size:2.6rem;line-height:1;margin-bottom:10px;}
+    .v621pop-h{font-family:'Zilla Slab','Times New Roman',serif;font-size:1.4rem;font-weight:700;color:#B01030;margin:0 0 12px;line-height:1.2;}
+    .v621pop-h em{font-style:italic;color:#7A0820;}
+    .v621pop-p{font-size:.95rem;line-height:1.55;color:#3a2020;margin:0 0 22px;}
+    .v621pop-ok{background:#B01030;color:#fff;border:0;border-radius:50px;padding:12px 34px;font-size:.95rem;font-weight:700;
+      cursor:pointer;letter-spacing:.02em;}
+    .v621pop-ok:hover{background:#7A0820;}
+    .v621pop-close{position:absolute;top:10px;right:14px;background:none;border:0;font-size:1.7rem;line-height:1;color:#b88;cursor:pointer;}
+    .v621pop-close:hover{color:#B01030;}
+  </style>
+
+  <script>
+  (function(){
+    if (window.V621_ENABLED === false) return;          // kill switch
+    var TARGET = { y:2026, m:6, d:21 };                  // Versailles noon-open date
+    var DEBUG  = true;                                   // logs the read date to console; set false for production
+    var ov = document.getElementById('v621pop-overlay');
+    if(!ov) return;
+    var dismissed = false;                               // don't re-pop after user closes it this session
+
+    function show(){ if(!dismissed){ ov.hidden = false; } }
+    function hide(){ ov.hidden = true; }
+    ov.querySelector('.v621pop-close').addEventListener('click', function(){ dismissed=true; hide(); });
+    ov.querySelector('.v621pop-ok').addEventListener('click',  function(){ dismissed=true; hide(); });
+    ov.addEventListener('click', function(e){ if(e.target===ov){ dismissed=true; hide(); } });
+
+    // TS renders the date field as a jQuery UI datepicker: input.hasDatepicker (placeholder "Choose Date").
+    function dateInputs(){
+      return document.querySelectorAll('input.hasDatepicker, input[placeholder="Choose Date"], input[aria-label="Choose Date"]');
+    }
+    // Parse mm/dd/yyyy, mm/dd/yy, yyyy-mm-dd, or "June 21, 2026" -> {y,m,d} or null
+    function parse(v){
+      if(!v) return null;
+      var mdy = v.match(/(\d{1,2})[\/\-.](\d{1,2})[\/\-.](\d{2,4})/);
+      if(mdy){ var mm=+mdy[1], dd=+mdy[2], yy=+mdy[3]; if(yy<100) yy+=2000; return {y:yy,m:mm,d:dd}; }
+      var iso = v.match(/(\d{4})[\/\-.](\d{1,2})[\/\-.](\d{1,2})/);
+      if(iso){ return {y:+iso[1], m:+iso[2], d:+iso[3]}; }
+      var dt = new Date(v);
+      if(!isNaN(dt.getTime())) return {y:dt.getFullYear(), m:dt.getMonth()+1, d:dt.getDate()};
+      return null;
+    }
+    var lastVal = null;
+    function check(){
+      var hit = false, seen = null;
+      dateInputs().forEach(function(inp){
+        var v = inp.value; if(v) seen = v;
+        var p = parse(v);
+        if(p && p.y===TARGET.y && p.m===TARGET.m && p.d===TARGET.d) hit = true;
+      });
+      if(DEBUG && seen !== lastVal){ console.log('[v621pop] date read:', seen, '-> match 6/21:', hit); lastVal = seen; }
+      if(hit) show(); else if(!ov.hidden && !dismissed) hide();
+    }
+
+    // jQuery UI sets input.value as a PROPERTY (no bubbling change guaranteed), so cover all bases:
+    document.addEventListener('change', check, true);                 // native change (capture)
+    document.addEventListener('input',  check, true);
+    document.addEventListener('click', function(e){                    // clicking a day cell in the calendar
+      if(e.target.closest && e.target.closest('.ui-datepicker-calendar')) setTimeout(check, 60);
+    }, true);
+    var poll = setInterval(check, 600);                                // catch-all safety net
+    if(document.readyState!=='loading') check(); else document.addEventListener('DOMContentLoaded', check);
+  })();
+  </script>
+  <!-- =================== SHIPPABLE BLOCK END =================== -->
+
+  <!-- test harness only: stand up a jQuery UI datepicker like TS's -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+  <script>
+    $(function(){ $('#demoDate').datepicker({ dateFormat:'mm/dd/yy', defaultDate:new Date(2026,5,21) }); });
+  </script>
+</body>
+</html>

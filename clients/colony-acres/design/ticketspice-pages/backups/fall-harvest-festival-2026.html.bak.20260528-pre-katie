@@ -1,0 +1,890 @@
+<!--
+    Colony Acres · Annual Fall Festival 2026 · Fun Yard Admission · TicketSpice page header
+    Modeled on /data/clients/eckerts/design/ticketspice-pages/versailles-farm-field-access-pass-2026.html
+    Drop into a TicketSpice "Custom HTML" content block on the FunYard Admission 26 page,
+    above the existing ticket-selector bones.
+
+    Source data: 5.13.26 Bryan call + colonyacres TicketSpice preview (5.13.26 screencap).
+    Assets: webconnex CDN /84892/ + colonyacres.farm /wp-content/uploads/.
+    Centennial framing per Bryan ("highlight 100 years of farming"). Season Pass = "Coming Soon"
+    per Mat — bullets + visual placeholder, no price yet.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+    /* ===========================================================
+       COLONY ACRES · FALL FESTIVAL 2026 · #caf-funnel
+       Palette: barn green / warm orange / cream / centennial gold
+       =========================================================== */
+    #caf-funnel .bold { font-weight: bold; }
+
+    #caf-funnel {
+        width: 100vw !important;
+        position: relative !important;
+        left: 50% !important;
+        right: 50% !important;
+        margin-left: -50vw !important;
+        margin-right: -50vw !important;
+        overflow: hidden !important;
+        font-family: 'Open Sans', sans-serif !important;
+        background: #FBF6EC !important;
+        color: #2A1A0E !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    /* ── BANNER ── */
+    #caf-funnel .caf-banner {
+        width: 100% !important;
+        background: #006B35 !important;
+        color: white !important;
+        text-align: center !important;
+        padding: 11px 20px !important;
+        font-size: 0.8rem !important;
+        letter-spacing: 0.06em !important;
+        display: block !important;
+        box-sizing: border-box !important;
+    }
+    #caf-funnel .caf-banner-inner {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 10px !important;
+        flex-wrap: wrap !important;
+        color: white !important;
+    }
+    #caf-funnel .caf-banner-inner span,
+    #caf-funnel .caf-banner-inner strong {
+        color: white !important;
+    }
+    #caf-funnel .caf-dot {
+        width: 3px !important; height: 3px !important;
+        background: rgba(255,255,255,0.45) !important;
+        border-radius: 50% !important;
+        display: inline-block !important;
+        flex-shrink: 0 !important;
+    }
+    #caf-funnel .caf-banner-inner .caf-banner-cent {
+        color: #F2C66A !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.12em !important;
+    }
+
+    /* ── NAV ── */
+    #caf-funnel .caf-nav {
+        width: 100% !important;
+        padding: 0 40px !important;
+        height: 96px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        background: rgba(0,154,77,0.97) !important;
+        position: sticky !important;
+        top: 0 !important;
+        z-index: 100 !important;
+        box-sizing: border-box !important;
+        box-shadow: 0 2px 16px rgba(0,154,77,0.35) !important;
+    }
+    #caf-funnel .caf-logo-wrap {
+        display: flex !important;
+        align-items: center !important;
+        width: 180px !important;
+        flex-shrink: 0 !important;
+    }
+    #caf-funnel .caf-logo-wrap img {
+        width: 180px !important;
+        max-width: 180px !important;
+        object-fit: contain !important;
+        object-position: left center !important;
+        display: block !important;
+    }
+    #caf-funnel .caf-nav-right {
+        display: flex !important; align-items: center !important; gap: 16px !important;
+    }
+    #caf-funnel .caf-nav-loc {
+        font-size: 0.78rem !important;
+        color: rgba(255,255,255,0.7) !important;
+        display: flex !important; align-items: center !important; gap: 5px !important;
+    }
+    #caf-funnel .caf-nav-cta {
+        background: #E8743C !important;
+        color: white !important;
+        padding: 9px 22px !important;
+        border-radius: 50px !important;
+        font-size: 0.83rem !important;
+        font-weight: 700 !important;
+        text-decoration: none !important;
+        letter-spacing: 0.04em !important;
+        text-transform: uppercase !important;
+        transition: all 0.3s ease !important;
+        white-space: nowrap !important;
+        display: inline-block !important;
+    }
+    #caf-funnel .caf-nav-cta:hover {
+        background: #FF8A52 !important;
+        color: white !important;
+        text-decoration: none !important;
+        transform: translateY(-1px);
+    }
+
+    /* ── HERO ── */
+    #caf-funnel .caf-hero {
+        width: 100% !important;
+        min-height: clamp(340px, 58vw, 620px) !important;
+        position: relative !important;
+        display: flex !important;
+        align-items: flex-end !important;
+        overflow: hidden !important;
+        background-image: url('https://cdn.uploads.webconnex.com/84892/feast%20in%20the%20flowers%20-%20drone%20(aug%202020).jpg') !important;
+        background-size: cover !important;
+        background-position: center 50% !important;
+        background-color: #2A1A0E !important;
+    }
+    #caf-funnel .caf-hero-overlay {
+        position: absolute !important;
+        inset: 0 !important;
+        background: linear-gradient(to bottom, rgba(31,69,36,0.10) 0%, rgba(42,26,14,0.25) 45%, rgba(31,69,36,0.75) 100%) !important;
+        z-index: 1 !important;
+    }
+    #caf-funnel .caf-hero-content {
+        position: relative !important;
+        z-index: 2 !important;
+        padding: 0 48px 56px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    #caf-funnel .caf-cent-ribbon {
+        display: inline-block !important;
+        background: #C19A47 !important;
+        color: #2A1A0E !important;
+        font-family: 'Oswald', sans-serif !important;
+        font-weight: 700 !important;
+        font-size: 0.72rem !important;
+        letter-spacing: 0.18em !important;
+        text-transform: uppercase !important;
+        padding: 6px 14px !important;
+        border-radius: 4px !important;
+        margin-bottom: 14px !important;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.18) !important;
+        opacity: 0;
+        animation: cafFadeUp 0.6s ease 0.15s forwards;
+    }
+    #caf-funnel .caf-hero-eyebrow {
+        font-size: 0.72rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.2em !important;
+        text-transform: uppercase !important;
+        color: rgba(255,255,255,0.82) !important;
+        margin-bottom: 10px !important;
+        display: block !important;
+        opacity: 0;
+        animation: cafFadeUp 0.6s ease 0.3s forwards;
+    }
+    #caf-funnel .caf-hero-title {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: clamp(2.6rem, 8vw, 5rem) !important;
+        font-weight: 700 !important;
+        color: white !important;
+        line-height: 1.0 !important;
+        display: block !important;
+        text-shadow: 0 2px 24px rgba(0,0,0,0.35) !important;
+        opacity: 0;
+        animation: cafFadeUp 0.7s ease 0.45s forwards;
+    }
+    #caf-funnel .caf-hero-title em {
+        font-family: 'Caveat', cursive !important;
+        font-style: normal !important;
+        font-weight: 700 !important;
+        color: #F2C66A !important;
+        font-size: 0.85em !important;
+        letter-spacing: 0.01em !important;
+    }
+    #caf-funnel .caf-hero-tagline {
+        font-family: 'Caveat', cursive !important;
+        font-size: clamp(1.2rem, 2.6vw, 1.8rem) !important;
+        color: #FFE9C8 !important;
+        margin-top: 12px !important;
+        display: block !important;
+        opacity: 0;
+        animation: cafFadeUp 0.7s ease 0.6s forwards;
+    }
+    @keyframes cafFadeUp {
+        from { opacity: 0; transform: translateY(16px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── BENEFITS ── */
+    #caf-funnel .caf-benefits {
+        width: 100% !important;
+        background: white !important;
+        padding: 36px 48px !important;
+        display: block !important;
+        box-sizing: border-box !important;
+        border-bottom: 1px solid rgba(0,154,77,0.08) !important;
+    }
+    #caf-funnel .caf-benefits-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+    #caf-funnel .caf-benefit {
+        text-align: center !important;
+        padding: 8px 20px !important;
+        position: relative !important;
+    }
+    #caf-funnel .caf-benefit:not(:last-child)::after {
+        content: '' !important;
+        position: absolute !important;
+        right: 0 !important; top: 15% !important; bottom: 15% !important;
+        width: 1px !important;
+        background: rgba(0,154,77,0.1) !important;
+    }
+    #caf-funnel .caf-benefit-icon { font-size: 1.8rem !important; margin-bottom: 8px !important; display: block !important; }
+    #caf-funnel .caf-benefit-title {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 1rem !important; font-weight: 600 !important;
+        color: #2A1A0E !important; margin-bottom: 3px !important; display: block !important;
+    }
+    #caf-funnel .caf-benefit-desc {
+        font-size: 0.75rem !important; color: #7A5A3C !important;
+        line-height: 1.4 !important; display: block !important;
+    }
+
+    /* ── GALLERY ── */
+    #caf-funnel .caf-gallery {
+        width: 100% !important;
+        background: #FBF6EC !important;
+        padding: 64px 0 !important;
+        overflow: hidden !important;
+        display: block !important;
+    }
+    #caf-funnel .caf-gallery-header {
+        text-align: center !important;
+        padding: 0 48px !important;
+        margin-bottom: 40px !important;
+    }
+    #caf-funnel .caf-eye {
+        font-size: 0.7rem !important; font-weight: 600 !important;
+        letter-spacing: 0.22em !important; text-transform: uppercase !important;
+        color: #E8743C !important; margin-bottom: 8px !important; display: block !important;
+    }
+    #caf-funnel .caf-section-title {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: clamp(1.8rem, 4.5vw, 2.8rem) !important;
+        font-weight: 700 !important; color: #2A1A0E !important;
+        line-height: 1.15 !important; display: block !important;
+    }
+    #caf-funnel .caf-section-title em {
+        font-family: 'Caveat', cursive !important;
+        font-style: normal !important;
+        font-weight: 700 !important;
+        color: #009A4D !important;
+        font-size: 1.05em !important;
+    }
+    #caf-funnel .caf-gallery-mask {
+        width: 100% !important; overflow: hidden !important;
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%) !important;
+        mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%) !important;
+    }
+    #caf-funnel .caf-gallery-track {
+        display: flex !important; gap: 16px !important;
+        width: max-content !important;
+        animation: cafMarquee 26s linear infinite !important;
+        padding: 8px 0 !important;
+    }
+    #caf-funnel .caf-gallery-track:hover { animation-play-state: paused !important; }
+    @keyframes cafMarquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    #caf-funnel .caf-gcard {
+        width: 380px !important; height: 260px !important;
+        border-radius: 20px !important; overflow: hidden !important;
+        flex-shrink: 0 !important; position: relative !important;
+        cursor: pointer !important;
+        background: linear-gradient(135deg, #F5DCAA, #E8743C) !important;
+        display: flex !important; align-items: center !important;
+        justify-content: center !important; font-size: 3rem !important;
+        transition: transform 0.4s ease, box-shadow 0.4s ease !important;
+    }
+    #caf-funnel .caf-gcard:hover {
+        transform: scale(1.03) translateY(-5px) !important;
+        box-shadow: 0 24px 50px rgba(0,154,77,0.22) !important; z-index: 2 !important;
+    }
+    #caf-funnel .caf-gcard img {
+        width: 100% !important; height: 100% !important;
+        object-fit: cover !important; display: block !important;
+        position: absolute !important; inset: 0 !important;
+        transition: transform 0.6s ease !important;
+    }
+    #caf-funnel .caf-gcard:hover img { transform: scale(1.08) !important; }
+    #caf-funnel .caf-gcard-label {
+        position: absolute !important; bottom: 12px !important; left: 12px !important;
+        background: rgba(42,26,14,0.6) !important; backdrop-filter: blur(8px) !important;
+        color: white !important; font-size: 0.68rem !important; letter-spacing: 0.1em !important;
+        text-transform: uppercase !important; font-weight: 700 !important;
+        padding: 5px 12px !important; border-radius: 20px !important;
+        opacity: 0 !important; transform: translateY(4px) !important;
+        transition: opacity 0.3s ease, transform 0.3s ease !important; z-index: 2 !important;
+    }
+    #caf-funnel .caf-gcard:hover .caf-gcard-label { opacity: 1 !important; transform: none !important; }
+
+    /* ── CENTENNIAL CALLOUT (story strip) ── */
+    #caf-funnel .caf-story {
+        width: 100% !important;
+        background: linear-gradient(135deg, #009A4D 0%, #00B85B 100%) !important;
+        padding: 56px 48px !important;
+        box-sizing: border-box !important;
+        display: block !important;
+        text-align: center !important;
+        color: white !important;
+    }
+    #caf-funnel .caf-story-inner {
+        max-width: 760px !important;
+        margin: 0 auto !important;
+        color: white !important;
+    }
+    #caf-funnel .caf-story-inner span,
+    #caf-funnel .caf-story-inner strong {
+        color: white !important;
+    }
+    #caf-funnel .caf-story-inner .caf-story-cent {
+        font-family: 'Caveat', cursive !important;
+        color: #F2C66A !important;
+        font-size: clamp(2.2rem, 5vw, 3.4rem) !important;
+        line-height: 1 !important;
+        display: block !important;
+        margin-bottom: 6px !important;
+    }
+    #caf-funnel .caf-story-inner .caf-story-title {
+        font-family: 'Zilla Slab', serif !important;
+        font-size: clamp(1.4rem, 3.6vw, 2rem) !important;
+        font-weight: 700 !important;
+        margin-bottom: 14px !important;
+        display: block !important;
+        color: white !important;
+    }
+    #caf-funnel .caf-story-inner .caf-story-body {
+        font-size: 1rem !important;
+        line-height: 1.65 !important;
+        color: rgba(255,255,255,0.85) !important;
+        display: block !important;
+    }
+
+    /* ── TICKET CARDS ── */
+    #caf-funnel .caf-tickets {
+        width: 100% !important;
+        background: #F5EDD9 !important;
+        padding: 72px 48px !important;
+        display: block !important; box-sizing: border-box !important;
+    }
+    #caf-funnel .caf-tickets-header { text-align: center !important; margin-bottom: 48px !important; }
+    #caf-funnel .caf-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(0, 400px)) !important;
+        gap: 24px !important;
+        justify-content: center !important;
+        max-width: 1280px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    /* Base card */
+    #caf-funnel .caf-card {
+        border-radius: 20px !important;
+        padding: 36px 32px !important;
+        position: relative !important;
+        overflow: hidden !important;
+        transition: transform 0.35s ease, box-shadow 0.35s ease !important;
+        display: flex !important; flex-direction: column !important;
+    }
+    #caf-funnel .caf-card:hover { transform: translateY(-6px) !important; }
+
+    #caf-funnel .caf-card-dark {
+        background: #2A1A0E !important; color: white !important;
+    }
+    #caf-funnel .caf-card-dark:hover { box-shadow: 0 20px 44px rgba(0,0,0,0.35) !important; }
+
+    #caf-funnel .caf-card-green {
+        background: linear-gradient(160deg, #009A4D 0%, #00B85B 100%) !important;
+        color: white !important;
+        border: 2px solid #C19A47 !important;
+    }
+    #caf-funnel .caf-card-green:hover { box-shadow: 0 20px 44px rgba(0,154,77,0.35) !important; }
+
+    #caf-funnel .caf-card-cream {
+        background: linear-gradient(145deg, #FFF4E0, #FBF6EC) !important;
+        border: 1px solid rgba(0,154,77,0.14) !important;
+    }
+    #caf-funnel .caf-card-cream:hover { box-shadow: 0 20px 44px rgba(0,154,77,0.14) !important; }
+
+    /* Card internals */
+    #caf-funnel .caf-card-badge {
+        display: inline-block !important;
+        font-size: 0.62rem !important; font-weight: 700 !important;
+        letter-spacing: 0.14em !important; text-transform: uppercase !important;
+        padding: 4px 10px !important; border-radius: 20px !important;
+        margin-bottom: 14px !important; width: fit-content !important;
+    }
+    #caf-funnel .caf-badge-light { background: rgba(255,255,255,0.18) !important; color: white !important; }
+    #caf-funnel .caf-badge-gold { background: #C19A47 !important; color: #2A1A0E !important; }
+    #caf-funnel .caf-badge-orange { background: #E8743C !important; color: white !important; }
+
+    #caf-funnel .caf-card-icon { font-size: 2.6rem !important; margin-bottom: 14px !important; display: block !important; }
+
+    #caf-funnel .caf-card h3 {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 1.55rem !important; font-weight: 700 !important;
+        line-height: 1.15 !important; margin-bottom: 14px !important; display: block !important;
+    }
+    #caf-funnel .caf-card-cream h3 { color: #2A1A0E !important; }
+    #caf-funnel .caf-card-green h3,
+    #caf-funnel .caf-card-dark h3 { color: white !important; }
+
+    #caf-funnel .caf-card-bullets {
+        list-style: none !important; padding: 0 !important; margin: 0 0 auto !important;
+        display: flex !important; flex-direction: column !important; gap: 6px !important;
+    }
+    #caf-funnel .caf-card-bullets li {
+        font-size: 0.95rem !important; line-height: 1.55 !important;
+        display: flex !important; align-items: flex-start !important; gap: 8px !important;
+    }
+    #caf-funnel .caf-card-cream .caf-card-bullets li { color: #5A3E22 !important; }
+    #caf-funnel .caf-card-green .caf-card-bullets li,
+    #caf-funnel .caf-card-dark .caf-card-bullets li { color: rgba(255,255,255,0.86) !important; }
+
+    #caf-funnel .caf-card-price {
+        display: flex !important; align-items: baseline !important;
+        gap: 6px !important; margin-top: 20px !important; padding-top: 16px !important;
+    }
+    #caf-funnel .caf-card-green .caf-card-price { border-top: 1px solid rgba(255,255,255,0.18) !important; }
+    #caf-funnel .caf-card-dark .caf-card-price { border-top: 1px solid rgba(255,255,255,0.14) !important; }
+    #caf-funnel .caf-card-cream .caf-card-price { border-top: 1px solid rgba(0,154,77,0.12) !important; }
+
+    #caf-funnel .caf-price-num {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 2.8rem !important; font-weight: 700 !important; line-height: 1 !important;
+    }
+    #caf-funnel .caf-card-cream .caf-price-num { color: #009A4D !important; }
+    #caf-funnel .caf-card-green .caf-price-num { color: #F2C66A !important; }
+    #caf-funnel .caf-card-dark .caf-price-num { color: #F2C66A !important; }
+
+    #caf-funnel .caf-price-slash {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 2px !important;
+        justify-content: center !important;
+    }
+    #caf-funnel .caf-price-online {
+        font-size: 0.68rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.1em !important;
+        text-transform: uppercase !important;
+        display: block !important;
+    }
+    #caf-funnel .caf-card-green .caf-price-online,
+    #caf-funnel .caf-card-dark .caf-price-online { color: rgba(255,255,255,0.55) !important; }
+    #caf-funnel .caf-card-cream .caf-price-online { color: #009A4D !important; opacity: 0.6 !important; }
+    #caf-funnel .caf-price-was {
+        font-size: 0.85rem !important;
+        font-weight: 600 !important;
+        text-decoration: line-through !important;
+        display: block !important;
+        line-height: 1 !important;
+    }
+    #caf-funnel .caf-card-green .caf-price-was,
+    #caf-funnel .caf-card-dark .caf-price-was { color: rgba(255,255,255,0.45) !important; }
+    #caf-funnel .caf-card-cream .caf-price-was { color: rgba(0,154,77,0.45) !important; }
+
+    #caf-funnel .caf-card-note {
+        font-size: 0.72rem !important; font-style: italic !important;
+        margin-top: 10px !important; display: block !important; line-height: 1.5 !important;
+    }
+    #caf-funnel .caf-card-green .caf-card-note,
+    #caf-funnel .caf-card-dark .caf-card-note { color: rgba(255,255,255,0.55) !important; }
+    #caf-funnel .caf-card-cream .caf-card-note { color: #8A6A4A !important; }
+
+    /* ── INFO ROW ── */
+    #caf-funnel .caf-info {
+        width: 100% !important;
+        background: #009A4D !important;
+        padding: 0 !important; display: block !important; box-sizing: border-box !important;
+    }
+    #caf-funnel .caf-info-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+    #caf-funnel .caf-info-item {
+        text-align: center !important;
+        padding: 28px 20px !important;
+        position: relative !important;
+    }
+    #caf-funnel .caf-info-item:not(:last-child)::after {
+        content: '' !important; position: absolute !important;
+        right: 0 !important; top: 20% !important; bottom: 20% !important;
+        width: 1px !important; background: rgba(255,255,255,0.15) !important;
+    }
+    #caf-funnel .caf-info-grid span,
+    #caf-funnel .caf-info-grid strong {
+        color: white !important;
+    }
+    #caf-funnel .caf-info-item .caf-info-icon { font-size: 1.5rem !important; display: block !important; margin-bottom: 6px !important; }
+    #caf-funnel .caf-info-item .caf-info-label {
+        font-size: 0.62rem !important; font-weight: 700 !important;
+        letter-spacing: 0.16em !important; text-transform: uppercase !important;
+        color: rgba(255,255,255,0.6) !important; display: block !important; margin-bottom: 4px !important;
+    }
+    #caf-funnel .caf-info-item .caf-info-value {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 0.95rem !important; font-weight: 600 !important;
+        color: white !important; display: block !important; line-height: 1.3 !important;
+    }
+    #caf-funnel .caf-info-item .caf-info-link {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 0.88rem !important; font-weight: 600 !important;
+        color: #F2C66A !important; display: block !important;
+        line-height: 1.3 !important; text-decoration: underline !important;
+    }
+    #caf-funnel .caf-info-link:hover { color: white !important; }
+
+    /* ── REVEAL ── */
+    #caf-funnel .cafr {
+        opacity: 0 !important; transform: translateY(28px) !important;
+        transition: opacity 0.7s cubic-bezier(.16,1,.3,1), transform 0.7s cubic-bezier(.16,1,.3,1) !important;
+    }
+    #caf-funnel .cafr.cafon { opacity: 1 !important; transform: none !important; }
+    #caf-funnel .cafr.d1 { transition-delay: 0.1s !important; }
+    #caf-funnel .cafr.d2 { transition-delay: 0.2s !important; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1000px) {
+        #caf-funnel .caf-grid { grid-template-columns: repeat(2, minmax(0, 420px)) !important; }
+    }
+    @media (max-width: 860px) {
+        #caf-funnel .caf-nav { padding: 0 24px !important; }
+        #caf-funnel .caf-nav-cta { padding: 14px 24px !important; } /* 44px tap-target floor */
+        #caf-funnel .caf-benefits { padding: 32px 24px !important; }
+        #caf-funnel .caf-tickets { padding: 56px 24px !important; }
+        #caf-funnel .caf-story { padding: 44px 24px !important; }
+        #caf-funnel .caf-info-grid { grid-template-columns: 1fr 1fr !important; }
+        #caf-funnel .caf-info-item:nth-child(2n)::after { display: none !important; }
+        #caf-funnel .caf-gallery-header { padding: 0 24px !important; }
+        #caf-funnel .caf-gcard { width: 300px !important; height: 210px !important; }
+        #caf-funnel .caf-hero-content { padding: 0 32px 44px !important; }
+    }
+    @media (max-width: 560px) {
+        #caf-funnel .caf-nav { padding: 0 16px !important; height: 72px !important; }
+        #caf-funnel .caf-logo-wrap,
+        #caf-funnel .caf-logo-wrap img { width: 135px !important; max-width: 135px !important; }
+        #caf-funnel .caf-nav-loc { display: none !important; }
+        #caf-funnel .caf-benefits { padding: 24px 16px !important; }
+        #caf-funnel .caf-benefits-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 14px 0 !important; }
+        #caf-funnel .caf-benefit:nth-child(2n)::after { display: none !important; }
+        #caf-funnel .caf-tickets { padding: 48px 16px !important; }
+        #caf-funnel .caf-grid { grid-template-columns: 1fr !important; }
+        #caf-funnel .caf-story { padding: 36px 16px !important; }
+        #caf-funnel .caf-gallery-header { padding: 0 16px !important; }
+        #caf-funnel .caf-gcard { width: 240px !important; height: 170px !important; }
+        #caf-funnel .caf-hero-content { padding: 0 20px 36px !important; }
+    }
+</style>
+
+<div id="caf-funnel">
+
+    <!-- BANNER -->
+    <div class="caf-banner">
+        <div class="caf-banner-inner">
+            <span class="caf-banner-cent">★ EST. 1926 · 100 YEARS ★</span>
+            <span class="caf-dot"></span>
+            <span><strong>Annual Fall Festival</strong></span>
+            <span class="caf-dot"></span>
+            <span>Sept 19 – Oct 31, 2026 · Wed–Sun · 10a–6p</span>
+        </div>
+    </div>
+
+    <!-- NAV -->
+    <div class="caf-nav">
+        <div class="caf-logo-wrap">
+            <img src="https://cdn.uploads.webconnex.com/84892/colony%20acres%20100%20years%20white%20-%20logo.png" alt="Colony Acres Family Farm · Est. 1926">
+        </div>
+        <div class="caf-nav-right">
+            <div class="caf-nav-loc">
+                <svg width="12" height="12" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                    <circle cx="12" cy="11" r="3"/>
+                </svg>
+                North Liberty, IA
+            </div>
+            <a href="#tickets" class="caf-nav-cta">Buy Tickets</a>
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <div class="caf-hero">
+        <div class="caf-hero-overlay"></div>
+        <div class="caf-hero-content">
+            <span class="caf-cent-ribbon">Celebrating 100 Years of Farming</span>
+            <span class="caf-hero-eyebrow">Annual Fall Festival · North Liberty, IA</span>
+            <span class="caf-hero-title">Fun Yard <em>Admission</em></span>
+            <span class="caf-hero-tagline">— A Little Country, in the City. —</span>
+        </div>
+    </div>
+
+    <!-- BENEFITS -->
+    <div class="caf-benefits">
+        <div class="caf-benefits-grid">
+            <div class="caf-benefit">
+                <span class="caf-benefit-icon">🛝</span>
+                <span class="caf-benefit-title">Giant Double Slide</span>
+                <span class="caf-benefit-desc">Race a friend down two stories of fun</span>
+            </div>
+            <div class="caf-benefit">
+                <span class="caf-benefit-icon">🌽</span>
+                <span class="caf-benefit-title">Corn Maze</span>
+                <span class="caf-benefit-desc">Wind through acres of tall stalks</span>
+            </div>
+            <div class="caf-benefit">
+                <span class="caf-benefit-icon">🚂</span>
+                <span class="caf-benefit-title">Barrel Train</span>
+                <span class="caf-benefit-desc">Hop on for a ride around the farm</span>
+            </div>
+            <div class="caf-benefit">
+                <span class="caf-benefit-icon">🍂</span>
+                <span class="caf-benefit-title">Fall Hayride &amp; More</span>
+                <span class="caf-benefit-desc">20+ activities · free parking · always</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- GALLERY -->
+    <div class="caf-gallery">
+        <div class="caf-gallery-header cafr">
+            <span class="caf-eye">A Century on the Farm</span>
+            <span class="caf-section-title">100 years, <em>still family-run</em></span>
+        </div>
+        <div class="caf-gallery-mask">
+            <div class="caf-gallery-track">
+                <!-- TODO: swap placeholders with image URLs from colonyacres.farm or TicketSpice uploads -->
+                <div class="caf-gcard"><img src="https://cdn.uploads.webconnex.com/84892/img_2970.jpg" alt="On the Farm" loading="lazy"><div class="caf-gcard-label">On the Farm</div></div>
+                <div class="caf-gcard"><img src="https://cdn.uploads.webconnex.com/84892/1629341335445-Summer%20Dinner%20at%20the%20Patch%20North%20Liberty-56.jpg" alt="Summer Dinner at the Patch" loading="lazy"><div class="caf-gcard-label">Summer Dinner</div></div>
+                <div class="caf-gcard"><img src="https://cdn.uploads.webconnex.com/84892/1720475098470-CPPB-21.jpg" alt="Family Fun" loading="lazy"><div class="caf-gcard-label">Family Fun</div></div>
+                <div class="caf-gcard"><img src="https://cdn.uploads.webconnex.com/84892/1720475058235-CPPB-31.jpg" alt="Memories Together" loading="lazy"><div class="caf-gcard-label">Memories</div></div>
+                <div class="caf-gcard"><img src="https://colonyacres.farm/wp-content/uploads/2025/07/attractions-barreltrain.webp" alt="Barrel Train" loading="lazy"><div class="caf-gcard-label">Barrel Train</div></div>
+                <div class="caf-gcard"><img src="https://colonyacres.farm/wp-content/uploads/2025/07/attractions-duckraces.webp" alt="Duck Races" loading="lazy"><div class="caf-gcard-label">Duck Races</div></div>
+                <!-- Duplicate for seamless loop -->
+                <div class="caf-gcard"><img src="https://cdn.uploads.webconnex.com/84892/img_2970.jpg" alt="On the Farm" loading="lazy"><div class="caf-gcard-label">On the Farm</div></div>
+                <div class="caf-gcard"><img src="https://cdn.uploads.webconnex.com/84892/1629341335445-Summer%20Dinner%20at%20the%20Patch%20North%20Liberty-56.jpg" alt="Summer Dinner at the Patch" loading="lazy"><div class="caf-gcard-label">Summer Dinner</div></div>
+                <div class="caf-gcard"><img src="https://cdn.uploads.webconnex.com/84892/1720475098470-CPPB-21.jpg" alt="Family Fun" loading="lazy"><div class="caf-gcard-label">Family Fun</div></div>
+                <div class="caf-gcard"><img src="https://cdn.uploads.webconnex.com/84892/1720475058235-CPPB-31.jpg" alt="Memories Together" loading="lazy"><div class="caf-gcard-label">Memories</div></div>
+                <div class="caf-gcard"><img src="https://colonyacres.farm/wp-content/uploads/2025/07/attractions-barreltrain.webp" alt="Barrel Train" loading="lazy"><div class="caf-gcard-label">Barrel Train</div></div>
+                <div class="caf-gcard"><img src="https://colonyacres.farm/wp-content/uploads/2025/07/attractions-duckraces.webp" alt="Duck Races" loading="lazy"><div class="caf-gcard-label">Duck Races</div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CENTENNIAL STORY STRIP -->
+    <div class="caf-story cafr">
+        <div class="caf-story-inner">
+            <span class="caf-story-cent">Est. 1926</span>
+            <span class="caf-story-title">A century of family farming — and we're just getting started.</span>
+            <span class="caf-story-body">
+                A hundred Octobers. Generations of kids who grew up running through these fields.
+                For 2026 we're celebrating with everything you love about Colony Acres — and a few
+                new surprises for our centennial year. Come make some memories with us.
+            </span>
+        </div>
+    </div>
+
+    <!-- TICKETS -->
+    <div class="caf-tickets" id="tickets">
+        <div class="caf-tickets-header cafr">
+            <span class="caf-eye">Admission</span>
+            <span class="caf-section-title">Pick your <em>day on the farm</em></span>
+        </div>
+        <div class="caf-grid">
+
+            <!-- WEEKDAY ADMISSION -->
+            <div class="caf-card caf-card-cream cafr">
+                <span class="caf-card-badge caf-badge-orange">Weekday</span>
+                <span class="caf-card-icon">🌾</span>
+                <h3>Weekday Fun Yard</h3>
+                <ul class="caf-card-bullets">
+                    <li>🛝 Giant Double Slide + Bounce Pillow</li>
+                    <li>🌽 Corn Maze · 🚂 Barrel Train</li>
+                    <li>🍂 Fall Hayride &amp; more</li>
+                    <li>🅿️ Free parking — always</li>
+                </ul>
+                <div class="caf-card-price">
+                    <span class="caf-price-num">$13</span>
+                    <div class="caf-price-slash">
+                        <span class="caf-price-online">Online Price</span>
+                        <span class="caf-price-was">$16 at gate</span>
+                    </div>
+                </div>
+                <span class="caf-card-note">Per person · ages 3 &amp; up · valid Wed–Fri</span>
+            </div>
+
+            <!-- WEEKEND ADMISSION -->
+            <div class="caf-card caf-card-dark cafr d1">
+                <span class="caf-card-badge caf-badge-light">Most Popular</span>
+                <span class="caf-card-icon">🍂</span>
+                <h3>Weekend Fun Yard</h3>
+                <ul class="caf-card-bullets">
+                    <li>🛝 Giant Double Slide + Bounce Pillow</li>
+                    <li>🌽 Corn Maze · 🚂 Barrel Train</li>
+                    <li>🍂 Fall Hayride &amp; more</li>
+                    <li>🎶 Full weekend energy — 20+ activities</li>
+                    <li>🅿️ Free parking — always</li>
+                </ul>
+                <div class="caf-card-price">
+                    <span class="caf-price-num">$15</span>
+                    <div class="caf-price-slash">
+                        <span class="caf-price-online">Online Price</span>
+                        <span class="caf-price-was">$18 at gate</span>
+                    </div>
+                </div>
+                <span class="caf-card-note">Per person · ages 3 &amp; up · valid Sat &amp; Sun</span>
+            </div>
+
+            <!-- SEASON PASS — Coming Soon for centennial year -->
+            <div class="caf-card caf-card-green cafr d2">
+                <span class="caf-card-badge caf-badge-gold">★ Centennial Year ★</span>
+                <span class="caf-card-icon">🎟</span>
+                <h3>Season Pass</h3>
+                <ul class="caf-card-bullets">
+                    <li>♾ Unlimited visits all season long</li>
+                    <li>🛝 Full Fun Yard access · every day we're open</li>
+                    <li>🎁 Exclusive centennial year perks</li>
+                    <li>🅿️ Free parking — always</li>
+                </ul>
+                <div class="caf-card-price" style="border-top: 1px solid rgba(255,255,255,0.18) !important; margin-top: 20px !important; padding-top: 18px !important; flex-direction: column !important; align-items: flex-start !important; gap: 6px !important;">
+                    <span style="font-family: 'Zilla Slab', serif !important; font-size: 1.6rem !important; font-weight: 700 !important; color: #F2C66A !important; letter-spacing: 0.04em !important; display: block !important;">Coming Soon ✨</span>
+                    <span style="font-size: 0.78rem !important; color: rgba(255,255,255,0.72) !important; line-height: 1.5 !important; display: block !important;">Details &amp; pricing announced shortly — stay tuned for our centennial year.</span>
+                </div>
+                <span class="caf-card-note">A new way to celebrate 100 years on the farm</span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- INFO ROW -->
+    <div class="caf-info">
+        <div class="caf-info-grid">
+            <div class="caf-info-item">
+                <span class="caf-info-icon">📍</span>
+                <span class="caf-info-label">Location</span>
+                <span class="caf-info-value">1150 Front St.<br>North Liberty, IA</span>
+            </div>
+            <div class="caf-info-item">
+                <span class="caf-info-icon">📞</span>
+                <span class="caf-info-label">Phone</span>
+                <span class="caf-info-value">(319) 626-6091</span>
+            </div>
+            <div class="caf-info-item">
+                <span class="caf-info-icon">🕔</span>
+                <span class="caf-info-label">Season</span>
+                <span class="caf-info-value">Sept 19 – Oct 31, 2026<br><em style="font-size:0.78rem;opacity:0.75;font-style:normal;">Wed–Sun · 10am – 6pm</em></span>
+            </div>
+            <div class="caf-info-item">
+                <span class="caf-info-icon">👨‍👩‍👧</span>
+                <span class="caf-info-label">Who Needs a Pass</span>
+                <span class="caf-info-value">Ages 3 &amp; up<br><em style="font-size:0.78rem;opacity:0.75;font-style:normal;">Children 2 &amp; under free</em></span>
+            </div>
+        </div>
+    </div>
+
+</div><!-- end #caf-funnel -->
+
+<script>
+    (function() {
+        // Reveal-on-scroll
+        var obs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) {
+                if (e.isIntersecting) { e.target.classList.add('cafon'); obs.unobserve(e.target); }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('#caf-funnel .cafr').forEach(function(el) {
+            obs.observe(el);
+            if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('cafon');
+        });
+
+        // Smooth anchor scroll for internal links
+        document.querySelectorAll('#caf-funnel a[href^="#"]').forEach(function(a) {
+            a.addEventListener('click', function(e) {
+                var target = document.querySelector(a.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    })();
+</script>
+
+<!-- ============================================================
+     COLONY ACRES — FLOATING BUY TICKETS BUTTON
+     Paste as a SEPARATE Custom HTML block in TicketSpice (not nested
+     inside the page-header HTML above). Fixed to viewport bottom,
+     stays visible while scrolling, hides on click only.
+     Pattern source: belleville4.html (Bryan's canonical Eckert's variant).
+     ============================================================ -->
+<style>
+    #caf-float-btn {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 9999 !important;
+        padding: 12px 16px 20px !important;
+        background: linear-gradient(to top, rgba(251,246,236,0.97) 55%, transparent) !important;
+        display: flex !important;
+        justify-content: center !important;
+        transition: opacity 0.35s ease, transform 0.35s ease !important;
+    }
+    #caf-float-btn.caf-float-hidden {
+        opacity: 0 !important;
+        transform: translateY(24px) !important;
+        pointer-events: none !important;
+    }
+    #caf-float-btn a {
+        display: block !important;
+        width: 100% !important;
+        max-width: 480px !important;
+        background: #E8743C !important;
+        color: #ffffff !important;
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 20px !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.06em !important;
+        text-align: center !important;
+        text-decoration: none !important;
+        padding: 17px 24px !important;
+        border-radius: 50px !important;
+        box-shadow: 0 8px 32px rgba(216,95,40,0.40) !important;
+        transition: transform 0.15s, box-shadow 0.15s, background 0.2s !important;
+        border: none !important;
+        cursor: pointer !important;
+    }
+    #caf-float-btn a:hover {
+        background: #D85F28 !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 14px 40px rgba(216,95,40,0.55) !important;
+        color: #ffffff !important;
+        text-decoration: none !important;
+    }
+</style>
+
+<div id="caf-float-btn">
+    <a href="#tickets">🎟 Buy Tickets</a>
+</div>
+
+<script>
+    (function() {
+        var floatBtn = document.getElementById('caf-float-btn');
+        // Hide on click only — TicketSpice widget loads dynamically so
+        // scroll-depth detection is unreliable. Button stays visible until tapped.
+        if (floatBtn) {
+            floatBtn.querySelector('a').addEventListener('click', function() {
+                floatBtn.classList.add('caf-float-hidden');
+            });
+        }
+    })();
+</script>
