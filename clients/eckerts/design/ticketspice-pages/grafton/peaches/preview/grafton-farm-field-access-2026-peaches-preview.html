@@ -126,7 +126,7 @@
         display: flex !important;
         align-items: flex-end !important;
         overflow: hidden !important;
-        background-image: url('https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-peaches/top-down-peach-basket.jpg') !important;
+        background-image: url('https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-belleville-blackberries/blackberries-hero.jpg') !important;
         background-size: cover !important;
         background-position: center 55% !important;
     }
@@ -287,8 +287,8 @@
     #sbv-funnel .sbv-tickets-header { text-align: center !important; margin-bottom: 48px !important; }
     #sbv-funnel .sbv-grid {
         display: grid !important;
-        /* 2-up: PYO Field Access Pass (dark) + Opening Day info card (pink). Grafton is PYO-only (no playground / mega slide). */
-        grid-template-columns: repeat(2, minmax(0, 440px)) !important;
+        /* 3-up: PYO Field Access Pass (dark) + Now-Open info card (pink) + Season Pass (dark). */
+        grid-template-columns: repeat(3, minmax(0, 400px)) !important;
         gap: 24px !important;
         justify-content: center !important;
         max-width: 1280px !important;
@@ -334,6 +334,7 @@
     #sbv-funnel .sbv-badge-light { background: rgba(255,255,255,0.18) !important; color: white !important; }
     #sbv-funnel .sbv-badge-red { background: #B01030 !important; color: white !important; }
     #sbv-funnel .sbv-badge-green { background: #2D5016 !important; color: white !important; }
+    #sbv-funnel .sbv-badge-gold { background: #F5D080 !important; color: #7A0020 !important; }
 
     #sbv-funnel .sbv-card-icon { font-size: 2.6rem !important; margin-bottom: 14px !important; display: block !important; }
 
@@ -404,6 +405,51 @@
         color: rgba(255,255,255,0.35) !important;
         line-height: 1 !important;
         display: block !important;
+    }
+
+    /* Season pass tier rows (adapted from Belleville sb-season-tiers) */
+    #sbv-funnel .sbv-season-tiers {
+        margin-top: 20px !important;
+        padding-top: 16px !important;
+        border-top: 1px solid rgba(255,255,255,0.12) !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0 !important;
+        flex: 1 !important;
+    }
+    #sbv-funnel .sbv-season-tier {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 14px 0 !important;
+        gap: 12px !important;
+    }
+    #sbv-funnel .sbv-season-tier:not(:last-child) {
+        border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+    }
+    #sbv-funnel .sbv-season-tier-name {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 1rem !important; font-weight: 700 !important;
+        color: white !important; display: block !important; line-height: 1.2 !important;
+    }
+    #sbv-funnel .sbv-season-tier-desc {
+        font-size: 0.75rem !important;
+        color: rgba(255,255,255,0.5) !important;
+        display: block !important; margin-top: 2px !important;
+    }
+    #sbv-funnel .sbv-season-tier-price {
+        text-align: right !important; flex-shrink: 0 !important;
+    }
+    #sbv-funnel .sbv-season-tier-was {
+        font-size: 0.75rem !important;
+        color: rgba(255,255,255,0.35) !important;
+        text-decoration: line-through !important;
+        display: block !important; line-height: 1 !important;
+    }
+    #sbv-funnel .sbv-season-tier-now {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 1.8rem !important; font-weight: 700 !important;
+        color: #F5D080 !important; line-height: 1 !important; display: block !important;
     }
 
     /* ── CALLOUT (buy-online-and-save) ── */
@@ -519,7 +565,7 @@
     <!-- BANNER -->
     <div class="sbv-banner">
         <div class="sbv-banner-inner">
-            <span>🍑 <strong>Eckert's Grafton Farm</strong></span>
+            <span>🪻 <strong>Eckert's Grafton Farm</strong></span>
             <span class="sbv-dot"></span>
             <span>Pick-Your-Own Field Access · 2026</span>
             <span class="sbv-dot"></span>
@@ -548,8 +594,8 @@
     <div class="sbv-hero">
         <div class="sbv-hero-overlay"></div>
         <div class="sbv-hero-content">
-            <span class="sbv-hero-eyebrow">Eckert's Grafton Farm · Grafton, IL · Opens June 12</span>
-            <span class="sbv-hero-title">Pick Your Own<br><em>Peaches</em></span>
+            <span class="sbv-hero-eyebrow">Eckert's Grafton Farm · Grafton, IL · Now Picking</span>
+            <span class="sbv-hero-title">Pick Your Own<br><em>Blackberries</em> &amp; Peaches</span>
         </div>
     </div>
 
@@ -562,9 +608,9 @@
                 <span class="sbv-benefit-desc">Ride out to the orchard &amp; back · Last wagon 4:30 PM</span>
             </div>
             <div class="sbv-benefit">
-                <span class="sbv-benefit-icon">🍑</span>
-                <span class="sbv-benefit-title">Pick-Your-Own Peaches</span>
-                <span class="sbv-benefit-desc">Tree-ripened, right off the branch</span>
+                <span class="sbv-benefit-icon">🪻</span>
+                <span class="sbv-benefit-title">PYO Blackberries &amp; Peaches</span>
+                <span class="sbv-benefit-desc">Fresh off the vine &amp; tree-ripened off the branch</span>
             </div>
             <div class="sbv-benefit">
                 <span class="sbv-benefit-icon">🕘</span>
@@ -582,17 +628,17 @@
         </div>
         <div class="sbv-gallery-mask">
             <div class="sbv-gallery-track">
+                <div class="sbv-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-belleville-blackberries/blackberries-handful.jpg" alt="A handful of just-picked blackberries" loading="lazy"><div class="sbv-gcard-label">Fresh Blackberries</div></div>
                 <div class="sbv-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-peaches/kid-with-giant-peach.jpg" alt="A kid holding a giant fresh-picked peach" loading="lazy"><div class="sbv-gcard-label">Big Peach</div></div>
-                <div class="sbv-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-peaches/peach-two-boxes.jpg" alt="Two boxes of just-picked peaches" loading="lazy"><div class="sbv-gcard-label">Just Picked</div></div>
+                <div class="sbv-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-belleville-blackberries/blackberries-kid-with-basket.jpg" alt="A kid with a basket of blackberries" loading="lazy"><div class="sbv-gcard-label">Pick-Your-Own</div></div>
                 <div class="sbv-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-peaches/peaches-box.jpg" alt="A full box of Eckert's peaches" loading="lazy"><div class="sbv-gcard-label">By the Box</div></div>
-                <div class="sbv-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-peaches/peaches-kids-tire.jpg" alt="Kids enjoying a day at the farm" loading="lazy"><div class="sbv-gcard-label">Farm Fun</div></div>
-                <div class="sbv-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-peaches/peaches-ladies.jpg" alt="Picking peaches in the orchard" loading="lazy"><div class="sbv-gcard-label">Pick-Your-Own</div></div>
+                <div class="sbv-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-belleville-blackberries/blackberries-bowl.jpg" alt="A bowl of fresh blackberries" loading="lazy"><div class="sbv-gcard-label">By the Bowl</div></div>
                 <!-- Duplicate for loop -->
+                <div class="sbv-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-belleville-blackberries/blackberries-handful.jpg" alt="A handful of just-picked blackberries" loading="lazy"><div class="sbv-gcard-label">Fresh Blackberries</div></div>
                 <div class="sbv-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-peaches/kid-with-giant-peach.jpg" alt="A kid holding a giant fresh-picked peach" loading="lazy"><div class="sbv-gcard-label">Big Peach</div></div>
-                <div class="sbv-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-peaches/peach-two-boxes.jpg" alt="Two boxes of just-picked peaches" loading="lazy"><div class="sbv-gcard-label">Just Picked</div></div>
+                <div class="sbv-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-belleville-blackberries/blackberries-kid-with-basket.jpg" alt="A kid with a basket of blackberries" loading="lazy"><div class="sbv-gcard-label">Pick-Your-Own</div></div>
                 <div class="sbv-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-peaches/peaches-box.jpg" alt="A full box of Eckert's peaches" loading="lazy"><div class="sbv-gcard-label">By the Box</div></div>
-                <div class="sbv-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-peaches/peaches-kids-tire.jpg" alt="Kids enjoying a day at the farm" loading="lazy"><div class="sbv-gcard-label">Farm Fun</div></div>
-                <div class="sbv-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-peaches/peaches-ladies.jpg" alt="Picking peaches in the orchard" loading="lazy"><div class="sbv-gcard-label">Pick-Your-Own</div></div>
+                <div class="sbv-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-belleville-blackberries/blackberries-bowl.jpg" alt="A bowl of fresh blackberries" loading="lazy"><div class="sbv-gcard-label">By the Bowl</div></div>
             </div>
         </div>
     </div>
@@ -607,11 +653,11 @@
 
             <!-- PYO FIELD ACCESS PASS -->
             <div class="sbv-card sbv-card-dark sbvr">
-                <span class="sbv-card-icon">🍑</span>
+                <span class="sbv-card-icon">🪻</span>
                 <h3>PYO Field Access Pass</h3>
                 <ul class="sbv-card-bullets">
                     <li>🚜 Wagon ride out to the fields &amp; back</li>
-                    <li>🍑 Pick your own peaches</li>
+                    <li>🪻 Pick your own blackberries &amp; peaches</li>
                     <li>🧺 Bring home what you pick — fruit sold by weight at the barn</li>
                     <li>🌱 Required for everyone ages 2 &amp; up</li>
                 </ul>
@@ -640,18 +686,53 @@
                 <span class="sbv-card-note">Per person · + applicable fees at checkout. PYO fruit is priced by the pound and paid for at the farm.</span>
             </div>
 
-            <!-- OPENING DAY INFO CARD -->
+            <!-- NOW-OPEN INFO CARD -->
             <div class="sbv-card sbv-card-pink sbvr d1">
                 <span class="sbv-card-badge sbv-badge-green">Now Picking</span>
-                <span class="sbv-card-icon">🗓️</span>
-                <h3>Opening Day: June 12</h3>
+                <span class="sbv-card-icon">🌾</span>
+                <h3>Now Open · We're Picking</h3>
                 <ul class="sbv-card-bullets">
-                    <li>🍑 Fields open Thursday, June 12 with peaches</li>
+                    <li>🪻 Blackberries &amp; peaches now picking</li>
                     <li>🌤️ Picking depends on weather &amp; ripeness — it changes daily</li>
                     <li>🎟️ Buy online and save vs. the gate price</li>
                     <li>📍 20995 Eckert Orchard Road, Grafton, IL</li>
                 </ul>
                 <span class="sbv-card-note">Check today's crop updates before you visit so you know exactly what's ready to pick. 📸 Tag us on Facebook &amp; Instagram — we'd love to see your farm-fresh haul!</span>
+            </div>
+
+            <!-- SEASON PASS CARD (replicated from Belleville sb-season-tiers → sbv- prefix) -->
+            <div class="sbv-card sbv-card-dark sbvr d2">
+                <span class="sbv-card-badge sbv-badge-gold">Best Value</span>
+                <span class="sbv-card-icon">🏆</span>
+                <h3>Season Pass</h3>
+                <ul class="sbv-card-bullets">
+                    <li>♾️ Unlimited field access all season</li>
+                    <li>🌾 Belleville &amp; Grafton Farms</li>
+                    <li>🪻 All pick-your-own crops included</li>
+                </ul>
+                <div class="sbv-season-tiers">
+                    <div class="sbv-season-tier">
+                        <div>
+                            <span class="sbv-season-tier-name">Eckert Experience Pass</span>
+                            <span class="sbv-season-tier-desc">Includes 1 Eckert Experience ticket + 10% store discount</span>
+                        </div>
+                        <div class="sbv-season-tier-price">
+                            <span class="sbv-season-tier-was">$75</span>
+                            <span class="sbv-season-tier-now">$32</span>
+                        </div>
+                    </div>
+                    <div class="sbv-season-tier">
+                        <div>
+                            <span class="sbv-season-tier-name">Picking Pass</span>
+                            <span class="sbv-season-tier-desc">Field access for all pick-your-own crops all season</span>
+                        </div>
+                        <div class="sbv-season-tier-price">
+                            <span class="sbv-season-tier-was">$50</span>
+                            <span class="sbv-season-tier-now">$22</span>
+                        </div>
+                    </div>
+                </div>
+                <span class="sbv-card-note">Not valid at Eckert's Millstadt or Versailles, KY Farms.</span>
             </div>
         </div>
     </div>
@@ -704,8 +785,6 @@
         });
     })();
 </script>
-</body>
-</html>
 
 <!-- ════ SLASH-THROUGH PRICING (TS native ticket block) ════
      Shows the box-office (gate) price struck through before the online price and
@@ -739,3 +818,5 @@
   }
   #ticketBlock .ticket-cost[data-gate]{ color:#5db75b !important; }
 </style>
+</body>
+</html>
