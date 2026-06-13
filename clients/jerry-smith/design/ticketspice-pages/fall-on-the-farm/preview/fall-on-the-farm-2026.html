@@ -100,11 +100,17 @@
     }
     /* ── CENTER BADGE LOGO ── white rounded panel that overlaps the nav bar:
        pokes above & dips below it (mirrors jerrysmithpumpkinfarm.com's notched header). */
+    /* Badge LEFT-aligned (original wordmark position, Mat 2026-06-12). Stays absolutely
+       positioned + vertically centered on the bar so it keeps the notch overlap (pokes
+       above & dips below); only the horizontal anchor moved center → left. The nav-right
+       group (location + CTA) keeps to the right via the nav's justify-content: flex-end,
+       so the absolute badge and the flex group don't fight. left tracks the nav gutter
+       at each breakpoint (40 / 24 / 16px). */
     #jsf-funnel .jsf-logo-wrap {
         position: absolute !important;
-        left: 50% !important;
+        left: 40px !important;
         top: 50% !important;
-        transform: translate(-50%, -50%) !important;
+        transform: translateY(-50%) !important;
         z-index: 110 !important;
         display: flex !important;
         align-items: center !important;
@@ -581,6 +587,7 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 860px) {
         #jsf-funnel .jsf-nav { padding: 0 24px !important; }
+        #jsf-funnel .jsf-logo-wrap { left: 24px !important; }
         #jsf-funnel .jsf-nav-cta { padding: 14px 24px !important; }
         #jsf-funnel .jsf-benefits { padding: 32px 24px !important; }
         #jsf-funnel .jsf-tickets { padding: 56px 24px !important; }
@@ -595,11 +602,12 @@
     }
     @media (max-width: 560px) {
         #jsf-funnel .jsf-nav { padding: 0 16px !important; height: 72px !important; }
+        #jsf-funnel .jsf-logo-wrap { left: 16px !important; }
         #jsf-funnel .jsf-logo-badge { padding: 9px 18px !important; border-radius: 13px !important; }
         #jsf-funnel .jsf-logo-badge img { height: 60px !important; }
         #jsf-funnel .jsf-nav-loc { display: none !important; }
-        /* Narrow bar: center the badge alone (mirrors a centered-logo mobile header);
-           the Get-the-Pass action stays available in the hero + tickets section. */
+        /* Narrow bar: badge stays LEFT-aligned (its home position); the Get-the-Pass action
+           lives in the hero, the tickets section, and the floating bottom button on mobile. */
         #jsf-funnel .jsf-nav-cta { display: none !important; }
         #jsf-funnel .jsf-benefits { padding: 24px 16px !important; }
         #jsf-funnel .jsf-benefits-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 14px 0 !important; }
