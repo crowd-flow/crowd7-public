@@ -2,19 +2,16 @@
     Jerry Smith Farm · "Fall on the Farm" 2026 · Season Pass · TicketSpice page header
     Modeled on /data/clients/colony-acres/design/ticketspice-pages/fall-harvest-festival-2026.html
 
-    PHASE 1 (this build): Season Pass ONLY — $39.95 online / $49.95 gate anchor. Hero VIDEO + gallery.
+    PHASE 1 (this build): Season Pass ONLY — $39.95 online / $49.95 gate anchor. Hero IMAGE + gallery.
     Sold in-person via QR at the free summer weekends (Dog Days 6/13-14, Father's Day 6/20-21).
     Pass is valid for the full fall season (Sept 12 – Nov 1, 2026).
     PHASE 2 (Sept 12 launch): add GA Weekday + GA Weekend cards (3-card layout) — NOT in this file yet.
 
     ════════════════════════════════════════════════════════════════════════════════════
-    🔴 BEFORE PUBLISH — find-and-replace the media host token:
-        __CLOUDFRONT__  →  the CloudFront distribution domain fronting the crowd7-assets bucket
-                           (e.g. d123abc.cloudfront.net). One replace covers the hero VIDEO + poster.
-                           The 6 gallery images are now in-repo (raw.githubusercontent.com/crowd-flow/
-                           crowd7-public/.../jerry-smith/design/assets/) — no S3 step for those.
-    Assets still to upload to s3://crowd7-assets/jerry-smith/ (private + CloudFront OAC):
-        hero-video.mp4, hero-poster.jpg  (VIDEO + poster only — gallery is in-repo)
+    HERO + GALLERY: all images are in-repo (raw.githubusercontent.com/crowd-flow/crowd7-public/
+    .../jerry-smith/design/assets/). Hero = pumpkin-fly-over-hero-image.jpeg. NO S3/CloudFront step —
+    the hero VIDEO was swapped for a still image 2026-06-12 (Mat), which retired the AWS media blocker.
+    TS PAGE: https://jerrysmithfarm.ticketspice.com/fall-on-the-farm-2026
     ════════════════════════════════════════════════════════════════════════════════════
 
     Source: 5.21.26 Fall Strategy Meeting + 6.12.26 Lauren call (season-pass spec) + Bryan Slack ask.
@@ -620,12 +617,9 @@
         </div>
     </div>
 
-    <!-- HERO (VIDEO) -->
+    <!-- HERO (IMAGE) -->
     <div class="jsf-hero">
-        <video class="jsf-hero-video" autoplay muted loop playsinline preload="metadata"
-               poster="https://__CLOUDFRONT__/jerry-smith/hero-poster.jpg">
-            <source src="https://__CLOUDFRONT__/jerry-smith/hero-video.mp4" type="video/mp4">
-        </video>
+        <img class="jsf-hero-video" src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/jerry-smith/design/assets/pumpkin-fly-over-hero-image.jpeg" alt="Fall on the Farm — Jerry Smith Farm">
         <div class="jsf-hero-overlay"></div>
         <div class="jsf-hero-content">
             <span class="jsf-hero-ribbon">Unlimited Fall Visits · One Pass</span>
@@ -665,14 +659,14 @@
         </div>
         <div class="jsf-gallery-mask">
             <div class="jsf-gallery-track">
-                <div class="jsf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/jerry-smith/design/assets/pumpkin-fly-over.jpeg" alt="Pumpkin Patch" loading="lazy"><div class="jsf-gcard-label">Pumpkin Patch</div></div>
+                <div class="jsf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/jerry-smith/design/assets/pumpkin-fly-over-hero-image.jpeg" alt="Pumpkin Patch" loading="lazy"><div class="jsf-gcard-label">Pumpkin Patch</div></div>
                 <div class="jsf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/jerry-smith/design/assets/friends-ice-cream.jpg" alt="Treats &amp; Eats" loading="lazy"><div class="jsf-gcard-label">Treats &amp; Eats</div></div>
                 <div class="jsf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/jerry-smith/design/assets/goat.jpeg" alt="Meet the Animals" loading="lazy"><div class="jsf-gcard-label">Meet the Animals</div></div>
                 <div class="jsf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/jerry-smith/design/assets/father-son-smiling.jpg" alt="Family Memories" loading="lazy"><div class="jsf-gcard-label">Family Memories</div></div>
                 <div class="jsf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/jerry-smith/design/assets/piggies.jpeg" alt="Barnyard Friends" loading="lazy"><div class="jsf-gcard-label">Barnyard Friends</div></div>
                 <div class="jsf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/jerry-smith/design/assets/kids-playing.jpeg" alt="Family Fun" loading="lazy"><div class="jsf-gcard-label">Family Fun</div></div>
                 <!-- Duplicate set for seamless marquee loop -->
-                <div class="jsf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/jerry-smith/design/assets/pumpkin-fly-over.jpeg" alt="Pumpkin Patch" loading="lazy"><div class="jsf-gcard-label">Pumpkin Patch</div></div>
+                <div class="jsf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/jerry-smith/design/assets/pumpkin-fly-over-hero-image.jpeg" alt="Pumpkin Patch" loading="lazy"><div class="jsf-gcard-label">Pumpkin Patch</div></div>
                 <div class="jsf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/jerry-smith/design/assets/friends-ice-cream.jpg" alt="Treats &amp; Eats" loading="lazy"><div class="jsf-gcard-label">Treats &amp; Eats</div></div>
                 <div class="jsf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/jerry-smith/design/assets/goat.jpeg" alt="Meet the Animals" loading="lazy"><div class="jsf-gcard-label">Meet the Animals</div></div>
                 <div class="jsf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/jerry-smith/design/assets/father-son-smiling.jpg" alt="Family Memories" loading="lazy"><div class="jsf-gcard-label">Family Memories</div></div>
@@ -840,3 +834,121 @@
         }
     })();
 </script>
+
+<!-- ════ TICKETSPICE NATIVE-FORM STYLING (cart, calendar, ticket table, buttons, merch) ════
+     Supplied by Mat 2026-06-12. Styles the native TS checkout elements (the loader injects this
+     <style> into the live page so it cascades onto TS's own DOM). Objective syntax breakages fixed
+     so declarations actually apply: #fffff→#ffffff; added missing ';' after `background: transparent`
+     and the 2nd table's `background-color: white`; quoted multi-word font names. Otherwise verbatim. -->
+<style>
+.field-banner td { border: none; }
+
+.campaign-form:not(.legacy-form) hr.line-break {
+  border-color: #000000 !important;
+}
+
+.field-gallery {
+  background: white;
+}
+
+.field-gallery {
+  background-image: url("");
+}
+
+@media screen and (max-width: 768px) {
+  .field-image-single.field-image--fw {
+    padding: 1px 0 !important;
+  }
+}
+
+.field-image-single {
+  background: transparent;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.field-location.header-field h4 {
+  background: #FF9900;
+  color: white !important;
+}
+
+.wbx-calendar .row .day {
+  border-radius: 35px;
+  color: #ffffff;
+  cursor: default;
+  flex: 1;
+  height: 40px;
+  margin: 1px !important;
+  transition: all .2s;
+}
+
+.ticket-block .wbx-calendar .row .day.enabled { color: white; background-color: #3c8a4d; }
+
+.ticket-block .wbx-calendar .row .day.enabled.sold-out { color: white; background-color: #B93D45; }
+
+.ticket-block table.holds-tickets th {
+  color: #ffffff !important;
+  background: #000000;
+}
+
+.campaign-form:not(.legacy-form) .ticket-block table.holds-tickets {
+  border: 3px solid black;
+  border-radius: 10px;
+  border-spacing: 0;
+  box-shadow: 0 10px 20px rgb(206, 43, 25);
+  width: 100%;
+}
+
+.campaign-form:not(.legacy-form) .ticket-block table.holds-tickets {
+  border-collapse: separate !important;
+  background-color: white;
+  border-spacing: 0;
+  box-shadow: 0 10px 20px rgb(206, 43, 25);
+  width: 100%;
+}
+
+.campaign-form:not(.legacy-form) ul.upgrades li img.product-thumbnail {
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgb(206, 43, 25);
+}
+
+.campaign-form:not(.legacy-form) .field-purchaseProtection .purchase-protection .purchase-protection-header {
+  background-color: white;
+  border: 3px solid black;
+  border-bottom: 3px solid black;
+  color: black !important;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 12px 32px;
+}
+
+.purchase-protection .purchase-protection-body {
+  background-color: white;
+  padding: 15px;
+  border: 3px solid black;
+}
+
+.campaign-form:not(.legacy-form) .btn-danger,
+.campaign-form:not(.legacy-form) .btn-primary,
+.campaign-form:not(.legacy-form) .btn:not(.btn--transparent):not(.btn--plus):not(.btn--minus):not(.btn--home):not(.btn--tooltipstered):not(.btn--blue) {
+  font-size: 15px;
+  color: white;
+  border-radius: 10px;
+  font-family: fatfrank, 'Segoe UI', 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', -apple-system, sans-serif;
+  font-weight: bold;
+  height: 44px;
+  min-height: 44px;
+  padding: 15px 20px;
+  text-transform: uppercase;
+}
+
+#ticketBlock > table > tbody:nth-child(3) > tr:nth-child(5) > td.description > div > img {
+  height: 120px;
+  margin-top: 12px;
+  width: auto;
+}
+
+#registrants > div.field-merchandise.registrant-field.field-registrant-1 {
+  display: none;
+}
+</style>

@@ -6,11 +6,11 @@
 <title>Jerry Smith Farm · Fall on the Farm 2026 · PREVIEW</title>
 <!--
     LOCAL PREVIEW of fall-on-the-farm-2026.html (the TicketSpice snippet).
-    Media here points at LOCAL source files so Mat can `open` this and see the real
-    branded page render with the actual hero video + gallery photos BEFORE S3/CloudFront
-    hosting lands. The shipped TS snippet uses https://__CLOUDFRONT__/jerry-smith/... URLs.
-    Once hosting lands, both files carry the CloudFront URLs and stay in parity.
-    Open with:  open "/Users/matlonginow/Desktop/crowd7/data/clients/jerry-smith/events/fall-in-the-farm/design/ticketspice-pages/fall-on-the-farm-2026.preview.html"
+    Media here points at in-repo asset files so Mat can `open` this and see the real
+    branded page render with the hero image + gallery photos. Hero VIDEO was swapped for a
+    still image 2026-06-12 (Mat) — all media is now in-repo, no S3/CloudFront step.
+    The shipped TS snippet (sibling fall-on-the-farm-2026.html) uses raw.githubusercontent.com URLs.
+    Open with:  open "/Users/matlonginow/Desktop/crowd7-public/clients/jerry-smith/design/ticketspice-pages/fall-on-the-farm/preview/fall-on-the-farm-2026-preview.html"
 -->
 <style>
   body { margin: 0; padding: 0; background: #FBF4E6; }
@@ -186,8 +186,7 @@
     </div>
 
     <div class="jsf-hero">
-        <video class="jsf-hero-video" autoplay muted loop playsinline preload="metadata"
-               src="file:///Users/matlonginow/Desktop/notes/work/crowd7/projects/jerry-smith-fall-page/artifacts/hero-video.mp4"></video>
+        <img class="jsf-hero-video" src="../../../assets/pumpkin-fly-over-hero-image.jpeg" alt="Fall on the Farm — Jerry Smith Farm">
         <div class="jsf-hero-overlay"></div>
         <div class="jsf-hero-content">
             <span class="jsf-hero-ribbon">Unlimited Fall Visits · One Pass</span>
@@ -225,13 +224,13 @@
         </div>
         <div class="jsf-gallery-mask">
             <div class="jsf-gallery-track">
-                <div class="jsf-gcard"><img src="file:///Users/matlonginow/Desktop/crowd7-public/clients/jerry-smith/design/assets/pumpkin-fly-over.jpeg" alt="Pumpkin Patch" loading="lazy"><div class="jsf-gcard-label">Pumpkin Patch</div></div>
+                <div class="jsf-gcard"><img src="file:///Users/matlonginow/Desktop/crowd7-public/clients/jerry-smith/design/assets/pumpkin-fly-over-hero-image.jpeg" alt="Pumpkin Patch" loading="lazy"><div class="jsf-gcard-label">Pumpkin Patch</div></div>
                 <div class="jsf-gcard"><img src="file:///Users/matlonginow/Desktop/crowd7-public/clients/jerry-smith/design/assets/friends-ice-cream.jpg" alt="Treats &amp; Eats" loading="lazy"><div class="jsf-gcard-label">Treats &amp; Eats</div></div>
                 <div class="jsf-gcard"><img src="file:///Users/matlonginow/Desktop/crowd7-public/clients/jerry-smith/design/assets/goat.jpeg" alt="Meet the Animals" loading="lazy"><div class="jsf-gcard-label">Meet the Animals</div></div>
                 <div class="jsf-gcard"><img src="file:///Users/matlonginow/Desktop/crowd7-public/clients/jerry-smith/design/assets/father-son-smiling.jpg" alt="Family Memories" loading="lazy"><div class="jsf-gcard-label">Family Memories</div></div>
                 <div class="jsf-gcard"><img src="file:///Users/matlonginow/Desktop/crowd7-public/clients/jerry-smith/design/assets/piggies.jpeg" alt="Barnyard Friends" loading="lazy"><div class="jsf-gcard-label">Barnyard Friends</div></div>
                 <div class="jsf-gcard"><img src="file:///Users/matlonginow/Desktop/crowd7-public/clients/jerry-smith/design/assets/kids-playing.jpeg" alt="Family Fun" loading="lazy"><div class="jsf-gcard-label">Family Fun</div></div>
-                <div class="jsf-gcard"><img src="file:///Users/matlonginow/Desktop/crowd7-public/clients/jerry-smith/design/assets/pumpkin-fly-over.jpeg" alt="Pumpkin Patch" loading="lazy"><div class="jsf-gcard-label">Pumpkin Patch</div></div>
+                <div class="jsf-gcard"><img src="file:///Users/matlonginow/Desktop/crowd7-public/clients/jerry-smith/design/assets/pumpkin-fly-over-hero-image.jpeg" alt="Pumpkin Patch" loading="lazy"><div class="jsf-gcard-label">Pumpkin Patch</div></div>
                 <div class="jsf-gcard"><img src="file:///Users/matlonginow/Desktop/crowd7-public/clients/jerry-smith/design/assets/friends-ice-cream.jpg" alt="Treats &amp; Eats" loading="lazy"><div class="jsf-gcard-label">Treats &amp; Eats</div></div>
                 <div class="jsf-gcard"><img src="file:///Users/matlonginow/Desktop/crowd7-public/clients/jerry-smith/design/assets/goat.jpeg" alt="Meet the Animals" loading="lazy"><div class="jsf-gcard-label">Meet the Animals</div></div>
                 <div class="jsf-gcard"><img src="file:///Users/matlonginow/Desktop/crowd7-public/clients/jerry-smith/design/assets/father-son-smiling.jpg" alt="Family Memories" loading="lazy"><div class="jsf-gcard-label">Family Memories</div></div>
