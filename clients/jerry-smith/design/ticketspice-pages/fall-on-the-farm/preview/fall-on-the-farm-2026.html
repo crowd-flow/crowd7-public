@@ -823,6 +823,9 @@
         </div>
     </div>
 
+    <!-- Sentinel just above where the native TS cart renders — fallback trigger for the season-pass popup if #ticketBlock never appears. -->
+    <div id="jsf-sp-sentinel" aria-hidden="true" style="width:1px;height:1px;"></div>
+
 </div><!-- end #jsf-funnel -->
 
 <script>
@@ -919,6 +922,131 @@
             });
         }
     })();
+</script>
+
+<!-- ════ SEASON-PASS "THE DATE DOESN'T MATTER" SCROLL POPUP ════
+     Fires once per session when the buyer scrolls to the native TS ticket block (#ticketBlock),
+     clearing up that picking a date doesn't change the pass (TS just requires a date for passes
+     to appear). Trigger: an IntersectionObserver on #ticketBlock — the TS cart renders async, so
+     a short poll waits for it — plus a sentinel fallback (#jsf-sp-sentinel at the end of OUR content)
+     so the popup still fires even if the cart never renders in our scope. Guarded by sessionStorage
+     (jsf_seasonpass_popup_seen) + an in-memory flag → shows at most once per session. Dismiss via
+     "Got it", the × close, click-outside, or Esc. The hybrid loader re-executes this script block after
+     injecting the content (runbook v4 re-injection loop), so it runs live. -->
+<style>
+    #jsf-sp-overlay {
+        position: fixed !important; inset: 0 !important; z-index: 100000 !important;
+        background: rgba(42,26,14,0.62) !important;
+        display: flex !important; align-items: center !important; justify-content: center !important;
+        padding: 20px !important; box-sizing: border-box !important;
+        opacity: 0 !important; pointer-events: none !important; transition: opacity .28s ease !important;
+        font-family: 'Open Sans', sans-serif !important;
+    }
+    #jsf-sp-overlay.jsf-sp-show { opacity: 1 !important; pointer-events: auto !important; }
+    #jsf-sp-overlay .jsf-sp-modal {
+        background: #FBF4E6 !important; color: #2A1A0E !important;
+        max-width: 440px !important; width: 100% !important;
+        border-radius: 18px !important; border: 3px solid #9E2B25 !important;
+        box-shadow: 0 24px 64px rgba(42,26,14,0.45) !important;
+        padding: 34px 30px 30px !important; position: relative !important; box-sizing: border-box !important;
+        transform: translateY(16px) scale(0.98) !important; transition: transform .28s ease !important;
+        text-align: center !important;
+    }
+    #jsf-sp-overlay.jsf-sp-show .jsf-sp-modal { transform: translateY(0) scale(1) !important; }
+    #jsf-sp-overlay .jsf-sp-badge {
+        display: inline-block !important; background: #2D7541 !important; color: #fff !important;
+        font-family: 'Oswald', sans-serif !important; font-weight: 600 !important; letter-spacing: 0.08em !important;
+        text-transform: uppercase !important; font-size: 0.72rem !important;
+        padding: 5px 14px !important; border-radius: 50px !important; margin-bottom: 14px !important;
+    }
+    #jsf-sp-overlay .jsf-sp-modal h3 {
+        font-family: 'Zilla Slab', serif !important; font-weight: 700 !important;
+        font-size: 1.6rem !important; line-height: 1.2 !important; margin: 0 0 12px !important; color: #9E2B25 !important;
+    }
+    #jsf-sp-overlay .jsf-sp-modal p {
+        font-size: 1rem !important; line-height: 1.5 !important; margin: 0 0 22px !important; color: #2A1A0E !important;
+    }
+    #jsf-sp-overlay .jsf-sp-got {
+        display: inline-block !important; background: #E0742F !important; color: #fff !important;
+        font-family: 'Zilla Slab', serif !important; font-weight: 700 !important; font-size: 1.05rem !important;
+        letter-spacing: 0.04em !important; border: none !important; cursor: pointer !important;
+        padding: 14px 40px !important; border-radius: 50px !important;
+        box-shadow: 0 8px 24px rgba(224,116,47,0.4) !important; transition: background .2s, transform .15s !important;
+    }
+    #jsf-sp-overlay .jsf-sp-got:hover { background: #C75F22 !important; transform: translateY(-2px) !important; }
+    #jsf-sp-overlay .jsf-sp-close {
+        position: absolute !important; top: 10px !important; right: 14px !important;
+        width: 36px !important; height: 36px !important; border: none !important; background: transparent !important;
+        font-size: 28px !important; line-height: 1 !important; color: #9E2B25 !important; cursor: pointer !important;
+        opacity: 0.7 !important; transition: opacity .15s !important; padding: 0 !important;
+    }
+    #jsf-sp-overlay .jsf-sp-close:hover { opacity: 1 !important; }
+    @media (max-width: 480px) {
+        #jsf-sp-overlay .jsf-sp-modal { padding: 30px 22px 26px !important; border-radius: 16px !important; }
+        #jsf-sp-overlay .jsf-sp-modal h3 { font-size: 1.35rem !important; }
+        #jsf-sp-overlay .jsf-sp-modal p { font-size: 0.95rem !important; }
+    }
+</style>
+<div id="jsf-sp-overlay" role="dialog" aria-modal="true" aria-labelledby="jsf-sp-title" aria-hidden="true">
+    <div class="jsf-sp-modal">
+        <button type="button" class="jsf-sp-close" aria-label="Close">&times;</button>
+        <span class="jsf-sp-badge">Season Pass</span>
+        <h3 id="jsf-sp-title">Buying a Season Pass? The date doesn&rsquo;t matter.</h3>
+        <p>We&rsquo;re currently selling Season Passes, good for the entire season. TicketSpice requires you to pick a date before passes appear &mdash; so just select any available date to view and purchase your pass. Your Season Pass works all season long, no matter which date you choose.</p>
+        <button type="button" class="jsf-sp-got">Got it</button>
+    </div>
+</div>
+<script>
+(function(){
+    var KEY = 'jsf_seasonpass_popup_seen';
+    try { if (sessionStorage.getItem(KEY)) return; } catch (e) {}
+    var overlay = document.getElementById('jsf-sp-overlay');
+    if (!overlay) return;
+    var fired = false, io = null, sentinelIO = null, pollTimer = null, pollCount = 0;
+
+    function cleanup(){
+        if (io) { io.disconnect(); io = null; }
+        if (sentinelIO) { sentinelIO.disconnect(); sentinelIO = null; }
+        if (pollTimer) { clearInterval(pollTimer); pollTimer = null; }
+    }
+    function openModal(){
+        if (fired) return;
+        fired = true;
+        try { sessionStorage.setItem(KEY, '1'); } catch (e) {}
+        overlay.classList.add('jsf-sp-show');
+        overlay.setAttribute('aria-hidden', 'false');
+        cleanup();
+    }
+    function closeModal(){
+        overlay.classList.remove('jsf-sp-show');
+        overlay.setAttribute('aria-hidden', 'true');
+    }
+
+    overlay.addEventListener('click', function(e){ if (e.target === overlay) closeModal(); });
+    var gotBtn = overlay.querySelector('.jsf-sp-got');
+    var xBtn = overlay.querySelector('.jsf-sp-close');
+    if (gotBtn) gotBtn.addEventListener('click', closeModal);
+    if (xBtn) xBtn.addEventListener('click', closeModal);
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape' || e.keyCode === 27) closeModal(); });
+
+    function watch(el){
+        var o = new IntersectionObserver(function(entries){
+            entries.forEach(function(en){ if (en.isIntersecting) openModal(); });
+        }, { threshold: 0, rootMargin: '0px 0px -10% 0px' });
+        o.observe(el);
+        return o;
+    }
+    // Primary: the native TS cart (#ticketBlock) renders async — poll up to ~12s for it, then observe it.
+    pollTimer = setInterval(function(){
+        pollCount++;
+        var tb = document.getElementById('ticketBlock');
+        if (tb) { io = watch(tb); clearInterval(pollTimer); pollTimer = null; }
+        else if (pollCount > 40) { clearInterval(pollTimer); pollTimer = null; }
+    }, 300);
+    // Fallback: a sentinel at the end of OUR content — guarantees a fire even if the cart never renders.
+    var sentinel = document.getElementById('jsf-sp-sentinel');
+    if (sentinel) sentinelIO = watch(sentinel);
+})();
 </script>
 
 <!-- ════ TICKETSPICE NATIVE-FORM STYLING (cart, calendar, ticket table, buttons, merch) ════
