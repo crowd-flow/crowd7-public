@@ -837,12 +837,15 @@
 
 <!-- ════ SLASH-THROUGH PRICING on the TicketSpice NATIVE ticket block ════
      Pattern: data/clients/_patterns/slash-through-pricing.md (name-keyed JS + MutationObserver).
-     🔴 CONFIRM the exact Season Pass ticket <h4> name on the live TS page, then set it as the GATE
-     key below (a one-character mismatch = no slash, silently). Placeholder name used now. -->
+     ✅ Ticket <h4> name CONFIRMED by Mat 2026-06-12: "Fall Season Pass" (online $39.95 / gate $49.95).
+     Name-keyed (NOT positional) → immune to TS Action show/hide reorders; MutationObserver re-applies
+     the gate strike on every TS re-render. The hybrid loader re-executes this <script> after injecting
+     the content (runbook v4 script-reinjection loop), so it runs live.
+     To eyeball live: pick a date in the cart so the ticket renders, confirm ~~$49.95~~ $39.95 shows. -->
 <script>
 (function(){
   var GATE = {
-    "Fall Season Pass": "$49.95"   /* 🔴 match the live TS ticket name exactly */
+    "Fall Season Pass": "$49.95"   /* CONFIRMED live ticket name (Mat 2026-06-12) — exact match required */
   };
   function tag(){
     document.querySelectorAll('#ticketBlock .ticket-type').forEach(function(row){
