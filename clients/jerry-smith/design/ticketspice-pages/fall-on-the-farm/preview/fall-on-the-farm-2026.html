@@ -10,11 +10,11 @@
     ════════════════════════════════════════════════════════════════════════════════════
     🔴 BEFORE PUBLISH — find-and-replace the media host token:
         __CLOUDFRONT__  →  the CloudFront distribution domain fronting the crowd7-assets bucket
-                           (e.g. d123abc.cloudfront.net). One replace covers hero video, poster,
-                           and all 6 gallery images. Keys already point at jerry-smith/ in the bucket.
-    Assets to upload to s3://crowd7-assets/jerry-smith/ (private + CloudFront OAC):
-        hero-video.mp4, hero-poster.jpg, gallery/pumpkin-patch.jpg, gallery/treats.jpg,
-        gallery/animals.jpg, gallery/family.jpg, gallery/barnyard.jpg, gallery/family-fun.jpg
+                           (e.g. d123abc.cloudfront.net). One replace covers the hero VIDEO + poster.
+                           The 6 gallery images are now in-repo (raw.githubusercontent.com/crowd-flow/
+                           crowd7-public/.../jerry-smith/design/assets/) — no S3 step for those.
+    Assets still to upload to s3://crowd7-assets/jerry-smith/ (private + CloudFront OAC):
+        hero-video.mp4, hero-poster.jpg  (VIDEO + poster only — gallery is in-repo)
     ════════════════════════════════════════════════════════════════════════════════════
 
     Source: 5.21.26 Fall Strategy Meeting + 6.12.26 Lauren call (season-pass spec) + Bryan Slack ask.
@@ -665,19 +665,19 @@
         </div>
         <div class="jsf-gallery-mask">
             <div class="jsf-gallery-track">
-                <div class="jsf-gcard"><img src="https://__CLOUDFRONT__/jerry-smith/gallery/pumpkin-patch.jpg" alt="Pumpkin Patch" loading="lazy"><div class="jsf-gcard-label">Pumpkin Patch</div></div>
-                <div class="jsf-gcard"><img src="https://__CLOUDFRONT__/jerry-smith/gallery/treats.jpg" alt="Treats &amp; Eats" loading="lazy"><div class="jsf-gcard-label">Treats &amp; Eats</div></div>
-                <div class="jsf-gcard"><img src="https://__CLOUDFRONT__/jerry-smith/gallery/animals.jpg" alt="Meet the Animals" loading="lazy"><div class="jsf-gcard-label">Meet the Animals</div></div>
-                <div class="jsf-gcard"><img src="https://__CLOUDFRONT__/jerry-smith/gallery/family.jpg" alt="Family Memories" loading="lazy"><div class="jsf-gcard-label">Family Memories</div></div>
-                <div class="jsf-gcard"><img src="https://__CLOUDFRONT__/jerry-smith/gallery/barnyard.jpg" alt="Barnyard Friends" loading="lazy"><div class="jsf-gcard-label">Barnyard Friends</div></div>
-                <div class="jsf-gcard"><img src="https://__CLOUDFRONT__/jerry-smith/gallery/family-fun.jpg" alt="Family Fun" loading="lazy"><div class="jsf-gcard-label">Family Fun</div></div>
+                <div class="jsf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/jerry-smith/design/assets/pumpkin-fly-over.jpeg" alt="Pumpkin Patch" loading="lazy"><div class="jsf-gcard-label">Pumpkin Patch</div></div>
+                <div class="jsf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/jerry-smith/design/assets/friends-ice-cream.jpg" alt="Treats &amp; Eats" loading="lazy"><div class="jsf-gcard-label">Treats &amp; Eats</div></div>
+                <div class="jsf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/jerry-smith/design/assets/goat.jpeg" alt="Meet the Animals" loading="lazy"><div class="jsf-gcard-label">Meet the Animals</div></div>
+                <div class="jsf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/jerry-smith/design/assets/father-son-smiling.jpg" alt="Family Memories" loading="lazy"><div class="jsf-gcard-label">Family Memories</div></div>
+                <div class="jsf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/jerry-smith/design/assets/piggies.jpeg" alt="Barnyard Friends" loading="lazy"><div class="jsf-gcard-label">Barnyard Friends</div></div>
+                <div class="jsf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/jerry-smith/design/assets/kids-playing.jpeg" alt="Family Fun" loading="lazy"><div class="jsf-gcard-label">Family Fun</div></div>
                 <!-- Duplicate set for seamless marquee loop -->
-                <div class="jsf-gcard"><img src="https://__CLOUDFRONT__/jerry-smith/gallery/pumpkin-patch.jpg" alt="Pumpkin Patch" loading="lazy"><div class="jsf-gcard-label">Pumpkin Patch</div></div>
-                <div class="jsf-gcard"><img src="https://__CLOUDFRONT__/jerry-smith/gallery/treats.jpg" alt="Treats &amp; Eats" loading="lazy"><div class="jsf-gcard-label">Treats &amp; Eats</div></div>
-                <div class="jsf-gcard"><img src="https://__CLOUDFRONT__/jerry-smith/gallery/animals.jpg" alt="Meet the Animals" loading="lazy"><div class="jsf-gcard-label">Meet the Animals</div></div>
-                <div class="jsf-gcard"><img src="https://__CLOUDFRONT__/jerry-smith/gallery/family.jpg" alt="Family Memories" loading="lazy"><div class="jsf-gcard-label">Family Memories</div></div>
-                <div class="jsf-gcard"><img src="https://__CLOUDFRONT__/jerry-smith/gallery/barnyard.jpg" alt="Barnyard Friends" loading="lazy"><div class="jsf-gcard-label">Barnyard Friends</div></div>
-                <div class="jsf-gcard"><img src="https://__CLOUDFRONT__/jerry-smith/gallery/family-fun.jpg" alt="Family Fun" loading="lazy"><div class="jsf-gcard-label">Family Fun</div></div>
+                <div class="jsf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/jerry-smith/design/assets/pumpkin-fly-over.jpeg" alt="Pumpkin Patch" loading="lazy"><div class="jsf-gcard-label">Pumpkin Patch</div></div>
+                <div class="jsf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/jerry-smith/design/assets/friends-ice-cream.jpg" alt="Treats &amp; Eats" loading="lazy"><div class="jsf-gcard-label">Treats &amp; Eats</div></div>
+                <div class="jsf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/jerry-smith/design/assets/goat.jpeg" alt="Meet the Animals" loading="lazy"><div class="jsf-gcard-label">Meet the Animals</div></div>
+                <div class="jsf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/jerry-smith/design/assets/father-son-smiling.jpg" alt="Family Memories" loading="lazy"><div class="jsf-gcard-label">Family Memories</div></div>
+                <div class="jsf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/jerry-smith/design/assets/piggies.jpeg" alt="Barnyard Friends" loading="lazy"><div class="jsf-gcard-label">Barnyard Friends</div></div>
+                <div class="jsf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/jerry-smith/design/assets/kids-playing.jpeg" alt="Family Fun" loading="lazy"><div class="jsf-gcard-label">Family Fun</div></div>
             </div>
         </div>
     </div>
