@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Belleville Blackberry — Preview</title>
+<title>Belleville Dual-Crop (Peach + Blackberry) — Preview</title>
 <style>
   html, body { margin: 0; padding: 0; background: #FFF8F8; }
   #sb-funnel .sbr { opacity: 1 !important; transform: none !important; }
@@ -12,6 +12,9 @@
 </style>
 </head>
 <body>
+<!-- ECKERTS BELLEVILLE — DUAL-CROP (PEACH 🍑 + BLACKBERRY 🪻) FIELD ACCESS · 2026
+     Both crops coexist (NOT a switchover). Peaches open Tue 6/16 alongside live blackberries.
+     File path kept AS-IS so the loader resolves the same URL (blackberries folder + blackberry-content stem). -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
@@ -32,7 +35,7 @@
         box-sizing: border-box !important;
     }
 
-    /* ── BANNER ── (deepened to #7A0820 "darker berry" per black-raspberry precedent) */
+    /* ── BANNER ── (deepened to #7A0820 "darker berry" — carries to dual-crop) */
     #sb-funnel .sb-banner {
         width: 100% !important;
         background: #7A0820 !important;
@@ -121,10 +124,10 @@
         display: flex !important;
         align-items: flex-end !important;
         overflow: hidden !important;
-        /* Blackberry hero — Mat's Belleville set, optimized to 2000px / ~433KB (2026-06-08). */
-        background-image: url('https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-belleville-blackberries/blackberries-hero.jpg') !important;
+        /* Peach hero leads — peaches are the new opening (Tue 6/16); blackberries carry through gallery + cards. */
+        background-image: url('https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-peaches/peach-hero2.jpg') !important;
         background-size: cover !important;
-        background-position: center 40% !important;
+        background-position: center 45% !important;
     }
     #sb-funnel .sb-hero-overlay {
         position: absolute !important;
@@ -236,7 +239,7 @@
     #sb-funnel .sb-gallery-track {
         display: flex !important; gap: 16px !important;
         width: max-content !important;
-        animation: sbMarquee 24s linear infinite !important;
+        animation: sbMarquee 36s linear infinite !important;
         padding: 8px 0 !important;
     }
     #sb-funnel .sb-gallery-track:hover { animation-play-state: paused !important; }
@@ -281,12 +284,13 @@
         display: block !important; box-sizing: border-box !important;
     }
     #sb-funnel .sb-tickets-header { text-align: center !important; margin-bottom: 48px !important; }
+    /* 2×2 grid — dual-crop adds a 4th card (both Fun Passes coexist). */
     #sb-funnel .sb-grid {
         display: grid !important;
-        grid-template-columns: repeat(3, minmax(0, 400px)) !important;
+        grid-template-columns: repeat(2, minmax(0, 400px)) !important;
         gap: 24px !important;
         justify-content: center !important;
-        max-width: 1280px !important;
+        max-width: 848px !important;
         margin-left: auto !important;
         margin-right: auto !important;
     }
@@ -474,7 +478,7 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 1000px) {
-        #sb-funnel .sb-grid { grid-template-columns: repeat(2, minmax(0, 420px)) !important; }
+        #sb-funnel .sb-grid { grid-template-columns: repeat(2, minmax(0, 400px)) !important; }
     }
     @media (max-width: 860px) {
         #sb-funnel .sb-nav { padding: 0 24px !important; }
@@ -503,9 +507,9 @@
     <!-- BANNER -->
     <div class="sb-banner">
         <div class="sb-banner-inner">
-            <span style="color: #ffffff !important;">🪻 <strong style="color: #ffffff !important;">Eckert's Belleville Farm</strong></span>
+            <span style="color: #ffffff !important;">🍑🪻 <strong style="color: #ffffff !important;">Eckert's Belleville Farm</strong></span>
             <span class="sb-dot"></span>
-            <span style="color: #ffffff !important;">Pick-Your-Own Blackberries · 2026</span>
+            <span style="color: #ffffff !important;">Pick-Your-Own Peaches &amp; Blackberries · 2026</span>
             <span class="sb-dot"></span>
             <!-- HOURS CONFIRMED (Amanda 2026-06-09): Belleville Tue–Sun 9 AM–5 PM, last wagon 5 PM. -->
             <span style="color: #ffffff !important;">Tue–Sun 9–5</span>
@@ -534,7 +538,7 @@
         <div class="sb-hero-overlay"></div>
         <div class="sb-hero-content">
             <span class="sb-hero-eyebrow">Eckert's Belleville Farm · 2026</span>
-            <span class="sb-hero-title">Blackberry<br><em>Season</em></span>
+            <span class="sb-hero-title">Peach &amp; Blackberry<br><em>Season</em></span>
         </div>
     </div>
 
@@ -544,12 +548,12 @@
             <div class="sb-benefit">
                 <span class="sb-benefit-icon">🚜</span>
                 <span class="sb-benefit-title">Wagon Ride Out</span>
-                <span class="sb-benefit-desc">Tractor-pulled to the fields</span>
+                <span class="sb-benefit-desc">Tractor-pulled to the fields &amp; orchard</span>
             </div>
             <div class="sb-benefit">
-                <span class="sb-benefit-icon">🪻</span>
+                <span class="sb-benefit-icon">🍑🪻</span>
                 <span class="sb-benefit-title">Pick-Your-Own</span>
-                <span class="sb-benefit-desc">Fresh from the row to your basket</span>
+                <span class="sb-benefit-desc">Peaches &amp; blackberries, both in season</span>
             </div>
             <div class="sb-benefit">
                 <span class="sb-benefit-icon">🕘</span>
@@ -568,27 +572,34 @@
     <!-- GALLERY -->
     <div class="sb-gallery">
         <div class="sb-gallery-header sbr">
-            <span class="sb-eye">In the Fields</span>
+            <span class="sb-eye">In the Fields &amp; Orchard</span>
             <span class="sb-title">Fresh picked, <em>right now</em></span>
         </div>
         <div class="sb-gallery-mask">
             <div class="sb-gallery-track">
-                <!-- Blackberry carousel — Mat's Belleville set, optimized + hosted on longinow-assets (2026-06-08). 6 unique images, each duplicated below for the seamless marquee loop. -->
-                <div class="sb-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-belleville-blackberries/kids-picking-blackberries.jpg" alt="In the Fields" loading="lazy"><div class="sb-gcard-label">In the Fields</div></div>
-
-                <div class="sb-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-belleville-blackberries/family-blackberries.jpg" alt="Family Fun" loading="lazy"><div class="sb-gcard-label">Family Fun</div></div>
-                <div class="sb-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-belleville-blackberries/blackberries-bowl.jpg" alt="Berry Season" loading="lazy"><div class="sb-gcard-label">Berry Season</div></div>
-                <div class="sb-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-belleville-blackberries/blackberries-kid-with-basket.jpg" alt="Little Pickers" loading="lazy"><div class="sb-gcard-label">Little Pickers</div></div>
-                <div class="sb-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-belleville-blackberries/blackberries-handful.jpg" alt="Pick Your Own" loading="lazy"><div class="sb-gcard-label">Pick Your Own</div></div>
-                <div class="sb-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-belleville-blackberries/kid-blackberries.jpg" alt="Fresh Picked" loading="lazy"><div class="sb-gcard-label">Fresh Picked</div></div>
+                <!-- Dual-crop carousel — peach set (eckerts-peaches) + Belleville blackberry set, interleaved.
+                     10 unique images, each duplicated below for the seamless marquee loop. -->
+                <div class="sb-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-peaches/peach-baby.jpg" alt="A little one in the peach orchard" loading="lazy"><div class="sb-gcard-label">Farm Fresh</div></div>
+                <div class="sb-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-belleville-blackberries/kids-picking-blackberries.jpg" alt="Kids picking blackberries" loading="lazy"><div class="sb-gcard-label">In the Fields</div></div>
+                <div class="sb-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-peaches/peach-tree-basket.jpg" alt="A basket of peaches by the tree" loading="lazy"><div class="sb-gcard-label">On the Tree</div></div>
+                <div class="sb-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-belleville-blackberries/family-blackberries.jpg" alt="Family picking blackberries" loading="lazy"><div class="sb-gcard-label">Family Fun</div></div>
+                <div class="sb-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-peaches/peaches-kids.jpg" alt="Kids picking peaches in the orchard" loading="lazy"><div class="sb-gcard-label">Little Pickers</div></div>
+                <div class="sb-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-belleville-blackberries/blackberries-bowl.jpg" alt="A bowl of fresh blackberries" loading="lazy"><div class="sb-gcard-label">Berry Season</div></div>
+                <div class="sb-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-peaches/peaches-mom-and-daughter.jpg" alt="Mom and daughter picking peaches" loading="lazy"><div class="sb-gcard-label">Pick Together</div></div>
+                <div class="sb-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-belleville-blackberries/blackberries-kid-with-basket.jpg" alt="A child with a basket of blackberries" loading="lazy"><div class="sb-gcard-label">Basket Full</div></div>
+                <div class="sb-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-belleville-blackberries/blackberries-handful.jpg" alt="A handful of blackberries" loading="lazy"><div class="sb-gcard-label">Pick Your Own</div></div>
+                <div class="sb-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-belleville-blackberries/kid-blackberries.jpg" alt="A kid enjoying blackberries" loading="lazy"><div class="sb-gcard-label">Fresh Picked</div></div>
                 <!-- Duplicate for seamless loop -->
-                <div class="sb-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-belleville-blackberries/kids-picking-blackberries.jpg" alt="In the Fields" loading="lazy"><div class="sb-gcard-label">In the Fields</div></div>
-
-                <div class="sb-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-belleville-blackberries/family-blackberries.jpg" alt="Family Fun" loading="lazy"><div class="sb-gcard-label">Family Fun</div></div>
-                <div class="sb-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-belleville-blackberries/blackberries-bowl.jpg" alt="Berry Season" loading="lazy"><div class="sb-gcard-label">Berry Season</div></div>
-                <div class="sb-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-belleville-blackberries/blackberries-kid-with-basket.jpg" alt="Little Pickers" loading="lazy"><div class="sb-gcard-label">Little Pickers</div></div>
-                <div class="sb-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-belleville-blackberries/blackberries-handful.jpg" alt="Pick Your Own" loading="lazy"><div class="sb-gcard-label">Pick Your Own</div></div>
-                <div class="sb-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-belleville-blackberries/kid-blackberries.jpg" alt="Fresh Picked" loading="lazy"><div class="sb-gcard-label">Fresh Picked</div></div>
+                <div class="sb-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-peaches/peach-baby.jpg" alt="A little one in the peach orchard" loading="lazy"><div class="sb-gcard-label">Farm Fresh</div></div>
+                <div class="sb-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-belleville-blackberries/kids-picking-blackberries.jpg" alt="Kids picking blackberries" loading="lazy"><div class="sb-gcard-label">In the Fields</div></div>
+                <div class="sb-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-peaches/peach-tree-basket.jpg" alt="A basket of peaches by the tree" loading="lazy"><div class="sb-gcard-label">On the Tree</div></div>
+                <div class="sb-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-belleville-blackberries/family-blackberries.jpg" alt="Family picking blackberries" loading="lazy"><div class="sb-gcard-label">Family Fun</div></div>
+                <div class="sb-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-peaches/peaches-kids.jpg" alt="Kids picking peaches in the orchard" loading="lazy"><div class="sb-gcard-label">Little Pickers</div></div>
+                <div class="sb-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-belleville-blackberries/blackberries-bowl.jpg" alt="A bowl of fresh blackberries" loading="lazy"><div class="sb-gcard-label">Berry Season</div></div>
+                <div class="sb-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-peaches/peaches-mom-and-daughter.jpg" alt="Mom and daughter picking peaches" loading="lazy"><div class="sb-gcard-label">Pick Together</div></div>
+                <div class="sb-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-belleville-blackberries/blackberries-kid-with-basket.jpg" alt="A child with a basket of blackberries" loading="lazy"><div class="sb-gcard-label">Basket Full</div></div>
+                <div class="sb-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-belleville-blackberries/blackberries-handful.jpg" alt="A handful of blackberries" loading="lazy"><div class="sb-gcard-label">Pick Your Own</div></div>
+                <div class="sb-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/eckerts-belleville-blackberries/kid-blackberries.jpg" alt="A kid enjoying blackberries" loading="lazy"><div class="sb-gcard-label">Fresh Picked</div></div>
             </div>
         </div>
     </div>
@@ -601,12 +612,27 @@
         </div>
         <div class="sb-grid">
 
-            <!-- ① BLACKBERRY FUN PASS (lead card — revenue driver) -->
-            <!-- OPEN QUESTION (Amanda): strawberry Fun Pass also bundled 1 donut + 1 sweet cider.
-                 Blackberry spec lists only "field access + 1 lb blackberries." Defaulting to NO
-                 donut/cider until confirmed — add two <li> bullets back if they want bundle parity. -->
+            <!-- ① PEACH FUN PASS (lead — peaches just opened 6/16) -->
+            <!-- Price $16 online / $20 gate (Mat-confident placeholder pending Amanda final confirm via 86aj1nttj).
+                 Bundle = field access + pick-your-own peaches (Belleville has no playground, so NOT the Versailles bundle). -->
             <div class="sb-card sb-card-red sbr">
                 <span class="sb-card-badge sb-card-badge-light">Most Popular</span>
+                <span class="sb-card-icon">🍑</span>
+                <h3>Peach Fun Pass</h3>
+                <ul class="sb-card-bullets">
+                    <li>🧺 Field access included</li>
+                    <li>🍑 Pick-your-own peaches included</li>
+                </ul>
+                <div class="sb-card-price">
+                    <span class="sb-price-num">$16</span>
+                    <span class="sb-price-label">online<br>$20 at the gate</span>
+                </div>
+                <span class="sb-card-note">Belleville Farm only · peach season only</span>
+            </div>
+
+            <!-- ② BLACKBERRY FUN PASS (live crop — carries the donut + cider bundle from the live blackberry page) -->
+            <div class="sb-card sb-card-red sbr d1">
+                <span class="sb-card-badge sb-card-badge-light">Fan Favorite</span>
                 <span class="sb-card-icon">🪻</span>
                 <h3>Blackberry Fun Pass</h3>
                 <ul class="sb-card-bullets">
@@ -622,13 +648,14 @@
                 <span class="sb-card-note">Belleville Farm only · blackberry season only</span>
             </div>
 
-            <!-- ② FIELD ACCESS (day-gated, unchanged from strawberry — Tue–Fri $3 / Sat–Sun $5) -->
-            <div class="sb-card sb-card-pink sbr d1">
+            <!-- ③ FIELD ACCESS (shared across both crops — day-gated, standardized: Tue–Fri $3 / Sat–Sun $5 online) -->
+            <div class="sb-card sb-card-pink sbr d2">
                 <span class="sb-card-badge sb-card-badge-red">Field Access</span>
                 <span class="sb-card-icon">🎟</span>
                 <h3>Pick-Your-Own Field Access</h3>
                 <ul class="sb-card-bullets">
-                    <li>🚜 Wagon ride to the fields</li>
+                    <li>🚜 Wagon ride to the fields &amp; orchard</li>
+                    <li>🍑🪻 Pick peaches or blackberries</li>
                     <li>🌱 Required for ages 2 &amp; up</li>
                 </ul>
                 <div style="margin-top: 20px !important; padding-top: 16px !important; border-top: 1px solid rgba(176,16,48,0.1) !important;">
@@ -650,15 +677,15 @@
                 <span class="sb-card-note">Per person · + applicable fees at checkout</span>
             </div>
 
-            <!-- ③ SEASON PASS (de-emphasized — reordered DOWN to last position per spec) -->
-            <div class="sb-card sb-card-dark sbr d2">
+            <!-- ④ SEASON PASS (season-wide — both crops; carries over verbatim) -->
+            <div class="sb-card sb-card-dark sbr d3">
                 <span class="sb-card-badge sb-card-badge-gold">Best Value</span>
                 <span class="sb-card-icon">🏆</span>
                 <h3>Season Pass</h3>
                 <ul class="sb-card-bullets">
                     <li>♾️ Unlimited field access all season</li>
                     <li>🌾 Belleville &amp; Grafton Farms</li>
-                    <li>🪻 All pick-your-own crops included</li>
+                    <li>🍑🪻 All pick-your-own crops included</li>
                 </ul>
                 <div class="sb-season-tiers">
                     <div class="sb-season-tier">
@@ -739,12 +766,10 @@
 </script>
 
 <!-- ============================================================
-     ECKERTS BELLEVILLE — BLACKBERRY · FLOATING BUY TICKETS BUTTON
+     ECKERTS BELLEVILLE — DUAL-CROP · FLOATING BUY TICKETS BUTTON
      Paste as a SEPARATE Custom HTML block in TicketSpice (not nested
      inside the page-header HTML above). Fixed to viewport bottom,
      stays visible while scrolling, hides on click only.
-     Pattern source: Bryan's canonical Eckert's belleville4.html variant,
-     mirrored from colony-acres/fall-harvest-festival-2026.html.
      ============================================================ -->
 <style>
     #sb-float-btn {
@@ -809,20 +834,18 @@
     })();
 </script>
 
-</body>
-</html>
-
 <!-- ════ SLASH-THROUGH PRICING (TS native ticket block) ════
      Pattern doc: /data/clients/_patterns/slash-through-pricing.md
      Keyed on ticket <h4> NAME (not position) so it survives Action reordering.
-     Weekday name + Blackberry Fun Pass confirmed from live dump (Jun 12);
-     Weekend name confirmed from Belleville actions JSON. Season passes excluded
-     (Picking/Experience Pass — no gate-vs-online dynamic). -->
+     Both Fun Passes ($20 gate) + standardized field-access names. Season passes
+     excluded (Picking/Experience Pass — no gate-vs-online dynamic).
+     Peach Fun Pass gate $20 is the Mat-confident placeholder pending Amanda (86aj1nttj). -->
 <script>
 (function(){
   var GATE = {
     "Pick-Your-Own Field Access (Weekday Ticket)": "$6.00",
     "Pick-Your-Own Field Access (Weekend Ticket)": "$8.00",
+    "Peach Fun Pass": "$20.00",
     "Blackberry Fun Pass": "$20.00"
   };
   function tag(){
@@ -846,3 +869,5 @@
   }
   #ticketBlock .ticket-cost[data-gate]{ color:#5db75b !important; }
 </style>
+</body>
+</html>
