@@ -618,6 +618,34 @@
     }
 </style>
 
+<!-- TicketSpice native-cart CSS — added 2026-06-15 per Mat -->
+<style>
+/* TicketSpice native-cart CSS (Summers Farm) — added 2026-06-15 per Mat.
+   Global TS selectors, NOT scoped to #sb-funnel. 3 syntax bugs fixed:
+   #fffff→#ffffff, + 2 missing semicolons. Colors left as Mat pasted (old
+   orange/green/black palette) — palette-clash with the recolored page is
+   flagged; rebrand pending Mat's call. */
+.field-banner td { border: none; }
+.campaign-form:not(.legacy-form) hr.line-break { border-color: #000000 !important; }
+.field-gallery { background: white; }
+.field-gallery { background-image: url(""); }
+@media screen and (max-width: 768px) {
+  .field-image-single.field-image--fw { padding: 1px 0 !important; }
+}
+.field-image-single { background: transparent; padding-top: 0px; padding-bottom: 0px; }
+.field-location.header-field h4 { background: #FF9900; color: white !important; }
+.wbx-calendar .row .day { border-radius: 35px; color: #ffffff; cursor: default; flex: 1; height: 40px; margin: 1px !important; transition: all .2s; }
+.ticket-block .wbx-calendar .row .day.enabled { color: white; background-color: #3C8A4D; }
+.ticket-block .wbx-calendar .row .day.enabled.sold-out { color: white; background-color: #B93D45; }
+.ticket-block table.holds-tickets th { color: #FFFFFF !important; background: #000000; }
+.campaign-form:not(.legacy-form) .ticket-block table.holds-tickets { border: 3px solid black; border-radius: 10px; border-spacing: 0; box-shadow: 0 10px 20px rgb(206, 43, 25); width: 100%; }
+.campaign-form:not(.legacy-form) .ticket-block table.holds-tickets { border-collapse: separate !important; background-color: white; border-spacing: 0; box-shadow: 0 10px 20px rgb(206, 43, 25); width: 100%; }
+.campaign-form:not(.legacy-form) ul.upgrades li img.product-thumbnail { border-radius: 10px; box-shadow: 0 10px 20px rgb(206, 43, 25); }
+.campaign-form:not(.legacy-form) .field-purchaseProtection .purchase-protection .purchase-protection-header { background-color: white; border: 3px solid black; border-bottom: 3px solid black; color: black !important; font-size: 18px; font-weight: 700; padding: 12px 32px; }
+.purchase-protection .purchase-protection-body { background-color: white; padding: 15px; border: 3px solid black; }
+.campaign-form:not(.legacy-form) .btn-danger, .campaign-form:not(.legacy-form) .btn-primary, .campaign-form:not(.legacy-form) .btn:not(.btn--transparent):not(.btn--plus):not(.btn--minus):not(.btn--home):not(.btn--tooltipstered):not(.btn--blue) { font-size: 15px; color: white; border-radius: 10px; font-family: fatfrank,Segoe UI,Helvetica Neue,Arial,Noto Sans,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji,-apple-system,sans-serif; font-weight: bold; height: 44px; min-height: 44px; padding: 15px 20px; text-transform: uppercase; }
+</style>
+
 <div id="sb-funnel">
 
     <!-- BANNER -->
