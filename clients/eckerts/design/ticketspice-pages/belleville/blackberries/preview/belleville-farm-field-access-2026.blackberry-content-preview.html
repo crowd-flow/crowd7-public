@@ -871,5 +871,96 @@
   }
   #ticketBlock .ticket-cost[data-gate]{ color:#5db75b !important; }
 </style>
+<!-- =================== SHIPPABLE BLOCK START =================== -->
+  <!-- Belleville "July 4 special hours" pop-up. Self-contained: paste into the Belleville
+       page HTML (production snippet). Namespaced bjul4pop-* + IIFE so it can't clash with TS
+       or any other popup. FULL CONTROL stays in our HTML — change copy/styling/disable
+       here, never touch TicketSpice. To DISABLE: set window.BJUL4_ENABLED = false (or delete this block). -->
+  <div id="bjul4pop-overlay" class="bjul4pop-overlay" role="dialog" aria-modal="true" aria-labelledby="bjul4pop-title" hidden>
+    <div class="bjul4pop-card">
+      <button class="bjul4pop-close" aria-label="Close">&times;</button>
+      <div class="bjul4pop-icon">🎆</div>
+      <h3 id="bjul4pop-title" class="bjul4pop-h">July 4 hours — Pick-Your-Own open until <em>4&nbsp;PM</em></h3>
+      <p class="bjul4pop-p">
+        On <strong>Saturday, July&nbsp;4</strong>, Pick-Your-Own at Eckert&rsquo;s Belleville Farm is open until
+        <strong>4:00&nbsp;PM</strong> — the <strong>last wagon out is at 3:00&nbsp;PM</strong>. Plan your visit so
+        you catch the last wagon. Happy Fourth!
+      </p>
+      <button class="bjul4pop-ok">Got it</button>
+    </div>
+  </div>
+
+  <style>
+    .bjul4pop-overlay{position:fixed;inset:0;z-index:2147483000;display:flex;align-items:center;justify-content:center;
+      background:rgba(26,8,8,.62);padding:20px;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+    .bjul4pop-overlay[hidden]{display:none;}
+    .bjul4pop-card{position:relative;background:#fff;max-width:430px;width:100%;border-radius:16px;padding:30px 26px 26px;
+      box-shadow:0 24px 60px rgba(0,0,0,.4);text-align:center;font-family:'Open Sans',system-ui,sans-serif;
+      animation:bjul4pop-in .25s ease;box-sizing:border-box;}
+    @keyframes bjul4pop-in{from{opacity:0;transform:translateY(14px) scale(.97);}to{opacity:1;transform:none;}}
+    .bjul4pop-icon{font-size:2.6rem;line-height:1;margin-bottom:10px;}
+    .bjul4pop-h{font-family:'Zilla Slab','Times New Roman',serif;font-size:1.4rem;font-weight:700;color:#B01030;margin:0 0 12px;line-height:1.2;}
+    .bjul4pop-h em{font-style:italic;color:#7A0820;}
+    .bjul4pop-p{font-size:.95rem;line-height:1.55;color:#3a2020;margin:0 0 22px;}
+    .bjul4pop-ok{background:#B01030;color:#fff;border:0;border-radius:50px;padding:12px 34px;font-size:.95rem;font-weight:700;
+      cursor:pointer;letter-spacing:.02em;}
+    .bjul4pop-ok:hover{background:#7A0820;}
+    .bjul4pop-close{position:absolute;top:10px;right:14px;background:none;border:0;font-size:1.7rem;line-height:1;color:#b88;cursor:pointer;}
+    .bjul4pop-close:hover{color:#B01030;}
+  </style>
+
+  <script>
+  (function(){
+    if (window.BJUL4_ENABLED === false) return;          // kill switch
+    var TARGET = { y:2026, m:7, d:4 };                   // Belleville July 4 special-hours date
+    var DEBUG  = true;                                   // logs the read date to console; set false for production
+    var ov = document.getElementById('bjul4pop-overlay');
+    if(!ov) return;
+    var dismissed = false;                               // don't re-pop after user closes it this session
+
+    function show(){ if(!dismissed){ ov.hidden = false; } }
+    function hide(){ ov.hidden = true; }
+    ov.querySelector('.bjul4pop-close').addEventListener('click', function(){ dismissed=true; hide(); });
+    ov.querySelector('.bjul4pop-ok').addEventListener('click',  function(){ dismissed=true; hide(); });
+    ov.addEventListener('click', function(e){ if(e.target===ov){ dismissed=true; hide(); } });
+
+    // TS renders the date field as a jQuery UI datepicker: input.hasDatepicker (placeholder "Choose Date").
+    function dateInputs(){
+      return document.querySelectorAll('input.hasDatepicker, input[placeholder="Choose Date"], input[aria-label="Choose Date"]');
+    }
+    // Parse mm/dd/yyyy, mm/dd/yy, yyyy-mm-dd, or "July 4, 2026" -> {y,m,d} or null
+    function parse(v){
+      if(!v) return null;
+      var mdy = v.match(/(\d{1,2})[\/\-.](\d{1,2})[\/\-.](\d{2,4})/);
+      if(mdy){ var mm=+mdy[1], dd=+mdy[2], yy=+mdy[3]; if(yy<100) yy+=2000; return {y:yy,m:mm,d:dd}; }
+      var iso = v.match(/(\d{4})[\/\-.](\d{1,2})[\/\-.](\d{1,2})/);
+      if(iso){ return {y:+iso[1], m:+iso[2], d:+iso[3]}; }
+      var dt = new Date(v);
+      if(!isNaN(dt.getTime())) return {y:dt.getFullYear(), m:dt.getMonth()+1, d:dt.getDate()};
+      return null;
+    }
+    var lastVal = null;
+    function check(){
+      var hit = false, seen = null;
+      dateInputs().forEach(function(inp){
+        var v = inp.value; if(v) seen = v;
+        var p = parse(v);
+        if(p && p.y===TARGET.y && p.m===TARGET.m && p.d===TARGET.d) hit = true;
+      });
+      if(DEBUG && seen !== lastVal){ console.log('[bjul4pop] date read:', seen, '-> match 7/4:', hit); lastVal = seen; }
+      if(hit) show(); else if(!ov.hidden && !dismissed) hide();
+    }
+
+    // jQuery UI sets input.value as a PROPERTY (no bubbling change guaranteed), so cover all bases:
+    document.addEventListener('change', check, true);                 // native change (capture)
+    document.addEventListener('input',  check, true);
+    document.addEventListener('click', function(e){                    // clicking a day cell in the calendar
+      if(e.target.closest && e.target.closest('.ui-datepicker-calendar')) setTimeout(check, 60);
+    }, true);
+    var poll = setInterval(check, 600);                                // catch-all safety net
+    if(document.readyState!=='loading') check(); else document.addEventListener('DOMContentLoaded', check);
+  })();
+  </script>
+  <!-- =================== SHIPPABLE BLOCK END =================== -->
 </body>
 </html>
