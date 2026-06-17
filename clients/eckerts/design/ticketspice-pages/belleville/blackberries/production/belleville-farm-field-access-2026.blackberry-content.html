@@ -270,13 +270,13 @@
         display: block !important; box-sizing: border-box !important;
     }
     #sb-funnel .sb-tickets-header { text-align: center !important; margin-bottom: 48px !important; }
-    /* 2×2 grid — dual-crop adds a 4th card (both Fun Passes coexist). */
+    /* 3-up row — Fun Pass · Field Access · Season Pass, equal width (standard template). */
     #sb-funnel .sb-grid {
         display: grid !important;
-        grid-template-columns: repeat(2, minmax(0, 400px)) !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
         gap: 24px !important;
         justify-content: center !important;
-        max-width: 848px !important;
+        max-width: 1140px !important;
         margin-left: auto !important;
         margin-right: auto !important;
     }
@@ -464,7 +464,7 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 1000px) {
-        #sb-funnel .sb-grid { grid-template-columns: repeat(2, minmax(0, 400px)) !important; }
+        #sb-funnel .sb-grid { grid-template-columns: 1fr !important; max-width: 420px !important; }
     }
     @media (max-width: 860px) {
         #sb-funnel .sb-nav { padding: 0 24px !important; }
@@ -600,13 +600,14 @@
 
             <!-- ① FUN PASS (combined Peach + Blackberry — identical bundle, choose your fruit. Merged per Mat 2026-06-17 / ClickUp 86aj2ukq5. Full-width hero so 3 cards never orphan in the 2-col grid.) -->
             <!-- Price $16 online / $20 gate (Mat-confident placeholder pending Amanda final confirm via 86aj1nttj). -->
-            <div class="sb-card sb-card-red sbr" style="grid-column: 1 / -1 !important;">
+            <div class="sb-card sb-card-red sbr">
                 <span class="sb-card-badge sb-card-badge-light">Most Popular</span>
                 <span class="sb-card-icon">🍑🪻</span>
                 <h3>Fun Pass</h3>
                 <ul class="sb-card-bullets">
                     <li>🧺 Field access included</li>
-                    <li>🍑 Pick-your-own peaches <em>or</em> 🪻 1 lb pick-your-own blackberries</li>
+                    <li>🍑 Pick-your-own peaches, <em>or</em></li>
+                    <li>🪻 1 lb pick-your-own blackberries</li>
                     <li>🍩 1 cider donut</li>
                     <li>🥤 1 cup sweet cider</li>
                 </ul>
