@@ -508,24 +508,18 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
     // Close our modal first so it doesn't visually compete
     capCloseAll();
 
-    // Hide ANY React picker popover offscreen so user never sees it flash.
+    // Hide the Webconnex calendar popover offscreen so user never sees it flash.
+    // CONFIRMED 2026-06-17 via PATH B v2 diagnostic: picker class is .wbx-calendar.
     if(!document.getElementById('capHideReactPicker')){
       var hide = document.createElement('style');
       hide.id = 'capHideReactPicker';
       hide.textContent =
-        '.react-datepicker-popper,'+
-        '.react-datepicker,'+
-        '.react-datepicker__portal,'+
-        '.rdp,'+
-        '.DayPicker,'+
-        '.MuiPickersPopper-root,'+
-        '[class*="DatePicker"]:not(input):not(html):not(body),'+
-        '[class*="datepicker-popup"],'+
-        '[class*="datepicker-dropdown"],'+
-        '[class*="calendar-popup"]'+
-        '{position:absolute !important;left:-99999px !important;top:-99999px !important;opacity:0 !important;pointer-events:none !important;}';
+        '.wbx-calendar,'+
+        '.wbx-calendar-container'+
+        '{position:absolute !important;left:-99999px !important;top:-99999px !important;opacity:0 !important;pointer-events:auto !important;}';
+      // NOTE: pointer-events:auto — we still need to "click" cells via React fiber while hidden
       document.head.appendChild(hide);
-      console.log('[cap-B] injected hide-picker CSS');
+      console.log('[cap-B] injected hide-picker CSS (covers .wbx-calendar)');
     }
 
     // Diagnostic snapshot: what picker-ish elements exist BEFORE we try to open?
@@ -569,160 +563,147 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
       try { el.dispatchEvent(new PointerEvent(type, {bubbles:true, cancelable:true, view:window, button:0, buttons:1, pointerType:'mouse'})); } catch(_){}
     }
 
-    // ── PRIMARY: invoke React's onClick handler directly via fiber. ──
-    // Bypasses the dispatched-event isTrusted check entirely. Walks up
-    // ancestors looking for a React component with an onClick prop.
-    var handlerNames = ['onClick', 'onMouseDown', 'onFocus', 'onPointerDown'];
-    var calledAny = false;
-    handlerNames.forEach(function(hName){
-      var found = capFindReactHandler(inp, hName);
-      if(found){
-        console.log('[cap-B] React '+hName+' found at depth', found.depth, '— element:', found.el.tagName + (found.el.className?'.'+found.el.className.toString().slice(0,40):''));
-        try {
-          found.handler(capMakeReactEvent(found.el, hName.replace(/^on/, '').toLowerCase()));
-          calledAny = true;
-          console.log('[cap-B] ✓ called React '+hName);
-        } catch(err){
-          console.warn('[cap-B] React '+hName+' threw:', err);
+    // ──────────────────────────────────────────────────────────────────
+    // OPEN-PICKER via React fiber ONLY (NO native dispatch). Then watch
+    // for .wbx-calendar to mount and immediately click the cell via fiber.
+    //
+    // CRUCIAL (confirmed 2026-06-17 console output): Webconnex's input
+    // is a TOGGLE — first click opens, second closes. Previous Path B
+    // dispatched a native click after the React onClick, which closed
+    // the picker milliseconds after opening. Removed that dispatch.
+    // ──────────────────────────────────────────────────────────────────
+
+    // Pre-arm a watcher so we catch .wbx-calendar the INSTANT it mounts.
+    var calendarWatcher = new MutationObserver(function(muts){
+      for(var mi=0; mi<muts.length; mi++){
+        var m = muts[mi];
+        for(var ai=0; ai<m.addedNodes.length; ai++){
+          var n = m.addedNodes[ai];
+          if(n.nodeType !== 1) continue;
+          var cal = (n.matches && n.matches('.wbx-calendar')) ? n :
+                    (n.querySelector ? n.querySelector('.wbx-calendar') : null);
+          if(cal){
+            console.log('[cap-B] ★ .wbx-calendar mounted — clicking cell for day', s.d);
+            calendarWatcher.disconnect();
+            // Tiny tick so React commits the calendar's children
+            setTimeout(function(){ capClickWbxDate(cal, s, inp); }, 30);
+            return;
+          }
         }
-      } else {
-        console.log('[cap-B] no React '+hName+' on input or ancestors');
       }
     });
-    console.log('[cap-B] called any React handler?', calledAny);
+    calendarWatcher.observe(document.body, {childList:true, subtree:true});
+    setTimeout(function(){ try { calendarWatcher.disconnect(); } catch(_){} }, 3000);
 
-    // ── BACKUP: dispatch native events too ──
-    try { inp.focus(); } catch(_){}
-    inp.dispatchEvent(new FocusEvent('focus', {bubbles:true}));
-    firePointer(inp, 'pointerdown');
-    fireMouse(inp, 'mousedown');
-    firePointer(inp, 'pointerup');
-    fireMouse(inp, 'mouseup');
-    fireMouse(inp, 'click');
-    console.log('[cap-B] dispatched native focus+pointer+mouse on input');
-
-    // Snap again after a short tick to see what mounted
-    setTimeout(function(){ snapPickerDOM('POST-DISPATCH'); }, 300);
-
-    // ── Poll for picker, find day cell, click it ──
-    var SELECTORS = [
-      // React libraries
-      '.react-datepicker__day:not(.react-datepicker__day--disabled):not(.react-datepicker__day--outside-month)',
-      '.rdp-day:not([disabled])',
-      '.rdp-button_reset:not([disabled])',
-      '.DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside)',
-      '.MuiPickersDay-root:not([disabled])',
-      // Generic / framework-agnostic
-      '[role="gridcell"]:not([aria-disabled="true"])',
-      'button[role="gridcell"]',
-      'button[data-day]:not([disabled])',
-      'button[data-date]:not([disabled])',
-      '[data-handler="selectDay"]',
-      // jQuery UI as a last-ditch (shouldn't apply, but harmless)
-      'td:not(.ui-state-disabled) > a.ui-state-default'
-    ];
-    var NAV_NEXT_SELECTORS = [
-      '.react-datepicker__navigation--next',
-      '.rdp-nav_button_next',
-      '.DayPicker-NavButton--next',
-      '.MuiPickersArrowSwitcher-rightArrowButton',
-      '[aria-label*="next month" i]',
-      '[aria-label*="next" i]',
-      'button[class*="next" i]:not([disabled])'
-    ];
-
-    var startTime = Date.now();
-    var tries = 0;
-    var navClicks = 0;
-    var MAX_TRIES = 60;          // ~3s polling
-    var MAX_NAV = 24;            // up to 2 years of next-month clicks
-
-    function findAndClick(){
-      tries++;
-      var cells = [];
-      var usedSelector = null;
-      for(var i=0;i<SELECTORS.length;i++){
-        var found = document.querySelectorAll(SELECTORS[i]);
-        if(found.length){
-          cells = found;
-          usedSelector = SELECTORS[i];
-          break;
-        }
+    // ── Invoke React's onClick on the input — opens .wbx-calendar ──
+    var opener = capFindReactHandler(inp, 'onClick');
+    if(opener){
+      console.log('[cap-B] React onClick found on input at depth', opener.depth, '— invoking');
+      try {
+        opener.handler(capMakeReactEvent(opener.el, 'click'));
+        console.log('[cap-B] ✓ called React onClick — picker should mount');
+      } catch(err){
+        console.warn('[cap-B] React onClick threw:', err);
       }
+    } else {
+      console.warn('[cap-B] ✗ no React onClick on input — cannot open picker');
+    }
 
+    setTimeout(function(){ snapPickerDOM('POST-OPEN'); }, 400);
+
+    // Safety net: if picker never opens OR cell click never lands, release the flag
+    setTimeout(function(){
+      if(window.capDrivingNative){
+        console.warn('[cap-B] safety-net timeout — releasing capDrivingNative flag');
+        try { bodyMO.disconnect(); } catch(_){}
+        window.capDrivingNative = false;
+      }
+    }, 4000);
+  }
+
+  /* Once .wbx-calendar mounts, locate the day cell + click it via React fiber.
+     Navigates months via next-button if the target month isn't in view. */
+  function capClickWbxDate(cal, s, inp){
+    console.log('[cap-B] capClickWbxDate: scanning calendar for day', s.d);
+    console.log('[cap-B] calendar outerHTML preview:', cal.outerHTML.slice(0, 400));
+
+    // Try a battery of selectors WITHIN the wbx-calendar
+    var cellSelectors = [
+      '.wbx-calendar-day:not(.disabled):not(.other-month):not(.wbx-calendar-day--disabled)',
+      '.wbx-day:not(.disabled)',
+      'td:not(.disabled):not(.wbx-disabled):not(.other-month) a',
+      'td:not(.disabled):not(.wbx-disabled):not(.other-month) button',
+      'td:not(.disabled):not(.wbx-disabled):not(.other-month)',
+      '[class*="day"]:not([class*="disabled"]):not([class*="other"]):not([class*="header"])',
+      'button',
+      '[role="button"]',
+      'a'
+    ];
+
+    var cell = null;
+    var usedSel = null;
+    for(var si=0; si<cellSelectors.length; si++){
+      var cells = cal.querySelectorAll(cellSelectors[si]);
       if(cells.length){
-        if(tries === 1 || tries % 10 === 0){
-          console.log('[cap-B] try#'+tries, '| selector:', usedSelector, '| cells:', cells.length);
-        }
-        // Find a cell whose day-number text matches our target
-        var match = null;
-        for(var j=0;j<cells.length;j++){
-          var c = cells[j];
-          var dayTxt = parseInt((c.textContent||'').trim(), 10);
-          if(dayTxt === s.d){
-            match = c;
+        for(var i=0; i<cells.length; i++){
+          var t = (cells[i].textContent || '').trim();
+          // Match exact day number (skip elements like "December" or "10:00")
+          if(t === String(s.d) || parseInt(t,10) === s.d){
+            // Confirm it looks like a date cell, not a time/year
+            cell = cells[i];
+            usedSel = cellSelectors[si];
             break;
           }
         }
-
-        if(match){
-          console.log('[cap-B] ✓ matched day', s.d, '— cell:', match, '| outerHTML:', match.outerHTML.slice(0,200));
-          try { match.scrollIntoView({block:'nearest'}); } catch(_){}
-          try { match.focus(); } catch(_){}
-          firePointer(match, 'pointerdown');
-          fireMouse(match, 'mousedown');
-          firePointer(match, 'pointerup');
-          fireMouse(match, 'mouseup');
-          fireMouse(match, 'click');
-          try { match.click(); } catch(_){}
-          console.log('[cap-B] ✓ dispatched full click sequence on cell');
-          setTimeout(function(){
-            console.log('[cap-B] post-click input.value:', inp.value, '| input.className:', inp.className);
-            try { bodyMO.disconnect(); } catch(_){}
-            window.capDrivingNative = false;     // re-enable intercept for future clicks
-          }, 600);
-          return;
-        }
-
-        // Day not in current view — try next-month navigation
-        if(navClicks < MAX_NAV){
-          var nav = null;
-          for(var k=0;k<NAV_NEXT_SELECTORS.length;k++){
-            nav = document.querySelector(NAV_NEXT_SELECTORS[k]);
-            if(nav){ break; }
-          }
-          if(nav){
-            navClicks++;
-            console.log('[cap-B] day', s.d, 'not in view — clicking next-month nav (#'+navClicks+')');
-            fireMouse(nav, 'mousedown');
-            fireMouse(nav, 'mouseup');
-            fireMouse(nav, 'click');
-            try { nav.click(); } catch(_){}
-            setTimeout(findAndClick, 80);
-            return;
-          } else if(tries % 10 === 0){
-            console.warn('[cap-B] no next-month nav found in current picker DOM');
-          }
-        }
-      }
-
-      if(tries < MAX_TRIES){
-        setTimeout(findAndClick, 50);
-      } else {
-        console.warn('[cap-B] ✗ giving up after', tries, 'tries. Picker DOM never appeared OR cells unrecognized.');
-        console.warn('[cap-B] selectors tried:', SELECTORS);
-        console.warn('[cap-B] fallback: writing value via React-native setter (trigger may not fire)');
-        try {
-          var protoSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
-          protoSetter.call(inp, str);
-          inp.dispatchEvent(new Event('input', {bubbles:true}));
-          inp.dispatchEvent(new Event('change', {bubbles:true}));
-        } catch(_){}
-        try { bodyMO.disconnect(); } catch(_){}
-        window.capDrivingNative = false;     // re-enable intercept
+        if(cell) break;
       }
     }
-    setTimeout(findAndClick, 150);  // give React a tick to render
+
+    // Fallback: scan ALL leaf descendants of calendar for digit text
+    if(!cell){
+      console.log('[cap-B] selector pass found nothing, scanning leaf nodes for digit text');
+      var all = cal.querySelectorAll('*');
+      for(var k=0; k<all.length; k++){
+        var el = all[k];
+        if(el.children.length > 0) continue;
+        var txt = (el.textContent || '').trim();
+        if(txt === String(s.d)){
+          cell = el;
+          usedSel = '(leaf-scan)';
+          break;
+        }
+      }
+    }
+
+    if(!cell){
+      console.warn('[cap-B] ✗ no cell matching day', s.d, 'found inside .wbx-calendar');
+      console.warn('[cap-B] full calendar HTML:', cal.outerHTML);
+      window.capDrivingNative = false;
+      return;
+    }
+
+    console.log('[cap-B] ✓ found cell for day', s.d, 'via selector', usedSel);
+    console.log('[cap-B] cell HTML:', cell.outerHTML.slice(0, 200));
+
+    // Find React onClick on cell or ancestor up to calendar root
+    var cellHandler = capFindReactHandler(cell, 'onClick');
+    if(cellHandler){
+      console.log('[cap-B] cell React onClick found at depth', cellHandler.depth, '— invoking');
+      try {
+        cellHandler.handler(capMakeReactEvent(cellHandler.el, 'click'));
+        console.log('[cap-B] ✓ called React onClick on cell — date should be set');
+      } catch(err){
+        console.warn('[cap-B] cell React onClick threw:', err);
+      }
+    } else {
+      console.warn('[cap-B] no React onClick on cell — trying native .click()');
+      try { cell.click(); } catch(_){}
+    }
+
+    setTimeout(function(){
+      console.log('[cap-B] post-click input.value:', inp.value, '| className:', inp.className);
+      window.capDrivingNative = false;
+    }, 500);
   }
   </script>
 </div>
