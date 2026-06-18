@@ -290,7 +290,9 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
             return;
           }
           e.preventDefault(); e.stopPropagation();
-          try{el.blur();}catch(_){}
+          // NOTE: removed el.blur() — was suspected of causing Webconnex's
+          // picker to auto-close (it watches activeElement to decide if open
+          // should stay true). Leave focus on the input.
           capOpenDate();
           console.log('[cap] intercepted native date field -> opened modal', el);
         }
@@ -508,19 +510,11 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
     // Close our modal first so it doesn't visually compete
     capCloseAll();
 
-    // Hide the Webconnex calendar popover offscreen so user never sees it flash.
-    // CONFIRMED 2026-06-17 via PATH B v2 diagnostic: picker class is .wbx-calendar.
-    if(!document.getElementById('capHideReactPicker')){
-      var hide = document.createElement('style');
-      hide.id = 'capHideReactPicker';
-      hide.textContent =
-        '.wbx-calendar,'+
-        '.wbx-calendar-container'+
-        '{position:absolute !important;left:-99999px !important;top:-99999px !important;opacity:0 !important;pointer-events:auto !important;}';
-      // NOTE: pointer-events:auto — we still need to "click" cells via React fiber while hidden
-      document.head.appendChild(hide);
-      console.log('[cap-B] injected hide-picker CSS (covers .wbx-calendar)');
-    }
+    // v4: NO hide CSS this run. Diagnostic showed the picker auto-closes
+    // even when offscreen — suspected the hide CSS itself was tripping
+    // Webconnex's "click outside" / position-watcher. Let it render visible
+    // while we prove it stays open. We'll re-add brand styling later.
+    console.log('[cap-B] v4: no hide-CSS — picker will render visible');
 
     // Diagnostic snapshot: what picker-ish elements exist BEFORE we try to open?
     function snapPickerDOM(label){
@@ -573,8 +567,12 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
     // the picker milliseconds after opening. Removed that dispatch.
     // ──────────────────────────────────────────────────────────────────
 
-    // Pre-arm a watcher so we catch .wbx-calendar the INSTANT it mounts.
+    // v4: PERSISTENT calendar watcher — keep firing on every .wbx-calendar
+    // mount so we can react every time. If the picker bounces (mounts +
+    // unmounts repeatedly) we still get our shot every cycle.
+    window._capHandled = false;
     var calendarWatcher = new MutationObserver(function(muts){
+      if(window._capHandled) return;
       for(var mi=0; mi<muts.length; mi++){
         var m = muts[mi];
         for(var ai=0; ai<m.addedNodes.length; ai++){
@@ -583,17 +581,21 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
           var cal = (n.matches && n.matches('.wbx-calendar')) ? n :
                     (n.querySelector ? n.querySelector('.wbx-calendar') : null);
           if(cal){
-            console.log('[cap-B] ★ .wbx-calendar mounted — clicking cell for day', s.d);
-            calendarWatcher.disconnect();
-            // Tiny tick so React commits the calendar's children
-            setTimeout(function(){ capClickWbxDate(cal, s, inp); }, 30);
+            console.log('[cap-B] ★ .wbx-calendar mounted — driving for', s.y+'-'+(s.m+1)+'-'+s.d);
+            // Drive SYNCHRONOUSLY in the MutationObserver callback — no setTimeout.
+            // Goal: act before React's next commit can unmount the calendar.
+            capDriveWbxCalendar(cal, s, inp);
             return;
           }
         }
       }
     });
     calendarWatcher.observe(document.body, {childList:true, subtree:true});
-    setTimeout(function(){ try { calendarWatcher.disconnect(); } catch(_){} }, 3000);
+    setTimeout(function(){ try { calendarWatcher.disconnect(); } catch(_){} }, 6000);
+
+    // ── Ensure input has focus (Webconnex's picker watches activeElement) ──
+    try { inp.focus({preventScroll:true}); } catch(_){ try{inp.focus();}catch(__){} }
+    console.log('[cap-B] input focused?', document.activeElement === inp);
 
     // ── Invoke React's onClick on the input — opens .wbx-calendar ──
     var opener = capFindReactHandler(inp, 'onClick');
@@ -609,7 +611,10 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
       console.warn('[cap-B] ✗ no React onClick on input — cannot open picker');
     }
 
-    setTimeout(function(){ snapPickerDOM('POST-OPEN'); }, 400);
+    setTimeout(function(){
+      snapPickerDOM('POST-OPEN');
+      console.log('[cap-B] still-open check: .wbx-calendar present?', !!document.querySelector('.wbx-calendar'));
+    }, 400);
 
     // Safety net: if picker never opens OR cell click never lands, release the flag
     setTimeout(function(){
@@ -621,10 +626,57 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
     }, 4000);
   }
 
-  /* Once .wbx-calendar mounts, locate the day cell + click it via React fiber.
-     Navigates months via next-button if the target month isn't in view. */
-  function capClickWbxDate(cal, s, inp){
-    console.log('[cap-B] capClickWbxDate: scanning calendar for day', s.d);
+  /* v4: Drive .wbx-calendar — handles month navigation + cell click via React fiber.
+     Called repeatedly from the persistent watcher; uses live document.querySelector
+     so it works even if `cal` was detached between the mount event and now. */
+  var MONTH_NAMES = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  function capDriveWbxCalendar(passedCal, s, inp){
+    // Always re-query the LIVE calendar — passedCal might be detached
+    var cal = document.querySelector('.wbx-calendar') || passedCal;
+    if(!cal || !cal.isConnected){
+      console.warn('[cap-B] calendar not in DOM at drive time — passed:', !!passedCal, 'live:', !!document.querySelector('.wbx-calendar'));
+      return;
+    }
+
+    // Read the displayed month
+    var monthLabel = cal.querySelector('.month-label');
+    var monthText = monthLabel ? monthLabel.textContent.trim() : '';
+    var targetMonthName = MONTH_NAMES[s.m] + ' ' + s.y;
+    console.log('[cap-B] displayed month:', monthText, '| target:', targetMonthName);
+
+    if(monthText !== targetMonthName){
+      // Need to navigate. Determine direction.
+      var displayedYear = parseInt((monthText.match(/\d{4}/)||[''])[0], 10);
+      var displayedMonthName = monthText.replace(/\s*\d{4}\s*/, '').trim();
+      var displayedMonthIdx = MONTH_NAMES.indexOf(displayedMonthName);
+      var displayedAbsolute = displayedYear * 12 + displayedMonthIdx;
+      var targetAbsolute = s.y * 12 + s.m;
+      var needsForward = targetAbsolute > displayedAbsolute;
+      var arrowSelector = needsForward ? '.arrow.right' : '.arrow.left';
+      var arrow = cal.querySelector(arrowSelector);
+      console.log('[cap-B] need to navigate', needsForward?'forward':'backward', '| arrow:', arrow && arrow.outerHTML);
+      if(arrow && !arrow.classList.contains('disabled')){
+        var arrowHandler = capFindReactHandler(arrow, 'onClick');
+        if(arrowHandler){
+          console.log('[cap-B] clicking nav arrow via React onClick (depth', arrowHandler.depth+')');
+          try {
+            arrowHandler.handler(capMakeReactEvent(arrowHandler.el, 'click'));
+          } catch(e){ console.warn('[cap-B] nav arrow handler threw:', e); }
+        } else {
+          console.warn('[cap-B] nav arrow has no React onClick — trying native click');
+          try { arrow.click(); } catch(_){}
+        }
+        // Next mount of .wbx-calendar (after re-render) will re-fire this driver
+        // via the persistent calendarWatcher.
+        return;
+      } else {
+        console.warn('[cap-B] cannot navigate — arrow missing or disabled. Stuck on', monthText);
+        return;
+      }
+    }
+
+    // We're on the right month — click the day cell
+    console.log('[cap-B] on target month — scanning for day', s.d);
     console.log('[cap-B] calendar outerHTML preview:', cal.outerHTML.slice(0, 400));
 
     // Try a battery of selectors WITHIN the wbx-calendar
@@ -700,6 +752,8 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
       try { cell.click(); } catch(_){}
     }
 
+    // Flag handled so the persistent calendarWatcher stops firing
+    window._capHandled = true;
     setTimeout(function(){
       console.log('[cap-B] post-click input.value:', inp.value, '| className:', inp.className);
       window.capDrivingNative = false;
