@@ -645,7 +645,35 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
     console.log('[cap-B] displayed month:', monthText, '| target:', targetMonthName);
 
     if(monthText !== targetMonthName){
-      // Need to navigate. Determine direction.
+      // Before navigating: check if target date is visible as overflow cell
+      // (e.g. Dec 10 might appear in Nov view as a "different-month" cell at the
+      // bottom of the grid). Clicking the overflow cell sometimes auto-navigates
+      // AND selects in one shot.
+      var overflowCells = cal.querySelectorAll('.day.different-month.enabled');
+      console.log('[cap-B] overflow (different-month enabled) cells:', overflowCells.length);
+      for(var oi=0; oi<overflowCells.length; oi++){
+        if(parseInt(overflowCells[oi].textContent.trim(), 10) === s.d){
+          // Heuristic: if target is "next month" relative to displayed AND there are
+          // overflow cells, the late-grid ones are the next month. Click it.
+          console.log('[cap-B] ★ trying overflow cell for day', s.d);
+          var ovHandler = capFindReactHandler(overflowCells[oi], 'onClick');
+          if(ovHandler){
+            try {
+              ovHandler.handler(capMakeReactEvent(ovHandler.el, 'click'));
+              console.log('[cap-B] ✓ overflow-cell React onClick fired');
+              window._capHandled = true;
+              setTimeout(function(){
+                console.log('[cap-B] post-overflow-click input.value:', inp.value);
+                window.capDrivingNative = false;
+              }, 400);
+              return;
+            } catch(_){}
+          }
+          break;
+        }
+      }
+
+      // No overflow shortcut — must navigate via arrow
       var displayedYear = parseInt((monthText.match(/\d{4}/)||[''])[0], 10);
       var displayedMonthName = monthText.replace(/\s*\d{4}\s*/, '').trim();
       var displayedMonthIdx = MONTH_NAMES.indexOf(displayedMonthName);
@@ -660,14 +688,32 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
         if(arrowHandler){
           console.log('[cap-B] clicking nav arrow via React onClick (depth', arrowHandler.depth+')');
           try {
-            arrowHandler.handler(capMakeReactEvent(arrowHandler.el, 'click'));
+            // Use detail:1 in nativeEvent (some libs check click-count to gate synth vs real)
+            var navEvt = capMakeReactEvent(arrowHandler.el, 'click');
+            navEvt.nativeEvent = new MouseEvent('click', {bubbles:true, cancelable:true, detail:1});
+            arrowHandler.handler(navEvt);
           } catch(e){ console.warn('[cap-B] nav arrow handler threw:', e); }
         } else {
           console.warn('[cap-B] nav arrow has no React onClick — trying native click');
           try { arrow.click(); } catch(_){}
         }
-        // Next mount of .wbx-calendar (after re-render) will re-fire this driver
-        // via the persistent calendarWatcher.
+        // Re-focus input — Webconnex may be checking activeElement and closing
+        // the picker if focus drifted to the arrow icon.
+        try { inp.focus({preventScroll:true}); } catch(_){}
+        // IMMEDIATELY re-drive via microtask — calendar's been updated in place
+        // (no full re-mount), so watcher won't re-fire. We need to scan + click
+        // BEFORE Webconnex's auto-close triggers (~50ms after our nav click).
+        Promise.resolve().then(function(){
+          console.log('[cap-B] microtask redrive after nav');
+          capDriveWbxCalendar(null, s, inp);
+        });
+        // Also schedule animation-frame redrive as backup
+        requestAnimationFrame(function(){
+          if(!window._capHandled){
+            console.log('[cap-B] rAF redrive after nav');
+            capDriveWbxCalendar(null, s, inp);
+          }
+        });
         return;
       } else {
         console.warn('[cap-B] cannot navigate — arrow missing or disabled. Stuck on', monthText);
