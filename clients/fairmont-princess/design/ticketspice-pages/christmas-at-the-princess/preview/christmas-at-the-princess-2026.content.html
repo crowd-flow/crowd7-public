@@ -203,11 +203,10 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
     </div>
   </div></section>
 
-  <!-- 3) VALUE-DATES — CTA opens the picker MODAL -->
+  <!-- 3) VALUE-DATES — info only. The picker modal opens from the native TS "Choose Date" selector. -->
   <section style="background:#fff;"><div class="cap-wrap" style="text-align:center;">
-    <div class="sec-head"><div class="eye">Save on Off-Peak Nights</div><h2>Pick your date</h2></div>
-    <p style="color:var(--muted);max-width:560px;margin:0 auto 22px;">Green nights are <strong>Value Dates</strong> &mdash; save $5, from $35. Check the calendar to find your night.</p>
-    <button class="date-cta" onclick="capOpenDate()">&#128197; Check dates &amp; pricing</button>
+    <div class="sec-head"><div class="eye">Save on Off-Peak Nights</div><h2>Value Dates save you $5</h2></div>
+    <p style="color:var(--muted);max-width:560px;margin:0 auto;">Green nights are <strong>Value Dates</strong> &mdash; from $35. When you choose your date in the ticket box above, value nights show in green.</p>
   </div></section>
 
   <!-- Santa add-on trigger -->
@@ -225,7 +224,7 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
       <div class="cal-grid" id="capCalGrid"></div>
       <div class="cal-legend"><span><span class="sw" style="background:#f3eeea;"></span>Standard</span><span><span class="sw" style="background:var(--green);"></span>Value &middot; save $5 &middot; from $35</span></div>
     </div>
-    <button class="mbtn" onclick="capCloseAll()">Select this date</button>
+    <button class="mbtn" onclick="capConfirmDate()">Select this date</button>
     <button class="mlink" onclick="capCloseAll()">Cancel</button>
   </div></div>
 
@@ -247,6 +246,8 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
   </div></div>
 
   <script>
+  var capNativeInput=null, capSelected=null, capCal={y:2026,m:11}; // Dec 2026 (0-indexed)
+
   (function(){
     var root=document.getElementById('cap-funnel'); if(!root) return;
     /* 1) phase detection */
@@ -258,16 +259,24 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
     if(!root.querySelector('#capPhaseRow .phase-card.active')) root.querySelector('#capPhaseRow .phase-card').classList.add('active');
     root.querySelectorAll('.ov').forEach(function(o){o.addEventListener('click',function(e){if(e.target===o)capCloseAll();});});
 
-    /* LIVE-TS ONLY (verify on the real cart): suppress the native TS datepicker and open OUR modal instead.
-       Safe no-op if the native field isn't present (e.g. this standalone preview). On select, write the
-       chosen date back into the native input + dispatch change so the TS cart still registers it. */
-    document.querySelectorAll('input.hasDatepicker,[placeholder="Choose Date"],[aria-label="Choose Date"]').forEach(function(inp){
-      ['focus','click'].forEach(function(ev){ inp.addEventListener(ev,function(e){ e.preventDefault(); try{inp.blur();}catch(_){} capOpenDate(); }, true); });
+    /* DELEGATED so it works even though TS renders the "Choose Date" field AFTER this script runs.
+       Intercept the native date field -> suppress its picker -> open OUR modal. capConfirmDate() writes back. */
+    function isDateField(el){ return el && el.matches && el.matches('input.hasDatepicker,[placeholder="Choose Date"],[aria-label="Choose Date"]'); }
+    ['focusin','mousedown','click'].forEach(function(ev){
+      document.addEventListener(ev,function(e){
+        var el=e.target;
+        if(isDateField(el)){
+          e.preventDefault(); e.stopPropagation();
+          capNativeInput=el;
+          try{el.blur();}catch(_){}
+          capOpenDate();
+          console.log('[cap] intercepted native date field -> opened modal', el);
+        }
+      }, true);
     });
   })();
 
-  /* 3) value-dates calendar — month-navigable, DEMO rule: Mon–Thu = value nights */
-  var capCal={y:2026,m:11}; // Dec 2026 (0-indexed)
+  /* value-dates calendar — month-navigable, DEMO rule: Mon–Thu = value nights */
   function capRenderCal(){
     var grid=document.getElementById('capCalGrid'); if(!grid) return;
     grid.innerHTML='';
@@ -277,8 +286,13 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
     for(var d=1;d<=days;d++){
       var dow=new Date(capCal.y,capCal.m,d).getDay(), isV=(dow>=1&&dow<=4);
       var cell=document.createElement('div'); cell.className='cal-day'+(isV?' value-date':'');
+      cell.setAttribute('data-d', d);
       cell.innerHTML=d+'<span class="p">'+(isV?'$35':'$48')+'</span>';
-      cell.onclick=function(){grid.querySelectorAll('.cal-day.sel').forEach(function(x){x.classList.remove('sel');});this.classList.add('sel');};
+      cell.onclick=function(){
+        grid.querySelectorAll('.cal-day.sel').forEach(function(x){x.classList.remove('sel');});
+        this.classList.add('sel');
+        capSelected={y:capCal.y, m:capCal.m, d:+this.getAttribute('data-d')};
+      };
       grid.appendChild(cell);
     }
     var lbl=document.getElementById('capCalLabel');
@@ -289,5 +303,23 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
   function capOpenSanta(){document.getElementById('capOvSanta').classList.add('on');}
   function capOpenStar(){document.getElementById('capOvStar').classList.add('on');}
   function capCloseAll(){document.querySelectorAll('#cap-funnel .ov').forEach(function(o){o.classList.remove('on');});}
+
+  /* write the chosen date back into the native TS field so the cart actually selects it */
+  function capConfirmDate(){
+    if(!capSelected){ capCloseAll(); return; }
+    var s=capSelected, dt=new Date(s.y, s.m, s.d);
+    var str=('0'+(s.m+1)).slice(-2)+'/'+('0'+s.d).slice(-2)+'/'+s.y; // MM/DD/YYYY
+    var inp=capNativeInput || document.querySelector('input.hasDatepicker,[placeholder="Choose Date"],[aria-label="Choose Date"]');
+    if(inp){
+      try{ if(window.jQuery && window.jQuery(inp).datepicker){ window.jQuery(inp).datepicker('setDate', dt); } }catch(_){}
+      inp.value=str;
+      inp.dispatchEvent(new Event('input',{bubbles:true}));
+      inp.dispatchEvent(new Event('change',{bubbles:true}));
+      console.log('[cap] wrote date to native field:', str, inp);
+    } else {
+      console.warn('[cap] no native date input found to write back (standalone preview has none)');
+    }
+    capCloseAll();
+  }
   </script>
 </div>
