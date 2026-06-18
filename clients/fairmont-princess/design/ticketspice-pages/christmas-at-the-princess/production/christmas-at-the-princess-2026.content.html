@@ -55,7 +55,8 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
 }
 @keyframes capCalFade { from { opacity: 0; } to { opacity: 1; } }
 
-/* Modal shell — white card, centered, holds banner + calendar slot + footer */
+/* Modal shell — white card, centered, holds banner + calendar slot + footer.
+   Sized to match the old custom modal: 480px width, generous 30/28 padding. */
 .cap-cal-shell {
   position: fixed !important;
   top: 50% !important;
@@ -63,16 +64,15 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
   transform: translate(-50%, -50%) !important;
   z-index: 2147483001 !important;
   background: #fff !important;
-  border-radius: 22px !important;
-  padding: 30px 28px 24px !important;
+  border-radius: 18px !important;
+  padding: 30px 28px !important;
   width: 92vw !important;
-  max-width: 520px !important;
+  max-width: 480px !important;
   max-height: 92vh !important;
   overflow-y: auto !important;
   box-shadow: 0 30px 80px rgba(40, 10, 12, 0.55) !important;
   font-family: 'Montserrat', system-ui, sans-serif !important;
   animation: capCalPop 0.25s ease !important;
-  border-top: 8px solid #c9a24b !important;
 }
 @keyframes capCalPop {
   from { opacity: 0; transform: translate(-50%, -46%) scale(0.96); }
@@ -226,96 +226,78 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
 :is(.ticket-block, .cap-cal-shell) .wbx-calendar .row.week {
   display: grid !important;
   grid-template-columns: repeat(7, 1fr) !important;
-  gap: 4px !important;
-  margin-bottom: 4px !important;
+  gap: 5px !important;
+  margin-bottom: 5px !important;
 }
-:is(.ticket-block, .cap-cal-shell) .wbx-calendar .day[data-testid="day"] {
+/* DAY CELLS — match the old custom modal exactly:
+   aspect-ratio 1, 9px radius, cream #f3eeea, larger font, no border */
+:is(.ticket-block, .cap-cal-shell) .wbx-calendar .day[data-testid="day"],
+:is(.ticket-block, .cap-cal-shell) .wbx-calendar .row.week .day {
   aspect-ratio: 1 !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  border-radius: 10px !important;
-  font-family: 'Playfair Display', serif !important;
-  font-size: 0.98rem !important;
+  border-radius: 9px !important;
+  font-family: 'Montserrat', system-ui, sans-serif !important;
+  font-size: 1.05rem !important;
   font-weight: 600 !important;
   color: #3a2a2a !important;
   cursor: pointer !important;
   transition: all 0.15s !important;
-  background: #fbf7f4 !important;
-  border: 1px solid #f0e8e0 !important;
+  background: #f3eeea !important;
+  border: 0 !important;
+  min-height: 44px !important;
 }
 :is(.ticket-block, .cap-cal-shell) .wbx-calendar .day.enabled:not(.different-month):hover {
   background: #c82844 !important;
   color: #fff !important;
-  border-color: #c82844 !important;
-  transform: scale(1.06) !important;
+  transform: scale(1.04) !important;
   box-shadow: 0 6px 16px rgba(200,40,68,0.4) !important;
 }
-:is(.ticket-block, .cap-cal-shell) .wbx-calendar .day.different-month { opacity: 0.32 !important; }
+:is(.ticket-block, .cap-cal-shell) .wbx-calendar .day.different-month {
+  opacity: 0.28 !important;
+  cursor: not-allowed !important;
+}
 :is(.ticket-block, .cap-cal-shell) .wbx-calendar .day.disabled,
 :is(.ticket-block, .cap-cal-shell) .wbx-calendar .day:not(.enabled):not(.different-month) {
   opacity: 0.30 !important;
   cursor: not-allowed !important;
   color: #aaa !important;
-  background: transparent !important;
-  border-color: transparent !important;
+  background: #f8f4f0 !important;
 }
-/* Override pre-existing solid red on enabled days — we want cream cells */
-/* that turn red on hover, gold when selected. */
+/* Override pre-existing solid red on enabled days — clean cream, red on hover */
 :is(.ticket-block, .cap-cal-shell) .wbx-calendar .row .day.enabled:not(.low-inventory):not(.partial):not(.sold-out) {
-  background: #fbf7f4 !important;
+  background: #f3eeea !important;
   color: #3a2a2a !important;
-  border: 1px solid #f0e8e0 !important;
 }
 :is(.ticket-block, .cap-cal-shell) .wbx-calendar .row .day.enabled:not(.low-inventory):not(.partial):not(.sold-out):hover {
   background: #c82844 !important;
   color: #fff !important;
 }
-/* Selected state (Webconnex may apply any of these on click) */
+/* Selected state — gold outline like the old custom modal's 3px accent outline */
 :is(.ticket-block, .cap-cal-shell) .wbx-calendar .day.selected,
 :is(.ticket-block, .cap-cal-shell) .wbx-calendar .day.day-selected,
 :is(.ticket-block, .cap-cal-shell) .wbx-calendar .day.active {
   background: #c9a24b !important;
   color: #fff !important;
   font-weight: 700 !important;
-  border-color: #c9a24b !important;
+  outline: 3px solid #c82844 !important;
+  outline-offset: -3px !important;
   box-shadow: 0 6px 16px rgba(201, 162, 75, 0.45) !important;
 }
-/* Branded chrome injected around the calendar */
-.cap-cal-banner {
-  text-align: center !important;
-  padding: 18px 0 4px !important;
-  font-family: 'Pinyon Script', cursive !important;
-  font-size: 2.4rem !important;
-  color: #671416 !important;
-  line-height: 1 !important;
+/* Value-night green for cells Webconnex marks as low-inventory or partial */
+/* (Mat: if your value-night dates use a different class on the live page, */
+/* tell me what class and I'll target it explicitly.) */
+:is(.ticket-block, .cap-cal-shell) .wbx-calendar .day.enabled.low-inventory,
+:is(.ticket-block, .cap-cal-shell) .wbx-calendar .day.enabled.partial {
+  background: #28bf38 !important;
+  color: #fff !important;
+  border-color: #28bf38 !important;
 }
-.cap-cal-banner .sub {
-  display: block !important;
-  font-family: 'Montserrat', sans-serif !important;
-  font-size: 0.72rem !important;
-  letter-spacing: 0.2em !important;
-  text-transform: uppercase !important;
-  color: #c9a24b !important;
-  margin-top: 8px !important;
-  font-weight: 700 !important;
-}
-.cap-cal-footer {
-  text-align: center !important;
-  padding: 14px 16px 4px !important;
-  font-family: 'Montserrat', sans-serif !important;
-  font-size: 0.78rem !important;
-  color: #6e6e6e !important;
-  max-width: 480px !important;
-  margin: 0 auto !important;
-}
-.cap-cal-footer .leg { display: inline-block; margin: 0 10px; }
-.cap-cal-footer .sw {
-  display: inline-block;
-  width: 10px; height: 10px;
-  border-radius: 2px;
-  vertical-align: -1px;
-  margin-right: 5px;
+:is(.ticket-block, .cap-cal-shell) .wbx-calendar .day.enabled.low-inventory:hover,
+:is(.ticket-block, .cap-cal-shell) .wbx-calendar .day.enabled.partial:hover {
+  background: #1aa628 !important;
+  border-color: #1aa628 !important;
 }
 </style>
 
