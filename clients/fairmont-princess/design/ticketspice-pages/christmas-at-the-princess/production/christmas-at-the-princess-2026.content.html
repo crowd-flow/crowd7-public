@@ -35,6 +35,171 @@
 .ti.josefin-sans { font-family: "Josefin Sans", sans-serif; font-weight: 100!important; font-style: normal; }
 body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; font-weight: 300!important; }
 .ticket-block .wbx-calendar .row .day.enabled:not(.low-inventory):not(.partial):not(.sold-out) { background: #C82844; color:#ffffff; }
+
+/* ════════════════════════════════════════════════════════════════════
+   PATH C — restyle the native Webconnex .wbx-calendar to brand. NOT
+   scoped under #cap-funnel because the picker renders inside TS's
+   .ticket-block tree (outside our scope). All selectors gated to
+   .ticket-block so we don't bleed into TS admin or other surfaces.
+   ════════════════════════════════════════════════════════════════════ */
+.ticket-block .datePicker { padding: 6px 0 0 !important; }
+.ticket-block .wbx-calendar {
+  background: linear-gradient(180deg, #ffffff, #fbf7f4) !important;
+  border: 2px solid #c9a24b !important;
+  border-radius: 18px !important;
+  padding: 14px 14px 10px !important;
+  box-shadow: 0 22px 50px rgba(40, 10, 12, 0.20) !important;
+  font-family: 'Montserrat', system-ui, sans-serif !important;
+  max-width: 480px !important;
+  margin: 0 auto !important;
+}
+.ticket-block .wbx-calendar .header {
+  background: linear-gradient(135deg, #671416, #4a0e10) !important;
+  color: #fff !important;
+  border-radius: 12px !important;
+  padding: 12px 10px !important;
+  margin-bottom: 12px !important;
+}
+.ticket-block .wbx-calendar .month-display.row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 10px !important;
+}
+.ticket-block .wbx-calendar .month-label {
+  font-family: 'Playfair Display', Georgia, serif !important;
+  font-size: 1.2rem !important;
+  font-weight: 700 !important;
+  color: #fff !important;
+  letter-spacing: 0.02em !important;
+  flex: 1 !important;
+  text-align: center !important;
+}
+.ticket-block .wbx-calendar .arrow {
+  background: rgba(255,255,255,0.14) !important;
+  color: #fff !important;
+  border-radius: 50% !important;
+  width: 32px !important; height: 32px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  font-size: 1rem !important;
+  transition: background 0.15s !important;
+}
+.ticket-block .wbx-calendar .arrow:hover:not(.disabled) { background: rgba(255,255,255,0.3) !important; }
+.ticket-block .wbx-calendar .arrow.disabled { opacity: 0.25 !important; cursor: not-allowed !important; }
+.ticket-block .wbx-calendar .day-names {
+  border-bottom: 1px solid #e6e6e6 !important;
+  padding-bottom: 8px !important;
+  margin-bottom: 8px !important;
+  display: grid !important;
+  grid-template-columns: repeat(7, 1fr) !important;
+  gap: 4px !important;
+}
+.ticket-block .wbx-calendar .day-names .day {
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 0.68rem !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  color: #8a7060 !important;
+  text-align: center !important;
+  font-weight: 700 !important;
+}
+.ticket-block .wbx-calendar .row.week {
+  display: grid !important;
+  grid-template-columns: repeat(7, 1fr) !important;
+  gap: 4px !important;
+  margin-bottom: 4px !important;
+}
+.ticket-block .wbx-calendar .day[data-testid="day"] {
+  aspect-ratio: 1 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 10px !important;
+  font-family: 'Playfair Display', serif !important;
+  font-size: 0.98rem !important;
+  font-weight: 600 !important;
+  color: #3a2a2a !important;
+  cursor: pointer !important;
+  transition: all 0.15s !important;
+  background: #fbf7f4 !important;
+  border: 1px solid #f0e8e0 !important;
+}
+.ticket-block .wbx-calendar .day.enabled:not(.different-month):hover {
+  background: #c82844 !important;
+  color: #fff !important;
+  border-color: #c82844 !important;
+  transform: scale(1.06) !important;
+  box-shadow: 0 6px 16px rgba(200,40,68,0.4) !important;
+}
+.ticket-block .wbx-calendar .day.different-month { opacity: 0.32 !important; }
+.ticket-block .wbx-calendar .day.disabled,
+.ticket-block .wbx-calendar .day:not(.enabled):not(.different-month) {
+  opacity: 0.30 !important;
+  cursor: not-allowed !important;
+  color: #aaa !important;
+  background: transparent !important;
+  border-color: transparent !important;
+}
+/* Override pre-existing solid red on enabled days — we want cream cells */
+/* that turn red on hover, gold when selected. */
+.ticket-block .wbx-calendar .row .day.enabled:not(.low-inventory):not(.partial):not(.sold-out) {
+  background: #fbf7f4 !important;
+  color: #3a2a2a !important;
+  border: 1px solid #f0e8e0 !important;
+}
+.ticket-block .wbx-calendar .row .day.enabled:not(.low-inventory):not(.partial):not(.sold-out):hover {
+  background: #c82844 !important;
+  color: #fff !important;
+}
+/* Selected state (Webconnex may apply any of these on click) */
+.ticket-block .wbx-calendar .day.selected,
+.ticket-block .wbx-calendar .day.day-selected,
+.ticket-block .wbx-calendar .day.active {
+  background: #c9a24b !important;
+  color: #fff !important;
+  font-weight: 700 !important;
+  border-color: #c9a24b !important;
+  box-shadow: 0 6px 16px rgba(201, 162, 75, 0.45) !important;
+}
+/* Branded chrome injected around the calendar */
+.cap-cal-banner {
+  text-align: center !important;
+  padding: 18px 0 4px !important;
+  font-family: 'Pinyon Script', cursive !important;
+  font-size: 2.4rem !important;
+  color: #671416 !important;
+  line-height: 1 !important;
+}
+.cap-cal-banner .sub {
+  display: block !important;
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.2em !important;
+  text-transform: uppercase !important;
+  color: #c9a24b !important;
+  margin-top: 8px !important;
+  font-weight: 700 !important;
+}
+.cap-cal-footer {
+  text-align: center !important;
+  padding: 14px 16px 4px !important;
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 0.78rem !important;
+  color: #6e6e6e !important;
+  max-width: 480px !important;
+  margin: 0 auto !important;
+}
+.cap-cal-footer .leg { display: inline-block; margin: 0 10px; }
+.cap-cal-footer .sw {
+  display: inline-block;
+  width: 10px; height: 10px;
+  border-radius: 2px;
+  vertical-align: -1px;
+  margin-right: 5px;
+}
 </style>
 
 <div id="cap-funnel">
@@ -223,17 +388,9 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
     <button class="date-cta" style="background:var(--accent);" onclick="capOpenSanta()">Add Photos with Santa</button>
   </div></section>
 
-  <!-- DATE-PICKER modal -->
-  <div class="cap-ov" id="capOvDate"><div class="cap-modal" style="max-width:480px;"><button class="x" onclick="capCloseAll()">&times;</button>
-    <h3 style="text-align:center;">Pick your date</h3>
-    <div class="cal-wrap">
-      <div class="cal-head"><button class="cal-nav" onclick="capCalNav(-1)">&lsaquo;</button><span class="m" id="capCalLabel">December 2026</span><button class="cal-nav" onclick="capCalNav(1)">&rsaquo;</button></div>
-      <div class="cal-grid" id="capCalGrid"></div>
-      <div class="cal-legend"><span><span class="sw" style="background:#f3eeea;"></span>Standard</span><span><span class="sw" style="background:var(--green);"></span>Value &middot; save $5 &middot; from $35</span></div>
-    </div>
-    <button class="mbtn" onclick="capConfirmDate()">Select this date</button>
-    <button class="mlink" onclick="capCloseAll()">Cancel</button>
-  </div></div>
+  <!-- Path C: date-picker modal removed. Native Webconnex .wbx-calendar
+       is now restyled in place (see CSS block at top) plus branded chrome
+       (banner above, legend footer below) is injected via the script. -->
 
   <!-- Santa modal -->
   <div class="cap-ov" id="capOvSanta"><div class="cap-modal"><button class="x" onclick="capCloseAll()">&times;</button>
@@ -253,557 +410,77 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
   </div></div>
 
   <script>
-  var capNativeInput=null, capSelected=null, capCal={y:2026,m:11}; // Dec 2026 (0-indexed)
+  /* ════════════════════════════════════════════════════════════════════
+     PATH C SCRIPT — minimal. Three responsibilities:
+       1. Light up the active sale-phase card.
+       2. Inject branded chrome (.cap-cal-banner + .cap-cal-footer) AROUND
+          the native .wbx-calendar when it mounts, so the picker reads as
+          part of our brand. Chrome is inserted as siblings (outside the
+          wbx-calendar element) so React's reconciliation never sweeps it.
+       3. Modal helpers for Santa + Starlight upsells (cap-OvSanta / cap-OvStar).
+     The Path B fight code (intercept, fiber-poking, picker driving) is
+     gone — native Webconnex flow handles date selection.
+     ════════════════════════════════════════════════════════════════════ */
 
+  // 1) sale-phase detection
   (function(){
-    var root=document.getElementById('cap-funnel'); if(!root) return;
-    /* 1) phase detection */
-    var today=new Date();
+    var root = document.getElementById('cap-funnel'); if(!root) return;
+    var today = new Date();
     root.querySelectorAll('#capPhaseRow .phase-card').forEach(function(c){
-      var s=new Date(c.getAttribute('data-start')+'T00:00:00'), e=new Date(c.getAttribute('data-end')+'T23:59:59');
-      if(today>=s && today<=e) c.classList.add('active');
+      var s = new Date(c.getAttribute('data-start')+'T00:00:00');
+      var e = new Date(c.getAttribute('data-end')+'T23:59:59');
+      if(today >= s && today <= e) c.classList.add('active');
     });
-    if(!root.querySelector('#capPhaseRow .phase-card.active')) root.querySelector('#capPhaseRow .phase-card').classList.add('active');
-    /* overlay click-out is bound inside capShow() since overlays portal to <body> on open */
-
-    /* DELEGATED so it works even though TS renders the "Choose Date" field AFTER this script runs.
-       Intercept the native date field -> suppress its picker -> open OUR modal. capConfirmDate() writes back.
-       URL param ?capdiag=raw disables the intercept so you can compare against the native flow. */
-    var capDiagRaw = /[?&]capdiag=raw/.test(window.location.search);
-    if(capDiagRaw) console.log('[cap-diag] capdiag=raw → intercept DISABLED, native picker will run');
-    function isDateField(el){ return el && el.matches && el.matches('input.hasDatepicker,[placeholder="Choose Date"],[aria-label="Choose Date"]'); }
-    ['focusin','mousedown','click'].forEach(function(ev){
-      document.addEventListener(ev,function(e){
-        var el=e.target;
-        if(isDateField(el)){
-          // When Path B is actively driving the native picker, don't re-intercept
-          // our own dispatched events — they need to reach React unmolested.
-          if(window.capDrivingNative){
-            console.log('[cap-B] intercept SKIPPED ('+ev+') — driving native picker');
-            return;
-          }
-          capNativeInput=el;
-          capDiagBoot(el);                       // one-time introspection on first interaction
-          capInstallTicketObserver();            // start watching ticket-area mutations
-          if(capDiagRaw){
-            console.log('[cap-diag] would intercept, but capdiag=raw — letting native picker run');
-            return;
-          }
-          e.preventDefault(); e.stopPropagation();
-          // NOTE: removed el.blur() — was suspected of causing Webconnex's
-          // picker to auto-close (it watches activeElement to decide if open
-          // should stay true). Leave focus on the input.
-          capOpenDate();
-          console.log('[cap] intercepted native date field -> opened modal', el);
-        }
-      }, true);
-    });
+    if(!root.querySelector('#capPhaseRow .phase-card.active')){
+      root.querySelector('#capPhaseRow .phase-card').classList.add('active');
+    }
   })();
 
-  /* ═════════════════════════════════════════════════════════════════
-     REACT FIBER UTILITIES — for poking React component handlers from
-     outside React, bypassing event-dispatch + isTrusted gating.
-     ═════════════════════════════════════════════════════════════════ */
-  window.capDrivingNative = false;
+  // 2) inject branded chrome around .wbx-calendar
+  (function(){
+    var injectedPickers = new WeakSet();
+    function injectCalendarChrome(){
+      var cal = document.querySelector('.ticket-block .datePicker .wbx-calendar');
+      if(!cal) return;
+      var picker = cal.parentElement;
+      if(!picker || injectedPickers.has(picker)) return;
+      injectedPickers.add(picker);
 
-  function capGetFiberKey(el){
-    for(var k in el){
-      if(k.indexOf('__reactFiber') === 0) return k;
-      if(k.indexOf('__reactInternalInstance') === 0) return k;
-    }
-    return null;
-  }
-  function capGetPropsKey(el){
-    for(var k in el){
-      if(k.indexOf('__reactProps') === 0) return k;
-    }
-    return null;
-  }
-  function capMakeReactEvent(el, type){
-    return {
-      preventDefault: function(){}, stopPropagation: function(){}, stopImmediatePropagation: function(){},
-      persist: function(){}, isDefaultPrevented: function(){return false;}, isPropagationStopped: function(){return false;},
-      target: el, currentTarget: el, type: type, bubbles: true, cancelable: true,
-      nativeEvent: new MouseEvent(type, {bubbles:true, cancelable:true}),
-      isTrusted: false, defaultPrevented: false, eventPhase: 2
-    };
-  }
-  // Walk DOM ancestors (and React fiber ancestors) looking for an element
-  // whose React props carry a handler named `handlerName`. Returns the first match.
-  function capFindReactHandler(startEl, handlerName){
-    var el = startEl;
-    for(var depth=0; el && depth < 10; depth++, el = el.parentElement){
-      var propsKey = capGetPropsKey(el);
-      if(propsKey && el[propsKey] && typeof el[propsKey][handlerName] === 'function'){
-        return { el: el, handler: el[propsKey][handlerName], depth: depth };
-      }
-    }
-    // Also walk the FIBER chain in case props live on a component above the DOM
-    var fk = capGetFiberKey(startEl);
-    if(fk){
-      var fiber = startEl[fk];
-      for(var fdepth=0; fiber && fdepth < 15; fdepth++, fiber = fiber.return){
-        if(fiber.memoizedProps && typeof fiber.memoizedProps[handlerName] === 'function'){
-          return { el: fiber.stateNode || startEl, handler: fiber.memoizedProps[handlerName], depth: -fdepth };
-        }
-      }
-    }
-    return null;
-  }
+      // Banner BEFORE the calendar (sibling — React won't touch it)
+      var banner = document.createElement('div');
+      banner.className = 'cap-cal-banner';
+      banner.innerHTML = 'Pick Your Holiday Night<span class="sub">★ Tap a Date to See Tickets ★</span>';
+      picker.insertBefore(banner, cal);
 
-  /* ─────────────────────────────────────────────────────────────
-     DIAGNOSTIC INSTRUMENTATION (Mat 2026-06-17)
-     Boot-time introspection + ticket-area MutationObserver.
-     Remove this whole block once we've diagnosed Option A's failure.
-     ───────────────────────────────────────────────────────────── */
-  var capDiagBooted = false;
-  function capDiagBoot(inp){
-    if(capDiagBooted) return; capDiagBooted = true;
-    try {
-      console.group('[cap-diag] BOOT — introspecting TS environment');
-      console.log('input element:', inp);
-      console.log('input.value (pre):', inp.value);
-      console.log('input.id / name / class:', inp.id, '/', inp.name, '/', inp.className);
-      console.log('jQuery present?', !!window.jQuery, 'version:', window.jQuery && window.jQuery.fn.jquery);
-      if(window.jQuery){
-        var $i = window.jQuery(inp);
-        var events = window.jQuery._data ? window.jQuery._data(inp, 'events') : null;
-        console.log('jQuery events bound to input:', events);
-        try {
-          var dpInst = $i.data('datepicker');
-          console.log('datepicker instance:', dpInst);
-          if(dpInst && dpInst.settings){
-            console.log('datepicker onSelect:', dpInst.settings.onSelect && dpInst.settings.onSelect.toString().slice(0, 400));
-            console.log('datepicker onClose:', dpInst.settings.onClose && dpInst.settings.onClose.toString().slice(0, 400));
-            console.log('datepicker beforeShowDay:', dpInst.settings.beforeShowDay && dpInst.settings.beforeShowDay.toString().slice(0, 400));
-          }
-        } catch(e){ console.warn('datepicker introspect failed:', e); }
-      }
-      console.log('--- parent DOM chain ---');
-      var p = inp;
-      for(var i=0; i<8 && p; i++){
-        p = p.parentElement;
-        if(p) console.log('  parent['+i+']:', p.tagName, '#'+p.id, '.'+p.className);
-      }
-      console.log('--- ticket-ish nodes on page ---');
-      var ticketNodes = document.querySelectorAll('[id*="ticket" i], [class*="ticket" i], [id*="cart" i], [class*="cart" i]');
-      console.log('count:', ticketNodes.length);
-      Array.prototype.slice.call(ticketNodes, 0, 12).forEach(function(n){
-        var cs = getComputedStyle(n);
-        console.log('  •', n.tagName, '#'+n.id, '.'+(n.className||'').toString().slice(0,80), '| display='+cs.display+' visibility='+cs.visibility);
-      });
-      console.groupEnd();
-    } catch(err){ console.warn('[cap-diag] boot failed:', err); }
-  }
+      // Footer AFTER the calendar (legend)
+      var footer = document.createElement('div');
+      footer.className = 'cap-cal-footer';
+      footer.innerHTML =
+        '<span class="leg"><span class="sw" style="background:#fbf7f4;border:1px solid #c9a24b;"></span>Standard</span>' +
+        '<span class="leg"><span class="sw" style="background:#28bf38;"></span>Value Night — save $5</span>';
+      picker.appendChild(footer);
 
-  var capTicketObserver = null;
-  function capInstallTicketObserver(){
-    if(capTicketObserver) return;
-    var targets = document.querySelectorAll('[id*="ticket" i], [class*="ticket" i], [id*="cart" i], [class*="cart" i]');
-    if(!targets.length){ console.warn('[cap-diag] no ticket-ish nodes to observe'); return; }
-    capTicketObserver = new MutationObserver(function(muts){
-      muts.forEach(function(m){
-        var t = m.target;
-        var id = t.id ? '#'+t.id : '';
-        var cls = (t.className && t.className.toString) ? '.'+t.className.toString().split(' ').slice(0,2).join('.') : '';
-        if(m.type === 'attributes'){
-          console.log('[cap-diag MUT attr]', t.tagName + id + cls, m.attributeName+'='+t.getAttribute(m.attributeName));
-        } else if(m.type === 'childList'){
-          if(m.addedNodes.length)   console.log('[cap-diag MUT +', m.addedNodes.length, ']', t.tagName + id + cls);
-          if(m.removedNodes.length) console.log('[cap-diag MUT -', m.removedNodes.length, ']', t.tagName + id + cls);
-        }
-      });
-    });
-    targets.forEach(function(n){
-      capTicketObserver.observe(n, {attributes:true, childList:true, subtree:true, attributeFilter:['style','class','hidden','aria-hidden']});
-    });
-    console.log('[cap-diag] MutationObserver installed on', targets.length, 'nodes');
-    window._capMO = capTicketObserver;
-  }
-  /* ───────────────────────────────────────────────────────────── */
-
-  /* value-dates calendar — month-navigable, DEMO rule: Mon–Thu = value nights */
-  function capRenderCal(){
-    var grid=document.getElementById('capCalGrid'); if(!grid) return;
-    grid.innerHTML='';
-    ['S','M','T','W','T','F','S'].forEach(function(d){var el=document.createElement('div');el.className='dow';el.textContent=d;grid.appendChild(el);});
-    var first=new Date(capCal.y,capCal.m,1).getDay(), days=new Date(capCal.y,capCal.m+1,0).getDate();
-    for(var i=0;i<first;i++) grid.appendChild(document.createElement('div'));
-    for(var d=1;d<=days;d++){
-      var dow=new Date(capCal.y,capCal.m,d).getDay(), isV=(dow>=1&&dow<=4);
-      var cell=document.createElement('div'); cell.className='cal-day'+(isV?' value-date':'');
-      cell.setAttribute('data-d', d);
-      cell.innerHTML=d+'<span class="p">'+(isV?'$35':'$48')+'</span>';
-      cell.onclick=function(){
-        grid.querySelectorAll('.cal-day.sel').forEach(function(x){x.classList.remove('sel');});
-        this.classList.add('sel');
-        capSelected={y:capCal.y, m:capCal.m, d:+this.getAttribute('data-d')};
-      };
-      grid.appendChild(cell);
+      console.log('[cap-C] injected branded chrome around .wbx-calendar');
     }
-    var lbl=document.getElementById('capCalLabel');
-    if(lbl) lbl.textContent=new Date(capCal.y,capCal.m,1).toLocaleString('en-US',{month:'long',year:'numeric'});
-  }
-  function capCalNav(delta){capCal.m+=delta; if(capCal.m<0){capCal.m=11;capCal.y--;} if(capCal.m>11){capCal.m=0;capCal.y++;} capRenderCal();}
+    var watcher = new MutationObserver(injectCalendarChrome);
+    watcher.observe(document.body, {childList:true, subtree:true});
+    injectCalendarChrome(); // attempt once on load (calendar may already be there)
+  })();
+
+  // 3) modal helpers for Santa + Starlight upsells
   function capShow(id){
-    var ov=document.getElementById(id); if(!ov){ console.warn('[cap] no overlay '+id); return; }
-    if(ov.parentNode!==document.body) document.body.appendChild(ov);   // portal out of any transformed/overflow-clipping TS ancestor
-    if(!ov._capBound){ ov.addEventListener('click',function(e){ if(e.target===ov) capCloseAll(); }); ov._capBound=true; }
+    var ov = document.getElementById(id); if(!ov) return;
+    if(ov.parentNode !== document.body) document.body.appendChild(ov);
+    if(!ov._capBound){
+      ov.addEventListener('click', function(e){ if(e.target === ov) capCloseAll(); });
+      ov._capBound = true;
+    }
     ov.classList.add('on');
-    var box=ov.querySelector('.cap-modal'), cs=box&&getComputedStyle(box), r=box&&box.getBoundingClientRect();
-    console.log('[cap] show '+id+' | overlay.display='+getComputedStyle(ov).display+' | modal.display='+(cs&&cs.display)+' opacity='+(cs&&cs.opacity)+' vis='+(cs&&cs.visibility)+' rect='+(r&&(Math.round(r.width)+'x'+Math.round(r.height)+' @'+Math.round(r.left)+','+Math.round(r.top))));
   }
-  function capOpenDate(){capShow('capOvDate'); capRenderCal();}
-  function capOpenSanta(){capShow('capOvSanta');}
-  function capOpenStar(){capShow('capOvStar');}
-  function capCloseAll(){document.querySelectorAll('.cap-ov').forEach(function(o){o.classList.remove('on');});}
-
-  /* ═══════════════════════════════════════════════════════════════════
-     PATH B — Drive the native React date picker programmatically.
-     ═══════════════════════════════════════════════════════════════════
-     Diagnostic confirmed (commits c3727d8, b2a2b6d): the TS template is
-     a React app. The "Choose Date" input is a display surface controlled
-     by a parent React date-picker component. Writing inp.value (even via
-     the native prototype setter) gets reverted on React's next render
-     because React's component state owns the value, not the DOM.
-
-     The fix: don't fight React — DRIVE it. From our modal:
-       1. Close our modal.
-       2. Inject CSS that hides whatever popover React renders for its
-          own picker (so the user never sees it flash).
-       3. Dispatch native MouseEvents on the input (mousedown/up/click)
-          so React's onClick handler runs and mounts its picker.
-       4. Poll for the picker DOM (try ~8 known React picker selectors).
-       5. Find the cell matching our chosen day, navigating months via
-          next-button clicks if needed.
-       6. Dispatch a full native mouse event sequence on the cell —
-          React's onClick fires, its component state updates with the
-          chosen date, and TS's downstream "open the ticket block" logic
-          runs naturally.
-
-     If we can't find the picker DOM (different library, hidden by some
-     other class), we log loudly with selectors-tried and fall back to a
-     React-native value-write so at least the field shows the date.
-     ═══════════════════════════════════════════════════════════════════ */
-  function capConfirmDate(){
-    if(!capSelected){ capCloseAll(); return; }
-    var s = capSelected;
-    var str = ('0'+(s.m+1)).slice(-2)+'/'+('0'+s.d).slice(-2)+'/'+s.y;
-    var inp = capNativeInput || document.querySelector('input.hasDatepicker,[placeholder="Choose Date"],[aria-label="Choose Date"]');
-
-    // Belt-and-suspenders diagnostic boot (in case first-click intercept skipped it)
-    try { capDiagBoot(inp); } catch(_){ }
-    try { capInstallTicketObserver(); } catch(_){ }
-
-    if(!inp){
-      console.warn('[cap-B] no input found — abort');
-      capCloseAll();
-      return;
-    }
-
-    console.log('[cap-B] PATH B: opening native React picker to select', str);
-
-    // GATE our own intercept so dispatched events on the input don't
-    // re-trigger our modal in an infinite loop (problem we saw last run).
-    window.capDrivingNative = true;
-
-    // Close our modal first so it doesn't visually compete
-    capCloseAll();
-
-    // v4: NO hide CSS this run. Diagnostic showed the picker auto-closes
-    // even when offscreen — suspected the hide CSS itself was tripping
-    // Webconnex's "click outside" / position-watcher. Let it render visible
-    // while we prove it stays open. We'll re-add brand styling later.
-    console.log('[cap-B] v4: no hide-CSS — picker will render visible');
-
-    // Diagnostic snapshot: what picker-ish elements exist BEFORE we try to open?
-    function snapPickerDOM(label){
-      var snap = document.querySelectorAll('[class*="picker" i],[class*="calendar" i],[class*="datepicker" i],[role="dialog"],[role="listbox"]');
-      var rows = [];
-      for(var i=0; i<snap.length && rows.length < 30; i++){
-        var n = snap[i];
-        // Skip our own elements
-        if(n.closest && n.closest('#capOvDate, #capOvSanta, #capOvStar, #cap-funnel')) continue;
-        var cs = getComputedStyle(n);
-        var cls = (n.className && n.className.toString) ? n.className.toString().slice(0,80) : '';
-        rows.push({t: n.tagName + (n.id?'#'+n.id:'') + '.' + cls, d: cs.display, v: cs.visibility, o: cs.opacity});
-      }
-      console.log('[cap-B '+label+'] non-self picker-ish elements:', rows.length);
-      rows.forEach(function(r,i){ console.log('  ['+label+' #'+i+']', r.t, '| display='+r.d, 'vis='+r.v, 'opacity='+r.o); });
-    }
-    snapPickerDOM('PRE-DISPATCH');
-
-    // Watch body for newly-rendered nodes so we can see what React mounts
-    var bodyMO = new MutationObserver(function(muts){
-      muts.forEach(function(m){
-        for(var i=0;i<m.addedNodes.length;i++){
-          var n = m.addedNodes[i];
-          if(n.nodeType !== 1) continue;
-          // Skip mutations inside our own modals
-          if(n.closest && n.closest('#capOvDate, #capOvSanta, #capOvStar')) continue;
-          var info = n.tagName +
-            (n.id?'#'+n.id:'') +
-            (n.className && n.className.toString ? '.'+n.className.toString().split(' ').slice(0,3).join('.') : '');
-          console.log('[cap-B MUT+]', info);
-        }
-      });
-    });
-    bodyMO.observe(document.body, {childList:true, subtree:true});
-
-    function fireMouse(el, type){
-      el.dispatchEvent(new MouseEvent(type, {bubbles:true, cancelable:true, view:window, button:0, buttons:1}));
-    }
-    function firePointer(el, type){
-      try { el.dispatchEvent(new PointerEvent(type, {bubbles:true, cancelable:true, view:window, button:0, buttons:1, pointerType:'mouse'})); } catch(_){}
-    }
-
-    // ──────────────────────────────────────────────────────────────────
-    // OPEN-PICKER via React fiber ONLY (NO native dispatch). Then watch
-    // for .wbx-calendar to mount and immediately click the cell via fiber.
-    //
-    // CRUCIAL (confirmed 2026-06-17 console output): Webconnex's input
-    // is a TOGGLE — first click opens, second closes. Previous Path B
-    // dispatched a native click after the React onClick, which closed
-    // the picker milliseconds after opening. Removed that dispatch.
-    // ──────────────────────────────────────────────────────────────────
-
-    // v4: PERSISTENT calendar watcher — keep firing on every .wbx-calendar
-    // mount so we can react every time. If the picker bounces (mounts +
-    // unmounts repeatedly) we still get our shot every cycle.
-    window._capHandled = false;
-    var calendarWatcher = new MutationObserver(function(muts){
-      if(window._capHandled) return;
-      for(var mi=0; mi<muts.length; mi++){
-        var m = muts[mi];
-        for(var ai=0; ai<m.addedNodes.length; ai++){
-          var n = m.addedNodes[ai];
-          if(n.nodeType !== 1) continue;
-          var cal = (n.matches && n.matches('.wbx-calendar')) ? n :
-                    (n.querySelector ? n.querySelector('.wbx-calendar') : null);
-          if(cal){
-            console.log('[cap-B] ★ .wbx-calendar mounted — driving for', s.y+'-'+(s.m+1)+'-'+s.d);
-            // Drive SYNCHRONOUSLY in the MutationObserver callback — no setTimeout.
-            // Goal: act before React's next commit can unmount the calendar.
-            capDriveWbxCalendar(cal, s, inp);
-            return;
-          }
-        }
-      }
-    });
-    calendarWatcher.observe(document.body, {childList:true, subtree:true});
-    setTimeout(function(){ try { calendarWatcher.disconnect(); } catch(_){} }, 6000);
-
-    // ── Ensure input has focus (Webconnex's picker watches activeElement) ──
-    try { inp.focus({preventScroll:true}); } catch(_){ try{inp.focus();}catch(__){} }
-    console.log('[cap-B] input focused?', document.activeElement === inp);
-
-    // ── Invoke React's onClick on the input — opens .wbx-calendar ──
-    var opener = capFindReactHandler(inp, 'onClick');
-    if(opener){
-      console.log('[cap-B] React onClick found on input at depth', opener.depth, '— invoking');
-      try {
-        opener.handler(capMakeReactEvent(opener.el, 'click'));
-        console.log('[cap-B] ✓ called React onClick — picker should mount');
-      } catch(err){
-        console.warn('[cap-B] React onClick threw:', err);
-      }
-    } else {
-      console.warn('[cap-B] ✗ no React onClick on input — cannot open picker');
-    }
-
-    setTimeout(function(){
-      snapPickerDOM('POST-OPEN');
-      console.log('[cap-B] still-open check: .wbx-calendar present?', !!document.querySelector('.wbx-calendar'));
-    }, 400);
-
-    // Safety net: if picker never opens OR cell click never lands, release the flag
-    setTimeout(function(){
-      if(window.capDrivingNative){
-        console.warn('[cap-B] safety-net timeout — releasing capDrivingNative flag');
-        try { bodyMO.disconnect(); } catch(_){}
-        window.capDrivingNative = false;
-      }
-    }, 4000);
-  }
-
-  /* v4: Drive .wbx-calendar — handles month navigation + cell click via React fiber.
-     Called repeatedly from the persistent watcher; uses live document.querySelector
-     so it works even if `cal` was detached between the mount event and now. */
-  var MONTH_NAMES = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-  function capDriveWbxCalendar(passedCal, s, inp){
-    // Always re-query the LIVE calendar — passedCal might be detached
-    var cal = document.querySelector('.wbx-calendar') || passedCal;
-    if(!cal || !cal.isConnected){
-      console.warn('[cap-B] calendar not in DOM at drive time — passed:', !!passedCal, 'live:', !!document.querySelector('.wbx-calendar'));
-      return;
-    }
-
-    // Read the displayed month
-    var monthLabel = cal.querySelector('.month-label');
-    var monthText = monthLabel ? monthLabel.textContent.trim() : '';
-    var targetMonthName = MONTH_NAMES[s.m] + ' ' + s.y;
-    console.log('[cap-B] displayed month:', monthText, '| target:', targetMonthName);
-
-    if(monthText !== targetMonthName){
-      // Before navigating: check if target date is visible as overflow cell
-      // (e.g. Dec 10 might appear in Nov view as a "different-month" cell at the
-      // bottom of the grid). Clicking the overflow cell sometimes auto-navigates
-      // AND selects in one shot.
-      var overflowCells = cal.querySelectorAll('.day.different-month.enabled');
-      console.log('[cap-B] overflow (different-month enabled) cells:', overflowCells.length);
-      for(var oi=0; oi<overflowCells.length; oi++){
-        if(parseInt(overflowCells[oi].textContent.trim(), 10) === s.d){
-          // Heuristic: if target is "next month" relative to displayed AND there are
-          // overflow cells, the late-grid ones are the next month. Click it.
-          console.log('[cap-B] ★ trying overflow cell for day', s.d);
-          var ovHandler = capFindReactHandler(overflowCells[oi], 'onClick');
-          if(ovHandler){
-            try {
-              ovHandler.handler(capMakeReactEvent(ovHandler.el, 'click'));
-              console.log('[cap-B] ✓ overflow-cell React onClick fired');
-              window._capHandled = true;
-              setTimeout(function(){
-                console.log('[cap-B] post-overflow-click input.value:', inp.value);
-                window.capDrivingNative = false;
-              }, 400);
-              return;
-            } catch(_){}
-          }
-          break;
-        }
-      }
-
-      // No overflow shortcut — must navigate via arrow
-      var displayedYear = parseInt((monthText.match(/\d{4}/)||[''])[0], 10);
-      var displayedMonthName = monthText.replace(/\s*\d{4}\s*/, '').trim();
-      var displayedMonthIdx = MONTH_NAMES.indexOf(displayedMonthName);
-      var displayedAbsolute = displayedYear * 12 + displayedMonthIdx;
-      var targetAbsolute = s.y * 12 + s.m;
-      var needsForward = targetAbsolute > displayedAbsolute;
-      var arrowSelector = needsForward ? '.arrow.right' : '.arrow.left';
-      var arrow = cal.querySelector(arrowSelector);
-      console.log('[cap-B] need to navigate', needsForward?'forward':'backward', '| arrow:', arrow && arrow.outerHTML);
-      if(arrow && !arrow.classList.contains('disabled')){
-        var arrowHandler = capFindReactHandler(arrow, 'onClick');
-        if(arrowHandler){
-          console.log('[cap-B] clicking nav arrow via React onClick (depth', arrowHandler.depth+')');
-          try {
-            // Use detail:1 in nativeEvent (some libs check click-count to gate synth vs real)
-            var navEvt = capMakeReactEvent(arrowHandler.el, 'click');
-            navEvt.nativeEvent = new MouseEvent('click', {bubbles:true, cancelable:true, detail:1});
-            arrowHandler.handler(navEvt);
-          } catch(e){ console.warn('[cap-B] nav arrow handler threw:', e); }
-        } else {
-          console.warn('[cap-B] nav arrow has no React onClick — trying native click');
-          try { arrow.click(); } catch(_){}
-        }
-        // Re-focus input — Webconnex may be checking activeElement and closing
-        // the picker if focus drifted to the arrow icon.
-        try { inp.focus({preventScroll:true}); } catch(_){}
-        // IMMEDIATELY re-drive via microtask — calendar's been updated in place
-        // (no full re-mount), so watcher won't re-fire. We need to scan + click
-        // BEFORE Webconnex's auto-close triggers (~50ms after our nav click).
-        Promise.resolve().then(function(){
-          console.log('[cap-B] microtask redrive after nav');
-          capDriveWbxCalendar(null, s, inp);
-        });
-        // Also schedule animation-frame redrive as backup
-        requestAnimationFrame(function(){
-          if(!window._capHandled){
-            console.log('[cap-B] rAF redrive after nav');
-            capDriveWbxCalendar(null, s, inp);
-          }
-        });
-        return;
-      } else {
-        console.warn('[cap-B] cannot navigate — arrow missing or disabled. Stuck on', monthText);
-        return;
-      }
-    }
-
-    // We're on the right month — click the day cell
-    console.log('[cap-B] on target month — scanning for day', s.d);
-    console.log('[cap-B] calendar outerHTML preview:', cal.outerHTML.slice(0, 400));
-
-    // Try a battery of selectors WITHIN the wbx-calendar
-    var cellSelectors = [
-      '.wbx-calendar-day:not(.disabled):not(.other-month):not(.wbx-calendar-day--disabled)',
-      '.wbx-day:not(.disabled)',
-      'td:not(.disabled):not(.wbx-disabled):not(.other-month) a',
-      'td:not(.disabled):not(.wbx-disabled):not(.other-month) button',
-      'td:not(.disabled):not(.wbx-disabled):not(.other-month)',
-      '[class*="day"]:not([class*="disabled"]):not([class*="other"]):not([class*="header"])',
-      'button',
-      '[role="button"]',
-      'a'
-    ];
-
-    var cell = null;
-    var usedSel = null;
-    for(var si=0; si<cellSelectors.length; si++){
-      var cells = cal.querySelectorAll(cellSelectors[si]);
-      if(cells.length){
-        for(var i=0; i<cells.length; i++){
-          var t = (cells[i].textContent || '').trim();
-          // Match exact day number (skip elements like "December" or "10:00")
-          if(t === String(s.d) || parseInt(t,10) === s.d){
-            // Confirm it looks like a date cell, not a time/year
-            cell = cells[i];
-            usedSel = cellSelectors[si];
-            break;
-          }
-        }
-        if(cell) break;
-      }
-    }
-
-    // Fallback: scan ALL leaf descendants of calendar for digit text
-    if(!cell){
-      console.log('[cap-B] selector pass found nothing, scanning leaf nodes for digit text');
-      var all = cal.querySelectorAll('*');
-      for(var k=0; k<all.length; k++){
-        var el = all[k];
-        if(el.children.length > 0) continue;
-        var txt = (el.textContent || '').trim();
-        if(txt === String(s.d)){
-          cell = el;
-          usedSel = '(leaf-scan)';
-          break;
-        }
-      }
-    }
-
-    if(!cell){
-      console.warn('[cap-B] ✗ no cell matching day', s.d, 'found inside .wbx-calendar');
-      console.warn('[cap-B] full calendar HTML:', cal.outerHTML);
-      window.capDrivingNative = false;
-      return;
-    }
-
-    console.log('[cap-B] ✓ found cell for day', s.d, 'via selector', usedSel);
-    console.log('[cap-B] cell HTML:', cell.outerHTML.slice(0, 200));
-
-    // Find React onClick on cell or ancestor up to calendar root
-    var cellHandler = capFindReactHandler(cell, 'onClick');
-    if(cellHandler){
-      console.log('[cap-B] cell React onClick found at depth', cellHandler.depth, '— invoking');
-      try {
-        cellHandler.handler(capMakeReactEvent(cellHandler.el, 'click'));
-        console.log('[cap-B] ✓ called React onClick on cell — date should be set');
-      } catch(err){
-        console.warn('[cap-B] cell React onClick threw:', err);
-      }
-    } else {
-      console.warn('[cap-B] no React onClick on cell — trying native .click()');
-      try { cell.click(); } catch(_){}
-    }
-
-    // Flag handled so the persistent calendarWatcher stops firing
-    window._capHandled = true;
-    setTimeout(function(){
-      console.log('[cap-B] post-click input.value:', inp.value, '| className:', inp.className);
-      window.capDrivingNative = false;
-    }, 500);
+  function capOpenSanta(){ capShow('capOvSanta'); }
+  function capOpenStar(){ capShow('capOvStar'); }
+  function capCloseAll(){
+    document.querySelectorAll('.cap-ov').forEach(function(o){ o.classList.remove('on'); });
   }
   </script>
 </div>
