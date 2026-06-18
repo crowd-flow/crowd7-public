@@ -84,7 +84,7 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
 }
 /* Header — tighter so it doesn't eat vertical space */
 .ticket-block .datePicker .wbx-calendar::before {
-  content: 'Pick Your Date' !important;
+  content: 'Christmas in July — Pick Your Date' !important;
   display: block !important;
   font-family: 'Playfair Display', Georgia, serif !important;
   font-size: 1.45rem !important;
@@ -393,6 +393,7 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
   #cap-funnel .tier h3{font-size:1.5rem;color:var(--red);margin:.2rem 0 .1rem;}
   #cap-funnel .tier .saletag::before{content:attr(data-saletag);display:inline-block;background:#fde8ec;color:var(--accent);font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:4px 10px;border-radius:20px;margin-bottom:10px;}
   #cap-funnel .tier .price{font-family:'Playfair Display',serif;font-size:2.7rem;font-weight:700;color:var(--ink);}
+  #cap-funnel .tier .price .was{display:block;font-family:'Montserrat',sans-serif;font-size:1rem;font-weight:400;color:var(--muted);text-decoration:line-through;margin-bottom:2px;}
   #cap-funnel .tier .price small{font-size:.95rem;color:var(--muted);font-weight:400;}
   #cap-funnel .tier ul{list-style:none;padding:0;margin:16px 0 22px;}
   #cap-funnel .tier li{padding:6px 0;border-bottom:1px dashed var(--line);font-size:.95rem;}
@@ -467,9 +468,9 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
   <section style="background:#fff;"><div class="cap-wrap">
     <div class="sec-head"><div class="eye">Limited-Time Pricing</div><h2>Lock in the lowest price</h2></div>
     <div class="phase-row" id="capPhaseRow">
-      <div class="phase-card" data-start="2026-07-01" data-end="2026-09-30"><span class="live">You're here &#9662;</span><div class="tag">&#127876; Christmas in July</div><div class="price">$35</div><div class="win">Jul 1 &ndash; Sep 30 &middot; lowest of the year</div></div>
-      <div class="phase-card" data-start="2026-10-01" data-end="2026-11-14"><span class="live">You're here &#9662;</span><div class="tag">&#9200; Early Bird</div><div class="price">$40</div><div class="win">Oct 1 &ndash; Nov 14</div></div>
-      <div class="phase-card" data-start="2026-11-15" data-end="2026-12-31"><span class="live">You're here &#9662;</span><div class="tag">&#10024; In Season</div><div class="price">$48</div><div class="win">Nov 15 &ndash; Dec 31</div></div>
+      <div class="phase-card" data-start="2026-07-01" data-end="2026-09-30"><span class="live">You're here &#9662;</span><div class="tag">&#127876; Christmas in July</div><div class="price">$21</div><div class="win">Jul 1 &ndash; Sep 30 &middot; lowest of the year</div></div>
+      <div class="phase-card" data-start="2026-10-01" data-end="2026-11-14"><span class="live">You're here &#9662;</span><div class="tag">&#9200; Early Bird</div><div class="price">$25</div><div class="win">Oct 1 &ndash; Nov 14</div></div>
+      <div class="phase-card" data-start="2026-11-15" data-end="2026-12-31"><span class="live">You're here &#9662;</span><div class="tag">&#10024; In Season</div><div class="price">$35</div><div class="win">Nov 15 &ndash; Dec 31</div></div>
     </div>
     <p style="text-align:center;color:var(--muted);font-size:.85rem;margin-top:16px;">Same ticket all season &mdash; only the <em>sticker</em> &amp; price change by date.</p>
   </div></section>
@@ -480,19 +481,19 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
     <div class="tier-row">
       <div class="tier">
         <h3>General Admission</h3><div class="saletag" data-saletag="&#127876; Christmas in July"></div>
-        <div class="price">$35 <small>/ person</small></div>
+        <div class="price"><span class="was">$35 / person</span>$21 <small>/ person</small></div>
         <ul><li>Entry to the holiday village</li><li>4M lights &amp; light shows</li><li>Self-parking included</li></ul>
         <button class="btn btn-out" onclick="capOpenStar()">Select</button>
       </div>
       <div class="tier feature"><span class="ribbon">NEW</span>
-        <h3>Starlight Lounge</h3><div class="saletag" data-saletag="&#10024; Best value upgrade"></div>
-        <div class="price">$60 <small>/ person</small></div>
+        <h3>Premium</h3><div class="saletag" data-saletag="&#10024; Best value upgrade"></div>
+        <div class="price"><span class="was">$70 / person</span>$42 <small>/ person</small></div>
         <ul><li>Everything in GA</li><li>Shared fire pits + VIP area</li><li>Access to the specialty bar</li></ul>
         <button class="btn btn-solid">Select</button>
       </div>
       <div class="tier">
-        <h3>VIP Igloo &amp; Fire Pit</h3><div class="saletag" data-saletag="&#128293; Reserve early"></div>
-        <div class="price">from $399</div>
+        <h3>VIP Experiences</h3><div class="saletag" data-saletag="&#128293; Reserve early"></div>
+        <div class="price"><span class="was">$122 / person</span>$52 <small>/ person</small></div>
         <ul><li>Private igloo or fire pit</li><li>Seats 4&ndash;8 guests</li><li>Premium bar service</li></ul>
         <button class="btn btn-out">Reserve</button>
       </div>
@@ -627,7 +628,7 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
   <script>
 (function () {
   // ── CONFIG ──────────────────────────────────────────────────────────────
-  const AUTO_OPEN = true;            // false = wire to "Add Photos with Santa" button (default). true = auto-open on load (Bryan's behavior).
+  const AUTO_OPEN = false;            // false = wire to "Add Photos with Santa" button (default). true = auto-open on load (Bryan's behavior).
   const TICKET_MATCH = 'santa';       // case-insensitive substring matched against each ticket row's text to find the Santa ticket.
   const BLOCK_SEL = '#ticketBlock';   // native TS ticket block container.
 
@@ -939,7 +940,7 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
   regularBtn.addEventListener('click', closeModal);
 
   // Expose the trigger so the page button can drive it.
-  window.capSantaLaunch = launch;
+  window.capSantaLaunch = function(){ /* PAUSED by Mat 2026-06-18 — restore: = launch; */ };
 
   // ── trigger ───────────────────────────────────────────────────────────────
   if (AUTO_OPEN) {
