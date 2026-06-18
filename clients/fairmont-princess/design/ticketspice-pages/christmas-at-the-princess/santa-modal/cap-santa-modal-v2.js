@@ -22,7 +22,7 @@
    ════════════════════════════════════════════════════════════════════════ */
 (function () {
   // ── CONFIG ──────────────────────────────────────────────────────────────
-  const AUTO_OPEN = false;            // false = wire to "Add Photos with Santa" button (default). true = auto-open on load (Bryan's behavior).
+  const AUTO_OPEN = true;             // Mat 2026-06-18: TRUE = Bryan's native auto-open-on-load trigger (his decision; NOT the standalone button). false = wire to "Add Photos with Santa" button instead.
   const TICKET_MATCH = 'santa';       // case-insensitive substring matched against each ticket row's text to find the Santa ticket.
   const BLOCK_SEL = '#ticketBlock';   // native TS ticket block container.
 

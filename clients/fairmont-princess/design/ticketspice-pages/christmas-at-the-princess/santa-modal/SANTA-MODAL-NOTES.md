@@ -78,9 +78,24 @@ byte-for-byte Bryan's** — V2 changes exactly three things:
    "Add Photos with Santa" button calls. Flip to `true` for Bryan's auto-open-on-load.
    **One-line flip** — resolves open decision #2 either way Mat wants.
 
-### 🔌 Live integration (pending Mat's go — NOT yet done)
+### ✅ Live integration — DONE 2026-06-18 (Mat's go-ahead, queue task)
 
-When Mat green-lights, integrating into the live page is mechanical:
+**Mat's calls (2026-06-18 chat, voice):** targeting = name-keyed ✅; trigger =
+**Bryan's native auto-open** (`AUTO_OPEN = true`), NOT the standalone button. He
+gave an explicit go-ahead to integrate live + promote production, with **no
+verify-gate** (the loader currently sits on a Fairmont demo/template page, not a
+customer-facing page — "production is safe here").
+
+**What landed** (both `preview/` + `production/`, content.html + content-preview.html):
+- V2 IIFE inlined as a `<script>` block with `AUTO_OPEN = true`.
+- Marketing-stub `#capOvSanta` modal + `capOpenSanta()` deleted (surgical —
+  `#capOvStar` VIP modal + `capShow`/`capCloseAll`/`capOpenStar` left intact).
+- The existing "Add Photos with Santa" button repointed `capOpenSanta()` →
+  `window.capSantaLaunch()`, so it's a harmless manual re-open (auto-open is the
+  primary trigger per Mat). *If Mat wants the button gone entirely, one-line delete.*
+- `node --check` clean on the injected JS in all 4 files; `capOvStar` verified present.
+
+The original mechanical steps (now executed):
 1. Paste `cap-santa-modal-v2.js` (its body) inside a `<script>` in
    `../preview/christmas-at-the-princess-2026.content.html`.
 2. **Delete** the marketing-stub `#capOvSanta` modal + `capOpenSanta()` (the dead
