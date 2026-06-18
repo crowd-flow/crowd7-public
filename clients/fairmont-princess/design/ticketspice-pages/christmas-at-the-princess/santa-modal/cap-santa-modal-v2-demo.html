@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>V2 — CAP-branded Photos-with-Santa modal — working demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ── Minimal mock of the page chrome + a NATIVE-SHAPED TicketSpice #ticketBlock ──
+     ONLY here so the V2 script has a DOM to target. NOTE: the Santa ticket is
+     deliberately placed NOT at position 7 (it's 3rd here) to prove V2's
+     name-keyed finder grabs it regardless of cart order — unlike Bryan's
+     hardcoded tbody:nth-child(7). None of this CSS is part of the modal. */
+  body{font-family:"Playfair Display",Georgia,serif;margin:0;background:#f5f0ec;color:#2b1719;}
+  .demo-note{background:#671416;color:#f5f0ec;padding:14px 20px;font-size:.95rem;line-height:1.5;font-family:system-ui,sans-serif;}
+  .demo-note code{background:rgba(255,255,255,.16);padding:1px 5px;border-radius:4px;}
+  .demo-wrap{max-width:720px;margin:24px auto;padding:0 16px;}
+  .demo-wrap h2{font-weight:600;color:#671416;}
+  #ticketBlock table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 6px 24px rgba(43,23,25,.08);}
+  #ticketBlock th{background:#671416;color:#f5f0ec;padding:12px;text-align:left;font-family:system-ui,sans-serif;}
+  #ticketBlock tbody{border-bottom:1px solid #eee;}
+  #ticketBlock tr.ticket.ticket-type td{padding:16px;font-family:system-ui,sans-serif;}
+  #ticketBlock h4{margin:0 0 4px;font-size:1.05rem;font-family:"Playfair Display",Georgia,serif;}
+  #ticketBlock .price{color:#671416;font-weight:700;}
+  #ticketBlock label{display:block;font-size:.85rem;margin:10px 0 4px;color:#555;}
+  #ticketBlock select{padding:8px 10px;border:1px solid #ccc;border-radius:8px;font:inherit;}
+  .add-santa{display:inline-block;margin:20px 0;background:#c82844;color:#fff;border:none;
+    padding:13px 26px;border-radius:999px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;
+    font-size:.85rem;cursor:pointer;font-family:system-ui,sans-serif;}
+  .add-santa:hover{background:#671416;}
+  .replay{display:inline-block;margin:0 0 0 10px;background:transparent;color:#671416;border:1px solid #671416;
+    padding:12px 18px;border-radius:999px;font-weight:600;cursor:pointer;font-family:system-ui,sans-serif;}
+</style>
+</head>
+<body>
+
+<div class="demo-note">
+  <strong>V2 — CAP-branded Photos-with-Santa modal.</strong>
+  Same functional ticket-hijack as Bryan's V1, reskinned to the Christmas-at-the-Princess
+  palette (cream / maroon / red / gold) and made <em>name-keyed</em>: it finds the
+  <code>tr.ticket.ticket-type</code> whose name contains <code>"santa"</code> &mdash; here
+  the Santa ticket is the <strong>3rd</strong> row, not the 7th, and it still works.
+  Trigger is <code>AUTO_OPEN = false</code>, so click <strong>"Add Photos with Santa"</strong>
+  below to open it (this is the live-button wiring). To preview auto-open instead, flip
+  <code>AUTO_OPEN</code> to <code>true</code> in <code>cap-santa-modal-v2.js</code>.
+</div>
+
+<div class="demo-wrap">
+  <h2>Choose Your Tickets</h2>
+
+  <div id="ticketBlock">
+    <table>
+      <thead><tr><th>Christmas at the Princess — General Admission</th></tr></thead>
+      <tbody><tr class="ticket ticket-type"><td><h4>Tue–Thu Admission</h4><div class="price">$35.00</div><label>Quantity</label><select><option>0</option><option>1</option><option>2</option></select></td></tr></tbody>
+      <tbody><tr class="ticket ticket-type"><td><h4>Fri Admission</h4><div class="price">$45.00</div><label>Quantity</label><select><option>0</option><option>1</option><option>2</option></select></td></tr></tbody>
+      <!-- Santa ticket at position 3 — name-keyed finder grabs it regardless -->
+      <tbody><tr class="ticket ticket-type"><td><h4>Photos with Santa</h4><div class="price">$24.99</div><label>Time slot</label><select><option>5:30 PM</option><option>6:15 PM</option><option>7:00 PM</option><option>7:45 PM</option></select><label>Quantity</label><select><option>1</option><option>2</option><option>3</option><option>4</option></select></td></tr></tbody>
+      <tbody><tr class="ticket ticket-type"><td><h4>Sat Admission</h4><div class="price">$49.00</div><label>Quantity</label><select><option>0</option><option>1</option><option>2</option></select></td></tr></tbody>
+      <tbody><tr class="ticket ticket-type"><td><h4>Sun Admission</h4><div class="price">$45.00</div><label>Quantity</label><select><option>0</option><option>1</option><option>2</option></select></td></tr></tbody>
+      <tbody><tr class="ticket ticket-type"><td><h4>VIP Fire Table</h4><div class="price">$399.00</div><label>Quantity</label><select><option>0</option><option>1</option></select></td></tr></tbody>
+    </table>
+  </div>
+
+  <button class="add-santa" onclick="window.capSantaLaunch && window.capSantaLaunch()">Add Photos with Santa</button>
+  <button class="replay" onclick="location.reload()">↺ Reset</button>
+</div>
+
+<!-- V2 modal script (single source of truth: cap-santa-modal-v2.js) -->
+<script src="cap-santa-modal-v2.js"></script>
+</body>
+</html>

@@ -58,10 +58,36 @@ content HTML (these are why it's NOT yet wired into `production/`):
    (aggressive upsell). Our page has an "Add Photos with Santa" button (`capOpenSanta()`).
    Keep Bryan's auto-open verbatim, or wire it to our button? Mat's call.
 
-## 🎨 V2 — stylize to CAP brand (next)
+## 🎨 V2 — CAP-branded + name-keyed + integration-ready (BUILT 2026-06-18)
 
-Bryan's modal is **dark** (`#0f0f10` bg, `#F61D0A` red accent, Poppins). Our CAP brand per
-`../DESIGN-NOTES.md` is **elegant luxury-resort holiday**: cream `#f5f0ec` + deep maroon
-`#671416` + bright red `#c82844` + gold `#c9a24b`, script-display + refined-serif type. V2 =
-reskin the same functional modal to that palette/typography (keep the ticket-hijack logic
-100% intact — only the CSS + copy changes). Queued pending Mat's V1 sign-off.
+**Files:** `cap-santa-modal-v2.js` (the script) + `cap-santa-modal-v2-demo.html`
+(standalone, `open` it to watch it work). The **ticket-hijack/restore logic is
+byte-for-byte Bryan's** — V2 changes exactly three things:
+
+1. **Name-keyed targeting** — replaces Bryan's hardcoded `tbody:nth-child(7)` with a
+   finder that matches the `tr.ticket.ticket-type` whose `<h4>` contains "santa". Our CAP
+   cart is configured natively in TS with a *different* ticket order, so Bryan's index
+   would grab the wrong row. The demo deliberately puts Santa at **position 3** to prove
+   the finder works regardless of order. (Resolves open decision #1 — name-key was the
+   recommended fix; it's the only correct option for our cart, not a stylistic call.)
+2. **CAP brand reskin** — cream `#f5f0ec` panel, deep maroon `#671416` header w/ cream
+   serif title + gold underline, accent red `#c82844` CTA pill, gold `#c9a24b` rules,
+   white sub-card under the hijacked native ticket. (Was Bryan's dark `#0f0f10` + `#F61D0A`.)
+3. **Configurable trigger** — `const AUTO_OPEN = false;` at the top. Default (`false`)
+   wires the hijack to `window.capSantaLaunch()`, which the page's existing
+   "Add Photos with Santa" button calls. Flip to `true` for Bryan's auto-open-on-load.
+   **One-line flip** — resolves open decision #2 either way Mat wants.
+
+### 🔌 Live integration (pending Mat's go — NOT yet done)
+
+When Mat green-lights, integrating into the live page is mechanical:
+1. Paste `cap-santa-modal-v2.js` (its body) inside a `<script>` in
+   `../preview/christmas-at-the-princess-2026.content.html`.
+2. **Delete** the marketing-stub `#capOvSanta` modal + `capOpenSanta()` (the dead
+   `<select>`/`$24.99`-closes-the-popup stub).
+3. Point the existing `<button ... onclick="capOpenSanta()">Add Photos with Santa</button>`
+   at `window.capSantaLaunch()`.
+4. Set `AUTO_OPEN` per Mat's trigger answer.
+5. `cp preview/* production/*` + `git push` to promote (this IS the live deploy).
+
+Until then this folder is **reference only** — the live page is untouched.
