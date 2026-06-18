@@ -276,6 +276,12 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
       document.addEventListener(ev,function(e){
         var el=e.target;
         if(isDateField(el)){
+          // When Path B is actively driving the native picker, don't re-intercept
+          // our own dispatched events — they need to reach React unmolested.
+          if(window.capDrivingNative){
+            console.log('[cap-B] intercept SKIPPED ('+ev+') — driving native picker');
+            return;
+          }
           capNativeInput=el;
           capDiagBoot(el);                       // one-time introspection on first interaction
           capInstallTicketObserver();            // start watching ticket-area mutations
@@ -291,6 +297,57 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
       }, true);
     });
   })();
+
+  /* ═════════════════════════════════════════════════════════════════
+     REACT FIBER UTILITIES — for poking React component handlers from
+     outside React, bypassing event-dispatch + isTrusted gating.
+     ═════════════════════════════════════════════════════════════════ */
+  window.capDrivingNative = false;
+
+  function capGetFiberKey(el){
+    for(var k in el){
+      if(k.indexOf('__reactFiber') === 0) return k;
+      if(k.indexOf('__reactInternalInstance') === 0) return k;
+    }
+    return null;
+  }
+  function capGetPropsKey(el){
+    for(var k in el){
+      if(k.indexOf('__reactProps') === 0) return k;
+    }
+    return null;
+  }
+  function capMakeReactEvent(el, type){
+    return {
+      preventDefault: function(){}, stopPropagation: function(){}, stopImmediatePropagation: function(){},
+      persist: function(){}, isDefaultPrevented: function(){return false;}, isPropagationStopped: function(){return false;},
+      target: el, currentTarget: el, type: type, bubbles: true, cancelable: true,
+      nativeEvent: new MouseEvent(type, {bubbles:true, cancelable:true}),
+      isTrusted: false, defaultPrevented: false, eventPhase: 2
+    };
+  }
+  // Walk DOM ancestors (and React fiber ancestors) looking for an element
+  // whose React props carry a handler named `handlerName`. Returns the first match.
+  function capFindReactHandler(startEl, handlerName){
+    var el = startEl;
+    for(var depth=0; el && depth < 10; depth++, el = el.parentElement){
+      var propsKey = capGetPropsKey(el);
+      if(propsKey && el[propsKey] && typeof el[propsKey][handlerName] === 'function'){
+        return { el: el, handler: el[propsKey][handlerName], depth: depth };
+      }
+    }
+    // Also walk the FIBER chain in case props live on a component above the DOM
+    var fk = capGetFiberKey(startEl);
+    if(fk){
+      var fiber = startEl[fk];
+      for(var fdepth=0; fiber && fdepth < 15; fdepth++, fiber = fiber.return){
+        if(fiber.memoizedProps && typeof fiber.memoizedProps[handlerName] === 'function'){
+          return { el: fiber.stateNode || startEl, handler: fiber.memoizedProps[handlerName], depth: -fdepth };
+        }
+      }
+    }
+    return null;
+  }
 
   /* ─────────────────────────────────────────────────────────────
      DIAGNOSTIC INSTRUMENTATION (Mat 2026-06-17)
@@ -444,11 +501,14 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
 
     console.log('[cap-B] PATH B: opening native React picker to select', str);
 
+    // GATE our own intercept so dispatched events on the input don't
+    // re-trigger our modal in an infinite loop (problem we saw last run).
+    window.capDrivingNative = true;
+
     // Close our modal first so it doesn't visually compete
     capCloseAll();
 
     // Hide ANY React picker popover offscreen so user never sees it flash.
-    // Covers the major React date picker libraries by class-prefix match.
     if(!document.getElementById('capHideReactPicker')){
       var hide = document.createElement('style');
       hide.id = 'capHideReactPicker';
@@ -468,12 +528,31 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
       console.log('[cap-B] injected hide-picker CSS');
     }
 
+    // Diagnostic snapshot: what picker-ish elements exist BEFORE we try to open?
+    function snapPickerDOM(label){
+      var snap = document.querySelectorAll('[class*="picker" i],[class*="calendar" i],[class*="datepicker" i],[role="dialog"],[role="listbox"]');
+      var rows = [];
+      for(var i=0; i<snap.length && rows.length < 30; i++){
+        var n = snap[i];
+        // Skip our own elements
+        if(n.closest && n.closest('#capOvDate, #capOvSanta, #capOvStar, #cap-funnel')) continue;
+        var cs = getComputedStyle(n);
+        var cls = (n.className && n.className.toString) ? n.className.toString().slice(0,80) : '';
+        rows.push({t: n.tagName + (n.id?'#'+n.id:'') + '.' + cls, d: cs.display, v: cs.visibility, o: cs.opacity});
+      }
+      console.log('[cap-B '+label+'] non-self picker-ish elements:', rows.length);
+      rows.forEach(function(r,i){ console.log('  ['+label+' #'+i+']', r.t, '| display='+r.d, 'vis='+r.v, 'opacity='+r.o); });
+    }
+    snapPickerDOM('PRE-DISPATCH');
+
     // Watch body for newly-rendered nodes so we can see what React mounts
     var bodyMO = new MutationObserver(function(muts){
       muts.forEach(function(m){
         for(var i=0;i<m.addedNodes.length;i++){
           var n = m.addedNodes[i];
           if(n.nodeType !== 1) continue;
+          // Skip mutations inside our own modals
+          if(n.closest && n.closest('#capOvDate, #capOvSanta, #capOvStar')) continue;
           var info = n.tagName +
             (n.id?'#'+n.id:'') +
             (n.className && n.className.toString ? '.'+n.className.toString().split(' ').slice(0,3).join('.') : '');
@@ -490,8 +569,29 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
       try { el.dispatchEvent(new PointerEvent(type, {bubbles:true, cancelable:true, view:window, button:0, buttons:1, pointerType:'mouse'})); } catch(_){}
     }
 
-    // Open the React picker. Dispatch full native sequence — React listens
-    // for these via root delegation. Some libs check pointer events too.
+    // ── PRIMARY: invoke React's onClick handler directly via fiber. ──
+    // Bypasses the dispatched-event isTrusted check entirely. Walks up
+    // ancestors looking for a React component with an onClick prop.
+    var handlerNames = ['onClick', 'onMouseDown', 'onFocus', 'onPointerDown'];
+    var calledAny = false;
+    handlerNames.forEach(function(hName){
+      var found = capFindReactHandler(inp, hName);
+      if(found){
+        console.log('[cap-B] React '+hName+' found at depth', found.depth, '— element:', found.el.tagName + (found.el.className?'.'+found.el.className.toString().slice(0,40):''));
+        try {
+          found.handler(capMakeReactEvent(found.el, hName.replace(/^on/, '').toLowerCase()));
+          calledAny = true;
+          console.log('[cap-B] ✓ called React '+hName);
+        } catch(err){
+          console.warn('[cap-B] React '+hName+' threw:', err);
+        }
+      } else {
+        console.log('[cap-B] no React '+hName+' on input or ancestors');
+      }
+    });
+    console.log('[cap-B] called any React handler?', calledAny);
+
+    // ── BACKUP: dispatch native events too ──
     try { inp.focus(); } catch(_){}
     inp.dispatchEvent(new FocusEvent('focus', {bubbles:true}));
     firePointer(inp, 'pointerdown');
@@ -499,7 +599,10 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
     firePointer(inp, 'pointerup');
     fireMouse(inp, 'mouseup');
     fireMouse(inp, 'click');
-    console.log('[cap-B] dispatched focus+pointer+mouse open-events on input');
+    console.log('[cap-B] dispatched native focus+pointer+mouse on input');
+
+    // Snap again after a short tick to see what mounted
+    setTimeout(function(){ snapPickerDOM('POST-DISPATCH'); }, 300);
 
     // ── Poll for picker, find day cell, click it ──
     var SELECTORS = [
@@ -576,6 +679,7 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
           setTimeout(function(){
             console.log('[cap-B] post-click input.value:', inp.value, '| input.className:', inp.className);
             try { bodyMO.disconnect(); } catch(_){}
+            window.capDrivingNative = false;     // re-enable intercept for future clicks
           }, 600);
           return;
         }
@@ -615,6 +719,7 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
           inp.dispatchEvent(new Event('change', {bubbles:true}));
         } catch(_){}
         try { bodyMO.disconnect(); } catch(_){}
+        window.capDrivingNative = false;     // re-enable intercept
       }
     }
     setTimeout(findAndClick, 150);  // give React a tick to render
