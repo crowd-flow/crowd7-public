@@ -408,7 +408,31 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
     if(!capSelected){ capCloseAll(); return; }
     var s=capSelected, dt=new Date(s.y, s.m, s.d);
     var inp=capNativeInput || document.querySelector('input.hasDatepicker,[placeholder="Choose Date"],[aria-label="Choose Date"]');
-    if(inp && window.jQuery){
+    // Force a boot-diagnostic dump here too (belt-and-suspenders if first-click skipped it)
+    try { capDiagBoot(inp); } catch(_){ }
+    try { capInstallTicketObserver(); } catch(_){ }
+
+    // --- REACT-COMPATIBLE VALUE SETTER ---
+    // TS template is React (React Router warnings in console + $inp.datepicker not a fn).
+    // Plain inp.value=... is ignored by React's value-tracker. Use the native prototype
+    // setter to bypass it, then dispatch a real 'input' event so React picks it up.
+    var str=('0'+(s.m+1)).slice(-2)+'/'+('0'+s.d).slice(-2)+'/'+s.y;
+    try {
+      var protoSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
+      protoSetter.call(inp, str);
+      inp.dispatchEvent(new Event('input', {bubbles:true}));
+      inp.dispatchEvent(new Event('change', {bubbles:true}));
+      inp.dispatchEvent(new Event('blur', {bubbles:true}));
+      console.log('[cap-diag] React-native setter wrote:', str, '| value now:', inp.value);
+    } catch(reactErr){
+      console.warn('[cap-diag] React-native setter failed:', reactErr);
+    }
+
+    // Only fall through to the jQuery UI cell-click path if datepicker exists.
+    var hasJqUiDp = !!(inp && window.jQuery && window.jQuery(inp).datepicker && typeof window.jQuery(inp).datepicker === 'function');
+    console.log('[cap-diag] jQuery UI datepicker available?', hasJqUiDp);
+
+    if(inp && hasJqUiDp){
       var $inp=window.jQuery(inp);
       try{
         console.group('[cap-diag] capConfirmDate fired for', s);
