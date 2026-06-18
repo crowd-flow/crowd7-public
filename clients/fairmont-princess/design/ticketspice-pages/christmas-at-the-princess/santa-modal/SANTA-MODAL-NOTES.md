@@ -84,7 +84,11 @@ When Mat green-lights, integrating into the live page is mechanical:
 1. Paste `cap-santa-modal-v2.js` (its body) inside a `<script>` in
    `../preview/christmas-at-the-princess-2026.content.html`.
 2. **Delete** the marketing-stub `#capOvSanta` modal + `capOpenSanta()` (the dead
-   `<select>`/`$24.99`-closes-the-popup stub).
+   `<select>`/`$24.99`-closes-the-popup stub). **⚠️ Surgical — delete ONLY those two.**
+   The content file has a sibling `#capOvStar` modal (Starlight Lounge VIP upsell) that
+   shares the `capShow()` / `capCloseAll()` helpers — leave those helpers and `#capOvStar`
+   untouched, or the VIP modal breaks. (Verified live 2026-06-18: `capOvSanta` at line 520,
+   `capOvStar` at 529, `capOpenSanta()` at 618, button at 512.)
 3. Point the existing `<button ... onclick="capOpenSanta()">Add Photos with Santa</button>`
    at `window.capSantaLaunch()`.
 4. Set `AUTO_OPEN` per Mat's trigger answer.
