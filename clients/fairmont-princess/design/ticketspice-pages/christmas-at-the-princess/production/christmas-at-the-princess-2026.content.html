@@ -34,7 +34,7 @@
 .campaign-form:not(.legacy-form) .btn-danger, .campaign-form:not(.legacy-form) .btn-primary, .campaign-form:not(.legacy-form) .btn:not(.btn--transparent):not(.btn--plus):not(.btn--minus):not(.btn--home):not(.btn--tooltipstered):not(.btn--blue) { font-size: 15px; color: white; border-radius: 10px; font-family: fatfrank,Segoe UI,Helvetica Neue,Arial,Noto Sans,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji,-apple-system,sans-serif; font-weight: bold; height: 44px; min-height: 44px; padding: 15px 20px; text-transform: uppercase; }
 .ti.josefin-sans { font-family: "Josefin Sans", sans-serif; font-weight: 100!important; font-style: normal; }
 body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; font-weight: 300!important; }
-:is(.ticket-block, .cap-cal-shell) .wbx-calendar .row .day.enabled:not(.low-inventory):not(.partial):not(.sold-out) { background: #C82844; color:#ffffff; }
+.ticket-block .wbx-calendar .row .day.enabled:not(.low-inventory):not(.partial):not(.sold-out) { background: #C82844; color:#ffffff; }
 
 /* ════════════════════════════════════════════════════════════════════
    PATH C v4 — IN-PLACE MODAL. The .wbx-calendar stays exactly where
@@ -110,114 +110,136 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
 .ticket-block .wbx-calendar {
   font-family: 'Montserrat', system-ui, sans-serif !important;
 }
-:is(.ticket-block, .cap-cal-shell) .wbx-calendar .header {
-  background: linear-gradient(135deg, #671416, #4a0e10) !important;
-  color: #fff !important;
-  border-radius: 12px !important;
-  padding: 12px 10px !important;
-  margin-bottom: 12px !important;
+/* HEADER — transparent, no red bar. Just holds month-display + day-names. */
+.ticket-block .datePicker .wbx-calendar .header {
+  background: transparent !important;
+  color: inherit !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  margin-bottom: 14px !important;
 }
-:is(.ticket-block, .cap-cal-shell) .wbx-calendar .month-display.row {
+/* Month-display row: arrow ← MONTH YEAR → arrow */
+.ticket-block .datePicker .wbx-calendar .month-display.row {
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
   gap: 10px !important;
+  margin-bottom: 12px !important;
+  background: transparent !important;
+  padding: 0 !important;
 }
-:is(.ticket-block, .cap-cal-shell) .wbx-calendar .month-label {
+/* Month label — Playfair red, like the old modal's .cal-head .m */
+.ticket-block .datePicker .wbx-calendar .month-label {
   font-family: 'Playfair Display', Georgia, serif !important;
-  font-size: 1.2rem !important;
+  font-size: 1.15rem !important;
   font-weight: 700 !important;
-  color: #fff !important;
+  color: #671416 !important;
   letter-spacing: 0.02em !important;
   flex: 1 !important;
   text-align: center !important;
+  white-space: nowrap !important;
 }
-:is(.ticket-block, .cap-cal-shell) .wbx-calendar .arrow {
-  background: rgba(255,255,255,0.14) !important;
-  color: #fff !important;
-  border-radius: 50% !important;
-  width: 32px !important; height: 32px !important;
+/* Arrows — cream buttons with red text, like the old .cal-nav */
+.ticket-block .datePicker .wbx-calendar .arrow {
+  background: #f3eeea !important;
+  color: #671416 !important;
+  border-radius: 8px !important;
+  width: 34px !important; height: 34px !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
   cursor: pointer !important;
-  font-size: 1rem !important;
+  font-size: 1.1rem !important;
+  border: 0 !important;
+  flex-shrink: 0 !important;
   transition: background 0.15s !important;
 }
-:is(.ticket-block, .cap-cal-shell) .wbx-calendar .arrow:hover:not(.disabled) { background: rgba(255,255,255,0.3) !important; }
-:is(.ticket-block, .cap-cal-shell) .wbx-calendar .arrow.disabled { opacity: 0.25 !important; cursor: not-allowed !important; }
-:is(.ticket-block, .cap-cal-shell) .wbx-calendar .day-names {
-  border-bottom: 1px solid #e6e6e6 !important;
-  padding-bottom: 8px !important;
-  margin-bottom: 8px !important;
-  display: grid !important;
-  grid-template-columns: repeat(7, 1fr) !important;
-  gap: 4px !important;
+.ticket-block .datePicker .wbx-calendar .arrow:hover:not(.disabled) { background: #e9e0da !important; }
+.ticket-block .datePicker .wbx-calendar .arrow.disabled {
+  opacity: 0.3 !important; cursor: not-allowed !important;
 }
-:is(.ticket-block, .cap-cal-shell) .wbx-calendar .day-names .day {
-  font-family: 'Montserrat', sans-serif !important;
-  font-size: 0.68rem !important;
-  letter-spacing: 0.12em !important;
-  text-transform: uppercase !important;
-  color: #8a7060 !important;
-  text-align: center !important;
-  font-weight: 700 !important;
-}
-:is(.ticket-block, .cap-cal-shell) .wbx-calendar .row.week {
+/* Day-of-week labels — small muted text in 7-col grid, transparent */
+.ticket-block .datePicker .wbx-calendar .day-names {
+  background: transparent !important;
+  border: 0 !important;
+  padding: 0 !important;
+  margin: 0 0 6px 0 !important;
   display: grid !important;
   grid-template-columns: repeat(7, 1fr) !important;
   gap: 5px !important;
-  margin-bottom: 5px !important;
 }
-/* DAY CELLS — match the old custom modal exactly:
-   aspect-ratio 1, 9px radius, cream #f3eeea, larger font, no border */
-:is(.ticket-block, .cap-cal-shell) .wbx-calendar .day[data-testid="day"],
-:is(.ticket-block, .cap-cal-shell) .wbx-calendar .row.week .day {
+.ticket-block .datePicker .wbx-calendar .day-names .day {
+  background: transparent !important;
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 0.68rem !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  color: #6e6e6e !important;
+  text-align: center !important;
+  font-weight: 700 !important;
+  padding: 4px 0 !important;
+  border: 0 !important;
+  aspect-ratio: auto !important;
+  min-height: 0 !important;
+}
+/* WEEK ROWS — 7-col grid like the old custom modal */
+.ticket-block .datePicker .wbx-calendar .row.week {
+  display: grid !important;
+  grid-template-columns: repeat(7, 1fr) !important;
+  gap: 5px !important;
+  margin: 0 0 5px 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+}
+/* DAY CELLS — cream squares, 9px radius, exactly like old .cal-day.
+   Selector is .row.week .day so we DON'T accidentally hit .day-names .day */
+.ticket-block .datePicker .wbx-calendar .row.week .day {
   aspect-ratio: 1 !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   border-radius: 9px !important;
-  font-family: 'Montserrat', system-ui, sans-serif !important;
-  font-size: 1.05rem !important;
-  font-weight: 600 !important;
+  background: #f3eeea !important;
   color: #3a2a2a !important;
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
   cursor: pointer !important;
   transition: all 0.15s !important;
-  background: #f3eeea !important;
   border: 0 !important;
-  min-height: 44px !important;
+  padding: 0 !important;
+  min-height: 0 !important;
 }
-:is(.ticket-block, .cap-cal-shell) .wbx-calendar .day.enabled:not(.different-month):hover {
+.ticket-block .datePicker .wbx-calendar .row.week .day.enabled:hover {
   background: #c82844 !important;
   color: #fff !important;
   transform: scale(1.04) !important;
-  box-shadow: 0 6px 16px rgba(200,40,68,0.4) !important;
+  box-shadow: 0 4px 12px rgba(200,40,68,0.35) !important;
 }
-:is(.ticket-block, .cap-cal-shell) .wbx-calendar .day.different-month {
+.ticket-block .datePicker .wbx-calendar .row.week .day.different-month {
   opacity: 0.28 !important;
   cursor: not-allowed !important;
 }
-:is(.ticket-block, .cap-cal-shell) .wbx-calendar .day.disabled,
-:is(.ticket-block, .cap-cal-shell) .wbx-calendar .day:not(.enabled):not(.different-month) {
+.ticket-block .datePicker .wbx-calendar .row.week .day:not(.enabled):not(.different-month) {
   opacity: 0.30 !important;
   cursor: not-allowed !important;
   color: #aaa !important;
   background: #f8f4f0 !important;
 }
-/* Override pre-existing solid red on enabled days — clean cream, red on hover */
-:is(.ticket-block, .cap-cal-shell) .wbx-calendar .row .day.enabled:not(.low-inventory):not(.partial):not(.sold-out) {
+/* Override pre-existing solid red on enabled days — cream by default, red on hover */
+.ticket-block .datePicker .wbx-calendar .row.week .day.enabled:not(.low-inventory):not(.partial):not(.sold-out) {
   background: #f3eeea !important;
   color: #3a2a2a !important;
 }
-:is(.ticket-block, .cap-cal-shell) .wbx-calendar .row .day.enabled:not(.low-inventory):not(.partial):not(.sold-out):hover {
+.ticket-block .datePicker .wbx-calendar .row.week .day.enabled:not(.low-inventory):not(.partial):not(.sold-out):hover {
   background: #c82844 !important;
   color: #fff !important;
 }
-/* Selected state — gold outline like the old custom modal's 3px accent outline */
-:is(.ticket-block, .cap-cal-shell) .wbx-calendar .day.selected,
-:is(.ticket-block, .cap-cal-shell) .wbx-calendar .day.day-selected,
-:is(.ticket-block, .cap-cal-shell) .wbx-calendar .day.active {
+/* Selected — gold bg + 3px red outline-offset, exactly like old .cal-day.sel */
+.ticket-block .datePicker .wbx-calendar .row.week .day.selected,
+.ticket-block .datePicker .wbx-calendar .row.week .day.day-selected,
+.ticket-block .datePicker .wbx-calendar .row.week .day.active {
   background: #c9a24b !important;
   color: #fff !important;
   font-weight: 700 !important;
@@ -228,14 +250,14 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
 /* Value-night green for cells Webconnex marks as low-inventory or partial */
 /* (Mat: if your value-night dates use a different class on the live page, */
 /* tell me what class and I'll target it explicitly.) */
-:is(.ticket-block, .cap-cal-shell) .wbx-calendar .day.enabled.low-inventory,
-:is(.ticket-block, .cap-cal-shell) .wbx-calendar .day.enabled.partial {
+.ticket-block .wbx-calendar .day.enabled.low-inventory,
+.ticket-block .wbx-calendar .day.enabled.partial {
   background: #28bf38 !important;
   color: #fff !important;
   border-color: #28bf38 !important;
 }
-:is(.ticket-block, .cap-cal-shell) .wbx-calendar .day.enabled.low-inventory:hover,
-:is(.ticket-block, .cap-cal-shell) .wbx-calendar .day.enabled.partial:hover {
+.ticket-block .wbx-calendar .day.enabled.low-inventory:hover,
+.ticket-block .wbx-calendar .day.enabled.partial:hover {
   background: #1aa628 !important;
   border-color: #1aa628 !important;
 }
