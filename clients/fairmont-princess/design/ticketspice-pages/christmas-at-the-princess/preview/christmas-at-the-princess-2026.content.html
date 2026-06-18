@@ -173,8 +173,19 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
   gap: 4px !important;
   width: 100% !important;
 }
-/* Hide ANY non-.day child Webconnex puts in this row (e.g. week-number cell)
-   so the 7 real day-name labels fill the 7 grid columns cleanly. */
+/* ★★★ THE FIX ★★★
+   Webconnex inherits Bootstrap's .row::before / .row::after clearfix
+   (display: table; content: " ";). When the parent is display: grid,
+   those pseudo-elements BECOME grid items, inflating each row from 7
+   children to 9 → wrap chaos (Sat bumps to row 2). Confirmed via Mat's
+   2026-06-17 11:07 PM inspector screenshot showing the bootstrap rule
+   inherited on .row.day-names. Killing them on the calendar fixes it. */
+.ticket-block .datePicker .wbx-calendar .row::before,
+.ticket-block .datePicker .wbx-calendar .row::after {
+  display: none !important;
+  content: none !important;
+}
+/* Defense in depth: also hide any non-.day child (e.g. week-number cell). */
 .ticket-block .datePicker .wbx-calendar .day-names > :not(.day),
 .ticket-block .datePicker .wbx-calendar .row.week > :not(.day) {
   display: none !important;
@@ -524,16 +535,11 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
 
   <script>
   /* ════════════════════════════════════════════════════════════════════
-     PATH C SCRIPT — minimal. Three responsibilities:
-       1. Light up the active sale-phase card.
-       2. Inject branded chrome (.cap-cal-banner + .cap-cal-footer) AROUND
-          the native .wbx-calendar when it mounts, so the picker reads as
-          part of our brand. Chrome is inserted as siblings (outside the
-          wbx-calendar element) so React's reconciliation never sweeps it.
-       3. Modal helpers for Santa + Starlight upsells (cap-OvSanta / cap-OvStar).
-     The Path B fight code (intercept, fiber-poking, picker driving) is
-     gone — native Webconnex flow handles date selection.
+     PATH C v8 — kills Bootstrap .row::before/.row::after clearfix that
+     was inflating each grid row from 7 to 9 items, causing Sat to wrap.
+     Confirmed via Mat's inspector screenshot 2026-06-17 23:07.
      ════════════════════════════════════════════════════════════════════ */
+  console.log('%c[cap-C v8] 2026-06-17 11:35pm — Bootstrap .row pseudo fix','color:#671416;font-weight:700;');
 
   // 1) sale-phase detection
   (function(){
