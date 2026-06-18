@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Christmas at the Princess 2026 - FIRST-PASS DEMO (Crowd7)</title>
+<style>body{margin:0;}
+ .demo-flag{background:#fff4d6;border-bottom:1px solid #e8d690;color:#7a5a10;font-size:.8rem;text-align:center;padding:7px 12px;font-weight:600;font-family:system-ui,sans-serif;}</style>
+</head>
+<body>
+<div class="demo-flag">CROWD7 FIRST-PASS DEMO - placeholder prices/dates/phases. Real ticketing lives in the TicketSpice cart. Built off Bryan's 6/17 call. This wraps the exact #cap-funnel content block from the .content.html paste file.</div>
+<div id="cap-funnel">
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&family=Montserrat:wght@300;400;600;700&display=swap');
+
+  #cap-funnel{
+    --red:#671416; --red-dark:#4a0e10; --accent:#c82844; --accent2:#d92f25;
+    --green:#28bf38; --blue:#4a8cb2; --ink:#3a2a2a; --muted:#6e6e6e;
+    --line:#e6e6e6; --gold:#c9a24b; --bg:#fbf7f4;
+    font-family:'Montserrat',system-ui,sans-serif;color:var(--ink);line-height:1.55;
+  }
+  #cap-funnel *{box-sizing:border-box;}
+  #cap-funnel h1,#cap-funnel h2,#cap-funnel h3{font-family:'Josefin Sans',sans-serif;margin:0;}
+  #cap-funnel .cap-wrap{max-width:1160px;margin:0 auto;padding:0 22px;}
+  #cap-funnel section{padding:64px 0;}
+
+  /* NAV */
+  #cap-funnel .cap-nav{position:sticky;top:0;z-index:50;background:var(--red);color:#fff;}
+  #cap-funnel .cap-nav .cap-wrap{display:flex;align-items:center;justify-content:space-between;height:64px;}
+  #cap-funnel .cap-nav img{height:40px;}
+  #cap-funnel .cap-nav-cta{background:var(--gold);color:var(--red-dark);font-weight:700;text-decoration:none;padding:11px 22px;border-radius:40px;font-size:.95rem;}
+  #cap-funnel .cap-nav-cta:hover{filter:brightness(1.06);}
+
+  /* HERO */
+  #cap-funnel .cap-hero{position:relative;min-height:480px;display:flex;align-items:flex-end;color:#fff;padding:0 0 46px;
+    background:linear-gradient(180deg,rgba(74,14,16,.15),rgba(74,14,16,.78)),url('https://cdn.uploads.webconnex.com/49430/christmas%20quest%20crystal%20bubble%20tag%20wand.jpg') center/cover;}
+  #cap-funnel .cap-hero .eyebrow{font-family:'Josefin Sans';letter-spacing:.22em;text-transform:uppercase;font-size:.8rem;color:#f4d9b0;margin-bottom:10px;}
+  #cap-funnel .cap-hero h1{font-size:clamp(2.4rem,6vw,4.4rem);margin:0 0 8px;font-weight:700;line-height:1;text-shadow:0 2px 18px rgba(0,0,0,.45);}
+  #cap-funnel .cap-hero .sub{font-size:1.15rem;max-width:640px;margin:0 0 22px;color:#f3e7e7;}
+  #cap-funnel .cap-hero .btn-primary{background:var(--accent);color:#fff;border:0;font-weight:700;font-size:1.05rem;padding:16px 38px;border-radius:50px;cursor:pointer;text-decoration:none;display:inline-block;}
+  #cap-funnel .cap-hero .btn-primary:hover{background:var(--accent2);}
+
+  #cap-funnel .sec-head{text-align:center;margin-bottom:38px;}
+  #cap-funnel .sec-head .eye{color:var(--accent);font-family:'Josefin Sans';letter-spacing:.18em;text-transform:uppercase;font-size:.82rem;font-weight:600;}
+  #cap-funnel .sec-head h2{font-size:clamp(1.8rem,4vw,2.6rem);margin:6px 0 0;color:var(--red);}
+
+  /* 1) PHASE CARDS */
+  #cap-funnel .phase-row{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  #cap-funnel .phase-card{border:2px solid var(--line);border-radius:16px;padding:22px;text-align:center;background:#fff;transition:.25s;position:relative;}
+  #cap-funnel .phase-card .tag{font-family:'Josefin Sans';font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:.78rem;color:var(--muted);}
+  #cap-funnel .phase-card .price{font-family:'Josefin Sans';font-size:2.2rem;font-weight:700;color:var(--red);margin:6px 0 2px;}
+  #cap-funnel .phase-card .win{font-size:.85rem;color:var(--muted);}
+  #cap-funnel .phase-card.active{border-color:var(--accent);box-shadow:0 14px 34px rgba(200,40,68,.18);transform:translateY(-4px);}
+  #cap-funnel .phase-card.active .tag{color:var(--accent);}
+  #cap-funnel .phase-card .live{display:none;position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;font-size:.7rem;font-weight:700;padding:4px 14px;border-radius:20px;letter-spacing:.06em;}
+  #cap-funnel .phase-card.active .live{display:block;}
+
+  /* 2) TICKET TIERS */
+  #cap-funnel .tier-row{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch;}
+  #cap-funnel .tier{border:1px solid var(--line);border-radius:18px;background:#fff;padding:30px 26px;display:flex;flex-direction:column;position:relative;overflow:hidden;}
+  #cap-funnel .tier.feature{border:2px solid var(--accent);}
+  #cap-funnel .tier .ribbon{position:absolute;top:16px;right:-34px;transform:rotate(45deg);background:var(--accent);color:#fff;font-size:.72rem;font-weight:700;padding:5px 44px;letter-spacing:.05em;}
+  #cap-funnel .tier h3{font-size:1.5rem;color:var(--red);margin:.2rem 0 .1rem;}
+  #cap-funnel .tier .saletag::before{content:attr(data-saletag);display:inline-block;background:#fde8ec;color:var(--accent);font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:4px 10px;border-radius:20px;margin-bottom:10px;}
+  #cap-funnel .tier .price{font-family:'Josefin Sans';font-size:2.6rem;font-weight:700;color:var(--ink);}
+  #cap-funnel .tier .price small{font-size:.95rem;color:var(--muted);font-weight:400;}
+  #cap-funnel .tier ul{list-style:none;padding:0;margin:16px 0 22px;}
+  #cap-funnel .tier li{padding:6px 0;border-bottom:1px dashed var(--line);font-size:.95rem;}
+  #cap-funnel .tier .btn{margin-top:auto;border:0;border-radius:40px;padding:13px;font-weight:700;cursor:pointer;font-size:1rem;}
+  #cap-funnel .tier .btn-out{background:#fff;border:2px solid var(--red);color:var(--red);}
+  #cap-funnel .tier .btn-solid{background:var(--accent);color:#fff;}
+  #cap-funnel .tier .btn-solid:hover{background:var(--accent2);}
+
+  /* 3) VALUE-DATES CALENDAR */
+  #cap-funnel .cal-wrap{max-width:430px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;}
+  #cap-funnel .cal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
+  #cap-funnel .cal-head .m{font-family:'Josefin Sans';font-weight:700;color:var(--red);font-size:1.15rem;}
+  #cap-funnel .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;}
+  #cap-funnel .cal-grid .dow{font-size:.7rem;text-align:center;color:var(--muted);font-weight:700;}
+  #cap-funnel .cal-day{aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:9px;background:#f3eeea;font-size:.85rem;cursor:pointer;transition:.15s;}
+  #cap-funnel .cal-day .p{font-size:.62rem;color:var(--muted);}
+  #cap-funnel .cal-day.value-date{background:var(--green);color:#fff;}
+  #cap-funnel .cal-day.value-date .p{color:#eafbe9;}
+  #cap-funnel .cal-day.value-date:hover{filter:brightness(1.08);}
+  #cap-funnel .cal-day.sel{outline:3px solid var(--accent);}
+  #cap-funnel .cal-legend{margin-top:14px;font-size:.82rem;display:flex;gap:18px;justify-content:center;color:var(--muted);}
+  #cap-funnel .cal-legend .sw{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin-right:5px;}
+
+  /* MODALS */
+  #cap-funnel .ov{position:fixed;inset:0;background:rgba(40,10,12,.6);display:none;align-items:center;justify-content:center;z-index:2147483000;padding:20px;}
+  #cap-funnel .ov.on{display:flex;}
+  #cap-funnel .modal{background:#fff;max-width:460px;width:100%;border-radius:18px;padding:30px 28px;position:relative;animation:capPop .25s ease;}
+  @keyframes capPop{from{opacity:0;transform:translateY(14px) scale(.97);}to{opacity:1;transform:none;}}
+  #cap-funnel .modal.starlight{border-top:8px solid var(--gold);}
+  #cap-funnel .modal h3{margin:.2rem 0 .4rem;color:var(--red);font-size:1.6rem;}
+  #cap-funnel .modal .x{position:absolute;top:12px;right:16px;background:none;border:0;font-size:1.6rem;color:#b88;cursor:pointer;}
+  #cap-funnel .modal label{display:block;font-weight:600;font-size:.85rem;margin:14px 0 5px;}
+  #cap-funnel .modal select,#cap-funnel .modal input{width:100%;padding:11px;border:1px solid var(--line);border-radius:9px;font:inherit;}
+  #cap-funnel .modal .row2{display:flex;gap:12px;}
+  #cap-funnel .modal .row2>div{flex:1;}
+  #cap-funnel .modal .mbtn{width:100%;margin-top:20px;border:0;border-radius:40px;padding:14px;font-weight:700;font-size:1rem;cursor:pointer;color:#fff;background:var(--accent);}
+  #cap-funnel .modal .mbtn.gold{background:var(--gold);color:var(--red-dark);}
+  #cap-funnel .modal .mlink{display:block;text-align:center;margin-top:12px;color:var(--muted);font-size:.85rem;cursor:pointer;background:none;border:0;width:100%;}
+
+  @media(max-width:820px){
+    #cap-funnel .phase-row,#cap-funnel .tier-row{grid-template-columns:1fr;}
+  }
+  </style>
+
+  <!-- NAV -->
+  <nav class="cap-nav"><div class="cap-wrap">
+    <img src="https://cdn.uploads.webconnex.com/49430/christmas-at-princess-logo.png?1729353220577" alt="Christmas at the Princess">
+    <a href="#cap-tickets" class="cap-nav-cta">Get Tickets</a>
+  </div></nav>
+
+  <!-- HERO -->
+  <header class="cap-hero"><div class="cap-wrap">
+    <div class="eyebrow">Fairmont Scottsdale Princess</div>
+    <h1>Christmas at the Princess</h1>
+    <p class="sub">Arizona's most magical holiday tradition returns &mdash; ice skating, four-million twinkling lights, s'mores, and the all-new Starlight Lounge.</p>
+    <a href="#cap-tickets" class="btn-primary">Get Tickets</a>
+  </div></header>
+
+  <!-- 1) DYNAMIC SALE-PHASE CARDS -->
+  <section style="background:#fff;"><div class="cap-wrap">
+    <div class="sec-head"><div class="eye">Limited-Time Pricing</div><h2>Lock in the lowest price</h2></div>
+    <div class="phase-row" id="capPhaseRow">
+      <div class="phase-card" data-start="2026-07-01" data-end="2026-09-30"><span class="live">You're here &#9662;</span><div class="tag">&#127876; Christmas in July</div><div class="price">$35</div><div class="win">Jul 1 &ndash; Sep 30 &middot; lowest of the year</div></div>
+      <div class="phase-card" data-start="2026-10-01" data-end="2026-11-14"><span class="live">You're here &#9662;</span><div class="tag">&#9200; Early Bird</div><div class="price">$40</div><div class="win">Oct 1 &ndash; Nov 14</div></div>
+      <div class="phase-card" data-start="2026-11-15" data-end="2026-12-31"><span class="live">You're here &#9662;</span><div class="tag">&#10024; In Season</div><div class="price">$48</div><div class="win">Nov 15 &ndash; Dec 31</div></div>
+    </div>
+    <p style="text-align:center;color:var(--muted);font-size:.85rem;margin-top:16px;">Same ticket all season &mdash; only the <em>sticker</em> &amp; price change by date.</p>
+  </div></section>
+
+  <!-- 2) TICKET TIERS -->
+  <section id="cap-tickets"><div class="cap-wrap">
+    <div class="sec-head"><div class="eye">Choose Your Experience</div><h2>Pick your tickets</h2></div>
+    <div class="tier-row">
+      <div class="tier">
+        <h3>General Admission</h3><div class="saletag" data-saletag="&#127876; Christmas in July"></div>
+        <div class="price">$35 <small>/ person</small></div>
+        <ul><li>Entry to the holiday village</li><li>4M lights &amp; light shows</li><li>Self-parking included</li></ul>
+        <button class="btn btn-out" onclick="capOpenStar()">Select</button>
+      </div>
+      <div class="tier feature"><span class="ribbon">NEW</span>
+        <h3>Starlight Lounge</h3><div class="saletag" data-saletag="&#10024; Best value upgrade"></div>
+        <div class="price">$60 <small>/ person</small></div>
+        <ul><li>Everything in GA</li><li>Shared fire pits + VIP area</li><li>Access to the specialty bar</li></ul>
+        <button class="btn btn-solid">Select</button>
+      </div>
+      <div class="tier">
+        <h3>VIP Igloo &amp; Fire Pit</h3><div class="saletag" data-saletag="&#128293; Reserve early"></div>
+        <div class="price">from $399</div>
+        <ul><li>Private igloo or fire pit</li><li>Seats 4&ndash;8 guests</li><li>Premium bar service</li></ul>
+        <button class="btn btn-out">Reserve</button>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- 3) VALUE-DATES CALENDAR -->
+  <section style="background:#fff;"><div class="cap-wrap">
+    <div class="sec-head"><div class="eye">Save on Off-Peak Nights</div><h2>Pick your date</h2></div>
+    <div class="cal-wrap">
+      <div class="cal-head"><span style="color:var(--red);font-size:1.2rem;">&lsaquo;</span><span class="m">December 2026</span><span style="color:var(--red);font-size:1.2rem;">&rsaquo;</span></div>
+      <div class="cal-grid" id="capCalGrid"></div>
+      <div class="cal-legend"><span><span class="sw" style="background:#f3eeea;"></span>Standard</span><span><span class="sw" style="background:var(--green);"></span>Value Date &middot; save $5 &middot; from $35</span></div>
+    </div>
+  </div></section>
+
+  <!-- Santa add-on trigger -->
+  <section><div class="cap-wrap" style="text-align:center;">
+    <div class="sec-head"><div class="eye">Don't Miss</div><h2>Photos with Santa</h2></div>
+    <p style="color:var(--muted);max-width:560px;margin:0 auto 20px;">Every admission can add a timed Santa photo session. In the live flow this auto-prompts at checkout.</p>
+    <button class="btn-primary" style="background:var(--accent);border:0;border-radius:50px;padding:14px 34px;color:#fff;font-weight:700;cursor:pointer;font-family:'Montserrat';" onclick="capOpenSanta()">Add Photos with Santa</button>
+  </div></section>
+
+  <!-- Santa modal -->
+  <div class="ov" id="capOvSanta"><div class="modal"><button class="x" onclick="capCloseAll()">&times;</button>
+    <h3>&#128247; Photos with Santa</h3>
+    <p style="color:var(--muted);font-size:.92rem;margin:0;">Reserve a timed session &mdash; added right to your order.</p>
+    <div class="row2"><div><label>Time slot</label><select><option>5:30 PM</option><option>6:15 PM</option><option>7:00 PM</option><option>7:45 PM</option></select></div><div><label>Qty</label><select><option>1</option><option>2</option><option>3</option><option>4</option></select></div></div>
+    <button class="mbtn" onclick="capCloseAll()">Add to my order &mdash; $24.99</button>
+    <button class="mlink" onclick="capCloseAll()">No thanks, continue</button>
+  </div></div>
+
+  <!-- Starlight upsell modal -->
+  <div class="ov" id="capOvStar"><div class="modal starlight"><button class="x" onclick="capCloseAll()">&times;</button>
+    <h3>&#10024; Upgrade to the Starlight Lounge?</h3>
+    <p style="color:var(--muted);font-size:.92rem;">For just <strong>$25 more</strong> per guest, skip the crowd &mdash; shared fire pits, a private VIP area, and the specialty bar. One click adds it for everyone in your order.</p>
+    <button class="mbtn gold" onclick="capCloseAll()">Yes, upgrade us &mdash; +$25/guest</button>
+    <button class="mlink" onclick="capCloseAll()">No thanks, keep General Admission</button>
+  </div></div>
+
+  <script>
+  (function(){
+    var root=document.getElementById('cap-funnel'); if(!root) return;
+    /* 1) phase detection */
+    var today=new Date();
+    root.querySelectorAll('#capPhaseRow .phase-card').forEach(function(c){
+      var s=new Date(c.getAttribute('data-start')+'T00:00:00'), e=new Date(c.getAttribute('data-end')+'T23:59:59');
+      if(today>=s && today<=e) c.classList.add('active');
+    });
+    if(!root.querySelector('#capPhaseRow .phase-card.active')) root.querySelector('#capPhaseRow .phase-card').classList.add('active');
+    /* 3) value-dates calendar (DEMO: Mon-Thu = value nights, Dec 2026) */
+    var grid=document.getElementById('capCalGrid');
+    if(grid){
+      ['S','M','T','W','T','F','S'].forEach(function(d){var el=document.createElement('div');el.className='dow';el.textContent=d;grid.appendChild(el);});
+      var start=2; for(var i=0;i<start;i++){grid.appendChild(document.createElement('div'));}
+      for(var d=1;d<=31;d++){
+        var dow=(start+d-1)%7, isV=(dow>=1&&dow<=4);
+        var cell=document.createElement('div'); cell.className='cal-day'+(isV?' value-date':'');
+        cell.innerHTML=d+'<span class="p">'+(isV?'$35':'$48')+'</span>';
+        cell.onclick=function(){root.querySelectorAll('.cal-day.sel').forEach(function(x){x.classList.remove('sel');});this.classList.add('sel');};
+        grid.appendChild(cell);
+      }
+    }
+    /* overlay click-out */
+    root.querySelectorAll('.ov').forEach(function(o){o.addEventListener('click',function(e){if(e.target===o)capCloseAll();});});
+  })();
+  function capOpenSanta(){document.getElementById('capOvSanta').classList.add('on');}
+  function capOpenStar(){document.getElementById('capOvStar').classList.add('on');}
+  function capCloseAll(){document.querySelectorAll('#cap-funnel .ov').forEach(function(o){o.classList.remove('on');});}
+  </script>
+</div>
+
+</body>
+</html>
