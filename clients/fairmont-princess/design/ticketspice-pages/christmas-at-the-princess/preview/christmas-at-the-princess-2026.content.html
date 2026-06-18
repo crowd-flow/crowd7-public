@@ -34,39 +34,156 @@
 .campaign-form:not(.legacy-form) .btn-danger, .campaign-form:not(.legacy-form) .btn-primary, .campaign-form:not(.legacy-form) .btn:not(.btn--transparent):not(.btn--plus):not(.btn--minus):not(.btn--home):not(.btn--tooltipstered):not(.btn--blue) { font-size: 15px; color: white; border-radius: 10px; font-family: fatfrank,Segoe UI,Helvetica Neue,Arial,Noto Sans,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji,-apple-system,sans-serif; font-weight: bold; height: 44px; min-height: 44px; padding: 15px 20px; text-transform: uppercase; }
 .ti.josefin-sans { font-family: "Josefin Sans", sans-serif; font-weight: 100!important; font-style: normal; }
 body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; font-weight: 300!important; }
-.ticket-block .wbx-calendar .row .day.enabled:not(.low-inventory):not(.partial):not(.sold-out) { background: #C82844; color:#ffffff; }
+:is(.ticket-block, .cap-cal-shell) .wbx-calendar .row .day.enabled:not(.low-inventory):not(.partial):not(.sold-out) { background: #C82844; color:#ffffff; }
 
 /* ════════════════════════════════════════════════════════════════════
-   PATH C — restyle the native Webconnex .wbx-calendar to brand. NOT
-   scoped under #cap-funnel because the picker renders inside TS's
-   .ticket-block tree (outside our scope). All selectors gated to
-   .ticket-block so we don't bleed into TS admin or other surfaces.
+   PATH C v2 — POP-UP MODAL around the native Webconnex .wbx-calendar.
+   When the picker mounts, JS moves it into .cap-cal-shell (body-level
+   modal) and adds .cap-cal-backdrop. Looks/feels exactly like the
+   killed custom modal but uses the native picker's React handlers,
+   so date selection still fires TS's ticket-block logic naturally.
    ════════════════════════════════════════════════════════════════════ */
-.ticket-block .datePicker { padding: 6px 0 0 !important; }
-.ticket-block .wbx-calendar {
-  background: linear-gradient(180deg, #ffffff, #fbf7f4) !important;
-  border: 2px solid #c9a24b !important;
-  border-radius: 18px !important;
-  padding: 14px 14px 10px !important;
-  box-shadow: 0 22px 50px rgba(40, 10, 12, 0.20) !important;
-  font-family: 'Montserrat', system-ui, sans-serif !important;
-  max-width: 480px !important;
-  margin: 0 auto !important;
+
+/* Backdrop — full viewport dim layer */
+.cap-cal-backdrop {
+  position: fixed !important;
+  inset: 0 !important;
+  background: rgba(40, 10, 12, 0.7) !important;
+  z-index: 2147483000 !important;
+  animation: capCalFade 0.2s ease !important;
+  cursor: pointer !important;
 }
-.ticket-block .wbx-calendar .header {
+@keyframes capCalFade { from { opacity: 0; } to { opacity: 1; } }
+
+/* Modal shell — white card, centered, holds banner + calendar slot + footer */
+.cap-cal-shell {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  z-index: 2147483001 !important;
+  background: #fff !important;
+  border-radius: 22px !important;
+  padding: 30px 28px 24px !important;
+  width: 92vw !important;
+  max-width: 520px !important;
+  max-height: 92vh !important;
+  overflow-y: auto !important;
+  box-shadow: 0 30px 80px rgba(40, 10, 12, 0.55) !important;
+  font-family: 'Montserrat', system-ui, sans-serif !important;
+  animation: capCalPop 0.25s ease !important;
+  border-top: 8px solid #c9a24b !important;
+}
+@keyframes capCalPop {
+  from { opacity: 0; transform: translate(-50%, -46%) scale(0.96); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+/* X close button */
+.cap-cal-x {
+  position: absolute !important;
+  top: 14px !important;
+  right: 16px !important;
+  width: 36px !important; height: 36px !important;
+  border-radius: 50% !important;
+  background: #fbf7f4 !important;
+  color: #671416 !important;
+  border: 1px solid #f0e8e0 !important;
+  font-size: 1.4rem !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+  transition: all 0.15s !important;
+}
+.cap-cal-x:hover {
+  background: #c82844 !important;
+  color: #fff !important;
+  border-color: #c82844 !important;
+}
+
+/* Header banner inside the shell */
+.cap-cal-banner {
+  text-align: center !important;
+  padding: 8px 0 14px !important;
+  border-bottom: 1px solid #f0e8e0 !important;
+  margin-bottom: 18px !important;
+}
+.cap-cal-banner .title {
+  font-family: 'Playfair Display', Georgia, serif !important;
+  font-size: 1.6rem !important;
+  font-weight: 700 !important;
+  color: #671416 !important;
+  margin: 0 !important;
+  line-height: 1.2 !important;
+}
+.cap-cal-banner .sub {
+  display: block !important;
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 0.7rem !important;
+  letter-spacing: 0.2em !important;
+  text-transform: uppercase !important;
+  color: #c9a24b !important;
+  margin-top: 6px !important;
+  font-weight: 700 !important;
+}
+
+/* Footer (legend) inside the shell */
+.cap-cal-footer {
+  text-align: center !important;
+  padding: 16px 8px 4px !important;
+  margin-top: 16px !important;
+  border-top: 1px solid #f0e8e0 !important;
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 0.78rem !important;
+  color: #6e6e6e !important;
+}
+.cap-cal-footer .leg { display: inline-block !important; margin: 0 10px !important; }
+.cap-cal-footer .sw {
+  display: inline-block !important;
+  width: 11px !important; height: 11px !important;
+  border-radius: 2px !important;
+  vertical-align: -1px !important;
+  margin-right: 5px !important;
+}
+
+/* When .wbx-calendar is INSIDE our shell, kill its container's padding
+   (we provide the modal padding) and let it fill width */
+.cap-cal-shell .wbx-calendar {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  width: 100% !important;
+  font-family: 'Montserrat', system-ui, sans-serif !important;
+}
+
+/* The picker also gets restyled WHEREVER it lives (in case it briefly
+   renders in .datePicker before we move it, OR if React re-renders it
+   back there during a state change). */
+:is(.ticket-block, .cap-cal-shell) .wbx-calendar,
+.cap-cal-shell .wbx-calendar {
+  font-family: 'Montserrat', system-ui, sans-serif !important;
+}
+:is(.ticket-block, .cap-cal-shell) .wbx-calendar .header {
   background: linear-gradient(135deg, #671416, #4a0e10) !important;
   color: #fff !important;
   border-radius: 12px !important;
   padding: 12px 10px !important;
   margin-bottom: 12px !important;
 }
-.ticket-block .wbx-calendar .month-display.row {
+:is(.ticket-block, .cap-cal-shell) .wbx-calendar .month-display.row {
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
   gap: 10px !important;
 }
-.ticket-block .wbx-calendar .month-label {
+:is(.ticket-block, .cap-cal-shell) .wbx-calendar .month-label {
   font-family: 'Playfair Display', Georgia, serif !important;
   font-size: 1.2rem !important;
   font-weight: 700 !important;
@@ -75,7 +192,7 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
   flex: 1 !important;
   text-align: center !important;
 }
-.ticket-block .wbx-calendar .arrow {
+:is(.ticket-block, .cap-cal-shell) .wbx-calendar .arrow {
   background: rgba(255,255,255,0.14) !important;
   color: #fff !important;
   border-radius: 50% !important;
@@ -87,9 +204,9 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
   font-size: 1rem !important;
   transition: background 0.15s !important;
 }
-.ticket-block .wbx-calendar .arrow:hover:not(.disabled) { background: rgba(255,255,255,0.3) !important; }
-.ticket-block .wbx-calendar .arrow.disabled { opacity: 0.25 !important; cursor: not-allowed !important; }
-.ticket-block .wbx-calendar .day-names {
+:is(.ticket-block, .cap-cal-shell) .wbx-calendar .arrow:hover:not(.disabled) { background: rgba(255,255,255,0.3) !important; }
+:is(.ticket-block, .cap-cal-shell) .wbx-calendar .arrow.disabled { opacity: 0.25 !important; cursor: not-allowed !important; }
+:is(.ticket-block, .cap-cal-shell) .wbx-calendar .day-names {
   border-bottom: 1px solid #e6e6e6 !important;
   padding-bottom: 8px !important;
   margin-bottom: 8px !important;
@@ -97,7 +214,7 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
   grid-template-columns: repeat(7, 1fr) !important;
   gap: 4px !important;
 }
-.ticket-block .wbx-calendar .day-names .day {
+:is(.ticket-block, .cap-cal-shell) .wbx-calendar .day-names .day {
   font-family: 'Montserrat', sans-serif !important;
   font-size: 0.68rem !important;
   letter-spacing: 0.12em !important;
@@ -106,13 +223,13 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
   text-align: center !important;
   font-weight: 700 !important;
 }
-.ticket-block .wbx-calendar .row.week {
+:is(.ticket-block, .cap-cal-shell) .wbx-calendar .row.week {
   display: grid !important;
   grid-template-columns: repeat(7, 1fr) !important;
   gap: 4px !important;
   margin-bottom: 4px !important;
 }
-.ticket-block .wbx-calendar .day[data-testid="day"] {
+:is(.ticket-block, .cap-cal-shell) .wbx-calendar .day[data-testid="day"] {
   aspect-ratio: 1 !important;
   display: flex !important;
   align-items: center !important;
@@ -127,16 +244,16 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
   background: #fbf7f4 !important;
   border: 1px solid #f0e8e0 !important;
 }
-.ticket-block .wbx-calendar .day.enabled:not(.different-month):hover {
+:is(.ticket-block, .cap-cal-shell) .wbx-calendar .day.enabled:not(.different-month):hover {
   background: #c82844 !important;
   color: #fff !important;
   border-color: #c82844 !important;
   transform: scale(1.06) !important;
   box-shadow: 0 6px 16px rgba(200,40,68,0.4) !important;
 }
-.ticket-block .wbx-calendar .day.different-month { opacity: 0.32 !important; }
-.ticket-block .wbx-calendar .day.disabled,
-.ticket-block .wbx-calendar .day:not(.enabled):not(.different-month) {
+:is(.ticket-block, .cap-cal-shell) .wbx-calendar .day.different-month { opacity: 0.32 !important; }
+:is(.ticket-block, .cap-cal-shell) .wbx-calendar .day.disabled,
+:is(.ticket-block, .cap-cal-shell) .wbx-calendar .day:not(.enabled):not(.different-month) {
   opacity: 0.30 !important;
   cursor: not-allowed !important;
   color: #aaa !important;
@@ -145,19 +262,19 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
 }
 /* Override pre-existing solid red on enabled days — we want cream cells */
 /* that turn red on hover, gold when selected. */
-.ticket-block .wbx-calendar .row .day.enabled:not(.low-inventory):not(.partial):not(.sold-out) {
+:is(.ticket-block, .cap-cal-shell) .wbx-calendar .row .day.enabled:not(.low-inventory):not(.partial):not(.sold-out) {
   background: #fbf7f4 !important;
   color: #3a2a2a !important;
   border: 1px solid #f0e8e0 !important;
 }
-.ticket-block .wbx-calendar .row .day.enabled:not(.low-inventory):not(.partial):not(.sold-out):hover {
+:is(.ticket-block, .cap-cal-shell) .wbx-calendar .row .day.enabled:not(.low-inventory):not(.partial):not(.sold-out):hover {
   background: #c82844 !important;
   color: #fff !important;
 }
 /* Selected state (Webconnex may apply any of these on click) */
-.ticket-block .wbx-calendar .day.selected,
-.ticket-block .wbx-calendar .day.day-selected,
-.ticket-block .wbx-calendar .day.active {
+:is(.ticket-block, .cap-cal-shell) .wbx-calendar .day.selected,
+:is(.ticket-block, .cap-cal-shell) .wbx-calendar .day.day-selected,
+:is(.ticket-block, .cap-cal-shell) .wbx-calendar .day.active {
   background: #c9a24b !important;
   color: #fff !important;
   font-weight: 700 !important;
@@ -436,35 +553,99 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
     }
   })();
 
-  // 2) inject branded chrome around .wbx-calendar
+  // 2) MODAL OVERLAY: when .wbx-calendar mounts in the ticket-block, MOVE
+  //    it into a body-level modal shell with backdrop + banner + footer.
+  //    On close (X, backdrop, ESC, or date selection), restore the calendar
+  //    to its original parent so React's reconciliation works normally.
   (function(){
-    var injectedPickers = new WeakSet();
-    function injectCalendarChrome(){
-      var cal = document.querySelector('.ticket-block .datePicker .wbx-calendar');
-      if(!cal) return;
-      var picker = cal.parentElement;
-      if(!picker || injectedPickers.has(picker)) return;
-      injectedPickers.add(picker);
+    var modal = { shell:null, backdrop:null, cal:null, origParent:null, origNextSibling:null, valuePoll:null };
 
-      // Banner BEFORE the calendar (sibling — React won't touch it)
-      var banner = document.createElement('div');
-      banner.className = 'cap-cal-banner';
-      banner.innerHTML = 'Pick Your Holiday Night<span class="sub">★ Tap a Date to See Tickets ★</span>';
-      picker.insertBefore(banner, cal);
+    function openCalendarModal(cal){
+      if(modal.shell) return;                       // already open
+      if(cal.closest('.cap-cal-shell')) return;     // already inside our shell
 
-      // Footer AFTER the calendar (legend)
-      var footer = document.createElement('div');
-      footer.className = 'cap-cal-footer';
-      footer.innerHTML =
-        '<span class="leg"><span class="sw" style="background:#fbf7f4;border:1px solid #c9a24b;"></span>Standard</span>' +
-        '<span class="leg"><span class="sw" style="background:#28bf38;"></span>Value Night — save $5</span>';
-      picker.appendChild(footer);
+      // Remember original DOM position so we can put it back on close
+      modal.cal = cal;
+      modal.origParent = cal.parentNode;
+      modal.origNextSibling = cal.nextSibling;
 
-      console.log('[cap-C] injected branded chrome around .wbx-calendar');
+      // Backdrop
+      var backdrop = document.createElement('div');
+      backdrop.className = 'cap-cal-backdrop';
+      backdrop.addEventListener('click', closeCalendarModal);
+      modal.backdrop = backdrop;
+
+      // Shell (white modal card)
+      var shell = document.createElement('div');
+      shell.className = 'cap-cal-shell';
+      shell.innerHTML =
+        '<button class="cap-cal-x" type="button" aria-label="Close">×</button>' +
+        '<div class="cap-cal-banner">' +
+          '<h3 class="title">Pick Your Holiday Night</h3>' +
+          '<span class="sub">★ Tap a Date to See Tickets ★</span>' +
+        '</div>' +
+        '<div class="cap-cal-slot"></div>' +
+        '<div class="cap-cal-footer">' +
+          '<span class="leg"><span class="sw" style="background:#fbf7f4;border:1px solid #c9a24b;"></span>Standard</span>' +
+          '<span class="leg"><span class="sw" style="background:#28bf38;"></span>Value Night — save $5</span>' +
+        '</div>';
+      shell.querySelector('.cap-cal-x').addEventListener('click', closeCalendarModal);
+      shell.querySelector('.cap-cal-slot').appendChild(cal);  // MOVE the live calendar in
+      modal.shell = shell;
+
+      document.body.appendChild(backdrop);
+      document.body.appendChild(shell);
+
+      // Auto-close when user picks a date (input gets a value)
+      var inp = document.querySelector('input[placeholder="Choose Date"]');
+      if(inp){
+        var lastVal = inp.value;
+        modal.valuePoll = setInterval(function(){
+          if(inp.value && inp.value !== lastVal){
+            console.log('[cap-C] date selected →', inp.value, '— closing modal');
+            closeCalendarModal();
+          }
+        }, 100);
+      }
+
+      console.log('[cap-C] calendar modal opened');
     }
-    var watcher = new MutationObserver(injectCalendarChrome);
+
+    function closeCalendarModal(){
+      if(!modal.shell) return;
+      if(modal.valuePoll){ clearInterval(modal.valuePoll); modal.valuePoll = null; }
+
+      // Restore calendar to its original parent so React can reconcile/unmount cleanly
+      if(modal.cal && modal.origParent && modal.origParent.isConnected){
+        try {
+          if(modal.origNextSibling && modal.origNextSibling.parentNode === modal.origParent){
+            modal.origParent.insertBefore(modal.cal, modal.origNextSibling);
+          } else {
+            modal.origParent.appendChild(modal.cal);
+          }
+        } catch(e){ console.warn('[cap-C] calendar restore failed:', e); }
+      }
+
+      try { modal.shell.remove(); } catch(_){}
+      try { modal.backdrop.remove(); } catch(_){}
+      modal.shell = null; modal.backdrop = null; modal.cal = null;
+      modal.origParent = null; modal.origNextSibling = null;
+
+      console.log('[cap-C] calendar modal closed');
+    }
+
+    function checkForCalendar(){
+      var cal = document.querySelector('.ticket-block .datePicker .wbx-calendar');
+      if(cal && !modal.shell) openCalendarModal(cal);
+    }
+    var watcher = new MutationObserver(checkForCalendar);
     watcher.observe(document.body, {childList:true, subtree:true});
-    injectCalendarChrome(); // attempt once on load (calendar may already be there)
+    checkForCalendar(); // in case calendar is already mounted
+
+    // ESC to close
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && modal.shell) closeCalendarModal();
+    });
   })();
 
   // 3) modal helpers for Santa + Starlight upsells
