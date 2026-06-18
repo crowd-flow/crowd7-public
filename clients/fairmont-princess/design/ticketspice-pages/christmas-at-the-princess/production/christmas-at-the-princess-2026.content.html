@@ -1,26 +1,53 @@
 <!--
   ============================================================================
   Christmas at the Princess 2026 — Crowd7 CONTENT BLOCK (paste into TicketSpice)
-  Built 2026-06-17 by Crowdly per Mat, off Bryan's 6/17 call. FIRST-PASS.
-  This is the inject-into-TS version: NO <html>/<head>/<body> wrapper.
-  Everything is scoped under #cap-funnel so it can't restyle TS's own DOM.
-  Paste into a TicketSpice HTML field (header.rawHtml). The native TS cart
-  (ticket types, real calendar, Actions, checkout) stays native — this is the
-  marketing/UX shell + the JS "magic" layered on top.
-  Sibling standalone preview (open in a browser): christmas-at-the-princess-2026.content-preview.html
-  Style guide: red #671416 · accent #c82844 · value-green #28bf38 · link #4a8cb2
+  Built 2026-06-17 by Crowdly per Mat, off Bryan's 6/17 call. FIRST-PASS v2.
+  Inject-into-TS version: NO <html>/<head>/<body>. Our marketing/UX shell is
+  scoped under #cap-funnel; the NATIVE TICKETSPICE CART CSS (Mat's paste) is a
+  separate GLOBAL block (must NOT be scoped — it styles the real TS cart).
+  Sibling preview: christmas-at-the-princess-2026.content-preview.html
   ⚠️ All prices / dates / sale phases are PLACEHOLDER DEMO-DATA.
   ============================================================================
 -->
+
+<!-- ===== GLOBAL: native TicketSpice cart CSS (Mat's paste 2026-06-17). NOT scoped.
+     3 syntax bugs fixed: missing ; after hr.line-break border-color; empty `border: 3px solid` → #000; missing ; after `background-color: white`. Colors left as pasted. ===== -->
+<style>
+.ticket-block table.holds-tickets th { padding: 1%; background: rgba(200,55,55,1); vertical-align: middle; color: #ffffff!important; }
+.header-type-logo .holds-image { padding-bottom: 25px !important; }
+.sf-gallery img { width: 33%; padding: 5px; }
+.sf-gallery { max-width: none; margin-left: auto; margin-right: auto; display: flex; justify-content: center; padding-top: .2em; position: relative; width: 100%; background-size: cover; background-position: center center; }
+.app-container h3 { line-height: 22px; }
+.ticket-block th.quantity { text-align: left !important; }
+.ticket-block th.quantity:after { content: "Quantity"; }
+.rmz-label-text { color: white; }
+.campaign-form:not(.legacy-form) hr.line-break { border-color: #000000!important; }
+.field-gallery { background: white; }
+@media screen and (max-width: 768px) { .field-image-single.field-image--fw { padding: 1px 0 !important; } }
+.field-image-single { background: transparent; padding-top: 0px; padding-bottom: 0px; }
+.ticket-block table.holds-tickets th { color: #FFFFFF!important; background: #B91F31; }
+.campaign-form:not(.legacy-form) .ticket-block table.holds-tickets { border: 3px solid #000; border-radius: 10px; border-spacing: 0; width: 100%; }
+.campaign-form:not(.legacy-form) .ticket-block table.holds-tickets { border-collapse: separate !important; background-color: white; border-spacing: 0; width: 100%; }
+.campaign-form:not(.legacy-form) ul.upgrades li img.product-thumbnail { border-radius: 10px; }
+.campaign-form:not(.legacy-form) .field-purchaseProtection .purchase-protection .purchase-protection-header { background-color: #B91F32; border: 3px solid black; border-bottom: 3px solid black; color: white!important; font-size: 18px; font-weight: 700; }
+.purchase-protection .purchase-protection-body { background-color: white; padding: 15px; border: 3px solid black; }
+.campaign-form:not(.legacy-form) .btn-danger, .campaign-form:not(.legacy-form) .btn-primary, .campaign-form:not(.legacy-form) .btn:not(.btn--transparent):not(.btn--plus):not(.btn--minus):not(.btn--home):not(.btn--tooltipstered):not(.btn--blue) { font-size: 15px; color: white; border-radius: 10px; font-family: fatfrank,Segoe UI,Helvetica Neue,Arial,Noto Sans,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji,-apple-system,sans-serif; font-weight: bold; height: 44px; min-height: 44px; padding: 15px 20px; text-transform: uppercase; }
+.ti.josefin-sans { font-family: "Josefin Sans", sans-serif; font-weight: 100!important; font-style: normal; }
+body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; font-weight: 300!important; }
+.ticket-block .wbx-calendar .row .day.enabled:not(.low-inventory):not(.partial):not(.sold-out) { background: #C82844; color:#ffffff; }
+</style>
+
 <div id="cap-funnel">
   <style>
-  @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&family=Montserrat:wght@300;400;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&family=Montserrat:wght@300;400;600;700&display=swap');
 
+  /* full-bleed: break out of TS's constrained column to true viewport width */
   #cap-funnel{
     --red:#671416; --red-dark:#4a0e10; --accent:#c82844; --accent2:#d92f25;
     --green:#28bf38; --blue:#4a8cb2; --ink:#3a2a2a; --muted:#6e6e6e;
     --line:#e6e6e6; --gold:#c9a24b; --bg:#fbf7f4;
     font-family:'Montserrat',system-ui,sans-serif;color:var(--ink);line-height:1.55;
+    width:100vw;max-width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);overflow-x:hidden;
   }
   #cap-funnel *{box-sizing:border-box;}
   #cap-funnel h1,#cap-funnel h2,#cap-funnel h3{font-family:'Josefin Sans',sans-serif;margin:0;}
@@ -34,14 +61,18 @@
   #cap-funnel .cap-nav-cta{background:var(--gold);color:var(--red-dark);font-weight:700;text-decoration:none;padding:11px 22px;border-radius:40px;font-size:.95rem;}
   #cap-funnel .cap-nav-cta:hover{filter:brightness(1.06);}
 
-  /* HERO */
-  #cap-funnel .cap-hero{position:relative;min-height:480px;display:flex;align-items:flex-end;color:#fff;padding:0 0 46px;
-    background:linear-gradient(180deg,rgba(74,14,16,.15),rgba(74,14,16,.78)),url('https://cdn.uploads.webconnex.com/49430/christmas%20quest%20crystal%20bubble%20tag%20wand.jpg') center/cover;}
-  #cap-funnel .cap-hero .eyebrow{font-family:'Josefin Sans';letter-spacing:.22em;text-transform:uppercase;font-size:.8rem;color:#f4d9b0;margin-bottom:10px;}
-  #cap-funnel .cap-hero h1{font-size:clamp(2.4rem,6vw,4.4rem);margin:0 0 8px;font-weight:700;line-height:1;text-shadow:0 2px 18px rgba(0,0,0,.45);}
-  #cap-funnel .cap-hero .sub{font-size:1.15rem;max-width:640px;margin:0 0 22px;color:#f3e7e7;}
-  #cap-funnel .cap-hero .btn-primary{background:var(--accent);color:#fff;border:0;font-weight:700;font-size:1.05rem;padding:16px 38px;border-radius:50px;cursor:pointer;text-decoration:none;display:inline-block;}
-  #cap-funnel .cap-hero .btn-primary:hover{background:var(--accent2);}
+  /* FLOATING Get Tickets */
+  #cap-funnel .cap-float-cta{position:fixed;bottom:22px;right:22px;z-index:60;background:var(--accent);color:#fff;font-weight:700;text-decoration:none;padding:15px 28px;border-radius:50px;box-shadow:0 10px 28px rgba(200,40,68,.45);font-size:1rem;}
+  #cap-funnel .cap-float-cta:hover{background:var(--accent2);}
+
+  /* HERO (video bg) */
+  #cap-funnel .cap-hero{position:relative;min-height:560px;display:flex;align-items:flex-end;color:#fff;overflow:hidden;padding:0 0 50px;}
+  #cap-funnel .cap-hero-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;}
+  #cap-funnel .cap-hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(74,14,16,.10),rgba(74,14,16,.72));z-index:1;}
+  #cap-funnel .cap-hero-content{position:relative;z-index:2;}
+  #cap-funnel .cap-hero .eyebrow{font-family:'Josefin Sans';letter-spacing:.22em;text-transform:uppercase;font-size:.82rem;color:#f4d9b0;margin-bottom:10px;}
+  #cap-funnel .cap-hero h1{color:#fff !important;font-size:clamp(2.6rem,6.5vw,4.8rem);margin:0 0 10px;font-weight:700;line-height:1;text-shadow:0 2px 24px rgba(0,0,0,.55);}
+  #cap-funnel .cap-hero .sub{font-size:1.18rem;max-width:660px;margin:0;color:#f3e7e7;text-shadow:0 1px 10px rgba(0,0,0,.4);}
 
   #cap-funnel .sec-head{text-align:center;margin-bottom:38px;}
   #cap-funnel .sec-head .eye{color:var(--accent);font-family:'Josefin Sans';letter-spacing:.18em;text-transform:uppercase;font-size:.82rem;font-weight:600;}
@@ -74,10 +105,14 @@
   #cap-funnel .tier .btn-solid{background:var(--accent);color:#fff;}
   #cap-funnel .tier .btn-solid:hover{background:var(--accent2);}
 
-  /* 3) VALUE-DATES CALENDAR */
-  #cap-funnel .cal-wrap{max-width:430px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;}
+  /* 3) DATE CTA + calendar (now lives inside a modal) */
+  #cap-funnel .date-cta{background:var(--red);color:#fff;border:0;border-radius:50px;padding:15px 34px;font-weight:700;font-size:1.05rem;cursor:pointer;font-family:'Montserrat';}
+  #cap-funnel .date-cta:hover{background:var(--red-dark);}
+  #cap-funnel .cal-wrap{max-width:430px;margin:0 auto;}
   #cap-funnel .cal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
   #cap-funnel .cal-head .m{font-family:'Josefin Sans';font-weight:700;color:var(--red);font-size:1.15rem;}
+  #cap-funnel .cal-nav{border:0;background:#f3eeea;color:var(--red);font-size:1.1rem;width:34px;height:34px;border-radius:8px;cursor:pointer;}
+  #cap-funnel .cal-nav:hover{background:#e9e0da;}
   #cap-funnel .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;}
   #cap-funnel .cal-grid .dow{font-size:.7rem;text-align:center;color:var(--muted);font-weight:700;}
   #cap-funnel .cal-day{aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:9px;background:#f3eeea;font-size:.85rem;cursor:pointer;transition:.15s;}
@@ -110,19 +145,27 @@
   }
   </style>
 
+  <!-- FLOATING Get Tickets -->
+  <a href="#cap-tickets" class="cap-float-cta">&#127915; Get Tickets</a>
+
   <!-- NAV -->
   <nav class="cap-nav"><div class="cap-wrap">
     <img src="https://cdn.uploads.webconnex.com/49430/christmas-at-princess-logo.png?1729353220577" alt="Christmas at the Princess">
     <a href="#cap-tickets" class="cap-nav-cta">Get Tickets</a>
   </div></nav>
 
-  <!-- HERO -->
-  <header class="cap-hero"><div class="cap-wrap">
-    <div class="eyebrow">Fairmont Scottsdale Princess</div>
-    <h1>Christmas at the Princess</h1>
-    <p class="sub">Arizona's most magical holiday tradition returns &mdash; ice skating, four-million twinkling lights, s'mores, and the all-new Starlight Lounge.</p>
-    <a href="#cap-tickets" class="btn-primary">Get Tickets</a>
-  </div></header>
+  <!-- HERO (video background) -->
+  <header class="cap-hero">
+    <video class="cap-hero-vid" autoplay loop muted playsinline poster="https://cdn.uploads.webconnex.com/49430/christmas%20quest%20crystal%20bubble%20tag%20wand.jpg">
+      <source src="https://symphony.cdn.tambourine.com/christmas-at-the-princess/media/fairmontscottsdaleprincess-homepage-header-desktop-video-68c88c111081f.mp4" type="video/mp4">
+    </video>
+    <div class="cap-hero-overlay"></div>
+    <div class="cap-wrap cap-hero-content">
+      <div class="eyebrow">Fairmont Scottsdale Princess</div>
+      <h1>Christmas at the Princess</h1>
+      <p class="sub">Arizona's most magical holiday tradition returns &mdash; ice skating, four-million twinkling lights, s'mores, and the all-new Starlight Lounge.</p>
+    </div>
+  </header>
 
   <!-- 1) DYNAMIC SALE-PHASE CARDS -->
   <section style="background:#fff;"><div class="cap-wrap">
@@ -160,22 +203,31 @@
     </div>
   </div></section>
 
-  <!-- 3) VALUE-DATES CALENDAR -->
-  <section style="background:#fff;"><div class="cap-wrap">
+  <!-- 3) VALUE-DATES — CTA opens the picker MODAL -->
+  <section style="background:#fff;"><div class="cap-wrap" style="text-align:center;">
     <div class="sec-head"><div class="eye">Save on Off-Peak Nights</div><h2>Pick your date</h2></div>
-    <div class="cal-wrap">
-      <div class="cal-head"><span style="color:var(--red);font-size:1.2rem;">&lsaquo;</span><span class="m">December 2026</span><span style="color:var(--red);font-size:1.2rem;">&rsaquo;</span></div>
-      <div class="cal-grid" id="capCalGrid"></div>
-      <div class="cal-legend"><span><span class="sw" style="background:#f3eeea;"></span>Standard</span><span><span class="sw" style="background:var(--green);"></span>Value Date &middot; save $5 &middot; from $35</span></div>
-    </div>
+    <p style="color:var(--muted);max-width:560px;margin:0 auto 22px;">Green nights are <strong>Value Dates</strong> &mdash; save $5, from $35. Check the calendar to find your night.</p>
+    <button class="date-cta" onclick="capOpenDate()">&#128197; Check dates &amp; pricing</button>
   </div></section>
 
   <!-- Santa add-on trigger -->
   <section><div class="cap-wrap" style="text-align:center;">
     <div class="sec-head"><div class="eye">Don't Miss</div><h2>Photos with Santa</h2></div>
     <p style="color:var(--muted);max-width:560px;margin:0 auto 20px;">Every admission can add a timed Santa photo session. In the live flow this auto-prompts at checkout.</p>
-    <button class="btn-primary" style="background:var(--accent);border:0;border-radius:50px;padding:14px 34px;color:#fff;font-weight:700;cursor:pointer;font-family:'Montserrat';" onclick="capOpenSanta()">Add Photos with Santa</button>
+    <button class="date-cta" style="background:var(--accent);" onclick="capOpenSanta()">Add Photos with Santa</button>
   </div></section>
+
+  <!-- DATE-PICKER modal -->
+  <div class="ov" id="capOvDate"><div class="modal" style="max-width:480px;"><button class="x" onclick="capCloseAll()">&times;</button>
+    <h3 style="text-align:center;">Pick your date</h3>
+    <div class="cal-wrap">
+      <div class="cal-head"><button class="cal-nav" onclick="capCalNav(-1)">&lsaquo;</button><span class="m" id="capCalLabel">December 2026</span><button class="cal-nav" onclick="capCalNav(1)">&rsaquo;</button></div>
+      <div class="cal-grid" id="capCalGrid"></div>
+      <div class="cal-legend"><span><span class="sw" style="background:#f3eeea;"></span>Standard</span><span><span class="sw" style="background:var(--green);"></span>Value &middot; save $5 &middot; from $35</span></div>
+    </div>
+    <button class="mbtn" onclick="capCloseAll()">Select this date</button>
+    <button class="mlink" onclick="capCloseAll()">Cancel</button>
+  </div></div>
 
   <!-- Santa modal -->
   <div class="ov" id="capOvSanta"><div class="modal"><button class="x" onclick="capCloseAll()">&times;</button>
@@ -204,22 +256,36 @@
       if(today>=s && today<=e) c.classList.add('active');
     });
     if(!root.querySelector('#capPhaseRow .phase-card.active')) root.querySelector('#capPhaseRow .phase-card').classList.add('active');
-    /* 3) value-dates calendar (DEMO: Mon-Thu = value nights, Dec 2026) */
-    var grid=document.getElementById('capCalGrid');
-    if(grid){
-      ['S','M','T','W','T','F','S'].forEach(function(d){var el=document.createElement('div');el.className='dow';el.textContent=d;grid.appendChild(el);});
-      var start=2; for(var i=0;i<start;i++){grid.appendChild(document.createElement('div'));}
-      for(var d=1;d<=31;d++){
-        var dow=(start+d-1)%7, isV=(dow>=1&&dow<=4);
-        var cell=document.createElement('div'); cell.className='cal-day'+(isV?' value-date':'');
-        cell.innerHTML=d+'<span class="p">'+(isV?'$35':'$48')+'</span>';
-        cell.onclick=function(){root.querySelectorAll('.cal-day.sel').forEach(function(x){x.classList.remove('sel');});this.classList.add('sel');};
-        grid.appendChild(cell);
-      }
-    }
-    /* overlay click-out */
     root.querySelectorAll('.ov').forEach(function(o){o.addEventListener('click',function(e){if(e.target===o)capCloseAll();});});
+
+    /* LIVE-TS ONLY (verify on the real cart): suppress the native TS datepicker and open OUR modal instead.
+       Safe no-op if the native field isn't present (e.g. this standalone preview). On select, write the
+       chosen date back into the native input + dispatch change so the TS cart still registers it. */
+    document.querySelectorAll('input.hasDatepicker,[placeholder="Choose Date"],[aria-label="Choose Date"]').forEach(function(inp){
+      ['focus','click'].forEach(function(ev){ inp.addEventListener(ev,function(e){ e.preventDefault(); try{inp.blur();}catch(_){} capOpenDate(); }, true); });
+    });
   })();
+
+  /* 3) value-dates calendar — month-navigable, DEMO rule: Mon–Thu = value nights */
+  var capCal={y:2026,m:11}; // Dec 2026 (0-indexed)
+  function capRenderCal(){
+    var grid=document.getElementById('capCalGrid'); if(!grid) return;
+    grid.innerHTML='';
+    ['S','M','T','W','T','F','S'].forEach(function(d){var el=document.createElement('div');el.className='dow';el.textContent=d;grid.appendChild(el);});
+    var first=new Date(capCal.y,capCal.m,1).getDay(), days=new Date(capCal.y,capCal.m+1,0).getDate();
+    for(var i=0;i<first;i++) grid.appendChild(document.createElement('div'));
+    for(var d=1;d<=days;d++){
+      var dow=new Date(capCal.y,capCal.m,d).getDay(), isV=(dow>=1&&dow<=4);
+      var cell=document.createElement('div'); cell.className='cal-day'+(isV?' value-date':'');
+      cell.innerHTML=d+'<span class="p">'+(isV?'$35':'$48')+'</span>';
+      cell.onclick=function(){grid.querySelectorAll('.cal-day.sel').forEach(function(x){x.classList.remove('sel');});this.classList.add('sel');};
+      grid.appendChild(cell);
+    }
+    var lbl=document.getElementById('capCalLabel');
+    if(lbl) lbl.textContent=new Date(capCal.y,capCal.m,1).toLocaleString('en-US',{month:'long',year:'numeric'});
+  }
+  function capCalNav(delta){capCal.m+=delta; if(capCal.m<0){capCal.m=11;capCal.y--;} if(capCal.m>11){capCal.m=0;capCal.y++;} capRenderCal();}
+  function capOpenDate(){document.getElementById('capOvDate').classList.add('on'); capRenderCal();}
   function capOpenSanta(){document.getElementById('capOvSanta').classList.add('on');}
   function capOpenStar(){document.getElementById('capOvStar').classList.add('on');}
   function capCloseAll(){document.querySelectorAll('#cap-funnel .ov').forEach(function(o){o.classList.remove('on');});}
