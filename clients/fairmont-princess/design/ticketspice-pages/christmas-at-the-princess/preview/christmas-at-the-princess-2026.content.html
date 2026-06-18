@@ -399,99 +399,225 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
   function capOpenStar(){capShow('capOvStar');}
   function capCloseAll(){document.querySelectorAll('.cap-ov').forEach(function(o){o.classList.remove('on');});}
 
-  /* Drive the native TS jQuery-UI datepicker by simulating a real cell click.
-     Setting .value or calling setDate() updates the field silently but does NOT
-     fire TS's onSelect-bound trigger that opens the ticket block. A trigger('click')
-     on the actual cell <a> fires jQuery UI's full selection chain, which is what
-     TS's downstream logic listens for. */
+  /* ═══════════════════════════════════════════════════════════════════
+     PATH B — Drive the native React date picker programmatically.
+     ═══════════════════════════════════════════════════════════════════
+     Diagnostic confirmed (commits c3727d8, b2a2b6d): the TS template is
+     a React app. The "Choose Date" input is a display surface controlled
+     by a parent React date-picker component. Writing inp.value (even via
+     the native prototype setter) gets reverted on React's next render
+     because React's component state owns the value, not the DOM.
+
+     The fix: don't fight React — DRIVE it. From our modal:
+       1. Close our modal.
+       2. Inject CSS that hides whatever popover React renders for its
+          own picker (so the user never sees it flash).
+       3. Dispatch native MouseEvents on the input (mousedown/up/click)
+          so React's onClick handler runs and mounts its picker.
+       4. Poll for the picker DOM (try ~8 known React picker selectors).
+       5. Find the cell matching our chosen day, navigating months via
+          next-button clicks if needed.
+       6. Dispatch a full native mouse event sequence on the cell —
+          React's onClick fires, its component state updates with the
+          chosen date, and TS's downstream "open the ticket block" logic
+          runs naturally.
+
+     If we can't find the picker DOM (different library, hidden by some
+     other class), we log loudly with selectors-tried and fall back to a
+     React-native value-write so at least the field shows the date.
+     ═══════════════════════════════════════════════════════════════════ */
   function capConfirmDate(){
     if(!capSelected){ capCloseAll(); return; }
-    var s=capSelected, dt=new Date(s.y, s.m, s.d);
-    var inp=capNativeInput || document.querySelector('input.hasDatepicker,[placeholder="Choose Date"],[aria-label="Choose Date"]');
-    // Force a boot-diagnostic dump here too (belt-and-suspenders if first-click skipped it)
+    var s = capSelected;
+    var str = ('0'+(s.m+1)).slice(-2)+'/'+('0'+s.d).slice(-2)+'/'+s.y;
+    var inp = capNativeInput || document.querySelector('input.hasDatepicker,[placeholder="Choose Date"],[aria-label="Choose Date"]');
+
+    // Belt-and-suspenders diagnostic boot (in case first-click intercept skipped it)
     try { capDiagBoot(inp); } catch(_){ }
     try { capInstallTicketObserver(); } catch(_){ }
 
-    // --- REACT-COMPATIBLE VALUE SETTER ---
-    // TS template is React (React Router warnings in console + $inp.datepicker not a fn).
-    // Plain inp.value=... is ignored by React's value-tracker. Use the native prototype
-    // setter to bypass it, then dispatch a real 'input' event so React picks it up.
-    var str=('0'+(s.m+1)).slice(-2)+'/'+('0'+s.d).slice(-2)+'/'+s.y;
-    try {
-      var protoSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
-      protoSetter.call(inp, str);
-      inp.dispatchEvent(new Event('input', {bubbles:true}));
-      inp.dispatchEvent(new Event('change', {bubbles:true}));
-      inp.dispatchEvent(new Event('blur', {bubbles:true}));
-      console.log('[cap-diag] React-native setter wrote:', str, '| value now:', inp.value);
-    } catch(reactErr){
-      console.warn('[cap-diag] React-native setter failed:', reactErr);
+    if(!inp){
+      console.warn('[cap-B] no input found — abort');
+      capCloseAll();
+      return;
     }
 
-    // Only fall through to the jQuery UI cell-click path if datepicker exists.
-    var hasJqUiDp = !!(inp && window.jQuery && window.jQuery(inp).datepicker && typeof window.jQuery(inp).datepicker === 'function');
-    console.log('[cap-diag] jQuery UI datepicker available?', hasJqUiDp);
+    console.log('[cap-B] PATH B: opening native React picker to select', str);
 
-    if(inp && hasJqUiDp){
-      var $inp=window.jQuery(inp);
-      try{
-        console.group('[cap-diag] capConfirmDate fired for', s);
-        console.log('input.value PRE:', inp.value);
-        // Briefly hide the native picker offscreen while we drive it
-        var hideStyle=document.getElementById('capHidePicker');
-        if(!hideStyle){
-          hideStyle=document.createElement('style');
-          hideStyle.id='capHidePicker';
-          hideStyle.textContent='#ui-datepicker-div{position:absolute !important;left:-9999px !important;top:-9999px !important;}';
-          document.head.appendChild(hideStyle);
-        }
-        $inp.datepicker('show');                  // mount #ui-datepicker-div
-        $inp.datepicker('setDate', dt);           // navigate to target month + year
-        // Find the day cell (skip prev/next-month overflow cells)
-        var $cell=window.jQuery('#ui-datepicker-div td:not(.ui-datepicker-other-month) a').filter(function(){
-          return parseInt(this.textContent,10)===s.d;
-        }).first();
-        console.log('cell search → found:', $cell.length, '| cell:', $cell[0]);
-        if($cell.length){
-          $cell.trigger('mousedown').trigger('click');
-          console.log('input.value POST-click:', inp.value);
-          // Also try jQuery UI's _selectDay directly (some builds need it explicit)
-          try {
-            var inst = $inp.data('datepicker');
-            if(inst){
-              window.jQuery.datepicker._selectDay(inp, s.m, s.y, $cell[0]);
-              console.log('[cap-diag] also called _selectDay; value now:', inp.value);
-            }
-          } catch(e2){ console.warn('[cap-diag] _selectDay failed:', e2); }
-          console.log('[cap] clicked native cell', s);
-        } else {
-          console.warn('[cap] native cell not found for day', s.d, '— falling back to value-write');
-          var str=('0'+(s.m+1)).slice(-2)+'/'+('0'+s.d).slice(-2)+'/'+s.y;
-          inp.value=str;
-          inp.dispatchEvent(new Event('input',{bubbles:true}));
-          inp.dispatchEvent(new Event('change',{bubbles:true}));
-        }
-        try{ $inp.datepicker('hide'); }catch(_){}
-        console.log('input.value FINAL:', inp.value);
-        console.groupEnd();
-      } catch(err){
-        console.warn('[cap] datepicker drive failed, falling back to value-write:', err);
-        var str2=('0'+(s.m+1)).slice(-2)+'/'+('0'+s.d).slice(-2)+'/'+s.y;
-        inp.value=str2;
-        inp.dispatchEvent(new Event('input',{bubbles:true}));
-        inp.dispatchEvent(new Event('change',{bubbles:true}));
-      }
-    } else if(inp){
-      // No jQuery (e.g. standalone preview) — best-effort value-write
-      var str3=('0'+(s.m+1)).slice(-2)+'/'+('0'+s.d).slice(-2)+'/'+s.y;
-      inp.value=str3;
-      inp.dispatchEvent(new Event('input',{bubbles:true}));
-      inp.dispatchEvent(new Event('change',{bubbles:true}));
-      console.log('[cap] no jQuery — wrote raw value:', str3);
-    } else {
-      console.warn('[cap] no native date input found (standalone preview has none)');
-    }
+    // Close our modal first so it doesn't visually compete
     capCloseAll();
+
+    // Hide ANY React picker popover offscreen so user never sees it flash.
+    // Covers the major React date picker libraries by class-prefix match.
+    if(!document.getElementById('capHideReactPicker')){
+      var hide = document.createElement('style');
+      hide.id = 'capHideReactPicker';
+      hide.textContent =
+        '.react-datepicker-popper,'+
+        '.react-datepicker,'+
+        '.react-datepicker__portal,'+
+        '.rdp,'+
+        '.DayPicker,'+
+        '.MuiPickersPopper-root,'+
+        '[class*="DatePicker"]:not(input):not(html):not(body),'+
+        '[class*="datepicker-popup"],'+
+        '[class*="datepicker-dropdown"],'+
+        '[class*="calendar-popup"]'+
+        '{position:absolute !important;left:-99999px !important;top:-99999px !important;opacity:0 !important;pointer-events:none !important;}';
+      document.head.appendChild(hide);
+      console.log('[cap-B] injected hide-picker CSS');
+    }
+
+    // Watch body for newly-rendered nodes so we can see what React mounts
+    var bodyMO = new MutationObserver(function(muts){
+      muts.forEach(function(m){
+        for(var i=0;i<m.addedNodes.length;i++){
+          var n = m.addedNodes[i];
+          if(n.nodeType !== 1) continue;
+          var info = n.tagName +
+            (n.id?'#'+n.id:'') +
+            (n.className && n.className.toString ? '.'+n.className.toString().split(' ').slice(0,3).join('.') : '');
+          console.log('[cap-B MUT+]', info);
+        }
+      });
+    });
+    bodyMO.observe(document.body, {childList:true, subtree:true});
+
+    function fireMouse(el, type){
+      el.dispatchEvent(new MouseEvent(type, {bubbles:true, cancelable:true, view:window, button:0, buttons:1}));
+    }
+    function firePointer(el, type){
+      try { el.dispatchEvent(new PointerEvent(type, {bubbles:true, cancelable:true, view:window, button:0, buttons:1, pointerType:'mouse'})); } catch(_){}
+    }
+
+    // Open the React picker. Dispatch full native sequence — React listens
+    // for these via root delegation. Some libs check pointer events too.
+    try { inp.focus(); } catch(_){}
+    inp.dispatchEvent(new FocusEvent('focus', {bubbles:true}));
+    firePointer(inp, 'pointerdown');
+    fireMouse(inp, 'mousedown');
+    firePointer(inp, 'pointerup');
+    fireMouse(inp, 'mouseup');
+    fireMouse(inp, 'click');
+    console.log('[cap-B] dispatched focus+pointer+mouse open-events on input');
+
+    // ── Poll for picker, find day cell, click it ──
+    var SELECTORS = [
+      // React libraries
+      '.react-datepicker__day:not(.react-datepicker__day--disabled):not(.react-datepicker__day--outside-month)',
+      '.rdp-day:not([disabled])',
+      '.rdp-button_reset:not([disabled])',
+      '.DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside)',
+      '.MuiPickersDay-root:not([disabled])',
+      // Generic / framework-agnostic
+      '[role="gridcell"]:not([aria-disabled="true"])',
+      'button[role="gridcell"]',
+      'button[data-day]:not([disabled])',
+      'button[data-date]:not([disabled])',
+      '[data-handler="selectDay"]',
+      // jQuery UI as a last-ditch (shouldn't apply, but harmless)
+      'td:not(.ui-state-disabled) > a.ui-state-default'
+    ];
+    var NAV_NEXT_SELECTORS = [
+      '.react-datepicker__navigation--next',
+      '.rdp-nav_button_next',
+      '.DayPicker-NavButton--next',
+      '.MuiPickersArrowSwitcher-rightArrowButton',
+      '[aria-label*="next month" i]',
+      '[aria-label*="next" i]',
+      'button[class*="next" i]:not([disabled])'
+    ];
+
+    var startTime = Date.now();
+    var tries = 0;
+    var navClicks = 0;
+    var MAX_TRIES = 60;          // ~3s polling
+    var MAX_NAV = 24;            // up to 2 years of next-month clicks
+
+    function findAndClick(){
+      tries++;
+      var cells = [];
+      var usedSelector = null;
+      for(var i=0;i<SELECTORS.length;i++){
+        var found = document.querySelectorAll(SELECTORS[i]);
+        if(found.length){
+          cells = found;
+          usedSelector = SELECTORS[i];
+          break;
+        }
+      }
+
+      if(cells.length){
+        if(tries === 1 || tries % 10 === 0){
+          console.log('[cap-B] try#'+tries, '| selector:', usedSelector, '| cells:', cells.length);
+        }
+        // Find a cell whose day-number text matches our target
+        var match = null;
+        for(var j=0;j<cells.length;j++){
+          var c = cells[j];
+          var dayTxt = parseInt((c.textContent||'').trim(), 10);
+          if(dayTxt === s.d){
+            match = c;
+            break;
+          }
+        }
+
+        if(match){
+          console.log('[cap-B] ✓ matched day', s.d, '— cell:', match, '| outerHTML:', match.outerHTML.slice(0,200));
+          try { match.scrollIntoView({block:'nearest'}); } catch(_){}
+          try { match.focus(); } catch(_){}
+          firePointer(match, 'pointerdown');
+          fireMouse(match, 'mousedown');
+          firePointer(match, 'pointerup');
+          fireMouse(match, 'mouseup');
+          fireMouse(match, 'click');
+          try { match.click(); } catch(_){}
+          console.log('[cap-B] ✓ dispatched full click sequence on cell');
+          setTimeout(function(){
+            console.log('[cap-B] post-click input.value:', inp.value, '| input.className:', inp.className);
+            try { bodyMO.disconnect(); } catch(_){}
+          }, 600);
+          return;
+        }
+
+        // Day not in current view — try next-month navigation
+        if(navClicks < MAX_NAV){
+          var nav = null;
+          for(var k=0;k<NAV_NEXT_SELECTORS.length;k++){
+            nav = document.querySelector(NAV_NEXT_SELECTORS[k]);
+            if(nav){ break; }
+          }
+          if(nav){
+            navClicks++;
+            console.log('[cap-B] day', s.d, 'not in view — clicking next-month nav (#'+navClicks+')');
+            fireMouse(nav, 'mousedown');
+            fireMouse(nav, 'mouseup');
+            fireMouse(nav, 'click');
+            try { nav.click(); } catch(_){}
+            setTimeout(findAndClick, 80);
+            return;
+          } else if(tries % 10 === 0){
+            console.warn('[cap-B] no next-month nav found in current picker DOM');
+          }
+        }
+      }
+
+      if(tries < MAX_TRIES){
+        setTimeout(findAndClick, 50);
+      } else {
+        console.warn('[cap-B] ✗ giving up after', tries, 'tries. Picker DOM never appeared OR cells unrecognized.');
+        console.warn('[cap-B] selectors tried:', SELECTORS);
+        console.warn('[cap-B] fallback: writing value via React-native setter (trigger may not fire)');
+        try {
+          var protoSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
+          protoSetter.call(inp, str);
+          inp.dispatchEvent(new Event('input', {bubbles:true}));
+          inp.dispatchEvent(new Event('change', {bubbles:true}));
+        } catch(_){}
+        try { bodyMO.disconnect(); } catch(_){}
+      }
+    }
+    setTimeout(findAndClick, 150);  // give React a tick to render
   }
   </script>
 </div>
