@@ -37,14 +37,17 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
 :is(.ticket-block, .cap-cal-shell) .wbx-calendar .row .day.enabled:not(.low-inventory):not(.partial):not(.sold-out) { background: #C82844; color:#ffffff; }
 
 /* ════════════════════════════════════════════════════════════════════
-   PATH C v2 — POP-UP MODAL around the native Webconnex .wbx-calendar.
-   When the picker mounts, JS moves it into .cap-cal-shell (body-level
-   modal) and adds .cap-cal-backdrop. Looks/feels exactly like the
-   killed custom modal but uses the native picker's React handlers,
-   so date selection still fires TS's ticket-block logic naturally.
+   PATH C v4 — IN-PLACE MODAL. The .wbx-calendar stays exactly where
+   React put it (in .datePicker). CSS just makes it LOOK like a centered
+   modal: position fixed center, big, white card with shadow + animation.
+   Chrome (header + legend) is added via ::before / ::after pseudo-
+   elements (CSS-only — React never sees them, can't clobber them).
+   Body-level backdrop is the ONLY DOM element we inject. Zero moving,
+   zero wrapping. v3 white-screened because we moved the calendar and
+   React tried to removeChild on a node that was no longer there.
    ════════════════════════════════════════════════════════════════════ */
 
-/* Backdrop — full viewport dim layer */
+/* Backdrop — body-level dim layer (the only DOM node we inject) */
 .cap-cal-backdrop {
   position: fixed !important;
   inset: 0 !important;
@@ -54,10 +57,14 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
   cursor: pointer !important;
 }
 @keyframes capCalFade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes capCalPop {
+  from { opacity: 0; transform: translate(-50%, -46%) scale(0.96); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
 
-/* Modal shell — white card, centered, holds banner + calendar slot + footer.
-   Sized to match the old custom modal: 480px width, generous 30/28 padding. */
-.cap-cal-shell {
+/* THE MODAL: native .wbx-calendar repositioned + restyled as a centered
+   white card. The calendar stays in .datePicker — only its CSS changes. */
+.ticket-block .datePicker .wbx-calendar {
   position: fixed !important;
   top: 50% !important;
   left: 50% !important;
@@ -74,100 +81,33 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
   font-family: 'Montserrat', system-ui, sans-serif !important;
   animation: capCalPop 0.25s ease !important;
 }
-@keyframes capCalPop {
-  from { opacity: 0; transform: translate(-50%, -46%) scale(0.96); }
-  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-}
-
-/* X close button */
-.cap-cal-x {
-  position: absolute !important;
-  top: 14px !important;
-  right: 16px !important;
-  width: 36px !important; height: 36px !important;
-  border-radius: 50% !important;
-  background: #fbf7f4 !important;
-  color: #671416 !important;
-  border: 1px solid #f0e8e0 !important;
-  font-size: 1.4rem !important;
-  font-weight: 700 !important;
-  cursor: pointer !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  line-height: 1 !important;
-  transition: all 0.15s !important;
-}
-.cap-cal-x:hover {
-  background: #c82844 !important;
-  color: #fff !important;
-  border-color: #c82844 !important;
-}
-
-/* Header banner inside the shell */
-.cap-cal-banner {
-  text-align: center !important;
-  padding: 8px 0 14px !important;
-  border-bottom: 1px solid #f0e8e0 !important;
-  margin-bottom: 18px !important;
-}
-.cap-cal-banner .title {
+/* Header — CSS pseudo-element so React can't clobber it */
+.ticket-block .datePicker .wbx-calendar::before {
+  content: 'Pick Your Holiday Night' !important;
+  display: block !important;
   font-family: 'Playfair Display', Georgia, serif !important;
   font-size: 1.6rem !important;
   font-weight: 700 !important;
   color: #671416 !important;
-  margin: 0 !important;
-  line-height: 1.2 !important;
-}
-.cap-cal-banner .sub {
-  display: block !important;
-  font-family: 'Montserrat', sans-serif !important;
-  font-size: 0.7rem !important;
-  letter-spacing: 0.2em !important;
-  text-transform: uppercase !important;
-  color: #c9a24b !important;
-  margin-top: 6px !important;
-  font-weight: 700 !important;
-}
-
-/* Footer (legend) inside the shell */
-.cap-cal-footer {
   text-align: center !important;
-  padding: 16px 8px 4px !important;
-  margin-top: 16px !important;
-  border-top: 1px solid #f0e8e0 !important;
+  padding-bottom: 14px !important;
+  margin-bottom: 18px !important;
+  border-bottom: 1px solid #f0e8e0 !important;
+}
+/* Legend — CSS pseudo-element after the calendar grid */
+.ticket-block .datePicker .wbx-calendar::after {
+  content: '⬜ Standard      🟢 Value Night — save $5' !important;
+  display: block !important;
   font-family: 'Montserrat', sans-serif !important;
   font-size: 0.78rem !important;
   color: #6e6e6e !important;
+  text-align: center !important;
+  padding-top: 16px !important;
+  margin-top: 16px !important;
+  border-top: 1px solid #f0e8e0 !important;
+  letter-spacing: 0.02em !important;
 }
-.cap-cal-footer .leg { display: inline-block !important; margin: 0 10px !important; }
-.cap-cal-footer .sw {
-  display: inline-block !important;
-  width: 11px !important; height: 11px !important;
-  border-radius: 2px !important;
-  vertical-align: -1px !important;
-  margin-right: 5px !important;
-}
-
-/* When .wbx-calendar is INSIDE our shell, kill its container's padding
-   (we provide the modal padding) and let it fill width */
-.cap-cal-shell .wbx-calendar {
-  background: transparent !important;
-  border: 0 !important;
-  border-radius: 0 !important;
-  padding: 0 !important;
-  box-shadow: none !important;
-  max-width: 100% !important;
-  margin: 0 !important;
-  width: 100% !important;
-  font-family: 'Montserrat', system-ui, sans-serif !important;
-}
-
-/* The picker also gets restyled WHEREVER it lives (in case it briefly
-   renders in .datePicker before we move it, OR if React re-renders it
-   back there during a state change). */
-:is(.ticket-block, .cap-cal-shell) .wbx-calendar,
-.cap-cal-shell .wbx-calendar {
+.ticket-block .wbx-calendar {
   font-family: 'Montserrat', system-ui, sans-serif !important;
 }
 :is(.ticket-block, .cap-cal-shell) .wbx-calendar .header {
@@ -535,98 +475,53 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
     }
   })();
 
-  // 2) MODAL OVERLAY: when .wbx-calendar mounts in the ticket-block, MOVE
-  //    it into a body-level modal shell with backdrop + banner + footer.
-  //    On close (X, backdrop, ESC, or date selection), restore the calendar
-  //    to its original parent so React's reconciliation works normally.
+  // 2) BACKDROP ONLY: when .wbx-calendar mounts, add a body-level backdrop.
+  //    Zero DOM moves. The calendar stays where React put it; CSS makes it
+  //    look like a centered modal via position:fixed + pseudo-element chrome.
+  //    When the calendar unmounts (user picked a date OR clicked outside),
+  //    we remove the backdrop. React never knows we exist.
   (function(){
-    var modal = { shell:null, backdrop:null, cal:null, origParent:null, origNextSibling:null, valuePoll:null };
+    var backdrop = null;
 
-    function openCalendarModal(cal){
-      if(modal.shell) return;                       // already open
-      if(cal.closest('.cap-cal-shell')) return;     // already inside our shell
-
-      // Remember original DOM position so we can put it back on close
-      modal.cal = cal;
-      modal.origParent = cal.parentNode;
-      modal.origNextSibling = cal.nextSibling;
-
-      // Backdrop
-      var backdrop = document.createElement('div');
+    function openBackdrop(){
+      if(backdrop) return;
+      backdrop = document.createElement('div');
       backdrop.className = 'cap-cal-backdrop';
-      backdrop.addEventListener('click', closeCalendarModal);
-      modal.backdrop = backdrop;
-
-      // Shell (white modal card)
-      var shell = document.createElement('div');
-      shell.className = 'cap-cal-shell';
-      shell.innerHTML =
-        '<button class="cap-cal-x" type="button" aria-label="Close">×</button>' +
-        '<div class="cap-cal-banner">' +
-          '<h3 class="title">Pick Your Holiday Night</h3>' +
-          '<span class="sub">★ Tap a Date to See Tickets ★</span>' +
-        '</div>' +
-        '<div class="cap-cal-slot"></div>' +
-        '<div class="cap-cal-footer">' +
-          '<span class="leg"><span class="sw" style="background:#fbf7f4;border:1px solid #c9a24b;"></span>Standard</span>' +
-          '<span class="leg"><span class="sw" style="background:#28bf38;"></span>Value Night — save $5</span>' +
-        '</div>';
-      shell.querySelector('.cap-cal-x').addEventListener('click', closeCalendarModal);
-      shell.querySelector('.cap-cal-slot').appendChild(cal);  // MOVE the live calendar in
-      modal.shell = shell;
-
+      backdrop.addEventListener('click', requestClose);
       document.body.appendChild(backdrop);
-      document.body.appendChild(shell);
+      console.log('[cap-C] backdrop opened');
+    }
 
-      // Auto-close when user picks a date (input gets a value)
+    function closeBackdrop(){
+      if(!backdrop) return;
+      try { backdrop.remove(); } catch(_){}
+      backdrop = null;
+      console.log('[cap-C] backdrop removed');
+    }
+
+    function requestClose(){
+      // Closing the picker = toggle-click the input (Webconnex's toggle pattern).
+      // The calendar will unmount, and the watcher below will tear down the backdrop.
       var inp = document.querySelector('input[placeholder="Choose Date"]');
       if(inp){
-        var lastVal = inp.value;
-        modal.valuePoll = setInterval(function(){
-          if(inp.value && inp.value !== lastVal){
-            console.log('[cap-C] date selected →', inp.value, '— closing modal');
-            closeCalendarModal();
-          }
-        }, 100);
+        try { inp.click(); } catch(_){}
+        try { inp.blur(); } catch(_){}
       }
-
-      console.log('[cap-C] calendar modal opened');
+      // Belt-and-suspenders: if the calendar's still here after a tick, force backdrop tear-down
+      setTimeout(function(){
+        if(!document.querySelector('.ticket-block .datePicker .wbx-calendar')) closeBackdrop();
+      }, 200);
     }
 
-    function closeCalendarModal(){
-      if(!modal.shell) return;
-      if(modal.valuePoll){ clearInterval(modal.valuePoll); modal.valuePoll = null; }
-
-      // Restore calendar to its original parent so React can reconcile/unmount cleanly
-      if(modal.cal && modal.origParent && modal.origParent.isConnected){
-        try {
-          if(modal.origNextSibling && modal.origNextSibling.parentNode === modal.origParent){
-            modal.origParent.insertBefore(modal.cal, modal.origNextSibling);
-          } else {
-            modal.origParent.appendChild(modal.cal);
-          }
-        } catch(e){ console.warn('[cap-C] calendar restore failed:', e); }
-      }
-
-      try { modal.shell.remove(); } catch(_){}
-      try { modal.backdrop.remove(); } catch(_){}
-      modal.shell = null; modal.backdrop = null; modal.cal = null;
-      modal.origParent = null; modal.origNextSibling = null;
-
-      console.log('[cap-C] calendar modal closed');
-    }
-
-    function checkForCalendar(){
+    var watcher = new MutationObserver(function(){
       var cal = document.querySelector('.ticket-block .datePicker .wbx-calendar');
-      if(cal && !modal.shell) openCalendarModal(cal);
-    }
-    var watcher = new MutationObserver(checkForCalendar);
+      if(cal && !backdrop) openBackdrop();
+      else if(!cal && backdrop) closeBackdrop();
+    });
     watcher.observe(document.body, {childList:true, subtree:true});
-    checkForCalendar(); // in case calendar is already mounted
 
-    // ESC to close
     document.addEventListener('keydown', function(e){
-      if(e.key === 'Escape' && modal.shell) closeCalendarModal();
+      if(e.key === 'Escape' && backdrop) requestClose();
     });
   })();
 
