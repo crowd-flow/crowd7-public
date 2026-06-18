@@ -169,8 +169,15 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
   padding: 0 !important;
   margin: 0 0 6px 0 !important;
   display: grid !important;
-  grid-template-columns: repeat(7, 1fr) !important;
-  gap: 5px !important;
+  grid-template-columns: repeat(7, minmax(0, 1fr)) !important;
+  gap: 4px !important;
+  width: 100% !important;
+}
+/* Hide ANY non-.day child Webconnex puts in this row (e.g. week-number cell)
+   so the 7 real day-name labels fill the 7 grid columns cleanly. */
+.ticket-block .datePicker .wbx-calendar .day-names > :not(.day),
+.ticket-block .datePicker .wbx-calendar .row.week > :not(.day) {
+  display: none !important;
 }
 .ticket-block .datePicker .wbx-calendar .day-names .day {
   background: transparent !important;
@@ -184,19 +191,25 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
   padding: 4px 0 !important;
   border: 0 !important;
   aspect-ratio: auto !important;
+  min-width: 0 !important;
   min-height: 0 !important;
+  width: auto !important;
 }
-/* WEEK ROWS — 7-col grid */
+/* WEEK ROWS — 7-col grid. minmax(0, 1fr) so cells can shrink below
+   their auto width (default grid behavior won't let items shrink
+   below content-min-width, which can break tight layouts). */
 .ticket-block .datePicker .wbx-calendar .row.week {
   display: grid !important;
-  grid-template-columns: repeat(7, 1fr) !important;
+  grid-template-columns: repeat(7, minmax(0, 1fr)) !important;
   gap: 4px !important;
   margin: 0 0 4px 0 !important;
   padding: 0 !important;
   background: transparent !important;
+  width: 100% !important;
 }
 /* DAY CELLS — cream squares with day number + price stacked (flex column).
-   Selector is .row.week .day so we don't hit .day-names .day. */
+   Selector is .row.week .day so we don't hit .day-names .day.
+   min-width/height: 0 to allow shrinking inside the grid track. */
 .ticket-block .datePicker .wbx-calendar .row.week .day {
   aspect-ratio: 1 !important;
   display: flex !important;
@@ -214,7 +227,9 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
   transition: all 0.15s !important;
   border: 0 !important;
   padding: 0 !important;
+  min-width: 0 !important;
   min-height: 0 !important;
+  width: auto !important;
 }
 /* PRICE under day number — default $48 for all cells via ::after */
 .ticket-block .datePicker .wbx-calendar .row.week .day::after {
