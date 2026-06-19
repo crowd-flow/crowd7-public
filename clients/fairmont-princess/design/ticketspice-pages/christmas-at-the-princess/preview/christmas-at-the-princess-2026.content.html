@@ -357,8 +357,10 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
   @media(max-width:820px){ #cap-funnel .cap-nav-links{display:none;} #cap-funnel .cap-nav .cap-logo{height:62px;} }
 
   /* FLOATING Get Tickets */
-  #cap-funnel .cap-float-cta{position:fixed;bottom:22px;right:22px;z-index:60;background:var(--accent);color:#fff;font-weight:700;text-decoration:none;padding:15px 28px;border-radius:50px;box-shadow:0 10px 28px rgba(200,40,68,.45);font-size:1rem;}
-  #cap-funnel .cap-float-cta:hover{background:var(--accent2);}
+  #cap-funnel .cap-float-bar{position:fixed;bottom:0;left:0;right:0;z-index:9999;padding:12px 16px 20px;background:linear-gradient(to top, rgba(255,250,247,0.96) 55%, transparent);display:flex;justify-content:center;transition:opacity .35s ease, transform .35s ease;}
+  #cap-funnel .cap-float-bar.cap-float-hidden{opacity:0;transform:translateY(24px);pointer-events:none;}
+  #cap-funnel .cap-float-bar a{display:block;width:100%;max-width:480px;background:var(--accent);color:#fff;font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-align:center;text-decoration:none;padding:16px 24px;border-radius:50px;box-shadow:0 8px 32px rgba(200,40,68,.45);transition:transform .15s, box-shadow .15s, background .2s;border:none;cursor:pointer;}
+  #cap-funnel .cap-float-bar a:hover{background:var(--accent2);transform:translateY(-2px);box-shadow:0 14px 40px rgba(200,40,68,.55);}
 
   /* HERO (video bg) — centered, transparent nav floats over it */
   #cap-funnel .cap-hero{position:relative;min-height:660px;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;overflow:hidden;padding:120px 0 70px;}
@@ -445,7 +447,8 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
   </style>
 
   <!-- FLOATING Get Tickets -->
-  <a href="#cap-tickets" class="cap-float-cta">&#127915; Get Tickets</a>
+  <div class="cap-float-bar"><a href="#cap-tickets">&#127915; Get Tickets</a></div>
+  <script>(function(){var b=document.querySelector('#cap-funnel .cap-float-bar');if(b){b.querySelector('a').addEventListener('click',function(){b.classList.add('cap-float-hidden');});}})();</script>
 
   <!-- HERO (video bg) with transparent nav floating over it -->
   <header class="cap-hero">
