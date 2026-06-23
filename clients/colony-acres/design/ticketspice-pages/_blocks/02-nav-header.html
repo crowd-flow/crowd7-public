@@ -1,0 +1,29 @@
+<!-- =====================================================================
+     02 · NAV / HEADER  ·  green sticky bar with logo + Buy Tickets button
+     =====================================================================
+     WHAT IT IS: the top navigation bar — Colony Acres logo on the left,
+        location + a "Buy Tickets" button on the right. Sticks to the top
+        of the screen as you scroll.
+     WHAT TO SWAP:
+        • LOGO image → change the src="..." URL on the <img>.
+        • LOCATION text → "North Liberty, IA".
+        • The Buy Tickets button jumps to the ticket selector (#ticketBlock,
+          TicketSpice's native cart anchor) — leave that href alone.
+     DEPENDS ON: 00-base-styles.html + must sit inside 01-funnel-open.html.
+     ===================================================================== -->
+    <!-- NAV -->
+    <div class="caf-nav">
+        <div class="caf-logo-wrap">
+            <img src="https://cdn.uploads.webconnex.com/84892/colony%20acres%20100%20years%20white%20-%20logo.png" alt="Colony Acres Family Farm · Est. 1926">
+        </div>
+        <div class="caf-nav-right">
+            <div class="caf-nav-loc">
+                <svg width="12" height="12" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                    <circle cx="12" cy="11" r="3"/>
+                </svg>
+                North Liberty, IA
+            </div>
+            <a href="#ticketBlock" class="caf-nav-cta">Buy Tickets</a>
+        </div>
+    </div>

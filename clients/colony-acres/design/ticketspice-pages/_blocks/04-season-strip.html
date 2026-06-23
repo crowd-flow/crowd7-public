@@ -1,0 +1,19 @@
+<!-- =====================================================================
+     04 · SEASON STRIP  ·  thin green band with dates / days / hours
+     =====================================================================
+     WHAT IT IS: a slim centered green bar showing the season dates, which
+        days you're open, and the hours. Sits right under the hero.
+     WHAT TO SWAP: the three pieces of text inside the <span> —
+        "September 19 – October 31, 2026", "Wednesday – Sunday", "10 AM – 6 PM".
+        (The "·" dots between them are decoration — keep them.)
+     NOTE: this block carries its OWN inline colors/styles, so it will look
+        right even if you change the base palette. Self-contained on purpose.
+     DEPENDS ON: must sit inside 01-funnel-open.html. (Does not need any
+        base-styles class, but keep it inside the funnel for consistent width.)
+     ===================================================================== -->
+    <!-- SEASON INFO STRIP — thin centered band: season dates + open days + hours. -->
+    <div class="caf-seasonbar" style="background:#1F5C2E !important; padding:15px 20px !important; text-align:center !important;">
+        <span style="display:inline-block !important; color:#FFFFFF !important; font-size:clamp(1rem,2.4vw,1.3rem) !important; font-weight:700 !important; letter-spacing:.02em !important; line-height:1.5 !important;">
+            September 19 – October 31, 2026<span style="opacity:.55 !important; padding:0 12px !important;">·</span>Wednesday – Sunday<span style="opacity:.55 !important; padding:0 12px !important;">·</span>10 AM – 6 PM
+        </span>
+    </div>

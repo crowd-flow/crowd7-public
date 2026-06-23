@@ -1,0 +1,31 @@
+<!-- =====================================================================
+     09 · INFO ROW  ·  green strip with location / phone / who-needs-a-pass
+     =====================================================================
+     WHAT IT IS: a green band split into 3 cells of practical info.
+     WHAT TO SWAP: each ".caf-info-item" is one cell —
+        • Location → "1150 Front St. / North Liberty, IA"
+        • Phone → "(319) 626-6091"
+        • Who Needs a Pass → "Ages 3 & up / Children 2 & under free"
+        Change the ".caf-info-label" (small caps heading) and ".caf-info-value"
+        (the value) in each. The "<br>" forces a line break inside a value.
+     DEPENDS ON: 00-base-styles.html + must sit inside 01-funnel-open.html.
+        Base styles are set for 3 cells (2 across on phones).
+     ===================================================================== -->
+    <!-- INFO ROW -->
+    <div class="caf-info">
+        <div class="caf-info-grid">
+            <div class="caf-info-item">
+                <span class="caf-info-label">Location</span>
+                <span class="caf-info-value">1150 Front St.<br>North Liberty, IA</span>
+            </div>
+            <div class="caf-info-item">
+                <span class="caf-info-label">Phone</span>
+                <span class="caf-info-value">(319) 626-6091</span>
+            </div>
+            <div class="caf-info-item">
+                <span class="caf-info-label">Who Needs a Pass</span>
+                <span class="caf-info-value">Ages 3 &amp; up<br><em style="font-size:0.85rem;opacity:0.85;font-style:normal;">Children 2 &amp; under free</em></span>
+            </div>
+        </div>
+
+    </div>

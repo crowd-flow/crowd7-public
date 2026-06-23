@@ -1,0 +1,41 @@
+<!-- =====================================================================
+     06 · PHOTO GALLERY  ·  auto-scrolling photo carousel
+     =====================================================================
+     WHAT IT IS: a row of photo cards that slides sideways on its own
+        (pauses when you hover). Has a small eyebrow + heading above it.
+     WHAT TO SWAP:
+        • HEADING → the eyebrow ("A Century on the Farm") and the title
+          ("100 years, <em>still family-run</em>"). The <em> word renders
+          in the green script font.
+        • PHOTOS → each ".caf-gcard" is one photo. Change the <img src="...">
+          URL and the alt + the ".caf-gcard-label" caption.
+     ⚠️ IMPORTANT — the smooth infinite loop only works if the SECOND HALF of
+        the cards is an EXACT DUPLICATE of the first half. In this block there
+        are 5 unique photos, then the SAME 5 again (look for the "Duplicate for
+        seamless loop" comment). If you add or remove a photo, do it in BOTH
+        halves so the loop stays seamless.
+     DEPENDS ON: 00-base-styles.html + must sit inside 01-funnel-open.html.
+     ===================================================================== -->
+    <!-- GALLERY -->
+    <div class="caf-gallery">
+        <div class="caf-gallery-header cafr">
+            <span class="caf-eye">A Century on the Farm</span>
+            <span class="caf-section-title">100 years, <em>still family-run</em></span>
+        </div>
+        <div class="caf-gallery-mask">
+            <div class="caf-gallery-track">
+                <!-- First half — 5 unique photos -->
+                <div class="caf-gcard"><img src="https://cdn.uploads.webconnex.com/84892/img_2970.jpg" alt="On the Farm" loading="lazy"><div class="caf-gcard-label">On the Farm</div></div>
+                <div class="caf-gcard"><img src="https://cdn.uploads.webconnex.com/84892/1720475098470-CPPB-21.jpg" alt="Family Fun" loading="lazy"><div class="caf-gcard-label">Family Fun</div></div>
+                <div class="caf-gcard"><img src="https://cdn.uploads.webconnex.com/84892/1720475058235-CPPB-31.jpg" alt="Memories Together" loading="lazy"><div class="caf-gcard-label">Memories</div></div>
+                <div class="caf-gcard"><img src="https://colonyacres.farm/wp-content/uploads/2025/07/attractions-barreltrain.webp" alt="Barrel Train" loading="lazy"><div class="caf-gcard-label">Barrel Train</div></div>
+                <div class="caf-gcard"><img src="https://colonyacres.farm/wp-content/uploads/2025/07/attractions-duckraces.webp" alt="Duck Races" loading="lazy"><div class="caf-gcard-label">Duck Races</div></div>
+                <!-- Second half — EXACT DUPLICATE of the first half, for the seamless loop -->
+                <div class="caf-gcard"><img src="https://cdn.uploads.webconnex.com/84892/img_2970.jpg" alt="On the Farm" loading="lazy"><div class="caf-gcard-label">On the Farm</div></div>
+                <div class="caf-gcard"><img src="https://cdn.uploads.webconnex.com/84892/1720475098470-CPPB-21.jpg" alt="Family Fun" loading="lazy"><div class="caf-gcard-label">Family Fun</div></div>
+                <div class="caf-gcard"><img src="https://cdn.uploads.webconnex.com/84892/1720475058235-CPPB-31.jpg" alt="Memories Together" loading="lazy"><div class="caf-gcard-label">Memories</div></div>
+                <div class="caf-gcard"><img src="https://colonyacres.farm/wp-content/uploads/2025/07/attractions-barreltrain.webp" alt="Barrel Train" loading="lazy"><div class="caf-gcard-label">Barrel Train</div></div>
+                <div class="caf-gcard"><img src="https://colonyacres.farm/wp-content/uploads/2025/07/attractions-duckraces.webp" alt="Duck Races" loading="lazy"><div class="caf-gcard-label">Duck Races</div></div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,100 @@
+<!-- =====================================================================
+     08 · TICKET CARDS  ·  the 3 pricing cards (the funnel heart)
+     =====================================================================
+     WHAT IT IS: the section heading + a row of 3 pricing cards
+        (cream "Weekday", dark "Weekend / Most Popular", green "Season Pass").
+        This is the visual pricing display ONLY — the actual cart / checkout
+        is TicketSpice's native ticket selector lower on the page. These cards
+        sell the tiers; TS collects the money.
+     WHAT TO SWAP — this is the block you'll edit most:
+        • Each ".caf-card" is one tier. Three card looks are available via the
+          class on the card: "caf-card-cream" (light), "caf-card-dark" (dark,
+          the highlighted one), "caf-card-green" (gold-bordered feature card).
+        • TITLE → the <h3>. BADGE → ".caf-card-badge" text. ICON → the emoji
+          in ".caf-card-icon". BULLETS → the <li>s in ".caf-card-bullets".
+        • PRICE → ".caf-price-num" is the big online price ($13*), ".caf-price-was"
+          is the struck gate price ($16 at gate). Keep the little "*" on the
+          number — it ties to the "*plus taxes and fees" footnote below it.
+        • The green "Season Pass" card here is a "Coming Soon" placeholder — it
+          shows a coming-soon line instead of a price. Swap that inner block for
+          a normal price (copy the price structure from another card) when the
+          pass goes live.
+        • Need only 2 tiers? Delete a whole ".caf-card" block. The row centers
+          itself (3 across on desktop, stacks on phones).
+     DEPENDS ON: 00-base-styles.html + must sit inside 01-funnel-open.html.
+     ===================================================================== -->
+    <!-- TICKETS -->
+    <div class="caf-tickets" id="tickets">
+        <div class="caf-tickets-header cafr">
+            <span class="caf-eye">Admission</span>
+            <span class="caf-section-title">Pick your <em>day on the farm</em></span>
+        </div>
+        <div class="caf-grid">
+
+            <!-- WEEKDAY ADMISSION (cream card) -->
+            <div class="caf-card caf-card-cream cafr">
+                <span class="caf-card-badge caf-badge-orange">Weekday</span>
+                <span class="caf-card-icon">🌾</span>
+                <h3>Weekday Fun Yard</h3>
+                <ul class="caf-card-bullets">
+                    <li>✓ Full Fun Yard access — every attraction included</li>
+                    <li>📅 Valid Wednesday through Friday</li>
+                    <li>🅿️ Free parking — always</li>
+                </ul>
+                <div class="caf-card-price">
+                    <span class="caf-price-num">$13*</span>
+                    <div class="caf-price-slash">
+                        <span class="caf-price-online">Online Price</span>
+                        <span class="caf-price-was">$16 at gate</span>
+                    </div>
+                </div>
+                <span class="caf-card-fees">*plus applicable taxes and fees</span>
+                <span class="caf-card-note">Per person · ages 3 &amp; up</span>
+            </div>
+
+            <!-- WEEKEND ADMISSION (dark "Most Popular" card) -->
+            <div class="caf-card caf-card-dark cafr d1">
+                <span class="caf-card-badge caf-badge-light">Most Popular</span>
+                <span class="caf-card-icon">🍂</span>
+                <h3>Weekend Fun Yard</h3>
+                <ul class="caf-card-bullets">
+                    <li>✓ Full Fun Yard access — every attraction included</li>
+                    <li>📅 Valid Saturday &amp; Sunday</li>
+                    <li>🎶 Full weekend energy — live music &amp; specials</li>
+                    <li>🅿️ Free parking — always</li>
+                </ul>
+                <div class="caf-card-price">
+                    <span class="caf-price-num">$15*</span>
+                    <div class="caf-price-slash">
+                        <span class="caf-price-online">Online Price</span>
+                        <span class="caf-price-was">$18 at gate</span>
+                    </div>
+                </div>
+                <span class="caf-card-fees">*plus applicable taxes and fees</span>
+                <span class="caf-card-note">Per person · ages 3 &amp; up</span>
+            </div>
+
+            <!-- SEASON PASS (green feature card — "Coming Soon" placeholder) -->
+            <div class="caf-card caf-card-green cafr d2">
+                <span class="caf-card-badge caf-badge-gold">★ Centennial Year ★</span>
+                <span class="caf-card-icon">🎟</span>
+                <h3>Season Pass</h3>
+                <ul class="caf-card-bullets">
+                    <li>♾ Unlimited visits all season long</li>
+                    <li>✓ Full Fun Yard access — every day we're open</li>
+                    <li>🎁 Exclusive centennial year perks</li>
+                    <li>🅿️ Free parking — always</li>
+                </ul>
+                <!-- This price block is a "Coming Soon" placeholder. To make it a real
+                     priced card, replace the inner two spans with the .caf-card-price
+                     structure copied from a card above. -->
+                <div class="caf-card-price" style="border-top: 1px solid rgba(255,255,255,0.18) !important; margin-top: 20px !important; padding-top: 18px !important; flex-direction: column !important; align-items: flex-start !important; gap: 6px !important;">
+                    <span style="font-family: 'Zilla Slab', serif !important; font-size: 1.85rem !important; font-weight: 700 !important; color: #F2C66A !important; letter-spacing: 0.04em !important; display: block !important;">Coming Soon ✨</span>
+                    <span style="font-size: 0.92rem !important; color: rgba(255,255,255,0.85) !important; line-height: 1.5 !important; display: block !important;">Details &amp; pricing announced shortly — stay tuned for our centennial year.</span>
+                </div>
+                <span class="caf-card-fees">*pricing &amp; taxes/fees announced at launch</span>
+                <span class="caf-card-note">A new way to celebrate 100 years on the farm</span>
+            </div>
+
+        </div>
+    </div>

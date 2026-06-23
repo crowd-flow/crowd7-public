@@ -1,0 +1,38 @@
+<!-- =====================================================================
+     99 · FUNNEL CLOSE  ·  closes the wrapper + turns on the animations
+     =====================================================================
+     PASTE THIS LAST, after all your section blocks. It closes the styled
+     container opened by 01-funnel-open.html and adds the little scripts
+     that:
+        • fade sections in as you scroll to them (the "cafr" animation)
+        • make the "Buy Tickets" links scroll smoothly down the page.
+     WHAT TO SWAP: nothing.
+     DEPENDS ON: 01-funnel-open.html must have been pasted earlier.
+     ===================================================================== -->
+</div><!-- end #caf-funnel -->
+
+<script>
+    (function() {
+        // Reveal-on-scroll
+        var obs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) {
+                if (e.isIntersecting) { e.target.classList.add('cafon'); obs.unobserve(e.target); }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('#caf-funnel .cafr').forEach(function(el) {
+            obs.observe(el);
+            if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('cafon');
+        });
+
+        // Smooth anchor scroll for internal links
+        document.querySelectorAll('#caf-funnel a[href^="#"]').forEach(function(a) {
+            a.addEventListener('click', function(e) {
+                var target = document.querySelector(a.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    })();
+</script>

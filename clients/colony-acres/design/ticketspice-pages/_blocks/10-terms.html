@@ -1,0 +1,96 @@
+<!-- =====================================================================
+     10 · TERMS & CONDITIONS  ·  green fine-print band
+     =====================================================================
+     WHAT IT IS: the Terms & Conditions section — a heading, a bulleted
+        list of rules, and a few info lines (website link, no-smoking,
+        "ALL SALES FINAL").
+     ⭐ SELF-CONTAINED: this block carries its OWN <style> (scoped to
+        "#caf-terms"), so it will look right even on a page that doesn't use
+        the base styles. You can paste it on its own. (It still must sit
+        inside 01-funnel-open.html on the Colony Acres page so the page width
+        matches the rest.)
+     WHAT TO SWAP: the <h2> heading, the <li> rules, and the three
+        ".caf-terms-info" lines (website URL, no-smoking, sales-final).
+     DEPENDS ON: nothing for styling (self-contained). Place inside the
+        funnel wrapper for layout consistency.
+     ===================================================================== -->
+    <style>
+        #caf-terms {
+            background: linear-gradient(135deg, #1F5C2E 0%, #2D7541 100%) !important;
+            color: #FFF8EC !important;
+            padding: 56px 48px 64px !important;
+            font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+            box-sizing: border-box !important;
+            width: 100% !important;
+            line-height: 1.6 !important;
+        }
+        #caf-terms .caf-terms-inner {
+            max-width: 880px !important;
+            margin: 0 auto !important;
+            text-align: left !important;
+        }
+        #caf-terms h2 {
+            font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+            font-size: clamp(1.8rem, 4vw, 2.4rem) !important;
+            font-weight: 700 !important;
+            color: #F2C66A !important;
+            margin: 0 0 18px 0 !important;
+            letter-spacing: 0.01em !important;
+            line-height: 1.15 !important;
+        }
+        #caf-terms ul {
+            list-style: none !important;
+            padding: 0 !important;
+            margin: 0 0 22px 0 !important;
+        }
+        #caf-terms ul li {
+            position: relative !important;
+            padding: 6px 0 6px 24px !important;
+            font-size: 1.02rem !important;
+            color: rgba(255,248,236,0.94) !important;
+        }
+        #caf-terms ul li::before {
+            content: "•" !important;
+            position: absolute !important;
+            left: 6px !important;
+            top: 6px !important;
+            color: #F2C66A !important;
+            font-weight: 700 !important;
+        }
+        #caf-terms .caf-terms-info {
+            font-size: 1rem !important;
+            color: rgba(255,248,236,0.92) !important;
+            margin: 0 0 26px 0 !important;
+        }
+        #caf-terms .caf-terms-info a {
+            color: #F2C66A !important;
+            text-decoration: underline !important;
+            font-weight: 600 !important;
+        }
+        #caf-terms .caf-terms-info a:hover {
+            color: #FFE298 !important;
+        }
+        @media (max-width: 600px) {
+            #caf-terms { padding: 40px 22px 48px !important; }
+            #caf-terms h2 { font-size: 1.6rem !important; }
+            #caf-terms ul li { font-size: 0.96rem !important; padding-left: 22px !important; }
+            #caf-terms .caf-terms-info { font-size: 0.95rem !important; }
+        }
+    </style>
+    <section id="caf-terms">
+        <div class="caf-terms-inner">
+            <h2>Terms &amp; Conditions</h2>
+            <ul>
+                <li>Tickets are good for one (1) person ages 3+. Children 2 and under do not need a ticket.</li>
+                <li>Does NOT include admission to Special Events, or any extra purchases like food, produce, beverages, etc.</li>
+                <li>Group discounts automatically apply for purchases of 20+ tickets in one (1) transaction.</li>
+                <li>Tickets are valid for the 2026 season only.</li>
+            </ul>
+            <p class="caf-terms-info">
+                Please find additional information on dates, hours, and details online at
+                <a href="https://colonyacres.farm" target="_blank" rel="noopener">colonyacres.farm</a>.
+            </p>
+            <p class="caf-terms-info">No smoking on premises (including e-cigarettes / vapor).</p>
+            <p class="caf-terms-info" style="margin-bottom: 0 !important;">ALL SALES ARE FINAL. NO REFUNDS.</p>
+        </div>
+    </section>
