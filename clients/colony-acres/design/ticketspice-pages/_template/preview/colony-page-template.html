@@ -1,0 +1,1032 @@
+<!--
+    ╔══════════════════════════════════════════════════════════════════════╗
+    ║  COLONY ACRES · REUSABLE TICKETSPICE PAGE TEMPLATE  (v1)              ║
+    ║  Built by Crowd7 for Katie + Michelle · 2026-06-23                    ║
+    ╠══════════════════════════════════════════════════════════════════════╣
+    ║                                                                        ║
+    ║  WHAT THIS IS                                                          ║
+    ║  A genericized version of the Fall Festival "Fun Yard" page. The      ║
+    ║  branded header (green bar + logo nav) and the whole look-and-feel    ║
+    ║  stay the SAME on every page. You only change three things:           ║
+    ║                                                                        ║
+    ║     SWAP 1 → the TITLE  (event name + tagline + hero image)           ║
+    ║     SWAP 2 → the CAROUSEL of photos                                    ║
+    ║     SWAP 3 → the PRICE BOXES (the ticket cards)                        ║
+    ║                                                                        ║
+    ║  HOW TO USE IT                                                         ║
+    ║  1. Duplicate this page in TicketSpice (same as you do today).        ║
+    ║  2. Scroll DOWN past the big <style> block — you can ignore all of    ║
+    ║     that (it's the design code; you never touch it).                   ║
+    ║  3. Find the three "===== SWAP # =====" banners below and edit ONLY   ║
+    ║     the words / image links between them. Leave the < > tags alone.   ║
+    ║  4. Optional extras (the benefits row + the story strip) are marked    ║
+    ║     "OPTIONAL — edit or delete." Keep, change, or remove them.         ║
+    ║                                                                        ║
+    ║  See HOW-TO-REUSE.md (one folder up) for the 5-line cheat sheet.       ║
+    ╚══════════════════════════════════════════════════════════════════════╝
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+
+<!--
+    ┌────────────────────────────────────────────────────────────────────┐
+    │  DESIGN CODE BELOW — you can IGNORE all of this.                    │
+    │  This is the Colony Acres look (colors, fonts, spacing). It is the  │
+    │  same on every page and keeps everything on-brand. Do not edit it.  │
+    │  Scroll past it to the "PAGE CONTENT" section to make your changes. │
+    └────────────────────────────────────────────────────────────────────┘
+-->
+<style>
+    /* ===========================================================
+       COLONY ACRES · BRAND DESIGN SYSTEM · #caf-funnel
+       Palette: barn green / warm orange / cream / centennial gold
+       (Carried over from the Fall Festival page — ADA-contrast +
+        mobile-font fixes already baked in. Do not edit.)
+       =========================================================== */
+    #caf-funnel .bold { font-weight: bold; }
+
+    #caf-funnel {
+        width: 100vw !important;
+        position: relative !important;
+        left: 50% !important;
+        right: 50% !important;
+        margin-left: -50vw !important;
+        margin-right: -50vw !important;
+        overflow: hidden !important;
+        font-family: 'Open Sans', sans-serif !important;
+        background: #FBF6EC !important;
+        color: #2A1A0E !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    /* ── BANNER ── */
+    #caf-funnel .caf-banner {
+        width: 100% !important;
+        background: #006B35 !important;
+        color: white !important;
+        text-align: center !important;
+        padding: 12px 20px !important;
+        font-size: 0.95rem !important;
+        letter-spacing: 0.06em !important;
+        display: block !important;
+        box-sizing: border-box !important;
+    }
+    #caf-funnel .caf-banner-inner {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 10px !important;
+        flex-wrap: wrap !important;
+        color: white !important;
+    }
+    #caf-funnel .caf-banner-inner span,
+    #caf-funnel .caf-banner-inner strong {
+        color: white !important;
+    }
+    #caf-funnel .caf-dot {
+        width: 3px !important; height: 3px !important;
+        background: rgba(255,255,255,0.45) !important;
+        border-radius: 50% !important;
+        display: inline-block !important;
+        flex-shrink: 0 !important;
+    }
+    #caf-funnel .caf-banner-inner .caf-banner-cent {
+        color: #F2C66A !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.12em !important;
+    }
+
+    /* ── NAV ── */
+    #caf-funnel .caf-nav {
+        width: 100% !important;
+        padding: 0 40px !important;
+        height: 96px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        background: rgba(0,154,77,0.97) !important;
+        position: sticky !important;
+        top: 0 !important;
+        z-index: 100 !important;
+        box-sizing: border-box !important;
+        box-shadow: 0 2px 16px rgba(0,154,77,0.35) !important;
+    }
+    #caf-funnel .caf-logo-wrap {
+        display: flex !important;
+        align-items: center !important;
+        width: 180px !important;
+        flex-shrink: 0 !important;
+    }
+    #caf-funnel .caf-logo-wrap img {
+        width: 180px !important;
+        max-width: 180px !important;
+        object-fit: contain !important;
+        object-position: left center !important;
+        display: block !important;
+    }
+    #caf-funnel .caf-nav-right {
+        display: flex !important; align-items: center !important; gap: 16px !important;
+    }
+    #caf-funnel .caf-nav-loc {
+        font-size: 0.92rem !important;
+        color: rgba(255,255,255,0.85) !important;
+        display: flex !important; align-items: center !important; gap: 5px !important;
+    }
+    #caf-funnel .caf-nav-cta {
+        background: #E8743C !important;
+        color: white !important;
+        padding: 12px 26px !important;
+        border-radius: 50px !important;
+        font-size: 1rem !important;
+        font-weight: 700 !important;
+        text-decoration: none !important;
+        letter-spacing: 0.04em !important;
+        text-transform: uppercase !important;
+        transition: all 0.3s ease !important;
+        white-space: nowrap !important;
+        display: inline-block !important;
+    }
+    #caf-funnel .caf-nav-cta:hover {
+        background: #FF8A52 !important;
+        color: white !important;
+        text-decoration: none !important;
+        transform: translateY(-1px);
+    }
+
+    /* ── HERO ── */
+    #caf-funnel .caf-hero {
+        width: 100% !important;
+        min-height: clamp(340px, 58vw, 620px) !important;
+        position: relative !important;
+        display: flex !important;
+        align-items: flex-end !important;
+        overflow: hidden !important;
+        /* HERO IMAGE is set inline in the PAGE CONTENT below (SWAP 1) so it's
+           easy to find and change. This is just the fallback color. */
+        background-size: cover !important;
+        background-position: center 50% !important;
+        background-color: #2A1A0E !important;
+    }
+    #caf-funnel .caf-hero-overlay {
+        position: absolute !important;
+        inset: 0 !important;
+        background: linear-gradient(to bottom, rgba(31,69,36,0.10) 0%, rgba(42,26,14,0.25) 45%, rgba(31,69,36,0.75) 100%) !important;
+        z-index: 1 !important;
+    }
+    #caf-funnel .caf-hero-content {
+        position: relative !important;
+        z-index: 2 !important;
+        padding: 0 48px 56px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    #caf-funnel .caf-cent-ribbon {
+        display: inline-block !important;
+        background: #C19A47 !important;
+        color: #2A1A0E !important;
+        font-family: 'Oswald', sans-serif !important;
+        font-weight: 700 !important;
+        font-size: 0.72rem !important;
+        letter-spacing: 0.18em !important;
+        text-transform: uppercase !important;
+        padding: 6px 14px !important;
+        border-radius: 4px !important;
+        margin-bottom: 14px !important;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.18) !important;
+        opacity: 0;
+        animation: cafFadeUp 0.6s ease 0.15s forwards;
+    }
+    #caf-funnel .caf-hero-eyebrow {
+        font-size: 0.88rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.2em !important;
+        text-transform: uppercase !important;
+        color: rgba(255,255,255,0.92) !important;
+        margin-bottom: 10px !important;
+        display: block !important;
+        opacity: 0;
+        animation: cafFadeUp 0.6s ease 0.3s forwards;
+    }
+    #caf-funnel .caf-hero-title {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: clamp(3rem, 9vw, 5.6rem) !important;
+        font-weight: 700 !important;
+        color: white !important;
+        line-height: 1.0 !important;
+        display: block !important;
+        text-shadow: 0 2px 24px rgba(0,0,0,0.35) !important;
+        opacity: 0;
+        animation: cafFadeUp 0.7s ease 0.45s forwards;
+    }
+    #caf-funnel .caf-hero-title em {
+        font-family: 'Caveat', cursive !important;
+        font-style: normal !important;
+        font-weight: 700 !important;
+        color: #F2C66A !important;
+        font-size: 0.85em !important;
+        letter-spacing: 0.01em !important;
+    }
+    #caf-funnel .caf-hero-tagline {
+        font-family: 'Caveat', cursive !important;
+        font-size: clamp(1.2rem, 2.6vw, 1.8rem) !important;
+        color: #FFE9C8 !important;
+        margin-top: 12px !important;
+        display: block !important;
+        opacity: 0;
+        animation: cafFadeUp 0.7s ease 0.6s forwards;
+    }
+    @keyframes cafFadeUp {
+        from { opacity: 0; transform: translateY(16px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── BENEFITS ── */
+    #caf-funnel .caf-benefits {
+        width: 100% !important;
+        background: white !important;
+        padding: 36px 48px !important;
+        display: block !important;
+        box-sizing: border-box !important;
+        border-bottom: 1px solid rgba(0,154,77,0.08) !important;
+    }
+    #caf-funnel .caf-benefits-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+    #caf-funnel .caf-benefit {
+        text-align: center !important;
+        padding: 8px 20px !important;
+        position: relative !important;
+    }
+    #caf-funnel .caf-benefit:not(:last-child)::after {
+        content: '' !important;
+        position: absolute !important;
+        right: 0 !important; top: 15% !important; bottom: 15% !important;
+        width: 1px !important;
+        background: rgba(0,154,77,0.1) !important;
+    }
+    #caf-funnel .caf-benefit-icon { font-size: 1.8rem !important; margin-bottom: 8px !important; display: block !important; }
+    #caf-funnel .caf-benefit-title {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 1.2rem !important; font-weight: 600 !important;
+        color: #2A1A0E !important; margin-bottom: 4px !important; display: block !important;
+    }
+    #caf-funnel .caf-benefit-desc {
+        font-size: 0.92rem !important; color: #5A4128 !important;
+        line-height: 1.45 !important; display: block !important;
+    }
+
+    /* ── GALLERY ── */
+    #caf-funnel .caf-gallery {
+        width: 100% !important;
+        background: #FBF6EC !important;
+        padding: 64px 0 !important;
+        overflow: hidden !important;
+        display: block !important;
+    }
+    #caf-funnel .caf-gallery-header {
+        text-align: center !important;
+        padding: 0 48px !important;
+        margin-bottom: 40px !important;
+    }
+    #caf-funnel .caf-eye {
+        font-size: 0.85rem !important; font-weight: 600 !important;
+        letter-spacing: 0.22em !important; text-transform: uppercase !important;
+        color: #E8743C !important; margin-bottom: 8px !important; display: block !important;
+    }
+    #caf-funnel .caf-section-title {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: clamp(2.1rem, 5vw, 3.2rem) !important;
+        font-weight: 700 !important; color: #2A1A0E !important;
+        line-height: 1.15 !important; display: block !important;
+    }
+    #caf-funnel .caf-section-title em {
+        font-family: 'Caveat', cursive !important;
+        font-style: normal !important;
+        font-weight: 700 !important;
+        color: #009A4D !important;
+        font-size: 1.05em !important;
+    }
+    #caf-funnel .caf-gallery-mask {
+        width: 100% !important; overflow: hidden !important;
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%) !important;
+        mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%) !important;
+    }
+    #caf-funnel .caf-gallery-track {
+        display: flex !important; gap: 16px !important;
+        width: max-content !important;
+        animation: cafMarquee 26s linear infinite !important;
+        padding: 8px 0 !important;
+    }
+    #caf-funnel .caf-gallery-track:hover { animation-play-state: paused !important; }
+    @keyframes cafMarquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    #caf-funnel .caf-gcard {
+        width: 380px !important; height: 260px !important;
+        border-radius: 20px !important; overflow: hidden !important;
+        flex-shrink: 0 !important; position: relative !important;
+        cursor: pointer !important;
+        background: linear-gradient(135deg, #F5DCAA, #E8743C) !important;
+        display: flex !important; align-items: center !important;
+        justify-content: center !important; font-size: 3rem !important;
+        transition: transform 0.4s ease, box-shadow 0.4s ease !important;
+    }
+    #caf-funnel .caf-gcard:hover {
+        transform: scale(1.03) translateY(-5px) !important;
+        box-shadow: 0 24px 50px rgba(0,154,77,0.22) !important; z-index: 2 !important;
+    }
+    #caf-funnel .caf-gcard img {
+        width: 100% !important; height: 100% !important;
+        object-fit: cover !important; display: block !important;
+        position: absolute !important; inset: 0 !important;
+        transition: transform 0.6s ease !important;
+    }
+    #caf-funnel .caf-gcard:hover img { transform: scale(1.08) !important; }
+    #caf-funnel .caf-gcard-label {
+        position: absolute !important; bottom: 12px !important; left: 12px !important;
+        background: rgba(42,26,14,0.6) !important; backdrop-filter: blur(8px) !important;
+        color: white !important; font-size: 0.68rem !important; letter-spacing: 0.1em !important;
+        text-transform: uppercase !important; font-weight: 700 !important;
+        padding: 5px 12px !important; border-radius: 20px !important;
+        opacity: 0 !important; transform: translateY(4px) !important;
+        transition: opacity 0.3s ease, transform 0.3s ease !important; z-index: 2 !important;
+    }
+    #caf-funnel .caf-gcard:hover .caf-gcard-label { opacity: 1 !important; transform: none !important; }
+
+    /* ── STORY STRIP ── */
+    #caf-funnel .caf-story {
+        width: 100% !important;
+        background: linear-gradient(135deg, #1F5C2E 0%, #2D7541 100%) !important;
+        padding: 56px 48px !important;
+        box-sizing: border-box !important;
+        display: block !important;
+        text-align: center !important;
+        color: white !important;
+    }
+    #caf-funnel .caf-story-inner {
+        max-width: 760px !important;
+        margin: 0 auto !important;
+        color: white !important;
+    }
+    #caf-funnel .caf-story-inner span,
+    #caf-funnel .caf-story-inner strong {
+        color: white !important;
+    }
+    #caf-funnel .caf-story-inner .caf-story-cent {
+        font-family: 'Caveat', cursive !important;
+        color: #F2C66A !important;
+        font-size: clamp(2.2rem, 5vw, 3.4rem) !important;
+        line-height: 1 !important;
+        display: block !important;
+        margin-bottom: 6px !important;
+    }
+    #caf-funnel .caf-story-inner .caf-story-title {
+        font-family: 'Zilla Slab', serif !important;
+        font-size: clamp(1.65rem, 4vw, 2.4rem) !important;
+        font-weight: 700 !important;
+        margin-bottom: 14px !important;
+        display: block !important;
+        color: white !important;
+    }
+    #caf-funnel .caf-story-inner .caf-story-body {
+        font-size: 1.18rem !important;
+        line-height: 1.65 !important;
+        color: #ffffff !important;
+        display: block !important;
+    }
+
+    /* ── TICKET CARDS (PRICE BOXES) ── */
+    #caf-funnel .caf-tickets {
+        width: 100% !important;
+        background: #F5EDD9 !important;
+        padding: 72px 48px !important;
+        display: block !important; box-sizing: border-box !important;
+    }
+    #caf-funnel .caf-tickets-header { text-align: center !important; margin-bottom: 48px !important; }
+    #caf-funnel .caf-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(0, 400px)) !important;
+        gap: 24px !important;
+        justify-content: center !important;
+        max-width: 1280px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    /* Base card */
+    #caf-funnel .caf-card {
+        border-radius: 20px !important;
+        padding: 36px 32px !important;
+        position: relative !important;
+        overflow: hidden !important;
+        transition: transform 0.35s ease, box-shadow 0.35s ease !important;
+        display: flex !important; flex-direction: column !important;
+    }
+    #caf-funnel .caf-card:hover { transform: translateY(-6px) !important; }
+
+    #caf-funnel .caf-card-dark {
+        background: #2A1A0E !important; color: white !important;
+    }
+    #caf-funnel .caf-card-dark:hover { box-shadow: 0 20px 44px rgba(0,0,0,0.35) !important; }
+
+    #caf-funnel .caf-card-green {
+        background: linear-gradient(160deg, #009A4D 0%, #00B85B 100%) !important;
+        color: white !important;
+        border: 2px solid #C19A47 !important;
+    }
+    #caf-funnel .caf-card-green:hover { box-shadow: 0 20px 44px rgba(0,154,77,0.35) !important; }
+
+    #caf-funnel .caf-card-cream {
+        background: linear-gradient(145deg, #FFF4E0, #FBF6EC) !important;
+        border: 1px solid rgba(0,154,77,0.14) !important;
+    }
+    #caf-funnel .caf-card-cream:hover { box-shadow: 0 20px 44px rgba(0,154,77,0.14) !important; }
+
+    /* Card internals */
+    #caf-funnel .caf-card-badge {
+        display: inline-block !important;
+        font-size: 0.78rem !important; font-weight: 700 !important;
+        letter-spacing: 0.14em !important; text-transform: uppercase !important;
+        padding: 5px 12px !important; border-radius: 20px !important;
+        margin-bottom: 14px !important; width: fit-content !important;
+    }
+    #caf-funnel .caf-badge-light { background: rgba(255,255,255,0.18) !important; color: white !important; }
+    #caf-funnel .caf-badge-gold { background: #C19A47 !important; color: #2A1A0E !important; }
+    #caf-funnel .caf-badge-orange { background: #E8743C !important; color: white !important; }
+
+    #caf-funnel .caf-card-icon { font-size: 3rem !important; margin-bottom: 14px !important; display: block !important; }
+
+    #caf-funnel .caf-card h3 {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 1.88rem !important; font-weight: 700 !important;
+        line-height: 1.15 !important; margin-bottom: 14px !important; display: block !important;
+    }
+    #caf-funnel .caf-card-cream h3 { color: #2A1A0E !important; }
+    #caf-funnel .caf-card-green h3,
+    #caf-funnel .caf-card-dark h3 { color: white !important; }
+
+    #caf-funnel .caf-card-bullets {
+        list-style: none !important; padding: 0 !important; margin: 0 0 auto !important;
+        display: flex !important; flex-direction: column !important; gap: 6px !important;
+    }
+    #caf-funnel .caf-card-bullets li {
+        font-size: 1.12rem !important; line-height: 1.55 !important;
+        display: flex !important; align-items: flex-start !important; gap: 8px !important;
+    }
+    #caf-funnel .caf-card-cream .caf-card-bullets li { color: #5A3E22 !important; }
+    #caf-funnel .caf-card-green .caf-card-bullets li,
+    #caf-funnel .caf-card-dark .caf-card-bullets li { color: rgba(255,255,255,0.86) !important; }
+
+    #caf-funnel .caf-card-price {
+        display: flex !important; align-items: baseline !important;
+        gap: 6px !important; margin-top: 20px !important; padding-top: 16px !important;
+    }
+    #caf-funnel .caf-card-green .caf-card-price { border-top: 1px solid rgba(255,255,255,0.18) !important; }
+    #caf-funnel .caf-card-dark .caf-card-price { border-top: 1px solid rgba(255,255,255,0.14) !important; }
+    #caf-funnel .caf-card-cream .caf-card-price { border-top: 1px solid rgba(0,154,77,0.12) !important; }
+
+    #caf-funnel .caf-price-num {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 3.3rem !important; font-weight: 700 !important; line-height: 1 !important;
+    }
+    #caf-funnel .caf-card-cream .caf-price-num { color: #009A4D !important; }
+    #caf-funnel .caf-card-green .caf-price-num { color: #F2C66A !important; }
+    #caf-funnel .caf-card-dark .caf-price-num { color: #F2C66A !important; }
+
+    #caf-funnel .caf-price-slash {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 2px !important;
+        justify-content: center !important;
+    }
+    #caf-funnel .caf-price-online {
+        font-size: 0.82rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.1em !important;
+        text-transform: uppercase !important;
+        display: block !important;
+    }
+    #caf-funnel .caf-card-green .caf-price-online,
+    #caf-funnel .caf-card-dark .caf-price-online { color: rgba(255,255,255,0.55) !important; }
+    #caf-funnel .caf-card-cream .caf-price-online { color: #009A4D !important; opacity: 0.6 !important; }
+    #caf-funnel .caf-price-was {
+        font-size: 1.05rem !important;
+        font-weight: 600 !important;
+        text-decoration: line-through !important;
+        display: block !important;
+        line-height: 1 !important;
+    }
+    #caf-funnel .caf-card-green .caf-price-was,
+    #caf-funnel .caf-card-dark .caf-price-was { color: rgba(255,255,255,0.45) !important; }
+    #caf-funnel .caf-card-cream .caf-price-was { color: rgba(0,154,77,0.45) !important; }
+
+    #caf-funnel .caf-card-note {
+        font-size: 0.88rem !important; font-style: italic !important;
+        margin-top: 10px !important; display: block !important; line-height: 1.5 !important;
+    }
+    #caf-funnel .caf-card-green .caf-card-note,
+    #caf-funnel .caf-card-dark .caf-card-note { color: rgba(255,255,255,0.55) !important; }
+    #caf-funnel .caf-card-cream .caf-card-note { color: #8A6A4A !important; }
+
+    #caf-funnel .caf-card-fees {
+        font-size: 0.72rem !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.02em !important;
+        margin-top: 6px !important;
+        display: block !important;
+        line-height: 1.4 !important;
+        opacity: 0.85 !important;
+    }
+    #caf-funnel .caf-card-cream .caf-card-fees { color: #8A6A4A !important; }
+    #caf-funnel .caf-card-green .caf-card-fees,
+    #caf-funnel .caf-card-dark .caf-card-fees { color: rgba(255,255,255,0.75) !important; }
+
+    /* ── INFO ROW ── */
+    #caf-funnel .caf-info {
+        width: 100% !important;
+        background: #1F5C2E !important;
+        padding: 0 !important; display: block !important; box-sizing: border-box !important;
+    }
+    #caf-funnel .caf-info-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+    #caf-funnel .caf-info-item {
+        text-align: center !important;
+        padding: 28px 20px !important;
+        position: relative !important;
+    }
+    #caf-funnel .caf-info-item:not(:last-child)::after {
+        content: '' !important; position: absolute !important;
+        right: 0 !important; top: 20% !important; bottom: 20% !important;
+        width: 1px !important; background: rgba(255,255,255,0.15) !important;
+    }
+    #caf-funnel .caf-info-grid span,
+    #caf-funnel .caf-info-grid strong {
+        color: white !important;
+    }
+    #caf-funnel .caf-info-item .caf-info-icon { font-size: 1.5rem !important; display: block !important; margin-bottom: 6px !important; }
+    #caf-funnel .caf-info-item .caf-info-label {
+        font-size: 0.78rem !important; font-weight: 700 !important;
+        letter-spacing: 0.16em !important; text-transform: uppercase !important;
+        color: rgba(255,255,255,0.88) !important; display: block !important; margin-bottom: 4px !important;
+    }
+    #caf-funnel .caf-info-item .caf-info-value {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 1.12rem !important; font-weight: 600 !important;
+        color: white !important; display: block !important; line-height: 1.3 !important;
+    }
+    #caf-funnel .caf-info-item .caf-info-link {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 0.88rem !important; font-weight: 600 !important;
+        color: #F2C66A !important; display: block !important;
+        line-height: 1.3 !important; text-decoration: underline !important;
+    }
+    #caf-funnel .caf-info-link:hover { color: white !important; }
+
+    /* ── REVEAL ── */
+    #caf-funnel .cafr {
+        opacity: 0 !important; transform: translateY(28px) !important;
+        transition: opacity 0.7s cubic-bezier(.16,1,.3,1), transform 0.7s cubic-bezier(.16,1,.3,1) !important;
+    }
+    #caf-funnel .cafr.cafon { opacity: 1 !important; transform: none !important; }
+    #caf-funnel .cafr.d1 { transition-delay: 0.1s !important; }
+    #caf-funnel .cafr.d2 { transition-delay: 0.2s !important; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1000px) {
+        #caf-funnel .caf-grid { grid-template-columns: repeat(2, minmax(0, 420px)) !important; }
+    }
+    @media (max-width: 860px) {
+        #caf-funnel .caf-nav { padding: 0 24px !important; }
+        #caf-funnel .caf-nav-cta { padding: 14px 24px !important; }
+        #caf-funnel .caf-benefits { padding: 32px 24px !important; }
+        #caf-funnel .caf-tickets { padding: 56px 24px !important; }
+        #caf-funnel .caf-story { padding: 44px 24px !important; }
+        #caf-funnel .caf-info-grid { grid-template-columns: 1fr 1fr !important; }
+        #caf-funnel .caf-info-item:nth-child(2n)::after { display: none !important; }
+        #caf-funnel .caf-gallery-header { padding: 0 24px !important; }
+        #caf-funnel .caf-gcard { width: 300px !important; height: 210px !important; }
+        #caf-funnel .caf-hero-content { padding: 0 32px 44px !important; }
+    }
+    @media (max-width: 560px) {
+        #caf-funnel .caf-nav { padding: 0 16px !important; height: 72px !important; }
+        #caf-funnel .caf-logo-wrap,
+        #caf-funnel .caf-logo-wrap img { width: 135px !important; max-width: 135px !important; }
+        #caf-funnel .caf-nav-loc { display: none !important; }
+        #caf-funnel .caf-benefits { padding: 24px 16px !important; }
+        #caf-funnel .caf-benefits-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 14px 0 !important; }
+        #caf-funnel .caf-benefit:nth-child(2n)::after { display: none !important; }
+        #caf-funnel .caf-tickets { padding: 48px 16px !important; }
+        #caf-funnel .caf-grid { grid-template-columns: 1fr !important; }
+        #caf-funnel .caf-story { padding: 36px 16px !important; }
+        #caf-funnel .caf-gallery-header { padding: 0 16px !important; }
+        #caf-funnel .caf-gcard { width: 240px !important; height: 170px !important; }
+        #caf-funnel .caf-hero-content { padding: 0 20px 36px !important; }
+    }
+    @media (max-width: 768px) {
+        #caf-funnel .caf-card { padding: 32px 28px !important; }
+        #caf-funnel .caf-card h3 { font-size: 2rem !important; }
+        #caf-funnel .caf-card-bullets li { font-size: 1.18rem !important; line-height: 1.55 !important; }
+        #caf-funnel .caf-card-badge { font-size: 0.85rem !important; padding: 6px 14px !important; }
+        #caf-funnel .caf-price-num { font-size: 3.5rem !important; }
+        #caf-funnel .caf-price-was { font-size: 1.15rem !important; }
+        #caf-funnel .caf-price-online { font-size: 0.88rem !important; }
+        #caf-funnel .caf-card-note { font-size: 0.95rem !important; }
+        #caf-funnel .caf-card-fees { font-size: 0.85rem !important; }
+    }
+
+    /* Hide TicketSpice footer chrome (giant flag + TS logo). Do not edit. */
+    .WCX-poweredBy,
+    .WCX-footer-poweredBy,
+    [class*="poweredBy"],
+    [class*="powered-by"],
+    [class*="powered_by"],
+    .ticketspice-logo,
+    .tsr-poweredBy,
+    .WCX-footer-flag,
+    .WCX-localeFlag,
+    .country-flag,
+    .locale-flag,
+    [class*="localeFlag"],
+    img[src*="ticketspice"],
+    img[src*="us-flag"],
+    img[src*="us_flag"],
+    img[src*="usa-flag"],
+    img[alt*="TicketSpice" i],
+    img[alt*="United States" i] {
+        display: none !important;
+        visibility: hidden !important;
+        height: 0 !important;
+        width: 0 !important;
+    }
+</style>
+
+
+<!--
+    ╔══════════════════════════════════════════════════════════════════════╗
+    ║                          PAGE CONTENT                                 ║
+    ║  This is the part you edit. The three SWAP zones are flagged below.   ║
+    ╚══════════════════════════════════════════════════════════════════════╝
+-->
+<div id="caf-funnel">
+
+    <!-- ════════════════════════════════════════════════════════════════ -->
+    <!--  BRANDED HEADER — DON'T CHANGE THE LOOK, JUST THE TEXT             -->
+    <!--  The green bar + logo stay the same on every Colony page. You may  -->
+    <!--  update the EVENT NAME and DATES in the green bar below.           -->
+    <!-- ════════════════════════════════════════════════════════════════ -->
+    <div class="caf-banner">
+        <div class="caf-banner-inner">
+            <span class="caf-banner-cent">★ COLONY ACRES · NORTH LIBERTY, IA ★</span>
+            <span class="caf-dot"></span>
+            <span><strong>Event Name Goes Here</strong></span>
+            <span class="caf-dot"></span>
+            <span>Date Range · Days · Hours</span>
+        </div>
+    </div>
+
+    <!-- NAV — branded logo + Buy Tickets button. Leave as-is. -->
+    <div class="caf-nav">
+        <div class="caf-logo-wrap">
+            <img src="https://cdn.uploads.webconnex.com/84892/colony%20acres%20100%20years%20white%20-%20logo.png" alt="Colony Acres Family Farm">
+        </div>
+        <div class="caf-nav-right">
+            <div class="caf-nav-loc">
+                <svg width="12" height="12" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                    <circle cx="12" cy="11" r="3"/>
+                </svg>
+                North Liberty, IA
+            </div>
+            <a href="#ticketBlock" class="caf-nav-cta">Buy Tickets</a>
+        </div>
+    </div>
+
+    <!-- ╔════════════════════════════════════════════════════════════════╗ -->
+    <!-- ║  ===== SWAP 1 · PAGE TITLE =====                                ║ -->
+    <!-- ║  Change three things here:                                       ║ -->
+    <!-- ║    • The HERO IMAGE  →  edit the url('...') on the next line     ║ -->
+    <!-- ║    • The TITLE text  →  inside <span class="caf-hero-title">     ║ -->
+    <!-- ║    • The little ribbon + eyebrow + tagline lines (optional)      ║ -->
+    <!-- ║  Tip: a word wrapped in <em>like this</em> shows in gold script. ║ -->
+    <!-- ╚════════════════════════════════════════════════════════════════╝ -->
+    <div class="caf-hero" style="background-image: url('https://colonyacres.farm/wp-content/uploads/2024/02/body-rentbarn2.webp') !important;">
+        <div class="caf-hero-overlay"></div>
+        <div class="caf-hero-content">
+            <span class="caf-cent-ribbon">Optional Little Ribbon</span>
+            <span class="caf-hero-eyebrow">Optional Eyebrow · North Liberty, IA</span>
+            <span class="caf-hero-title">Your Event <em>Title</em></span>
+            <span class="caf-hero-tagline">— Your tagline goes here. —</span>
+        </div>
+    </div>
+    <!-- ===== END SWAP 1 ===== -->
+
+    <!-- ┌────────────────────────────────────────────────────────────────┐ -->
+    <!-- │  OPTIONAL · QUICK HIGHLIGHTS ROW — edit the 4 cells or delete   │ -->
+    <!-- │  the whole <div class="caf-benefits"> block if you don't want   │ -->
+    <!-- │  it. Each cell = a short title + one line of description.        │ -->
+    <!-- └────────────────────────────────────────────────────────────────┘ -->
+    <div class="caf-benefits">
+        <div class="caf-benefits-grid">
+            <div class="caf-benefit">
+                <span class="caf-benefit-title">Highlight One</span>
+                <span class="caf-benefit-desc">One short line about it</span>
+            </div>
+            <div class="caf-benefit">
+                <span class="caf-benefit-title">Highlight Two</span>
+                <span class="caf-benefit-desc">One short line about it</span>
+            </div>
+            <div class="caf-benefit">
+                <span class="caf-benefit-title">Highlight Three</span>
+                <span class="caf-benefit-desc">One short line about it</span>
+            </div>
+            <div class="caf-benefit">
+                <span class="caf-benefit-title">Highlight Four</span>
+                <span class="caf-benefit-desc">One short line about it</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ╔════════════════════════════════════════════════════════════════╗ -->
+    <!-- ║  ===== SWAP 2 · PHOTO CAROUSEL =====                            ║ -->
+    <!-- ║  The strip of sliding photos. To swap a photo, change the        ║ -->
+    <!-- ║  src="..." link and the caption text inside caf-gcard-label.     ║ -->
+    <!-- ║  IMPORTANT: the cards are listed TWICE (first set + a duplicate  ║ -->
+    <!-- ║  copy) so the slide loops smoothly. If you change a photo,        ║ -->
+    <!-- ║  change it in BOTH the first list AND the duplicate list below.   ║ -->
+    <!-- ║  You can also change the section heading text just under here.    ║ -->
+    <!-- ╚════════════════════════════════════════════════════════════════╝ -->
+    <div class="caf-gallery">
+        <div class="caf-gallery-header cafr">
+            <span class="caf-eye">Small Eyebrow Text</span>
+            <span class="caf-section-title">Section heading, <em>with a script accent</em></span>
+        </div>
+        <div class="caf-gallery-mask">
+            <div class="caf-gallery-track">
+                <!-- ---- FIRST SET OF PHOTOS (edit these) ---- -->
+                <div class="caf-gcard"><img src="https://cdn.uploads.webconnex.com/84892/img_2970.jpg" alt="Photo 1" loading="lazy"><div class="caf-gcard-label">Caption 1</div></div>
+                <div class="caf-gcard"><img src="https://cdn.uploads.webconnex.com/84892/1720475098470-CPPB-21.jpg" alt="Photo 2" loading="lazy"><div class="caf-gcard-label">Caption 2</div></div>
+                <div class="caf-gcard"><img src="https://cdn.uploads.webconnex.com/84892/1720475058235-CPPB-31.jpg" alt="Photo 3" loading="lazy"><div class="caf-gcard-label">Caption 3</div></div>
+                <div class="caf-gcard"><img src="https://colonyacres.farm/wp-content/uploads/2025/07/attractions-barreltrain.webp" alt="Photo 4" loading="lazy"><div class="caf-gcard-label">Caption 4</div></div>
+                <!-- ---- DUPLICATE SET (must match the first set above for a smooth loop) ---- -->
+                <div class="caf-gcard"><img src="https://cdn.uploads.webconnex.com/84892/img_2970.jpg" alt="Photo 1" loading="lazy"><div class="caf-gcard-label">Caption 1</div></div>
+                <div class="caf-gcard"><img src="https://cdn.uploads.webconnex.com/84892/1720475098470-CPPB-21.jpg" alt="Photo 2" loading="lazy"><div class="caf-gcard-label">Caption 2</div></div>
+                <div class="caf-gcard"><img src="https://cdn.uploads.webconnex.com/84892/1720475058235-CPPB-31.jpg" alt="Photo 3" loading="lazy"><div class="caf-gcard-label">Caption 3</div></div>
+                <div class="caf-gcard"><img src="https://colonyacres.farm/wp-content/uploads/2025/07/attractions-barreltrain.webp" alt="Photo 4" loading="lazy"><div class="caf-gcard-label">Caption 4</div></div>
+            </div>
+        </div>
+    </div>
+    <!-- ===== END SWAP 2 ===== -->
+
+    <!-- ┌────────────────────────────────────────────────────────────────┐ -->
+    <!-- │  OPTIONAL · STORY STRIP — a green band with a short paragraph.  │ -->
+    <!-- │  Good for an "about this event" blurb. Edit the text, or delete │ -->
+    <!-- │  the whole <div class="caf-story"> block if you don't need it.   │ -->
+    <!-- └────────────────────────────────────────────────────────────────┘ -->
+    <div class="caf-story cafr">
+        <div class="caf-story-inner">
+            <span class="caf-story-cent">A Script Line</span>
+            <span class="caf-story-title">A short, friendly headline about this event.</span>
+            <span class="caf-story-body">
+                Two or three sentences of warm copy describing the event — what it is,
+                who it's for, and why someone should come. Keep it short and inviting.
+            </span>
+        </div>
+    </div>
+
+    <!-- ╔════════════════════════════════════════════════════════════════╗ -->
+    <!-- ║  ===== SWAP 3 · PRICE BOXES (the ticket cards) =====            ║ -->
+    <!-- ║  Three cards. For each card you can change:                      ║ -->
+    <!-- ║    • the badge text (small pill at the top)                      ║ -->
+    <!-- ║    • the emoji icon + the card title (<h3>)                      ║ -->
+    <!-- ║    • the bullet list (add/remove <li> lines)                     ║ -->
+    <!-- ║    • the PRICE — the big number in caf-price-num, and the        ║ -->
+    <!-- ║      "$X at gate" struck-through line if you show a gate price    ║ -->
+    <!-- ║  Want only 2 cards? Delete one whole <div class="caf-card ...">.  ║ -->
+    <!-- ║  The colors come from the card class: -cream (light), -dark,     ║ -->
+    <!-- ║  -green (highlighted). Leave those class names as they are.       ║ -->
+    <!-- ║                                                                  ║ -->
+    <!-- ║  NOTE: these boxes are just the PICTURE of the prices. The real  ║ -->
+    <!-- ║  ticket types + prices people actually buy are set in the        ║ -->
+    <!-- ║  TicketSpice ticket section below this design, as usual.          ║ -->
+    <!-- ╚════════════════════════════════════════════════════════════════╝ -->
+    <div class="caf-tickets" id="tickets">
+        <div class="caf-tickets-header cafr">
+            <span class="caf-eye">Tickets</span>
+            <span class="caf-section-title">Pick your <em>option</em></span>
+        </div>
+        <div class="caf-grid">
+
+            <!-- CARD 1 (light/cream) -->
+            <div class="caf-card caf-card-cream cafr">
+                <span class="caf-card-badge caf-badge-orange">Badge</span>
+                <span class="caf-card-icon">🎟</span>
+                <h3>Option One</h3>
+                <ul class="caf-card-bullets">
+                    <li>✓ First thing this includes</li>
+                    <li>✓ Second thing this includes</li>
+                    <li>✓ Third thing this includes</li>
+                </ul>
+                <div class="caf-card-price">
+                    <span class="caf-price-num">$00*</span>
+                    <div class="caf-price-slash">
+                        <span class="caf-price-online">Online Price</span>
+                        <span class="caf-price-was">$00 at gate</span>
+                    </div>
+                </div>
+                <span class="caf-card-fees">*plus applicable taxes and fees</span>
+                <span class="caf-card-note">Short note · who it's for</span>
+            </div>
+
+            <!-- CARD 2 (dark — good for "most popular") -->
+            <div class="caf-card caf-card-dark cafr d1">
+                <span class="caf-card-badge caf-badge-light">Most Popular</span>
+                <span class="caf-card-icon">🍂</span>
+                <h3>Option Two</h3>
+                <ul class="caf-card-bullets">
+                    <li>✓ First thing this includes</li>
+                    <li>✓ Second thing this includes</li>
+                    <li>✓ Third thing this includes</li>
+                </ul>
+                <div class="caf-card-price">
+                    <span class="caf-price-num">$00*</span>
+                    <div class="caf-price-slash">
+                        <span class="caf-price-online">Online Price</span>
+                        <span class="caf-price-was">$00 at gate</span>
+                    </div>
+                </div>
+                <span class="caf-card-fees">*plus applicable taxes and fees</span>
+                <span class="caf-card-note">Short note · who it's for</span>
+            </div>
+
+            <!-- CARD 3 (green — highlighted / premium) -->
+            <div class="caf-card caf-card-green cafr d2">
+                <span class="caf-card-badge caf-badge-gold">★ Featured ★</span>
+                <span class="caf-card-icon">🌟</span>
+                <h3>Option Three</h3>
+                <ul class="caf-card-bullets">
+                    <li>✓ First thing this includes</li>
+                    <li>✓ Second thing this includes</li>
+                    <li>✓ Third thing this includes</li>
+                </ul>
+                <div class="caf-card-price">
+                    <span class="caf-price-num">$00*</span>
+                    <div class="caf-price-slash">
+                        <span class="caf-price-online">Online Price</span>
+                        <span class="caf-price-was">$00 at gate</span>
+                    </div>
+                </div>
+                <span class="caf-card-fees">*plus applicable taxes and fees</span>
+                <span class="caf-card-note">Short note · who it's for</span>
+            </div>
+
+        </div>
+    </div>
+    <!-- ===== END SWAP 3 ===== -->
+
+    <!-- ┌────────────────────────────────────────────────────────────────┐ -->
+    <!-- │  INFO ROW — Colony Acres contact details. Same on every page;   │ -->
+    <!-- │  edit only if the details change. The third cell ("Who Needs a  │ -->
+    <!-- │  Pass") can be reworded per event.                              │ -->
+    <!-- └────────────────────────────────────────────────────────────────┘ -->
+    <div class="caf-info">
+        <div class="caf-info-grid">
+            <div class="caf-info-item">
+                <span class="caf-info-label">Location</span>
+                <span class="caf-info-value">1150 Front St.<br>North Liberty, IA</span>
+            </div>
+            <div class="caf-info-item">
+                <span class="caf-info-label">Phone</span>
+                <span class="caf-info-value">(319) 626-6091</span>
+            </div>
+            <div class="caf-info-item">
+                <span class="caf-info-label">Who Needs a Pass</span>
+                <span class="caf-info-value">Ages 3 &amp; up<br><em style="font-size:0.85rem;opacity:0.85;font-style:normal;">Children 2 &amp; under free</em></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ┌────────────────────────────────────────────────────────────────┐ -->
+    <!-- │  TERMS & CONDITIONS — edit the bullet text per event.           │ -->
+    <!-- └────────────────────────────────────────────────────────────────┘ -->
+    <style>
+        #caf-terms {
+            background: linear-gradient(135deg, #1F5C2E 0%, #2D7541 100%) !important;
+            color: #FFF8EC !important;
+            padding: 56px 48px 64px !important;
+            font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+            box-sizing: border-box !important;
+            width: 100% !important;
+            line-height: 1.6 !important;
+        }
+        #caf-terms .caf-terms-inner { max-width: 880px !important; margin: 0 auto !important; text-align: left !important; }
+        #caf-terms h2 {
+            font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+            font-size: clamp(1.8rem, 4vw, 2.4rem) !important;
+            font-weight: 700 !important; color: #F2C66A !important;
+            margin: 0 0 18px 0 !important; letter-spacing: 0.01em !important; line-height: 1.15 !important;
+        }
+        #caf-terms ul { list-style: none !important; padding: 0 !important; margin: 0 0 22px 0 !important; }
+        #caf-terms ul li {
+            position: relative !important; padding: 6px 0 6px 24px !important;
+            font-size: 1.02rem !important; color: rgba(255,248,236,0.94) !important;
+        }
+        #caf-terms ul li::before {
+            content: "•" !important; position: absolute !important;
+            left: 6px !important; top: 6px !important; color: #F2C66A !important; font-weight: 700 !important;
+        }
+        #caf-terms .caf-terms-info { font-size: 1rem !important; color: rgba(255,248,236,0.92) !important; margin: 0 0 26px 0 !important; }
+        #caf-terms .caf-terms-info a { color: #F2C66A !important; text-decoration: underline !important; font-weight: 600 !important; }
+        #caf-terms .caf-terms-info a:hover { color: #FFE298 !important; }
+        @media (max-width: 600px) {
+            #caf-terms { padding: 40px 22px 48px !important; }
+            #caf-terms h2 { font-size: 1.6rem !important; }
+            #caf-terms ul li { font-size: 0.96rem !important; padding-left: 22px !important; }
+            #caf-terms .caf-terms-info { font-size: 0.95rem !important; }
+        }
+    </style>
+    <section id="caf-terms">
+        <div class="caf-terms-inner">
+            <h2>Terms &amp; Conditions</h2>
+            <ul>
+                <li>Tickets are good for one (1) person ages 3+. Children 2 and under do not need a ticket.</li>
+                <li>Does NOT include admission to Special Events, or any extra purchases like food, produce, beverages, etc.</li>
+                <li>Group discounts automatically apply for purchases of 20+ tickets in one (1) transaction.</li>
+                <li>Tickets are valid for the 2026 season only.</li>
+            </ul>
+            <p class="caf-terms-info">
+                Please find additional information on dates, hours, and details online at
+                <a href="https://colonyacres.farm" target="_blank" rel="noopener">colonyacres.farm</a>.
+            </p>
+            <p class="caf-terms-info">No smoking on premises (including e-cigarettes / vapor).</p>
+            <p class="caf-terms-info" style="margin-bottom: 0 !important;">ALL SALES ARE FINAL. NO REFUNDS.</p>
+        </div>
+    </section>
+
+</div><!-- end #caf-funnel -->
+
+<!-- Reveal-on-scroll + smooth anchor scrolling. Leave as-is. -->
+<script>
+    (function() {
+        var obs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) {
+                if (e.isIntersecting) { e.target.classList.add('cafon'); obs.unobserve(e.target); }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('#caf-funnel .cafr').forEach(function(el) {
+            obs.observe(el);
+            if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('cafon');
+        });
+        document.querySelectorAll('#caf-funnel a[href^="#"]').forEach(function(a) {
+            a.addEventListener('click', function(e) {
+                var target = document.querySelector(a.getAttribute('href'));
+                if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+            });
+        });
+    })();
+</script>
+
+<!-- ════════════════════════════════════════════════════════════════════
+     FLOATING "BUY TICKETS" BUTTON — sticks to the bottom of the screen.
+     Same on every page. Leave as-is.
+     ════════════════════════════════════════════════════════════════════ -->
+<style>
+    #caf-float-btn {
+        position: fixed !important; bottom: 0 !important; left: 0 !important; right: 0 !important;
+        z-index: 9999 !important; padding: 12px 16px 20px !important;
+        background: linear-gradient(to top, rgba(251,246,236,0.97) 55%, transparent) !important;
+        display: flex !important; justify-content: center !important;
+        transition: opacity 0.35s ease, transform 0.35s ease !important;
+    }
+    #caf-float-btn.caf-float-hidden { opacity: 0 !important; transform: translateY(24px) !important; pointer-events: none !important; }
+    #caf-float-btn a {
+        display: block !important; width: 100% !important; max-width: 480px !important;
+        background: #E8743C !important; color: #ffffff !important;
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 24px !important; font-weight: 700 !important; letter-spacing: 0.06em !important;
+        text-align: center !important; text-decoration: none !important;
+        padding: 20px 28px !important; border-radius: 50px !important;
+        box-shadow: 0 8px 32px rgba(216,95,40,0.40) !important;
+        transition: transform 0.15s, box-shadow 0.15s, background 0.2s !important;
+        border: none !important; cursor: pointer !important;
+    }
+    #caf-float-btn a:hover {
+        background: #D85F28 !important; transform: translateY(-2px) !important;
+        box-shadow: 0 14px 40px rgba(216,95,40,0.55) !important; color: #ffffff !important; text-decoration: none !important;
+    }
+</style>
+<div id="caf-float-btn">
+    <a href="#ticketBlock">Buy Tickets</a>
+</div>
+<script>
+    (function() {
+        var floatBtn = document.getElementById('caf-float-btn');
+        if (floatBtn) {
+            floatBtn.querySelector('a').addEventListener('click', function() {
+                floatBtn.classList.add('caf-float-hidden');
+            });
+        }
+    })();
+</script>
