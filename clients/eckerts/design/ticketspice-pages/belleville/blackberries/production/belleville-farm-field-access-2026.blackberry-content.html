@@ -1000,15 +1000,21 @@
       for(var i=0;i<TARGETS.length;i++){ var t=TARGETS[i]; if(p.y===t.y&&p.m===t.m&&p.d===t.d) return true; }
       return false;
     }
-    var lastVal = null;
+    var lastVal = null, shownForDate = null;             // shownForDate = the affected date the popup last showed for (per-date guard, not global)
     function check(){
-      var hit = false, seen = null;
+      var hitKey = null, seen = null;
       dateInputs().forEach(function(inp){
         var v = inp.value; if(v) seen = v;
-        if(inTargets(parse(v))) hit = true;
+        var p = parse(v);
+        if(inTargets(p)) hitKey = p.y + '-' + p.m + '-' + p.d;
       });
-      if(DEBUG && seen !== lastVal){ console.log('[bheatpop] date read:', seen, '-> heat match:', hit); lastVal = seen; }
-      if(hit) show(); else if(!ov.hidden && !dismissed) hide();
+      if(DEBUG && seen !== lastVal){ console.log('[bheatpop] date read:', seen, '-> heat match:', hitKey); lastVal = seen; }
+      if(hitKey){
+        if(hitKey !== shownForDate){ dismissed = false; shownForDate = hitKey; show(); }  // landed on a (new/different) affected date -> re-arm + re-pop
+      } else {
+        shownForDate = null;                                                              // off all affected dates -> clear, so returning re-shows
+        if(!ov.hidden && !dismissed) hide();
+      }
     }
 
     // jQuery UI sets input.value as a PROPERTY (no bubbling change guaranteed), so cover all bases:
