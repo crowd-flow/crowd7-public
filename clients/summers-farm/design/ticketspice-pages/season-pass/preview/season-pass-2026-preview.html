@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Summers Farm — Season Pass 2026 · PREVIEW</title>
+  <style>html,body{margin:0;padding:0;background:#FFFDF7;}</style>
+</head>
+<body>
+<!--
+  ============================================================
+  SUMMERS FARM — SEASON PASS 2026 — TicketSpice landing page (content block)
+  ============================================================
+  Built by Crowdly 2026-06-30 for ClickUp task 86ahze9za (Season Pass).
+  This is page #2 of the cohesive 4-page Summers Farm design system —
+  CLONED from the locked Flower Festival donor style
+  (../flower-festival/production/flower-festival-2026.html, deploy a1b00e4).
+  Same #sb-funnel design system, same brand palette, same components —
+  content swapped to the Season Pass. Hybrid-loader page: lives in
+  crowd7-public, fetched into the live TS page at render time.
+
+  BRAND PALETTE (identical to Flower donor, set 2026-06-15):
+    off-white #FFFDF7 + light blue #9FCAE8 = MAIN
+    barn red #801517 = ACCENT ; dark blue #597792 = ALT ACCENT.
+
+  IMAGES: reuses the same Mat-supplied Summers Farm photo set on
+  longinow-assets (hero + 6 gallery) as the Flower page — these are
+  farm-wide photos, correct for the season pass too.
+
+  CONTENT SOURCE / GROUNDING:
+   - 2025 Season Pass facts (summersfarm.ticketspice.com/season-passes-2025,
+     captured via web 2026-06-30): $50.50/person ONLINE, $54.50/person AT
+     GATE; UNLIMITED visits all season during operating hours; FREE Mega
+     Slide access every visit (a paid add-on for daily admission); 2 & under
+     free. Pays for itself vs ~3 daily fall-weekend admissions ($17.50 online
+     2025).
+   - Farm details carried from the Flower donor: 7503 Hollow Road,
+     Middletown, MD 21769; ages 3-99 ticketed; 45+ attractions;
+     family-owned 29+ years, four generations.
+
+  ⚠️ OPEN — CONFIRM WITH RACHEL BEFORE PUBLISH (flagged, NOT invented):
+   1. 2026 PRICES — figures below are the 2025 reference ($50.50 online /
+      $54.50 gate). Confirm/replace for 2026. (Same convention as Flower.)
+   2. SEASON WINDOW / DATES — Rachel hasn't finalized the 2026 fall season;
+      Season Pass SALE starts "beginning of August" (Rachel 6/30). The
+      "valid all season" window dates are shown as placeholder — confirm.
+   3. SCOPE — does the pass cover BOTH the Flower Festival AND the Fall
+      Festival season, or fall season only? Copy below says "all season
+      long" without over-claiming a specific festival list. Confirm with
+      Rachel and tighten the copy.
+   4. TIERS — 2025 had a single per-person pass (online vs gate). If 2026
+      adds family / senior / child pass tiers, add cards. None invented here.
+
+  NATIVE TS CART: ticket types/prices/caps stay native in TicketSpice per
+  the hybrid-loader split — see ticketspice-build-brief.season-pass.md.
+  ============================================================
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+    #sb-funnel {
+        width: 100vw !important;
+        position: relative !important;
+        left: 50% !important;
+        right: 50% !important;
+        margin-left: -50vw !important;
+        margin-right: -50vw !important;
+        overflow: hidden !important;
+        font-family: 'Open Sans', sans-serif !important;
+        background: #FFFDF7 !important;
+        color: #243642 !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    /* ── BANNER ── */
+    #sb-funnel .sb-banner {
+        width: 100% !important;
+        background: #597792 !important;
+        color: white !important;
+        text-align: center !important;
+        padding: 11px 20px !important;
+        font-size: 0.8rem !important;
+        letter-spacing: 0.06em !important;
+        display: block !important;
+        box-sizing: border-box !important;
+    }
+    #sb-funnel .sb-banner-inner {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 10px !important;
+        flex-wrap: wrap !important;
+    }
+    #sb-funnel .sb-dot {
+        width: 3px !important; height: 3px !important;
+        background: rgba(255,255,255,0.45) !important;
+        border-radius: 50% !important;
+        display: inline-block !important;
+        flex-shrink: 0 !important;
+    }
+
+    /* ── NAV ── */
+    #sb-funnel .sb-nav {
+        width: 100% !important;
+        padding: 0 40px !important;
+        height: 64px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        background: rgba(89,119,146,0.97) !important;
+        position: sticky !important;
+        top: 0 !important;
+        z-index: 100 !important;
+        box-sizing: border-box !important;
+        box-shadow: 0 2px 16px rgba(89,119,146,0.35) !important;
+    }
+    #sb-funnel .sb-logo-wrap {
+        display: flex !important;
+        align-items: center !important;
+        height: 44px !important;
+        flex-shrink: 0 !important; overflow: hidden !important;
+    }
+    #sb-funnel .sb-logo-text {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 1.35rem !important;
+        font-weight: 700 !important;
+        color: white !important;
+        letter-spacing: 0.02em !important;
+        line-height: 1 !important;
+        white-space: nowrap !important;
+    }
+    #sb-funnel .sb-logo-text span { color: #9FCAE8 !important; font-style: italic !important; }
+    #sb-funnel .sb-nav-right {
+        display: flex !important; align-items: center !important; gap: 16px !important;
+    }
+    #sb-funnel .sb-nav-loc {
+        font-size: 0.78rem !important;
+        color: rgba(255,255,255,0.7) !important;
+        display: flex !important; align-items: center !important; gap: 5px !important;
+    }
+    #sb-funnel .sb-nav-cta {
+        background: white !important;
+        color: #801517 !important;
+        padding: 9px 22px !important;
+        border-radius: 50px !important;
+        font-size: 0.83rem !important;
+        font-weight: 700 !important;
+        text-decoration: none !important;
+        letter-spacing: 0.03em !important;
+        transition: all 0.3s ease !important;
+        white-space: nowrap !important;
+        display: inline-block !important;
+    }
+    #sb-funnel .sb-nav-cta:hover {
+        background: #E9F2FA !important;
+        color: #801517 !important;
+        text-decoration: none !important;
+    }
+
+    /* ── HERO ── */
+    #sb-funnel .sb-hero {
+        width: 100% !important;
+        min-height: clamp(320px, 55vw, 580px) !important;
+        position: relative !important;
+        display: flex !important;
+        align-items: flex-end !important;
+        overflow: hidden !important;
+        background-image: url('https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/crowd7-summers-farm-fall-festival/hero.png'), linear-gradient(135deg, #9FCAE8 0%, #597792 45%, #3A5067 100%) !important;
+        background-size: cover !important;
+        background-position: center 45% !important;
+    }
+    #sb-funnel .sb-hero-overlay {
+        position: absolute !important;
+        inset: 0 !important;
+        background: linear-gradient(to bottom, rgba(36,54,66,0.05) 0%, rgba(36,54,66,0.2) 40%, rgba(36,54,66,0.7) 100%) !important;
+        z-index: 1 !important;
+    }
+    #sb-funnel .sb-hero-content {
+        position: relative !important;
+        z-index: 2 !important;
+        padding: 0 48px 48px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    #sb-funnel .sb-hero-eyebrow {
+        font-size: 0.7rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.2em !important;
+        text-transform: uppercase !important;
+        color: rgba(255,255,255,0.8) !important;
+        margin-bottom: 10px !important;
+        display: block !important;
+        opacity: 0;
+        animation: sbFadeUp 0.6s ease 0.2s forwards;
+    }
+    #sb-funnel .sb-hero-title {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: clamp(2.6rem, 8vw, 5rem) !important;
+        font-weight: 700 !important;
+        color: white !important;
+        line-height: 1.0 !important;
+        display: block !important;
+        text-shadow: 0 2px 20px rgba(0,0,0,0.35) !important;
+        opacity: 0;
+        animation: sbFadeUp 0.7s ease 0.35s forwards;
+    }
+    #sb-funnel .sb-hero-title em { font-style: italic !important; color: #9FCAE8 !important; }
+    #sb-funnel .sb-hero-sub {
+        font-size: 0.95rem !important;
+        color: rgba(255,255,255,0.85) !important;
+        margin-top: 14px !important;
+        display: block !important;
+        max-width: 460px !important;
+        line-height: 1.5 !important;
+        opacity: 0;
+        animation: sbFadeUp 0.7s ease 0.5s forwards;
+    }
+    #sb-funnel .sb-hero-cta {
+        margin-top: 26px !important;
+        background: white !important;
+        color: #801517 !important;
+        padding: 14px 38px !important;
+        border-radius: 50px !important;
+        font-size: 1.05rem !important;
+        font-weight: 700 !important;
+        text-decoration: none !important;
+        letter-spacing: 0.03em !important;
+        transition: all 0.3s ease !important;
+        display: inline-block !important;
+        align-self: flex-start !important;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.25) !important;
+        opacity: 0;
+        animation: sbFadeUp 0.7s ease 0.7s forwards;
+    }
+    #sb-funnel .sb-hero-cta:hover {
+        background: #E9F2FA !important;
+        color: #801517 !important;
+        text-decoration: none !important;
+        transform: translateY(-2px) !important;
+    }
+    @keyframes sbFadeUp {
+        from { opacity: 0; transform: translateY(16px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── BENEFITS ── */
+    #sb-funnel .sb-benefits {
+        width: 100% !important;
+        background: white !important;
+        padding: 36px 48px !important;
+        display: block !important;
+        box-sizing: border-box !important;
+        border-bottom: 1px solid rgba(89,119,146,0.1) !important;
+    }
+    #sb-funnel .sb-benefits-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+    #sb-funnel .sb-benefit {
+        text-align: center !important;
+        padding: 8px 20px !important;
+        position: relative !important;
+    }
+    #sb-funnel .sb-benefit:not(:last-child)::after {
+        content: '' !important;
+        position: absolute !important;
+        right: 0 !important; top: 15% !important; bottom: 15% !important;
+        width: 1px !important;
+        background: rgba(89,119,146,0.13) !important;
+    }
+    #sb-funnel .sb-benefit-icon { font-size: 1.7rem !important; margin-bottom: 8px !important; display: block !important; }
+    #sb-funnel .sb-benefit-title {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 1rem !important; font-weight: 600 !important;
+        color: #243642 !important; margin-bottom: 3px !important; display: block !important;
+    }
+    #sb-funnel .sb-benefit-desc {
+        font-size: 0.75rem !important; color: #6E8190 !important;
+        line-height: 1.4 !important; display: block !important;
+    }
+
+    /* ── GALLERY ── */
+    #sb-funnel .sb-gallery {
+        width: 100% !important;
+        background: #FFFDF7 !important;
+        padding: 64px 0 !important;
+        overflow: hidden !important;
+        display: block !important;
+    }
+    #sb-funnel .sb-gallery-header {
+        text-align: center !important;
+        padding: 0 48px !important;
+        margin-bottom: 40px !important;
+    }
+    #sb-funnel .sb-eye {
+        font-size: 0.7rem !important; font-weight: 600 !important;
+        letter-spacing: 0.22em !important; text-transform: uppercase !important;
+        color: #597792 !important; margin-bottom: 8px !important; display: block !important;
+    }
+    #sb-funnel .sb-title {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: clamp(1.8rem, 4.5vw, 2.8rem) !important;
+        font-weight: 700 !important; color: #243642 !important;
+        line-height: 1.15 !important; display: block !important;
+    }
+    #sb-funnel .sb-title em { font-style: italic !important; color: #801517 !important; }
+    #sb-funnel .sb-gallery-mask {
+        width: 100% !important; overflow: hidden !important;
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%) !important;
+        mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%) !important;
+    }
+    #sb-funnel .sb-gallery-track {
+        display: flex !important; gap: 16px !important;
+        width: max-content !important;
+        animation: sbMarquee 24s linear infinite !important;
+        padding: 8px 0 !important;
+    }
+    #sb-funnel .sb-gallery-track:hover { animation-play-state: paused !important; }
+    @keyframes sbMarquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    #sb-funnel .sb-gcard {
+        width: 380px !important; height: 260px !important;
+        border-radius: 20px !important; overflow: hidden !important;
+        flex-shrink: 0 !important; position: relative !important;
+        cursor: pointer !important;
+        background: linear-gradient(135deg, #9FCAE8, #597792) !important;
+        display: flex !important; align-items: center !important;
+        justify-content: center !important; font-size: 3rem !important;
+        transition: transform 0.4s ease, box-shadow 0.4s ease !important;
+    }
+    #sb-funnel .sb-gcard:hover {
+        transform: scale(1.03) translateY(-5px) !important;
+        box-shadow: 0 24px 50px rgba(89,119,146,0.22) !important; z-index: 2 !important;
+    }
+    #sb-funnel .sb-gcard img {
+        width: 100% !important; height: 100% !important;
+        object-fit: cover !important; display: block !important;
+        position: absolute !important; inset: 0 !important;
+        transition: transform 0.6s ease !important;
+    }
+    #sb-funnel .sb-gcard:hover img { transform: scale(1.08) !important; }
+    #sb-funnel .sb-gcard-label {
+        position: absolute !important; bottom: 12px !important; left: 12px !important;
+        background: rgba(46,63,77,0.6) !important; backdrop-filter: blur(8px) !important;
+        color: white !important; font-size: 0.68rem !important; letter-spacing: 0.1em !important;
+        text-transform: uppercase !important; font-weight: 700 !important;
+        padding: 5px 12px !important; border-radius: 20px !important;
+        z-index: 2 !important;
+    }
+
+    /* ── TICKET CARDS ── */
+    #sb-funnel .sb-tickets {
+        width: 100% !important;
+        background: #EAF3FA !important;
+        padding: 72px 48px !important;
+        display: block !important; box-sizing: border-box !important;
+    }
+    #sb-funnel .sb-tickets-header { text-align: center !important; margin-bottom: 48px !important; }
+    #sb-funnel .sb-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(0, 400px)) !important;
+        gap: 24px !important;
+        justify-content: center !important;
+        max-width: 1280px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    /* Base card */
+    #sb-funnel .sb-card {
+        border-radius: 20px !important;
+        padding: 36px 32px !important;
+        position: relative !important;
+        overflow: hidden !important;
+        transition: transform 0.35s ease, box-shadow 0.35s ease !important;
+        display: flex !important; flex-direction: column !important;
+    }
+    #sb-funnel .sb-card:hover { transform: translateY(-6px) !important; }
+
+    /* Color variants */
+    #sb-funnel .sb-card-dark {
+        background: #3A5067 !important;
+        color: white !important;
+    }
+    #sb-funnel .sb-card-dark:hover { box-shadow: 0 20px 44px rgba(0,0,0,0.35) !important; }
+
+    #sb-funnel .sb-card-barn {
+        background: #801517 !important;
+        color: white !important;
+    }
+    #sb-funnel .sb-card-barn:hover { box-shadow: 0 20px 44px rgba(128,21,23,0.4) !important; }
+
+    #sb-funnel .sb-card-cream {
+        background: linear-gradient(145deg, #E9F2FA, #FFFDF7) !important;
+        border: 1px solid rgba(89,119,146,0.14) !important;
+    }
+    #sb-funnel .sb-card-cream:hover { box-shadow: 0 20px 44px rgba(89,119,146,0.14) !important; }
+
+    /* Card internals */
+    #sb-funnel .sb-card-badge {
+        display: inline-block !important;
+        font-size: 0.62rem !important; font-weight: 700 !important;
+        letter-spacing: 0.14em !important; text-transform: uppercase !important;
+        padding: 4px 10px !important; border-radius: 20px !important;
+        margin-bottom: 14px !important; width: fit-content !important;
+    }
+    #sb-funnel .sb-card-badge-light { background: rgba(255,255,255,0.18) !important; color: white !important; }
+    #sb-funnel .sb-card-badge-gold { background: #9FCAE8 !important; color: #243642 !important; }
+    #sb-funnel .sb-card-badge-barn { background: #801517 !important; color: white !important; }
+
+    #sb-funnel .sb-card-icon { font-size: 2.6rem !important; margin-bottom: 14px !important; display: block !important; }
+
+    #sb-funnel .sb-card h3 {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 1.55rem !important; font-weight: 700 !important;
+        line-height: 1.15 !important; margin-bottom: 14px !important; display: block !important;
+    }
+    #sb-funnel .sb-card-cream h3 { color: #243642 !important; }
+    #sb-funnel .sb-card-barn h3,
+    #sb-funnel .sb-card-dark h3 { color: white !important; }
+
+    #sb-funnel .sb-card-bullets {
+        list-style: none !important; padding: 0 !important; margin: 0 0 auto !important;
+        display: flex !important; flex-direction: column !important; gap: 6px !important;
+    }
+    #sb-funnel .sb-card-bullets li {
+        font-size: 0.95rem !important; line-height: 1.55 !important;
+        display: flex !important; align-items: flex-start !important; gap: 8px !important;
+    }
+    #sb-funnel .sb-card-cream .sb-card-bullets li { color: #3F5460 !important; }
+    #sb-funnel .sb-card-barn .sb-card-bullets li,
+    #sb-funnel .sb-card-dark .sb-card-bullets li { color: rgba(255,255,255,0.85) !important; }
+
+    /* Ticket tier rows (reused for the online-vs-gate compare) */
+    #sb-funnel .sb-season-tiers {
+        margin-top: 20px !important;
+        padding-top: 16px !important;
+        border-top: 1px solid rgba(89,119,146,0.18) !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0 !important;
+        flex: 1 !important;
+    }
+    #sb-funnel .sb-season-tier {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 14px 0 !important;
+        gap: 12px !important;
+    }
+    #sb-funnel .sb-season-tier:not(:last-child) {
+        border-bottom: 1px solid rgba(89,119,146,0.1) !important;
+    }
+    #sb-funnel .sb-season-tier-name {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 1rem !important; font-weight: 700 !important;
+        color: #243642 !important; display: block !important; line-height: 1.2 !important;
+    }
+    #sb-funnel .sb-season-tier-desc {
+        font-size: 0.75rem !important;
+        color: #6E8190 !important;
+        display: block !important; margin-top: 2px !important;
+    }
+    #sb-funnel .sb-season-tier-price {
+        text-align: right !important; flex-shrink: 0 !important;
+    }
+    #sb-funnel .sb-season-tier-now {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 1.8rem !important; font-weight: 700 !important;
+        color: #801517 !important; line-height: 1 !important; display: block !important;
+    }
+    #sb-funnel .sb-season-tier-was {
+        font-size: 0.85rem !important; color: #9CA8B0 !important;
+        text-decoration: line-through !important; display: block !important; margin-top: 2px !important;
+    }
+
+    #sb-funnel .sb-card-price {
+        display: flex !important; align-items: baseline !important;
+        gap: 6px !important; margin-top: 20px !important;
+        padding-top: 16px !important;
+    }
+    #sb-funnel .sb-card-dark .sb-card-price { border-top: 1px solid rgba(255,255,255,0.15) !important; }
+    #sb-funnel .sb-card-barn .sb-card-price { border-top: 1px solid rgba(255,255,255,0.15) !important; }
+
+    #sb-funnel .sb-price-num {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 2.8rem !important; font-weight: 700 !important; line-height: 1 !important;
+    }
+    #sb-funnel .sb-card-dark .sb-price-num { color: #9FCAE8 !important; }
+    #sb-funnel .sb-card-barn .sb-price-num { color: #9FCAE8 !important; }
+
+    #sb-funnel .sb-price-label {
+        font-size: 0.88rem !important; line-height: 1.4 !important;
+    }
+    #sb-funnel .sb-card-dark .sb-price-label { color: rgba(255,255,255,0.55) !important; }
+    #sb-funnel .sb-card-barn .sb-price-label { color: rgba(255,255,255,0.55) !important; }
+
+    #sb-funnel .sb-card-note {
+        font-size: 0.72rem !important; font-style: italic !important;
+        margin-top: 10px !important; display: block !important; line-height: 1.5 !important;
+    }
+    #sb-funnel .sb-card-barn .sb-card-note { color: rgba(255,255,255,0.5) !important; }
+    #sb-funnel .sb-card-dark .sb-card-note { color: rgba(255,255,255,0.45) !important; }
+    #sb-funnel .sb-card-cream .sb-card-note { color: #6E8190 !important; }
+
+    /* ── INFO ROW ── */
+    #sb-funnel .sb-info {
+        width: 100% !important;
+        background: #597792 !important;
+        padding: 0 !important; display: block !important; box-sizing: border-box !important;
+    }
+    #sb-funnel .sb-info-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+    #sb-funnel .sb-info-item {
+        text-align: center !important;
+        padding: 28px 20px !important;
+        position: relative !important;
+    }
+    #sb-funnel .sb-info-item:not(:last-child)::after {
+        content: '' !important; position: absolute !important;
+        right: 0 !important; top: 20% !important; bottom: 20% !important;
+        width: 1px !important; background: rgba(255,255,255,0.18) !important;
+    }
+    #sb-funnel .sb-info-icon { font-size: 1.5rem !important; display: block !important; margin-bottom: 6px !important; }
+    #sb-funnel .sb-info-label {
+        font-size: 0.62rem !important; font-weight: 700 !important;
+        letter-spacing: 0.16em !important; text-transform: uppercase !important;
+        color: rgba(255,255,255,0.6) !important; display: block !important; margin-bottom: 4px !important;
+    }
+    #sb-funnel .sb-info-value {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 0.95rem !important; font-weight: 600 !important;
+        color: white !important; display: block !important; line-height: 1.3 !important;
+    }
+
+    /* ── REVEAL ── */
+    #sb-funnel .sbr {
+        opacity: 0 !important; transform: translateY(28px) !important;
+        transition: opacity 0.7s cubic-bezier(.16,1,.3,1), transform 0.7s cubic-bezier(.16,1,.3,1) !important;
+    }
+    #sb-funnel .sbr.sbon { opacity: 1 !important; transform: none !important; }
+    #sb-funnel .sbr.d1 { transition-delay: 0.1s !important; }
+    #sb-funnel .sbr.d2 { transition-delay: 0.2s !important; }
+    #sb-funnel .sbr.d3 { transition-delay: 0.3s !important; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1000px) {
+        #sb-funnel .sb-grid { grid-template-columns: repeat(2, minmax(0, 420px)) !important; }
+    }
+    @media (max-width: 860px) {
+        #sb-funnel .sb-nav { padding: 0 24px !important; }
+        #sb-funnel .sb-benefits { padding: 32px 24px !important; }
+        #sb-funnel .sb-tickets { padding: 56px 24px !important; }
+        #sb-funnel .sb-info-grid { grid-template-columns: 1fr 1fr !important; }
+        #sb-funnel .sb-info-item:nth-child(2n)::after { display: none !important; }
+        #sb-funnel .sb-gallery-header { padding: 0 24px !important; }
+        #sb-funnel .sb-gcard { width: 300px !important; height: 210px !important; }
+    }
+    @media (max-width: 560px) {
+        #sb-funnel .sb-nav { padding: 0 16px !important; }
+        #sb-funnel .sb-nav-loc { display: none !important; }
+        #sb-funnel .sb-benefits { padding: 24px 16px !important; }
+        #sb-funnel .sb-benefits-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 14px 0 !important; }
+        #sb-funnel .sb-benefit:nth-child(2n)::after { display: none !important; }
+        #sb-funnel .sb-tickets { padding: 48px 16px !important; }
+        #sb-funnel .sb-grid { grid-template-columns: 1fr !important; }
+        #sb-funnel .sb-gallery-header { padding: 0 16px !important; }
+        #sb-funnel .sb-gcard { width: 240px !important; height: 170px !important; }
+    }
+
+    /* ── ADD-ONS + ATTRACTIONS + FINE PRINT ── */
+    #sb-funnel .sb-addons {
+        width: 100% !important; background: #FFFDF7 !important;
+        padding: 56px 48px !important; box-sizing: border-box !important;
+        border-top: 1px solid rgba(89,119,146,0.1) !important;
+    }
+    #sb-funnel .sb-addons-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(0, 360px)) !important;
+        gap: 12px 24px !important; justify-content: center !important;
+        max-width: 1180px !important; margin: 28px auto 0 !important;
+    }
+    #sb-funnel .sb-addon {
+        display: flex !important; justify-content: space-between !important;
+        align-items: center !important; gap: 12px !important;
+        padding: 13px 18px !important; background: white !important;
+        border: 1px solid rgba(89,119,146,0.14) !important; border-radius: 14px !important;
+    }
+    #sb-funnel .sb-addon-name { font-size: 0.88rem !important; color: #3F5460 !important; line-height: 1.35 !important; }
+    #sb-funnel .sb-addon-price {
+        font-family: 'Zilla Slab', serif !important; font-weight: 700 !important;
+        color: #801517 !important; font-size: 1.05rem !important; white-space: nowrap !important;
+    }
+    #sb-funnel .sb-addon-note {
+        text-align: center !important; font-size: 0.8rem !important;
+        color: #6E8190 !important; font-style: italic !important; margin: 22px auto 0 !important;
+        max-width: 720px !important; line-height: 1.5 !important;
+    }
+    #sb-funnel .sb-attractions {
+        width: 100% !important; background: white !important;
+        padding: 56px 48px !important; box-sizing: border-box !important;
+        border-top: 1px solid rgba(89,119,146,0.1) !important;
+    }
+    #sb-funnel .sb-attr-list {
+        display: flex !important; flex-wrap: wrap !important; gap: 8px 10px !important;
+        justify-content: center !important; max-width: 1000px !important; margin: 24px auto 0 !important;
+    }
+    #sb-funnel .sb-attr-chip {
+        font-size: 0.8rem !important; color: #3F5460 !important; background: #EAF3FA !important;
+        border-radius: 20px !important; padding: 6px 14px !important;
+    }
+    #sb-funnel .sb-fine {
+        width: 100% !important; background: #2E3F4D !important;
+        color: rgba(255,255,255,0.7) !important; padding: 36px 48px !important;
+        box-sizing: border-box !important; font-size: 0.74rem !important; line-height: 1.7 !important;
+    }
+    #sb-funnel .sb-fine-inner { max-width: 1000px !important; margin: 0 auto !important; }
+    #sb-funnel .sb-fine strong { color: rgba(255,255,255,0.92) !important; }
+    @media (max-width: 860px) {
+        #sb-funnel .sb-addons, #sb-funnel .sb-attractions, #sb-funnel .sb-fine {
+            padding-left: 24px !important; padding-right: 24px !important;
+        }
+        #sb-funnel .sb-addons-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+    }
+    @media (max-width: 560px) {
+        #sb-funnel .sb-addons, #sb-funnel .sb-attractions, #sb-funnel .sb-fine {
+            padding-left: 16px !important; padding-right: 16px !important;
+        }
+        #sb-funnel .sb-addons-grid { grid-template-columns: 1fr !important; }
+    }
+
+    /* ── WHY A SEASON PASS — value band (reuses the donor's grown-ups band styling) ── */
+    #sb-funnel .sb-grownups {
+        width: 100% !important; background: #597792 !important;
+        padding: 64px 48px !important; box-sizing: border-box !important;
+    }
+    #sb-funnel .sb-grownups-grid {
+        display: grid !important; grid-template-columns: repeat(4, 1fr) !important;
+        gap: 20px !important; max-width: 1180px !important; margin: 36px auto 0 !important;
+    }
+    #sb-funnel .sb-grownup-card {
+        background: rgba(255,255,255,0.08) !important;
+        border: 1px solid rgba(255,255,255,0.16) !important;
+        border-radius: 18px !important; padding: 28px 22px !important;
+        text-align: center !important;
+        transition: transform 0.3s ease, background 0.3s ease !important;
+    }
+    #sb-funnel .sb-grownup-card:hover {
+        transform: translateY(-5px) !important; background: rgba(255,255,255,0.13) !important;
+    }
+    #sb-funnel .sb-grownup-icon { font-size: 2.4rem !important; display: block !important; margin-bottom: 12px !important; }
+    #sb-funnel .sb-grownup-title {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 1.2rem !important; font-weight: 700 !important; color: #ffffff !important;
+        display: block !important; margin-bottom: 6px !important;
+    }
+    #sb-funnel .sb-grownup-desc {
+        font-size: 0.82rem !important; color: rgba(255,255,255,0.78) !important;
+        line-height: 1.45 !important; display: block !important;
+    }
+    @media (max-width: 860px) {
+        #sb-funnel .sb-grownups { padding: 48px 24px !important; }
+        #sb-funnel .sb-grownups-grid { grid-template-columns: 1fr 1fr !important; }
+    }
+    @media (max-width: 560px) {
+        #sb-funnel .sb-grownups { padding: 40px 16px !important; }
+        #sb-funnel .sb-grownups-grid { grid-template-columns: 1fr !important; }
+    }
+</style>
+
+<!-- TicketSpice native-cart CSS (Summers Farm) — brand-recolored, identical to the Flower donor -->
+<style>
+.field-banner td { border: none; }
+.campaign-form:not(.legacy-form) hr.line-break { border-color: rgba(89,119,146,0.25) !important; }
+.field-gallery { background: white; }
+.field-gallery { background-image: url(""); }
+@media screen and (max-width: 768px) {
+  .field-image-single.field-image--fw { padding: 1px 0 !important; }
+}
+.field-image-single { background: transparent; padding-top: 0px; padding-bottom: 0px; }
+.field-location.header-field h4 { background: #801517; color: white !important; }
+.wbx-calendar .row .day { border-radius: 35px; color: #ffffff; cursor: default; flex: 1; height: 40px; margin: 1px !important; transition: all .2s; }
+.ticket-block .wbx-calendar .row .day.enabled { color: white; background-color: #597792; }
+.ticket-block .wbx-calendar .row .day.enabled.sold-out { color: white; background-color: #A9B6BF; }
+.ticket-block table.holds-tickets th { color: #FFFFFF !important; background: #597792; }
+.campaign-form:not(.legacy-form) .ticket-block table.holds-tickets { border: 2px solid #597792; border-radius: 10px; border-spacing: 0; box-shadow: 0 10px 24px rgba(89,119,146,0.18); width: 100%; }
+.campaign-form:not(.legacy-form) .ticket-block table.holds-tickets { border-collapse: separate !important; background-color: white; border-spacing: 0; box-shadow: 0 10px 24px rgba(89,119,146,0.18); width: 100%; }
+.campaign-form:not(.legacy-form) ul.upgrades li img.product-thumbnail { border-radius: 10px; box-shadow: 0 10px 24px rgba(89,119,146,0.18); }
+.campaign-form:not(.legacy-form) .field-purchaseProtection .purchase-protection .purchase-protection-header { background-color: white; border: 2px solid #597792; border-bottom: 2px solid #597792; color: #243642 !important; font-size: 18px; font-weight: 700; padding: 12px 32px; }
+.purchase-protection .purchase-protection-body { background-color: white; padding: 15px; border: 2px solid #597792; }
+.campaign-form:not(.legacy-form) .btn-danger, .campaign-form:not(.legacy-form) .btn-primary, .campaign-form:not(.legacy-form) .btn:not(.btn--transparent):not(.btn--plus):not(.btn--minus):not(.btn--home):not(.btn--tooltipstered):not(.btn--blue) { font-size: 15px; color: white; background-color: #801517; border-radius: 10px; font-family: fatfrank,Segoe UI,Helvetica Neue,Arial,Noto Sans,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji,-apple-system,sans-serif; font-weight: bold; height: 44px; min-height: 44px; padding: 15px 20px; text-transform: uppercase; }
+</style>
+
+<div id="sb-funnel">
+
+    <!-- BANNER -->
+    <div class="sb-banner">
+        <div class="sb-banner-inner">
+            <span>🎟️ <strong>Summers Farm Season Pass</strong></span>
+            <span class="sb-dot"></span>
+            <span>Middletown, MD · Family Owned, 29+ Years</span>
+            <span class="sb-dot"></span>
+            <span>Unlimited Visits All Season Long</span>
+        </div>
+    </div>
+
+    <!-- NAV -->
+    <div class="sb-nav">
+        <div class="sb-logo-wrap">
+            <span class="sb-logo-text">Summers <span>Farm</span></span>
+        </div>
+        <div class="sb-nav-right">
+            <div class="sb-nav-loc">
+                <svg width="12" height="12" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                    <circle cx="12" cy="11" r="3"/>
+                </svg>
+                Middletown, MD
+            </div>
+            <a href="#ticketBlock" class="sb-nav-cta">Get a Pass</a>
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <div class="sb-hero">
+        <div class="sb-hero-overlay"></div>
+        <div class="sb-hero-content">
+            <span class="sb-hero-eyebrow">Summers Farm · Middletown, MD · Unlimited Season Access</span>
+            <span class="sb-hero-title">Season <em>Pass</em></span>
+            <span class="sb-hero-sub">One pass, the whole season. Come back as many times as you like all season long — and ride the Mega Slide free every single visit.</span>
+        </div>
+    </div>
+
+    <!-- WHY A SEASON PASS — value band -->
+    <div class="sb-grownups">
+        <div class="sb-tickets-header sbr">
+            <span class="sb-eye" style="color:#9FCAE8 !important;">Best Value on the Farm</span>
+            <span class="sb-title" style="color:#ffffff !important;">Why families go <em style="color:#9FCAE8 !important;">season pass</em></span>
+        </div>
+        <div class="sb-grownups-grid sbr">
+            <div class="sb-grownup-card">
+                <span class="sb-grownup-icon">♾️</span>
+                <span class="sb-grownup-title">Unlimited Visits</span>
+                <span class="sb-grownup-desc">Come back as often as you want, all season long</span>
+            </div>
+            <div class="sb-grownup-card">
+                <span class="sb-grownup-icon">🛝</span>
+                <span class="sb-grownup-title">Free Mega Slide</span>
+                <span class="sb-grownup-desc">Ride it free every visit — no extra purchase</span>
+            </div>
+            <div class="sb-grownup-card">
+                <span class="sb-grownup-icon">💸</span>
+                <span class="sb-grownup-title">Pays for Itself</span>
+                <span class="sb-grownup-desc">Visit ~3 times and the pass has already paid off</span>
+            </div>
+            <div class="sb-grownup-card">
+                <span class="sb-grownup-icon">🎪</span>
+                <span class="sb-grownup-title">45+ Attractions</span>
+                <span class="sb-grownup-desc">Every ride &amp; activity, every time you come</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- BENEFITS -->
+    <div class="sb-benefits">
+        <div class="sb-benefits-grid">
+            <div class="sb-benefit">
+                <span class="sb-benefit-icon">♾️</span>
+                <span class="sb-benefit-title">Unlimited All Season</span>
+                <span class="sb-benefit-desc">Visit again and again, one price</span>
+            </div>
+            <div class="sb-benefit">
+                <span class="sb-benefit-icon">🛝</span>
+                <span class="sb-benefit-title">Mega Slide Included</span>
+                <span class="sb-benefit-desc">Free every visit, all season</span>
+            </div>
+            <div class="sb-benefit">
+                <span class="sb-benefit-icon">🎪</span>
+                <span class="sb-benefit-title">45+ Attractions</span>
+                <span class="sb-benefit-desc">Slides, jumping pillows, zip lines</span>
+            </div>
+            <div class="sb-benefit">
+                <span class="sb-benefit-icon">👶</span>
+                <span class="sb-benefit-title">2 &amp; Under Free</span>
+                <span class="sb-benefit-desc">No pass needed for the littlest</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- GALLERY -->
+    <div class="sb-gallery">
+        <div class="sb-gallery-header sbr">
+            <span class="sb-eye">29+ Years · Family Owned · Four Generations</span>
+            <span class="sb-title">A whole season of <em>farm fun</em></span>
+        </div>
+        <div class="sb-gallery-mask">
+            <div class="sb-gallery-track">
+                <div class="sb-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/crowd7-summers-farm-fall-festival/gallery-1.png" alt="Fresh farm food at Summers Farm" loading="lazy"><div class="sb-gcard-label">Farm Eats</div></div>
+                <div class="sb-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/crowd7-summers-farm-fall-festival/gallery-2.png" alt="Family in the fields at Summers Farm" loading="lazy"><div class="sb-gcard-label">Family Fun</div></div>
+                <div class="sb-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/crowd7-summers-farm-fall-festival/gallery-3.png" alt="Racing down the Mega Slide" loading="lazy"><div class="sb-gcard-label">Mega Slide</div></div>
+                <div class="sb-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/crowd7-summers-farm-fall-festival/gallery-4.png" alt="Dad and toddler on the jumping pillow" loading="lazy"><div class="sb-gcard-label">Jumping Pillows</div></div>
+                <div class="sb-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/crowd7-summers-farm-fall-festival/gallery-5.png" alt="Couple at Summers Farm" loading="lazy"><div class="sb-gcard-label">All Season Long</div></div>
+                <div class="sb-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/crowd7-summers-farm-fall-festival/gallery-6.png" alt="Family enjoying the farm" loading="lazy"><div class="sb-gcard-label">Family Memories</div></div>
+                <!-- Duplicate set for the seamless marquee loop -->
+                <div class="sb-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/crowd7-summers-farm-fall-festival/gallery-1.png" alt="" loading="lazy" aria-hidden="true"><div class="sb-gcard-label">Farm Eats</div></div>
+                <div class="sb-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/crowd7-summers-farm-fall-festival/gallery-2.png" alt="" loading="lazy" aria-hidden="true"><div class="sb-gcard-label">Family Fun</div></div>
+                <div class="sb-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/crowd7-summers-farm-fall-festival/gallery-3.png" alt="" loading="lazy" aria-hidden="true"><div class="sb-gcard-label">Mega Slide</div></div>
+                <div class="sb-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/crowd7-summers-farm-fall-festival/gallery-4.png" alt="" loading="lazy" aria-hidden="true"><div class="sb-gcard-label">Jumping Pillows</div></div>
+                <div class="sb-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/crowd7-summers-farm-fall-festival/gallery-5.png" alt="" loading="lazy" aria-hidden="true"><div class="sb-gcard-label">All Season Long</div></div>
+                <div class="sb-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/crowd7-summers-farm-fall-festival/gallery-6.png" alt="" loading="lazy" aria-hidden="true"><div class="sb-gcard-label">Family Memories</div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TICKETS -->
+    <div class="sb-tickets" id="tickets">
+        <div class="sb-tickets-header sbr">
+            <span class="sb-eye">Summers Farm Season Pass</span>
+            <span class="sb-title">One pass, <em>all season</em></span>
+        </div>
+        <div class="sb-grid">
+
+            <!-- SEASON PASS — main offer -->
+            <div class="sb-card sb-card-barn sbr">
+                <span class="sb-card-badge sb-card-badge-light">Most Popular</span>
+                <span class="sb-card-icon">🎟️</span>
+                <h3>Season Pass</h3>
+                <ul class="sb-card-bullets">
+                    <li>♾️ Unlimited visits all season long</li>
+                    <li>🛝 Free Mega Slide every single visit</li>
+                    <li>🎪 All 45+ attractions, every time you come</li>
+                    <li>👶 Ages 3–99 need a pass · 2 &amp; under always free</li>
+                </ul>
+                <div class="sb-card-price">
+                    <span class="sb-price-num">$50.50</span>
+                    <span class="sb-price-label">per person<br>online · incl. fees</span>
+                </div>
+                <span class="sb-card-note">Save by buying online — just $54.50 per person at the gate.</span>
+            </div>
+
+            <!-- WHAT'S INCLUDED -->
+            <div class="sb-card sb-card-dark sbr d1">
+                <span class="sb-card-badge sb-card-badge-gold">What You Get</span>
+                <span class="sb-card-icon">🌾</span>
+                <h3>Everything Your Pass Unlocks</h3>
+                <ul class="sb-card-bullets">
+                    <li>🚜 Wagon rides &amp; the whole farm, every visit</li>
+                    <li>🐐 Barnyard animals, corn pits &amp; jumping pillows</li>
+                    <li>🪁 Flying Pigs zip line, giant slides &amp; obstacle course</li>
+                    <li>🎶 Live music &amp; farm food on festival weekends</li>
+                </ul>
+                <div class="sb-card-price">
+                    <span class="sb-price-num">♾️</span>
+                    <span class="sb-price-label">unlimited<br>all season long</span>
+                </div>
+                <span class="sb-card-note">No per-visit ticket — your pass is your admission every time.</span>
+            </div>
+
+            <!-- ONLINE VS GATE -->
+            <div class="sb-card sb-card-cream sbr d2">
+                <span class="sb-card-badge sb-card-badge-barn">Buy Online &amp; Save</span>
+                <span class="sb-card-icon">💸</span>
+                <h3>Online vs. Gate</h3>
+                <ul class="sb-card-bullets">
+                    <li>🌸 Same unlimited-season pass either way</li>
+                </ul>
+                <div class="sb-season-tiers">
+                    <div class="sb-season-tier">
+                        <div>
+                            <span class="sb-season-tier-name">Buy Online</span>
+                            <span class="sb-season-tier-desc">Best price · ready before you arrive</span>
+                        </div>
+                        <div class="sb-season-tier-price">
+                            <span class="sb-season-tier-now">$50.50</span>
+                        </div>
+                    </div>
+                    <div class="sb-season-tier">
+                        <div>
+                            <span class="sb-season-tier-name">At the Gate</span>
+                            <span class="sb-season-tier-desc">Same pass · $4 more per person</span>
+                        </div>
+                        <div class="sb-season-tier-price">
+                            <span class="sb-season-tier-now">$54.50</span>
+                        </div>
+                    </div>
+                </div>
+                <span class="sb-card-note">All prices include TS fees. Ages 2 &amp; under free — no pass needed.</span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 45+ ATTRACTIONS -->
+    <div class="sb-attractions">
+        <div class="sb-tickets-header sbr">
+            <span class="sb-eye">All Included With Your Pass</span>
+            <span class="sb-title">45+ <em>attractions</em></span>
+        </div>
+        <div class="sb-attr-list sbr">
+            <span class="sb-attr-chip">Giant Slides</span>
+            <span class="sb-attr-chip">Barnyard Animals</span>
+            <span class="sb-attr-chip">Corn Pits</span>
+            <span class="sb-attr-chip">Bull Riding</span>
+            <span class="sb-attr-chip">Wagon Rides</span>
+            <span class="sb-attr-chip">Flying Pigs Zipline</span>
+            <span class="sb-attr-chip">Farmer Mini Golf</span>
+            <span class="sb-attr-chip">Tug-O-War</span>
+            <span class="sb-attr-chip">Straw Mountain</span>
+            <span class="sb-attr-chip">Jumping Pillows</span>
+            <span class="sb-attr-chip">Rugged Farmer Obstacle Course</span>
+            <span class="sb-attr-chip">Corn Hole</span>
+            <span class="sb-attr-chip">Swings</span>
+            <span class="sb-attr-chip">Bubble Barn</span>
+            <span class="sb-attr-chip">Photo Ops</span>
+        </div>
+    </div>
+
+    <!-- INFO ROW -->
+    <div class="sb-info">
+        <div class="sb-info-grid">
+            <div class="sb-info-item">
+                <span class="sb-info-icon">📍</span>
+                <span class="sb-info-label">Location</span>
+                <span class="sb-info-value">7503 Hollow Road<br>Middletown, MD 21769</span>
+            </div>
+            <div class="sb-info-item">
+                <span class="sb-info-icon">♾️</span>
+                <span class="sb-info-label">Pass Validity</span>
+                <span class="sb-info-value">Unlimited visits<br>All season · 2026</span>
+            </div>
+            <div class="sb-info-item">
+                <span class="sb-info-icon">🎟️</span>
+                <span class="sb-info-label">Who Needs a Pass</span>
+                <span class="sb-info-value">Ages 3–99<br>2 &amp; under free</span>
+            </div>
+            <div class="sb-info-item">
+                <span class="sb-info-icon">🛝</span>
+                <span class="sb-info-label">Pass Perk</span>
+                <span class="sb-info-value">Free Mega Slide<br>Every visit</span>
+            </div>
+        </div>
+    </div>
+
+</div><!-- end #sb-funnel -->
+
+<script>
+    (function() {
+        var obs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) {
+                if (e.isIntersecting) { e.target.classList.add('sbon'); obs.unobserve(e.target); }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('#sb-funnel .sbr').forEach(function(el) {
+            obs.observe(el);
+            if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('sbon');
+        });
+        document.querySelectorAll('#sb-funnel a[href^="#"]').forEach(function(a) {
+            a.addEventListener('click', function(e) {
+                e.preventDefault();
+                var t = document.querySelector(a.getAttribute('href'));
+                if (t) t.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    })();
+</script>
+
+<!-- ============================================================
+     SUMMERS FARM — FLOATING GET-A-PASS BUTTON (donor pattern)
+     ============================================================ -->
+<style>
+    #sf-float-btn {
+        position: fixed !important;
+        bottom: 0 !important; left: 0 !important; right: 0 !important;
+        z-index: 9999 !important;
+        padding: 12px 16px 20px !important;
+        background: linear-gradient(to top, rgba(255,253,247,0.97) 55%, transparent) !important;
+        display: flex !important; justify-content: center !important;
+        transition: opacity 0.35s ease, transform 0.35s ease !important;
+    }
+    #sf-float-btn.sf-float-hidden {
+        opacity: 0 !important; transform: translateY(24px) !important; pointer-events: none !important;
+    }
+    #sf-float-btn a {
+        display: block !important; width: 100% !important; max-width: 480px !important;
+        background: #801517 !important; color: #ffffff !important;
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 22px !important; font-weight: 700 !important; letter-spacing: 0.06em !important;
+        text-align: center !important; text-decoration: none !important;
+        padding: 18px 28px !important; border-radius: 50px !important;
+        box-shadow: 0 8px 32px rgba(128,21,23,0.40) !important;
+        transition: transform 0.15s, box-shadow 0.15s, background 0.2s !important;
+        border: none !important; cursor: pointer !important;
+    }
+    #sf-float-btn a:hover {
+        background: #6B1113 !important; transform: translateY(-2px) !important;
+        box-shadow: 0 14px 40px rgba(128,21,23,0.55) !important;
+        color: #ffffff !important; text-decoration: none !important;
+    }
+</style>
+<div id="sf-float-btn">
+    <a href="#ticketBlock">Get a Season Pass</a>
+</div>
+<script>
+    (function() {
+        var fb = document.getElementById('sf-float-btn');
+        if (fb) {
+            fb.querySelector('a').addEventListener('click', function() {
+                fb.classList.add('sf-float-hidden');
+            });
+        }
+    })();
+</script>
+
+</body>
+</html>
