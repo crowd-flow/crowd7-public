@@ -616,34 +616,73 @@
         }
         #sb-funnel .sb-addons-grid { grid-template-columns: 1fr !important; }
     }
+
+    /* ── FOR THE GROWN-UPS — adult-activities emphasis band (Rachel edit #3, 2026-06-30) ── */
+    #sb-funnel .sb-grownups {
+        width: 100% !important; background: #597792 !important;
+        padding: 64px 48px !important; box-sizing: border-box !important;
+    }
+    #sb-funnel .sb-grownups-grid {
+        display: grid !important; grid-template-columns: repeat(4, 1fr) !important;
+        gap: 20px !important; max-width: 1180px !important; margin: 36px auto 0 !important;
+    }
+    #sb-funnel .sb-grownup-card {
+        background: rgba(255,255,255,0.08) !important;
+        border: 1px solid rgba(255,255,255,0.16) !important;
+        border-radius: 18px !important; padding: 28px 22px !important;
+        text-align: center !important;
+        transition: transform 0.3s ease, background 0.3s ease !important;
+    }
+    #sb-funnel .sb-grownup-card:hover {
+        transform: translateY(-5px) !important; background: rgba(255,255,255,0.13) !important;
+    }
+    #sb-funnel .sb-grownup-icon { font-size: 2.4rem !important; display: block !important; margin-bottom: 12px !important; }
+    #sb-funnel .sb-grownup-title {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 1.2rem !important; font-weight: 700 !important; color: #ffffff !important;
+        display: block !important; margin-bottom: 6px !important;
+    }
+    #sb-funnel .sb-grownup-desc {
+        font-size: 0.82rem !important; color: rgba(255,255,255,0.78) !important;
+        line-height: 1.45 !important; display: block !important;
+    }
+    @media (max-width: 860px) {
+        #sb-funnel .sb-grownups { padding: 48px 24px !important; }
+        #sb-funnel .sb-grownups-grid { grid-template-columns: 1fr 1fr !important; }
+    }
+    @media (max-width: 560px) {
+        #sb-funnel .sb-grownups { padding: 40px 16px !important; }
+        #sb-funnel .sb-grownups-grid { grid-template-columns: 1fr !important; }
+    }
 </style>
 
 <!-- TicketSpice native-cart CSS — added 2026-06-15 per Mat -->
 <style>
-/* TicketSpice native-cart CSS (Summers Farm) — added 2026-06-15 per Mat.
-   Global TS selectors, NOT scoped to #sb-funnel. 3 syntax bugs fixed:
-   #fffff→#ffffff, + 2 missing semicolons. Colors left as Mat pasted (old
-   orange/green/black palette) — palette-clash with the recolored page is
-   flagged; rebrand pending Mat's call. */
+/* TicketSpice native-cart CSS (Summers Farm) — RECOLORED TO BRAND 2026-06-30
+   per Rachel edit #1 (mirror summersfarm.com colors) + edit #2 (de-busy the
+   ticket area). The old orange/green/black palette + red-orange glow that
+   clashed with the recolored page is swapped for the brand set:
+   barn red #801517 (accent/CTA), slate blue #597792 (headers/available),
+   soft slate shadows. Global TS selectors, NOT scoped to #sb-funnel. */
 .field-banner td { border: none; }
-.campaign-form:not(.legacy-form) hr.line-break { border-color: #000000 !important; }
+.campaign-form:not(.legacy-form) hr.line-break { border-color: rgba(89,119,146,0.25) !important; }
 .field-gallery { background: white; }
 .field-gallery { background-image: url(""); }
 @media screen and (max-width: 768px) {
   .field-image-single.field-image--fw { padding: 1px 0 !important; }
 }
 .field-image-single { background: transparent; padding-top: 0px; padding-bottom: 0px; }
-.field-location.header-field h4 { background: #FF9900; color: white !important; }
+.field-location.header-field h4 { background: #801517; color: white !important; }
 .wbx-calendar .row .day { border-radius: 35px; color: #ffffff; cursor: default; flex: 1; height: 40px; margin: 1px !important; transition: all .2s; }
-.ticket-block .wbx-calendar .row .day.enabled { color: white; background-color: #3C8A4D; }
-.ticket-block .wbx-calendar .row .day.enabled.sold-out { color: white; background-color: #B93D45; }
-.ticket-block table.holds-tickets th { color: #FFFFFF !important; background: #000000; }
-.campaign-form:not(.legacy-form) .ticket-block table.holds-tickets { border: 3px solid black; border-radius: 10px; border-spacing: 0; box-shadow: 0 10px 20px rgb(206, 43, 25); width: 100%; }
-.campaign-form:not(.legacy-form) .ticket-block table.holds-tickets { border-collapse: separate !important; background-color: white; border-spacing: 0; box-shadow: 0 10px 20px rgb(206, 43, 25); width: 100%; }
-.campaign-form:not(.legacy-form) ul.upgrades li img.product-thumbnail { border-radius: 10px; box-shadow: 0 10px 20px rgb(206, 43, 25); }
-.campaign-form:not(.legacy-form) .field-purchaseProtection .purchase-protection .purchase-protection-header { background-color: white; border: 3px solid black; border-bottom: 3px solid black; color: black !important; font-size: 18px; font-weight: 700; padding: 12px 32px; }
-.purchase-protection .purchase-protection-body { background-color: white; padding: 15px; border: 3px solid black; }
-.campaign-form:not(.legacy-form) .btn-danger, .campaign-form:not(.legacy-form) .btn-primary, .campaign-form:not(.legacy-form) .btn:not(.btn--transparent):not(.btn--plus):not(.btn--minus):not(.btn--home):not(.btn--tooltipstered):not(.btn--blue) { font-size: 15px; color: white; border-radius: 10px; font-family: fatfrank,Segoe UI,Helvetica Neue,Arial,Noto Sans,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji,-apple-system,sans-serif; font-weight: bold; height: 44px; min-height: 44px; padding: 15px 20px; text-transform: uppercase; }
+.ticket-block .wbx-calendar .row .day.enabled { color: white; background-color: #597792; }
+.ticket-block .wbx-calendar .row .day.enabled.sold-out { color: white; background-color: #A9B6BF; }
+.ticket-block table.holds-tickets th { color: #FFFFFF !important; background: #597792; }
+.campaign-form:not(.legacy-form) .ticket-block table.holds-tickets { border: 2px solid #597792; border-radius: 10px; border-spacing: 0; box-shadow: 0 10px 24px rgba(89,119,146,0.18); width: 100%; }
+.campaign-form:not(.legacy-form) .ticket-block table.holds-tickets { border-collapse: separate !important; background-color: white; border-spacing: 0; box-shadow: 0 10px 24px rgba(89,119,146,0.18); width: 100%; }
+.campaign-form:not(.legacy-form) ul.upgrades li img.product-thumbnail { border-radius: 10px; box-shadow: 0 10px 24px rgba(89,119,146,0.18); }
+.campaign-form:not(.legacy-form) .field-purchaseProtection .purchase-protection .purchase-protection-header { background-color: white; border: 2px solid #597792; border-bottom: 2px solid #597792; color: #243642 !important; font-size: 18px; font-weight: 700; padding: 12px 32px; }
+.purchase-protection .purchase-protection-body { background-color: white; padding: 15px; border: 2px solid #597792; }
+.campaign-form:not(.legacy-form) .btn-danger, .campaign-form:not(.legacy-form) .btn-primary, .campaign-form:not(.legacy-form) .btn:not(.btn--transparent):not(.btn--plus):not(.btn--minus):not(.btn--home):not(.btn--tooltipstered):not(.btn--blue) { font-size: 15px; color: white; background-color: #801517; border-radius: 10px; font-family: fatfrank,Segoe UI,Helvetica Neue,Arial,Noto Sans,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji,-apple-system,sans-serif; font-weight: bold; height: 44px; min-height: 44px; padding: 15px 20px; text-transform: uppercase; }
 </style>
 
 <div id="sb-funnel">
@@ -736,6 +775,36 @@
                 <div class="sb-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/crowd7-summers-farm-fall-festival/gallery-4.png" alt="" loading="lazy" aria-hidden="true"><div class="sb-gcard-label">Jumping Pillows</div></div>
                 <div class="sb-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/crowd7-summers-farm-fall-festival/gallery-5.png" alt="" loading="lazy" aria-hidden="true"><div class="sb-gcard-label">Sunflower Fields</div></div>
                 <div class="sb-gcard"><img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/crowd7-summers-farm-fall-festival/gallery-6.png" alt="" loading="lazy" aria-hidden="true"><div class="sb-gcard-label">Family Memories</div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOR THE GROWN-UPS — adult-activities emphasis (Rachel edit #3) -->
+    <div class="sb-grownups">
+        <div class="sb-tickets-header sbr">
+            <span class="sb-eye" style="color:#9FCAE8 !important;">Not Just for the Kids</span>
+            <span class="sb-title" style="color:#ffffff !important;">For the <em style="color:#9FCAE8 !important;">grown-ups</em>, too</span>
+        </div>
+        <div class="sb-grownups-grid sbr">
+            <div class="sb-grownup-card">
+                <span class="sb-grownup-icon">🎶</span>
+                <span class="sb-grownup-title">Live Music</span>
+                <span class="sb-grownup-desc">Local bands playing all day across the farm</span>
+            </div>
+            <div class="sb-grownup-card">
+                <span class="sb-grownup-icon">🍺</span>
+                <span class="sb-grownup-title">Beer &amp; Wine</span>
+                <span class="sb-grownup-desc">Cold local pours — kick back while the kids play</span>
+            </div>
+            <div class="sb-grownup-card">
+                <span class="sb-grownup-icon">🌽</span>
+                <span class="sb-grownup-title">Corn Hole</span>
+                <span class="sb-grownup-desc">Grab a partner and settle it at the boards</span>
+            </div>
+            <div class="sb-grownup-card">
+                <span class="sb-grownup-icon">🌸</span>
+                <span class="sb-grownup-title">U-Pick Flowers</span>
+                <span class="sb-grownup-desc">Cut your own fresh blooms right in the field</span>
             </div>
         </div>
     </div>
