@@ -26,9 +26,9 @@ Configure these in the TS cart (`#ticketBlock`). GA is **per person**; the 2-pac
 |---|---|---|---|---|
 | **General Admission** | **$10.00** | **$15.00** | Sunflower field access · 1 cut-your-own sunflower · photo scenes & observation deck | **$8.95** |
 | **Admission + Sip** | **$15.95** *(pending jar cost)* | — | Everything in GA **+** guest choice of a boozy sip *or* peach lemonade **+** a fresh-baked cookie | **$14.95** *(pending sign-off)* |
-| **Couple 2-Pack** | **$44.95** | — | Admission for 2 · 2 cut-your-own sunflowers · photo scenes & observation deck | — |
-| **Family 4-Pack** | **$89.95** | — | Admission for 4 · 4 cut-your-own sunflowers · photo scenes & observation deck | — |
-| **Picnic add-on** | TBD *(confirm)* | — | Curated picnic spread, add-on at checkout | — |
+| **Ultimate Experience · Couple** | **$44.95** | — | Admission for 2 · 1 sunshine picnic basket · 2 drinks (boozy sip or peach lemonade) · cut-your-own sunflowers | — |
+| **Ultimate Experience · Family** | **$89.95** | — | Admission for 4 · family-size (double) sunshine picnic basket · 2 boozy sips + 2 peach lemonades · cut-your-own sunflowers | — |
+| **Picnic add-on** | TBD *(confirm)* | — | Curated picnic spread, add-on at checkout · optional "sunflower sweet treats" upsell (cookie + flower crown) | — |
 
 **Online-vs-gate slash pricing:** GA shows a struck **$15 at gate** next to the **$10 online** price to drive pre-sale. Use the name-keyed JS + `MutationObserver` + `content: attr(data-gate)` pattern (`~/Desktop/crowd7/data/clients/_patterns/slash-through-pricing.md`) — match the ticket by its `<h4>` name, NOT DOM position. Struck value = the $15 gate price.
 
