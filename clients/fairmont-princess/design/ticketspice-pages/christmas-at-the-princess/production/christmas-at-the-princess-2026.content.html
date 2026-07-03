@@ -1051,7 +1051,7 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
       var ctx=cv.getContext('2d'), W=0, H=0, DPR=Math.min(window.devicePixelRatio||1,2);
       function size(){ W=cv.width=Math.floor(innerWidth*DPR); H=cv.height=Math.floor(innerHeight*DPR); }
       size(); window.addEventListener('resize', size);
-      var N=Math.max(24, Math.min(60, Math.round(innerWidth/22)));   // fewer flakes on small screens
+      var N=Math.max(40, Math.min(110, Math.round(innerWidth/12)));   // fewer flakes on small screens
       var f=[];
       for(var i=0;i<N;i++){
         f.push({ x:Math.random()*W, y:Math.random()*H,
