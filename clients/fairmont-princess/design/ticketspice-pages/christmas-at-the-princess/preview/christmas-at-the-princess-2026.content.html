@@ -995,7 +995,10 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
        To revert: delete this whole block. ══════════════════════════════════ -->
   <style>
   /* Gate OUR content: hide every direct child of #cap-funnel except hero + CTA */
-  #cap-funnel.cap-gated > *:not(.cap-hero):not(.cap-gate-cta):not(style):not(script){display:none !important;}
+  /* v2 (Mat 2026-07-02): our styled sections now STAY VISIBLE while gated — only the
+     native TS form is hidden until a date is picked. The floating dup Get-Tickets bar
+     hides so there is one clear CTA (the Reserve section below the ticket cards). */
+  #cap-funnel.cap-gated .cap-float-bar{display:none !important;}
   /* Gate the NATIVE TS cart: keep it in the DOM (so the Choose-Date input still
      triggers and the fixed calendar still pops) but pull it off-screen. */
   body.cap-native-gated .ticket-block{position:absolute !important;left:-99999px !important;top:0 !important;width:1px !important;height:1px !important;overflow:hidden !important;}
@@ -1037,8 +1040,9 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
     // CTA under the hero
     var cta=document.createElement('div');
     cta.className='cap-gate-cta';
-    cta.innerHTML='<button type="button">Reserve Your Spot</button><span class="cap-gate-hint">Pick your date to unlock tickets &amp; pricing</span>';
-    if(hero&&hero.parentNode){hero.parentNode.insertBefore(cta,hero.nextSibling);} else {root.appendChild(cta);}
+    cta.innerHTML='<button type="button">Reserve Your Spot</button><span class="cap-gate-hint">Choose your date to check availability &amp; book</span>';
+    var afterEl=root.querySelector('#cap-tickets-b')||root.querySelector('#cap-tickets')||hero;
+    if(afterEl&&afterEl.parentNode){afterEl.parentNode.insertBefore(cta,afterEl.nextSibling);} else {root.appendChild(cta);}
 
     // Gate on load (our sections + native cart)
     root.classList.add('cap-gated');
