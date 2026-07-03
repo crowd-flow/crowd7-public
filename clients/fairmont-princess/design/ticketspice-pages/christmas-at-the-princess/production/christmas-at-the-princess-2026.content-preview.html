@@ -978,6 +978,90 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
 })();
   </script>
 
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       CAP DATE-GATE v1 (Mat 2026-07-02) — the page shows ONLY the hero + a big
+       red "Reserve Your Spot" button until a date is picked. Click it → a
+       date-picker pops (the NATIVE TicketSpice calendar on the live page,
+       styled centered by PATH C; a stand-in picker in this standalone preview).
+       Pick a date → the rest of the page (our sections + the native cart)
+       reveals IN PLACE — no scroll. Self-contained: injects its own CSS + CTA.
+       To revert: delete this whole block. ══════════════════════════════════ -->
+  <style>
+  /* Gate OUR content: hide every direct child of #cap-funnel except hero + CTA */
+  #cap-funnel.cap-gated > *:not(.cap-hero):not(.cap-gate-cta):not(style):not(script){display:none !important;}
+  /* Gate the NATIVE TS cart: keep it in the DOM (so the Choose-Date input still
+     triggers and the fixed calendar still pops) but pull it off-screen. */
+  body.cap-native-gated .ticket-block{position:absolute !important;left:-99999px !important;top:0 !important;width:1px !important;height:1px !important;overflow:hidden !important;}
+  /* Reserve CTA under the hero */
+  #cap-funnel .cap-gate-cta{background:var(--bg);text-align:center;padding:56px 22px 66px;}
+  #cap-funnel .cap-gate-cta button{background:var(--accent2);color:#fff;border:0;border-radius:50px;font-family:'Montserrat',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:1.25rem;padding:22px 54px;cursor:pointer;box-shadow:0 12px 40px rgba(217,47,37,.45);transition:transform .15s,box-shadow .15s,background .2s;}
+  #cap-funnel .cap-gate-cta button:hover{background:var(--accent);transform:translateY(-2px);box-shadow:0 18px 52px rgba(217,47,37,.55);}
+  #cap-funnel .cap-gate-cta .cap-gate-hint{display:block;margin-top:16px;color:var(--muted);font-size:.86rem;font-family:'Montserrat',sans-serif;letter-spacing:.02em;}
+  /* Stand-in date-picker (PREVIEW ONLY — the live page uses the native TS calendar) */
+  #capGateDemo{position:fixed;inset:0;background:rgba(40,10,12,.7);z-index:2147483200;display:none;align-items:center;justify-content:center;padding:20px;}
+  #capGateDemo.on{display:flex;}
+  #capGateDemo .cap-gate-cal{background:#fff;border-radius:18px;padding:24px 22px;width:92vw;max-width:420px;box-shadow:0 30px 80px rgba(40,10,12,.55);font-family:'Montserrat',sans-serif;animation:capCalPop .25s ease;}
+  #capGateDemo h4{font-family:'Playfair Display',serif;color:#671416;text-align:center;font-size:1.4rem;margin:0 0 4px;}
+  #capGateDemo .sub{text-align:center;color:#6e6e6e;font-size:.8rem;margin:0 0 16px;}
+  #capGateDemo .cap-gate-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;}
+  #capGateDemo .cap-gate-grid .dow{text-align:center;font-size:.62rem;font-weight:700;color:#6e6e6e;text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px;}
+  #capGateDemo .cap-gate-grid button{aspect-ratio:1;border:0;border-radius:9px;background:#f3eeea;color:#3a2a2a;font-weight:600;font-size:.9rem;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1;transition:.15s;}
+  #capGateDemo .cap-gate-grid button .p{font-size:.56rem;color:#6e6e6e;margin-top:3px;}
+  #capGateDemo .cap-gate-grid button.val{background:#28bf38;color:#fff;}
+  #capGateDemo .cap-gate-grid button.val .p{color:#eafbe9;}
+  #capGateDemo .cap-gate-grid button:hover{background:#c82844;color:#fff;transform:scale(1.05);}
+  #capGateDemo .cap-gate-grid button:hover .p{color:rgba(255,255,255,.85);}
+  #capGateDemo .cap-gate-grid button.empty{background:transparent;cursor:default;}
+  </style>
+  <script>
+  (function(){
+    var root=document.getElementById('cap-funnel'); if(!root) return;
+    var hero=root.querySelector('.cap-hero');
+
+    // CTA under the hero
+    var cta=document.createElement('div');
+    cta.className='cap-gate-cta';
+    cta.innerHTML='<button type="button">Reserve Your Spot</button><span class="cap-gate-hint">Pick your date to unlock tickets &amp; pricing</span>';
+    if(hero&&hero.parentNode){hero.parentNode.insertBefore(cta,hero.nextSibling);} else {root.appendChild(cta);}
+
+    // Gate on load (our sections + native cart)
+    root.classList.add('cap-gated');
+    document.body.classList.add('cap-native-gated');
+
+    var revealed=false;
+    function reveal(){ if(revealed)return; revealed=true; root.classList.remove('cap-gated'); document.body.classList.remove('cap-native-gated'); }
+
+    // Stand-in picker (preview only — live page uses the native TS calendar)
+    var demo=null;
+    function buildDemo(){
+      if(demo)return demo;
+      demo=document.createElement('div'); demo.id='capGateDemo';
+      var cells='<div class="dow">Sun</div><div class="dow">Mon</div><div class="dow">Tue</div><div class="dow">Wed</div><div class="dow">Thu</div><div class="dow">Fri</div><div class="dow">Sat</div>';
+      cells+='<button class="empty" disabled></button><button class="empty" disabled></button>'; /* Dec 1 2026 = Tuesday */
+      for(var d=1;d<=31;d++){ var col=(d+1)%7; var val=(col>=1&&col<=4); cells+='<button data-day="'+d+'"'+(val?' class="val"':'')+'>'+d+'<span class="p">'+(val?'$35':'$48')+'</span></button>'; }
+      demo.innerHTML='<div class="cap-gate-cal"><h4>Pick Your Visit Date</h4><p class="sub">December 2026 &middot; green nights save $5</p><div class="cap-gate-grid">'+cells+'</div></div>';
+      document.body.appendChild(demo);
+      demo.addEventListener('click',function(e){ var b=e.target.closest('button[data-day]'); if(b){demo.classList.remove('on');reveal();return;} if(e.target===demo){demo.classList.remove('on');} });
+      return demo;
+    }
+
+    function openPicker(){
+      var nativeInput=document.querySelector('input[placeholder="Choose Date"]');
+      if(nativeInput){ try{nativeInput.click();}catch(_){} }   // LIVE: native TS calendar (PATH C centers it)
+      else { buildDemo().classList.add('on'); }                // PREVIEW: stand-in picker
+    }
+    cta.querySelector('button').addEventListener('click',openPicker);
+
+    // Hero nav / "Book Your Experience" links also open the picker while gated
+    if(hero){ hero.addEventListener('click',function(e){ if(!root.classList.contains('cap-gated'))return; var a=e.target.closest('a[href="#cap-tickets"]'); if(a){e.preventDefault();openPicker();} }); }
+
+    // Reveal when a real date is chosen on the native calendar
+    document.addEventListener('click',function(e){ if(e.target.closest&&e.target.closest('.wbx-calendar .row.week .day.enabled')){ setTimeout(reveal,60); } });
+    var poll=setInterval(function(){ if(revealed){clearInterval(poll);return;} var inp=document.querySelector('input[placeholder="Choose Date"]'); if(inp&&inp.value&&inp.value.trim()){reveal();clearInterval(poll);} },200);
+  })();
+  </script>
+
 </div>
 
 </body></html>
