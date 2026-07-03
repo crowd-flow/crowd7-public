@@ -953,7 +953,7 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
   #cap-funnel.cap-gated .cap-float-bar{display:none !important;}
   /* Gate the NATIVE TS cart: keep it in the DOM (so the Choose-Date input still
      triggers and the fixed calendar still pops) but pull it off-screen. */
-  body.cap-native-gated .ticket-block{position:absolute !important;left:-99999px !important;top:0 !important;width:1px !important;height:1px !important;overflow:hidden !important;}
+  body.cap-native-gated:not(.cap-step2) .ticket-block{position:absolute !important;left:-99999px !important;top:0 !important;width:1px !important;height:1px !important;overflow:hidden !important;}
   /* v1.1 — the "bunch not hidden": native registrant fields (add-ons, subtotals, code
      box, contact, TOS, checkout) live in #registrants; plus the TS footer + branding +
      header wrap. All sit OUTSIDE .ticket-block, so v1 missed them. */
@@ -1001,7 +1001,7 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
     document.body.classList.add('cap-native-gated');
 
     var revealed=false;
-    function reveal(){ if(revealed)return; revealed=true; root.classList.remove('cap-gated'); document.body.classList.remove('cap-native-gated'); }
+    function reveal(){ if(revealed)return; revealed=true; root.classList.remove('cap-gated'); document.body.classList.remove('cap-native-gated'); document.body.classList.remove('cap-step2'); }
 
     // Stand-in picker (preview only — live page uses the native TS calendar)
     var demo=null;
@@ -1017,12 +1017,18 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
       return demo;
     }
 
+    function popNativeDate(){
+      var inp=document.querySelector('input[placeholder="Choose Date"]');
+      if(inp){ try{ inp.focus(); inp.click(); }catch(_){} return true; }
+      return false;
+    }
     function openPicker(){
-      var nativeInput=document.querySelector('input[placeholder="Choose Date"]');
-      if(nativeInput){ try{nativeInput.click();}catch(_){} }   // LIVE: native TS calendar (PATH C centers it)
-      else { buildDemo().classList.add('on'); }                // PREVIEW: stand-in picker
+      document.body.classList.add('cap-step2');   // bring the native ticket block on-screen (add-ons/billing/submit stay hidden until a date is picked)
+      setTimeout(function(){ if(!popNativeDate()){ buildDemo().classList.add('on'); } }, 80);  // pop the now-usable native date picker; demo picker in preview
     }
     cta.querySelector('button').addEventListener('click',openPicker);
+    // ticket-tier card buttons ("Select"/"Reserve") open the ticket block too — drop their old inline handlers
+    root.querySelectorAll('#cap-tickets .tier .btn').forEach(function(b){ b.removeAttribute('onclick'); b.addEventListener('click',function(e){ e.preventDefault(); openPicker(); }); });
 
     // Hero nav / "Book Your Experience" links also open the picker while gated
     if(hero){ hero.addEventListener('click',function(e){ if(!root.classList.contains('cap-gated'))return; var a=e.target.closest('a[href="#cap-tickets"]'); if(a){e.preventDefault();openPicker();} }); }
