@@ -1033,4 +1033,53 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
   })();
   </script>
 
+
+  <!-- ══ CAP light snow v1 (Mat 2026-07-02) — lightweight canvas snow: ~40-60 flakes,
+       requestAnimationFrame, pauses when the tab is hidden, respects prefers-reduced-motion,
+       pointer-events:none (never blocks clicks), z-index below modals/float-bar. Decorative
+       and wrapped in try/catch so it can never break the page. Remove this block to revert. -->
+  <script>
+  (function(){
+    try{
+      if(window.__capSnow) return; window.__capSnow=1;
+      var mq=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)');
+      if(mq&&mq.matches) return;                       // respect reduced-motion
+      var cv=document.createElement('canvas');
+      cv.setAttribute('aria-hidden','true');
+      cv.style.cssText='position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:9990;';
+      (document.body||document.documentElement).appendChild(cv);
+      var ctx=cv.getContext('2d'), W=0, H=0, DPR=Math.min(window.devicePixelRatio||1,2);
+      function size(){ W=cv.width=Math.floor(innerWidth*DPR); H=cv.height=Math.floor(innerHeight*DPR); }
+      size(); window.addEventListener('resize', size);
+      var N=Math.max(24, Math.min(60, Math.round(innerWidth/22)));   // fewer flakes on small screens
+      var f=[];
+      for(var i=0;i<N;i++){
+        f.push({ x:Math.random()*W, y:Math.random()*H,
+          r:(Math.random()*1.6+0.8)*DPR, s:(Math.random()*0.5+0.35)*DPR,
+          d:Math.random()*Math.PI*2, sway:(Math.random()*0.4+0.2)*DPR,
+          o:Math.random()*0.4+0.45 });
+      }
+      var run=true;
+      document.addEventListener('visibilitychange', function(){
+        run=!document.hidden; if(run) requestAnimationFrame(tick);
+      });
+      function tick(){
+        if(!run) return;
+        ctx.clearRect(0,0,W,H);
+        for(var i=0;i<f.length;i++){
+          var p=f[i];
+          p.y+=p.s; p.d+=0.01; p.x+=Math.sin(p.d)*p.sway*0.5;
+          if(p.y>H+5){ p.y=-5; p.x=Math.random()*W; }
+          if(p.x>W+5) p.x=-5; else if(p.x<-5) p.x=W+5;
+          ctx.globalAlpha=p.o;
+          ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fillStyle='#ffffff'; ctx.fill();
+        }
+        ctx.globalAlpha=1;
+        requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }catch(e){ /* decorative only — never break the page */ }
+  })();
+  </script>
+
 </div>
