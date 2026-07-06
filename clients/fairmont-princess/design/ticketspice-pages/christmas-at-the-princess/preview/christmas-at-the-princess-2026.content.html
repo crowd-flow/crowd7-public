@@ -1045,6 +1045,11 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
   #cap-funnel .cap-gate-cta button{background:var(--accent2);color:#fff;border:0;border-radius:50px;font-family:'Montserrat',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:1.25rem;padding:22px 54px;cursor:pointer;box-shadow:0 12px 40px rgba(217,47,37,.45);transition:transform .15s,box-shadow .15s,background .2s;}
   #cap-funnel .cap-gate-cta button:hover{background:var(--accent);transform:translateY(-2px);box-shadow:0 18px 52px rgba(217,47,37,.55);}
   #cap-funnel .cap-gate-cta .cap-gate-hint{display:block;margin-top:16px;color:var(--muted);font-size:.86rem;font-family:'Montserrat',sans-serif;letter-spacing:.02em;}
+  /* Floating "Reserve Your Spot" button (gated state) — scrolls to the ticket cards; retires once a date is picked */
+  #cap-funnel .cap-reserve-float{position:fixed;bottom:0;left:0;right:0;z-index:9995;padding:12px 16px 20px;background:linear-gradient(to top, rgba(255,250,247,0.96) 55%, transparent);display:flex;justify-content:center;transition:opacity .35s ease, transform .35s ease;}
+  #cap-funnel .cap-reserve-float.cap-hidden{opacity:0;transform:translateY(24px);pointer-events:none;}
+  #cap-funnel .cap-reserve-float button{display:block;width:100%;max-width:480px;background:var(--accent2);color:#fff;font-family:'Montserrat',sans-serif;font-size:1.1rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-align:center;padding:17px 24px;border-radius:50px;box-shadow:0 8px 32px rgba(217,47,37,.45);transition:transform .15s,box-shadow .15s,background .2s;border:none;cursor:pointer;}
+  #cap-funnel .cap-reserve-float button:hover{background:var(--accent);transform:translateY(-2px);box-shadow:0 14px 40px rgba(217,47,37,.55);}
   /* Stand-in date-picker (PREVIEW ONLY — the live page uses the native TS calendar) */
   #capGateDemo{position:fixed;inset:0;background:rgba(40,10,12,.7);z-index:2147483200;display:none;align-items:center;justify-content:center;padding:20px;}
   #capGateDemo.on{display:flex;}
@@ -1066,19 +1071,19 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
     var root=document.getElementById('cap-funnel'); if(!root) return;
     var hero=root.querySelector('.cap-hero');
 
-    // CTA under the hero
+    // Floating "Reserve Your Spot" button (gated) — scrolls to the ticket cards; retires on date-select
     var cta=document.createElement('div');
-    cta.className='cap-gate-cta';
-    cta.innerHTML='<button type="button">Reserve Your Spot</button><span class="cap-gate-hint">Choose your date to check availability &amp; book</span>';
-    var afterEl=root.querySelector('#cap-tickets-b')||root.querySelector('#cap-tickets')||hero;
-    if(afterEl&&afterEl.parentNode){afterEl.parentNode.insertBefore(cta,afterEl.nextSibling);} else {root.appendChild(cta);}
+    cta.className='cap-reserve-float';
+    cta.innerHTML='<button type="button">Reserve Your Spot</button>';
+    root.appendChild(cta);
+    function scrollToTickets(){ var t=root.querySelector('#cap-tickets'); if(t) t.scrollIntoView({behavior:'smooth',block:'start'}); }
 
     // Gate on load (our sections + native cart)
     root.classList.add('cap-gated');
     document.body.classList.add('cap-native-gated');
 
     var revealed=false;
-    function reveal(){ if(revealed)return; revealed=true; root.classList.remove('cap-gated'); document.body.classList.remove('cap-native-gated'); document.body.classList.remove('cap-step2'); if(window.capFirePromo) capFirePromo(); }
+    function reveal(){ if(revealed)return; revealed=true; root.classList.remove('cap-gated'); document.body.classList.remove('cap-native-gated'); document.body.classList.remove('cap-step2'); var rf=root.querySelector('.cap-reserve-float'); if(rf) rf.classList.add('cap-hidden'); if(window.capFirePromo) capFirePromo(); }
 
     // Stand-in picker (preview only — live page uses the native TS calendar)
     var demo=null;
@@ -1103,12 +1108,12 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
       document.body.classList.add('cap-step2');   // bring the native ticket block on-screen (add-ons/billing/submit stay hidden until a date is picked)
       setTimeout(function(){ if(!popNativeDate()){ buildDemo().classList.add('on'); } }, 80);  // pop the now-usable native date picker; demo picker in preview
     }
-    cta.querySelector('button').addEventListener('click',openPicker);
+    cta.querySelector('button').addEventListener('click',scrollToTickets);
     // ticket-tier card buttons ("Select"/"Reserve") tag the buyer path (data-buyer on the .tier), then open the ticket block — drop their old inline handlers
     root.querySelectorAll('#cap-tickets .tier .btn').forEach(function(b){ b.removeAttribute('onclick'); b.addEventListener('click',function(e){ e.preventDefault(); var t=b.closest('.tier'); var path=t&&t.getAttribute('data-buyer'); if(path&&window.capSetPath) capSetPath(path); openPicker(); }); });
 
-    // Hero nav / "Book Your Experience" links also open the picker while gated
-    if(hero){ hero.addEventListener('click',function(e){ if(!root.classList.contains('cap-gated'))return; var a=e.target.closest('a[href="#cap-tickets"]'); if(a){e.preventDefault();openPicker();} }); }
+    // Hero "Book Your Experience" (+ any #cap-tickets link) scrolls to the ticket cards while gated
+    if(hero){ hero.addEventListener('click',function(e){ if(!root.classList.contains('cap-gated'))return; var a=e.target.closest('a[href="#cap-tickets"]'); if(a){e.preventDefault();scrollToTickets();} }); }
 
     // Reveal when a real date is chosen on the native calendar
     document.addEventListener('click',function(e){ if(e.target.closest&&e.target.closest('.wbx-calendar .row.week .day.enabled')){ setTimeout(reveal,60); } });
