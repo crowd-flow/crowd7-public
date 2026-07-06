@@ -483,21 +483,21 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
   <section id="cap-tickets"><div class="cap-wrap">
     <div class="sec-head"><h2>Pick your tickets</h2></div>
     <div class="tier-row">
-      <div class="tier">
+      <div class="tier" data-buyer="ga">
         <h3>General Admission</h3><div class="saletag" data-saletag="&#127876; Christmas in July"></div>
         <div class="starting">Starting at</div>
         <div class="price">$21 <small>/ person</small><span class="was">$35 / person</span></div>
         <ul><li>Entry to the holiday village</li><li>4M lights &amp; light shows</li><li>Self-parking included</li></ul>
         <button class="btn btn-out" onclick="capOpenStar()">Select</button>
       </div>
-      <div class="tier feature"><span class="ribbon">NEW</span>
+      <div class="tier feature" data-buyer="premium"><span class="ribbon">NEW</span>
         <h3>Premium Admission</h3><div class="saletag" data-saletag="&#10024; Best value upgrade"></div>
         <div class="starting">Starting at</div>
         <div class="price">$42 <small>/ person</small><span class="was">$70 / person</span></div>
         <ul><li>Starlight Lounge Access</li><li>Shared Firepits</li><li>S&rsquo;mores &amp; Hot Cocoa Bar</li><li>Premium bar service</li></ul>
         <button class="btn btn-solid">Select</button>
       </div>
-      <div class="tier">
+      <div class="tier" data-buyer="vip">
         <h3>VIP Experiences</h3><div class="tier-sub">Private Igloos &amp; Fire Tables</div>
         <div class="starting">Starting at</div>
         <div class="price">$250 <small>/ table</small></div>
@@ -605,6 +605,35 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
   function capCloseAll(){
     document.querySelectorAll('.cap-ov').forEach(function(o){ o.classList.remove('on'); });
   }
+
+  /* ════════════════════════════════════════════════════════════════════
+     BUYER PATH — remembers, for this browser session, which tier the
+     visitor engaged from the 3-card picker, so downstream popups/offers
+     can branch on WHO they are (Bryan: "only start giving it to them once
+     we know who they are", Fairmont summit 6/18).
+       'ga'      — General Admission (bottom tier)
+       'premium' — Premium Admission / GA+ (middle card)
+       'vip'     — VIP Experiences (the Reserve button)
+     Storage: sessionStorage['capBuyerPath'] (per-tab session; clears on
+     tab close). Also stamps <html data-buyer-path="…"> for CSS/JS
+     targeting, and dispatches a 'cap:buyerpath' CustomEvent
+     {detail:{path, prev}} on every set. Wrapped so it can never throw.
+     ════════════════════════════════════════════════════════════════════ */
+  (function(){
+    var KEY='capBuyerPath', VALID={ga:1,premium:1,vip:1};
+    function get(){ try{ return sessionStorage.getItem(KEY)||null; }catch(_){ return window._capBuyerPath||null; } }
+    function stamp(p){ try{ document.documentElement.setAttribute('data-buyer-path', p); }catch(_){} }
+    function set(p){
+      if(!VALID[p]) return;
+      var prev=get();
+      try{ sessionStorage.setItem(KEY, p); }catch(_){ window._capBuyerPath=p; }
+      stamp(p);
+      console.log('%c[cap-buyer] path = '+p+(prev?(' (was '+prev+')'):''),'color:#671416;font-weight:700;');
+      try{ document.dispatchEvent(new CustomEvent('cap:buyerpath',{detail:{path:p,prev:prev}})); }catch(_){}
+    }
+    var saved=get(); if(saved) stamp(saved);   // restore segment across reloads in the same session
+    window.capSetPath=set; window.capGetPath=get;
+  })();
   </script>
 
   <!-- 🎅 CAP Photos-with-Santa modal V2 — functional: hijacks the REAL native
@@ -1027,8 +1056,8 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
       setTimeout(function(){ if(!popNativeDate()){ buildDemo().classList.add('on'); } }, 80);  // pop the now-usable native date picker; demo picker in preview
     }
     cta.querySelector('button').addEventListener('click',openPicker);
-    // ticket-tier card buttons ("Select"/"Reserve") open the ticket block too — drop their old inline handlers
-    root.querySelectorAll('#cap-tickets .tier .btn').forEach(function(b){ b.removeAttribute('onclick'); b.addEventListener('click',function(e){ e.preventDefault(); openPicker(); }); });
+    // ticket-tier card buttons ("Select"/"Reserve") tag the buyer path (data-buyer on the .tier), then open the ticket block — drop their old inline handlers
+    root.querySelectorAll('#cap-tickets .tier .btn').forEach(function(b){ b.removeAttribute('onclick'); b.addEventListener('click',function(e){ e.preventDefault(); var t=b.closest('.tier'); var path=t&&t.getAttribute('data-buyer'); if(path&&window.capSetPath) capSetPath(path); openPicker(); }); });
 
     // Hero nav / "Book Your Experience" links also open the picker while gated
     if(hero){ hero.addEventListener('click',function(e){ if(!root.classList.contains('cap-gated'))return; var a=e.target.closest('a[href="#cap-tickets"]'); if(a){e.preventDefault();openPicker();} }); }
