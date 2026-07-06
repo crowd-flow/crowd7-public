@@ -434,6 +434,7 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
   .cap-ov .cap-modal .mbtn{width:100%;margin-top:20px;border:0;border-radius:40px;padding:14px;font-weight:700;font-size:1rem;cursor:pointer;color:#fff;background:var(--accent);}
   .cap-ov .cap-modal .mbtn.gold{background:var(--gold);color:var(--red-dark);}
   .cap-ov .cap-modal .mlink{display:block;text-align:center;margin-top:12px;color:var(--muted);font-size:.85rem;cursor:pointer;background:none;border:0;width:100%;}
+  .cap-ov .cap-modal .cap-promo-eye{font-family:'Montserrat',sans-serif;text-transform:uppercase;letter-spacing:.14em;font-size:.72rem;font-weight:700;color:var(--accent);margin-bottom:4px;}
 
   @media(max-width:820px){
     #cap-funnel .phase-row,#cap-funnel .tier-row{grid-template-columns:1fr;}
@@ -511,6 +512,17 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
     <p style="color:var(--muted);font-size:.92rem;">For just <strong>$25 more</strong> per guest, skip the crowd &mdash; shared fire pits, a private VIP area, and the specialty bar. One click adds it for everyone in your order.</p>
     <button class="mbtn gold" onclick="capCloseAll()">Yes, upgrade us &mdash; +$25/guest</button>
     <button class="mlink" onclick="capCloseAll()">No thanks, keep General Admission</button>
+  </div></div>
+
+  <!-- Post-date promo popup — fires once after the visitor picks a date, tailored
+       to their buyer path (GA / Premium / VIP via capGetPath). Content is filled by
+       capFirePromo() from the CAP_PROMOS config below. Real event offers only. -->
+  <div class="cap-ov" id="capOvPromo"><div class="cap-modal starlight"><button class="x" onclick="capCloseAll()">&times;</button>
+    <div class="cap-promo-eye"></div>
+    <h3></h3>
+    <p class="cap-promo-body" style="color:var(--muted);font-size:.92rem;line-height:1.5;"></p>
+    <button class="mbtn gold cap-promo-cta" onclick="capCloseAll()"></button>
+    <button class="mlink" onclick="capCloseAll()">No thanks, maybe later</button>
   </div></div>
 
   <script>
@@ -628,6 +640,42 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
     var saved=get(); if(saved) stamp(saved);   // restore segment across reloads in the same session
     window.capSetPath=set; window.capGetPath=get;
   })();
+
+  /* ════════════════════════════════════════════════════════════════════
+     POST-DATE PROMO — after the visitor picks a date, fire ONE popup with
+     a REAL event offer, chosen by their buyer path. Real offers, sourced
+     from the 6/18–19 Fairmont summit:
+       ga      → Starlight Lounge upgrade, +$25/guest  (nudge bottom tier up)
+       premium → Photos with Santa add-on              (families upgrading GA)
+       vip     → 40% off your resort room (Feature J)   (make it an overnight)
+       default → 40% off room  (hero-CTA path, buyer unknown)
+     Edit the copy/mapping in ONE place (CAP_PROMOS). The CTA currently just
+     closes (marketing surface); wiring it to the native add-on is a follow-up.
+     ════════════════════════════════════════════════════════════════════ */
+  var CAP_PROMOS = {
+    ga:        { eye:'Upgrade your night', title:'Add the Starlight Lounge', body:'For just $25 more per guest, skip the crowd — shared fire pits, a private VIP lounge, and the specialty bar. One tap adds it for everyone in your order.', cta:'Add Starlight — +$25/guest' },
+    premium:   { eye:'Make it magic',      title:'Add Photos with Santa',    body:"You're already going premium — add the kids' favorite moment. Reserve a Photos-with-Santa session and skip the North Pole line.", cta:'Add Photos with Santa' },
+    vip:       { eye:'Stay the night',     title:'40% off your resort room', body:'Complete the VIP experience — book your room at the Fairmont Scottsdale Princess for 40% off when you reserve. Walk to the lights, stroll home to your suite.', cta:'See the room offer' },
+    'default': { eye:'Before you go',      title:'40% off your resort room', body:'Make a night of it — book your room at the Fairmont Scottsdale Princess for 40% off when you buy your tickets.', cta:'See the room offer' }
+  };
+  var _capPromoFired = false;
+  function capFirePromo(){
+    try{
+      if(_capPromoFired) return;
+      var path = (window.capGetPath && capGetPath()) || 'default';
+      var p = CAP_PROMOS[path] || CAP_PROMOS['default']; if(!p) return;
+      var m = document.getElementById('capOvPromo'); if(!m) return;
+      _capPromoFired = true;
+      m.querySelector('.cap-promo-eye').textContent  = p.eye;
+      m.querySelector('h3').textContent              = p.title;
+      m.querySelector('.cap-promo-body').textContent = p.body;
+      m.querySelector('.cap-promo-cta').textContent  = p.cta;
+      m.setAttribute('data-promo-for', path);
+      setTimeout(function(){ capShow('capOvPromo'); }, 550);   // let the page reveal first, then the offer
+      console.log('%c[cap-promo] fired for '+path,'color:#c82844;font-weight:700;');
+    }catch(e){ /* promo is decorative — never break the page */ }
+  }
+  window.capFirePromo = capFirePromo;
   </script>
 
   <!-- 🎅 CAP Photos-with-Santa modal V2 — functional: hijacks the REAL native
@@ -1024,7 +1072,7 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
     document.body.classList.add('cap-native-gated');
 
     var revealed=false;
-    function reveal(){ if(revealed)return; revealed=true; root.classList.remove('cap-gated'); document.body.classList.remove('cap-native-gated'); document.body.classList.remove('cap-step2'); }
+    function reveal(){ if(revealed)return; revealed=true; root.classList.remove('cap-gated'); document.body.classList.remove('cap-native-gated'); document.body.classList.remove('cap-step2'); if(window.capFirePromo) capFirePromo(); }
 
     // Stand-in picker (preview only — live page uses the native TS calendar)
     var demo=null;
