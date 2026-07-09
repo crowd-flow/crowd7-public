@@ -16,10 +16,11 @@
 <!-- ════════════════════════════════════════════════════════════════════
      ECKERT SUNFLOWER FESTIVAL · BELLEVILLE · 2026  —  HYBRID-LOADER CONTENT
      Standalone rebranded festival. Sunflower-gold sub-brand.
-     Ticket structure + dates LOCKED from the 7/2/26 Eckert's strategy call.
+     Ticket structure + pricing per Amanda's 7/8/26 Slack spec (supersedes
+     the earlier 7/2-call package set). Flash-sale window per Amanda's
+     7/9 message (July 24–26), confirmed feasible by Mat same day.
      PENDING (clearly tagged in-page): real sunflower photos (Amanda→Dropbox),
-     mason-jar/glass cost (locks Admission-Plus final), flash-sale price
-     sign-off (Jill/Angie). Prices shown are the working/rec values.
+     flash-sale price sign-off on the new package set (Jill/Angie).
      ════════════════════════════════════════════════════════════════════ -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -209,9 +210,9 @@
     }
     #sf-funnel .sf-flash strong { color: #FFD86B !important; }
     #sf-funnel .sf-grid {
-        display: grid !important; grid-template-columns: repeat(2, minmax(0, 420px)) !important;
-        gap: 24px !important; justify-content: center !important;
-        max-width: 900px !important; margin-left: auto !important; margin-right: auto !important;
+        display: grid !important; grid-template-columns: repeat(3, minmax(0, 300px)) !important;
+        gap: 22px !important; justify-content: center !important;
+        max-width: 980px !important; margin-left: auto !important; margin-right: auto !important;
     }
     #sf-funnel .sf-card {
         border-radius: 20px !important; padding: 36px 32px !important;
@@ -269,8 +270,11 @@
     #sf-funnel .sf-card-cream .sf-card-note { color: #a98a4a !important; }
 
     /* ── ADD-ON STRIP ── */
-    #sf-funnel .sf-addon {
+    #sf-funnel .sf-addon-list {
         max-width: 864px !important; margin: 28px auto 0 !important;
+        display: flex !important; flex-direction: column !important; gap: 14px !important;
+    }
+    #sf-funnel .sf-addon {
         background: white !important; border: 1px solid rgba(201,138,20,0.2) !important;
         border-radius: 16px !important; padding: 22px 28px !important;
         display: flex !important; align-items: center !important; gap: 20px !important; box-sizing: border-box !important;
@@ -278,6 +282,11 @@
     #sf-funnel .sf-addon-icon { font-size: 2.2rem !important; flex-shrink: 0 !important; }
     #sf-funnel .sf-addon-body { flex: 1 1 auto !important; }
     #sf-funnel .sf-addon-title { font-family: 'Zilla Slab', serif !important; font-size: 1.2rem !important; font-weight: 700 !important; color: #241A08 !important; display: block !important; margin-bottom: 3px !important; }
+    #sf-funnel .sf-addon-tag {
+        font-size: 0.6rem !important; font-weight: 700 !important; letter-spacing: 0.1em !important;
+        text-transform: uppercase !important; color: #C98A14 !important; background: rgba(201,138,20,0.12) !important;
+        padding: 3px 9px !important; border-radius: 20px !important; margin-left: 8px !important; display: inline-block !important;
+    }
     #sf-funnel .sf-addon-desc { font-size: 0.85rem !important; color: #8a6a2a !important; line-height: 1.5 !important; display: block !important; }
     #sf-funnel .sf-addon-price { font-family: 'Zilla Slab', serif !important; font-size: 1.5rem !important; font-weight: 700 !important; color: #C98A14 !important; flex-shrink: 0 !important; }
 
@@ -298,7 +307,7 @@
     #sf-funnel .sfr.d3 { transition-delay: 0.3s !important; }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 1000px) { #sf-funnel .sf-grid { grid-template-columns: repeat(2, minmax(0, 380px)) !important; } }
+    @media (max-width: 1000px) { #sf-funnel .sf-grid { grid-template-columns: repeat(2, minmax(0, 380px)) !important; max-width: 800px !important; } }
     @media (max-width: 860px) {
         #sf-funnel .sf-nav { padding: 0 24px !important; }
         #sf-funnel .sf-hero-content { padding: 0 28px 32px !important; }
@@ -333,7 +342,7 @@
             <span class="sf-dot"></span>
             <span>Belleville Farm · 2026</span>
             <span class="sf-dot"></span>
-            <span>Festival Weekend · Aug 1–2</span>
+            <span>Opens ~July 25 · Flash Sale July 24–26</span>
         </div>
     </div>
 
@@ -383,9 +392,9 @@
                 <span class="sf-benefit-desc">Picture-perfect backdrops</span>
             </div>
             <div class="sf-benefit">
-                <span class="sf-benefit-icon">🍑</span>
+                <span class="sf-benefit-icon">🥂</span>
                 <span class="sf-benefit-title">Sips &amp; Treats</span>
-                <span class="sf-benefit-desc">Add a boozy sip or peach lemonade</span>
+                <span class="sf-benefit-desc">Souvenir mason jar lemonade — boozy or non-alcoholic</span>
             </div>
         </div>
     </div>
@@ -420,9 +429,8 @@
             <span class="sf-title">Pick your <em>sunflower experience</em></span>
         </div>
         <div class="sf-flash sfr">
-            ⚡ <strong>Flash Sale · July 27–29</strong> — grab General Admission for <strong>$8.95</strong> and
-            Admission&nbsp;+&nbsp;Sip for <strong>$14.95</strong> before general sales open Aug&nbsp;1.
-            <span style="opacity:0.7;font-style:italic;">(flash pricing pending final sign-off)</span>
+            ⚡ <strong>Flash Sale · July 24–26</strong> — discounted pricing on all sunflower packages before general sales open.
+            <span style="opacity:0.7;font-style:italic;">(flash pricing pending Jill/Angie sign-off on this package set)</span>
         </div>
         <div class="sf-grid">
 
@@ -432,80 +440,89 @@
                 <span class="sf-card-icon">🌻</span>
                 <h3>General Admission</h3>
                 <ul class="sf-card-bullets">
-                    <li>🌻 Sunflower field access</li>
-                    <li>✂️ 1 cut-your-own sunflower</li>
-                    <li>📸 Photo scenes &amp; observation deck</li>
+                    <li>🌻 General admission for one</li>
+                    <li>✂️ One cut-your-own sunflower</li>
                 </ul>
                 <div class="sf-card-price">
-                    <span class="sf-price-num">$10</span>
-                    <span class="sf-price-label">online<br><span style="text-decoration:line-through;opacity:0.7;">$15 at gate</span></span>
+                    <span class="sf-price-num">$12.99</span>
+                    <span class="sf-price-label">online<br><span style="text-decoration:line-through;opacity:0.7;">$18 at gate</span></span>
                 </div>
-                <span class="sf-card-note">Buy online &amp; save. Flash-sale $8.95 · July 27–29.</span>
+                <span class="sf-card-note">Buy online &amp; save $5.01.</span>
             </div>
 
-            <!-- ADMISSION PLUS -->
+            <!-- FLOWER POWER PASS -->
             <div class="sf-card sf-card-dark sfr d1">
-                <span class="sf-card-badge sf-card-badge-gold">Add a Sip</span>
-                <span class="sf-card-icon">🥂</span>
-                <h3>Admission + Sip</h3>
+                <span class="sf-card-badge sf-card-badge-gold">Popular Upgrade</span>
+                <span class="sf-card-icon">👑</span>
+                <h3>Flower Power Pass</h3>
                 <ul class="sf-card-bullets">
-                    <li>🌻 Everything in General Admission</li>
-                    <li>🥂 Your choice: a boozy sip <em>or</em> peach lemonade</li>
-                    <li>🍪 …plus a fresh-baked cookie</li>
+                    <li>🌻 General admission for one</li>
+                    <li>✂️ One cut-your-own sunflower</li>
+                    <li>🥂 One souvenir mason jar lemonade — boozy or non-alcoholic</li>
+                    <li>👑 One flower crown</li>
                 </ul>
                 <div class="sf-card-price">
-                    <span class="sf-price-num">$15.95</span>
-                    <span class="sf-price-label">per person<br>flash $14.95 · 7/27–29</span>
+                    <span class="sf-price-num">$19.99</span>
+                    <span class="sf-price-label">online<br><span style="text-decoration:line-through;opacity:0.7;">$25 at gate</span></span>
                 </div>
-                <span class="sf-card-note">Final price pending souvenir-glass cost.</span>
+                <span class="sf-card-note">Buy online &amp; save $5.01.</span>
             </div>
 
-            <!-- ULTIMATE EXPERIENCE · COUPLE -->
+            <!-- FAMILY & FRIENDS -->
             <div class="sf-card sf-card-cream sfr d2">
-                <span class="sf-card-badge sf-card-badge-gold">Date Night</span>
-                <span class="sf-card-icon">💛</span>
-                <h3>Ultimate Experience<br>· Couple</h3>
-                <ul class="sf-card-bullets">
-                    <li>👫 Admission for two</li>
-                    <li>🧺 A sunshine picnic basket</li>
-                    <li>🥂 Two drinks — boozy sip <em>or</em> peach lemonade</li>
-                    <li>✂️ Cut-your-own sunflowers</li>
-                </ul>
-                <div class="sf-card-price">
-                    <span class="sf-price-num">$44.95</span>
-                    <span class="sf-price-label">per couple<br>the golden-hour date</span>
-                </div>
-                <span class="sf-card-note">Final inclusions pending Amanda's bundle write-up.</span>
-            </div>
-
-            <!-- ULTIMATE EXPERIENCE · FAMILY -->
-            <div class="sf-card sf-card-cream sfr d3">
                 <span class="sf-card-badge sf-card-badge-gold">Best Value</span>
                 <span class="sf-card-icon">👨‍👩‍👧‍👦</span>
-                <h3>Ultimate Experience<br>· Family</h3>
+                <h3>Family &amp; Friends<br>Package</h3>
                 <ul class="sf-card-bullets">
-                    <li>👨‍👩‍👧‍👦 Admission for four</li>
-                    <li>🧺 Family-size sunshine picnic basket (double)</li>
-                    <li>🥂 2 boozy sips + 2 peach lemonades</li>
-                    <li>✂️ Cut-your-own sunflowers</li>
+                    <li>👨‍👩‍👧‍👦 General admission for four</li>
+                    <li>✂️ Four cut-your-own sunflowers</li>
+                    <li>🥂 Four souvenir mason jar lemonades — boozy or non-alcoholic</li>
+                    <li>👑 Two flower crowns</li>
+                    <li>🕶️ Two pairs of flower sunglasses</li>
                 </ul>
                 <div class="sf-card-price">
-                    <span class="sf-price-num">$89.95</span>
-                    <span class="sf-price-label">per family<br>the all-in-one</span>
+                    <span class="sf-price-num">$74.99</span>
+                    <span class="sf-price-label">online<br><span style="text-decoration:line-through;opacity:0.7;">$80 at gate</span></span>
                 </div>
-                <span class="sf-card-note">Final inclusions pending Amanda's bundle write-up.</span>
+                <span class="sf-card-note">Buy online &amp; save $5.01.</span>
             </div>
 
         </div>
 
-        <!-- PICNIC ADD-ON -->
-        <div class="sf-addon sfr">
-            <span class="sf-addon-icon">🧺</span>
-            <span class="sf-addon-body">
-                <span class="sf-addon-title">Picnic in the Sunflowers</span>
-                <span class="sf-addon-desc">Add a curated picnic spread to any ticket and settle in among the blooms. Add-on at checkout.</span>
-            </span>
-            <span class="sf-addon-price">Add-On</span>
+        <!-- ADD-ONS -->
+        <div class="sf-addon-list sfr">
+            <div class="sf-addon">
+                <span class="sf-addon-icon">🧺</span>
+                <span class="sf-addon-body">
+                    <span class="sf-addon-title">Sunshine Picnic Basket</span>
+                    <span class="sf-addon-desc">Eckert's signature half-peck box: two deli ham &amp; cheese sliders, kettle chips, brownie bites, fresh mixed fruit, cheese cubes &amp; gummy bears. Add at checkout.</span>
+                </span>
+                <span class="sf-addon-price">$18</span>
+            </div>
+            <div class="sf-addon">
+                <span class="sf-addon-icon">👑</span>
+                <span class="sf-addon-body">
+                    <span class="sf-addon-title">Extra Flower Crown</span>
+                    <span class="sf-addon-desc">Add an extra crown to any ticket. Add at checkout.</span>
+                </span>
+                <span class="sf-addon-price">$4</span>
+            </div>
+            <div class="sf-addon">
+                <span class="sf-addon-icon">🕶️</span>
+                <span class="sf-addon-body">
+                    <span class="sf-addon-title">Flower Sunglasses</span>
+                    <span class="sf-addon-desc">Add a pair to any ticket. Add at checkout.</span>
+                </span>
+                <span class="sf-addon-price">$4</span>
+            </div>
+            <div class="sf-addon">
+                <span class="sf-addon-icon">✂️</span>
+                <span class="sf-addon-body">
+                    <span class="sf-addon-title">Cut-Your-Own Sunflower Bouquet<span class="sf-addon-tag">Onsite Only</span></span>
+                    <span class="sf-addon-desc">3 sunflowers + 12 zinnias in a plastic vase. Purchased at the field — not a TicketSpice checkout item.</span>
+                </span>
+                <span class="sf-addon-price">$15</span>
+            </div>
         </div>
     </div>
 
@@ -519,13 +536,13 @@
             </div>
             <div class="sf-info-item">
                 <span class="sf-info-icon">📅</span>
-                <span class="sf-info-label">Festival Weekend</span>
-                <span class="sf-info-value">August 1–2, 2026</span>
+                <span class="sf-info-label">Festival Weekends</span>
+                <span class="sf-info-value">Opens ~July 25<br>runs thru ~Aug 8–9 (tentative)</span>
             </div>
             <div class="sf-info-item">
                 <span class="sf-info-icon">🎟️</span>
                 <span class="sf-info-label">Sales Open</span>
-                <span class="sf-info-value">August 1<br>flash sale July 27–29</span>
+                <span class="sf-info-value">Flash sale July 24–26<br>general sales follow</span>
             </div>
             <div class="sf-info-item">
                 <span class="sf-info-icon">🕘</span>
