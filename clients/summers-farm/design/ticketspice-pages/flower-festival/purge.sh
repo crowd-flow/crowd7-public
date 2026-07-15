@@ -1,13 +1,12 @@
 #!/usr/bin/env bash
-# Purge jsDelivr's edge cache for the CAP Christmas-at-the-Princess page.
-# CHECK-BEFORE-PURGE (WS1 hardened, 2026-07-15) — see
-# work/crowd7/projects/ts-deploy-purge-hardening/state.md for the incident.
+# Purge jsDelivr's edge cache for the Summers Farm Flower Festival page.
+# CHECK-BEFORE-PURGE (WS1/WS3 hardened, 2026-07-15) — see
+# work/crowd7/projects/ts-deploy-purge-hardening/state.md.
 #
 # WHY CHECK-BEFORE-PURGE: jsDelivr purges are rate-limited PER FILE (~50min
 # lockout after a few). A script that purges unconditionally then verifies
-# burns budget on its own smoke test — that's what emptied the purge budget
-# 3x in 20 minutes on 2026-07-15. This script checks the edge FIRST and only
-# purges folders that are actually stale — spends ZERO purges when fresh.
+# burns budget on its own smoke test. This script checks the edge FIRST and
+# only purges folders that are actually stale — spends ZERO purges when fresh.
 #
 # USAGE:  ./purge.sh          # run after EVERY git push that touches content HTML
 # Exit codes: 0 = all checked folders confirmed fresh (purged or already fresh)
@@ -17,15 +16,14 @@ set -uo pipefail
 
 REPO="crowd-flow/crowd7-public"
 REF="master"
-BASE_PATH="clients/fairmont-princess/design/ticketspice-pages/christmas-at-the-princess"
-STEM="christmas-at-the-princess-2026.content.html"
+BASE_PATH="clients/summers-farm/design/ticketspice-pages/flower-festival"
+STEM="flower-festival-2026.html"
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 SHA=$(git -C "$SCRIPT_DIR" rev-parse HEAD 2>/dev/null || echo "unknown")
 
 CDN_BASE="https://cdn.jsdelivr.net/gh/${REPO}@${REF}/${BASE_PATH}"
 PURGE_BASE="https://purge.jsdelivr.net/gh/${REPO}@${REF}/${BASE_PATH}"
 
-# echoes "fresh" or "stale" or "no-local" to stdout; sizes to stderr
 check_folder() {
   local folder="$1"
   local local_file="${SCRIPT_DIR}/${folder}/${STEM}"

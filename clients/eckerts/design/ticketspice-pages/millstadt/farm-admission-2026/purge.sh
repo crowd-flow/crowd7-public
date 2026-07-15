@@ -1,44 +1,99 @@
 #!/usr/bin/env bash
 # Purge jsDelivr's edge cache for the Millstadt farm-admission-2026 page.
+# CHECK-BEFORE-PURGE (WS1 hardened, 2026-07-15) — see
+# work/crowd7/projects/ts-deploy-purge-hardening/state.md for the incident.
 #
-# WHY THIS EXISTS — read before skipping it:
-# The hybrid loader on the live TS page fetches content from jsDelivr, NOT from
-# raw.githubusercontent.com and NOT from disk. jsDelivr caches the branch ref at
-# its edge (Cloudflare + Fastly). A `git push` alone does NOT update the live
-# page — the edge keeps serving the OLD file for up to ~12h until it self-refreshes.
-#
-# 2026-07-15 incident: WS5 shipped 31 photos + a rebuilt page, pushed clean, and
-# every asset URL HEAD-checked 200 — but the live TS page showed the OLD text-only
-# pill grid for 30+ minutes because nobody purged. The verification was run against
-# the local file and raw.githubusercontent URLs; the loader was eating a stale
-# jsDelivr copy the entire time. Verify the surface the USER is looking at.
+# WHY CHECK-BEFORE-PURGE: jsDelivr purges are rate-limited PER FILE (~50min
+# lockout after a few). A script that purges unconditionally then verifies
+# burns budget on its own smoke test — that's what emptied the purge budget
+# 3x in 20 minutes on 2026-07-15. This script checks the edge FIRST and only
+# purges folders that are actually stale — spends ZERO purges when fresh.
 #
 # USAGE:  ./purge.sh          # run after EVERY git push that touches content HTML
-#
-# A JSON "status": "finished" means it purged. Safe to re-run; idempotent.
+# Exit codes: 0 = all checked folders confirmed fresh (purged or already fresh)
+#             1 = genuine failure (throttled, or still stale after retry)
 
-set -euo pipefail
+set -uo pipefail
 
-BASE="https://purge.jsdelivr.net/gh/crowd-flow/crowd7-public@master/clients/eckerts/design/ticketspice-pages/millstadt/farm-admission-2026"
+REPO="crowd-flow/crowd7-public"
+REF="master"
+BASE_PATH="clients/eckerts/design/ticketspice-pages/millstadt/farm-admission-2026"
 STEM="millstadt-farm-admission-2026.content.html"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+SHA=$(git -C "$SCRIPT_DIR" rev-parse HEAD 2>/dev/null || echo "unknown")
 
+CDN_BASE="https://cdn.jsdelivr.net/gh/${REPO}@${REF}/${BASE_PATH}"
+PURGE_BASE="https://purge.jsdelivr.net/gh/${REPO}@${REF}/${BASE_PATH}"
+
+# echoes "fresh" or "stale" or "no-local" to stdout; sizes to stderr
+check_folder() {
+  local folder="$1"
+  local local_file="${SCRIPT_DIR}/${folder}/${STEM}"
+  if [ ! -f "$local_file" ]; then
+    echo "no-local"
+    return
+  fi
+  local local_size edge_size
+  local_size=$(wc -c < "$local_file" | tr -d ' ')
+  edge_size=$(curl -s "${CDN_BASE}/${folder}/${STEM}" | wc -c | tr -d ' ')
+  echo "   local=${local_size}b edge=${edge_size}b" >&2
+  if [ "$local_size" = "$edge_size" ]; then
+    echo "fresh"
+  else
+    echo "stale"
+  fi
+}
+
+FAIL=0
 for folder in preview production; do
-  echo "→ purging ${folder}/${STEM}"
-  curl -s "${BASE}/${folder}/${STEM}" || true
-  echo
+  echo "→ ${folder}/${STEM}"
+  state=$(check_folder "$folder")
+  case "$state" in
+    no-local)
+      echo "   no local file (not built yet) — skip"
+      continue
+      ;;
+    fresh)
+      echo "   ✅ already fresh — zero purges spent"
+      continue
+      ;;
+  esac
+
+  echo "   stale — purging"
+  resp=$(curl -s "${PURGE_BASE}/${folder}/${STEM}")
+  echo "   purge response: ${resp}"
+  if echo "$resp" | grep -q '"throttled": *true'; then
+    reset=$(echo "$resp" | grep -o '"throttlingReset":[0-9]*' | grep -o '[0-9]*')
+    echo "   ⚠️  THROTTLED — purge budget spent for this file, reset in ~${reset:-?}s. Not retry-spamming."
+    echo "   Workaround: hand Mat the commit-pin URL — <ts-page-url>?c7rev=${SHA}"
+    FAIL=1
+    continue
+  fi
+
+  sleep 2
+  state=$(check_folder "$folder")
+  if [ "$state" = "fresh" ]; then
+    echo "   ✅ verified fresh after purge"
+    continue
+  fi
+
+  echo "   still stale — one retry after backoff"
+  sleep 5
+  state=$(check_folder "$folder")
+  if [ "$state" = "fresh" ]; then
+    echo "   ✅ verified fresh after retry"
+  else
+    echo "   ❌ still stale after purge + retry — reporting honestly, not claiming success"
+    echo "   Workaround: hand Mat the commit-pin URL — <ts-page-url>?c7rev=${SHA}"
+    FAIL=1
+  fi
 done
 
 echo
-echo "→ verifying what jsDelivr now serves (preview):"
-CDN="https://cdn.jsdelivr.net/gh/crowd-flow/crowd7-public@master/clients/eckerts/design/ticketspice-pages/millstadt/farm-admission-2026"
-LOCAL_SIZE=$(wc -c < "$(dirname "$0")/preview/${STEM}" | tr -d ' ')
-EDGE_SIZE=$(curl -s "${CDN}/preview/${STEM}" | wc -c | tr -d ' ')
-echo "   local: ${LOCAL_SIZE}b   edge: ${EDGE_SIZE}b"
-if [ "$LOCAL_SIZE" = "$EDGE_SIZE" ]; then
-  echo "   ✅ edge matches local — live page will show current content"
+if [ "$FAIL" = "1" ]; then
+  echo "❌ purge.sh finished with unresolved staleness — see above."
+  exit 1
 else
-  echo "   ⚠️  MISMATCH — edge is still stale; wait a few seconds and re-run"
+  echo "✅ purge.sh finished — all folders confirmed fresh."
+  exit 0
 fi
-
-# NOTE: production/ 404s until the page is promoted (cp preview/<f> production/<f>).
-# That is expected pre-promotion — the purge call above is harmless either way.
