@@ -790,6 +790,100 @@
         </div>
     </div>
 
+
+  <!-- ═══ CHRISTMAS IN JULY POP-UP ═══════════════════════════════════════════
+       Amanda's nice-to-have ("would be awesome... not a critical component").
+       Ports the Versailles July-4 popup pattern (versailles/peaches, vjul4pop).
+
+       SHOWS: Fri-Sun July 17-19 2026 only (the sale window; launches Fri 8am CT).
+              Auto-hides outside that window. Dismissal persists for the session.
+       FORCE: append ?c7xmas=1 to preview it outside the window (Mat's test hatch).
+       KILL:  window.MSFXMAS_ENABLED = false  before this block.
+
+       ⚠️ COPY DELIBERATELY OMITS THE DISCOUNT %. Last year was 50% off Sept
+       admission + Sept bonfire sites, but Amanda has NOT confirmed 2026's offer.
+       Code only until she does — do not invent a number (same rule as the
+       Family Fun Bundle omission).
+
+       The coupon itself + the TS Actions are AMANDA's job (with Michelle's TS
+       team) — this popup is marketing surface only, it does not apply anything.
+       ═══════════════════════════════════════════════════════════════════════ -->
+  <div id="msfxmas-overlay" class="msfxmas-overlay" role="dialog" aria-modal="true" aria-labelledby="msfxmas-title" hidden>
+    <div class="msfxmas-card">
+      <button class="msfxmas-close" aria-label="Close">&times;</button>
+      <div class="msfxmas-icon">🎄</div>
+      <h3 id="msfxmas-title" class="msfxmas-h">Christmas in <em>July</em></h3>
+      <p class="msfxmas-p">
+        Our <strong>Christmas in July</strong> sale is on — this weekend only.
+        Use code <span class="msfxmas-code">Christmas26</span> at checkout on your
+        fall admission and bonfire site reservations.
+      </p>
+      <button class="msfxmas-ok">Shop the sale</button>
+    </div>
+  </div>
+
+  <style>
+    .msfxmas-overlay{position:fixed;inset:0;z-index:2147483000;display:flex;align-items:center;justify-content:center;
+      background:rgba(26,8,8,.62);padding:20px;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+    .msfxmas-overlay[hidden]{display:none;}
+    .msfxmas-card{position:relative;background:#fff;max-width:430px;width:100%;border-radius:16px;padding:30px 26px 26px;
+      box-shadow:0 24px 60px rgba(0,0,0,.4);text-align:center;font-family:'Open Sans',system-ui,sans-serif;
+      animation:msfxmas-in .25s ease;box-sizing:border-box;}
+    @keyframes msfxmas-in{from{opacity:0;transform:translateY(14px) scale(.97);}to{opacity:1;transform:none;}}
+    .msfxmas-icon{font-size:2.6rem;line-height:1;margin-bottom:10px;}
+    .msfxmas-h{font-family:'Zilla Slab','Times New Roman',serif;font-size:1.5rem;font-weight:700;color:#B01030;margin:0 0 12px;line-height:1.2;}
+    .msfxmas-h em{font-style:italic;color:#7A0820;}
+    .msfxmas-p{font-size:.95rem;line-height:1.55;color:#3a2020;margin:0 0 22px;}
+    .msfxmas-code{display:inline-block;font-family:'Zilla Slab',serif;font-weight:700;font-size:1.05rem;color:#B01030;
+      background:#FFF0F2;border:1px dashed #B01030;border-radius:6px;padding:2px 10px;letter-spacing:.04em;}
+    .msfxmas-ok{background:#B01030;color:#fff;border:0;border-radius:50px;padding:12px 34px;font-size:.95rem;font-weight:700;
+      cursor:pointer;letter-spacing:.02em;}
+    .msfxmas-ok:hover{background:#7A0820;}
+    .msfxmas-close{position:absolute;top:10px;right:14px;background:none;border:0;font-size:1.7rem;line-height:1;color:#b88;cursor:pointer;}
+    .msfxmas-close:hover{color:#B01030;}
+    @media (max-width:560px){ .msfxmas-card{padding:26px 20px 22px;} .msfxmas-h{font-size:1.3rem;} }
+  </style>
+
+  <script>
+  (function(){
+    if (window.MSFXMAS_ENABLED === false) return;                 // kill switch
+    var KEY   = 'msfxmas-dismissed-2026';
+    var FORCE = /[?&]c7xmas=1/.test(window.location.search);       // Mat's preview hatch
+
+    // Sale window: Fri Jul 17 -> Sun Jul 19 2026 inclusive. Local clock (farm is CT;
+    // a visitor's device tz can shift the boundary by hours — acceptable for a
+    // marketing blurb, NOT for anything that gates a price).
+    function inWindow(){
+      var n = new Date(), y = n.getFullYear(), m = n.getMonth() + 1, d = n.getDate();
+      return y === 2026 && m === 7 && d >= 17 && d <= 19;
+    }
+
+    try { if (!FORCE && sessionStorage.getItem(KEY)) return; } catch(e){}
+    if (!FORCE && !inWindow()) return;
+
+    var ov = document.getElementById('msfxmas-overlay');
+    if (!ov) return;
+
+    function hide(){
+      ov.setAttribute('hidden','');
+      try { sessionStorage.setItem(KEY,'1'); } catch(e){}
+    }
+    function shopSale(){
+      hide();
+      var t = document.getElementById('tickets');
+      if (t) t.scrollIntoView({ behavior:'smooth' });
+    }
+
+    ov.removeAttribute('hidden');
+    ov.querySelector('.msfxmas-close').addEventListener('click', hide);
+    ov.querySelector('.msfxmas-ok').addEventListener('click', shopSale);
+    ov.addEventListener('click', function(e){ if (e.target === ov) hide(); });   // click backdrop
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape') hide(); });
+
+    console.log('[msfxmas] shown', { forced: FORCE, inWindow: inWindow() });
+  })();
+  </script>
+
     <!-- INFO ROW -->
     <div class="msf-info">
         <div class="msf-info-grid">
