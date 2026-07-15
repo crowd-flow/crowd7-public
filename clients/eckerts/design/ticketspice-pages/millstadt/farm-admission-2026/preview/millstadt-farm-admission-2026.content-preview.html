@@ -20,7 +20,10 @@
      Bonfire pricing confirmed via Amanda's 7/15 email ("Re: sales and pages") — site rental only, does NOT
      include admission. Family Fun Bundle intentionally omitted from v1 (day-varying admission price means no
      single bundle number exists yet — routed to Mat/Amanda, not invented). Preview only — do NOT promote to
-     production until Mat approves. -->
+     production until Mat approves.
+     WS5 (2026-07-15): real Eckert's Millstadt photography mirrored from eckerts.com into crowd7-public/clients/eckerts/design/assets/
+     (categorized millstadt/entertainment/bonfires/produce/farm/brand — full library, not just what's placed here).
+     Added a GALLERY marquee, a featured-activity photo strip in the entertainment section, and a bonfire-card photo header. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
@@ -221,8 +224,81 @@
         line-height: 1.4 !important; display: block !important;
     }
 
-    /* ── ENTERTAINMENT ROSTER ── (replaces the photo-gallery marquee — Millstadt has one hero photo
-         in hand, not a photo set, so the roster runs as a chip grid instead of a carousel) */
+    /* ── GALLERY ── (WS5 2026-07-15: real Eckert's Millstadt CDN photography now in hand —
+         reinstates the marquee that WS1 skipped for lack of photos) */
+    #msf-funnel .msf-gallery {
+        width: 100% !important;
+        background: #FFF8F8 !important;
+        padding: 56px 0 !important;
+        overflow: hidden !important;
+        display: block !important;
+    }
+    #msf-funnel .msf-gallery-header {
+        text-align: center !important;
+        padding: 0 48px !important;
+        margin-bottom: 32px !important;
+    }
+    #msf-funnel .msf-gallery-mask {
+        width: 100% !important; overflow: hidden !important;
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%) !important;
+        mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%) !important;
+    }
+    #msf-funnel .msf-gallery-track {
+        display: flex !important; gap: 16px !important;
+        width: max-content !important;
+        animation: msfMarquee 40s linear infinite !important;
+        padding: 8px 0 !important;
+    }
+    #msf-funnel .msf-gallery-track:hover { animation-play-state: paused !important; }
+    @keyframes msfMarquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    #msf-funnel .msf-gcard {
+        width: 340px !important; height: 240px !important;
+        border-radius: 20px !important; overflow: hidden !important;
+        flex-shrink: 0 !important; position: relative !important;
+        background: linear-gradient(135deg, #FFD6DC, #FFB3BF) !important;
+        transition: transform 0.4s ease, box-shadow 0.4s ease !important;
+    }
+    #msf-funnel .msf-gcard:hover {
+        transform: scale(1.03) translateY(-5px) !important;
+        box-shadow: 0 24px 50px rgba(176,16,48,0.2) !important; z-index: 2 !important;
+    }
+    #msf-funnel .msf-gcard img {
+        width: 100% !important; height: 100% !important;
+        object-fit: cover !important; display: block !important;
+        position: absolute !important; inset: 0 !important;
+    }
+    #msf-funnel .msf-gcard-label {
+        position: absolute !important; bottom: 12px !important; left: 12px !important;
+        background: rgba(26,8,8,0.6) !important; backdrop-filter: blur(8px) !important;
+        color: white !important; font-size: 0.7rem !important; letter-spacing: 0.05em !important;
+        font-weight: 700 !important; padding: 5px 12px !important; border-radius: 20px !important;
+        z-index: 2 !important;
+    }
+
+    /* ── ENTERTAINMENT ROSTER ── chip lists carry the full included/bonus roster; the featured-photo
+         strip (WS5) fronts the six activities we have real Eckert's photography for. */
+    #msf-funnel .msf-feat {
+        display: grid !important;
+        grid-template-columns: repeat(6, 1fr) !important;
+        gap: 12px !important;
+        max-width: 980px !important;
+        margin: 0 auto 36px !important;
+    }
+    #msf-funnel .msf-feat-card {
+        border-radius: 14px !important; overflow: hidden !important;
+        position: relative !important; aspect-ratio: 3 / 4 !important;
+        background: #FFD6DC !important;
+    }
+    #msf-funnel .msf-feat-card img {
+        width: 100% !important; height: 100% !important;
+        object-fit: cover !important; display: block !important;
+    }
+    #msf-funnel .msf-feat-label {
+        position: absolute !important; inset: auto 0 0 0 !important;
+        background: linear-gradient(to top, rgba(26,8,8,0.85), transparent) !important;
+        color: white !important; font-size: 0.65rem !important; font-weight: 700 !important;
+        text-align: center !important; padding: 18px 4px 8px !important; line-height: 1.2 !important;
+    }
     #msf-funnel .msf-ent {
         width: 100% !important;
         background: #FFF8F8 !important;
@@ -320,6 +396,23 @@
         margin-bottom: 14px !important; width: fit-content !important;
     }
     #msf-funnel .msf-card-badge-light { background: rgba(255,255,255,0.18) !important; color: white !important; }
+
+    /* ── card photo header (WS5) — bonfire card now carries a real Eckert's bonfire photo ── */
+    #msf-funnel .msf-card-photo {
+        margin: -36px -32px 20px !important;
+        height: 150px !important;
+        overflow: hidden !important;
+        position: relative !important;
+    }
+    #msf-funnel .msf-card-photo img {
+        width: 100% !important; height: 100% !important;
+        object-fit: cover !important; display: block !important;
+    }
+    #msf-funnel .msf-card-photo::after {
+        content: '' !important;
+        position: absolute !important; inset: 0 !important;
+        background: linear-gradient(to bottom, transparent 55%, rgba(26,8,8,0.55) 100%) !important;
+    }
 
     #msf-funnel .msf-card-icon { font-size: 2.6rem !important; margin-bottom: 14px !important; display: block !important; }
 
@@ -435,7 +528,10 @@
         #msf-funnel .msf-nav { padding: 0 24px !important; }
         #msf-funnel .msf-hero-content { padding: 0 24px 32px !important; }
         #msf-funnel .msf-benefits { padding: 32px 24px !important; }
+        #msf-funnel .msf-gallery-header { padding: 0 24px !important; }
+        #msf-funnel .msf-gcard { width: 280px !important; height: 200px !important; }
         #msf-funnel .msf-ent { padding: 40px 24px !important; }
+        #msf-funnel .msf-feat { grid-template-columns: repeat(3, 1fr) !important; max-width: 520px !important; gap: 10px !important; }
         #msf-funnel .msf-tickets { padding: 56px 24px !important; }
         #msf-funnel .msf-grid { grid-template-columns: 1fr !important; max-width: 420px !important; }
         #msf-funnel .msf-info-grid { grid-template-columns: 1fr 1fr !important; }
@@ -448,7 +544,12 @@
         #msf-funnel .msf-benefits { padding: 24px 16px !important; }
         #msf-funnel .msf-benefits-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 14px 0 !important; }
         #msf-funnel .msf-benefit:nth-child(2n)::after { display: none !important; }
+        #msf-funnel .msf-gallery { padding: 40px 0 !important; }
+        #msf-funnel .msf-gallery-header { padding: 0 16px !important; margin-bottom: 24px !important; }
+        #msf-funnel .msf-gcard { width: 220px !important; height: 160px !important; }
         #msf-funnel .msf-ent { padding: 32px 16px !important; }
+        #msf-funnel .msf-feat { grid-template-columns: repeat(2, 1fr) !important; max-width: 320px !important; }
+        #msf-funnel .msf-card-photo { height: 120px !important; }
         #msf-funnel .msf-tickets { padding: 48px 16px !important; }
         #msf-funnel .msf-grid { grid-template-columns: 1fr !important; }
     }
@@ -520,11 +621,50 @@
         </div>
     </div>
 
+    <!-- GALLERY (WS5 2026-07-15: mirrored from Eckert's own Millstadt CDN, crowd7-public/clients/eckerts/design/assets/) -->
+    <div class="msf-gallery">
+        <div class="msf-gallery-header msfr">
+            <span class="msf-eye">Straight From The Farm</span>
+            <span class="msf-title">A look at <em>fall at Millstadt</em></span>
+        </div>
+        <div class="msf-gallery-mask">
+            <div class="msf-gallery-track">
+                <div class="msf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/millstadt/eckerts-millstadt-11.jpg" alt="Kids feeding goats at the Millstadt petting zoo" loading="lazy"><div class="msf-gcard-label">Petting Zoo</div></div>
+                <div class="msf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/bonfires/bonfire-23.jpg" alt="Friends roasting marshmallows at an evening bonfire" loading="lazy"><div class="msf-gcard-label">Fireside S'mores</div></div>
+                <div class="msf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/entertainment/corn-maze.jpg" alt="Aerial view of the 8-acre corn maze" loading="lazy"><div class="msf-gcard-label">8-Acre Corn Maze</div></div>
+                <div class="msf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/entertainment/wagon-ride.jpg" alt="Family riding the wagon train" loading="lazy"><div class="msf-gcard-label">Wagon Train</div></div>
+                <div class="msf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/entertainment/pig-races.jpg" alt="Piglets running the Millstadt pig races" loading="lazy"><div class="msf-gcard-label">Pig Races</div></div>
+                <div class="msf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/produce/basket-of-apples.jpg" alt="A freshly picked basket of apples" loading="lazy"><div class="msf-gcard-label">Fresh Picked Apples</div></div>
+                <div class="msf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/entertainment/pumpkin-cannon-3.jpg" alt="The Millstadt pumpkin cannon in action" loading="lazy"><div class="msf-gcard-label">Pumpkin Cannon</div></div>
+                <div class="msf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/farm/img-0501.jpg" alt="Kids bouncing and playing on the farm" loading="lazy"><div class="msf-gcard-label">Fall Fun</div></div>
+                <!-- Duplicate for seamless loop -->
+                <div class="msf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/millstadt/eckerts-millstadt-11.jpg" alt="Kids feeding goats at the Millstadt petting zoo" loading="lazy"><div class="msf-gcard-label">Petting Zoo</div></div>
+                <div class="msf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/bonfires/bonfire-23.jpg" alt="Friends roasting marshmallows at an evening bonfire" loading="lazy"><div class="msf-gcard-label">Fireside S'mores</div></div>
+                <div class="msf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/entertainment/corn-maze.jpg" alt="Aerial view of the 8-acre corn maze" loading="lazy"><div class="msf-gcard-label">8-Acre Corn Maze</div></div>
+                <div class="msf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/entertainment/wagon-ride.jpg" alt="Family riding the wagon train" loading="lazy"><div class="msf-gcard-label">Wagon Train</div></div>
+                <div class="msf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/entertainment/pig-races.jpg" alt="Piglets running the Millstadt pig races" loading="lazy"><div class="msf-gcard-label">Pig Races</div></div>
+                <div class="msf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/produce/basket-of-apples.jpg" alt="A freshly picked basket of apples" loading="lazy"><div class="msf-gcard-label">Fresh Picked Apples</div></div>
+                <div class="msf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/entertainment/pumpkin-cannon-3.jpg" alt="The Millstadt pumpkin cannon in action" loading="lazy"><div class="msf-gcard-label">Pumpkin Cannon</div></div>
+                <div class="msf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/farm/img-0501.jpg" alt="Kids bouncing and playing on the farm" loading="lazy"><div class="msf-gcard-label">Fall Fun</div></div>
+            </div>
+        </div>
+    </div>
+
     <!-- ENTERTAINMENT ROSTER -->
     <div class="msf-ent">
         <div class="msf-ent-header msfr">
             <span class="msf-eye">All Day, Every Visit</span>
             <span class="msf-title">Everything there is <em>to do</em></span>
+        </div>
+
+        <!-- Featured-activity photo grid (WS5) — real Eckert's photography for 6 headline activities -->
+        <div class="msf-feat msfr">
+            <div class="msf-feat-card"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/millstadt/eckerts-millstadt-11.jpg" alt="Petting zoo" loading="lazy"><div class="msf-feat-label">🐐 Petting Zoo</div></div>
+            <div class="msf-feat-card"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/entertainment/pumpkin-cannon-show.jpg" alt="Pumpkin cannon" loading="lazy"><div class="msf-feat-label">🎃 Pumpkin Cannon</div></div>
+            <div class="msf-feat-card"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/entertainment/pig-races.jpg" alt="Pig races" loading="lazy"><div class="msf-feat-label">🐷 Pig Races</div></div>
+            <div class="msf-feat-card"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/entertainment/corn-maze.jpg" alt="Corn maze" loading="lazy"><div class="msf-feat-label">🌽 Corn Maze</div></div>
+            <div class="msf-feat-card"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/entertainment/wagon-ride.jpg" alt="Wagon train" loading="lazy"><div class="msf-feat-label">🚂 Wagon Train</div></div>
+            <div class="msf-feat-card"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/entertainment/parakeet-encounter.jpg" alt="Parakeet encounter" loading="lazy"><div class="msf-feat-label">🦜 Parakeets</div></div>
         </div>
 
         <div class="msf-ent-group msfr d1">
@@ -626,6 +766,7 @@
                  admission itself varies by day (Wed/Thu vs Fri vs Sat/Sun) and Amanda hasn't resolved that;
                  do not invent a number — that's routed back to Mat/Amanda, not a build blocker. -->
             <div class="msf-card msf-card-dark msfr d1">
+                <div class="msf-card-photo"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/bonfires/bonfire-sites.jpg" alt="Hay-bale seating around the Millstadt bonfire pond" loading="lazy"></div>
                 <span class="msf-card-badge msf-card-badge-gold">Bonfire Sites</span>
                 <span class="msf-card-icon">🔥</span>
                 <h3>Fall Bonfires</h3>
