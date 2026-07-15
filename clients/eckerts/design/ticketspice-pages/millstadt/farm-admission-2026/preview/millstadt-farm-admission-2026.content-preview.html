@@ -482,6 +482,27 @@
     }
     #msf-funnel .msf-card-red .msf-card-note { color: rgba(255,255,255,0.55) !important; }
 
+    /* ── ADD-ON STRIP ── ports the established Sunflower Festival pattern
+       (belleville/sunflower-festival) recolored to Eckert's barn red. Add-ons are a
+       CHECKOUT UPSELL, so they live inside TICKETS below the cards — NOT mixed into
+       free/included activity content (that placement is what took this pricing down
+       with the entertainment block on 7/15). */
+    #msf-funnel .msf-addon-list {
+        max-width: 864px !important; margin: 28px auto 0 !important;
+        display: flex !important; flex-direction: column !important; gap: 14px !important;
+    }
+    #msf-funnel .msf-addon {
+        background: white !important; border: 1px solid rgba(176,16,48,0.2) !important;
+        border-radius: 16px !important; padding: 22px 28px !important;
+        display: flex !important; align-items: center !important; gap: 20px !important; box-sizing: border-box !important;
+    }
+    #msf-funnel .msf-addon-icon { font-size: 2.2rem !important; flex-shrink: 0 !important; }
+    #msf-funnel .msf-addon-body { flex: 1 1 auto !important; }
+    #msf-funnel .msf-addon-title { font-family: 'Zilla Slab', serif !important; font-size: 1.2rem !important; font-weight: 700 !important; color: #1a0808 !important; display: block !important; margin-bottom: 3px !important; }
+    #msf-funnel .msf-addon-desc { font-size: 0.85rem !important; color: #7A0820 !important; line-height: 1.5 !important; display: block !important; }
+    #msf-funnel .msf-addon-price { font-family: 'Zilla Slab', serif !important; font-size: 1.5rem !important; font-weight: 700 !important; color: #B01030 !important; flex-shrink: 0 !important; text-align: right !important; }
+    #msf-funnel .msf-addon-price small { display: block !important; font-size: 0.7rem !important; font-weight: 600 !important; opacity: 0.75 !important; }
+
     /* ── INFO ROW ── */
     #msf-funnel .msf-info {
         width: 100% !important;
@@ -750,6 +771,37 @@
                 <span class="msf-card-note">Site rental, per night · each guest also needs farm admission.</span>
             </div>
 
+        </div>
+
+        <!-- ADD-ONS — checkout upsells, NOT included with admission.
+             Pricing per artifacts/millstadt-content-source.md (carried from Amanda's existing
+             live page). ⚠️ Apple Cannon price is an OPEN ASK with Amanda — confirm before
+             production promotion; do not treat as final. -->
+        <div class="msf-addon-list msfr d2">
+            <div class="msf-addon">
+                <span class="msf-addon-icon">🐴</span>
+                <span class="msf-addon-body">
+                    <span class="msf-addon-title">Pony Rides</span>
+                    <span class="msf-addon-desc">A lap around the pony track — a Millstadt favorite for the little ones. Add at checkout.</span>
+                </span>
+                <span class="msf-addon-price">$10</span>
+            </div>
+            <div class="msf-addon">
+                <span class="msf-addon-icon">🦜</span>
+                <span class="msf-addon-body">
+                    <span class="msf-addon-title">Parakeet Encounter</span>
+                    <span class="msf-addon-desc">Step into the aviary and hand-feed the flock. Add at checkout.</span>
+                </span>
+                <span class="msf-addon-price">$3</span>
+            </div>
+            <div class="msf-addon">
+                <span class="msf-addon-icon">🎃</span>
+                <span class="msf-addon-body">
+                    <span class="msf-addon-title">Apple Cannons</span>
+                    <span class="msf-addon-desc">Load up and fire at the targets across the field. Add at checkout.</span>
+                </span>
+                <span class="msf-addon-price">$3<small>5 shots · $5 for 10</small></span>
+            </div>
         </div>
     </div>
 
