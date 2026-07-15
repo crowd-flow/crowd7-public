@@ -1,0 +1,914 @@
+<!-- ECKERTS MILLSTADT — FARM ADMISSION 🌾 · 2026
+     Content source: work/crowd7/projects/eckerts-millstadt-2026-page-rebuild/artifacts/millstadt-content-source.md
+     Scoped under #msf-funnel (fresh id, distinct from Belleville's #sb-funnel / Grafton's / Versailles') to avoid
+     any collision if pages ever render side-by-side. Same Eckert's brand tokens as the Belleville/Grafton template.
+     Bonfire pricing confirmed via Amanda's 7/15 email ("Re: sales and pages") — site rental only, does NOT
+     include admission. Family Fun Bundle intentionally omitted from v1 (day-varying admission price means no
+     single bundle number exists yet — routed to Mat/Amanda, not invented). Preview only — do NOT promote to
+     production until Mat approves.
+     WS5 (2026-07-15): real Eckert's Millstadt photography mirrored from eckerts.com into crowd7-public/clients/eckerts/design/assets/
+     (categorized millstadt/entertainment/bonfires/produce/farm/brand — full library, not just what's placed here).
+     Added a GALLERY marquee, a featured-activity photo strip in the entertainment section, and a bonfire-card photo header. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+    #msf-funnel {
+        width: 100vw !important;
+        position: relative !important;
+        left: 50% !important;
+        right: 50% !important;
+        margin-left: -50vw !important;
+        margin-right: -50vw !important;
+        overflow: hidden !important;
+        font-family: 'Open Sans', sans-serif !important;
+        background: #FFF8F8 !important;
+        color: #1a0808 !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    /* ── BANNER ── */
+    #msf-funnel .msf-banner {
+        width: 100% !important;
+        background: #7A0820 !important;
+        color: white !important;
+        text-align: center !important;
+        padding: 11px 20px !important;
+        font-size: 0.8rem !important;
+        letter-spacing: 0.06em !important;
+        display: block !important;
+        box-sizing: border-box !important;
+    }
+    #msf-funnel .msf-banner-inner {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 10px !important;
+        flex-wrap: wrap !important;
+    }
+    #msf-funnel .msf-dot {
+        width: 3px !important; height: 3px !important;
+        background: rgba(255,255,255,0.4) !important;
+        border-radius: 50% !important;
+        display: inline-block !important;
+        flex-shrink: 0 !important;
+    }
+
+    /* ── NAV ── */
+    #msf-funnel .msf-nav {
+        width: 100% !important;
+        padding: 0 40px !important;
+        height: 64px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        background: rgba(176,16,48,0.97) !important;
+        position: sticky !important;
+        top: 0 !important;
+        z-index: 100 !important;
+        box-sizing: border-box !important;
+        box-shadow: 0 2px 16px rgba(176,16,48,0.35) !important;
+    }
+    #msf-funnel .msf-logo-wrap {
+        display: flex !important;
+        align-items: center !important;
+        height: 44px !important; width: 160px !important;
+        flex-shrink: 0 !important; overflow: hidden !important;
+    }
+    #msf-funnel .msf-logo-wrap img {
+        height: 44px !important; width: 160px !important;
+        max-width: 160px !important; max-height: 44px !important;
+        object-fit: contain !important; object-position: left center !important;
+        display: block !important;
+    }
+    #msf-funnel .msf-nav-right {
+        display: flex !important; align-items: center !important; gap: 16px !important;
+    }
+    #msf-funnel .msf-nav-loc {
+        font-size: 0.78rem !important;
+        color: rgba(255,255,255,0.65) !important;
+        display: flex !important; align-items: center !important; gap: 5px !important;
+    }
+    #msf-funnel .msf-nav-cta {
+        background: white !important;
+        color: #B01030 !important;
+        padding: 9px 22px !important;
+        border-radius: 50px !important;
+        font-size: 0.83rem !important;
+        font-weight: 700 !important;
+        text-decoration: none !important;
+        letter-spacing: 0.03em !important;
+        transition: all 0.3s ease !important;
+        white-space: nowrap !important;
+        display: inline-block !important;
+    }
+    #msf-funnel .msf-nav-cta:hover {
+        background: #FFD6DC !important;
+        color: #B01030 !important;
+        text-decoration: none !important;
+    }
+
+    /* ── HERO ── */
+    #msf-funnel .msf-hero {
+        width: 100% !important;
+        min-height: clamp(320px, 55vw, 580px) !important;
+        position: relative !important;
+        display: flex !important;
+        align-items: flex-end !important;
+        overflow: hidden !important;
+        background-image: url('https://cdn.uploads.webconnex.com/147655/dsc00289.jpg') !important;
+        background-size: cover !important;
+        background-position: center 45% !important;
+    }
+    #msf-funnel .msf-hero-overlay {
+        position: absolute !important;
+        inset: 0 !important;
+        background: linear-gradient(to bottom, rgba(122,0,32,0.1) 0%, rgba(122,0,32,0.15) 40%, rgba(122,0,32,0.65) 100%) !important;
+        z-index: 1 !important;
+    }
+    #msf-funnel .msf-hero-content {
+        position: relative !important;
+        z-index: 2 !important;
+        padding: 0 48px 48px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    #msf-funnel .msf-hero-eyebrow {
+        font-size: 0.7rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.2em !important;
+        text-transform: uppercase !important;
+        color: rgba(255,255,255,0.75) !important;
+        margin-bottom: 10px !important;
+        display: block !important;
+        opacity: 0;
+        animation: msfFadeUp 0.6s ease 0.2s forwards;
+    }
+    #msf-funnel .msf-hero-title {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: clamp(2.4rem, 7vw, 4.6rem) !important;
+        font-weight: 700 !important;
+        color: white !important;
+        line-height: 1.05 !important;
+        display: block !important;
+        text-shadow: 0 2px 20px rgba(0,0,0,0.3) !important;
+        opacity: 0;
+        animation: msfFadeUp 0.7s ease 0.35s forwards;
+    }
+    #msf-funnel .msf-hero-title em { font-style: italic !important; color: #FFB3BF !important; }
+    #msf-funnel .msf-hero-sub {
+        font-size: clamp(0.95rem, 1.6vw, 1.15rem) !important;
+        color: rgba(255,255,255,0.88) !important;
+        max-width: 560px !important;
+        line-height: 1.5 !important;
+        margin-top: 14px !important;
+        display: block !important;
+        opacity: 0;
+        animation: msfFadeUp 0.7s ease 0.5s forwards;
+    }
+    @keyframes msfFadeUp {
+        from { opacity: 0; transform: translateY(16px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── BENEFITS ── */
+    #msf-funnel .msf-benefits {
+        width: 100% !important;
+        background: white !important;
+        padding: 36px 48px !important;
+        display: block !important;
+        box-sizing: border-box !important;
+        border-bottom: 1px solid rgba(176,16,48,0.08) !important;
+    }
+    #msf-funnel .msf-benefits-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+    #msf-funnel .msf-benefit {
+        text-align: center !important;
+        padding: 8px 20px !important;
+        position: relative !important;
+    }
+    #msf-funnel .msf-benefit:not(:last-child)::after {
+        content: '' !important;
+        position: absolute !important;
+        right: 0 !important; top: 15% !important; bottom: 15% !important;
+        width: 1px !important;
+        background: rgba(176,16,48,0.1) !important;
+    }
+    #msf-funnel .msf-benefit-icon { font-size: 1.7rem !important; margin-bottom: 8px !important; display: block !important; }
+    #msf-funnel .msf-benefit-title {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 1rem !important; font-weight: 600 !important;
+        color: #1a0808 !important; margin-bottom: 3px !important; display: block !important;
+    }
+    #msf-funnel .msf-benefit-desc {
+        font-size: 0.75rem !important; color: #9a6060 !important;
+        line-height: 1.4 !important; display: block !important;
+    }
+
+    /* ── GALLERY ── (WS5 2026-07-15: real Eckert's Millstadt CDN photography now in hand —
+         reinstates the marquee that WS1 skipped for lack of photos) */
+    #msf-funnel .msf-gallery {
+        width: 100% !important;
+        background: #FFF8F8 !important;
+        padding: 56px 0 !important;
+        overflow: hidden !important;
+        display: block !important;
+    }
+    #msf-funnel .msf-gallery-header {
+        text-align: center !important;
+        padding: 0 48px !important;
+        margin-bottom: 32px !important;
+    }
+    #msf-funnel .msf-gallery-mask {
+        width: 100% !important; overflow: hidden !important;
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%) !important;
+        mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%) !important;
+    }
+    #msf-funnel .msf-gallery-track {
+        display: flex !important; gap: 16px !important;
+        width: max-content !important;
+        animation: msfMarquee 40s linear infinite !important;
+        padding: 8px 0 !important;
+    }
+    #msf-funnel .msf-gallery-track:hover { animation-play-state: paused !important; }
+    @keyframes msfMarquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    #msf-funnel .msf-gcard {
+        width: 340px !important; height: 240px !important;
+        border-radius: 20px !important; overflow: hidden !important;
+        flex-shrink: 0 !important; position: relative !important;
+        background: linear-gradient(135deg, #FFD6DC, #FFB3BF) !important;
+        transition: transform 0.4s ease, box-shadow 0.4s ease !important;
+    }
+    #msf-funnel .msf-gcard:hover {
+        transform: scale(1.03) translateY(-5px) !important;
+        box-shadow: 0 24px 50px rgba(176,16,48,0.2) !important; z-index: 2 !important;
+    }
+    #msf-funnel .msf-gcard img {
+        width: 100% !important; height: 100% !important;
+        object-fit: cover !important; display: block !important;
+        position: absolute !important; inset: 0 !important;
+    }
+    #msf-funnel .msf-gcard-label {
+        position: absolute !important; bottom: 12px !important; left: 12px !important;
+        background: rgba(26,8,8,0.6) !important; backdrop-filter: blur(8px) !important;
+        color: white !important; font-size: 0.7rem !important; letter-spacing: 0.05em !important;
+        font-weight: 700 !important; padding: 5px 12px !important; border-radius: 20px !important;
+        z-index: 2 !important;
+    }
+
+    /* ── ENTERTAINMENT ROSTER ── chip lists carry the full included/bonus roster; the featured-photo
+         strip (WS5) fronts the six activities we have real Eckert's photography for. */
+    #msf-funnel .msf-feat {
+        display: grid !important;
+        grid-template-columns: repeat(6, 1fr) !important;
+        gap: 12px !important;
+        max-width: 980px !important;
+        margin: 0 auto 36px !important;
+    }
+    #msf-funnel .msf-feat-card {
+        border-radius: 14px !important; overflow: hidden !important;
+        position: relative !important; aspect-ratio: 3 / 4 !important;
+        background: #FFD6DC !important;
+    }
+    #msf-funnel .msf-feat-card img {
+        width: 100% !important; height: 100% !important;
+        object-fit: cover !important; display: block !important;
+    }
+    #msf-funnel .msf-feat-label {
+        position: absolute !important; inset: auto 0 0 0 !important;
+        background: linear-gradient(to top, rgba(26,8,8,0.85), transparent) !important;
+        color: white !important; font-size: 0.65rem !important; font-weight: 700 !important;
+        text-align: center !important; padding: 18px 4px 8px !important; line-height: 1.2 !important;
+    }
+    #msf-funnel .msf-ent {
+        width: 100% !important;
+        background: #FFF8F8 !important;
+        padding: 56px 48px !important;
+        box-sizing: border-box !important;
+        display: block !important;
+    }
+    #msf-funnel .msf-ent-header { text-align: center !important; margin-bottom: 32px !important; }
+    #msf-funnel .msf-eye {
+        font-size: 0.7rem !important; font-weight: 600 !important;
+        letter-spacing: 0.22em !important; text-transform: uppercase !important;
+        color: #3D7A4F !important; margin-bottom: 8px !important; display: block !important;
+    }
+    #msf-funnel .msf-title {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: clamp(1.8rem, 4.5vw, 2.6rem) !important;
+        font-weight: 700 !important; color: #1a0808 !important;
+        line-height: 1.15 !important; display: block !important;
+    }
+    #msf-funnel .msf-title em { font-style: italic !important; color: #B01030 !important; }
+    #msf-funnel .msf-ent-group { max-width: 900px !important; margin: 0 auto 22px !important; }
+    #msf-funnel .msf-ent-label {
+        font-size: 0.75rem !important; font-weight: 700 !important;
+        letter-spacing: 0.08em !important; text-transform: uppercase !important;
+        color: #B01030 !important; margin-bottom: 10px !important; display: block !important;
+        text-align: center !important;
+    }
+    #msf-funnel .msf-chips {
+        display: flex !important; flex-wrap: wrap !important;
+        justify-content: center !important; gap: 10px !important;
+    }
+    #msf-funnel .msf-chip {
+        background: white !important;
+        border: 1px solid rgba(176,16,48,0.14) !important;
+        border-radius: 50px !important;
+        padding: 8px 16px !important;
+        font-size: 0.85rem !important;
+        color: #3a2020 !important;
+        display: inline-flex !important; align-items: center !important; gap: 6px !important;
+        white-space: nowrap !important;
+    }
+    #msf-funnel .msf-ent-note {
+        text-align: center !important;
+        font-size: 0.8rem !important;
+        color: #9a6060 !important;
+        max-width: 640px !important;
+        margin: 18px auto 0 !important;
+        line-height: 1.5 !important;
+    }
+
+    /* ── TICKET CARDS ── */
+    #msf-funnel .msf-tickets {
+        width: 100% !important;
+        background: #FFF0F2 !important;
+        padding: 72px 48px !important;
+        display: block !important; box-sizing: border-box !important;
+    }
+    #msf-funnel .msf-tickets-header { text-align: center !important; margin-bottom: 48px !important; }
+    #msf-funnel .msf-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 24px !important;
+        justify-content: center !important;
+        max-width: 820px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    #msf-funnel .msf-card {
+        border-radius: 20px !important;
+        padding: 36px 32px !important;
+        position: relative !important;
+        overflow: hidden !important;
+        transition: transform 0.35s ease, box-shadow 0.35s ease !important;
+        display: flex !important; flex-direction: column !important;
+    }
+    #msf-funnel .msf-card:hover { transform: translateY(-6px) !important; }
+
+    #msf-funnel .msf-card-red { background: #B01030 !important; color: white !important; }
+    #msf-funnel .msf-card-red:hover { box-shadow: 0 20px 44px rgba(176,16,48,0.35) !important; }
+
+    #msf-funnel .msf-card-dark { background: #1a0808 !important; color: white !important; }
+    #msf-funnel .msf-card-dark:hover { box-shadow: 0 20px 44px rgba(0,0,0,0.35) !important; }
+    #msf-funnel .msf-card-dark h3 { color: white !important; }
+    #msf-funnel .msf-card-dark .msf-card-bullets li { color: rgba(255,255,255,0.82) !important; }
+    #msf-funnel .msf-card-dark .msf-card-note { color: rgba(255,255,255,0.4) !important; }
+    #msf-funnel .msf-card-dark .msf-tier-now { color: #F5D080 !important; }
+    #msf-funnel .msf-card-badge-gold { background: #F5D080 !important; color: #7A0020 !important; }
+
+    #msf-funnel .msf-card-badge {
+        display: inline-block !important;
+        font-size: 0.62rem !important; font-weight: 700 !important;
+        letter-spacing: 0.14em !important; text-transform: uppercase !important;
+        padding: 4px 10px !important; border-radius: 20px !important;
+        margin-bottom: 14px !important; width: fit-content !important;
+    }
+    #msf-funnel .msf-card-badge-light { background: rgba(255,255,255,0.18) !important; color: white !important; }
+
+    /* ── card photo header (WS5) — bonfire card now carries a real Eckert's bonfire photo ── */
+    #msf-funnel .msf-card-photo {
+        margin: -36px -32px 20px !important;
+        height: 150px !important;
+        overflow: hidden !important;
+        position: relative !important;
+    }
+    #msf-funnel .msf-card-photo img {
+        width: 100% !important; height: 100% !important;
+        object-fit: cover !important; display: block !important;
+    }
+    #msf-funnel .msf-card-photo::after {
+        content: '' !important;
+        position: absolute !important; inset: 0 !important;
+        background: linear-gradient(to bottom, transparent 55%, rgba(26,8,8,0.55) 100%) !important;
+    }
+
+    #msf-funnel .msf-card-icon { font-size: 2.6rem !important; margin-bottom: 14px !important; display: block !important; }
+
+    #msf-funnel .msf-card h3 {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 1.55rem !important; font-weight: 700 !important;
+        line-height: 1.15 !important; margin-bottom: 14px !important; display: block !important;
+    }
+    #msf-funnel .msf-card-red h3 { color: white !important; }
+
+    #msf-funnel .msf-card-bullets {
+        list-style: none !important; padding: 0 !important; margin: 0 0 auto !important;
+        display: flex !important; flex-direction: column !important; gap: 6px !important;
+    }
+    #msf-funnel .msf-card-bullets li {
+        font-size: 0.95rem !important; line-height: 1.55 !important;
+        display: flex !important; align-items: flex-start !important; gap: 8px !important;
+    }
+    #msf-funnel .msf-card-red .msf-card-bullets li { color: rgba(255,255,255,0.85) !important; }
+
+    /* Day-tier rows — online (bold "now") vs at-gate (struck "was"), same relationship as the
+       established Belleville field-access pattern. */
+    #msf-funnel .msf-tiers {
+        margin-top: 20px !important;
+        padding-top: 14px !important;
+        border-top: 1px solid rgba(255,255,255,0.15) !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0 !important;
+    }
+    #msf-funnel .msf-tier {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 11px 0 !important;
+        gap: 12px !important;
+    }
+    #msf-funnel .msf-tier:not(:last-child) {
+        border-bottom: 1px solid rgba(255,255,255,0.12) !important;
+    }
+    #msf-funnel .msf-tier-name {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 0.98rem !important; font-weight: 700 !important;
+        color: white !important; display: block !important; line-height: 1.2 !important;
+    }
+    #msf-funnel .msf-tier-desc {
+        font-size: 0.72rem !important;
+        color: rgba(255,255,255,0.55) !important;
+        display: block !important; margin-top: 2px !important;
+    }
+    #msf-funnel .msf-tier-price { text-align: right !important; flex-shrink: 0 !important; }
+    #msf-funnel .msf-tier-was {
+        font-size: 0.75rem !important;
+        color: rgba(255,255,255,0.45) !important;
+        text-decoration: line-through !important;
+        display: block !important; line-height: 1 !important; margin-bottom: 2px !important;
+    }
+    #msf-funnel .msf-tier-now {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 1.55rem !important; font-weight: 700 !important;
+        color: #FFD6DC !important; line-height: 1 !important; display: block !important;
+    }
+
+    #msf-funnel .msf-card-note {
+        font-size: 0.72rem !important; font-style: italic !important;
+        margin-top: 14px !important; display: block !important; line-height: 1.5 !important;
+    }
+    #msf-funnel .msf-card-red .msf-card-note { color: rgba(255,255,255,0.55) !important; }
+
+    /* ── ADD-ON STRIP ── ports the established Sunflower Festival pattern
+       (belleville/sunflower-festival) recolored to Eckert's barn red. Add-ons are a
+       CHECKOUT UPSELL, so they live inside TICKETS below the cards — NOT mixed into
+       free/included activity content (that placement is what took this pricing down
+       with the entertainment block on 7/15). */
+    #msf-funnel .msf-addon-list {
+        max-width: 864px !important; margin: 28px auto 0 !important;
+        display: flex !important; flex-direction: column !important; gap: 14px !important;
+    }
+    #msf-funnel .msf-addon {
+        background: white !important; border: 1px solid rgba(176,16,48,0.2) !important;
+        border-radius: 16px !important; padding: 22px 28px !important;
+        display: flex !important; align-items: center !important; gap: 20px !important; box-sizing: border-box !important;
+    }
+    #msf-funnel .msf-addon-icon { font-size: 2.2rem !important; flex-shrink: 0 !important; }
+    #msf-funnel .msf-addon-body { flex: 1 1 auto !important; }
+    #msf-funnel .msf-addon-title { font-family: 'Zilla Slab', serif !important; font-size: 1.2rem !important; font-weight: 700 !important; color: #1a0808 !important; display: block !important; margin-bottom: 3px !important; }
+    #msf-funnel .msf-addon-desc { font-size: 0.85rem !important; color: #7A0820 !important; line-height: 1.5 !important; display: block !important; }
+    #msf-funnel .msf-addon-price { font-family: 'Zilla Slab', serif !important; font-size: 1.5rem !important; font-weight: 700 !important; color: #B01030 !important; flex-shrink: 0 !important; text-align: right !important; }
+    #msf-funnel .msf-addon-price small { display: block !important; font-size: 0.7rem !important; font-weight: 600 !important; opacity: 0.75 !important; }
+
+    /* ── INFO ROW ── */
+    #msf-funnel .msf-info {
+        width: 100% !important;
+        background: #B01030 !important;
+        padding: 0 !important; display: block !important; box-sizing: border-box !important;
+    }
+    #msf-funnel .msf-info-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+    #msf-funnel .msf-info-item {
+        text-align: center !important;
+        padding: 28px 20px !important;
+        position: relative !important;
+    }
+    #msf-funnel .msf-info-item:not(:last-child)::after {
+        content: '' !important; position: absolute !important;
+        right: 0 !important; top: 20% !important; bottom: 20% !important;
+        width: 1px !important; background: rgba(255,255,255,0.15) !important;
+    }
+    #msf-funnel .msf-info-icon { font-size: 1.5rem !important; display: block !important; margin-bottom: 6px !important; }
+    #msf-funnel .msf-info-label {
+        font-size: 0.62rem !important; font-weight: 700 !important;
+        letter-spacing: 0.16em !important; text-transform: uppercase !important;
+        color: rgba(255,255,255,0.55) !important; display: block !important; margin-bottom: 4px !important;
+    }
+    #msf-funnel .msf-info-value {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 0.95rem !important; font-weight: 600 !important;
+        color: white !important; display: block !important; line-height: 1.3 !important;
+    }
+
+    /* ── REVEAL ── */
+    #msf-funnel .msfr {
+        opacity: 0 !important; transform: translateY(28px) !important;
+        transition: opacity 0.7s cubic-bezier(.16,1,.3,1), transform 0.7s cubic-bezier(.16,1,.3,1) !important;
+    }
+    #msf-funnel .msfr.msfon { opacity: 1 !important; transform: none !important; }
+    #msf-funnel .msfr.d1 { transition-delay: 0.1s !important; }
+    #msf-funnel .msfr.d2 { transition-delay: 0.2s !important; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+        #msf-funnel .msf-nav { padding: 0 24px !important; }
+        #msf-funnel .msf-hero-content { padding: 0 24px 32px !important; }
+        #msf-funnel .msf-benefits { padding: 32px 24px !important; }
+        #msf-funnel .msf-gallery-header { padding: 0 24px !important; }
+        #msf-funnel .msf-gcard { width: 280px !important; height: 200px !important; }
+        #msf-funnel .msf-ent { padding: 40px 24px !important; }
+        #msf-funnel .msf-feat { grid-template-columns: repeat(3, 1fr) !important; max-width: 520px !important; gap: 10px !important; }
+        #msf-funnel .msf-tickets { padding: 56px 24px !important; }
+        #msf-funnel .msf-grid { grid-template-columns: 1fr !important; max-width: 420px !important; }
+        #msf-funnel .msf-info-grid { grid-template-columns: 1fr 1fr !important; }
+        #msf-funnel .msf-info-item:nth-child(2n)::after { display: none !important; }
+    }
+    @media (max-width: 560px) {
+        #msf-funnel .msf-nav { padding: 0 16px !important; }
+        #msf-funnel .msf-nav-loc { display: none !important; }
+        #msf-funnel .msf-hero-content { padding: 0 16px 24px !important; }
+        #msf-funnel .msf-benefits { padding: 24px 16px !important; }
+        #msf-funnel .msf-benefits-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 14px 0 !important; }
+        #msf-funnel .msf-benefit:nth-child(2n)::after { display: none !important; }
+        #msf-funnel .msf-gallery { padding: 40px 0 !important; }
+        #msf-funnel .msf-gallery-header { padding: 0 16px !important; margin-bottom: 24px !important; }
+        #msf-funnel .msf-gcard { width: 220px !important; height: 160px !important; }
+        #msf-funnel .msf-ent { padding: 32px 16px !important; }
+        #msf-funnel .msf-feat { grid-template-columns: repeat(2, 1fr) !important; max-width: 320px !important; }
+        #msf-funnel .msf-card-photo { height: 120px !important; }
+        #msf-funnel .msf-tickets { padding: 48px 16px !important; }
+        #msf-funnel .msf-grid { grid-template-columns: 1fr !important; }
+    }
+</style>
+
+<div id="msf-funnel">
+
+    <!-- BANNER -->
+    <div class="msf-banner">
+        <div class="msf-banner-inner">
+            <span style="color: #ffffff !important;">🌾 <strong style="color: #ffffff !important;">Eckert's Millstadt Farm</strong></span>
+            <span class="msf-dot"></span>
+            <span style="color: #ffffff !important;">Fall Farm Admission · 2026</span>
+            <span class="msf-dot"></span>
+            <span style="color: #ffffff !important;">Open Wed–Sun + Columbus Day</span>
+        </div>
+    </div>
+
+    <!-- NAV -->
+    <div class="msf-nav">
+        <div class="msf-logo-wrap">
+            <img src="https://s3.amazonaws.com/uploads.webconnex.com/147655%2F1771785967751-Untitled+design+%28100%29.png" alt="Eckert's Farm">
+        </div>
+        <div class="msf-nav-right">
+            <div class="msf-nav-loc">
+                <svg width="12" height="12" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                    <circle cx="12" cy="11" r="3"/>
+                </svg>
+                Millstadt, IL
+            </div>
+            <a href="#ticketBlock" class="msf-nav-cta">Get Tickets</a>
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <div class="msf-hero">
+        <div class="msf-hero-overlay"></div>
+        <div class="msf-hero-content">
+            <span class="msf-hero-eyebrow">Eckert's Millstadt Farm · 2026</span>
+            <span class="msf-hero-title">Fall Fun,<br><em>All Day Long</em></span>
+            <span class="msf-hero-sub">Visit Eckert's Millstadt Fun Farm this fall, where you and your kids can be entertained all day. There's even more fun on the weekends.</span>
+        </div>
+    </div>
+
+    <!-- BENEFITS -->
+    <div class="msf-benefits">
+        <div class="msf-benefits-grid">
+            <div class="msf-benefit">
+                <span class="msf-benefit-icon">🏰</span>
+                <span class="msf-benefit-title">Fort Eckert &amp; More</span>
+                <span class="msf-benefit-desc">Giant play structure, petting zoo &amp; farm activities</span>
+            </div>
+            <div class="msf-benefit">
+                <span class="msf-benefit-icon">🎃</span>
+                <span class="msf-benefit-title">Haunted Hayride</span>
+                <span class="msf-benefit-desc">Included Fri &amp; Sat nights, Sept 11 – Oct 31</span>
+            </div>
+            <div class="msf-benefit">
+                <span class="msf-benefit-icon">🍎</span>
+                <span class="msf-benefit-title">Pick-Your-Own</span>
+                <span class="msf-benefit-desc">Apples &amp; pumpkins, in season now</span>
+            </div>
+            <div class="msf-benefit">
+                <span class="msf-benefit-icon">👶</span>
+                <span class="msf-benefit-title">Under 2 Free</span>
+                <span class="msf-benefit-desc">Little ones ride and play at no charge</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- GALLERY (WS5 2026-07-15: mirrored from Eckert's own Millstadt CDN, crowd7-public/clients/eckerts/design/assets/) -->
+    <div class="msf-gallery">
+        <div class="msf-gallery-header msfr">
+            <span class="msf-eye">Straight From The Farm</span>
+            <span class="msf-title">A look at <em>fall at Millstadt</em></span>
+        </div>
+        <div class="msf-gallery-mask">
+            <div class="msf-gallery-track">
+                <div class="msf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/millstadt/eckerts-millstadt-11.jpg" alt="Kids feeding goats at the Millstadt petting zoo" loading="lazy"><div class="msf-gcard-label">Petting Zoo</div></div>
+                <div class="msf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/bonfires/bonfire-23.jpg" alt="Friends roasting marshmallows at an evening bonfire" loading="lazy"><div class="msf-gcard-label">Fireside S'mores</div></div>
+                <div class="msf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/entertainment/corn-maze.jpg" alt="Aerial view of the 8-acre corn maze" loading="lazy"><div class="msf-gcard-label">8-Acre Corn Maze</div></div>
+                <div class="msf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/entertainment/wagon-ride.jpg" alt="Family riding the wagon train" loading="lazy"><div class="msf-gcard-label">Wagon Train</div></div>
+                <div class="msf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/entertainment/pig-races.jpg" alt="Piglets running the Millstadt pig races" loading="lazy"><div class="msf-gcard-label">Pig Races</div></div>
+                <div class="msf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/produce/basket-of-apples.jpg" alt="A freshly picked basket of apples" loading="lazy"><div class="msf-gcard-label">Fresh Picked Apples</div></div>
+                <div class="msf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/entertainment/pumpkin-cannon-3.jpg" alt="The Millstadt pumpkin cannon in action" loading="lazy"><div class="msf-gcard-label">Pumpkin Cannon</div></div>
+                <div class="msf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/farm/img-0501.jpg" alt="Kids bouncing and playing on the farm" loading="lazy"><div class="msf-gcard-label">Fall Fun</div></div>
+                <!-- Duplicate for seamless loop -->
+                <div class="msf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/millstadt/eckerts-millstadt-11.jpg" alt="Kids feeding goats at the Millstadt petting zoo" loading="lazy"><div class="msf-gcard-label">Petting Zoo</div></div>
+                <div class="msf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/bonfires/bonfire-23.jpg" alt="Friends roasting marshmallows at an evening bonfire" loading="lazy"><div class="msf-gcard-label">Fireside S'mores</div></div>
+                <div class="msf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/entertainment/corn-maze.jpg" alt="Aerial view of the 8-acre corn maze" loading="lazy"><div class="msf-gcard-label">8-Acre Corn Maze</div></div>
+                <div class="msf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/entertainment/wagon-ride.jpg" alt="Family riding the wagon train" loading="lazy"><div class="msf-gcard-label">Wagon Train</div></div>
+                <div class="msf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/entertainment/pig-races.jpg" alt="Piglets running the Millstadt pig races" loading="lazy"><div class="msf-gcard-label">Pig Races</div></div>
+                <div class="msf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/produce/basket-of-apples.jpg" alt="A freshly picked basket of apples" loading="lazy"><div class="msf-gcard-label">Fresh Picked Apples</div></div>
+                <div class="msf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/entertainment/pumpkin-cannon-3.jpg" alt="The Millstadt pumpkin cannon in action" loading="lazy"><div class="msf-gcard-label">Pumpkin Cannon</div></div>
+                <div class="msf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/farm/img-0501.jpg" alt="Kids bouncing and playing on the farm" loading="lazy"><div class="msf-gcard-label">Fall Fun</div></div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- TICKETS -->
+    <div class="msf-tickets" id="tickets">
+        <div class="msf-tickets-header msfr">
+            <span class="msf-eye">Farm Admission &amp; Bonfires</span>
+            <span class="msf-title">Plan your <em>fall visit</em></span>
+        </div>
+        <div class="msf-grid">
+
+            <!-- ① FARM ADMISSION — day-tiered, online (now) vs at-gate (struck "was"), per artifacts/millstadt-content-source.md -->
+            <div class="msf-card msf-card-red msfr">
+                <span class="msf-card-badge msf-card-badge-light">Farm Admission</span>
+                <span class="msf-card-icon">🎟</span>
+                <h3>Millstadt Farm Admission</h3>
+                <ul class="msf-card-bullets">
+                    <li>🎪 Live entertainment Fri, Sat, Sun &amp; Columbus Day</li>
+                    <li>🎃 1 free haunted hayride included (Fri/Sat nights, Sept 11 – Oct 31)</li>
+                    <li>👶 Children under 2 free</li>
+                </ul>
+                <div class="msf-tiers">
+                    <div class="msf-tier">
+                        <div>
+                            <span class="msf-tier-name">Wed &amp; Thu</span>
+                            <span class="msf-tier-desc">No entertainment / no concessions / no mechanical rides</span>
+                        </div>
+                        <div class="msf-tier-price">
+                            <span class="msf-tier-was">$6 gate</span>
+                            <span class="msf-tier-now">$3</span>
+                        </div>
+                    </div>
+                    <div class="msf-tier">
+                        <div>
+                            <span class="msf-tier-name">Friday</span>
+                            <span class="msf-tier-desc">Full entertainment</span>
+                        </div>
+                        <div class="msf-tier-price">
+                            <span class="msf-tier-was">$17 gate</span>
+                            <span class="msf-tier-now">$12</span>
+                        </div>
+                    </div>
+                    <div class="msf-tier">
+                        <div>
+                            <span class="msf-tier-name">Sat &amp; Sun</span>
+                            <span class="msf-tier-desc">Full entertainment, concessions available</span>
+                        </div>
+                        <div class="msf-tier-price">
+                            <span class="msf-tier-was">$22 gate</span>
+                            <span class="msf-tier-now">$17</span>
+                        </div>
+                    </div>
+                    <div class="msf-tier">
+                        <div>
+                            <span class="msf-tier-name">Columbus Day (10/12)</span>
+                            <span class="msf-tier-desc">9 AM – 6 PM</span>
+                        </div>
+                        <div class="msf-tier-price">
+                            <span class="msf-tier-was">$17 gate</span>
+                            <span class="msf-tier-now">$12</span>
+                        </div>
+                    </div>
+                </div>
+                <span class="msf-card-note">Per person online · gate price shown struck-through · + applicable fees at checkout. Closed Mondays &amp; Tuesdays except Columbus Day.</span>
+            </div>
+
+            <!-- ② BONFIRES — spec received from Amanda 7/15 ("Re: sales and pages"). Site rental only —
+                 does NOT include admission (each guest still buys admission separately, per 7/2 call).
+                 Family Fun Bundle intentionally OMITTED from v1: the bundle can't get one price because
+                 admission itself varies by day (Wed/Thu vs Fri vs Sat/Sun) and Amanda hasn't resolved that;
+                 do not invent a number — that's routed back to Mat/Amanda, not a build blocker. -->
+            <div class="msf-card msf-card-dark msfr d1">
+                <div class="msf-card-photo"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/bonfires/bonfire-sites.jpg" alt="Hay-bale seating around the Millstadt bonfire pond" loading="lazy"></div>
+                <span class="msf-card-badge msf-card-badge-gold">Bonfire Sites</span>
+                <span class="msf-card-icon">🔥</span>
+                <h3>Fall Bonfires</h3>
+                <ul class="msf-card-bullets">
+                    <li>🪑 Straw-bale seating, up to 25 guests</li>
+                    <li>🌙 Lit ~7 PM · farm open till 10 PM</li>
+                    <li>🎟️ Admission sold separately per guest</li>
+                </ul>
+                <div class="msf-tiers">
+                    <div class="msf-tier">
+                        <div><span class="msf-tier-name">Friday · September</span></div>
+                        <div class="msf-tier-price"><span class="msf-tier-now">$75</span></div>
+                    </div>
+                    <div class="msf-tier">
+                        <div><span class="msf-tier-name">Saturday · September</span></div>
+                        <div class="msf-tier-price"><span class="msf-tier-now">$95</span></div>
+                    </div>
+                    <div class="msf-tier">
+                        <div><span class="msf-tier-name">Friday · October</span></div>
+                        <div class="msf-tier-price"><span class="msf-tier-now">$95</span></div>
+                    </div>
+                    <div class="msf-tier">
+                        <div><span class="msf-tier-name">Saturday · October</span></div>
+                        <div class="msf-tier-price"><span class="msf-tier-now">$175</span></div>
+                    </div>
+                </div>
+                <span class="msf-card-note">Site rental, per night · each guest also needs farm admission.</span>
+            </div>
+
+        </div>
+
+        <!-- ADD-ONS — checkout upsells, NOT included with admission.
+             Pricing per artifacts/millstadt-content-source.md (carried from Amanda's existing
+             live page). ⚠️ Apple Cannon price is an OPEN ASK with Amanda — confirm before
+             production promotion; do not treat as final. -->
+        <div class="msf-addon-list msfr d2">
+            <div class="msf-addon">
+                <span class="msf-addon-icon">🐴</span>
+                <span class="msf-addon-body">
+                    <span class="msf-addon-title">Pony Rides</span>
+                    <span class="msf-addon-desc">A lap around the pony track — a Millstadt favorite for the little ones. Add at checkout.</span>
+                </span>
+                <span class="msf-addon-price">$10</span>
+            </div>
+            <div class="msf-addon">
+                <span class="msf-addon-icon">🦜</span>
+                <span class="msf-addon-body">
+                    <span class="msf-addon-title">Parakeet Encounter</span>
+                    <span class="msf-addon-desc">Step into the aviary and hand-feed the flock. Add at checkout.</span>
+                </span>
+                <span class="msf-addon-price">$3</span>
+            </div>
+            <div class="msf-addon">
+                <span class="msf-addon-icon">🎃</span>
+                <span class="msf-addon-body">
+                    <span class="msf-addon-title">Apple Cannons</span>
+                    <span class="msf-addon-desc">Load up and fire at the targets across the field. Add at checkout.</span>
+                </span>
+                <span class="msf-addon-price">$3<small>5 shots · $5 for 10</small></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- INFO ROW -->
+    <div class="msf-info">
+        <div class="msf-info-grid">
+            <div class="msf-info-item">
+                <span class="msf-info-icon">📍</span>
+                <span class="msf-info-label">Location</span>
+                <span class="msf-info-value">2719 Eckert Orchard Ln<br>Millstadt, IL 62260</span>
+            </div>
+            <div class="msf-info-item">
+                <span class="msf-info-icon">🕘</span>
+                <span class="msf-info-label">Open</span>
+                <span class="msf-info-value">Wed – Sun<br>+ Columbus Day 9–6</span>
+            </div>
+            <div class="msf-info-item">
+                <span class="msf-info-icon">🎃</span>
+                <span class="msf-info-label">Haunted Hayrides</span>
+                <span class="msf-info-value">Fri &amp; Sat nights<br>Sept 11 – Oct 31</span>
+            </div>
+            <div class="msf-info-item">
+                <span class="msf-info-icon">🌾</span>
+                <span class="msf-info-label">Crops to Pick</span>
+                <span class="msf-info-value">Apples: Sept–Oct<br>Pumpkins: late Sept–Oct</span>
+            </div>
+        </div>
+    </div>
+
+</div><!-- end #msf-funnel -->
+
+<script>
+    (function() {
+        var obs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) {
+                if (e.isIntersecting) { e.target.classList.add('msfon'); obs.unobserve(e.target); }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('#msf-funnel .msfr').forEach(function(el) {
+            obs.observe(el);
+            if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('msfon');
+        });
+        document.querySelectorAll('#msf-funnel a[href^="#"]').forEach(function(a) {
+            a.addEventListener('click', function(e) {
+                e.preventDefault();
+                var t = document.querySelector(a.getAttribute('href'));
+                if (t) t.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    })();
+</script>
+
+<!-- ============================================================
+     ECKERTS MILLSTADT — FLOATING BUY TICKETS BUTTON
+     Paste as a SEPARATE Custom HTML block in TicketSpice (not nested
+     inside the page-header HTML above). Fixed to viewport bottom,
+     stays visible while scrolling, hides on click only.
+     ============================================================ -->
+<style>
+    #msf-float-btn {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 9999 !important;
+        padding: 12px 16px 20px !important;
+        background: linear-gradient(to top, rgba(255,248,248,0.97) 55%, transparent) !important;
+        display: flex !important;
+        justify-content: center !important;
+        transition: opacity 0.35s ease, transform 0.35s ease !important;
+    }
+    #msf-float-btn.msf-float-hidden {
+        opacity: 0 !important;
+        transform: translateY(24px) !important;
+        pointer-events: none !important;
+    }
+    #msf-float-btn a {
+        display: block !important;
+        width: 100% !important;
+        max-width: 480px !important;
+        background: #B01030 !important;
+        color: #ffffff !important;
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 20px !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.06em !important;
+        text-align: center !important;
+        text-decoration: none !important;
+        padding: 17px 24px !important;
+        border-radius: 50px !important;
+        box-shadow: 0 8px 32px rgba(176,16,48,0.40) !important;
+        transition: transform 0.15s, box-shadow 0.15s, background 0.2s !important;
+        border: none !important;
+        cursor: pointer !important;
+    }
+    #msf-float-btn a:hover {
+        background: #8E0C26 !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 14px 40px rgba(176,16,48,0.55) !important;
+        color: #ffffff !important;
+        text-decoration: none !important;
+    }
+</style>
+
+<div id="msf-float-btn">
+    <a href="#ticketBlock">🎟 Get Tickets</a>
+</div>
+
+<script>
+    (function() {
+        var floatBtn = document.getElementById('msf-float-btn');
+        if (floatBtn) {
+            floatBtn.querySelector('a').addEventListener('click', function() {
+                floatBtn.classList.add('msf-float-hidden');
+            });
+        }
+    })();
+</script>
+
+<!-- ════ SLASH-THROUGH PRICING — WS3 TODO ════
+     The day-tier online/gate rows above are static markup (correct today, per the content source).
+     Once the TicketSpice build brief (WS3) fixes the native cart's exact ticket <h4> names, add the
+     name-keyed JS + MutationObserver + content:attr(data-gate) pattern to #ticketBlock so the native
+     TS cart mirrors the same struck-through gate price, per
+     /data/clients/_patterns/slash-through-pricing.md (do NOT hand-roll nth-child selectors). -->
