@@ -986,10 +986,24 @@
     var KEY   = 'msfsm-dismissed-2026';
     var FORCE = /[?&]c7smores=1/.test(window.location.search);        // preview hatch
 
-    // ⚠️ PLACEHOLDER NAME MATCHERS — confirm against a live TS dump before ship.
-    // Matched against each row's <h4> text (the only per-ticket identifier TS gives us).
+    // ── VERIFIED against a real live-page dump 2026-07-16 (Downloads/millstadt-page.html).
+    // Bonfire sites ARE ticket rows: <tr class="ticket ticket-type"> with <h4>Bonfire Site #1</h4>
+    // and a <select> qty (options 0/1). 70 sites live (#1-#70).
     var BONFIRE_RE = /bonfire\s*site/i;
-    var SMORES_RE  = /s'?mores/i;
+
+    // The S'MORES KIT IS NOT A TICKET ROW. It's a TS *merchandise* field living OUTSIDE
+    // #ticketBlock:
+    //   <div data-field-type="merchandise" data-field-name="registrants.smoresKit">
+    //     <h2 class="upgrades-heading">Smores Kit</h2>
+    //     <input type="number" aria-label="Smores Kit error message" style="opacity:0">  <- HIDDEN ERROR FIELD, NOT qty
+    //     <li class="upgrade"> ... <span class="price-stacked">$15.00 ea.</span>
+    //         <a class="btn btn-primary" data-id="aa33f1f9-...">Add</a>
+    // So there is no qty input to set — you ADD it by clicking TS's own Add button, exactly
+    // like a guest would. Let TS's handlers own the cart mutation; we just click.
+    // data-field-name is TS's stable field id — a far better hook than matching display text
+    // (the heading says "Smores Kit", the product says "Smore Kit" — singular. Text matching
+    // is a trap here).
+    var SMORES_SEL = '[data-field-name="registrants.smoresKit"]';
 
     function rows(){
       return Array.prototype.slice.call(document.querySelectorAll('#ticketBlock .ticket-type'));
@@ -998,14 +1012,8 @@
       var h4 = row.querySelector('h4');
       return h4 ? h4.textContent.trim() : '';
     }
-    function findRow(re){
-      var all = rows();
-      for (var i=0;i<all.length;i++){ if (re.test(nameOf(all[i]))) return all[i]; }
-      return null;
-    }
-    // TS renders qty as a number input or a select depending on ticket config — handle both.
     function qtyEl(row){
-      return row.querySelector('input[type="number"], select, input.quantity, input[name*="quantity" i]');
+      return row.querySelector('select, input[type="number"], input.quantity');
     }
     function qtyVal(row){
       var el = qtyEl(row);
@@ -1013,16 +1021,36 @@
       var v = parseInt(el.value, 10);
       return isNaN(v) ? 0 : v;
     }
-    // Setting .value alone does NOT update TS's cart total — its own listeners must fire.
-    function setQty(row, n){
-      var el = qtyEl(row);
-      if (!el) return false;
-      var proto = el.tagName === 'SELECT' ? window.HTMLSelectElement : window.HTMLInputElement;
-      var setter = Object.getOwnPropertyDescriptor(proto.prototype, 'value');
-      if (setter && setter.set) { setter.set.call(el, String(n)); } else { el.value = String(n); }
-      el.dispatchEvent(new Event('input',  { bubbles:true }));
-      el.dispatchEvent(new Event('change', { bubbles:true }));
-      return true;
+
+    function isVisible(el){
+      return !!(el && (el.offsetWidth || el.offsetHeight || el.getClientRects().length));
+    }
+    // ⚠️ EXISTENCE IS NOT AN OFFER. The field config carries activation rules
+    // ("activation":{"contest":[...]}) and ships as active:false / visible:false — TS renders
+    // the merchandise field into the DOM and HIDES it until its Action says otherwise. So a
+    // bare querySelector would be truthy on nights s'mores aren't sold and we'd prompt for
+    // something unbuyable. Gate on real visibility; that way TS's Action stays the single
+    // source of truth for the Fri/Sat rule and we inherit it with no duplicated date logic.
+    function smoresBlock(){
+      var b = document.querySelector(SMORES_SEL);
+      return isVisible(b) ? b : null;
+    }
+    function smoresAddBtn(){
+      var b = smoresBlock();
+      return b ? b.querySelector('.upgrade a.btn-primary[data-id]') : null;
+    }
+    function smoresPrice(){
+      var b = smoresBlock();
+      var p = b && b.querySelector('.price-stacked');
+      return p ? p.textContent.replace(/\s*ea\.?\s*$/i, '').trim() : null;
+    }
+    // Once added, TS swaps the Add link out for its own qty/remove control.
+    function smoresAdded(){
+      var b = smoresBlock();
+      if (!b) return false;
+      var add = b.querySelector('.upgrade a.btn-primary[data-id]');
+      if (!add) return true;
+      return /remove|added/i.test(add.textContent || '');
     }
 
     var shown = false;
@@ -1037,26 +1065,34 @@
       var ov = document.getElementById('msfsm-overlay');
       if (!ov || shown) return;
       shown = true;
-      // Mirror the live TS price into the popup so we never hard-code a stale figure.
-      var sm = findRow(SMORES_RE);
-      var cost = sm && sm.querySelector('.ticket-cost');
+      // Mirror the LIVE TS price so this can never drift from the cart (Amanda hedged
+      // "I think $15" — when that firms up in TS, the popup follows automatically).
+      var price = smoresPrice();
       var pv = document.getElementById('msfsm-price-val');
-      if (cost && pv) { pv.textContent = cost.textContent.trim(); }
+      if (price && pv) { pv.textContent = price; }
       ov.removeAttribute('hidden');
     }
+    // Mat's spec: choosing "Add a kit" closes the modal AND actually selects the kit.
+    // We click TS's own Add button rather than poking at values — its handlers then own
+    // the cart mutation, inventory decrement and total recalc, exactly as if the guest
+    // had clicked it. Nothing to keep in sync on our side.
     function addKit(){
-      var sm = findRow(SMORES_RE);
-      if (sm) setQty(sm, Math.max(1, qtyVal(sm) + 1));
+      var btn = smoresAddBtn();
       dismiss();
-      if (sm) sm.scrollIntoView({ behavior:'smooth', block:'center' });
+      if (btn) {
+        btn.click();
+        setTimeout(function(){
+          var b = document.querySelector(SMORES_SEL);
+          if (b) b.scrollIntoView({ behavior:'smooth', block:'center' });
+        }, 80);
+      }
     }
 
     function scan(){
-      // Gate: no s'mores row in the DOM => TS says it isn't offered right now
-      // (wrong night, sold out, not built yet). Never prompt for something unbuyable.
-      var smores = findRow(SMORES_RE);
-      if (!smores) return;
-      if (qtyVal(smores) > 0) return;                                 // already added — don't nag
+      // Gate: s'mores not visibly offered right now (wrong night per TS's Action, sold
+      // out, or field inactive) => never prompt for something unbuyable.
+      if (!smoresBlock()) return;
+      if (smoresAdded()) return;                                      // already in cart — don't nag
 
       rows().forEach(function(row){
         var nm = nameOf(row);
@@ -1084,7 +1120,12 @@
       new MutationObserver(scan).observe(tb, { childList:true, subtree:true });
       tb.addEventListener('change', scan, true);                      // qty changes bubble here
       scan();
-      console.log('[msfsm] armed', { smoresRow: !!findRow(SMORES_RE) });
+      console.log('[msfsm] armed', {
+        smoresFieldPresent: !!document.querySelector(SMORES_SEL),   // in the DOM at all
+        smoresOffered:      !!smoresBlock(),                        // ...and actually visible
+        smoresPrice:        smoresPrice(),
+        bonfireRows:        rows().filter(function(r){ return BONFIRE_RE.test(nameOf(r)); }).length
+      });
     }
 
     if (document.readyState === 'loading') {
