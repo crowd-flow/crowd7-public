@@ -810,15 +810,18 @@
        Amanda's nice-to-have ("would be awesome... not a critical component").
        Ports the Versailles July-4 popup pattern (versailles/peaches, vjul4pop).
 
-       SHOWS: Fri-Sun July 17-19 2026 only (the sale window; launches Fri 8am CT).
+       SHOWS: Fri-Mon July 17-20 2026 inclusive (the sale window; launches Fri 8am CT).
               Auto-hides outside that window. Dismissal persists for the session.
+              ⚠️ EXTENDED 2026-07-16: Amanda moved the close from Sun 7/19 to
+              Mon 7/20 ("in case someone forgets to grab it and they miss it over
+              the weekend"). End of day Monday; per Mat, copy states the date only
+              — deliberately NO end TIME communicated.
        FORCE: append ?c7xmas=1 to preview it outside the window (Mat's test hatch).
        KILL:  window.MSFXMAS_ENABLED = false  before this block.
 
-       ⚠️ COPY DELIBERATELY OMITS THE DISCOUNT %. Last year was 50% off Sept
-       admission + Sept bonfire sites, but Amanda has NOT confirmed 2026's offer.
-       Code only until she does — do not invent a number (same rule as the
-       Family Fun Bundle omission).
+       OFFER CONFIRMED (2026): 50% off Sept admission + 50% off Sept Friday-night
+       bonfire sites, code Christmas26, Family Fun Bundle excluded. (The older
+       "omit the discount %" rule is retired — Amanda confirmed the 2026 offer.)
 
        The coupon itself + the TS Actions are AMANDA's job (with Michelle's TS
        team) — this popup is marketing surface only, it does not apply anything.
@@ -829,7 +832,7 @@
       <div class="msfxmas-icon">🎄</div>
       <h3 id="msfxmas-title" class="msfxmas-h">Christmas in <em>July</em></h3>
       <p class="msfxmas-p">
-        Our <strong>Christmas in July</strong> sale is on — this weekend only.
+        Our <strong>Christmas in July</strong> sale is on — now through <strong>Monday, July 20</strong>.
         Take <strong>50% off</strong> September admission tickets and
         <strong>50% off</strong> Friday-night bonfire sites in September.
         Use code <span class="msfxmas-code">Christmas26</span> at checkout.
@@ -868,12 +871,13 @@
     var KEY   = 'msfxmas-dismissed-2026';
     var FORCE = /[?&]c7xmas=1/.test(window.location.search);       // Mat's preview hatch
 
-    // Sale window: Fri Jul 17 -> Sun Jul 19 2026 inclusive. Local clock (farm is CT;
-    // a visitor's device tz can shift the boundary by hours — acceptable for a
-    // marketing blurb, NOT for anything that gates a price).
+    // Sale window: Fri Jul 17 -> Mon Jul 20 2026 inclusive (EXTENDED 2026-07-16 from
+    // Sun 7/19 at Amanda's request). Local clock (farm is CT; a visitor's device tz can
+    // shift the boundary by hours — acceptable for a marketing blurb, NOT for anything
+    // that gates a price. The real close is the TS date rule, not this).
     function inWindow(){
       var n = new Date(), y = n.getFullYear(), m = n.getMonth() + 1, d = n.getDate();
-      return y === 2026 && m === 7 && d >= 17 && d <= 19;
+      return y === 2026 && m === 7 && d >= 17 && d <= 20;
     }
 
     try { if (!FORCE && sessionStorage.getItem(KEY)) return; } catch(e){}
@@ -899,6 +903,189 @@
     document.addEventListener('keydown', function(e){ if (e.key === 'Escape') hide(); });
 
     console.log('[msfxmas] shown', { forced: FORCE, inWindow: inWindow() });
+  })();
+  </script>
+
+
+  <!-- ═══ S'MORES KIT UPSELL POP-UP ══════════════════════════════════════════
+       Amanda's 7/16 ask ("Millstadt page" email): "Is there a possibility to
+       create an action/pop-up that if a bonfire site is selected, guests will
+       receive a pop up to add on a smores kit?"
+
+       ⚠️ NOT LIVE-VERIFIED. Ticket NAMES below are PLACEHOLDERS — they must be
+       confirmed from a real TS page dump before this ships (per
+       /data/clients/_patterns/slash-through-pricing.md: match on the <h4> ticket
+       name, never on DOM position, and never guess the name). At time of writing
+       the s'mores add-on + bonfire site ticket types DO NOT EXIST in the TS cart
+       yet (Bryan builds them). Until they do, this block is inert by design.
+
+       DIVISION OF LABOUR — deliberate:
+         · TS owns the $15 item, its price, and the Fri/Sat-only availability
+           (a native TS Action). We do NOT duplicate the date rule here.
+         · This block owns the PROMPT only.
+       We inherit the Fri/Sat gate for free: the popup only fires if a s'mores
+       row actually EXISTS in the DOM. When the TS Action hides it on a non-bonfire
+       night, the row is absent and this can't fire. One source of truth, no drift.
+
+       FORCE: ?c7smores=1 forces the popup once on load (preview hatch).
+       KILL:  window.MSFSMORES_ENABLED = false before this block.
+       ═══════════════════════════════════════════════════════════════════════ -->
+  <div id="msfsm-overlay" class="msfsm-overlay" role="dialog" aria-modal="true" aria-labelledby="msfsm-title" hidden>
+    <div class="msfsm-card">
+      <button class="msfsm-close" aria-label="Close">&times;</button>
+      <div class="msfsm-icon">🔥</div>
+      <h3 id="msfsm-title" class="msfsm-h">Add a <em>S'mores Kit?</em></h3>
+      <p class="msfsm-p">
+        You've got a bonfire site — make it count. Each kit has everything you need,
+        and <strong>makes 11 s'mores</strong>.
+      </p>
+      <ul class="msfsm-list">
+        <li>Roasting sticks</li>
+        <li>1 bag of marshmallows</li>
+        <li>1 package of graham crackers</li>
+        <li>Chocolate</li>
+      </ul>
+      <p class="msfsm-price"><span id="msfsm-price-val">$15</span> per kit</p>
+      <button class="msfsm-ok">Add a kit</button>
+      <button class="msfsm-no">No thanks</button>
+    </div>
+  </div>
+
+  <style>
+    .msfsm-overlay{position:fixed;inset:0;z-index:2147483000;display:flex;align-items:center;justify-content:center;
+      background:rgba(26,8,8,.62);padding:20px;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+    .msfsm-overlay[hidden]{display:none;}
+    .msfsm-card{position:relative;background:#fff;max-width:430px;width:100%;border-radius:16px;padding:30px 26px 26px;
+      box-shadow:0 24px 60px rgba(0,0,0,.4);text-align:center;font-family:'Open Sans',system-ui,sans-serif;
+      animation:msfsm-in .25s ease;box-sizing:border-box;}
+    @keyframes msfsm-in{from{opacity:0;transform:translateY(14px) scale(.97);}to{opacity:1;transform:none;}}
+    .msfsm-icon{font-size:2.6rem;line-height:1;margin-bottom:10px;}
+    .msfsm-h{font-family:'Zilla Slab','Times New Roman',serif;font-size:1.5rem;font-weight:700;color:#B01030;margin:0 0 12px;line-height:1.2;}
+    .msfsm-h em{font-style:italic;color:#7A0820;}
+    .msfsm-p{font-size:.95rem;line-height:1.55;color:#3a2020;margin:0 0 12px;}
+    .msfsm-list{list-style:none;padding:0;margin:0 0 14px;font-size:.88rem;color:#5a3a3a;line-height:1.7;}
+    .msfsm-list li::before{content:"•";color:#B01030;font-weight:700;margin-right:8px;}
+    .msfsm-price{font-family:'Zilla Slab',serif;font-weight:700;font-size:1.15rem;color:#B01030;margin:0 0 18px;}
+    .msfsm-ok{background:#B01030;color:#fff;border:0;border-radius:50px;padding:12px 34px;font-size:.95rem;font-weight:700;
+      cursor:pointer;letter-spacing:.02em;}
+    .msfsm-ok:hover{background:#7A0820;}
+    .msfsm-no{display:block;margin:12px auto 0;background:none;border:0;color:#7a6060;font-size:.82rem;cursor:pointer;text-decoration:underline;}
+    .msfsm-no:hover{color:#B01030;}
+    .msfsm-close{position:absolute;top:10px;right:14px;background:none;border:0;font-size:1.7rem;line-height:1;color:#b88;cursor:pointer;}
+    .msfsm-close:hover{color:#B01030;}
+    @media (max-width:560px){ .msfsm-card{padding:26px 20px 22px;} .msfsm-h{font-size:1.3rem;} }
+  </style>
+
+  <script>
+  (function(){
+    if (window.MSFSMORES_ENABLED === false) return;                  // kill switch
+    var KEY   = 'msfsm-dismissed-2026';
+    var FORCE = /[?&]c7smores=1/.test(window.location.search);        // preview hatch
+
+    // ⚠️ PLACEHOLDER NAME MATCHERS — confirm against a live TS dump before ship.
+    // Matched against each row's <h4> text (the only per-ticket identifier TS gives us).
+    var BONFIRE_RE = /bonfire\s*site/i;
+    var SMORES_RE  = /s'?mores/i;
+
+    function rows(){
+      return Array.prototype.slice.call(document.querySelectorAll('#ticketBlock .ticket-type'));
+    }
+    function nameOf(row){
+      var h4 = row.querySelector('h4');
+      return h4 ? h4.textContent.trim() : '';
+    }
+    function findRow(re){
+      var all = rows();
+      for (var i=0;i<all.length;i++){ if (re.test(nameOf(all[i]))) return all[i]; }
+      return null;
+    }
+    // TS renders qty as a number input or a select depending on ticket config — handle both.
+    function qtyEl(row){
+      return row.querySelector('input[type="number"], select, input.quantity, input[name*="quantity" i]');
+    }
+    function qtyVal(row){
+      var el = qtyEl(row);
+      if (!el) return 0;
+      var v = parseInt(el.value, 10);
+      return isNaN(v) ? 0 : v;
+    }
+    // Setting .value alone does NOT update TS's cart total — its own listeners must fire.
+    function setQty(row, n){
+      var el = qtyEl(row);
+      if (!el) return false;
+      var proto = el.tagName === 'SELECT' ? window.HTMLSelectElement : window.HTMLInputElement;
+      var setter = Object.getOwnPropertyDescriptor(proto.prototype, 'value');
+      if (setter && setter.set) { setter.set.call(el, String(n)); } else { el.value = String(n); }
+      el.dispatchEvent(new Event('input',  { bubbles:true }));
+      el.dispatchEvent(new Event('change', { bubbles:true }));
+      return true;
+    }
+
+    var shown = false;
+    var prev  = {};                                                   // ticket name -> last qty
+
+    function dismiss(){
+      var ov = document.getElementById('msfsm-overlay');
+      if (ov) ov.setAttribute('hidden','');
+      try { sessionStorage.setItem(KEY,'1'); } catch(e){}
+    }
+    function show(){
+      var ov = document.getElementById('msfsm-overlay');
+      if (!ov || shown) return;
+      shown = true;
+      // Mirror the live TS price into the popup so we never hard-code a stale figure.
+      var sm = findRow(SMORES_RE);
+      var cost = sm && sm.querySelector('.ticket-cost');
+      var pv = document.getElementById('msfsm-price-val');
+      if (cost && pv) { pv.textContent = cost.textContent.trim(); }
+      ov.removeAttribute('hidden');
+    }
+    function addKit(){
+      var sm = findRow(SMORES_RE);
+      if (sm) setQty(sm, Math.max(1, qtyVal(sm) + 1));
+      dismiss();
+      if (sm) sm.scrollIntoView({ behavior:'smooth', block:'center' });
+    }
+
+    function scan(){
+      // Gate: no s'mores row in the DOM => TS says it isn't offered right now
+      // (wrong night, sold out, not built yet). Never prompt for something unbuyable.
+      var smores = findRow(SMORES_RE);
+      if (!smores) return;
+      if (qtyVal(smores) > 0) return;                                 // already added — don't nag
+
+      rows().forEach(function(row){
+        var nm = nameOf(row);
+        if (!BONFIRE_RE.test(nm)) return;
+        var q = qtyVal(row), was = prev[nm] || 0;
+        prev[nm] = q;
+        if (was === 0 && q > 0) show();                               // 0 -> n transition
+      });
+    }
+
+    function init(){
+      var ov = document.getElementById('msfsm-overlay');
+      if (!ov) return;
+      ov.querySelector('.msfsm-close').addEventListener('click', dismiss);
+      ov.querySelector('.msfsm-no').addEventListener('click', dismiss);
+      ov.querySelector('.msfsm-ok').addEventListener('click', addKit);
+      ov.addEventListener('click', function(e){ if (e.target === ov) dismiss(); });
+      document.addEventListener('keydown', function(e){ if (e.key === 'Escape') dismiss(); });
+
+      if (FORCE) { show(); return; }
+      try { if (sessionStorage.getItem(KEY)) return; } catch(e){}
+
+      var tb = document.getElementById('ticketBlock') || document.body;
+      // TS re-renders rows whenever an Action fires — re-bind by re-scanning, never cache rows.
+      new MutationObserver(scan).observe(tb, { childList:true, subtree:true });
+      tb.addEventListener('change', scan, true);                      // qty changes bubble here
+      scan();
+      console.log('[msfsm] armed', { smoresRow: !!findRow(SMORES_RE) });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else { init(); }
   })();
   </script>
 
@@ -1017,5 +1204,12 @@
         }
     })();
 </script>
+
+<!-- ════ SLASH-THROUGH PRICING — WS3 TODO ════
+     The day-tier online/gate rows above are static markup (correct today, per the content source).
+     Once the TicketSpice build brief (WS3) fixes the native cart's exact ticket <h4> names, add the
+     name-keyed JS + MutationObserver + content:attr(data-gate) pattern to #ticketBlock so the native
+     TS cart mirrors the same struck-through gate price, per
+     /data/clients/_patterns/slash-through-pricing.md (do NOT hand-roll nth-child selectors). -->
 </body>
 </html>
