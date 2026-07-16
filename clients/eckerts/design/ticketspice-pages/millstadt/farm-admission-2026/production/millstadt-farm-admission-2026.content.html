@@ -1097,20 +1097,39 @@
       ov.addEventListener('click', function(e){ if (e.target === ov) dismiss(); });
       document.addEventListener('keydown', function(e){ if (e.key === 'Escape') dismiss(); });
 
+      // ?c7smores=reset clears the session dismiss so the REAL trigger can be re-tested
+      // without a new browser session. (?c7smores=1 force-shows it, which tests the visuals
+      // but bypasses the trigger — different job.)
+      if (/[?&]c7smores=reset/.test(window.location.search)) {
+        try { sessionStorage.removeItem(KEY); } catch(e){}
+      }
+      var dismissed = false;
+      try { dismissed = !!sessionStorage.getItem(KEY); } catch(e){}
+
+      // ⚠️ LOG BEFORE ANY EARLY RETURN. This used to sit at the bottom, AFTER the dismiss
+      // check returned — so a dismissed popup produced no popup AND no log, which is
+      // indistinguishable from "the script never ran". That cost hours of chasing the wrong
+      // layer on 2026-07-16. A diagnostic that goes quiet in the exact case you need to
+      // diagnose is worse than none: always report, and say WHY.
+      console.log('[msfsm] armed', {
+        dismissedThisSession: dismissed,                            // <- the usual culprit
+        forced:               FORCE,
+        smoresFieldPresent:   !!document.querySelector(SMORES_SEL), // in the DOM at all
+        smoresOffered:        !!smoresBlock(),                      // ...and actually visible
+        smoresPrice:          smoresPrice(),
+        smoresAlreadyInCart:  smoresAdded(),
+        bonfireRows:          rows().filter(function(r){ return BONFIRE_RE.test(nameOf(r)); }).length,
+        hint: 'not showing? sessionStorage.removeItem("' + KEY + '") then reload, or append ?c7smores=reset'
+      });
+
       if (FORCE) { show(); return; }
-      try { if (sessionStorage.getItem(KEY)) return; } catch(e){}
+      if (dismissed) return;                                        // guest already said no — don't nag
 
       var tb = document.getElementById('ticketBlock') || document.body;
       // TS re-renders rows whenever an Action fires — re-bind by re-scanning, never cache rows.
       new MutationObserver(scan).observe(tb, { childList:true, subtree:true });
       tb.addEventListener('change', scan, true);                      // qty changes bubble here
       scan();
-      console.log('[msfsm] armed', {
-        smoresFieldPresent: !!document.querySelector(SMORES_SEL),   // in the DOM at all
-        smoresOffered:      !!smoresBlock(),                        // ...and actually visible
-        smoresPrice:        smoresPrice(),
-        bonfireRows:        rows().filter(function(r){ return BONFIRE_RE.test(nameOf(r)); }).length
-      });
     }
 
     if (document.readyState === 'loading') {
