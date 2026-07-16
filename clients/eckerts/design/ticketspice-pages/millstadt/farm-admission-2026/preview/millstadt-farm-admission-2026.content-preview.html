@@ -773,98 +773,6 @@
 
         </div>
 
-        <!-- ═══ BONFIRE SITE MAP ═══════════════════════════════════════════════
-             Amanda's 7/16 ask: "I sent a separate email last night with the map for
-             the sites. Guests will choose the site number. Each site can hold one
-             group consisting of 25 people or less."
-
-             Map asset: her original, used AS-IS per Mat's 7/16 call. ⚠️ Known: it
-             carries her red-pen markup (printed #50-#55 struck through, renumbered
-             "58-65" by hand; bottom cluster renumbered "50-56"; a loose "57" arrow).
-             The numbering is NOT reconcilable from the markup alone (6 printed boxes
-             vs 8 new numbers = 2 sites added, positions unspecified) — so this section
-             deliberately does NOT enumerate site numbers in markup. It presents the map
-             and lets it speak. Swapping in a clean map later is a one-line src change.
-
-             Zoomable by design: the source is 3300x2250 and detail-dense — squeezed into
-             a page column the numbers are unreadable, especially on a phone. Tap opens a
-             full-screen lightbox where native pinch-zoom works. -->
-        <div class="msf-map msfr d2">
-            <div class="msf-map-head">
-                <span class="msf-eye">Find Your Site</span>
-                <h3 class="msf-map-title">Bonfire Site Map</h3>
-                <p class="msf-map-sub">
-                    Sites are spread across the farm — some by the Farm House, some by the
-                    Ticket Booth, others out past the Wagon Train. Pick the site number you
-                    want when you check out.
-                </p>
-            </div>
-            <button class="msf-map-frame" id="msf-map-open" aria-label="Enlarge the bonfire site map">
-                <img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/bonfires/bonfire-site-map-2026.jpg"
-                     alt="Map of Eckert's Millstadt Farm showing the numbered bonfire site locations"
-                     loading="lazy">
-                <span class="msf-map-zoom">🔍 Tap to enlarge</span>
-            </button>
-            <ul class="msf-map-facts">
-                <li><span class="msf-map-fact-i">👥</span> One group per site · up to <strong>25 people</strong></li>
-                <li><span class="msf-map-fact-i">🔥</span> Bonfires run <strong>Friday &amp; Saturday nights</strong></li>
-                <li><span class="msf-map-fact-i">🎟️</span> Every guest still needs <strong>farm admission</strong></li>
-            </ul>
-        </div>
-
-        <!-- Full-screen map lightbox -->
-        <div id="msf-map-lb" class="msf-map-lb" role="dialog" aria-modal="true" aria-label="Bonfire site map, enlarged" hidden>
-            <button class="msf-map-lb-close" aria-label="Close map">&times;</button>
-            <img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/bonfires/bonfire-site-map-2026.jpg"
-                 alt="Map of Eckert's Millstadt Farm showing the numbered bonfire site locations, enlarged">
-        </div>
-
-        <style>
-          #msf-funnel .msf-map{background:#FFF0F2;border:1px solid #FFD6DC;border-radius:16px;padding:26px 22px;margin:0 0 22px;}
-          #msf-funnel .msf-map-head{text-align:center;max-width:560px;margin:0 auto 18px;}
-          #msf-funnel .msf-map-title{font-family:'Zilla Slab','Times New Roman',serif;font-size:1.6rem;font-weight:700;
-            color:#7A0820;margin:6px 0 8px;line-height:1.2;}
-          #msf-funnel .msf-map-sub{font-size:.93rem;line-height:1.6;color:#5a3a3a;margin:0;}
-          #msf-funnel .msf-map-frame{display:block;width:100%;padding:0;border:0;background:#fff;border-radius:12px;
-            overflow:hidden;cursor:zoom-in;position:relative;box-shadow:0 6px 18px rgba(122,8,32,.12);}
-          #msf-funnel .msf-map-frame img{display:block;width:100%;height:auto;}
-          #msf-funnel .msf-map-zoom{position:absolute;right:12px;bottom:12px;background:rgba(26,8,8,.78);color:#fff;
-            font-family:'Open Sans',system-ui,sans-serif;font-size:.76rem;font-weight:600;letter-spacing:.02em;
-            padding:6px 12px;border-radius:50px;pointer-events:none;}
-          #msf-funnel .msf-map-facts{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:10px 26px;
-            padding:0;margin:18px 0 0;font-size:.86rem;color:#3a2020;}
-          #msf-funnel .msf-map-facts li{display:flex;align-items:center;gap:7px;}
-          #msf-funnel .msf-map-fact-i{font-size:1rem;}
-          .msf-map-lb{position:fixed;inset:0;z-index:2147483100;background:rgba(12,4,4,.93);display:flex;
-            align-items:center;justify-content:center;padding:16px;box-sizing:border-box;overflow:auto;}
-          .msf-map-lb[hidden]{display:none;}
-          .msf-map-lb img{max-width:100%;max-height:100%;object-fit:contain;border-radius:8px;}
-          .msf-map-lb-close{position:fixed;top:14px;right:20px;background:none;border:0;color:#fff;font-size:2.4rem;
-            line-height:1;cursor:pointer;z-index:1;}
-          .msf-map-lb-close:hover{color:#FFB3BF;}
-          @media (max-width:560px){
-            #msf-funnel .msf-map{padding:20px 14px;}
-            #msf-funnel .msf-map-title{font-size:1.35rem;}
-            #msf-funnel .msf-map-facts{flex-direction:column;align-items:flex-start;gap:8px;}
-          }
-        </style>
-
-        <script>
-        (function(){
-          var btn = document.getElementById('msf-map-open');
-          var lb  = document.getElementById('msf-map-lb');
-          if (!btn || !lb) return;
-          var closeBtn = lb.querySelector('.msf-map-lb-close');
-          function open(){ lb.removeAttribute('hidden'); document.body.style.overflow = 'hidden'; }
-          function close(){ lb.setAttribute('hidden',''); document.body.style.overflow = ''; }
-          btn.addEventListener('click', open);
-          closeBtn.addEventListener('click', close);
-          // click the backdrop (but not the map itself) to dismiss
-          lb.addEventListener('click', function(e){ if (e.target === lb) close(); });
-          document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !lb.hasAttribute('hidden')) close(); });
-        })();
-        </script>
-
         <!-- ADD-ONS — checkout upsells, NOT included with admission.
              Apple Cannon price CONFIRMED by Amanda 7/16 ("Millstadt page" email):
              "Only one price this year. $5 for 10 apples." — the old $3/5-shot tier is
@@ -1210,6 +1118,98 @@
             </div>
         </div>
     </div>
+
+        <!-- ═══ BONFIRE SITE MAP ═══════════════════════════════════════════════
+             Amanda's 7/16 ask: "I sent a separate email last night with the map for
+             the sites. Guests will choose the site number. Each site can hold one
+             group consisting of 25 people or less."
+
+             Map asset: her original, used AS-IS per Mat's 7/16 call. ⚠️ Known: it
+             carries her red-pen markup (printed #50-#55 struck through, renumbered
+             "58-65" by hand; bottom cluster renumbered "50-56"; a loose "57" arrow).
+             The numbering is NOT reconcilable from the markup alone (6 printed boxes
+             vs 8 new numbers = 2 sites added, positions unspecified) — so this section
+             deliberately does NOT enumerate site numbers in markup. It presents the map
+             and lets it speak. Swapping in a clean map later is a one-line src change.
+
+             Zoomable by design: the source is 3300x2250 and detail-dense — squeezed into
+             a page column the numbers are unreadable, especially on a phone. Tap opens a
+             full-screen lightbox where native pinch-zoom works. -->
+        <div class="msf-map msfr d2">
+            <div class="msf-map-head">
+                <span class="msf-eye">Find Your Site</span>
+                <h3 class="msf-map-title">Bonfire Site Map</h3>
+                <p class="msf-map-sub">
+                    Sites are spread across the farm — some by the Farm House, some by the
+                    Ticket Booth, others out past the Wagon Train. Pick the site number you
+                    want when you check out.
+                </p>
+            </div>
+            <button class="msf-map-frame" id="msf-map-open" aria-label="Enlarge the bonfire site map">
+                <img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/bonfires/bonfire-site-map-2026.jpg"
+                     alt="Map of Eckert's Millstadt Farm showing the numbered bonfire site locations"
+                     loading="lazy">
+                <span class="msf-map-zoom">🔍 Tap to enlarge</span>
+            </button>
+            <ul class="msf-map-facts">
+                <li><span class="msf-map-fact-i">👥</span> One group per site · up to <strong>25 people</strong></li>
+                <li><span class="msf-map-fact-i">🔥</span> Bonfires run <strong>Friday &amp; Saturday nights</strong></li>
+                <li><span class="msf-map-fact-i">🎟️</span> Every guest still needs <strong>farm admission</strong></li>
+            </ul>
+        </div>
+
+        <!-- Full-screen map lightbox -->
+        <div id="msf-map-lb" class="msf-map-lb" role="dialog" aria-modal="true" aria-label="Bonfire site map, enlarged" hidden>
+            <button class="msf-map-lb-close" aria-label="Close map">&times;</button>
+            <img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/bonfires/bonfire-site-map-2026.jpg"
+                 alt="Map of Eckert's Millstadt Farm showing the numbered bonfire site locations, enlarged">
+        </div>
+
+        <style>
+          #msf-funnel .msf-map{background:#FFF0F2;border:1px solid #FFD6DC;border-radius:16px;padding:26px 22px;margin:0 0 22px;}
+          #msf-funnel .msf-map-head{text-align:center;max-width:560px;margin:0 auto 18px;}
+          #msf-funnel .msf-map-title{font-family:'Zilla Slab','Times New Roman',serif;font-size:1.6rem;font-weight:700;
+            color:#7A0820;margin:6px 0 8px;line-height:1.2;}
+          #msf-funnel .msf-map-sub{font-size:.93rem;line-height:1.6;color:#5a3a3a;margin:0;}
+          #msf-funnel .msf-map-frame{display:block;width:100%;padding:0;border:0;background:#fff;border-radius:12px;
+            overflow:hidden;cursor:zoom-in;position:relative;box-shadow:0 6px 18px rgba(122,8,32,.12);}
+          #msf-funnel .msf-map-frame img{display:block;width:100%;height:auto;}
+          #msf-funnel .msf-map-zoom{position:absolute;right:12px;bottom:12px;background:rgba(26,8,8,.78);color:#fff;
+            font-family:'Open Sans',system-ui,sans-serif;font-size:.76rem;font-weight:600;letter-spacing:.02em;
+            padding:6px 12px;border-radius:50px;pointer-events:none;}
+          #msf-funnel .msf-map-facts{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:10px 26px;
+            padding:0;margin:18px 0 0;font-size:.86rem;color:#3a2020;}
+          #msf-funnel .msf-map-facts li{display:flex;align-items:center;gap:7px;}
+          #msf-funnel .msf-map-fact-i{font-size:1rem;}
+          .msf-map-lb{position:fixed;inset:0;z-index:2147483100;background:rgba(12,4,4,.93);display:flex;
+            align-items:center;justify-content:center;padding:16px;box-sizing:border-box;overflow:auto;}
+          .msf-map-lb[hidden]{display:none;}
+          .msf-map-lb img{max-width:100%;max-height:100%;object-fit:contain;border-radius:8px;}
+          .msf-map-lb-close{position:fixed;top:14px;right:20px;background:none;border:0;color:#fff;font-size:2.4rem;
+            line-height:1;cursor:pointer;z-index:1;}
+          .msf-map-lb-close:hover{color:#FFB3BF;}
+          @media (max-width:560px){
+            #msf-funnel .msf-map{padding:20px 14px;}
+            #msf-funnel .msf-map-title{font-size:1.35rem;}
+            #msf-funnel .msf-map-facts{flex-direction:column;align-items:flex-start;gap:8px;}
+          }
+        </style>
+
+        <script>
+        (function(){
+          var btn = document.getElementById('msf-map-open');
+          var lb  = document.getElementById('msf-map-lb');
+          if (!btn || !lb) return;
+          var closeBtn = lb.querySelector('.msf-map-lb-close');
+          function open(){ lb.removeAttribute('hidden'); document.body.style.overflow = 'hidden'; }
+          function close(){ lb.setAttribute('hidden',''); document.body.style.overflow = ''; }
+          btn.addEventListener('click', open);
+          closeBtn.addEventListener('click', close);
+          // click the backdrop (but not the map itself) to dismiss
+          lb.addEventListener('click', function(e){ if (e.target === lb) close(); });
+          document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !lb.hasAttribute('hidden')) close(); });
+        })();
+        </script>
 
 </div><!-- end #msf-funnel -->
 
