@@ -795,15 +795,18 @@
        Amanda's nice-to-have ("would be awesome... not a critical component").
        Ports the Versailles July-4 popup pattern (versailles/peaches, vjul4pop).
 
-       SHOWS: Fri-Sun July 17-19 2026 only (the sale window; launches Fri 8am CT).
+       SHOWS: Fri-Mon July 17-20 2026 inclusive (the sale window; launches Fri 8am CT).
               Auto-hides outside that window. Dismissal persists for the session.
+              ⚠️ EXTENDED 2026-07-16: Amanda moved the close from Sun 7/19 to
+              Mon 7/20 ("in case someone forgets to grab it and they miss it over
+              the weekend"). End of day Monday; per Mat, copy states the date only
+              — deliberately NO end TIME communicated.
        FORCE: append ?c7xmas=1 to preview it outside the window (Mat's test hatch).
        KILL:  window.MSFXMAS_ENABLED = false  before this block.
 
-       ⚠️ COPY DELIBERATELY OMITS THE DISCOUNT %. Last year was 50% off Sept
-       admission + Sept bonfire sites, but Amanda has NOT confirmed 2026's offer.
-       Code only until she does — do not invent a number (same rule as the
-       Family Fun Bundle omission).
+       OFFER CONFIRMED (2026): 50% off Sept admission + 50% off Sept Friday-night
+       bonfire sites, code Christmas26, Family Fun Bundle excluded. (The older
+       "omit the discount %" rule is retired — Amanda confirmed the 2026 offer.)
 
        The coupon itself + the TS Actions are AMANDA's job (with Michelle's TS
        team) — this popup is marketing surface only, it does not apply anything.
@@ -814,7 +817,7 @@
       <div class="msfxmas-icon">🎄</div>
       <h3 id="msfxmas-title" class="msfxmas-h">Christmas in <em>July</em></h3>
       <p class="msfxmas-p">
-        Our <strong>Christmas in July</strong> sale is on — this weekend only.
+        Our <strong>Christmas in July</strong> sale is on — now through <strong>Monday, July 20</strong>.
         Take <strong>50% off</strong> September admission tickets and
         <strong>50% off</strong> Friday-night bonfire sites in September.
         Use code <span class="msfxmas-code">Christmas26</span> at checkout.
@@ -853,12 +856,13 @@
     var KEY   = 'msfxmas-dismissed-2026';
     var FORCE = /[?&]c7xmas=1/.test(window.location.search);       // Mat's preview hatch
 
-    // Sale window: Fri Jul 17 -> Sun Jul 19 2026 inclusive. Local clock (farm is CT;
-    // a visitor's device tz can shift the boundary by hours — acceptable for a
-    // marketing blurb, NOT for anything that gates a price).
+    // Sale window: Fri Jul 17 -> Mon Jul 20 2026 inclusive (EXTENDED 2026-07-16 from
+    // Sun 7/19 at Amanda's request). Local clock (farm is CT; a visitor's device tz can
+    // shift the boundary by hours — acceptable for a marketing blurb, NOT for anything
+    // that gates a price. The real close is the TS date rule, not this).
     function inWindow(){
       var n = new Date(), y = n.getFullYear(), m = n.getMonth() + 1, d = n.getDate();
-      return y === 2026 && m === 7 && d >= 17 && d <= 19;
+      return y === 2026 && m === 7 && d >= 17 && d <= 20;
     }
 
     try { if (!FORCE && sessionStorage.getItem(KEY)) return; } catch(e){}
