@@ -1192,12 +1192,17 @@
         </div>
 
         <style>
-          #msf-funnel .msf-map{background:#FFF0F2;border:1px solid #FFD6DC;border-radius:16px;padding:26px 22px;margin:0 0 22px;}
-          #msf-funnel .msf-map-head{text-align:center;max-width:560px;margin:0 auto 18px;}
-          #msf-funnel .msf-map-title{font-family:'Zilla Slab','Times New Roman',serif;font-size:1.6rem;font-weight:700;
+          #msf-funnel .msf-map{background:#FFF0F2;border:1px solid #FFD6DC;border-radius:16px;padding:22px 18px;margin:0 0 22px;}
+          #msf-funnel .msf-map-head{text-align:center;max-width:560px;margin:0 auto 14px;}
+          #msf-funnel .msf-map-title{font-family:'Zilla Slab','Times New Roman',serif;font-size:1.35rem;font-weight:700;
             color:#7A0820;margin:6px 0 8px;line-height:1.2;}
           #msf-funnel .msf-map-sub{font-size:.93rem;line-height:1.6;color:#5a3a3a;margin:0;}
-          #msf-funnel .msf-map-frame{display:block;width:100%;padding:0;border:0;background:#fff;border-radius:12px;
+          /* Bryan 7/16: "we need the map smaller" — capped + centred rather than full-bleed.
+             The tap-to-enlarge lightbox is what makes this safe: the on-page map is now a
+             locator/thumbnail, and the detail (site numbers) lives one tap away at full size.
+             Shrinking it WITHOUT the lightbox would have made the numbers unreadable. */
+          #msf-funnel .msf-map-frame{display:block;width:100%;max-width:560px;margin:0 auto;padding:0;border:0;
+            background:#fff;border-radius:12px;
             overflow:hidden;cursor:zoom-in;position:relative;box-shadow:0 6px 18px rgba(122,8,32,.12);}
           #msf-funnel .msf-map-frame img{display:block;width:100%;height:auto;}
           #msf-funnel .msf-map-zoom{position:absolute;right:12px;bottom:12px;background:rgba(26,8,8,.78);color:#fff;
