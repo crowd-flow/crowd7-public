@@ -33,11 +33,24 @@ check_folder() {
     echo "no-local"
     return
   fi
-  local local_size edge_size
+  # Compare CONTENT HASHES, not sizes. A size check silently misses any same-size
+  # edit -- reordering a block, swapping equal-length text -- and then reports
+  # "already fresh", leaving the edge serving stale content while claiming success.
+  # (Caught 2026-07-16: moving the Millstadt bonfire-map section below the info row
+  # changed ZERO bytes; the purge was skipped and the CDN kept the old ordering.)
+  # Hash both sides from FILES: command substitution strips trailing newlines, so
+  # hashing a captured body would never match the file and every check would read
+  # "stale" -- burning the rate-limited purge budget WS1 exists to protect.
+  local local_size edge_size local_hash edge_hash edge_tmp
+  edge_tmp=$(mktemp)
+  curl -s "${CDN_BASE}/${folder}/${STEM}" -o "$edge_tmp"
   local_size=$(wc -c < "$local_file" | tr -d ' ')
-  edge_size=$(curl -s "${CDN_BASE}/${folder}/${STEM}" | wc -c | tr -d ' ')
-  echo "   local=${local_size}b edge=${edge_size}b" >&2
-  if [ "$local_size" = "$edge_size" ]; then
+  edge_size=$(wc -c < "$edge_tmp" | tr -d ' ')
+  local_hash=$(shasum -a 256 "$local_file" | cut -d' ' -f1)
+  edge_hash=$(shasum -a 256 "$edge_tmp" | cut -d' ' -f1)
+  rm -f "$edge_tmp"
+  echo "   local=${local_size}b/${local_hash:0:12} edge=${edge_size}b/${edge_hash:0:12}" >&2
+  if [ "$local_hash" = "$edge_hash" ]; then
     echo "fresh"
   else
     echo "stale"
