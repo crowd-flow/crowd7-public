@@ -551,7 +551,7 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
     <div class="cap-promo-eye"></div>
     <h3></h3>
     <p class="cap-promo-body" style="color:var(--muted);font-size:.92rem;line-height:1.5;"></p>
-    <button class="mbtn gold cap-promo-cta" onclick="capCloseAll()"></button>
+    <button class="mbtn gold cap-promo-cta" onclick="capPromoCta()"></button>
     <button class="mlink" onclick="capCloseAll()">No thanks, maybe later</button>
   </div></div>
 
@@ -709,6 +709,15 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
     }catch(e){ /* promo is decorative — never break the page */ }
   }
   window.capFirePromo = capFirePromo;
+  function capPromoCta(){
+    try{
+      var m = document.getElementById('capOvPromo');
+      var path = m ? m.getAttribute('data-promo-for') : '';
+      capCloseAll();
+      if(path === 'premium' && window.capSantaLaunch){ capSantaLaunch(); }
+    }catch(e){}
+  }
+  window.capPromoCta = capPromoCta;
   </script>
 
   <!-- 🎅 CAP Photos-with-Santa modal V2 — functional: hijacks the REAL native
@@ -1031,7 +1040,7 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
   regularBtn.addEventListener('click', closeModal);
 
   // Expose the trigger so the page button can drive it.
-  window.capSantaLaunch = function(){ /* PAUSED by Mat 2026-06-18 — restore: = launch; */ };
+  window.capSantaLaunch = launch;   // un-paused by Mat 2026-07-17 (wired to premium promo CTA)
 
   // ── trigger ───────────────────────────────────────────────────────────────
   if (AUTO_OPEN) {
