@@ -441,6 +441,10 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
   .cap-ov .cap-modal .p-list{list-style:none;padding:0;margin:0 0 4px;}
   .cap-ov .cap-modal .p-list li{padding:6px 0;border-bottom:1px dashed var(--line);font-size:.95rem;}
   .cap-ov .cap-modal .p-list li:last-child{border-bottom:0;}
+  /* Promo popup — roomier vertical rhythm (Mat 2026-07-17) */
+  #capOvPromo .cap-promo-eye{margin-bottom:16px;}
+  #capOvPromo h3{margin:0 0 16px;}
+  #capOvPromo .cap-promo-body{margin:0;}
 
   @media(max-width:820px){
     #cap-funnel .phase-row,#cap-funnel .tier-row{grid-template-columns:1fr;}
@@ -678,7 +682,7 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
      closes (marketing surface); wiring it to the native add-on is a follow-up.
      ════════════════════════════════════════════════════════════════════ */
   var CAP_PROMOS = {
-    ga:        { eye:'Upgrade your night', title:'Add the Starlight Lounge', body:'For just $25 more per guest, skip the crowd — shared fire pits, a private VIP lounge, and the specialty bar. One tap adds it for everyone in your order.', cta:'Add Starlight — +$25/guest' },
+    ga:        { eye:'Upgrade your night', title:'Add the Starlight Lounge', body:'For just $25 more per guest, skip the crowd — shared fire pits, a private VIP lounge, and the specialty bar. One tap adds it for everyone in your order.', cta:'Add Starlight' },
     premium:   { eye:'Make it magic',      title:'Add Photos with Santa',    body:"You're already going premium — add the kids' favorite moment. Reserve a Photos-with-Santa session and skip the North Pole line.", cta:'Add Photos with Santa' },
     vip:       { eye:'Stay the night',     title:'40% off your resort room', body:'Complete the VIP experience — book your room at the Fairmont Scottsdale Princess for 40% off when you reserve. Walk to the lights, stroll home to your suite.', cta:'See the room offer' },
     'default': { eye:'Before you go',      title:'40% off your resort room', body:'Make a night of it — book your room at the Fairmont Scottsdale Princess for 40% off when you buy your tickets.', cta:'See the room offer' }
