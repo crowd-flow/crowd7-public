@@ -110,3 +110,19 @@ The original mechanical steps (now executed):
 5. `cp preview/* production/*` + `git push` to promote (this IS the live deploy).
 
 Until then this folder is **reference only** — the live page is untouched.
+
+## 🔔 2026-07-17 — un-paused + wired to the promo CTA
+
+`window.capSantaLaunch` had been a **no-op stub** ("PAUSED by Mat 2026-06-18"). Mat's
+2026-07-17 directive: restore it and wire it to the promo popup. Landed (all 4 files,
+`crowd7-public@6ba93b2`):
+
+- `window.capSantaLaunch = launch;` — un-paused, real launcher restored.
+- New `capPromoCta()` handler on the post-date promo popup's CTA. Path-aware: on the
+  **premium** path (CTA "Add Photos with Santa") it closes the promo, then calls
+  `capSantaLaunch()` to open the hijack-modal. GA (Starlight) / VIP (room) CTAs unchanged.
+- `AUTO_OPEN` stays `false` — Santa modal opens only via the CTA now, not on load.
+
+**Not headless-verifiable** (ticket-hijack needs the live native TS Santa row) — needs a
+Mat eyeball on the live page. Also: jsDelivr purge failed stale on this push; served fresh
+via Cloudflare Pages (`assets.crowd7digital.us`) — the loader swap is the fix.
