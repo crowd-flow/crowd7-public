@@ -2,7 +2,7 @@
 
 **Page:** Eckert's Sunflower Festival — standalone rebranded event (NOT on the field-access page)
 **ClickUp:** `86ajbznww` (client ws `90132445704`) · fleet twin `86baqvpeh`
-**Built by:** Crowdly · 2026-07-02 · **Revised 2026-07-09** — pricing/package structure reconciled to Amanda's 7/8 Slack spec (supersedes the 7/2-call package set below) · **Revised 2026-07-21** — Amanda feedback pass: title corrected to "Eckert's Sunflower Festival," Sunshine Picnic Basket icon swapped, Extra Flower Crown add-on dropped entirely, day-of exclusion + ticket-dates/types build-out flagged below (see "🧩 Cart configuration notes" and "🚧 Still-open TS-native build items")
+**Built by:** Crowdly · 2026-07-02 · **Revised 2026-07-09** — pricing/package structure reconciled to Amanda's 7/8 Slack spec (supersedes the 7/2-call package set below) · **Revised 2026-07-21 (Amanda feedback pass)** — title corrected to "Eckert's Sunflower Festival," Sunshine Picnic Basket icon swapped, Extra Flower Crown add-on dropped entirely, day-of exclusion + ticket-dates/types build-out flagged below · **Revised 2026-07-21 (Vina feedback pass, same day)** — Belleville Farm street address added to the info row, all 3 ticket cards made clickable (`#ticketBlock`), **Sunshine Picnic Basket removed from the page content entirely** (supersedes the earlier icon-swap/day-of-exclusion plan below — not available for purchase yet per Vina, no longer just date-gated)
 **Design system:** standalone `#sf-funnel` sunflower-gold sub-brand (forked from the Belleville field-access page look/feel; its own festival identity per the 6/5 brand-elevation decision)
 **Live-by:** review-ready **7/14** · Flash sale **7/24–26** (Amanda's 7/9 window, confirmed feasible by Mat) · Festival opens **~7/25**, runs ~3 weekends thru **~8/8–9** (tentative)
 
@@ -26,7 +26,7 @@ Configure these in the TS cart (`#ticketBlock`). GA is **per person**; Family & 
 | **General Admission** | **$12.99** | **$18.00** | General admission for one · 1 cut-your-own sunflower | TBD *(pending sign-off)* |
 | **Flower Power Pass** | **$19.99** | **$25.00** | General admission for one · 1 cut-your-own sunflower · 1 souvenir mason jar lemonade (boozy or non-alcoholic) · 1 flower crown | TBD *(pending sign-off)* |
 | **Family & Friends Package** | **$74.99** | **$80.00** | General admission for four · 4 cut-your-own sunflowers · 4 souvenir mason jar lemonades (boozy or non-alcoholic) · 2 flower crowns · 2 pairs flower sunglasses | TBD *(pending sign-off)* |
-| **Sunshine Picnic Basket** *(add-on)* | **$18** | — | Eckert's half-peck box: 2 deli ham & cheese sliders, kettle chips, brownie bites, fresh mixed fruit, cheese cubes, gummy bears | **Not available day-of — see Cart configuration notes below** |
+| ~~Sunshine Picnic Basket~~ *(add-on — REMOVED FROM PAGE 7/21)* | ~~$18~~ | — | Not available for purchase yet per Vina (7/21 feedback). Card deleted from the page content entirely — do NOT configure in TS. | — |
 | ~~Extra Flower Crown~~ *(add-on — REMOVED 7/21)* | — | — | Client does not want this add-on. Dropped from the page content 2026-07-21 (Amanda feedback). Do NOT configure in TS. | — |
 | **Flower Sunglasses** *(add-on)* | **$4** | — | Any ticket | — |
 | **Cut-Your-Own Sunflower Bouquet** *(NOT a TS item — onsite cash/card only)* | **$15** | — | 3 sunflowers + 12 zinnias, plastic vase | — |
@@ -42,16 +42,16 @@ Configure these in the TS cart (`#ticketBlock`). GA is **per person**; Family & 
 - **Capacity / hours** — festival dates are still tentative (sunflowers not yet planted; "~July 25" opening, running ~3 weekends thru ~Aug 8–9). If sunset time slots are added, use the `wbx-calendar` date+slot picker restricted to confirmed festival dates once locked. Cap per slot TBD — confirm with Amanda.
 - **Merch / souvenir glass** — the mason jar lemonade is served in a souvenir jar; no separate merch ticket needed unless Eckert's wants to sell the jar standalone.
 - **Cut-Your-Own Sunflower Bouquet ($15)** — Amanda flagged this as **onsite-purchase only** (cash/card at the field), not a TicketSpice line item. Shown on the page as an informational add-on row with an "Onsite Only" tag — do NOT configure it as a cart item unless Amanda says otherwise.
-- **🚧 Sunshine Picnic Basket — NOT available day-of (Amanda feedback 2026-07-21).** Build a native TS conditional **Action**: if the buyer's selected visit/ticket date is the same as the current calendar date (e.g. a same-day 7/21 purchase), the Sunshine Picnic Basket add-on must NOT appear as a purchasable option in the cart. This is native TS cart config — the loader/content HTML does not own it and does not attempt to hide it client-side. **Depends on the ticket-dates/types build below being in place first** (the Action needs a date field to gate against — there isn't one yet).
+- ~~**Sunshine Picnic Basket — NOT available day-of (Amanda feedback 2026-07-21).**~~ **SUPERSEDED same day by Vina's feedback:** the card is now removed from the page content entirely rather than date-gated — no TS Action needed. Do not build the day-of-exclusion Action described in the earlier revision of this line; re-add a Sunshine Picnic Basket cart item only if Eckert's confirms it's for sale again.
 
 ## 🚧 Still-open TS-native build items (flagged 2026-07-21, Amanda feedback pass)
 
 Neither of these is a content-HTML change — both are native TS cart config that hasn't been built yet:
 
 1. **Ticket dates + ticket types are not built out in the TS cart yet.** The page copy/design reflects the three tiers (GA / Flower Power Pass / Family & Friends) but the actual native TicketSpice ticket-type + date-selection config still needs to be built from scratch — this brief describes the target shape, it is not a record of what's live. Needed before the page can process a real order.
-2. **Sunshine Picnic Basket day-of exclusion Action** (see "Cart configuration notes" above) — blocked on #1, since the Action needs a ticket date to gate against.
+2. ~~Sunshine Picnic Basket day-of exclusion Action~~ — **moot as of 7/21**: the card was removed from the page entirely per Vina's feedback rather than date-gated, so there's no Action left to build.
 
-Both are Mat/Bryan-side TS-cart build work, not something the loader or content HTML can express. Surfacing here so they don't get mistaken for "already built" just because the content page looks finished.
+This is Mat/Bryan-side TS-cart build work, not something the loader or content HTML can express. Surfacing here so it doesn't get mistaken for "already built" just because the content page looks finished.
 
 ## 🔌 Hybrid-loader wiring (for Bryan — publish enablement)
 
