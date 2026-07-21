@@ -211,6 +211,7 @@
         display: flex !important; flex-direction: column !important;
     }
     #sf-funnel .sf-card:hover { transform: translateY(-6px) !important; }
+    #sf-funnel a.sf-card { cursor: pointer !important; text-decoration: none !important; color: inherit !important; }
     #sf-funnel .sf-card-dark { background: #2F6B4F !important; color: white !important; }
     #sf-funnel .sf-card-dark:hover { box-shadow: 0 20px 44px rgba(20,60,40,0.4) !important; }
     #sf-funnel .sf-card-gold { background: #E0A21F !important; color: #241A08 !important; }
@@ -422,7 +423,7 @@
         <div class="sf-grid">
 
             <!-- GENERAL ADMISSION -->
-            <div class="sf-card sf-card-gold sfr">
+            <a href="#ticketBlock" class="sf-card sf-card-gold sfr" aria-label="Buy General Admission tickets">
                 <span class="sf-card-badge sf-card-badge-dark">Most Popular</span>
                 <span class="sf-card-icon">🌻</span>
                 <h3>General Admission</h3>
@@ -434,10 +435,10 @@
                     <span class="sf-price-num">$12.95</span>
                     <span class="sf-price-label">online<br><span style="text-decoration:line-through;opacity:0.7;">$18 at gate</span></span>
                 </div>
-            </div>
+            </a>
 
             <!-- FLOWER POWER PASS -->
-            <div class="sf-card sf-card-dark sfr d1">
+            <a href="#ticketBlock" class="sf-card sf-card-dark sfr d1" aria-label="Buy Flower Power Pass tickets">
                 <span class="sf-card-badge sf-card-badge-gold">Popular Upgrade</span>
                 <span class="sf-card-icon">👑</span>
                 <h3>Flower Power Pass</h3>
@@ -450,10 +451,10 @@
                     <span class="sf-price-num">$19.95</span>
                     <span class="sf-price-label">online<br><span style="text-decoration:line-through;opacity:0.7;">$25 at gate</span></span>
                 </div>
-            </div>
+            </a>
 
             <!-- FAMILY & FRIENDS -->
-            <div class="sf-card sf-card-cream sfr d2">
+            <a href="#ticketBlock" class="sf-card sf-card-cream sfr d2" aria-label="Buy Family &amp; Friends Package tickets">
                 <span class="sf-card-badge sf-card-badge-gold">Best Value</span>
                 <span class="sf-card-icon">👨‍👩‍👧‍👦</span>
                 <h3>Family &amp; Friends<br>Package</h3>
@@ -467,7 +468,7 @@
                     <span class="sf-price-num">$74.95</span>
                     <span class="sf-price-label">online<br><span style="text-decoration:line-through;opacity:0.7;">$80 at gate</span></span>
                 </div>
-            </div>
+            </a>
 
         </div>
 
