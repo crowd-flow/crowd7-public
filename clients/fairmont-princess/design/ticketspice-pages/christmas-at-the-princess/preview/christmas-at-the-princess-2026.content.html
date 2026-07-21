@@ -98,7 +98,7 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
 }
 /* Legend — pseudo-element after the grid. Two color swatches inline. */
 .ticket-block .datePicker .wbx-calendar::after {
-  content: '◼ Standard $48        ◼ Value Night $35 (save $5)' !important;
+  content: '🟩 Christmas in July $21        🟥 Standard $35' !important;
   display: block !important;
   font-family: 'Montserrat', sans-serif !important;
   font-size: 0.74rem !important;
@@ -242,9 +242,9 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
   min-height: 0 !important;
   width: auto !important;
 }
-/* PRICE under day number — default $48 for all cells via ::after */
+/* PRICE under day number — default $35 (standard) for all cells via ::after */
 .ticket-block .datePicker .wbx-calendar .row.week .day::after {
-  content: '$48';
+  content: '$35';
   display: block;
   font-size: 0.6rem;
   font-weight: 400;
@@ -252,21 +252,15 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
   margin-top: 3px;
   letter-spacing: 0.02em;
 }
-/* MON–THU = value nights: green cells with $35 price.
-   Webconnex doesn't have a "value night" class so we color by COLUMN
-   (nth-child 2-5 in a 7-col grid where 1=Sun, 2=Mon, ..., 7=Sat). */
-.ticket-block .datePicker .wbx-calendar .row.week .day:nth-child(2),
-.ticket-block .datePicker .wbx-calendar .row.week .day:nth-child(3),
-.ticket-block .datePicker .wbx-calendar .row.week .day:nth-child(4),
-.ticket-block .datePicker .wbx-calendar .row.week .day:nth-child(5) {
+/* Christmas-in-July discounted dates (from Teresa Thompson's 7/16 email) —
+   tagged by JS with .cap-value-date (date-keyed, NOT column-keyed).
+   Green cell + $21 price. Non-discounted enabled dates stay red at $35. */
+.ticket-block .datePicker .wbx-calendar .row.week .day.cap-value-date {
   background: #28bf38 !important;
   color: #fff !important;
 }
-.ticket-block .datePicker .wbx-calendar .row.week .day:nth-child(2)::after,
-.ticket-block .datePicker .wbx-calendar .row.week .day:nth-child(3)::after,
-.ticket-block .datePicker .wbx-calendar .row.week .day:nth-child(4)::after,
-.ticket-block .datePicker .wbx-calendar .row.week .day:nth-child(5)::after {
-  content: '$35' !important;
+.ticket-block .datePicker .wbx-calendar .row.week .day.cap-value-date::after {
+  content: '$21' !important;
   color: #eafbe9 !important;
 }
 /* Different-month / disabled cells: muted, no price, no green */
@@ -310,20 +304,8 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
 .ticket-block .datePicker .wbx-calendar .row.week .day.active::after {
   color: #fff !important;
 }
-/* Value-night green for cells Webconnex marks as low-inventory or partial */
-/* (Mat: if your value-night dates use a different class on the live page, */
-/* tell me what class and I'll target it explicitly.) */
-.ticket-block .wbx-calendar .day.enabled.low-inventory,
-.ticket-block .wbx-calendar .day.enabled.partial {
-  background: #28bf38 !important;
-  color: #fff !important;
-  border-color: #28bf38 !important;
-}
-.ticket-block .wbx-calendar .day.enabled.low-inventory:hover,
-.ticket-block .wbx-calendar .day.enabled.partial:hover {
-  background: #1aa628 !important;
-  border-color: #1aa628 !important;
-}
+/* (Removed the low-inventory/partial green guess — value dates are now
+   JS-tagged from Teresa's real date list via .cap-value-date above.) */
 </style>
 
 <div id="cap-funnel">
@@ -629,6 +611,41 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
     document.addEventListener('keydown', function(e){
       if(e.key === 'Escape' && backdrop) requestClose();
     });
+  })();
+
+  // 2b) VALUE-DATE HIGHLIGHT — green Teresa Thompson's real Christmas-in-July
+  //     discounted admission dates (7/16 email) + show $21; standard enabled
+  //     dates stay red at $35. Date-keyed (reads the month-label + each day
+  //     number), re-applied on every calendar re-render. Replaces the old
+  //     Mon–Thu column placeholder.
+  (function(){
+    var VALUE = {                      // month(1-12) -> { day: 1 } discounted admission dates
+      11: {24:1,25:1,26:1},
+      12: {1:1,2:1,3:1,7:1,8:1,9:1,10:1,11:1,14:1,15:1,16:1,29:1,30:1,31:1},
+      1:  {2:1,3:1}
+    };
+    var MON = {january:1,february:2,march:3,april:4,may:5,june:6,july:7,august:8,september:9,october:10,november:11,december:12};
+    function currentMonth(cal){
+      var lbl = cal.querySelector('.month-label') || cal.querySelector('.month-display');
+      var t = ((lbl && lbl.textContent) || '').toLowerCase();
+      for(var name in MON){ if(t.indexOf(name) !== -1) return MON[name]; }
+      return 0;
+    }
+    function tag(){
+      var cal = document.querySelector('.ticket-block .datePicker .wbx-calendar');
+      if(!cal) return;
+      var set = VALUE[currentMonth(cal)] || {};
+      cal.querySelectorAll('.row.week .day').forEach(function(d){
+        var m = (d.textContent || '').match(/\d+/);
+        var n = m ? parseInt(m[0], 10) : 0;
+        if(n && set[n] && !d.classList.contains('different-month')) d.classList.add('cap-value-date');
+        else d.classList.remove('cap-value-date');
+      });
+    }
+    var mo = new MutationObserver(function(){ tag(); });
+    mo.observe(document.body, { childList: true, subtree: true });
+    if(document.readyState !== 'loading') tag();
+    else document.addEventListener('DOMContentLoaded', tag);
   })();
 
   // 3) modal helpers for Santa + Starlight upsells
