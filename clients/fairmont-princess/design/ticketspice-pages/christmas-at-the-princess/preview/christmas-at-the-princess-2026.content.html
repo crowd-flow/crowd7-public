@@ -405,6 +405,14 @@ html[data-buyer-path="vip"] .ticket-block .datePicker .wbx-calendar::after { con
   #cap-funnel .tier .btn-solid{background:var(--accent);color:#fff;}
   #cap-funnel .tier .btn-solid:hover{background:var(--accent2);}
 
+  /* Ultimate Santa heads-up note — small info box under the tier cards,
+     NOT a pop-up (Mat/team call, CAP meeting 2026-07-21). */
+  #cap-funnel .cap-santa-note{margin-top:26px;display:flex;align-items:center;gap:14px;background:var(--bg);border:1px solid var(--gold);border-left:4px solid var(--gold);border-radius:14px;padding:16px 22px;}
+  #cap-funnel .cap-santa-note .emoji{font-size:1.7rem;line-height:1;flex:0 0 auto;}
+  #cap-funnel .cap-santa-note p{margin:0;font-family:'Montserrat',sans-serif;font-size:.92rem;line-height:1.45;color:var(--ink);}
+  #cap-funnel .cap-santa-note strong{color:var(--red);}
+  @media (max-width:560px){#cap-funnel .cap-santa-note{flex-direction:column;text-align:center;gap:8px;padding:16px 18px;}}
+
   /* 3) DATE CTA + calendar (now lives inside a modal) */
   #cap-funnel .date-cta{background:var(--red);color:#fff;border:0;border-radius:50px;padding:15px 34px;font-weight:700;font-size:1.05rem;cursor:pointer;font-family:'Montserrat';}
   #cap-funnel .date-cta:hover{background:var(--red-dark);}
@@ -512,6 +520,7 @@ html[data-buyer-path="vip"] .ticket-block .datePicker .wbx-calendar::after { con
         <button class="btn btn-out">Reserve</button>
       </div>
     </div>
+    <div class="cap-santa-note"><span class="emoji">&#127877;</span><p><strong>Heads up &mdash; Ultimate Santa is on sale.</strong> 40% off the Ultimate Santa experience, Nov 1&ndash;24 at the 10am session. Ask about it at checkout.</p></div>
   </div></section>
 
   <!-- Path C: date-picker modal removed. Native Webconnex .wbx-calendar
