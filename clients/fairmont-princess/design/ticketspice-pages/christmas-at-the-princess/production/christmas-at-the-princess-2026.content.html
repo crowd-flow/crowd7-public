@@ -263,6 +263,19 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
   content: '$21' !important;
   color: #eafbe9 !important;
 }
+/* ── BUYER-PATH PRICING ──────────────────────────────────────────────────
+   Tier cards stamp <html data-buyer-path="ga|premium|vip"> on Select
+   (capSetPath, wired in the reveal script). Swap the calendar's per-night
+   prices + legend to match, so a Premium/VIP buyer never sees GA numbers.
+   GA (default) = $35 standard / $21 value, set above. */
+/* Premium: standard $70 / value (Christmas-in-July 40% off) $42 */
+html[data-buyer-path="premium"] .ticket-block .datePicker .wbx-calendar .row.week .day::after { content: '$70' !important; }
+html[data-buyer-path="premium"] .ticket-block .datePicker .wbx-calendar .row.week .day.cap-value-date::after { content: '$42' !important; }
+html[data-buyer-path="premium"] .ticket-block .datePicker .wbx-calendar::after { content: '🟩 Christmas in July $42        🟥 Standard $70' !important; }
+/* VIP: fire tables are per-table & dynamic — priced in the Reserve flow, not here.
+   Hide the per-night number; keep green/red so discount-vs-standard nights still read. */
+html[data-buyer-path="vip"] .ticket-block .datePicker .wbx-calendar .row.week .day::after { content: '' !important; display: none !important; }
+html[data-buyer-path="vip"] .ticket-block .datePicker .wbx-calendar::after { content: '🟩 Discount dates        🟥 Standard dates  ·  table pricing shown when you reserve' !important; }
 /* Different-month / disabled cells: muted, no price, no green */
 .ticket-block .datePicker .wbx-calendar .row.week .day.different-month,
 .ticket-block .datePicker .wbx-calendar .row.week .day:not(.enabled):not(.different-month),
