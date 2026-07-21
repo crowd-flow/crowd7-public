@@ -785,6 +785,115 @@
     </div>
 
 
+  <!-- ═══ CHRISTMAS IN JULY POP-UP — SALE EXTENDED ═══════════════════════════
+       RESTORED 2026-07-21: Bryan called Mat to say the sale is EXTENDED —
+       popup comes back with "Sale Extended!" framing (was removed same-day,
+       commit ae96614, on the belief the 7/17-7/20 window had closed).
+
+       SHOWS: now through Wed July 22 2026, 12:00 PM (noon) EASTERN, then
+              auto-hides. Dismissal persists for the session.
+              ⚠️ HARD-ANCHORED to America/New_York via Intl.DateTimeFormat —
+              NOT the visitor's browser/device local time — same EST-lock
+              pattern as the Versailles CIJ popup
+              (versailles/versailles-cij-popup.test.html). Closes at the same
+              instant for every visitor regardless of their timezone.
+       FORCE: append ?c7xmas=1 to preview it outside the window (Mat's test hatch).
+       KILL:  window.MSFXMAS_ENABLED = false  before this block.
+
+       OFFER UNCHANGED: 50% off Sept admission + 50% off Sept Friday-night
+       bonfire sites, code Christmas26, Family Fun Bundle excluded.
+
+       The coupon itself + the TS Actions are AMANDA's job (with Michelle's TS
+       team) — this popup is marketing surface only, it does not apply anything.
+       ═══════════════════════════════════════════════════════════════════════ -->
+  <div id="msfxmas-overlay" class="msfxmas-overlay" role="dialog" aria-modal="true" aria-labelledby="msfxmas-title" hidden>
+    <div class="msfxmas-card">
+      <button class="msfxmas-close" aria-label="Close">&times;</button>
+      <div class="msfxmas-icon">🎄</div>
+      <h3 id="msfxmas-title" class="msfxmas-h">Sale <em>Extended!</em></h3>
+      <p class="msfxmas-p">
+        Our <strong>Christmas in July</strong> sale is back — now through <strong>Wednesday, July 22</strong>.
+        Take <strong>50% off</strong> September admission tickets and
+        <strong>50% off</strong> Friday-night bonfire sites in September.
+        Use code <span class="msfxmas-code">Christmas26</span> at checkout.
+      </p>
+      <p class="msfxmas-fine">Family Fun Bundle excluded.</p>
+      <button class="msfxmas-ok">Shop the sale</button>
+    </div>
+  </div>
+
+  <style>
+    .msfxmas-overlay{position:fixed;inset:0;z-index:2147483000;display:flex;align-items:center;justify-content:center;
+      background:rgba(26,8,8,.62);padding:20px;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+    .msfxmas-overlay[hidden]{display:none;}
+    .msfxmas-card{position:relative;background:#fff;max-width:430px;width:100%;border-radius:16px;padding:30px 26px 26px;
+      box-shadow:0 24px 60px rgba(0,0,0,.4);text-align:center;font-family:'Open Sans',system-ui,sans-serif;
+      animation:msfxmas-in .25s ease;box-sizing:border-box;}
+    @keyframes msfxmas-in{from{opacity:0;transform:translateY(14px) scale(.97);}to{opacity:1;transform:none;}}
+    .msfxmas-icon{font-size:2.6rem;line-height:1;margin-bottom:10px;}
+    .msfxmas-h{font-family:'Zilla Slab','Times New Roman',serif;font-size:1.5rem;font-weight:700;color:#B01030;margin:0 0 12px;line-height:1.2;}
+    .msfxmas-h em{font-style:italic;color:#7A0820;}
+    .msfxmas-p{font-size:.95rem;line-height:1.55;color:#3a2020;margin:0 0 10px;}
+    .msfxmas-fine{font-size:.78rem;line-height:1.4;color:#7a6060;margin:0 0 20px;}
+    .msfxmas-code{display:inline-block;font-family:'Zilla Slab',serif;font-weight:700;font-size:1.05rem;color:#B01030;
+      background:#FFF0F2;border:1px dashed #B01030;border-radius:6px;padding:2px 10px;letter-spacing:.04em;}
+    .msfxmas-ok{background:#B01030;color:#fff;border:0;border-radius:50px;padding:12px 34px;font-size:.95rem;font-weight:700;
+      cursor:pointer;letter-spacing:.02em;}
+    .msfxmas-ok:hover{background:#7A0820;}
+    .msfxmas-close{position:absolute;top:10px;right:14px;background:none;border:0;font-size:1.7rem;line-height:1;color:#b88;cursor:pointer;}
+    .msfxmas-close:hover{color:#B01030;}
+    @media (max-width:560px){ .msfxmas-card{padding:26px 20px 22px;} .msfxmas-h{font-size:1.3rem;} }
+  </style>
+
+  <script>
+  (function(){
+    if (window.MSFXMAS_ENABLED === false) return;                 // kill switch
+    var KEY   = 'msfxmas-dismissed-2026';
+    var FORCE = /[?&]c7xmas=1/.test(window.location.search);       // Mat's preview hatch
+
+    // Sale window: now -> Wed Jul 22 2026 12:00 PM (noon) EASTERN, hard-anchored via
+    // Intl.DateTimeFormat (NOT the visitor's device clock) — same EST-lock pattern as
+    // the Versailles CIJ popup. Closes at the same instant for everyone, any timezone.
+    function easternStamp(d){
+      var p = {};
+      new Intl.DateTimeFormat('en-US', {
+        timeZone: 'America/New_York', year:'numeric', month:'2-digit', day:'2-digit',
+        hour:'2-digit', minute:'2-digit', second:'2-digit', hour12:false
+      }).formatToParts(d).forEach(function(x){ p[x.type] = x.value; });
+      return p.year + p.month + p.day + (p.hour === '24' ? '00' : p.hour) + p.minute + p.second;
+    }
+    function inWindow(){
+      var now = easternStamp(new Date());                         // YYYYMMDDHHMMSS in America/New_York
+      return now >= '20260721000000' && now < '20260722120000';   // < noon 7/22 ET -> hides exactly at noon
+    }
+
+    try { if (!FORCE && sessionStorage.getItem(KEY)) return; } catch(e){}
+    if (!FORCE && !inWindow()) return;
+
+    var ov = document.getElementById('msfxmas-overlay');
+    if (!ov) return;
+
+    function hide(){
+      ov.setAttribute('hidden','');
+      try { sessionStorage.setItem(KEY,'1'); } catch(e){}
+    }
+    function shopSale(){
+      hide();
+      var t = document.getElementById('tickets');
+      if (t) t.scrollIntoView({ behavior:'smooth' });
+    }
+
+    ov.removeAttribute('hidden');
+    ov.querySelector('.msfxmas-close').addEventListener('click', hide);
+    ov.querySelector('.msfxmas-ok').addEventListener('click', shopSale);
+    ov.addEventListener('click', function(e){ if (e.target === ov) hide(); });   // click backdrop
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape') hide(); });
+
+    console.log('[msfxmas] shown', { forced: FORCE, inWindow: inWindow() });
+  })();
+  </script>
+
+
   <!-- ═══ S'MORES KIT UPSELL POP-UP ══════════════════════════════════════════
        Amanda's 7/16 ask ("Millstadt page" email): "Is there a possibility to
        create an action/pop-up that if a bonfire site is selected, guests will
