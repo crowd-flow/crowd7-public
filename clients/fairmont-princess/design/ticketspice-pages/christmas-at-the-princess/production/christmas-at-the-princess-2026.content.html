@@ -1180,9 +1180,8 @@ html[data-buyer-path="vip"] .ticket-block .datePicker .wbx-calendar::after { con
     }
     cta.querySelector('button').addEventListener('click',scrollToTickets);
     // ticket-tier card buttons ("Select"/"Reserve") tag the buyer path (data-buyer on the .tier), then open the ticket block — drop their old inline handlers.
-    // Premium is the one exception: it shows its own price/details modal (capOvPremium) first —
-    // GA and VIP behavior is unchanged (straight to the ticket block).
-    root.querySelectorAll('#cap-tickets .tier .btn').forEach(function(b){ b.removeAttribute('onclick'); b.addEventListener('click',function(e){ e.preventDefault(); var t=b.closest('.tier'); var path=t&&t.getAttribute('data-buyer'); if(path==='premium'){ capOpenPremium(); return; } if(path&&window.capSetPath) capSetPath(path); openPicker(); }); });
+    // All tiers go straight to the date picker (Premium's intermediate details modal removed 2026-07-21 per Mat).
+    root.querySelectorAll('#cap-tickets .tier .btn').forEach(function(b){ b.removeAttribute('onclick'); b.addEventListener('click',function(e){ e.preventDefault(); var t=b.closest('.tier'); var path=t&&t.getAttribute('data-buyer'); if(path&&window.capSetPath) capSetPath(path); openPicker(); }); });
     window.capProceedPremium=function(){ if(window.capSetPath) capSetPath('premium'); openPicker(); };
 
     // Hero "Book Your Experience" (+ any #cap-tickets link) scrolls to the ticket cards while gated
