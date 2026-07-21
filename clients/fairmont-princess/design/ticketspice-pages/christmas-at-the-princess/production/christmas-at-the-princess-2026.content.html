@@ -381,6 +381,10 @@ html[data-buyer-path="vip"] .ticket-block .datePicker .wbx-calendar::after { con
   #cap-funnel .phase-card.active .tag{color:var(--accent);}
   #cap-funnel .phase-card .live{display:none;position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;font-size:.7rem;font-weight:700;padding:4px 14px;border-radius:20px;letter-spacing:.06em;}
   #cap-funnel .phase-card.active .live{display:block;}
+  #cap-funnel .cap-divider{max-width:460px;margin:16px auto 0;display:flex;align-items:center;justify-content:center;gap:18px;color:#c9a24b;font-size:1rem;line-height:1;}
+  #cap-funnel .cap-divider::before,#cap-funnel .cap-divider::after{content:'';flex:1;height:1px;}
+  #cap-funnel .cap-divider::before{background:linear-gradient(to right,transparent,#c9a24b);}
+  #cap-funnel .cap-divider::after{background:linear-gradient(to left,transparent,#c9a24b);}
 
   /* 2) TICKET TIERS */
   #cap-funnel .tier-row{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch;}
@@ -479,7 +483,7 @@ html[data-buyer-path="vip"] .ticket-block .datePicker .wbx-calendar::after { con
     <div class="sec-head"><div class="eye">Limited-Time Pricing</div><h2>Lock in the lowest price</h2></div>
     <!-- phase-price 3-card row removed 2026-07-21 (Mat) — kept the teaser header + line below -->
 
-    <p style="text-align:center;color:var(--muted);font-size:.85rem;margin-top:16px;">Same ticket all season &mdash; only the <em>sticker</em> &amp; price change by date.</p>
+    <div class="cap-divider" aria-hidden="true">&#10022;</div>
   </div></section>
 
   <!-- 2) TICKET TIERS -->
