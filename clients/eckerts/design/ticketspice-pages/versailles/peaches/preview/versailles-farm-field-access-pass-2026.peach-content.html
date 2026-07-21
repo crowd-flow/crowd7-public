@@ -1015,6 +1015,7 @@
     // Sale window: Jul 24–27, 2026 inclusive (buyer's local date). Force with window.CIJ_FORCE=true to preview.
     function inWindow(){
       if (window.CIJ_FORCE === true) return true;
+      if (/[?&]cijtest=1(&|$)/.test(location.search)) return true;   // QA override: force-show on the live page
       var now = new Date();
       var start = new Date(2026, 6, 24, 0, 0, 0);              // Jul 24 2026 00:00
       var end   = new Date(2026, 6, 27, 23, 59, 59);           // Jul 27 2026 23:59
