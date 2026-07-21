@@ -718,7 +718,7 @@ html[data-buyer-path="vip"] .ticket-block .datePicker .wbx-calendar::after { con
      closes (marketing surface); wiring it to the native add-on is a follow-up.
      ════════════════════════════════════════════════════════════════════ */
   var CAP_PROMOS = {
-    ga:        { eye:'Upgrade your night', title:'Add the Starlight Lounge', body:'For just $25 more per guest, skip the crowd — shared fire pits, a private VIP lounge, and the specialty bar. One tap adds it for everyone in your order.', cta:'Add Starlight' },
+    ga:        { eye:'Upgrade your night', title:'Go Premium', body:'Skip the crowd — Premium Admission adds Starlight Lounge access, shared fire pits, the s\'mores & hot cocoa bar, and premium bar service. One tap upgrades everyone in your order.', cta:'Upgrade to Premium' },
     premium:   { eye:'Make it magic',      title:'Add Photos with Santa',    body:"You're already going premium — add the kids' favorite moment. Reserve a Photos-with-Santa session and skip the North Pole line.", cta:'Add Photos with Santa' },
     vip:       { eye:'Stay the night',     title:'40% off your resort room', body:'Complete the VIP experience — book your room at the Fairmont Scottsdale Princess for 40% off when you reserve. Walk to the lights, stroll home to your suite.', cta:'See the room offer' },
     'default': { eye:'Before you go',      title:'40% off your resort room', body:'Make a night of it — book your room at the Fairmont Scottsdale Princess for 40% off when you buy your tickets.', cta:'See the room offer' }
@@ -743,12 +743,39 @@ html[data-buyer-path="vip"] .ticket-block .datePicker .wbx-calendar::after { con
     }catch(e){ /* promo is decorative — never break the page */ }
   }
   window.capFirePromo = capFirePromo;
+  // Set a native TS ticket's quantity by matching its <h4> name — bypasses React's
+  // value guard (native setter) then fires a bubbling change TS/Webconnex listens for.
+  // Confirmed on the live cart 2026-07-21: the qty control is a <select> (0–25).
+  function capSetTicketQty(nameRe, qty){
+    try{
+      var row = Array.prototype.slice.call(document.querySelectorAll('#ticketBlock tr.ticket.ticket-type'))
+        .filter(function(r){ var h=r.querySelector('h4'); return h && nameRe.test(h.textContent||''); })[0];
+      if(!row) return false;
+      var sel = row.querySelector('select'); if(!sel) return false;
+      var setter = Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype, 'value').set;
+      setter.call(sel, String(qty));
+      sel.dispatchEvent(new Event('change', { bubbles: true }));
+      return true;
+    }catch(e){ return false; }
+  }
+  window.capSetTicketQty = capSetTicketQty;
+
   function capPromoCta(){
     try{
       var m = document.getElementById('capOvPromo');
       var path = m ? m.getAttribute('data-promo-for') : '';
       capCloseAll();
-      if(path === 'premium' && window.capSantaLaunch){ capSantaLaunch(); }
+      if(path === 'premium' && window.capSantaLaunch){ capSantaLaunch(); return; }
+      if(path === 'ga'){
+        // GA buyer accepted the Premium upsell → move them to Premium.
+        // Match their current GA quantity (min 1), then zero GA so they don't pay for both.
+        var gaRow = Array.prototype.slice.call(document.querySelectorAll('#ticketBlock tr.ticket.ticket-type'))
+          .filter(function(r){ var h=r.querySelector('h4'); return h && /general admission/i.test(h.textContent||''); })[0];
+        var gaSel = gaRow && gaRow.querySelector('select');
+        var n = Math.max(1, parseInt((gaSel && gaSel.value) || '0', 10) || 0);
+        capSetTicketQty(/premium admission/i, n);
+        if(gaSel) capSetTicketQty(/general admission/i, 0);
+      }
     }catch(e){}
   }
   window.capPromoCta = capPromoCta;
