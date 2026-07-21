@@ -1012,14 +1012,21 @@
     if(!ov) return;
     var KEY = 'eck_versailles_cij_seen';                       // once per session
 
-    // Sale window: Jul 24–27, 2026 inclusive (buyer's local date). Force with window.CIJ_FORCE=true to preview.
+    // Sale window: Jul 24–27, 2026 inclusive, anchored to America/New_York (not the buyer's local
+    // clock) so it opens/closes at the same instant for everyone. Force with window.CIJ_FORCE=true.
+    function easternStamp(d){
+      var p = {};
+      new Intl.DateTimeFormat('en-US', {
+        timeZone: 'America/New_York', year:'numeric', month:'2-digit', day:'2-digit',
+        hour:'2-digit', minute:'2-digit', second:'2-digit', hour12:false
+      }).formatToParts(d).forEach(function(x){ p[x.type] = x.value; });
+      return p.year + p.month + p.day + (p.hour === '24' ? '00' : p.hour) + p.minute + p.second;
+    }
     function inWindow(){
       if (window.CIJ_FORCE === true) return true;
       if (/[?&]cijtest=1(&|$)/.test(location.search)) return true;   // QA override: force-show on the live page
-      var now = new Date();
-      var start = new Date(2026, 6, 24, 0, 0, 0);              // Jul 24 2026 00:00
-      var end   = new Date(2026, 6, 27, 23, 59, 59);           // Jul 27 2026 23:59
-      return now >= start && now <= end;
+      var now = easternStamp(new Date());                      // YYYYMMDDHHMMSS in America/New_York
+      return now >= '20260724000000' && now <= '20260727235959';
     }
     if(!inWindow()) return;
     try{ if(sessionStorage.getItem(KEY)) return; }catch(e){}
