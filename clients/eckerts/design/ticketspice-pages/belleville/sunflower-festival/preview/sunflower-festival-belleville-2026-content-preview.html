@@ -6,7 +6,6 @@
 <title>Eckert Sunflower Festival — Belleville 2026 — Preview</title>
 <style>
   html, body { margin: 0; padding: 0; background: #FFFBEF; }
-  /* Force reveal elements visible in standalone preview */
   #sf-funnel .sfr { opacity: 1 !important; transform: none !important; }
   #sf-funnel .sf-hero-eyebrow,
   #sf-funnel .sf-hero-title { opacity: 1 !important; animation: none !important; }
@@ -88,13 +87,13 @@
         display: flex !important; align-items: center !important; gap: 5px !important;
     }
     #sf-funnel .sf-nav-cta {
-        background: #241A08 !important; color: #FFD86B !important;
+        background: #2F6B4F !important; color: #FFD86B !important;
         padding: 9px 22px !important; border-radius: 50px !important;
         font-size: 0.83rem !important; font-weight: 700 !important;
         text-decoration: none !important; letter-spacing: 0.03em !important;
         transition: all 0.3s ease !important; white-space: nowrap !important; display: inline-block !important;
     }
-    #sf-funnel .sf-nav-cta:hover { background: #000 !important; color: #FFE08A !important; text-decoration: none !important; }
+    #sf-funnel .sf-nav-cta:hover { background: #24503A !important; color: #FFE08A !important; text-decoration: none !important; }
 
     /* ── HERO ── (placeholder gradient — swap to a sunflower photo from Amanda's Dropbox set) */
     #sf-funnel .sf-hero {
@@ -103,7 +102,7 @@
         position: relative !important;
         display: flex !important; align-items: flex-end !important;
         overflow: hidden !important;
-        background: linear-gradient(135deg, #F2B705 0%, #E0A21F 45%, #9C6B0E 100%) !important;
+        background: url('https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/sunflowers/web/family-pictures-sunflowers.jpg') center 30%/cover no-repeat, linear-gradient(135deg, #F2B705 0%, #E0A21F 45%, #9C6B0E 100%) !important;
     }
     #sf-funnel .sf-hero-overlay {
         position: absolute !important; inset: 0 !important;
@@ -191,6 +190,7 @@
         font-size: 3rem !important; transition: transform 0.4s ease, box-shadow 0.4s ease !important;
     }
     #sf-funnel .sf-gcard:hover { transform: scale(1.03) translateY(-5px) !important; box-shadow: 0 24px 50px rgba(201,138,20,0.25) !important; z-index: 2 !important; }
+    #sf-funnel .sf-gcard img { width: 100% !important; height: 100% !important; object-fit: cover !important; display: block !important; }
     #sf-funnel .sf-gcard-label {
         position: absolute !important; bottom: 12px !important; left: 12px !important;
         background: rgba(36,26,8,0.6) !important; backdrop-filter: blur(8px) !important;
@@ -204,7 +204,7 @@
     #sf-funnel .sf-tickets-header { text-align: center !important; margin-bottom: 18px !important; }
     #sf-funnel .sf-flash {
         text-align: center !important; max-width: 660px !important; margin: 0 auto 40px !important;
-        background: #241A08 !important; border: 1px solid rgba(201,138,20,0.5) !important;
+        background: #2F6B4F !important; border: 1px solid rgba(201,138,20,0.5) !important;
         border-radius: 14px !important; padding: 16px 22px !important;
         font-size: 0.86rem !important; color: #FFE08A !important; line-height: 1.6 !important;
     }
@@ -221,8 +221,8 @@
         display: flex !important; flex-direction: column !important;
     }
     #sf-funnel .sf-card:hover { transform: translateY(-6px) !important; }
-    #sf-funnel .sf-card-dark { background: #241A08 !important; color: white !important; }
-    #sf-funnel .sf-card-dark:hover { box-shadow: 0 20px 44px rgba(0,0,0,0.35) !important; }
+    #sf-funnel .sf-card-dark { background: #2F6B4F !important; color: white !important; }
+    #sf-funnel .sf-card-dark:hover { box-shadow: 0 20px 44px rgba(20,60,40,0.4) !important; }
     #sf-funnel .sf-card-gold { background: #E0A21F !important; color: #241A08 !important; }
     #sf-funnel .sf-card-gold:hover { box-shadow: 0 20px 44px rgba(201,138,20,0.4) !important; }
     #sf-funnel .sf-card-cream { background: linear-gradient(145deg, #FFF3CF, #FFFBEF) !important; border: 1px solid rgba(201,138,20,0.16) !important; }
@@ -342,7 +342,7 @@
             <span class="sf-dot"></span>
             <span>Belleville Farm · 2026</span>
             <span class="sf-dot"></span>
-            <span>Opens ~July 25 · Flash Sale July 24–26</span>
+            <span>Festival Aug 1–16 · Flash Sale July 24–27</span>
         </div>
     </div>
 
@@ -366,7 +366,6 @@
     <!-- HERO -->
     <div class="sf-hero">
         <div class="sf-hero-overlay"></div>
-        <span class="sf-hero-placeholder-tag">Placeholder — sunflower hero photo pending (Amanda→Dropbox)</span>
         <div class="sf-hero-content">
             <span class="sf-hero-eyebrow">Eckert's Belleville Farm · 2026</span>
             <span class="sf-hero-title">Eckert<br><em>Sunflower Festival</em></span>
@@ -407,17 +406,21 @@
         </div>
         <div class="sf-gallery-mask">
             <div class="sf-gallery-track">
-                <div class="sf-gcard">🌻<div class="sf-gcard-label">Photo pending</div></div>
-                <div class="sf-gcard">🌻<div class="sf-gcard-label">Photo pending</div></div>
-                <div class="sf-gcard">🌻<div class="sf-gcard-label">Photo pending</div></div>
-                <div class="sf-gcard">🌻<div class="sf-gcard-label">Photo pending</div></div>
-                <div class="sf-gcard">🌻<div class="sf-gcard-label">Photo pending</div></div>
+                <div class="sf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/sunflowers/web/bright-sunflower-field.jpg" alt="Acres of sunflowers in bloom" loading="lazy"><div class="sf-gcard-label">Acres in Bloom</div></div>
+                <div class="sf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/sunflowers/web/two-girls-running-through-flowers.jpg" alt="Kids running through the sunflower field" loading="lazy"><div class="sf-gcard-label">Room to Roam</div></div>
+                <div class="sf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/sunflowers/web/girl-holding-two-sunflowers.jpg" alt="Girl holding fresh-cut sunflowers" loading="lazy"><div class="sf-gcard-label">Cut-Your-Own</div></div>
+                <div class="sf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/sunflowers/web/red-truck-next-to-flower-field.jpg" alt="Vintage red truck by the sunflower field" loading="lazy"><div class="sf-gcard-label">Photo Scenes</div></div>
+                <div class="sf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/sunflowers/web/boy-in-flowers.jpg" alt="Child among the sunflowers" loading="lazy"><div class="sf-gcard-label">For All Ages</div></div>
+                <div class="sf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/sunflowers/web/sunflower-close-up.jpg" alt="Sunflower close-up" loading="lazy"><div class="sf-gcard-label">Golden Blooms</div></div>
+                <div class="sf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/sunflowers/web/two-girls-red-swing-flowers.jpg" alt="Girls on the red swing in the flowers" loading="lazy"><div class="sf-gcard-label">The Swing</div></div>
                 <!-- Duplicate for seamless loop -->
-                <div class="sf-gcard">🌻<div class="sf-gcard-label">Photo pending</div></div>
-                <div class="sf-gcard">🌻<div class="sf-gcard-label">Photo pending</div></div>
-                <div class="sf-gcard">🌻<div class="sf-gcard-label">Photo pending</div></div>
-                <div class="sf-gcard">🌻<div class="sf-gcard-label">Photo pending</div></div>
-                <div class="sf-gcard">🌻<div class="sf-gcard-label">Photo pending</div></div>
+                <div class="sf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/sunflowers/web/bright-sunflower-field.jpg" alt="" aria-hidden="true" loading="lazy"><div class="sf-gcard-label">Acres in Bloom</div></div>
+                <div class="sf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/sunflowers/web/two-girls-running-through-flowers.jpg" alt="" aria-hidden="true" loading="lazy"><div class="sf-gcard-label">Room to Roam</div></div>
+                <div class="sf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/sunflowers/web/girl-holding-two-sunflowers.jpg" alt="" aria-hidden="true" loading="lazy"><div class="sf-gcard-label">Cut-Your-Own</div></div>
+                <div class="sf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/sunflowers/web/red-truck-next-to-flower-field.jpg" alt="" aria-hidden="true" loading="lazy"><div class="sf-gcard-label">Photo Scenes</div></div>
+                <div class="sf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/sunflowers/web/boy-in-flowers.jpg" alt="" aria-hidden="true" loading="lazy"><div class="sf-gcard-label">For All Ages</div></div>
+                <div class="sf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/sunflowers/web/sunflower-close-up.jpg" alt="" aria-hidden="true" loading="lazy"><div class="sf-gcard-label">Golden Blooms</div></div>
+                <div class="sf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/sunflowers/web/two-girls-red-swing-flowers.jpg" alt="" aria-hidden="true" loading="lazy"><div class="sf-gcard-label">The Swing</div></div>
             </div>
         </div>
     </div>
@@ -427,10 +430,6 @@
         <div class="sf-tickets-header sfr">
             <span class="sf-eye">Festival Tickets</span>
             <span class="sf-title">Pick your <em>sunflower experience</em></span>
-        </div>
-        <div class="sf-flash sfr">
-            ⚡ <strong>Flash Sale · July 24–26</strong> — discounted pricing on all sunflower packages before general sales open.
-            <span style="opacity:0.7;font-style:italic;">(flash pricing pending Jill/Angie sign-off on this package set)</span>
         </div>
         <div class="sf-grid">
 
@@ -444,10 +443,10 @@
                     <li>✂️ One cut-your-own sunflower</li>
                 </ul>
                 <div class="sf-card-price">
-                    <span class="sf-price-num">$12.99</span>
+                    <span class="sf-price-num">$12.95</span>
                     <span class="sf-price-label">online<br><span style="text-decoration:line-through;opacity:0.7;">$18 at gate</span></span>
                 </div>
-                <span class="sf-card-note">Buy online &amp; save $5.01.</span>
+                <span class="sf-card-note">Buy online &amp; save $5.05.</span>
             </div>
 
             <!-- FLOWER POWER PASS -->
@@ -462,10 +461,10 @@
                     <li>👑 One flower crown</li>
                 </ul>
                 <div class="sf-card-price">
-                    <span class="sf-price-num">$19.99</span>
+                    <span class="sf-price-num">$19.95</span>
                     <span class="sf-price-label">online<br><span style="text-decoration:line-through;opacity:0.7;">$25 at gate</span></span>
                 </div>
-                <span class="sf-card-note">Buy online &amp; save $5.01.</span>
+                <span class="sf-card-note">Buy online &amp; save $5.05.</span>
             </div>
 
             <!-- FAMILY & FRIENDS -->
@@ -481,10 +480,10 @@
                     <li>🕶️ Two pairs of flower sunglasses</li>
                 </ul>
                 <div class="sf-card-price">
-                    <span class="sf-price-num">$74.99</span>
+                    <span class="sf-price-num">$74.95</span>
                     <span class="sf-price-label">online<br><span style="text-decoration:line-through;opacity:0.7;">$80 at gate</span></span>
                 </div>
-                <span class="sf-card-note">Buy online &amp; save $5.01.</span>
+                <span class="sf-card-note">Buy online &amp; save $5.05.</span>
             </div>
 
         </div>
@@ -507,22 +506,6 @@
                 </span>
                 <span class="sf-addon-price">$4</span>
             </div>
-            <div class="sf-addon">
-                <span class="sf-addon-icon">🕶️</span>
-                <span class="sf-addon-body">
-                    <span class="sf-addon-title">Flower Sunglasses</span>
-                    <span class="sf-addon-desc">Add a pair to any ticket. Add at checkout.</span>
-                </span>
-                <span class="sf-addon-price">$4</span>
-            </div>
-            <div class="sf-addon">
-                <span class="sf-addon-icon">✂️</span>
-                <span class="sf-addon-body">
-                    <span class="sf-addon-title">Cut-Your-Own Sunflower Bouquet<span class="sf-addon-tag">Onsite Only</span></span>
-                    <span class="sf-addon-desc">3 sunflowers + 12 zinnias in a plastic vase. Purchased at the field — not a TicketSpice checkout item.</span>
-                </span>
-                <span class="sf-addon-price">$15</span>
-            </div>
         </div>
     </div>
 
@@ -536,18 +519,18 @@
             </div>
             <div class="sf-info-item">
                 <span class="sf-info-icon">📅</span>
-                <span class="sf-info-label">Festival Weekends</span>
-                <span class="sf-info-value">Opens ~July 25<br>runs thru ~Aug 8–9 (tentative)</span>
+                <span class="sf-info-label">Festival Dates</span>
+                <span class="sf-info-value">Aug 1–16<br>(tentative)</span>
             </div>
             <div class="sf-info-item">
                 <span class="sf-info-icon">🎟️</span>
                 <span class="sf-info-label">Sales Open</span>
-                <span class="sf-info-value">Flash sale July 24–26<br>general sales follow</span>
+                <span class="sf-info-value">Flash July 24–27 · GA $7.95<br>general sales follow</span>
             </div>
             <div class="sf-info-item">
                 <span class="sf-info-icon">🕘</span>
                 <span class="sf-info-label">Hours</span>
-                <span class="sf-info-value">TBD · sunset slots planned</span>
+                <span class="sf-info-value">Tue–Sun · 9am–5pm<br>(last wagon out 5pm)</span>
             </div>
         </div>
     </div>
