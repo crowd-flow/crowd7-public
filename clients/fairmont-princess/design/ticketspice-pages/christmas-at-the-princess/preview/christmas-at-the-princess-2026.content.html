@@ -409,11 +409,14 @@ html[data-buyer-path="vip"] .ticket-block .datePicker .wbx-calendar::after { con
 
   /* Ultimate Santa heads-up note — small info box under the tier cards,
      NOT a pop-up (Mat/team call, CAP meeting 2026-07-21). */
-  #cap-funnel .cap-santa-note{margin-top:26px;display:flex;align-items:center;gap:14px;background:var(--bg);border:1px solid var(--gold);border-left:4px solid var(--gold);border-radius:14px;padding:16px 22px;}
-  #cap-funnel .cap-santa-note .emoji{font-size:1.7rem;line-height:1;flex:0 0 auto;}
-  #cap-funnel .cap-santa-note p{margin:0;font-family:'Montserrat',sans-serif;font-size:.92rem;line-height:1.45;color:var(--ink);}
-  #cap-funnel .cap-santa-note strong{color:var(--red);}
-  @media (max-width:560px){#cap-funnel .cap-santa-note{flex-direction:column;text-align:center;gap:8px;padding:16px 18px;}}
+  /* Ultimate Santa offer strip — matches the tier-card language (white fill, hairline
+     --line border, 18px radius, pill tag, Playfair headline). Restyled 2026-07-22. */
+  #cap-funnel .cap-santa-note{margin-top:28px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px 30px;text-align:center;}
+  #cap-funnel .cap-santa-note .cap-santa-tag{display:inline-block;background:#fde8ec;color:var(--accent);font-family:'Montserrat',sans-serif;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:4px 12px;border-radius:20px;margin-bottom:12px;}
+  #cap-funnel .cap-santa-note h3{font-family:'Playfair Display',Georgia,serif;font-size:clamp(1.15rem,2.4vw,1.5rem);font-weight:700;color:var(--red);margin:0 0 8px;line-height:1.25;}
+  #cap-funnel .cap-santa-note h3 em{font-style:italic;color:var(--accent);}
+  #cap-funnel .cap-santa-note p{margin:0;font-family:'Montserrat',sans-serif;font-size:.88rem;line-height:1.5;color:var(--muted);}
+  @media (max-width:560px){#cap-funnel .cap-santa-note{padding:22px 18px;}}
 
   /* 3) DATE CTA + calendar (now lives inside a modal) */
   #cap-funnel .date-cta{background:var(--red);color:#fff;border:0;border-radius:50px;padding:15px 34px;font-weight:700;font-size:1.05rem;cursor:pointer;font-family:'Montserrat';}
@@ -526,7 +529,11 @@ html[data-buyer-path="vip"] .ticket-block .datePicker .wbx-calendar::after { con
         <button class="btn btn-out">Reserve</button>
       </div>
     </div>
-    <div class="cap-santa-note"><span class="emoji">&#127877;</span><p><strong>Heads up &mdash; Ultimate Santa is on sale.</strong> 40% off the Ultimate Santa experience, Nov 1&ndash;24 at the 10am session. Ask about it at checkout.</p></div>
+    <div class="cap-santa-note">
+      <span class="cap-santa-tag">Limited-Time Offer</span>
+      <h3>40% off the <em>Ultimate Santa</em> Experience</h3>
+      <p>Nov 1&ndash;24 at the 10am session &middot; ask about it at checkout</p>
+    </div>
   </div></section>
 
   <!-- Path C: date-picker modal removed. Native Webconnex .wbx-calendar
