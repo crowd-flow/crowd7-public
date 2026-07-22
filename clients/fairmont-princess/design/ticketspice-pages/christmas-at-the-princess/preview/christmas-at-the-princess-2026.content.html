@@ -360,6 +360,8 @@ html[data-buyer-path="vip"] .ticket-block .datePicker .wbx-calendar::after { con
   /* HERO (video bg) — centered, transparent nav floats over it */
   #cap-funnel .cap-hero{position:relative;min-height:660px;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;overflow:hidden;padding:120px 0 70px;}
   #cap-funnel .cap-hero-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;}
+  #cap-funnel .cap-hero-vid--mobile{display:none;}
+  @media (max-width:768px){#cap-funnel .cap-hero-vid--desktop{display:none;}#cap-funnel .cap-hero-vid--mobile{display:block;}}
   #cap-funnel .cap-hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,6,7,.34),rgba(20,6,7,.56));z-index:1;}
   #cap-funnel .cap-hero-content{position:relative;z-index:2;max-width:880px;padding:0 22px;}
   #cap-funnel .cap-hero .eyebrow{font-family:'Montserrat',sans-serif;letter-spacing:.34em;text-transform:uppercase;font-size:.78rem;color:#f0d2a8;margin-bottom:4px;}
@@ -470,8 +472,12 @@ html[data-buyer-path="vip"] .ticket-block .datePicker .wbx-calendar::after { con
 
   <!-- HERO (video bg) with transparent nav floating over it -->
   <header class="cap-hero">
-    <video class="cap-hero-vid" autoplay loop muted playsinline poster="https://cdn.uploads.webconnex.com/49430/christmas%20quest%20crystal%20bubble%20tag%20wand.jpg">
+    <video class="cap-hero-vid cap-hero-vid--desktop" autoplay loop muted playsinline preload="metadata" poster="https://cdn.uploads.webconnex.com/49430/christmas%20quest%20crystal%20bubble%20tag%20wand.jpg">
       <source src="https://symphony.cdn.tambourine.com/christmas-at-the-princess/media/fairmontscottsdaleprincess-christmasattheprincess-homepage-header-video-6a58e6678fbd8.mp4" type="video/mp4">
+    </video>
+    <video class="cap-hero-vid cap-hero-vid--mobile" autoplay loop muted playsinline preload="metadata" poster="https://d19t3dgo9qh6v3.cloudfront.net/fairmont-cap/FairmontScottsdalePrincess-Christmasattheprincess-Homepage-Header-Mobile-Video-web-poster.jpg">
+      <source src="https://d19t3dgo9qh6v3.cloudfront.net/fairmont-cap/FairmontScottsdalePrincess-Christmasattheprincess-Homepage-Header-Mobile-Video-web.webm" type="video/webm">
+      <source src="https://d19t3dgo9qh6v3.cloudfront.net/fairmont-cap/FairmontScottsdalePrincess-Christmasattheprincess-Homepage-Header-Mobile-Video-web.mp4" type="video/mp4">
     </video>
     <div class="cap-hero-overlay"></div>
     <nav class="cap-nav"><div class="cap-wrap">
@@ -480,7 +486,7 @@ html[data-buyer-path="vip"] .ticket-block .datePicker .wbx-calendar::after { con
       <a href="#cap-tickets" class="cap-nav-cta">Book Your Experience</a>
     </div></nav>
     <div class="cap-hero-content">
-      <img class="cap-hero-title" src="https://s3.amazonaws.com/uploads.webconnex.com/49430%2F1762115305167-FSP25_HomeForTheHolidays_16YRS_White-01.png" alt="Home for the Holidays — 16 Years of Tradition" style="width:100%;max-width:760px;height:auto;display:block;margin:0 auto;filter:brightness(0) invert(1);">
+      <img class="cap-hero-title" src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/fairmont-princess/design/assets/branding/FSP26-17-Years-of-Tradition-White.svg" alt="17 Years of Tradition" style="width:100%;max-width:760px;height:auto;display:block;margin:0 auto;">
       <p class="sub">Arizona's most magical holiday tradition returns &mdash; ice skating, four-million twinkling lights, s'mores, and the all-new Starlight Lounge.</p>
       <div class="connector"></div>
     </div>
