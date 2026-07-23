@@ -701,11 +701,22 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
       m.querySelector('.cap-promo-body').textContent = p.body;
       m.querySelector('.cap-promo-cta').textContent  = p.cta;
       m.setAttribute('data-promo-for', path);
-      setTimeout(function(){ capShow('capOvPromo'); }, 550);   // let the page reveal first, then the offer
+      setTimeout(function(){ capShow('capOvPromo'); }, 800);   // brief pause after the qty pick, then the offer
       console.log('%c[cap-promo] fired for '+path,'color:#c82844;font-weight:700;');
     }catch(e){ /* promo is decorative — never break the page */ }
   }
   window.capFirePromo = capFirePromo;
+  // Fire once the buyer sets a real ticket quantity in the native cart (moved
+  // 2026-07-23 off the date-pick trigger per Katie's ask -- it was popping
+  // before any tickets were chosen). #ticketBlock's markup is native TS/React
+  // and gets re-rendered, so delegate from document instead of the <select> node.
+  document.addEventListener('change', function(e){
+    var sel = e.target.closest && e.target.closest('#ticketBlock select');
+    if(!sel) return;
+    var qty = parseInt(sel.value, 10) || 0;
+    if(qty < 1) return;
+    if(window.capFirePromo) capFirePromo();
+  });
   function capPromoCta(){
     try{
       var m = document.getElementById('capOvPromo');
@@ -1108,7 +1119,7 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
     document.body.classList.add('cap-native-gated');
 
     var revealed=false;
-    function reveal(){ if(revealed)return; revealed=true; root.classList.remove('cap-gated'); document.body.classList.remove('cap-native-gated'); document.body.classList.remove('cap-step2'); if(window.capFirePromo) capFirePromo(); }
+    function reveal(){ if(revealed)return; revealed=true; root.classList.remove('cap-gated'); document.body.classList.remove('cap-native-gated'); document.body.classList.remove('cap-step2'); }   // promo now fires on ticket-qty select, not on date-reveal -- see capFirePromo wiring above
 
     // Stand-in picker (preview only — live page uses the native TS calendar)
     var demo=null;
