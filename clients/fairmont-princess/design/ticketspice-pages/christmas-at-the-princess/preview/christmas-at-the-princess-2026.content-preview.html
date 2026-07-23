@@ -350,12 +350,6 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
   #cap-funnel .cap-nav-cta:hover{background:var(--red-dark);}
   @media(max-width:820px){ #cap-funnel .cap-nav-links{display:none;} #cap-funnel .cap-nav .cap-logo{height:62px;} }
 
-  /* FLOATING Get Tickets */
-  #cap-funnel .cap-float-bar{position:fixed;bottom:0;left:0;right:0;z-index:9999;padding:12px 16px 20px;background:linear-gradient(to top, rgba(255,250,247,0.96) 55%, transparent);display:flex;justify-content:center;transition:opacity .35s ease, transform .35s ease;}
-  #cap-funnel .cap-float-bar.cap-float-hidden{opacity:0;transform:translateY(24px);pointer-events:none;}
-  #cap-funnel .cap-float-bar a{display:block;width:100%;max-width:480px;background:var(--accent);color:#fff;font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-align:center;text-decoration:none;padding:16px 24px;border-radius:50px;box-shadow:0 8px 32px rgba(200,40,68,.45);transition:transform .15s, box-shadow .15s, background .2s;border:none;cursor:pointer;}
-  #cap-funnel .cap-float-bar a:hover{background:var(--accent2);transform:translateY(-2px);box-shadow:0 14px 40px rgba(200,40,68,.55);}
-
   /* HERO (video bg) — centered, transparent nav floats over it */
   #cap-funnel .cap-hero{position:relative;min-height:660px;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;overflow:hidden;padding:120px 0 70px;}
   #cap-funnel .cap-hero-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;}
@@ -454,8 +448,6 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
   </style>
 
   <!-- FLOATING Get Tickets -->
-  <div class="cap-float-bar"><a href="#cap-tickets">&#127915; Get Tickets</a></div>
-  <script>(function(){var b=document.querySelector('#cap-funnel .cap-float-bar');if(b){b.querySelector('a').addEventListener('click',function(){b.classList.add('cap-float-hidden');});}})();</script>
 
   <!-- HERO (video bg) with transparent nav floating over it -->
   <header class="cap-hero">
@@ -468,20 +460,20 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
     </video>
     <div class="cap-hero-overlay"></div>
     <nav class="cap-nav"><div class="cap-wrap">
-      <img class="cap-logo" src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/fairmont-princess/design/assets/logos/christmast-at-the-princess-logo.svg" alt="Christmas at the Princess">
+      <a href="https://christmasattheprincess.com" target="_blank"><img class="cap-logo" src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/fairmont-princess/design/assets/logos/christmast-at-the-princess-logo.svg" alt="Christmas at the Princess"></a>
       <div class="cap-nav-links"><span>Tickets</span><span class="sep">&#10052;</span><span>Experiences</span><span class="sep">&#10052;</span><span>Value Dates</span></div>
       <a href="#cap-tickets" class="cap-nav-cta">Book Your Experience</a>
     </div></nav>
     <div class="cap-hero-content">
       <img class="cap-hero-title" src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/fairmont-princess/design/assets/branding/FSP26-17-Years-of-Tradition-White.svg" alt="17 Years of Tradition" style="width:100%;max-width:760px;height:auto;display:block;margin:0 auto;">
-      <p class="sub">Arizona's most magical holiday tradition returns &mdash; ice skating, four-million twinkling lights, s'mores, and the all-new Starlight Lounge.</p>
+      <p class="sub">Arizona's most magical holiday tradition returns &mdash; ice skating, seventeen-million twinkling lights, s'mores, and an all-new exclusive lounge experience.</p>
       <div class="connector"></div>
     </div>
   </header>
 
   <!-- 1) DYNAMIC SALE-PHASE CARDS -->
   <section style="background:#fff;"><div class="cap-wrap">
-    <div class="sec-head"><div class="eye">Limited-Time Pricing</div><h2>Lock in the lowest price</h2></div>
+    <div class="sec-head"><div class="eye">Limited-Time Pricing</div><h2>Lock in the best deals of the season!</h2></div>
     <div class="phase-row" id="capPhaseRow">
       <div class="phase-card" data-start="2026-07-01" data-end="2026-09-30"><span class="live">You're here &#9662;</span><div class="tag">&#127876; Christmas in July</div><div class="price">$21</div><div class="win">Jul 1 &ndash; Sep 30 &middot; lowest of the year</div></div>
       <div class="phase-card" data-start="2026-10-01" data-end="2026-11-14"><span class="live">You're here &#9662;</span><div class="tag">&#9200; Early Bird</div><div class="price">$25</div><div class="win">Oct 1 &ndash; Nov 14</div></div>
@@ -495,24 +487,24 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
     <div class="sec-head"><h2>Pick your tickets</h2></div>
     <div class="tier-row">
       <div class="tier" data-buyer="ga">
-        <h3>General Admission</h3><div class="saletag" data-saletag="&#127876; Christmas in July"></div>
+        <h3>General Admission</h3><div class="saletag" data-saletag="&#127876; The Classic Experience"></div>
         <div class="starting">Starting at</div>
         <div class="price">$21 <small>/ person</small><span class="was">$35 / person</span></div>
-        <ul><li>Entry to the holiday village</li><li>4M lights &amp; light shows</li><li>Self-parking included</li></ul>
+        <ul><li>17 Million Christmas Lights</li><li>The Village</li><li>Princess Express Train</li></ul>
         <button class="btn btn-out" onclick="capOpenStar()">Select</button>
       </div>
       <div class="tier feature" data-buyer="premium"><span class="ribbon">NEW</span>
         <h3>Premium Admission</h3><div class="saletag" data-saletag="&#10024; Best value upgrade"></div>
         <div class="starting">Starting at</div>
         <div class="price">$42 <small>/ person</small><span class="was">$70 / person</span></div>
-        <ul><li>Starlight Lounge Access</li><li>Shared Firepits</li><li>S&rsquo;mores &amp; Hot Cocoa Bar</li><li>Premium bar service</li></ul>
+        <ul><li>Includes General Admission</li><li>Exclusive Lounge Access</li><li>Shared Firepits</li><li>S&rsquo;mores &amp; Hot Cocoa Bar</li><li>Premium bar service</li></ul>
         <button class="btn btn-solid">Select</button>
       </div>
       <div class="tier" data-buyer="vip">
-        <h3>VIP Experiences</h3><div class="tier-sub">Private Igloos &amp; Fire Tables</div>
+        <h3>VIP Experiences</h3><div class="saletag" data-saletag="&#128293; Private Igloos &amp; Fire Tables"></div>
         <div class="starting">Starting at</div>
         <div class="price">$250 <small>/ table</small></div>
-        <ul><li>Includes General Admission Tickets</li><li>Minimum of four people</li><li>Seats 4&ndash;8 guests</li><li>Premium bar service</li></ul>
+        <ul><li>Includes General Admission Tickets</li><li>Includes Valet Parking ($125 Value)</li><li>Seats 4&ndash;8 guests</li><li>Premium bar service</li></ul>
         <button class="btn btn-out">Reserve</button>
       </div>
     </div>
@@ -524,7 +516,7 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
 
   <!-- Starlight upsell modal -->
   <div class="cap-ov" id="capOvStar"><div class="cap-modal starlight"><button class="x" onclick="capCloseAll()">&times;</button>
-    <h3>&#10024; Upgrade to the Starlight Lounge?</h3>
+    <h3>&#10024; Upgrade to Exclusive Lounge Access?</h3>
     <p style="color:var(--muted);font-size:.92rem;">For just <strong>$25 more</strong> per guest, skip the crowd &mdash; shared fire pits, a private VIP area, and the specialty bar. One click adds it for everyone in your order.</p>
     <button class="mbtn gold" onclick="capCloseAll()">Yes, upgrade us &mdash; +$25/guest</button>
     <button class="mlink" onclick="capCloseAll()">No thanks, keep General Admission</button>
@@ -539,7 +531,8 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
     <div class="p-price">$42 <small>/ person</small></div>
     <div class="p-was">$70 / person</div>
     <ul class="p-list">
-      <li>Starlight Lounge Access</li>
+      <li>Includes General Admission</li>
+      <li>Exclusive Lounge Access</li>
       <li>Shared Firepits</li>
       <li>S&rsquo;mores &amp; Hot Cocoa Bar</li>
       <li>Premium bar service</li>
@@ -688,7 +681,7 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
      closes (marketing surface); wiring it to the native add-on is a follow-up.
      ════════════════════════════════════════════════════════════════════ */
   var CAP_PROMOS = {
-    ga:        { eye:'Upgrade your night', title:'Add the Starlight Lounge', body:'For just $25 more per guest, skip the crowd — shared fire pits, a private VIP lounge, and the specialty bar. One tap adds it for everyone in your order.', cta:'Add Starlight' },
+    ga:        { eye:'Upgrade your night', title:'Add Exclusive Lounge Access', body:'For just $25 more per guest, skip the crowd — shared fire pits, a private VIP lounge, and the specialty bar. One tap adds it for everyone in your order.', cta:'Add Lounge Access' },
     premium:   { eye:'Make it magic',      title:'Add Photos with Santa',    body:"You're already going premium — add the kids' favorite moment. Reserve a Photos-with-Santa session and skip the North Pole line.", cta:'Add Photos with Santa' },
     vip:       { eye:'Stay the night',     title:'40% off your resort room', body:'Complete the VIP experience — book your room at the Fairmont Scottsdale Princess for 40% off when you reserve. Walk to the lights, stroll home to your suite.', cta:'See the room offer' },
     'default': { eye:'Before you go',      title:'40% off your resort room', body:'Make a night of it — book your room at the Fairmont Scottsdale Princess for 40% off when you buy your tickets.', cta:'See the room offer' }
@@ -1067,7 +1060,6 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
   /* v2 (Mat 2026-07-02): our styled sections now STAY VISIBLE while gated — only the
      native TS form is hidden until a date is picked. The floating dup Get-Tickets bar
      hides so there is one clear CTA (the Reserve section below the ticket cards). */
-  #cap-funnel.cap-gated .cap-float-bar{display:none !important;}
   /* Gate the NATIVE TS cart: keep it in the DOM (so the Choose-Date input still
      triggers and the fixed calendar still pops) but pull it off-screen. */
   body.cap-native-gated:not(.cap-step2) .ticket-block{position:absolute !important;left:-99999px !important;top:0 !important;width:1px !important;height:1px !important;overflow:hidden !important;}
@@ -1086,10 +1078,6 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
   #cap-funnel .cap-gate-cta button:hover{background:var(--accent);transform:translateY(-2px);box-shadow:0 18px 52px rgba(217,47,37,.55);}
   #cap-funnel .cap-gate-cta .cap-gate-hint{display:block;margin-top:16px;color:var(--muted);font-size:.86rem;font-family:'Montserrat',sans-serif;letter-spacing:.02em;}
   /* Floating "Reserve Your Spot" button (gated state) — scrolls to the ticket cards; retires once a date is picked */
-  #cap-funnel .cap-reserve-float{position:fixed;bottom:0;left:0;right:0;z-index:9995;padding:12px 16px 20px;background:linear-gradient(to top, rgba(255,250,247,0.96) 55%, transparent);display:flex;justify-content:center;transition:opacity .35s ease, transform .35s ease;}
-  #cap-funnel .cap-reserve-float.cap-hidden{opacity:0;transform:translateY(24px);pointer-events:none;}
-  #cap-funnel .cap-reserve-float button{display:block;width:100%;max-width:480px;background:var(--red);color:#fff;font-family:'Montserrat',sans-serif;font-size:1.1rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-align:center;padding:17px 24px;border-radius:50px;box-shadow:0 8px 32px rgba(103,20,22,.45);transition:transform .15s,box-shadow .15s,background .2s;border:none;cursor:pointer;}
-  #cap-funnel .cap-reserve-float button:hover{background:var(--red-dark);transform:translateY(-2px);box-shadow:0 14px 40px rgba(103,20,22,.55);}
   /* Stand-in date-picker (PREVIEW ONLY — the live page uses the native TS calendar) */
   #capGateDemo{position:fixed;inset:0;background:rgba(40,10,12,.7);z-index:2147483200;display:none;align-items:center;justify-content:center;padding:20px;}
   #capGateDemo.on{display:flex;}
@@ -1111,11 +1099,8 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
     var root=document.getElementById('cap-funnel'); if(!root) return;
     var hero=root.querySelector('.cap-hero');
 
-    // Floating "Reserve Your Spot" button (gated) — scrolls to the ticket cards; retires on date-select
-    var cta=document.createElement('div');
-    cta.className='cap-reserve-float';
-    cta.innerHTML='<button type="button">Reserve Your Spot</button>';
-    root.appendChild(cta);
+    // scrollToTickets kept available (used by the hero click-through below) — the
+    // floating "Reserve Your Spot" bar itself was removed 2026-07-23 per Katie's ask.
     function scrollToTickets(){ var t=root.querySelector('#cap-tickets'); if(t) t.scrollIntoView({behavior:'smooth',block:'start'}); }
 
     // Gate on load (our sections + native cart)
@@ -1123,7 +1108,7 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
     document.body.classList.add('cap-native-gated');
 
     var revealed=false;
-    function reveal(){ if(revealed)return; revealed=true; root.classList.remove('cap-gated'); document.body.classList.remove('cap-native-gated'); document.body.classList.remove('cap-step2'); var rf=root.querySelector('.cap-reserve-float'); if(rf) rf.classList.add('cap-hidden'); if(window.capFirePromo) capFirePromo(); }
+    function reveal(){ if(revealed)return; revealed=true; root.classList.remove('cap-gated'); document.body.classList.remove('cap-native-gated'); document.body.classList.remove('cap-step2'); if(window.capFirePromo) capFirePromo(); }
 
     // Stand-in picker (preview only — live page uses the native TS calendar)
     var demo=null;
@@ -1148,7 +1133,6 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
       document.body.classList.add('cap-step2');   // bring the native ticket block on-screen (add-ons/billing/submit stay hidden until a date is picked)
       setTimeout(function(){ if(!popNativeDate()){ buildDemo().classList.add('on'); } }, 80);  // pop the now-usable native date picker; demo picker in preview
     }
-    cta.querySelector('button').addEventListener('click',scrollToTickets);
     // ticket-tier card buttons ("Select"/"Reserve") tag the buyer path (data-buyer on the .tier), then open the ticket block — drop their old inline handlers.
     // Premium is the one exception: it shows its own price/details modal (capOvPremium) first —
     // GA and VIP behavior is unchanged (straight to the ticket block).
