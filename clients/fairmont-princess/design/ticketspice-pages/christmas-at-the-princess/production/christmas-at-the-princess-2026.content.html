@@ -570,6 +570,23 @@ html[data-buyer-path="vip"] .ticket-block .datePicker .wbx-calendar::after { con
     <button class="mlink" onclick="capCloseAll()">No thanks, maybe later</button>
   </div></div>
 
+  <!-- Ultimate Santa -> General Admission upsell — fires once the buyer sets a real
+       quantity on the native "Ultimate Santa" ticket row. Separate from capOvPromo
+       (the buyer-path promo above) because Ultimate Santa buyers land directly on the
+       ticket block without going through the GA/Premium/VIP picker, so no buyer path
+       is known (CAP email meeting 2026-07-24: "the ultimate santa is it's a daytime
+       experience that you do not get any tickets... to christmas of the princess...
+       maybe this is actually like a kind of a fourth category where after they get put
+       onto the page we then do a pop-up saying hey you should also get a ticket").
+       [clickup:86bb39ztb] -->
+  <div class="cap-ov" id="capOvSantaGA"><div class="cap-modal starlight"><button class="x" onclick="capCloseAll()">&times;</button>
+    <div class="cap-promo-eye">Don&rsquo;t miss the show</div>
+    <h3>Add General Admission?</h3>
+    <p style="color:var(--muted);font-size:.92rem;line-height:1.5;">Ultimate Santa is a daytime-only experience &mdash; it doesn&rsquo;t include entry to Christmas at the Princess. Add General Admission so you can come back for the lights, the market, and the show.</p>
+    <button class="mbtn gold" onclick="capSantaGaCta()">Add General Admission</button>
+    <button class="mlink" onclick="capCloseAll()">No thanks, Ultimate Santa only</button>
+  </div></div>
+
   <script>
   /* ════════════════════════════════════════════════════════════════════
      PATH C v8 — kills Bootstrap .row::before/.row::after clearfix that
@@ -774,6 +791,14 @@ html[data-buyer-path="vip"] .ticket-block .datePicker .wbx-calendar::after { con
     if(!sel) return;
     var qty = parseInt(sel.value, 10) || 0;
     if(qty < 1) return;
+    var row = sel.closest('tr.ticket.ticket-type');
+    var h = row && row.querySelector('h4');
+    if(h && /ultimate.*santa/i.test(h.textContent||'')){
+      // Ultimate Santa gets its own GA upsell instead of the generic buyer-path promo
+      // (no buyer path is known for this ticket — see capOvSantaGA note above).
+      if(window.capFireSantaGA) capFireSantaGA();
+      return;
+    }
     if(window.capFirePromo) capFirePromo();
   });
   // Set a native TS ticket's quantity by matching its <h4> name — bypasses React's
@@ -812,6 +837,36 @@ html[data-buyer-path="vip"] .ticket-block .datePicker .wbx-calendar::after { con
     }catch(e){}
   }
   window.capPromoCta = capPromoCta;
+
+  /* ════════════════════════════════════════════════════════════════════
+     ULTIMATE SANTA → GENERAL ADMISSION upsell — fires once, the first time
+     the buyer sets a real quantity (>=1) on the native "Ultimate Santa"
+     ticket row (branch wired into the #ticketBlock change listener above).
+     Ticket-triggered, not buyer-path-triggered, per capOvSantaGA's note.
+     [clickup:86bb39ztb]
+     ════════════════════════════════════════════════════════════════════ */
+  var CAP_SANTA_GA_ENABLED = true;
+  var _capSantaGaFired = false;
+  function capFireSantaGA(){
+    try{
+      if(!CAP_SANTA_GA_ENABLED || _capSantaGaFired) return;
+      _capSantaGaFired = true;
+      setTimeout(function(){ capShow('capOvSantaGA'); }, 800);   // brief pause after the qty pick, then the upsell
+      console.log('%c[cap-santa-ga] fired','color:#c82844;font-weight:700;');
+    }catch(e){ /* decorative — never break the page */ }
+  }
+  window.capFireSantaGA = capFireSantaGA;
+  function capSantaGaCta(){
+    try{
+      capCloseAll();
+      var santaRow = Array.prototype.slice.call(document.querySelectorAll('#ticketBlock tr.ticket.ticket-type'))
+        .filter(function(r){ var h=r.querySelector('h4'); return h && /ultimate.*santa/i.test(h.textContent||''); })[0];
+      var santaSel = santaRow && santaRow.querySelector('select');
+      var n = Math.max(1, parseInt((santaSel && santaSel.value) || '0', 10) || 0);
+      capSetTicketQty(/general admission/i, n);
+    }catch(e){}
+  }
+  window.capSantaGaCta = capSantaGaCta;
   </script>
 
   <!-- 🎅 CAP Photos-with-Santa modal V2 — functional: hijacks the REAL native
