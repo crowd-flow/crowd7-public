@@ -542,7 +542,7 @@
        our hybrid-loader content block. Namespaced sfpop-* + IIFE so it can't clash with TicketSpice.
        FULL CONTROL stays in our HTML — change copy/styling/dates here, never touch TS.
          • Shows on page load, ONCE PER SESSION, ONLY during the extended window Jul 24–28, 2026
-           (anchored to America/New_York so it opens/closes at the same instant for every buyer).
+           (anchored to America/Chicago so it opens/closes at the same instant for every buyer).
          • Sale was extended 7/27 (Amanda→Bryan, Slack #crowd7-and-eckerts-farm) after ~1,000 flash
            tickets sold. Original window closed 7/27; this block runs it through Tue 7/28 23:59:59 ET.
          • NO discount code is shown by design — the Belleville sunflower flash is enforced by a
@@ -557,7 +557,7 @@
       <div class="sfpop-icon">🌻</div>
       <h3 id="sfpop-title" class="sfpop-h">One More Day — <em>Flash Pricing</em></h3>
       <p class="sfpop-p">You asked, we listened. Sunflower Festival flash pricing is extended through
-        <strong>Tuesday,&nbsp;July&nbsp;28</strong>:</p>
+        <strong>Tuesday,&nbsp;July&nbsp;28 at 11:59pm CT</strong>:</p>
       <ul class="sfpop-list">
         <li><span class="sfpop-li-ic">🎟️</span> <strong>General Admission $7.95</strong> &mdash; <span class="sfpop-strike">$18 at the gate</span></li>
         <li><span class="sfpop-li-ic">🌻</span> <strong>Flower Power Pass $19.95</strong></li>
@@ -605,12 +605,12 @@
     if(!ov) return;
     var KEY = 'eck_belleville_sunflower_flash_seen';            // once per session
 
-    // Extended flash window: Jul 24–28, 2026 inclusive, anchored to America/New_York (not the buyer's
+    // Extended flash window: Jul 24–28, 2026 inclusive, anchored to America/Chicago (not the buyer's
     // local clock) so it opens/closes at the same instant for everyone. Force with window.SFPOP_FORCE=true.
     function easternStamp(d){
       var p = {};
       new Intl.DateTimeFormat('en-US', {
-        timeZone: 'America/New_York', year:'numeric', month:'2-digit', day:'2-digit',
+        timeZone: 'America/Chicago', year:'numeric', month:'2-digit', day:'2-digit',
         hour:'2-digit', minute:'2-digit', second:'2-digit', hour12:false
       }).formatToParts(d).forEach(function(x){ p[x.type] = x.value; });
       return p.year + p.month + p.day + (p.hour === '24' ? '00' : p.hour) + p.minute + p.second;
@@ -618,7 +618,7 @@
     function inWindow(){
       if (window.SFPOP_FORCE === true) return true;
       if (/[?&]sftest=1(&|$)/.test(location.search)) return true;   // QA override: force-show on the live page
-      var now = easternStamp(new Date());                      // YYYYMMDDHHMMSS in America/New_York
+      var now = easternStamp(new Date());                      // YYYYMMDDHHMMSS in America/Chicago
       return now >= '20260724000000' && now <= '20260728235959';
     }
     if(!inWindow()) return;
@@ -640,6 +640,48 @@
   })();
   </script>
   <!-- =================== SHIPPABLE BLOCK END =================== -->
+
+
+  <!-- ════ FLASH-SALE URGENCY BADGE + green price on TS native tickets ════
+       Name-keyed (NOT nth-child) so a conditional Action reordering tickets can't
+       misplace it. Self-expiring: the badge only renders inside the sale window,
+       so nobody has to remember to strip it. Central time — Belleville is IL. -->
+  <script>
+  (function(){
+    var LABEL   = " \uD83D\uDD25 Flash Sale Ends 7/28/26 at 11:59pm CT";
+    var TICKETS = ["General Admission","Flower Power Pass","Family & Friends Package"];
+    var TZ='America/Chicago', START='20260724000000', END='20260728235959';
+    function stamp(d){var p={};new Intl.DateTimeFormat('en-US',{timeZone:TZ,year:'numeric',
+      month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false})
+      .formatToParts(d).forEach(function(x){p[x.type]=x.value;});
+      return p.year+p.month+p.day+(p.hour==='24'?'00':p.hour)+p.minute+p.second;}
+    function live(){ if(window.SFFLASH_FORCE===true) return true;
+      if(/[?&]sftest=1(&|$)/.test(location.search)) return true;
+      var n=stamp(new Date()); return n>=START && n<=END; }
+    function tag(){
+      if(!live()) return;
+      document.querySelectorAll('#ticketBlock .ticket-type').forEach(function(row){
+        var h4=row.querySelector('h4'), cost=row.querySelector('.ticket-cost');
+        if(!h4) return;
+        if(TICKETS.indexOf(h4.textContent.trim())===-1) return;
+        h4.setAttribute('data-sfflash', LABEL);
+        if(cost) cost.setAttribute('data-sfflash-price','1');
+      });
+    }
+    var tb=document.getElementById('ticketBlock')||document.body;
+    new MutationObserver(tag).observe(tb,{childList:true,subtree:true});
+    tag();
+  })();
+  </script>
+  <style>
+    #ticketBlock h4[data-sfflash]::after{
+      content: attr(data-sfflash); color:#fff; font-size:10px;
+      background-color:#FC0700; border-radius:5px; padding:2px 6px;
+      margin-left:6px; white-space:nowrap; vertical-align:middle;
+      font-weight:600; letter-spacing:.01em; display:inline-block;
+    }
+    #ticketBlock .ticket-cost[data-sfflash-price]{ color:#5CB85B !important; }
+  </style>
 
 </body>
 </html>
