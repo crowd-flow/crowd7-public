@@ -329,7 +329,7 @@
             <span class="sf-dot"></span>
             <span>Belleville Farm · 2026</span>
             <span class="sf-dot"></span>
-            <span>Festival Aug 1–9 · Flash Sale July 24–27</span>
+            <span>Festival Aug 1–9 · Flash Sale July 24–28</span>
         </div>
     </div>
 
@@ -489,7 +489,7 @@
             <div class="sf-info-item">
                 <span class="sf-info-icon">🎟️</span>
                 <span class="sf-info-label">Sales Open</span>
-                <span class="sf-info-value">Flash July 24–27 · GA $7.95<br>general sales follow</span>
+                <span class="sf-info-value">Flash July 24–28 · GA $7.95<br>general sales follow</span>
             </div>
             <div class="sf-info-item">
                 <span class="sf-info-icon">🕘</span>
@@ -521,3 +521,107 @@
         });
     })();
 </script>
+
+  <!-- =================== SHIPPABLE BLOCK START =================== -->
+  <!-- Eckert's Belleville — Sunflower Festival FLASH SALE EXTENSION pop-up. Self-contained: lives in
+       our hybrid-loader content block. Namespaced sfpop-* + IIFE so it can't clash with TicketSpice.
+       FULL CONTROL stays in our HTML — change copy/styling/dates here, never touch TS.
+         • Shows on page load, ONCE PER SESSION, ONLY during the extended window Jul 24–28, 2026
+           (anchored to America/New_York so it opens/closes at the same instant for every buyer).
+         • Sale was extended 7/27 (Amanda→Bryan, Slack #crowd7-and-eckerts-farm) after ~1,000 flash
+           tickets sold. Original window closed 7/27; this block runs it through Tue 7/28 23:59:59 ET.
+         • NO discount code is shown by design — the Belleville sunflower flash is enforced by a
+           TS-native date-conditional Action that swaps the price in the cart, not by a coupon the
+           buyer types. Do not add a code line unless Eckert's actually issues one.
+         • To preview off-window: window.SFPOP_FORCE = true, or append ?sftest=1 to the live URL.
+         • To disable: window.SFPOP_ENABLED = false (or delete this whole block). -->
+  <div id="sfpop-overlay" class="sfpop-overlay" role="dialog" aria-modal="true" aria-labelledby="sfpop-title" hidden>
+    <div class="sfpop-card">
+      <button class="sfpop-close" aria-label="Close">&times;</button>
+      <span class="sfpop-badge">Flash Sale Extended</span>
+      <div class="sfpop-icon">🌻</div>
+      <h3 id="sfpop-title" class="sfpop-h">One More Day — <em>Flash Pricing</em></h3>
+      <p class="sfpop-p">You asked, we listened. Sunflower Festival flash pricing is extended through
+        <strong>Tuesday,&nbsp;July&nbsp;28</strong>:</p>
+      <ul class="sfpop-list">
+        <li><span class="sfpop-li-ic">🎟️</span> <strong>General Admission $7.95</strong> &mdash; <span class="sfpop-strike">$18 at the gate</span></li>
+        <li><span class="sfpop-li-ic">🌻</span> <strong>Flower Power Pass $19.95</strong></li>
+        <li><span class="sfpop-li-ic">👨‍👩‍👧</span> <strong>Family &amp; Friends Package $74.95</strong></li>
+      </ul>
+      <p class="sfpop-note">Festival runs <strong>Aug&nbsp;1&ndash;9</strong> &middot; prices go up Wednesday</p>
+      <button class="sfpop-ok">Get Tickets</button>
+    </div>
+  </div>
+
+  <style>
+    .sfpop-overlay{position:fixed;inset:0;z-index:2147483000;display:flex;align-items:center;justify-content:center;
+      background:rgba(36,26,8,.66);padding:20px;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+    .sfpop-overlay[hidden]{display:none;}
+    .sfpop-card{position:relative;background:#FFFBEF;max-width:440px;width:100%;border-radius:18px;padding:32px 28px 28px;
+      border:3px solid #C98A14;box-shadow:0 24px 60px rgba(36,26,8,.45);text-align:center;
+      font-family:'Open Sans',system-ui,sans-serif;animation:sfpop-in .26s ease;box-sizing:border-box;}
+    @keyframes sfpop-in{from{opacity:0;transform:translateY(16px) scale(.97);}to{opacity:1;transform:none;}}
+    .sfpop-badge{display:inline-block;background:#2F6B4F;color:#fff;font-weight:700;letter-spacing:.08em;
+      text-transform:uppercase;font-size:.68rem;padding:5px 14px;border-radius:50px;margin-bottom:14px;}
+    .sfpop-icon{font-size:2.6rem;line-height:1;margin-bottom:8px;}
+    .sfpop-h{font-family:'Zilla Slab','Times New Roman',serif;font-size:1.5rem;font-weight:700;color:#C98A14;
+      margin:0 0 12px;line-height:1.2;}
+    .sfpop-h em{font-style:italic;color:#241A08;}
+    .sfpop-p{font-size:.96rem;line-height:1.5;color:#5a4516;margin:0 0 14px;}
+    .sfpop-list{list-style:none;margin:0 0 16px;padding:0;text-align:left;display:inline-block;}
+    .sfpop-list li{font-size:.98rem;line-height:1.5;color:#241A08;margin:0 0 8px;padding-left:2px;}
+    .sfpop-li-ic{display:inline-block;width:1.4em;}
+    .sfpop-strike{text-decoration:line-through;opacity:.7;}
+    .sfpop-note{font-size:.9rem;color:#5a4516;margin:0 0 22px;}
+    .sfpop-note strong{color:#241A08;}
+    .sfpop-ok{background:#C98A14;color:#241A08;border:0;border-radius:50px;padding:13px 40px;font-size:1rem;font-weight:700;
+      cursor:pointer;letter-spacing:.03em;box-shadow:0 8px 24px rgba(201,138,20,.35);transition:background .2s,transform .15s;}
+    .sfpop-ok:hover{background:#E0A21F;transform:translateY(-2px);}
+    .sfpop-close{position:absolute;top:10px;right:14px;background:none;border:0;font-size:1.7rem;line-height:1;
+      color:#a98a4a;cursor:pointer;}
+    .sfpop-close:hover{color:#C98A14;}
+    @media (max-width:480px){ .sfpop-card{padding:28px 22px 24px;} .sfpop-h{font-size:1.3rem;} }
+  </style>
+
+  <script>
+  (function(){
+    if (window.SFPOP_ENABLED === false) return;                // kill switch
+    var ov = document.getElementById('sfpop-overlay');
+    if(!ov) return;
+    var KEY = 'eck_belleville_sunflower_flash_seen';            // once per session
+
+    // Extended flash window: Jul 24–28, 2026 inclusive, anchored to America/New_York (not the buyer's
+    // local clock) so it opens/closes at the same instant for everyone. Force with window.SFPOP_FORCE=true.
+    function easternStamp(d){
+      var p = {};
+      new Intl.DateTimeFormat('en-US', {
+        timeZone: 'America/New_York', year:'numeric', month:'2-digit', day:'2-digit',
+        hour:'2-digit', minute:'2-digit', second:'2-digit', hour12:false
+      }).formatToParts(d).forEach(function(x){ p[x.type] = x.value; });
+      return p.year + p.month + p.day + (p.hour === '24' ? '00' : p.hour) + p.minute + p.second;
+    }
+    function inWindow(){
+      if (window.SFPOP_FORCE === true) return true;
+      if (/[?&]sftest=1(&|$)/.test(location.search)) return true;   // QA override: force-show on the live page
+      var now = easternStamp(new Date());                      // YYYYMMDDHHMMSS in America/New_York
+      return now >= '20260724000000' && now <= '20260728235959';
+    }
+    if(!inWindow()) return;
+    try{ if(sessionStorage.getItem(KEY)) return; }catch(e){}
+
+    function show(){ ov.hidden = false; try{ sessionStorage.setItem(KEY,'1'); }catch(e){} }
+    function hide(){ ov.hidden = true; }
+    ov.querySelector('.sfpop-close').addEventListener('click', hide);
+    ov.addEventListener('click', function(e){ if(e.target===ov) hide(); });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape'||e.keyCode===27) hide(); });
+    ov.querySelector('.sfpop-ok').addEventListener('click', function(){
+      hide();
+      var t = document.getElementById('ticketBlock') || document.getElementById('tickets');
+      if(t) t.scrollIntoView({ behavior:'smooth' });
+    });
+
+    if(document.readyState !== 'loading') setTimeout(show, 900);
+    else document.addEventListener('DOMContentLoaded', function(){ setTimeout(show, 900); });
+  })();
+  </script>
+  <!-- =================== SHIPPABLE BLOCK END =================== -->
