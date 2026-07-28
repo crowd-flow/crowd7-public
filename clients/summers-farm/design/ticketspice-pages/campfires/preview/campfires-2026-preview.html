@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Summers Farm — Campfires 2026 · PREVIEW</title>
-  <style>html,body{margin:0;padding:0;background:#FFFDF7;}</style>
+  <style>html,body{margin:0;padding:0;background:#17110C;}</style>
 </head>
 <body>
 <!--
@@ -45,17 +45,21 @@
    - Farm details carried from the Flower donor: 7503 Hollow Road,
      Middletown, MD 21769; family-owned 29+ years, four generations.
 
-  ⚠️ OPEN — CONFIRM WITH RACHEL BEFORE PUBLISH (flagged, NOT invented):
-   1. 2026 PRICES — $85 afternoon / $95 night are the figures live on
-      summersfarm.com 2026-06-30. Confirm they're the 2026 rates (and
-      whether TS adds processing fees on top).
-   2. CAMPFIRE DATES — the site lists campfire dates as "Coming Soon" for
-      the new season (historically reservations open ~late August). Confirm
-      the exact 2026 campfire window before publish.
-   3. TIME SLOTS / DAYS — confirm the afternoon vs. night windows (start/end
-      times) and which days each rate applies to.
-   4. GROUP PRICING — "15+ tickets" group rate referenced on the site;
+  UPDATE 2026-07-28 (Mat): dark "campfire" night re-skin layered over the
+  light donor base (this page is the evening/fire variant of the 4-page
+  system); dates + slot times confirmed; a "Find Your Fire Pit" campfire-map
+  section was added (assets/campfire-map.png — 44 numbered pits + amenities).
+   - CAMPFIRE DATES — CONFIRMED: Sept 12 – Oct 31, 2026, WEEKENDS ONLY (Mat).
+   - TIME SLOTS — from the live 2026 TS cart: Afternoon reservations from
+     1:00 PM; Night from 5:30 PM (the cart also offers a 6:30 PM start).
+
+  ⚠️ STILL CONFIRM WITH RACHEL BEFORE PUBLISH (flagged, NOT invented):
+   1. 2026 PRICES — $85 afternoon / $95 night match summersfarm.com live
+      2026-07-28; confirm they're final + whether TS adds processing fees.
+   2. GROUP PRICING — "15+ tickets" group rate referenced on the site;
       confirm the exact group terms if it should appear as a tier.
+   3. IMAGERY — hero + gallery still reuse the farm-wide photo set; a real
+      dusk / fire-pit hero photo would make the night theme feel purpose-built.
 
   NATIVE TS CART: campfire reservation types/prices/caps/date rules stay
   native in TicketSpice per the hybrid-loader split — see
@@ -702,6 +706,146 @@
 .campaign-form:not(.legacy-form) .btn-danger, .campaign-form:not(.legacy-form) .btn-primary, .campaign-form:not(.legacy-form) .btn:not(.btn--transparent):not(.btn--plus):not(.btn--minus):not(.btn--home):not(.btn--tooltipstered):not(.btn--blue) { font-size: 15px; color: white; background-color: #801517; border-radius: 10px; font-family: fatfrank,Segoe UI,Helvetica Neue,Arial,Noto Sans,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji,-apple-system,sans-serif; font-weight: bold; height: 44px; min-height: 44px; padding: 15px 20px; text-transform: uppercase; }
 </style>
 
+<!-- ============================================================
+     DARK CAMPFIRE THEME (Mat 2026-07-28)
+     A night/firelight re-skin layered OVER the light Flower-Festival
+     donor base above — this page is the campfire (evening) variant of
+     the 4-page system, so it deliberately diverges dark while keeping
+     Summers Farm's brand colors (barn red, light blue) as accents.
+     Warm firelight orange/amber = the new signature glow.
+     Also carries the "Find Your Fire Pit" campfire-map section styles.
+     ============================================================ -->
+<style>
+    #sb-funnel {
+        --sf-night: #17110C;
+        --sf-night-2: #1E1610;
+        --sf-card: #241811;
+        --sf-ember: #FF7A2E;
+        --sf-ember-2: #FFB067;
+        --sf-brand-red: #801517;
+        --sf-sky: #9FCAE8;
+        --sf-cream: #F5ECDD;
+        --sf-muted: #C3B2A0;
+        --sf-faint: #93816E;
+        --sf-hair: rgba(255,150,80,0.16);
+        --sf-hair-2: rgba(255,255,255,0.09);
+        background: radial-gradient(120% 80% at 50% 0%, #241812 0%, #17110C 55%, #120C08 100%) !important;
+        color: var(--sf-cream) !important;
+    }
+
+    /* Banner */
+    #sb-funnel .sb-banner { background: linear-gradient(90deg, #2A160C, #3A1E10) !important; color: var(--sf-ember-2) !important; border-bottom: 1px solid var(--sf-hair) !important; }
+    #sb-funnel .sb-dot { background: rgba(255,176,103,0.5) !important; }
+
+    /* Nav */
+    #sb-funnel .sb-nav { background: rgba(23,17,12,0.93) !important; box-shadow: 0 2px 22px rgba(0,0,0,0.55) !important; border-bottom: 1px solid var(--sf-hair) !important; }
+    #sb-funnel .sb-logo-text { color: var(--sf-cream) !important; }
+    #sb-funnel .sb-logo-text span { color: var(--sf-ember) !important; }
+    #sb-funnel .sb-nav-loc { color: var(--sf-muted) !important; }
+    #sb-funnel .sb-nav-cta { background: var(--sf-ember) !important; color: #201007 !important; box-shadow: 0 4px 16px rgba(255,122,46,0.35) !important; }
+    #sb-funnel .sb-nav-cta:hover { background: var(--sf-ember-2) !important; color: #201007 !important; }
+
+    /* Hero — darken to dusk + a warm ember glow rising from the base */
+    #sb-funnel .sb-hero-overlay {
+        background:
+          linear-gradient(to bottom, rgba(18,12,8,0.35) 0%, rgba(18,12,8,0.55) 42%, rgba(26,15,9,0.88) 100%),
+          radial-gradient(90% 62% at 50% 122%, rgba(255,122,46,0.5), rgba(255,122,46,0) 60%) !important;
+    }
+    #sb-funnel .sb-hero-title em { color: var(--sf-ember) !important; }
+    #sb-funnel .sb-hero-eyebrow { color: rgba(255,200,150,0.88) !important; }
+    #sb-funnel .sb-hero-sub { color: rgba(245,236,221,0.9) !important; }
+    #sb-funnel .sb-hero-cta { background: var(--sf-ember) !important; color: #201007 !important; box-shadow: 0 6px 24px rgba(255,122,46,0.42) !important; }
+    #sb-funnel .sb-hero-cta:hover { background: var(--sf-ember-2) !important; color: #201007 !important; }
+
+    /* "Why book a campfire" value band */
+    #sb-funnel .sb-grownups { background: linear-gradient(180deg, #1E1610, #17110C) !important; border-top: 1px solid var(--sf-hair) !important; border-bottom: 1px solid var(--sf-hair) !important; }
+    #sb-funnel .sb-grownup-card { background: rgba(255,150,80,0.06) !important; border: 1px solid var(--sf-hair) !important; }
+    #sb-funnel .sb-grownup-card:hover { background: rgba(255,150,80,0.12) !important; box-shadow: 0 16px 38px rgba(0,0,0,0.45) !important; }
+    #sb-funnel .sb-grownup-title { color: var(--sf-cream) !important; }
+    #sb-funnel .sb-grownup-desc { color: var(--sf-muted) !important; }
+
+    /* Benefits */
+    #sb-funnel .sb-benefits { background: #1E1610 !important; border-top: 1px solid var(--sf-hair) !important; border-bottom: 1px solid var(--sf-hair) !important; }
+    #sb-funnel .sb-benefit:not(:last-child)::after { background: var(--sf-hair) !important; }
+    #sb-funnel .sb-benefit-title { color: var(--sf-cream) !important; }
+    #sb-funnel .sb-benefit-desc { color: var(--sf-muted) !important; }
+
+    /* Gallery */
+    #sb-funnel .sb-gallery { background: #17110C !important; }
+    #sb-funnel .sb-eye { color: var(--sf-ember) !important; }
+    #sb-funnel .sb-title { color: var(--sf-cream) !important; }
+    #sb-funnel .sb-title em { color: var(--sf-ember) !important; }
+    #sb-funnel .sb-gcard { background: linear-gradient(135deg, #3A2416, #1E130C) !important; }
+    #sb-funnel .sb-gcard:hover { box-shadow: 0 24px 50px rgba(0,0,0,0.55) !important; }
+
+    /* Tickets */
+    #sb-funnel .sb-tickets { background: linear-gradient(180deg, #14100B, #1B120C) !important; }
+    #sb-funnel .sb-card-barn { background: linear-gradient(160deg, #8E1719, #5E0F10) !important; box-shadow: 0 0 0 1px rgba(255,122,46,0.15), 0 18px 40px rgba(0,0,0,0.45) !important; }
+    #sb-funnel .sb-card-barn:hover { box-shadow: 0 0 34px rgba(255,90,40,0.28), 0 22px 52px rgba(0,0,0,0.5) !important; }
+    #sb-funnel .sb-card-barn .sb-price-num { color: var(--sf-ember-2) !important; }
+    #sb-funnel .sb-card-dark { background: linear-gradient(160deg, #2A1A11, #1B110A) !important; border: 1px solid var(--sf-hair) !important; }
+    #sb-funnel .sb-card-dark .sb-price-num { color: var(--sf-ember-2) !important; }
+    #sb-funnel .sb-card-badge-gold { background: var(--sf-ember) !important; color: #201007 !important; }
+    #sb-funnel .sb-card-badge-barn { background: var(--sf-ember) !important; color: #201007 !important; }
+    #sb-funnel .sb-card-cream { background: linear-gradient(160deg, #241811, #1C130D) !important; border: 1px solid var(--sf-hair) !important; }
+    #sb-funnel .sb-card-cream h3 { color: var(--sf-cream) !important; }
+    #sb-funnel .sb-card-cream .sb-card-bullets li { color: var(--sf-muted) !important; }
+    #sb-funnel .sb-card-cream .sb-card-note { color: var(--sf-faint) !important; }
+    #sb-funnel .sb-season-tiers { border-top-color: var(--sf-hair) !important; }
+    #sb-funnel .sb-season-tier:not(:last-child) { border-bottom-color: var(--sf-hair-2) !important; }
+    #sb-funnel .sb-season-tier-name { color: var(--sf-cream) !important; }
+    #sb-funnel .sb-season-tier-desc { color: var(--sf-muted) !important; }
+    #sb-funnel .sb-season-tier-now { color: var(--sf-ember-2) !important; }
+
+    /* Info row */
+    #sb-funnel .sb-info { background: linear-gradient(90deg, #241610, #1B130D) !important; border-top: 1px solid var(--sf-hair) !important; }
+    #sb-funnel .sb-info-item:not(:last-child)::after { background: var(--sf-hair) !important; }
+    #sb-funnel .sb-info-label { color: var(--sf-ember-2) !important; }
+    #sb-funnel .sb-info-value { color: var(--sf-cream) !important; }
+
+    /* Attractions */
+    #sb-funnel .sb-attractions { background: #17110C !important; border-top: 1px solid var(--sf-hair) !important; }
+    #sb-funnel .sb-attr-chip { background: rgba(255,150,80,0.08) !important; color: var(--sf-cream) !important; border: 1px solid var(--sf-hair) !important; }
+    #sb-funnel .sb-addon-note { color: var(--sf-muted) !important; }
+
+    /* Fine print */
+    #sb-funnel .sb-fine { background: #120D09 !important; color: var(--sf-muted) !important; border-top: 1px solid var(--sf-hair) !important; }
+    #sb-funnel .sb-fine strong { color: var(--sf-ember-2) !important; }
+
+    /* ── FIND YOUR FIRE PIT — campfire-map section ── */
+    #sb-funnel .sb-firemap {
+        width: 100% !important;
+        background: radial-gradient(100% 80% at 50% 0%, #241811, #17110C 62%) !important;
+        padding: 64px 48px !important; box-sizing: border-box !important;
+        border-top: 1px solid var(--sf-hair) !important;
+    }
+    #sb-funnel .sb-firemap-inner { max-width: 980px !important; margin: 0 auto !important; }
+    #sb-funnel .sb-firemap-frame {
+        margin: 34px auto 0 !important; max-width: 900px !important;
+        border-radius: 20px !important; overflow: hidden !important;
+        border: 1px solid var(--sf-hair) !important;
+        box-shadow: 0 0 0 1px rgba(255,122,46,0.10), 0 24px 60px rgba(0,0,0,0.55) !important;
+        background: #E9D9C2 !important;
+    }
+    #sb-funnel .sb-firemap-frame img { display: block !important; width: 100% !important; height: auto !important; }
+    #sb-funnel .sb-firemap-legend {
+        display: flex !important; flex-wrap: wrap !important; justify-content: center !important;
+        gap: 8px 10px !important; margin: 22px auto 0 !important; max-width: 720px !important;
+    }
+    #sb-funnel .sb-firemap-chip {
+        font-size: 0.8rem !important; color: var(--sf-cream) !important;
+        background: rgba(255,150,80,0.08) !important; border: 1px solid var(--sf-hair) !important;
+        border-radius: 20px !important; padding: 6px 14px !important;
+    }
+    #sb-funnel .sb-firemap-note {
+        text-align: center !important; color: var(--sf-muted) !important;
+        font-size: 0.82rem !important; line-height: 1.55 !important;
+        margin: 20px auto 0 !important; max-width: 640px !important;
+    }
+    @media (max-width: 860px) { #sb-funnel .sb-firemap { padding: 48px 24px !important; } }
+    @media (max-width: 560px) { #sb-funnel .sb-firemap { padding: 40px 16px !important; } }
+</style>
+
 <div id="sb-funnel">
 
     <!-- BANNER -->
@@ -709,7 +853,7 @@
         <div class="sb-banner-inner">
             <span>🔥 <strong>Summers Farm Campfires</strong></span>
             <span class="sb-dot"></span>
-            <span>Middletown, MD · Family Owned, 29+ Years</span>
+            <span>Weekends · Sept 12 – Oct 31, 2026</span>
             <span class="sb-dot"></span>
             <span>Reserve Your Private Fire</span>
         </div>
@@ -736,17 +880,17 @@
     <div class="sb-hero">
         <div class="sb-hero-overlay"></div>
         <div class="sb-hero-content">
-            <span class="sb-hero-eyebrow">Summers Farm · Middletown, MD · Private Campfire Rentals</span>
+            <span class="sb-hero-eyebrow">Private Campfire Rentals · Weekends, Sept 12 – Oct 31</span>
             <span class="sb-hero-title">Camp<em>fires</em></span>
-            <span class="sb-hero-sub">Gather your crew around a private campfire on the farm. Room for up to 50, plenty of wood provided, and a whole evening under the open sky.</span>
+            <span class="sb-hero-sub">Gather your crew around a private campfire on the farm — weekends, September 12 through October 31. Room for up to 50, plenty of wood provided, and a whole evening under the open sky.</span>
         </div>
     </div>
 
     <!-- WHY A CAMPFIRE — value band -->
     <div class="sb-grownups">
         <div class="sb-tickets-header sbr">
-            <span class="sb-eye" style="color:#9FCAE8 !important;">Your Spot by the Fire</span>
-            <span class="sb-title" style="color:#ffffff !important;">Why book a <em style="color:#9FCAE8 !important;">campfire</em></span>
+            <span class="sb-eye" style="color:#FF7A2E !important;">Your Spot by the Fire</span>
+            <span class="sb-title" style="color:#F5ECDD !important;">Why book a <em style="color:#FF7A2E !important;">campfire</em></span>
         </div>
         <div class="sb-grownups-grid sbr">
             <div class="sb-grownup-card">
@@ -879,7 +1023,7 @@
                     <div class="sb-season-tier">
                         <div>
                             <span class="sb-season-tier-name">Afternoon</span>
-                            <span class="sb-season-tier-desc">Fri · Sat afternoon · Sun afternoon</span>
+                            <span class="sb-season-tier-desc">Fri · Sat · Sun · from 1:00 PM</span>
                         </div>
                         <div class="sb-season-tier-price">
                             <span class="sb-season-tier-now">$85</span>
@@ -888,7 +1032,7 @@
                     <div class="sb-season-tier">
                         <div>
                             <span class="sb-season-tier-name">Night</span>
-                            <span class="sb-season-tier-desc">Friday &amp; Saturday nights</span>
+                            <span class="sb-season-tier-desc">Fri &amp; Sat nights · from 5:30 PM</span>
                         </div>
                         <div class="sb-season-tier-price">
                             <span class="sb-season-tier-now">$95</span>
@@ -898,6 +1042,26 @@
                 <span class="sb-card-note">Price is per campfire. Every visitor still needs a farm ticket — no exceptions.</span>
             </div>
 
+        </div>
+    </div>
+
+    <!-- FIND YOUR FIRE PIT — campfire map -->
+    <div class="sb-firemap">
+        <div class="sb-firemap-inner">
+            <div class="sb-tickets-header sbr">
+                <span class="sb-eye">44 Private Fires on the Farm</span>
+                <span class="sb-title">Find your <em>fire pit</em></span>
+            </div>
+            <div class="sb-firemap-frame sbr">
+                <img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/summers-farm/design/assets/campfire-map.png" alt="Summers Farm campfire map — 44 numbered fire pits laid out across the field, with Jumping Pillows, Rubber Duck Races and the Pig Race Building nearby" loading="lazy">
+            </div>
+            <div class="sb-firemap-legend sbr">
+                <span class="sb-firemap-chip">🔥 Fires 1–44</span>
+                <span class="sb-firemap-chip">🤸 Jumping Pillows</span>
+                <span class="sb-firemap-chip">🦆 Rubber Duck Races</span>
+                <span class="sb-firemap-chip">🐷 Pig Race Building</span>
+            </div>
+            <p class="sb-firemap-note">Forty-four private fire pits spread across the field — pick your spot when you reserve. The Jumping Pillows, Rubber Duck Races, and Pig Race Building are all right there on the campfire field.</p>
         </div>
     </div>
 
@@ -931,6 +1095,11 @@
     <div class="sb-info">
         <div class="sb-info-grid">
             <div class="sb-info-item">
+                <span class="sb-info-icon">📅</span>
+                <span class="sb-info-label">Season</span>
+                <span class="sb-info-value">Sept 12 – Oct 31, 2026<br>Weekends only</span>
+            </div>
+            <div class="sb-info-item">
                 <span class="sb-info-icon">📍</span>
                 <span class="sb-info-label">Location</span>
                 <span class="sb-info-value">7503 Hollow Road<br>Middletown, MD 21769</span>
@@ -944,11 +1113,6 @@
                 <span class="sb-info-icon">🔥</span>
                 <span class="sb-info-label">Reserve From</span>
                 <span class="sb-info-value">$85<br>per campfire</span>
-            </div>
-            <div class="sb-info-item">
-                <span class="sb-info-icon">🎟️</span>
-                <span class="sb-info-label">Farm Ticket</span>
-                <span class="sb-info-value">Required for<br>each visitor</span>
             </div>
         </div>
     </div>
@@ -994,7 +1158,7 @@
         bottom: 0 !important; left: 0 !important; right: 0 !important;
         z-index: 9999 !important;
         padding: 12px 16px 20px !important;
-        background: linear-gradient(to top, rgba(255,253,247,0.97) 55%, transparent) !important;
+        background: linear-gradient(to top, rgba(23,17,12,0.97) 55%, transparent) !important;
         display: flex !important; justify-content: center !important;
         transition: opacity 0.35s ease, transform 0.35s ease !important;
     }
@@ -1031,6 +1195,5 @@
         }
     })();
 </script>
-
 </body>
 </html>
