@@ -1,0 +1,33 @@
+<!-- ============================================================================
+     COLONY ACRES — THINGS TO DO (FUN YARD ACTIVITIES) — WordPress/Divi Hybrid loader (the ONE editor step, ever).
+
+     Paste this ONCE into a Divi "Code" module (or a WordPress Custom HTML block) that
+     replaces the Fun Yard Activities page content. After that, every content change ships by
+     `git push` to the page-guts files in this repo — no WordPress editor, ever again.
+
+       1. ENV ROUTING — default loads production/ guts. Append ?preview=1 to the page URL
+          to load preview/ guts (stage a change before promoting it live).
+       2. SCRIPT REHYDRATION — innerHTML does NOT run injected <script> tags, so the loader
+          re-creates each injected <script> so future interactive guts still execute.
+     ============================================================================ -->
+<div id="lc-colony-things-to-do" class="lc-embed"></div>
+<script>
+(function () {
+  var TARGET = "lc-colony-things-to-do";
+  var BASE = "https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/colony-acres/design/website-pages/things-to-do/";
+  var ENV = /[?&]preview=1/.test(location.search) ? "preview" : "production";
+  fetch(BASE + ENV + "/things-to-do.html", { cache: "no-store" })
+    .then(function (r) { return r.text(); })
+    .then(function (html) {
+      var host = document.getElementById(TARGET);
+      host.innerHTML = html;
+      host.querySelectorAll("script").forEach(function (old) {
+        var s = document.createElement("script");
+        for (var i = 0; i < old.attributes.length; i++) { s.setAttribute(old.attributes[i].name, old.attributes[i].value); }
+        s.textContent = old.textContent;
+        old.parentNode.replaceChild(s, old);
+      });
+    })
+    .catch(function (e) { console.error("Colony things-to-do embed load failed:", e); });
+})();
+</script>

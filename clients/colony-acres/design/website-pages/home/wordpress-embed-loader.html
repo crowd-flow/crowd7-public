@@ -1,0 +1,45 @@
+<!-- ============================================================================
+     COLONY ACRES — Home — WordPress/Divi Hybrid loader (the ONE editor step, ever).
+
+     Paste this ONCE into a Divi "Code" module (or a WordPress Custom HTML block) that
+     REPLACES this page's builder content. After that, every content change ships by
+     `git push` to the page-guts files in this repo — no WordPress editor, ever again.
+
+       1. ENV ROUTING — default loads production/ guts. Append ?preview=1 to the page URL
+          to load preview/ guts (stage a change before promoting it live).
+       2. SCRIPT REHYDRATION — innerHTML does NOT run injected <script> tags, so the loader
+          re-creates each injected <script> so interactive guts still execute.
+       3. VISIBLE FAILURE — if the fetch fails the page shows a small notice and logs the
+          URL, instead of rendering a silent blank page.
+
+     Source page captured 2026-07-28 from https://colonyacres.farm/
+     ============================================================================ -->
+<div id="lc-colony-home" class="lc-embed"></div>
+<script>
+(function () {
+  var TARGET = "lc-colony-home";
+  var BASE = "https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/colony-acres/design/website-pages/home/";
+  var ENV = /[?&]preview=1/.test(location.search) ? "preview" : "production";
+  var URL = BASE + ENV + "/home.html";
+  fetch(URL, { cache: "no-store" })
+    .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.text(); })
+    .then(function (html) {
+      var host = document.getElementById(TARGET);
+      host.innerHTML = html;
+      host.querySelectorAll("script").forEach(function (old) {
+        var s = document.createElement("script");
+        for (var i = 0; i < old.attributes.length; i++) { s.setAttribute(old.attributes[i].name, old.attributes[i].value); }
+        s.textContent = old.textContent;
+        old.parentNode.replaceChild(s, old);
+      });
+    })
+    .catch(function (e) {
+      console.error("Colony home embed load failed:", URL, e);
+      var host = document.getElementById(TARGET);
+      if (host && !host.innerHTML.trim()) {
+        host.innerHTML = '<p style="padding:24px;text-align:center;color:#888;font-family:sans-serif;">'
+          + 'This section is being updated. Please refresh in a moment.</p>';
+      }
+    });
+})();
+</script>
