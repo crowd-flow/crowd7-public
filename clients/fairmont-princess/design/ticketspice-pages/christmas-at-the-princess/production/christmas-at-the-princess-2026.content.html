@@ -945,15 +945,80 @@ html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar::after { c
     }catch(e){ /* decorative — never break the page */ }
   }
   window.capFireSantaGA = capFireSantaGA;
+  // Pick the QUANTITY select in a ticket row: the one whose options are all numeric.
+  // capSetTicketQty grabs row.querySelector('select') — the FIRST select — which on a
+  // timeslotted ticket is the timeslot, so it was setting the wrong control.
+  function capQtySelect(row){
+    try{
+      var sels = row.querySelectorAll('select');
+      for(var i=sels.length-1;i>=0;i--){
+        var o=sels[i].options, allNum=o.length>0;
+        for(var j=0;j<o.length && allNum;j++){ if(!/^\d+$/.test((o[j].value||'').trim())) allNum=false; }
+        if(allNum) return sels[i];
+      }
+      return sels[sels.length-1]||null;
+    }catch(e){ return null; }
+  }
+  // Inventory of every ticket row — run capSantaTicketDump() in the console to see the
+  // EXACT h4 names, so a name-matching regex is never a guess again.
+  window.capSantaTicketDump = function(){
+    var out=[];
+    document.querySelectorAll('#ticketBlock tr.ticket.ticket-type').forEach(function(r){
+      var h=r.querySelector('h4'), q=capQtySelect(r);
+      out.push({ name:(h&&h.textContent||'').trim().replace(/\s+/g,' ').slice(0,70),
+                 selects:r.querySelectorAll('select').length,
+                 qtyValue:q?q.value:'(none)',
+                 matchesPremium:/premium\s*admission/i.test((h&&h.textContent)||'') });
+    });
+    console.table(out); return out;
+  };
+
   function capSantaGaCta(){
+    // 2026-07-28: this button was a dead end — capSetTicketQty returns false silently on
+    // "row not found" or "no select", and it targeted the row's FIRST select. Now it
+    // verifies the value actually changed, logs what happened, and if it can't set the
+    // quantity it at least takes the buyer to the Premium row instead of doing nothing.
+    var dbg2 = function(){ if(window.CAP_SANTA_DEBUG){ try{ console.log.apply(console, ['%c[cap-santa-cta]','color:#c82844;font-weight:700'].concat([].slice.call(arguments))); }catch(_){} } };
     try{
       capCloseAll();
-      var santaRow = Array.prototype.slice.call(document.querySelectorAll('#ticketBlock tr.ticket.ticket-type'))
-        .filter(function(r){ var h=r.querySelector('h4'); return h && /ultimate.*santa/i.test(h.textContent||''); })[0];
-      var santaSel = santaRow && santaRow.querySelector('select');
-      var n = Math.max(1, parseInt((santaSel && santaSel.value) || '0', 10) || 0);
-      capSetTicketQty(/premium\s*admission/i, n);   // 2026-07-28 (Mat): push Premium, not base GA -- Ultimate Santa buyers read as VIP (CAP 7/24)
-    }catch(e){}
+      var rows = Array.prototype.slice.call(document.querySelectorAll('#ticketBlock tr.ticket.ticket-type'));
+      var names = rows.map(function(r){ var h=r.querySelector('h4'); return (h&&h.textContent||'').trim(); });
+      var santaRow = rows.filter(function(r){ var h=r.querySelector('h4'); return h && /ultimate.*santa/i.test(h.textContent||''); })[0];
+      var santaQty = santaRow && capQtySelect(santaRow);
+      var n = Math.max(1, parseInt((santaQty && santaQty.value) || '0', 10) || 0);
+
+      var premRow = rows.filter(function(r){ var h=r.querySelector('h4'); return h && /premium\s*admission/i.test(h.textContent||''); })[0]
+                 || rows.filter(function(r){ var h=r.querySelector('h4'); return h && /premium/i.test(h.textContent||''); })[0];
+      if(!premRow){ dbg2('NO Premium row found. Rows present:', names); capScrollToTickets(); return; }
+
+      var q = capQtySelect(premRow);
+      if(!q){ dbg2('Premium row found but no quantity select', premRow); capScrollToRow(premRow); return; }
+
+      var before = q.value;
+      try{
+        var setter = Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype, 'value').set;
+        setter.call(q, String(n));
+        q.dispatchEvent(new Event('input',  { bubbles: true }));
+        q.dispatchEvent(new Event('change', { bubbles: true }));
+      }catch(e){ dbg2('setter threw', e); }
+
+      setTimeout(function(){
+        var after = q.value;
+        dbg2('Premium qty', {row:(premRow.querySelector('h4')||{}).textContent, before:before, requested:n, after:after, worked: after === String(n)});
+        // Whether or not the programmatic set stuck, put the buyer in front of the row.
+        capScrollToRow(premRow);
+      }, 250);
+    }catch(e){ dbg2('threw', e); }
+  }
+  function capScrollToRow(el){
+    try{
+      var vh = window.innerHeight || document.documentElement.clientHeight;
+      window.scrollTo({ top: Math.max(0, el.getBoundingClientRect().top + window.pageYOffset - vh/3), behavior:'smooth' });
+    }catch(_){}
+  }
+  function capScrollToTickets(){
+    var tb=document.getElementById('ticketBlock')||document.querySelector('.ticket-block');
+    if(tb) capScrollToRow(tb);
   }
   window.capSantaGaCta = capSantaGaCta;
 
@@ -1033,7 +1098,12 @@ html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar::after { c
         // ticket block immediately, then refine to the row when it exists.
         if(!preScrolled){
           var tb=document.getElementById('ticketBlock')||document.querySelector('.ticket-block');
-          if(tb && (tb.offsetWidth||tb.offsetHeight)){ preScrolled=true; hardScroll(tb,1); dbg('row not rendered yet — moved to the ticket block first'); }
+          // NOT just offsetWidth — while gated, .ticket-block is parked at 1x1px and
+          // left:-99999px, which passes a naive visibility test and burned the pre-scroll
+          // on an off-screen node. Require the gate to be lifted AND a real on-page rect.
+          var gated = document.body.classList.contains('cap-native-gated');
+          var rct = tb && tb.getBoundingClientRect();
+          if(tb && !gated && rct && rct.left > -1000 && rct.width > 40){ preScrolled=true; hardScroll(tb,1); dbg('row not rendered yet — moved to the ticket block first'); }
         }
         if(++tries%25===0) dbg('waiting for Ultimate Santa row…');
         return;
