@@ -1062,80 +1062,18 @@ html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar::after { c
     }
     window.capSantaRow = santaRow;
 
-    // 2026-07-28 (4th pass): scrollIntoView() logged success but the page never moved.
-    // Don't trust it — compute the target offset, drive window.scrollTo directly, ALSO
-    // scroll the nearest scrollable ancestor (TS nests the cart in its own scroller, and
-    // scrollIntoView only moves the innermost one), then MEASURE whether it actually
-    // landed and retry with backoff if not. Logs real numbers, so a failure is diagnosable
-    // instead of a success message that means nothing.
-    function scrollableAncestor(el){
-      for(var n=el.parentElement; n && n !== document.body; n = n.parentElement){
-        var st = getComputedStyle(n);
-        if(/(auto|scroll|overlay)/.test(st.overflowY) && n.scrollHeight > n.clientHeight + 4) return n;
-      }
-      return null;
-    }
-    function inView(el){
-      var r = el.getBoundingClientRect();
-      var vh = window.innerHeight || document.documentElement.clientHeight;
-      return r.top >= 0 && r.top <= vh * 0.7;
-    }
-    var RETRIES = [0, 350, 900, 1800, 3200];
-    function hardScroll(row, attempt){
-      try{
-        if(!row || !row.isConnected) return;
-        var beforeY = window.pageYOffset, beforeTop = Math.round(row.getBoundingClientRect().top);
-        // 1) unblock the page if something left it locked
-        try{ if(getComputedStyle(document.body).overflow === 'hidden') document.body.style.overflow=''; }catch(_){}
-        // 2) nearest scrollable ancestor (if any)
-        var sc = scrollableAncestor(row);
-        if(sc){ try{ sc.scrollTop = row.offsetTop - (sc.clientHeight/3); }catch(_){} }
-        // 3) the window itself, computed — not scrollIntoView
-        var vh = window.innerHeight || document.documentElement.clientHeight;
-        var target = row.getBoundingClientRect().top + window.pageYOffset - (vh/3);
-        window.scrollTo({ top: Math.max(0, target), behavior: attempt === 0 ? 'smooth' : 'auto' });
-        setTimeout(function(){
-          var afterY = window.pageYOffset, afterTop = Math.round(row.getBoundingClientRect().top);
-          var ok = inView(row);
-          dbg('scroll attempt ' + attempt, {pageYOffset: beforeY + ' -> ' + afterY, rowTop: beforeTop + ' -> ' + afterTop, scroller: sc ? (sc.className||sc.tagName) : 'window', inView: ok});
-          if(!ok && attempt + 1 < RETRIES.length) setTimeout(function(){ hardScroll(row, attempt + 1); }, RETRIES[attempt + 1]);
-          else if(ok) dbg('Ultimate Santa row is in view');
-          else dbg('GAVE UP after ' + RETRIES.length + ' attempts — row never entered the viewport');
-        }, 450);
-      }catch(e){ dbg('hardScroll threw', e); }
-    }
-    window.capSantaScrollNow = function(){ var r = santaRow(); if(r) hardScroll(r, 1); else dbg('no santa row'); };
-
-    // ── A) scroll to the row, independent of reveal() ──────────────────────
-    var scrolled=false, tries=0, preScrolled=false;
-    function tryScroll(){
-      if(scrolled) return;
-      if(!(window.capGetPath && capGetPath()==='santa')) return;
-      var row=santaRow();
-      if(!row){
-        // 2026-07-28: the row can take tens of seconds to render, and waiting for it meant
-        // we "scrolled" long after Mat had already scrolled there himself. Move to the
-        // ticket block immediately, then refine to the row when it exists.
-        if(!preScrolled){
-          var tb=document.getElementById('ticketBlock')||document.querySelector('.ticket-block');
-          // NOT just offsetWidth — while gated, .ticket-block is parked at 1x1px and
-          // left:-99999px, which passes a naive visibility test and burned the pre-scroll
-          // on an off-screen node. Require the gate to be lifted AND a real on-page rect.
-          var gated = document.body.classList.contains('cap-native-gated');
-          var rct = tb && tb.getBoundingClientRect();
-          if(tb && !gated && rct && rct.left > -1000 && rct.width > 40){ preScrolled=true; hardScroll(tb,1); dbg('row not rendered yet — moved to the ticket block first'); }
-        }
-        if(++tries%25===0) dbg('waiting for Ultimate Santa row…');
-        return;
-      }
-      if(row.offsetParent===null){ if(++tries%25===0) dbg('row present but not visible yet'); return; }
-      scrolled=true;
-      hardScroll(row, 0);
-    }
-    var si=setInterval(function(){ tryScroll(); if(scrolled) clearInterval(si); }, 200);
-    setTimeout(function(){ clearInterval(si); }, 60000);
-    try{ new MutationObserver(tryScroll).observe(document.body, {childList:true, subtree:true, attributes:true, attributeFilter:['class','style']}); }catch(_){}
-    document.addEventListener('cap:buyerpath', function(){ scrolled=false; tries=0; });
+    // ── SCROLL REMOVED 2026-07-28 (Mat) ───────────────────────────────────
+    // There used to be a watcher here that scrolled the buyer to the Ultimate Santa
+    // row after the date gate lifted. It worked mechanically (measured: pageYOffset
+    // 3416 -> 3592, row landed in view) but always fired LATE — the row does not
+    // exist in the DOM for ~20-40s after the CTA, by which point the buyer has
+    // already scrolled there themselves, so the nudge read as "nothing happened".
+    // The fix was not better scrolling; the premise was wrong. Ditched per Mat
+    // rather than adding more machinery to fight TS's render timing — and it keeps
+    // the page lighter, which is what Bryan asked for on 7/24.
+    // NOTE: capScrollToRow() still exists and IS used — capSantaGaCta scrolls to the
+    // Premium row after the upsell. That one fires on a click, when the row already
+    // exists, and works. Do not remove it.
 
     // ── B) re-check completion on ANY change/click, not just #ticketBlock ──
     function recheck(){
