@@ -870,9 +870,17 @@ html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar::after { c
         var v=(sels[i].value||'').trim();
         if(!v || v==='0') return false;
       }
+      // 2026-07-28: only VISIBLE required radio groups gate completion — a hidden
+      // group (purchase protection etc.) would otherwise block the modal forever.
       var radios = document.querySelectorAll('#registrants input[type="radio"][required]');
       var groups = {};
-      for(var r=0;r<radios.length;r++){ var nm=radios[r].name; if(!nm) continue; if(!(nm in groups)) groups[nm]=false; if(radios[r].checked) groups[nm]=true; }
+      for(var r=0;r<radios.length;r++){
+        var el=radios[r], nm=el.name; if(!nm) continue;
+        var host=el.closest('.registrant-field') || el;
+        if(host.offsetParent===null) continue;              // not on screen -> not a gate
+        if(!(nm in groups)) groups[nm]=false;
+        if(el.checked) groups[nm]=true;
+      }
       for(var g in groups){ if(!groups[g]) return false; }
       return true;
     }catch(e){ return false; }
@@ -900,6 +908,62 @@ html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar::after { c
     }catch(e){}
   }
   window.capSantaGaCta = capSantaGaCta;
+
+  /* ════════════════════════════════════════════════════════════════════
+     ULTIMATE SANTA WATCHERS (Mat 2026-07-28, third pass)
+     Two failures this replaces, both from hooking the wrong thing:
+       • SCROLL was hung off reveal(), which fires once and may already have
+         run — so the scroll silently never happened. Now it's an independent
+         watcher keyed on the buyer path, retrying until the row is on screen.
+       • UPSELL was gated behind `e.target.closest('#ticketBlock select')`, so a
+         radio click in #registrants NEVER reached the handler. Once the selects
+         were done, nothing re-evaluated completion again and the modal never
+         fired. Now any change/click anywhere re-checks.
+     Set window.CAP_SANTA_DEBUG = true in the console for a step trace.
+     ════════════════════════════════════════════════════════════════════ */
+  (function(){
+    function dbg(){ if(window.CAP_SANTA_DEBUG){ try{ console.log.apply(console, ['%c[cap-santa]','color:#c82844;font-weight:700'].concat([].slice.call(arguments))); }catch(_){} } }
+    function santaRow(){
+      return Array.prototype.slice.call(document.querySelectorAll('#ticketBlock tr.ticket.ticket-type'))
+        .filter(function(r){ var h=r.querySelector('h4'); return h && /ultimate.*santa/i.test(h.textContent||''); })[0] || null;
+    }
+    window.capSantaRow = santaRow;
+
+    // ── A) scroll to the row, independent of reveal() ──────────────────────
+    var scrolled=false, tries=0;
+    function tryScroll(){
+      if(scrolled) return;
+      if(!(window.capGetPath && capGetPath()==='santa')) return;
+      var row=santaRow();
+      if(!row){ if(++tries%25===0) dbg('waiting for Ultimate Santa row…'); return; }
+      if(row.offsetParent===null){ if(++tries%25===0) dbg('row present but not visible yet'); return; }
+      scrolled=true;
+      try{ row.scrollIntoView({behavior:'smooth',block:'center'}); }catch(_){}
+      setTimeout(function(){ try{ row.scrollIntoView({behavior:'smooth',block:'center'}); }catch(_){} }, 700);
+      dbg('scrolled to Ultimate Santa row');
+    }
+    var si=setInterval(function(){ tryScroll(); if(scrolled) clearInterval(si); }, 200);
+    setTimeout(function(){ clearInterval(si); }, 60000);
+    try{ new MutationObserver(tryScroll).observe(document.body, {childList:true, subtree:true, attributes:true, attributeFilter:['class','style']}); }catch(_){}
+    document.addEventListener('cap:buyerpath', function(){ scrolled=false; tries=0; });
+
+    // ── B) re-check completion on ANY change/click, not just #ticketBlock ──
+    function recheck(){
+      try{
+        var row=santaRow(); if(!row) return;
+        if(!window.capSantaSelectionComplete){ dbg('helper missing'); return; }
+        if(!capSantaSelectionComplete(row)){ dbg('selection not complete yet'); return; }
+        dbg('selection complete -> firing Premium upsell');
+        if(window.capFireSantaGA) capFireSantaGA();   // has its own once-only guard
+      }catch(e){ dbg('recheck error', e); }
+    }
+    window.capSantaRecheck = recheck;
+    document.addEventListener('change', function(){ setTimeout(recheck, 60); }, true);
+    document.addEventListener('click',  function(e){
+      if(e.target && e.target.closest && e.target.closest('#registrants, #ticketBlock')) setTimeout(recheck, 120);
+    }, true);
+  })();
+
   </script>
 
   <!-- 🎅 CAP Photos-with-Santa modal V2 — functional: hijacks the REAL native
