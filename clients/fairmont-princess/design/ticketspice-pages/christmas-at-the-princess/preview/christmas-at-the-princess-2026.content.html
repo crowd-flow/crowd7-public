@@ -871,6 +871,41 @@ html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar::after { c
   // 2026-07-28 (Mat): "complete" means the timeslot + quantity selects AND the required
   // "Ticket #1 Details" registrant fields (the yes/no merchandise radios) — firing after
   // the two selects alone popped the modal while the buyer was still filling the ticket out.
+  // Locate the "Ticket #1 Details" block by its heading text, then climb to the nearest
+  // ancestor that actually contains a required radio. Text-anchored because TS gives the
+  // section no stable id/class, and DOM-order guesses ("the first group") picked the wrong one.
+  function capTicketDetailsSection(){
+    try{
+      var all = document.querySelectorAll('#registrants *, .ticket-block *, form *');
+      for(var i=0;i<all.length;i++){
+        var n=all[i];
+        if(n.children.length) continue;                    // leaf nodes only
+        var t=(n.textContent||'').trim();
+        if(!/^ticket\s*#?\s*1\s*details/i.test(t)) continue;
+        for(var a=n; a && a!==document.body; a=a.parentElement){
+          if(a.querySelector && a.querySelector('input[type="radio"][required]')) return a;
+        }
+      }
+    }catch(e){}
+    return null;
+  }
+  window.capTicketDetailsSection = capTicketDetailsSection;
+  // One-shot inventory of every required radio group — name, label, checked, in-section.
+  window.capSantaRadioDump = function(){
+    var sect = capTicketDetailsSection();
+    var out = [], seen = {};
+    document.querySelectorAll('input[type="radio"][required]').forEach(function(el){
+      if(!el.name || seen[el.name]) return; seen[el.name]=1;
+      var host = el.closest('.registrant-field') || el.parentElement;
+      var any = document.querySelector('input[name="'+el.name+'"]:checked');
+      out.push({ name: el.name,
+                 label: ((host && host.textContent) || '').trim().replace(/\s+/g,' ').slice(0,90),
+                 checked: !!any,
+                 inTicket1Section: !!(sect && sect.contains(el)),
+                 visible: !!(host && (host.offsetWidth || host.offsetHeight)) });
+    });
+    console.table(out); return out;
+  };
   function capSantaSelectionComplete(row){
     try{
       var why = null, sels = row ? row.querySelectorAll('select') : [];
@@ -880,21 +915,26 @@ html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar::after { c
         var v=(sels[i].value||'').trim(); selVals.push(v);
         if(!v || v==='0') why='select #'+i+' empty/zero';
       }
-      // 2026-07-28 (3rd pass): scope the radio gate to the FIRST visible required
-      // radio group only — that IS "Ticket #1 Details". Requiring EVERY required
-      // group under #registrants also swept in groups the buyer hasn't reached yet,
-      // so completion could never become true and the modal never fired.
+      // 2026-07-28 (4th pass): the trace proved "first required radio group" was the WRONG
+      // group — it resolved to xff87c53e179a6ffe76b0, the yes/no merchandise question, not
+      // the additional-persons radios under the "Ticket #1 Details" heading that Mat picks.
+      // Anchor on the heading TEXT instead, which is what he actually described.
+      // FAIL-OPEN: if the section can't be located, gate on the selects only. On a live
+      // sale, firing slightly early beats never firing at all.
+      var sect = capTicketDetailsSection();
       var groups = [], seen = {};
-      var radios = document.querySelectorAll('#registrants input[type="radio"][required]');
-      for(var r=0;r<radios.length;r++){
-        var el=radios[r], nm=el.name; if(!nm) continue;
-        var host=el.closest('.registrant-field') || el.parentElement || el;
-        var visible = !!(host.offsetWidth || host.offsetHeight || host.getClientRects().length);
-        if(!visible) continue;
-        if(!(nm in seen)){ seen[nm]={name:nm, checked:false}; groups.push(seen[nm]); }
-        if(el.checked) seen[nm].checked = true;
+      var scope = sect || null;
+      if(scope){
+        var radios = scope.querySelectorAll('input[type="radio"][required]');
+        for(var r=0;r<radios.length;r++){
+          var el=radios[r], nm=el.name; if(!nm) continue;
+          if(!(nm in seen)){ seen[nm]={name:nm, checked:false}; groups.push(seen[nm]); }
+          if(el.checked) seen[nm].checked = true;
+        }
+        for(var gi=0; gi<groups.length && !why; gi++){
+          if(!groups[gi].checked) why='Ticket #1 Details radio group ("'+groups[gi].name+'") unchecked';
+        }
       }
-      if(!why && groups.length && !groups[0].checked) why='first required radio group ("'+groups[0].name+'") unchecked';
       if(window.CAP_SANTA_DEBUG){
         try{ console.log('%c[cap-santa] check','color:#c82844;font-weight:700',
           {selects:selVals, radioGroups:groups.map(function(g){return g.name+'='+g.checked;}), blockedBy: why || 'nothing — COMPLETE'}); }catch(_){}
@@ -991,12 +1031,22 @@ html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar::after { c
     window.capSantaScrollNow = function(){ var r = santaRow(); if(r) hardScroll(r, 1); else dbg('no santa row'); };
 
     // ── A) scroll to the row, independent of reveal() ──────────────────────
-    var scrolled=false, tries=0;
+    var scrolled=false, tries=0, preScrolled=false;
     function tryScroll(){
       if(scrolled) return;
       if(!(window.capGetPath && capGetPath()==='santa')) return;
       var row=santaRow();
-      if(!row){ if(++tries%25===0) dbg('waiting for Ultimate Santa row…'); return; }
+      if(!row){
+        // 2026-07-28: the row can take tens of seconds to render, and waiting for it meant
+        // we "scrolled" long after Mat had already scrolled there himself. Move to the
+        // ticket block immediately, then refine to the row when it exists.
+        if(!preScrolled){
+          var tb=document.getElementById('ticketBlock')||document.querySelector('.ticket-block');
+          if(tb && (tb.offsetWidth||tb.offsetHeight)){ preScrolled=true; hardScroll(tb,1); dbg('row not rendered yet — moved to the ticket block first'); }
+        }
+        if(++tries%25===0) dbg('waiting for Ultimate Santa row…');
+        return;
+      }
       if(row.offsetParent===null){ if(++tries%25===0) dbg('row present but not visible yet'); return; }
       scrolled=true;
       hardScroll(row, 0);
