@@ -276,6 +276,14 @@ html[data-buyer-path="premium"] .ticket-block .datePicker .wbx-calendar::after {
    Hide the per-night number; keep green/red so discount-vs-standard nights still read. */
 html[data-buyer-path="vip"] .ticket-block .datePicker .wbx-calendar .row.week .day::after { content: '' !important; display: none !important; }
 html[data-buyer-path="vip"] .ticket-block .datePicker .wbx-calendar::after { content: '🟩 Discount dates        🟥 Standard dates  ·  table pricing shown when you reserve' !important; }
+/* Ultimate Santa (Mat 2026-07-28): this calendar differs by buyer path, and Ultimate
+   Santa is a separate daytime experience — GA/Premium per-night numbers and the
+   green value-night treatment are both meaningless here. Show plain dates only:
+   NO price value, NO green. */
+html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar .row.week .day::after,
+html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar .row.week .day.cap-value-date::after { content: '' !important; display: none !important; }
+html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar .row.week .day.cap-value-date { background: #C82844 !important; color: #ffffff !important; }
+html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar::after { content: 'Pick your Ultimate Santa date' !important; }
 /* Different-month / disabled cells: muted, no price, no green */
 .ticket-block .datePicker .wbx-calendar .row.week .day.different-month,
 .ticket-block .datePicker .wbx-calendar .row.week .day:not(.enabled):not(.different-month),
@@ -581,9 +589,9 @@ html[data-buyer-path="vip"] .ticket-block .datePicker .wbx-calendar::after { con
        [clickup:86bb39ztb] -->
   <div class="cap-ov" id="capOvSantaGA"><div class="cap-modal starlight"><button class="x" onclick="capCloseAll()">&times;</button>
     <div class="cap-promo-eye">Don&rsquo;t miss the show</div>
-    <h3>Add General Admission?</h3>
-    <p style="color:var(--muted);font-size:.92rem;line-height:1.5;">Ultimate Santa is a daytime-only experience &mdash; it doesn&rsquo;t include entry to Christmas at the Princess. Add General Admission so you can come back for the lights, the market, and the show.</p>
-    <button class="mbtn gold" onclick="capSantaGaCta()">Add General Admission</button>
+    <h3>Add Premium Admission?</h3>
+    <p style="color:var(--muted);font-size:.92rem;line-height:1.5;">Ultimate Santa is a daytime-only experience &mdash; it doesn&rsquo;t include entry to Christmas at the Princess. Add Premium Admission so you can come back for the lights, the market, and the show &mdash; with lounge access, fire pits, the s&rsquo;mores &amp; cocoa bar, and premium bar service.</p>
+    <button class="mbtn gold" onclick="capSantaGaCta()">Add Premium Admission</button>
     <button class="mlink" onclick="capCloseAll()">No thanks, Ultimate Santa only</button>
   </div></div>
 
@@ -730,7 +738,7 @@ html[data-buyer-path="vip"] .ticket-block .datePicker .wbx-calendar::after { con
      {detail:{path, prev}} on every set. Wrapped so it can never throw.
      ════════════════════════════════════════════════════════════════════ */
   (function(){
-    var KEY='capBuyerPath', VALID={ga:1,premium:1,vip:1};
+    var KEY='capBuyerPath', VALID={ga:1,premium:1,vip:1,santa:1};
     function get(){ try{ return sessionStorage.getItem(KEY)||null; }catch(_){ return window._capBuyerPath||null; } }
     function stamp(p){ try{ document.documentElement.setAttribute('data-buyer-path', p); }catch(_){} }
     function set(p){
@@ -794,9 +802,17 @@ html[data-buyer-path="vip"] .ticket-block .datePicker .wbx-calendar::after { con
     var row = sel.closest('tr.ticket.ticket-type');
     var h = row && row.querySelector('h4');
     if(h && /ultimate.*santa/i.test(h.textContent||'')){
-      // Ultimate Santa gets its own GA upsell instead of the generic buyer-path promo
-      // (no buyer path is known for this ticket — see capOvSantaGA note above).
-      if(window.capFireSantaGA) capFireSantaGA();
+      // Ultimate Santa gets its own Premium upsell instead of the generic buyer-path promo.
+      // 2026-07-28 (Mat): fire only once the selection is complete "all the way" — the row
+      // has a timeslot AND a quantity. Firing on the first <select> change popped the modal
+      // mid-flow, before the buyer had actually chosen anything.
+      var sels = row ? row.querySelectorAll('select') : [];
+      var done = sels.length > 0;
+      for(var si=0; si<sels.length; si++){
+        var v = (sels[si].value||'').trim();
+        if(!v || v === '0'){ done = false; break; }
+      }
+      if(done && window.capFireSantaGA) capFireSantaGA();
       return;
     }
     if(window.capFirePromo) capFirePromo();
@@ -863,7 +879,7 @@ html[data-buyer-path="vip"] .ticket-block .datePicker .wbx-calendar::after { con
         .filter(function(r){ var h=r.querySelector('h4'); return h && /ultimate.*santa/i.test(h.textContent||''); })[0];
       var santaSel = santaRow && santaRow.querySelector('select');
       var n = Math.max(1, parseInt((santaSel && santaSel.value) || '0', 10) || 0);
-      capSetTicketQty(/general admission/i, n);
+      capSetTicketQty(/premium\s*admission/i, n);   // 2026-07-28 (Mat): push Premium, not base GA -- Ultimate Santa buyers read as VIP (CAP 7/24)
     }catch(e){}
   }
   window.capSantaGaCta = capSantaGaCta;
@@ -1194,16 +1210,12 @@ html[data-buyer-path="vip"] .ticket-block .datePicker .wbx-calendar::after { con
   // Ultimate Santa strip CTA (added 2026-07-23, Katie's ask) — scrolls the buyer to the real
   // native Ultimate Santa ticket row. No modal, by decision (see note inside).
   window.capSantaCta = function(){
-    // 2026-07-28: do NOT launch the Photos-with-Santa modal here. Bryan killed a landing-page
-    // Ultimate Santa popup outright (CAP mtg 7/21: "No... we already have a couple pop-ups and
-    // I just want to get them on and off"). The only sanctioned Ultimate Santa popup is the
-    // POST-ADD GA cross-sell (capOvSantaGA, agreed 7/24). This strip CTA just takes them to the
-    // real ticket row. Reported live by Bryan 7/28: it was opening Photos with Santa.
-    try{
-      var rows = document.querySelectorAll('#ticketBlock tr.ticket.ticket-type');
-      var hit = Array.prototype.slice.call(rows).filter(function(r){ var h=r.querySelector('h4'); return h && /ultimate.*santa/i.test(h.textContent||''); })[0];
-      if(hit){ hit.scrollIntoView({behavior:'smooth',block:'center'}); return; }
-    }catch(e){}
+    // 2026-07-28 (Mat): the ticket block is behind the date gate, so the Ultimate Santa row
+    // does not exist in the DOM yet -- scrolling here just landed on 'Pick Your Tickets'.
+    // Correct flow, same shape as the tier-card buttons: tag the buyer path, open the
+    // calendar, and let the reveal hook scroll to the Ultimate Santa row once it exists.
+    if(window.capSetPath) capSetPath('santa');
+    if(window.capOpenPicker){ capOpenPicker(); return; }
     var t=document.querySelector('#cap-tickets'); if(t) t.scrollIntoView({behavior:'smooth',block:'start'});
   };
 
@@ -1275,7 +1287,16 @@ html[data-buyer-path="vip"] .ticket-block .datePicker .wbx-calendar::after { con
     document.body.classList.add('cap-native-gated');
 
     var revealed=false;
-    function reveal(){ if(revealed)return; revealed=true; root.classList.remove('cap-gated'); document.body.classList.remove('cap-native-gated'); document.body.classList.remove('cap-step2'); }   // promo now fires on ticket-qty select, not on date-reveal -- see capFirePromo wiring above
+    function reveal(){ if(revealed)return; revealed=true; root.classList.remove('cap-gated'); document.body.classList.remove('cap-native-gated'); document.body.classList.remove('cap-step2');
+      // 2026-07-28: Ultimate Santa buyers came in via the strip CTA -- now that the native
+      // cart is on-screen, take them to that row. Retry briefly; TS renders rows async.
+      try{ if(window.capGetPath && capGetPath()==='santa'){ var n=0,iv=setInterval(function(){
+        var row=Array.prototype.slice.call(document.querySelectorAll('#ticketBlock tr.ticket.ticket-type'))
+          .filter(function(r){ var h=r.querySelector('h4'); return h && /ultimate.*santa/i.test(h.textContent||''); })[0];
+        if(row){ clearInterval(iv); row.scrollIntoView({behavior:'smooth',block:'center'}); }
+        else if(++n>40) clearInterval(iv);
+      },150); } }catch(_){}
+    }   // promo now fires on ticket-qty select, not on date-reveal -- see capFirePromo wiring above
 
     // Stand-in picker (preview only — live page uses the native TS calendar)
     var demo=null;
@@ -1303,6 +1324,7 @@ html[data-buyer-path="vip"] .ticket-block .datePicker .wbx-calendar::after { con
     // ticket-tier card buttons ("Select"/"Reserve") tag the buyer path (data-buyer on the .tier), then open the ticket block — drop their old inline handlers.
     // All tiers go straight to the date picker (Premium's intermediate details modal removed 2026-07-21 per Mat).
     root.querySelectorAll('#cap-tickets .tier .btn').forEach(function(b){ b.removeAttribute('onclick'); b.addEventListener('click',function(e){ e.preventDefault(); var t=b.closest('.tier'); var path=t&&t.getAttribute('data-buyer'); if(path&&window.capSetPath) capSetPath(path); openPicker(); }); });
+    window.capOpenPicker=openPicker;   // 2026-07-28: Ultimate Santa strip CTA drives the same picker
     window.capProceedPremium=function(){ if(window.capSetPath) capSetPath('premium'); openPicker(); };
 
     // Hero "Book Your Experience" (+ any #cap-tickets link) scrolls to the ticket cards while gated
