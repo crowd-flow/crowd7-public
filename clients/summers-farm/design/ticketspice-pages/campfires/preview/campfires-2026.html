@@ -735,6 +735,10 @@
     #sb-funnel .sb-nav-loc { color: var(--sf-muted) !important; }
     #sb-funnel .sb-nav-cta { background: var(--sf-ember) !important; color: #201007 !important; box-shadow: 0 4px 16px rgba(255,122,46,0.35) !important; }
     #sb-funnel .sb-nav-cta:hover { background: var(--sf-ember-2) !important; color: #201007 !important; }
+    /* Real Summers Farm logo (2026 refresh, white wordmark) replacing the text mark */
+    #sb-funnel .sb-logo-wrap { height: 54px !important; }
+    #sb-funnel .sb-logo-img { height: 52px !important; width: auto !important; display: block !important; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.45)) !important; }
+    @media (max-width: 560px) { #sb-funnel .sb-logo-img { height: 42px !important; } }
 
     /* Hero — darken to dusk + a warm ember glow rising from the base */
     #sb-funnel .sb-hero-overlay {
@@ -853,7 +857,7 @@
     <!-- NAV -->
     <div class="sb-nav">
         <div class="sb-logo-wrap">
-            <span class="sb-logo-text">Summers <span>Farm</span></span>
+            <img class="sb-logo-img" src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/summers-farm/design/assets/summers-farm-logo-white.png" alt="Summers Farm">
         </div>
         <div class="sb-nav-right">
             <div class="sb-nav-loc">
@@ -1054,32 +1058,6 @@
             </div>
             <p class="sb-firemap-note">Forty-four private fire pits spread across the field — pick your spot when you reserve. The Jumping Pillows, Rubber Duck Races, and Pig Race Building are all right there on the campfire field.</p>
         </div>
-    </div>
-
-    <!-- ON THE FARM WHILE YOU'RE HERE -->
-    <div class="sb-attractions">
-        <div class="sb-tickets-header sbr">
-            <span class="sb-eye">Your Farm Ticket Unlocks It All</span>
-            <span class="sb-title">A whole farm of <em>fun</em></span>
-        </div>
-        <div class="sb-attr-list sbr">
-            <span class="sb-attr-chip">Giant Slides</span>
-            <span class="sb-attr-chip">Barnyard Animals</span>
-            <span class="sb-attr-chip">Corn Pits</span>
-            <span class="sb-attr-chip">Bull Riding</span>
-            <span class="sb-attr-chip">Wagon Rides</span>
-            <span class="sb-attr-chip">Flying Pigs Zipline</span>
-            <span class="sb-attr-chip">Farmer Mini Golf</span>
-            <span class="sb-attr-chip">Tug-O-War</span>
-            <span class="sb-attr-chip">Straw Mountain</span>
-            <span class="sb-attr-chip">Jumping Pillows</span>
-            <span class="sb-attr-chip">Rugged Farmer Obstacle Course</span>
-            <span class="sb-attr-chip">Corn Hole</span>
-            <span class="sb-attr-chip">Swings</span>
-            <span class="sb-attr-chip">Bubble Barn</span>
-            <span class="sb-attr-chip">Photo Ops</span>
-        </div>
-        <p class="sb-addon-note">Each visitor must purchase a farm ticket along with the campfire reservation — that ticket is your access to everything above.</p>
     </div>
 
     <!-- INFO ROW -->
