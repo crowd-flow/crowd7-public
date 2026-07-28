@@ -946,6 +946,50 @@ html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar::after { c
     }
     window.capSantaRow = santaRow;
 
+    // 2026-07-28 (4th pass): scrollIntoView() logged success but the page never moved.
+    // Don't trust it — compute the target offset, drive window.scrollTo directly, ALSO
+    // scroll the nearest scrollable ancestor (TS nests the cart in its own scroller, and
+    // scrollIntoView only moves the innermost one), then MEASURE whether it actually
+    // landed and retry with backoff if not. Logs real numbers, so a failure is diagnosable
+    // instead of a success message that means nothing.
+    function scrollableAncestor(el){
+      for(var n=el.parentElement; n && n !== document.body; n = n.parentElement){
+        var st = getComputedStyle(n);
+        if(/(auto|scroll|overlay)/.test(st.overflowY) && n.scrollHeight > n.clientHeight + 4) return n;
+      }
+      return null;
+    }
+    function inView(el){
+      var r = el.getBoundingClientRect();
+      var vh = window.innerHeight || document.documentElement.clientHeight;
+      return r.top >= 0 && r.top <= vh * 0.7;
+    }
+    var RETRIES = [0, 350, 900, 1800, 3200];
+    function hardScroll(row, attempt){
+      try{
+        if(!row || !row.isConnected) return;
+        var beforeY = window.pageYOffset, beforeTop = Math.round(row.getBoundingClientRect().top);
+        // 1) unblock the page if something left it locked
+        try{ if(getComputedStyle(document.body).overflow === 'hidden') document.body.style.overflow=''; }catch(_){}
+        // 2) nearest scrollable ancestor (if any)
+        var sc = scrollableAncestor(row);
+        if(sc){ try{ sc.scrollTop = row.offsetTop - (sc.clientHeight/3); }catch(_){} }
+        // 3) the window itself, computed — not scrollIntoView
+        var vh = window.innerHeight || document.documentElement.clientHeight;
+        var target = row.getBoundingClientRect().top + window.pageYOffset - (vh/3);
+        window.scrollTo({ top: Math.max(0, target), behavior: attempt === 0 ? 'smooth' : 'auto' });
+        setTimeout(function(){
+          var afterY = window.pageYOffset, afterTop = Math.round(row.getBoundingClientRect().top);
+          var ok = inView(row);
+          dbg('scroll attempt ' + attempt, {pageYOffset: beforeY + ' -> ' + afterY, rowTop: beforeTop + ' -> ' + afterTop, scroller: sc ? (sc.className||sc.tagName) : 'window', inView: ok});
+          if(!ok && attempt + 1 < RETRIES.length) setTimeout(function(){ hardScroll(row, attempt + 1); }, RETRIES[attempt + 1]);
+          else if(ok) dbg('Ultimate Santa row is in view');
+          else dbg('GAVE UP after ' + RETRIES.length + ' attempts — row never entered the viewport');
+        }, 450);
+      }catch(e){ dbg('hardScroll threw', e); }
+    }
+    window.capSantaScrollNow = function(){ var r = santaRow(); if(r) hardScroll(r, 1); else dbg('no santa row'); };
+
     // ── A) scroll to the row, independent of reveal() ──────────────────────
     var scrolled=false, tries=0;
     function tryScroll(){
@@ -955,9 +999,7 @@ html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar::after { c
       if(!row){ if(++tries%25===0) dbg('waiting for Ultimate Santa row…'); return; }
       if(row.offsetParent===null){ if(++tries%25===0) dbg('row present but not visible yet'); return; }
       scrolled=true;
-      try{ row.scrollIntoView({behavior:'smooth',block:'center'}); }catch(_){}
-      setTimeout(function(){ try{ row.scrollIntoView({behavior:'smooth',block:'center'}); }catch(_){} }, 700);
-      dbg('scrolled to Ultimate Santa row');
+      hardScroll(row, 0);
     }
     var si=setInterval(function(){ tryScroll(); if(scrolled) clearInterval(si); }, 200);
     setTimeout(function(){ clearInterval(si); }, 60000);
