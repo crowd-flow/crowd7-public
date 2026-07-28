@@ -73,6 +73,11 @@
         display: block !important;
         box-sizing: border-box !important;
     }
+    /* Force white on every banner text node — beats the host TicketSpice page's
+       span/text color that otherwise renders it black once injected. */
+    #sb-funnel .sb-banner,
+    #sb-funnel .sb-banner span,
+    #sb-funnel .sb-banner strong { color: #ffffff !important; }
     #sb-funnel .sb-banner-inner {
         display: flex !important;
         align-items: center !important;
