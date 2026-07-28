@@ -790,6 +790,15 @@ html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar::after { c
       if(!CAP_PROMO_ENABLED) return;   // kill switch (temp); all code below preserved
       if(_capPromoFired) return;
       var path = (window.capGetPath && capGetPath()) || 'default';
+      // 2026-07-28 (Mat: "too many pop ups"): Ultimate Santa buyers get their OWN upsell
+      // (capOvSantaGA → Premium). They must never also get the generic buyer-path promo.
+      // There is no CAP_PROMOS['santa'], so this was falling through to 'default' and
+      // firing "40% off your resort room" on top of the Premium modal.
+      if(path === 'santa'){ return; }
+      // Our own capSantaGaCta sets the Premium quantity programmatically and dispatches a
+      // change event; that bubbles to the cart listener, which saw a non-santa row and
+      // fired this promo. Suppress while we're driving the cart ourselves.
+      if(window._capSuppressPromo){ return; }
       var p = CAP_PROMOS[path] || CAP_PROMOS['default']; if(!p) return;
       var m = document.getElementById('capOvPromo'); if(!m) return;
       _capPromoFired = true;
@@ -1004,6 +1013,8 @@ html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar::after { c
       if(!q){ dbg2('Premium row found but no quantity select', premRow); capScrollToRow(premRow); return; }
 
       var before = q.value;
+      window._capSuppressPromo = true;             // our own change event must not trigger a promo
+      setTimeout(function(){ window._capSuppressPromo = false; }, 2500);
       try{
         var setter = Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype, 'value').set;
         setter.call(q, String(n));
