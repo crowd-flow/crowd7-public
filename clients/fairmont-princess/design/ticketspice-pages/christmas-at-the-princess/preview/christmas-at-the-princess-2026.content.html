@@ -1200,13 +1200,17 @@ html[data-buyer-path="vip"] .ticket-block .datePicker .wbx-calendar::after { con
   // Expose the trigger so the page button can drive it.
   window.capSantaLaunch = launch;   // un-paused by Mat 2026-07-17 (wired to premium promo CTA)
 
-  // Ultimate Santa strip CTA (added 2026-07-23, Katie's ask) — launch the modal if it's
-  // wired up; else fall back to scrolling the native Santa ticket row into view.
+  // Ultimate Santa strip CTA (added 2026-07-23, Katie's ask) — scrolls the buyer to the real
+  // native Ultimate Santa ticket row. No modal, by decision (see note inside).
   window.capSantaCta = function(){
-    if(window.capSantaLaunch){ capSantaLaunch(); return; }
+    // 2026-07-28: do NOT launch the Photos-with-Santa modal here. Bryan killed a landing-page
+    // Ultimate Santa popup outright (CAP mtg 7/21: "No... we already have a couple pop-ups and
+    // I just want to get them on and off"). The only sanctioned Ultimate Santa popup is the
+    // POST-ADD GA cross-sell (capOvSantaGA, agreed 7/24). This strip CTA just takes them to the
+    // real ticket row. Reported live by Bryan 7/28: it was opening Photos with Santa.
     try{
       var rows = document.querySelectorAll('#ticketBlock tr.ticket.ticket-type');
-      var hit = Array.prototype.slice.call(rows).filter(function(r){ var h=r.querySelector('h4'); return h && /santa/i.test(h.textContent||''); })[0];
+      var hit = Array.prototype.slice.call(rows).filter(function(r){ var h=r.querySelector('h4'); return h && /ultimate.*santa/i.test(h.textContent||''); })[0];
       if(hit){ hit.scrollIntoView({behavior:'smooth',block:'center'}); return; }
     }catch(e){}
     var t=document.querySelector('#cap-tickets'); if(t) t.scrollIntoView({behavior:'smooth',block:'start'});
