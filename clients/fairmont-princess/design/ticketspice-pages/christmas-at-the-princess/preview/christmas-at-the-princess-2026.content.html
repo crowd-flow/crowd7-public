@@ -282,7 +282,11 @@ html[data-buyer-path="vip"] .ticket-block .datePicker .wbx-calendar::after { con
    NO price value, NO green. */
 html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar .row.week .day::after,
 html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar .row.week .day.cap-value-date::after { content: '' !important; display: none !important; }
-html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar .row.week .day.cap-value-date { background: #C82844 !important; color: #ffffff !important; }
+/* 2026-07-28 fix: the base rule paints EVERY enabled day red (#C82844), so overriding
+   only .cap-value-date left the whole month red. Neutralise both to brand cream. */
+html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar .row.week .day.enabled,
+html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar .row.week .day.cap-value-date { background: #f3eeea !important; color: #3a2a2a !important; }
+html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar .row.week .day.enabled:hover { background: #e6dcd5 !important; color: #3a2a2a !important; }
 html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar::after { content: 'Pick your Ultimate Santa date' !important; }
 /* Different-month / disabled cells: muted, no price, no green */
 .ticket-block .datePicker .wbx-calendar .row.week .day.different-month,
@@ -815,13 +819,7 @@ html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar::after { c
       // 2026-07-28 (Mat): fire only once the selection is complete "all the way" — the row
       // has a timeslot AND a quantity. Firing on the first <select> change popped the modal
       // mid-flow, before the buyer had actually chosen anything.
-      var sels = row ? row.querySelectorAll('select') : [];
-      var done = sels.length > 0;
-      for(var si=0; si<sels.length; si++){
-        var v = (sels[si].value||'').trim();
-        if(!v || v === '0'){ done = false; break; }
-      }
-      if(done && window.capFireSantaGA) capFireSantaGA();
+      if(capSantaSelectionComplete(row) && window.capFireSantaGA) capFireSantaGA();
       return;
     }
     if(window.capFirePromo) capFirePromo();
@@ -870,6 +868,25 @@ html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar::after { c
      Ticket-triggered, not buyer-path-triggered, per capOvSantaGA's note.
      [clickup:86bb39ztb]
      ════════════════════════════════════════════════════════════════════ */
+  // 2026-07-28 (Mat): "complete" means the timeslot + quantity selects AND the required
+  // "Ticket #1 Details" registrant fields (the yes/no merchandise radios) — firing after
+  // the two selects alone popped the modal while the buyer was still filling the ticket out.
+  function capSantaSelectionComplete(row){
+    try{
+      var sels = row ? row.querySelectorAll('select') : [];
+      if(!sels.length) return false;
+      for(var i=0;i<sels.length;i++){
+        var v=(sels[i].value||'').trim();
+        if(!v || v==='0') return false;
+      }
+      var radios = document.querySelectorAll('#registrants input[type="radio"][required]');
+      var groups = {};
+      for(var r=0;r<radios.length;r++){ var nm=radios[r].name; if(!nm) continue; if(!(nm in groups)) groups[nm]=false; if(radios[r].checked) groups[nm]=true; }
+      for(var g in groups){ if(!groups[g]) return false; }
+      return true;
+    }catch(e){ return false; }
+  }
+  window.capSantaSelectionComplete = capSantaSelectionComplete;
   var CAP_SANTA_GA_ENABLED = true;
   var _capSantaGaFired = false;
   function capFireSantaGA(){
@@ -1302,8 +1319,14 @@ html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar::after { c
       try{ if(window.capGetPath && capGetPath()==='santa'){ var n=0,iv=setInterval(function(){
         var row=Array.prototype.slice.call(document.querySelectorAll('#ticketBlock tr.ticket.ticket-type'))
           .filter(function(r){ var h=r.querySelector('h4'); return h && /ultimate.*santa/i.test(h.textContent||''); })[0];
-        if(row){ clearInterval(iv); row.scrollIntoView({behavior:'smooth',block:'center'}); }
-        else if(++n>40) clearInterval(iv);
+        // must be VISIBLE, not merely present — the gate un-hides the cart a beat after
+        // reveal(), and scrollIntoView on an off-screen node is a no-op. Re-scroll once to
+        // survive TS's own post-render scroll.
+        if(row && row.offsetParent !== null){ clearInterval(iv);
+          row.scrollIntoView({behavior:'smooth',block:'center'});
+          setTimeout(function(){ try{ row.scrollIntoView({behavior:'smooth',block:'center'}); }catch(_){} }, 700);
+        }
+        else if(++n>60) clearInterval(iv);
       },150); } }catch(_){}
     }   // promo now fires on ticket-qty select, not on date-reveal -- see capFirePromo wiring above
 
