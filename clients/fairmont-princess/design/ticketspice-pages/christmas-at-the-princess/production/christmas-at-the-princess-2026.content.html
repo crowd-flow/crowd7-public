@@ -864,26 +864,34 @@ html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar::after { c
   // the two selects alone popped the modal while the buyer was still filling the ticket out.
   function capSantaSelectionComplete(row){
     try{
-      var sels = row ? row.querySelectorAll('select') : [];
-      if(!sels.length) return false;
-      for(var i=0;i<sels.length;i++){
-        var v=(sels[i].value||'').trim();
-        if(!v || v==='0') return false;
+      var why = null, sels = row ? row.querySelectorAll('select') : [];
+      var selVals = [];
+      if(!sels.length){ why='no selects in the santa row'; }
+      for(var i=0;i<sels.length && !why;i++){
+        var v=(sels[i].value||'').trim(); selVals.push(v);
+        if(!v || v==='0') why='select #'+i+' empty/zero';
       }
-      // 2026-07-28: only VISIBLE required radio groups gate completion — a hidden
-      // group (purchase protection etc.) would otherwise block the modal forever.
+      // 2026-07-28 (3rd pass): scope the radio gate to the FIRST visible required
+      // radio group only — that IS "Ticket #1 Details". Requiring EVERY required
+      // group under #registrants also swept in groups the buyer hasn't reached yet,
+      // so completion could never become true and the modal never fired.
+      var groups = [], seen = {};
       var radios = document.querySelectorAll('#registrants input[type="radio"][required]');
-      var groups = {};
       for(var r=0;r<radios.length;r++){
         var el=radios[r], nm=el.name; if(!nm) continue;
-        var host=el.closest('.registrant-field') || el;
-        if(host.offsetParent===null) continue;              // not on screen -> not a gate
-        if(!(nm in groups)) groups[nm]=false;
-        if(el.checked) groups[nm]=true;
+        var host=el.closest('.registrant-field') || el.parentElement || el;
+        var visible = !!(host.offsetWidth || host.offsetHeight || host.getClientRects().length);
+        if(!visible) continue;
+        if(!(nm in seen)){ seen[nm]={name:nm, checked:false}; groups.push(seen[nm]); }
+        if(el.checked) seen[nm].checked = true;
       }
-      for(var g in groups){ if(!groups[g]) return false; }
-      return true;
-    }catch(e){ return false; }
+      if(!why && groups.length && !groups[0].checked) why='first required radio group ("'+groups[0].name+'") unchecked';
+      if(window.CAP_SANTA_DEBUG){
+        try{ console.log('%c[cap-santa] check','color:#c82844;font-weight:700',
+          {selects:selVals, radioGroups:groups.map(function(g){return g.name+'='+g.checked;}), blockedBy: why || 'nothing — COMPLETE'}); }catch(_){}
+      }
+      return !why;
+    }catch(e){ if(window.CAP_SANTA_DEBUG){ try{console.log('[cap-santa] check threw', e);}catch(_){}} return false; }
   }
   window.capSantaSelectionComplete = capSantaSelectionComplete;
   var CAP_SANTA_GA_ENABLED = true;
