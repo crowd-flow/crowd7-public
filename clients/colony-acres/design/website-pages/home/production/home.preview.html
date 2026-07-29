@@ -158,76 +158,146 @@
 				
 				
 				
-				<div class="et_pb_module et_pb_slider et_pb_slider_0 et_pb_slider_fullwidth_off et_slider_auto et_slider_speed_4000" data-et-multi-view="{&quot;schema&quot;:{&quot;classes&quot;:{&quot;desktop&quot;:{&quot;remove&quot;:[&quot;et_pb_slider_no_arrows&quot;,&quot;et_pb_slider_no_pagination&quot;]},&quot;phone&quot;:{&quot;add&quot;:[&quot;et_pb_slider_no_arrows&quot;],&quot;remove&quot;:[&quot;et_pb_slider_no_pagination&quot;]}}},&quot;slug&quot;:&quot;et_pb_slider&quot;}">
-				<div class="et_pb_slides">
-					<div class="et_pb_slide et_pb_slide_0 et_clickable et_pb_bg_layout_dark et_pb_media_alignment_center et-pb-active-slide" data-slide-id="et_pb_slide_0">
-				
-				
-				<div class="et_pb_container clearfix">
-					<div class="et_pb_slider_container_inner">
-						
-						<div class="et_pb_slide_description">
-							<h2 class="et_pb_slide_title">Opening September 19!</h2><div class="et_pb_slide_content"><p>100 years of growing memories &#8212; themed weekends, our Centennial celebration, the Centennial Bourbon Dinner and more. Fall 2026 starts September 19.</p></div>
-							
-						</div>
-					</div>
-				</div>
-				
-				
-				
-			</div>
-			<div class="et_pb_slide et_pb_slide_1 et_clickable et_pb_bg_layout_dark et_pb_media_alignment_center" data-slide-id="et_pb_slide_1">
-				
-				
-				<div class="et_pb_container clearfix">
-					<div class="et_pb_slider_container_inner">
-						
-						<div class="et_pb_slide_description">
-							<h2 class="et_pb_slide_title">The Barn</h2><div class="et_pb_slide_content"><p>Perfect for Weddings, Conferences, Special Events and more!</p></div>
-							
-						</div>
-					</div>
-				</div>
-				
-				
-				
-			</div>
-			<div class="et_pb_slide et_pb_slide_2 et_clickable et_pb_bg_layout_dark et_pb_media_alignment_center" data-slide-id="et_pb_slide_2">
-				
-				
-				<div class="et_pb_container clearfix">
-					<div class="et_pb_slider_container_inner">
-						
-						<div class="et_pb_slide_description">
-							<h2 class="et_pb_slide_title">Fall Festival</h2><div class="et_pb_slide_content"><p>Over 20 Activities Available!</p></div>
-							
-						</div>
-					</div>
-				</div>
-				
-				
-				
-			</div>
-			<div class="et_pb_slide et_pb_slide_3 et_clickable et_pb_bg_layout_dark et_pb_media_alignment_center" data-slide-id="et_pb_slide_3">
-				
-				
-				<div class="et_pb_container clearfix">
-					<div class="et_pb_slider_container_inner">
-						
-						<div class="et_pb_slide_description">
-							<h2 class="et_pb_slide_title">Tree-Fest</h2><div class="et_pb_slide_content"><p>Visit Our Winter Wonderland!</p></div>
-							
-						</div>
-					</div>
-				</div>
-				
-				
-				
-			</div>
-			
-				</div>
-				
-			</div>
+				<!-- ===== CA HERO SLIDER - Crowd7-owned, zero Divi dependency. Built 2026-07-29. =====
+     Replaces Divi's et_pb_slider module. Self-contained: markup + CSS + JS all live here,
+     so the hybrid loader's script-rehydration boots it correctly after innerHTML injection.
+     Divi's own slider JS runs at DOM-ready and can never see loader-injected content -
+     that is why this exists. Edit slides below; a git push is the deploy.
+     Autoplay interval: the AUTOPLAY_MS const in the script (4000 = Divi parity).
+     ============================================================================ -->
+<div class="ca-hero" id="ca-hero-home" role="region" aria-roledescription="carousel" aria-label="Colony Acres highlights">
+  <style>
+    @font-face{font-family:"Ls Halsey Rough 2";font-display:swap;src:url("https://colonyacres.farm/wp-content/uploads/et-fonts/LS-Harsey-Rough.ttf") format("truetype")}
+    .ca-hero{position:relative;overflow:hidden;width:100%;min-height:clamp(360px,38vw,520px);background:#2c2a25;isolation:isolate}
+    .ca-hero__track{position:relative;width:100%;min-height:inherit}
+    .ca-hero__slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+      background-repeat:no-repeat;background-size:cover;opacity:0;visibility:hidden;
+      transition:opacity .8s ease-in-out,visibility .8s;will-change:opacity}
+    .ca-hero__slide.is-active{opacity:1;visibility:visible;z-index:1}
+    .ca-hero__slide::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.18);pointer-events:none}
+    .ca-hero__inner{position:relative;z-index:2;max-width:1080px;padding:32px 64px;text-align:center}
+    .ca-hero__title{margin:0 0 .1em;font-family:'Ls Halsey Rough 2',Helvetica,Arial,Lucida,sans-serif;
+      font-size:clamp(46px,8.2vw,120px);line-height:.75em;color:#fff;font-weight:400;
+      text-shadow:0 .1em .1em rgba(0,0,0,.4)}
+    .ca-hero__copy p{margin:.55em 0 0;font-family:'Open Sans',Helvetica,Arial,sans-serif;font-weight:700;
+      font-size:clamp(15px,1.5vw,18px);line-height:1.5;color:#fff;text-shadow:0 .1em .1em rgba(0,0,0,.4)}
+    .ca-hero__arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:44px;height:66px;
+      display:flex;align-items:center;justify-content:center;border:0;background:transparent;cursor:pointer;
+      color:#fff;font-size:44px;line-height:1;opacity:0;transition:opacity .25s ease;
+      text-shadow:0 2px 6px rgba(0,0,0,.5);padding:0;font-family:Georgia,serif}
+    .ca-hero:hover .ca-hero__arrow,.ca-hero__arrow:focus-visible{opacity:.9}
+    .ca-hero__arrow:hover{opacity:1}
+    .ca-hero__arrow--prev{left:8px} .ca-hero__arrow--next{right:8px}
+    .ca-hero__dots{position:absolute;left:0;right:0;bottom:16px;z-index:3;display:flex;gap:10px;justify-content:center}
+    .ca-hero__dot{width:10px;height:10px;padding:0;border:0;border-radius:50%;cursor:pointer;
+      background:rgba(255,255,255,.45);box-shadow:0 1px 3px rgba(0,0,0,.4);transition:background .25s,transform .25s}
+    .ca-hero__dot:hover{background:rgba(255,255,255,.75)}
+    .ca-hero__dot.is-active{background:#fff;transform:scale(1.25)}
+    .ca-hero__arrow:focus-visible,.ca-hero__dot:focus-visible{outline:2px solid #fff;outline-offset:3px}
+    @media (max-width:980px){ .ca-hero__inner{padding:28px 30px} .ca-hero__arrow{display:none} }
+    @media (prefers-reduced-motion:reduce){ .ca-hero__slide{transition:none} }
+  </style>
+
+  <div class="ca-hero__track">
+      <div class="ca-hero__slide is-active" role="group" aria-roledescription="slide" aria-label="1 of 4: Opening September 19!" style="background-image:url('https://colonyacres.farm/wp-content/uploads/2023/05/slider1.webp');background-position:left center;">
+        <div class="ca-hero__inner">
+          <h2 class="ca-hero__title">Opening September 19!</h2>
+          <div class="ca-hero__copy"><p>100 years of growing memories &#8212; themed weekends, our Centennial celebration, the Centennial Bourbon Dinner and more. Fall 2026 starts September 19.</p></div>
+        </div>
+      </div>
+      <div class="ca-hero__slide" role="group" aria-roledescription="slide" aria-label="2 of 4: The Barn" style="background-image:url('https://colonyacres.farm/wp-content/uploads/2023/08/slider-barn2.webp');background-position:center top;">
+        <div class="ca-hero__inner">
+          <h2 class="ca-hero__title">The Barn</h2>
+          <div class="ca-hero__copy"><p>Perfect for Weddings, Conferences, Special Events and more!</p></div>
+        </div>
+      </div>
+      <div class="ca-hero__slide" role="group" aria-roledescription="slide" aria-label="3 of 4: Fall Festival" style="background-image:url('https://colonyacres.farm/wp-content/uploads/2023/08/slider-fallharvest.webp');background-position:left center;">
+        <div class="ca-hero__inner">
+          <h2 class="ca-hero__title">Fall Festival</h2>
+          <div class="ca-hero__copy"><p>Over 20 Activities Available!</p></div>
+        </div>
+      </div>
+      <div class="ca-hero__slide" role="group" aria-roledescription="slide" aria-label="4 of 4: Tree-Fest" style="background-image:url('https://colonyacres.farm/wp-content/uploads/2024/07/slider-winter.webp');background-position:center center;">
+        <div class="ca-hero__inner">
+          <h2 class="ca-hero__title">Tree-Fest</h2>
+          <div class="ca-hero__copy"><p>Visit Our Winter Wonderland!</p></div>
+        </div>
+      </div>
+  </div>
+
+  <button type="button" class="ca-hero__arrow ca-hero__arrow--prev" data-ca-prev aria-label="Previous slide">&#8249;</button>
+  <button type="button" class="ca-hero__arrow ca-hero__arrow--next" data-ca-next aria-label="Next slide">&#8250;</button>
+  <div class="ca-hero__dots" role="tablist" aria-label="Choose slide">
+        <button type="button" class="ca-hero__dot is-active" data-ca-goto="0" aria-label="Go to slide 1"></button>
+        <button type="button" class="ca-hero__dot" data-ca-goto="1" aria-label="Go to slide 2"></button>
+        <button type="button" class="ca-hero__dot" data-ca-goto="2" aria-label="Go to slide 3"></button>
+        <button type="button" class="ca-hero__dot" data-ca-goto="3" aria-label="Go to slide 4"></button>
+  </div>
+
+  <script>
+  (function () {
+    var AUTOPLAY_MS = 4000;                       // Divi parity. Raise to 6000 for slower rotation.
+    var root = document.getElementById("ca-hero-home");
+    if (!root || root.dataset.caInit === "1") return;   // idempotent: never double-bind
+    root.dataset.caInit = "1";
+
+    var slides = [].slice.call(root.querySelectorAll(".ca-hero__slide"));
+    var dots   = [].slice.call(root.querySelectorAll(".ca-hero__dot"));
+    if (slides.length < 2) return;
+    var i = 0, timer = null;
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    function preload(n) {
+      var s = slides[n]; if (!s || s.dataset.caPre === "1") return;
+      var m = /url\(['"]?(.*?)['"]?\)/.exec(s.style.backgroundImage || "");
+      if (m && m[1]) { var im = new Image(); im.src = m[1]; s.dataset.caPre = "1"; }
+    }
+    function show(n) {
+      n = (n + slides.length) % slides.length;
+      slides[i].classList.remove("is-active");
+      if (dots[i]) { dots[i].classList.remove("is-active"); dots[i].removeAttribute("aria-current"); }
+      i = n;
+      slides[i].classList.add("is-active");
+      if (dots[i]) { dots[i].classList.add("is-active"); dots[i].setAttribute("aria-current", "true"); }
+      preload((i + 1) % slides.length);
+    }
+    function next() { show(i + 1); }
+    function prev() { show(i - 1); }
+    function start() { if (reduce || timer) return; timer = setInterval(next, AUTOPLAY_MS); }
+    function stop()  { if (timer) { clearInterval(timer); timer = null; } }
+    function bump()  { stop(); start(); }
+
+    root.querySelector("[data-ca-next]").addEventListener("click", function () { next(); bump(); });
+    root.querySelector("[data-ca-prev]").addEventListener("click", function () { prev(); bump(); });
+    dots.forEach(function (d) {
+      d.addEventListener("click", function () { show(parseInt(d.getAttribute("data-ca-goto"), 10)); bump(); });
+    });
+
+    root.addEventListener("mouseenter", stop);
+    root.addEventListener("mouseleave", start);
+    root.addEventListener("focusin", stop);
+    root.addEventListener("focusout", start);
+    document.addEventListener("visibilitychange", function () { document.hidden ? stop() : start(); });
+    root.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowRight") { next(); bump(); }
+      else if (e.key === "ArrowLeft") { prev(); bump(); }
+    });
+
+    var x0 = null;
+    root.addEventListener("touchstart", function (e) { x0 = e.changedTouches[0].clientX; stop(); }, {passive:true});
+    root.addEventListener("touchend", function (e) {
+      if (x0 === null) return;
+      var dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 45) { dx < 0 ? next() : prev(); }
+      x0 = null; start();
+    }, {passive:true});
+
+    preload(1);
+    start();
+  })();
+  </script>
+</div>
+<!-- ===== /CA HERO SLIDER ===== -->
 			
 			</div>
 				
