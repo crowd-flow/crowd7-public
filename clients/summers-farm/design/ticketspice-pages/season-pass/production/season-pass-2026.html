@@ -612,12 +612,33 @@
         border-radius: 20px !important; padding: 6px 14px !important;
     }
     #sb-funnel .sb-fine {
-        width: 100% !important; background: #2E3F4D !important;
-        color: rgba(255,255,255,0.7) !important; padding: 36px 48px !important;
-        box-sizing: border-box !important; font-size: 0.74rem !important; line-height: 1.7 !important;
+        width: 100% !important; background: #EAF3FA !important;
+        padding: 52px 24px 72px !important; box-sizing: border-box !important;
     }
-    #sb-funnel .sb-fine-inner { max-width: 1000px !important; margin: 0 auto !important; }
-    #sb-funnel .sb-fine strong { color: rgba(255,255,255,0.92) !important; }
+    #sb-funnel .sb-fine-inner {
+        max-width: 680px !important; margin: 0 auto !important;
+        background: #ffffff !important;
+        border: 1px solid rgba(89,119,146,0.16) !important;
+        border-radius: 18px !important;
+        padding: 34px 38px !important;
+        box-shadow: 0 16px 40px rgba(89,119,146,0.14) !important;
+        text-align: center !important;
+    }
+    #sb-funnel .sb-fine-title {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 1.5rem !important; font-weight: 700 !important;
+        color: #243642 !important; display: block !important; margin-bottom: 16px !important;
+    }
+    #sb-funnel .sb-fine p {
+        font-size: 0.92rem !important; line-height: 1.7 !important;
+        color: #3F5460 !important; margin: 0 !important; text-align: left !important;
+    }
+    #sb-funnel .sb-fine-contact {
+        text-align: center !important; font-size: 0.84rem !important; color: #6E8190 !important;
+        margin: 20px 0 0 !important; padding-top: 18px !important;
+        border-top: 1px solid rgba(89,119,146,0.14) !important;
+    }
+    #sb-funnel .sb-fine strong { color: #801517 !important; }
     @media (max-width: 860px) {
         #sb-funnel .sb-addons, #sb-funnel .sb-attractions, #sb-funnel .sb-fine {
             padding-left: 24px !important; padding-right: 24px !important;
@@ -684,8 +705,8 @@
 .wbx-calendar .row .day { border-radius: 35px; color: #ffffff; cursor: default; flex: 1; height: 40px; margin: 1px !important; transition: all .2s; }
 .ticket-block .wbx-calendar .row .day.enabled { color: white; background-color: #597792; }
 .ticket-block .wbx-calendar .row .day.enabled.sold-out { color: white; background-color: #A9B6BF; }
-.ticket-block table.holds-tickets th { color: #FFFFFF !important; background: #597792; }
-.campaign-form:not(.legacy-form) .ticket-block table.holds-tickets { border: 2px solid #597792; border-radius: 10px; border-spacing: 0; box-shadow: 0 10px 24px rgba(89,119,146,0.18); width: 100%; }
+.ticket-block table.holds-tickets th, .ticket-block .holds-tickets thead th, .ticket-block thead th { color: #FFFFFF !important; background: #801517 !important; background-color: #801517 !important; }
+.campaign-form:not(.legacy-form) .ticket-block table.holds-tickets { border: 2px solid #801517; border-radius: 10px; border-spacing: 0; box-shadow: 0 10px 24px rgba(128,21,23,0.18); width: 100%; }
 .campaign-form:not(.legacy-form) .ticket-block table.holds-tickets { border-collapse: separate !important; background-color: white; border-spacing: 0; box-shadow: 0 10px 24px rgba(89,119,146,0.18); width: 100%; }
 .campaign-form:not(.legacy-form) ul.upgrades li img.product-thumbnail { border-radius: 10px; box-shadow: 0 10px 24px rgba(89,119,146,0.18); }
 .campaign-form:not(.legacy-form) .field-purchaseProtection .purchase-protection .purchase-protection-header { background-color: white; border: 2px solid #597792; border-bottom: 2px solid #597792; color: #243642 !important; font-size: 18px; font-weight: 700; padding: 12px 32px; }
@@ -917,9 +938,10 @@
 
     <!-- GOOD TO KNOW / FINE PRINT -->
     <div class="sb-fine">
-        <div class="sb-fine-inner">
-            <strong>Good to know:</strong> Your Season Pass is good for <strong>unlimited visits to both the Flower Festival and the Fall Festival</strong> all 2026 season — no reservations needed; just bring your pass and check in at admissions for your wristband. Every pass includes <strong>free Mega Slide access on every visit</strong>. Ages 2 &amp; under are free — no pass needed. The farm is <strong>closed Mondays &amp; Tuesdays</strong> all season. Season passes are <strong>non-transferable</strong> (valid for the pass holder only) and <strong>non-refundable</strong>. Online prices add a small TicketSpice fee at checkout.<br><br>
-            <strong>Location &amp; questions:</strong> 7503 Hollow Road, Middletown, MD 21769 · 301-304-3031 · info@summersfarm.com
+        <div class="sb-fine-inner sbr">
+            <span class="sb-fine-title">Good to Know</span>
+            <p>Your Season Pass is good for <strong>unlimited visits to both the Flower &amp; Fall Festivals</strong> all 2026 season — no reservations needed; just bring your pass and check in at admissions for your wristband. Every pass includes <strong>free Mega Slide access on every visit</strong>, and ages 2 &amp; under are free (no pass needed). The farm is <strong>closed Mondays &amp; Tuesdays</strong> all season. Passes are <strong>non-transferable</strong> and <strong>non-refundable</strong>; online prices add a small TicketSpice fee at checkout.</p>
+            <p class="sb-fine-contact">📍 7503 Hollow Road, Middletown, MD 21769 &nbsp;·&nbsp; 301-304-3031 &nbsp;·&nbsp; info@summersfarm.com</p>
         </div>
     </div>
 
