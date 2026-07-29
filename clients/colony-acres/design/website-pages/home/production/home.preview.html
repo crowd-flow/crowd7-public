@@ -191,6 +191,16 @@ body,.et_pb_column_1_2 .et_quote_content blockquote cite,.et_pb_column_1_2 .et_l
 @media only screen and (max-width:980px){#ca-guts .et_pb_section_7.et_pb_section{padding-top:80px!important;padding-bottom:50px!important;margin-top:70px!important;margin-bottom:70px!important}}
 @media only screen and (max-width:767px){#ca-guts .et_pb_row_6.et_pb_row{padding-top:0px!important;margin-top:0px!important;padding-top:0px!important}}
 @media only screen and (max-width:767px){#ca-guts .et_pb_section_7.et_pb_section{padding-top:90px!important;padding-bottom:90px!important;margin-top:50px!important;margin-bottom:50px!important}}
+
+    /* SEAM GUARD (2026-07-29): the host footer's "2026 TICKETS COMING SOON" pill sits in a
+       module with margin-top:-20px - it is designed to tuck UP over whatever section precedes
+       it. That used to be a real content section; now it is the tail of our guts, and our
+       last section (Pet Friendly, section_8) painted over the pill's top ~20px.
+       Verified by elementFromPoint on the live page: occluder was #ca-guts .et_pb_section_8.
+       25px of bottom margin lands the pill's overhang in clear space. Tested against the live
+       page - section_8 margin-bottom and padding-bottom both FAILED (margin collapse / the
+       section just grows); only margin on #ca-guts itself works. */
+    #ca-guts{margin-bottom:25px}
 </style>
 <!-- ===== /CA FULLWIDTH-SECTION GUARD ===== -->
 <!-- ===== CA HERO SLIDER - Crowd7-owned, zero Divi dependency. Built 2026-07-29. =====
