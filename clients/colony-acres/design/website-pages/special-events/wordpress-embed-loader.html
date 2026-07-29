@@ -1,3 +1,21 @@
+<!-- ############################################################################
+     ## READ THIS BEFORE PASTING - it will silently break the page otherwise.  ##
+     ############################################################################
+     PASTE THIS INTO A REGULAR "CODE" MODULE INSIDE A **STANDARD** SECTION.
+     DO **NOT** USE A "FULLWIDTH CODE" MODULE / FULLWIDTH SECTION.
+
+     Divi core ships this rule:
+       .et_pb_fullwidth_section > .et_pb_module:not(.et_pb_post_content)
+         :not(.et_pb_fullwidth_post_content) .et_pb_row { padding: 0 !important; }
+     In a fullwidth section it zeroes the padding on EVERY row of the injected page
+     guts. The page still renders - it just loses all its vertical spacing, with no
+     error anywhere. Cost us three wrong fixes on 2026-07-29 before a headless render
+     of live-vs-standalone isolated it.
+
+     The guts carry a #ca-guts guard block that defeats this even in a fullwidth
+     module, but do not rely on it - use a standard section and the guard stays
+     belt-and-braces rather than load-bearing.
+     ############################################################################ -->
 <!-- ============================================================================
      COLONY ACRES — SPECIAL EVENTS — WordPress/Divi Hybrid loader (the ONE editor step, ever).
 

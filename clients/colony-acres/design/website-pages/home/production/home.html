@@ -109,7 +109,7 @@ body,.et_pb_column_1_2 .et_quote_content blockquote cite,.et_pb_column_1_2 .et_l
 .et-pb-arrow-next,.et-pb-arrow-prev{position:absolute;top:50%;z-index:100;font-size:48px;color:#fff;margin-top:-24px;-webkit-transition:all .2s ease-in-out;transition:all .2s ease-in-out;opacity:0}.et_pb_bg_layout_light .et-pb-arrow-next,.et_pb_bg_layout_light .et-pb-arrow-prev{color:#333}.et_pb_slider:hover .et-pb-arrow-prev{left:22px;opacity:1}.et_pb_slider:hover .et-pb-arrow-next{right:22px;opacity:1}.et_pb_bg_layout_light .et-pb-controllers .et-pb-active-control{background-color:#333}.et_pb_bg_layout_light .et-pb-controllers a{background-color:rgba(0,0,0,.3)}.et-pb-arrow-next:hover,.et-pb-arrow-prev:hover{text-decoration:none}.et-pb-arrow-next span,.et-pb-arrow-prev span{display:none}.et-pb-arrow-prev{left:-22px}.et-pb-arrow-next{right:-22px}.et-pb-arrow-prev:before{content:"4"}.et-pb-arrow-next:before{content:"5"}.format-gallery .et-pb-arrow-next,.format-gallery .et-pb-arrow-prev{color:#fff}.et_pb_column_1_3 .et_pb_slider:hover .et-pb-arrow-prev,.et_pb_column_1_4 .et_pb_slider:hover .et-pb-arrow-prev,.et_pb_column_1_5 .et_pb_slider:hover .et-pb-arrow-prev,.et_pb_column_1_6 .et_pb_slider:hover .et-pb-arrow-prev,.et_pb_column_2_5 .et_pb_slider:hover .et-pb-arrow-prev{left:0}.et_pb_column_1_3 .et_pb_slider:hover .et-pb-arrow-next,.et_pb_column_1_4 .et_pb_slider:hover .et-pb-arrow-prev,.et_pb_column_1_5 .et_pb_slider:hover .et-pb-arrow-prev,.et_pb_column_1_6 .et_pb_slider:hover .et-pb-arrow-prev,.et_pb_column_2_5 .et_pb_slider:hover .et-pb-arrow-next{right:0}.et_pb_column_1_4 .et_pb_slider .et_pb_slide,.et_pb_column_1_5 .et_pb_slider .et_pb_slide,.et_pb_column_1_6 .et_pb_slider .et_pb_slide{min-height:170px}.et_pb_column_1_4 .et_pb_slider:hover .et-pb-arrow-next,.et_pb_column_1_5 .et_pb_slider:hover .et-pb-arrow-next,.et_pb_column_1_6 .et_pb_slider:hover .et-pb-arrow-next{right:0}@media (max-width:980px){.et_pb_bg_layout_light_tablet .et-pb-arrow-next,.et_pb_bg_layout_light_tablet .et-pb-arrow-prev{color:#333}.et_pb_bg_layout_dark_tablet .et-pb-arrow-next,.et_pb_bg_layout_dark_tablet .et-pb-arrow-prev{color:#fff}}@media (max-width:767px){.et_pb_slider:hover .et-pb-arrow-prev{left:0;opacity:1}.et_pb_slider:hover .et-pb-arrow-next{right:0;opacity:1}.et_pb_bg_layout_light_phone .et-pb-arrow-next,.et_pb_bg_layout_light_phone .et-pb-arrow-prev{color:#333}.et_pb_bg_layout_dark_phone .et-pb-arrow-next,.et_pb_bg_layout_dark_phone .et-pb-arrow-prev{color:#fff}}.et_mobile_device .et-pb-arrow-prev{left:22px;opacity:1}.et_mobile_device .et-pb-arrow-next{right:22px;opacity:1}@media (max-width:767px){.et_mobile_device .et-pb-arrow-prev{left:0;opacity:1}.et_mobile_device .et-pb-arrow-next{right:0;opacity:1}}
 </style>
 <!-- ===== /CA PAGE CSS ===== -->
-<div class="et-l et-l--post">
+<div class="et-l et-l--post" id="ca-guts">
 			<div class="et_builder_inner_content et_pb_gutters3">
 		<div class="et_pb_with_border et_pb_section et_pb_section_1 et_pb_with_background et_section_regular et_pb_section--with-menu" >
 				
@@ -268,7 +268,58 @@ body,.et_pb_column_1_2 .et_quote_content blockquote cite,.et_pb_column_1_2 .et_l
 				
 				
 				
-				<!-- ===== CA HERO SLIDER - Crowd7-owned, zero Divi dependency. Built 2026-07-29. =====
+				<!-- ===== CA FULLWIDTH-SECTION GUARD - Built 2026-07-29. =====
+     THE ACTUAL SNAG behind the flat middle band. Measured with a headless render of
+     the live page vs our standalone preview: our guts render CORRECTLY in isolation
+     (26px gap above the cards, row_6 at 25/45 padding). Injected into the live page
+     they collapse to zero. The CSS was never the problem - the HOST MODULE was.
+
+     The loader is pasted into a Divi *Fullwidth* Code module, and Divi core ships:
+
+       .et_pb_fullwidth_section > .et_pb_module:not(.et_pb_post_content)
+         :not(.et_pb_fullwidth_post_content) .et_pb_row { padding: 0 !important; }
+
+     Every .et_pb_row in our injected content matches that, so ALL row padding is
+     nuked - and because it is !important at (0,5,0) specificity, nothing we inline
+     at class level can ever beat it. Three previous CSS fixes could not have worked.
+
+     THE REAL FIX is on the WordPress side: paste the loader into a REGULAR Code
+     module inside a STANDARD section, never a Fullwidth Code module. See the warning
+     in wordpress-embed-loader.html.
+
+     This block is the belt-and-braces guard so the guts render correctly even if the
+     loader ends up in a fullwidth module. It re-asserts Divi's row/section defaults
+     and then re-applies every page-specific row/section padding rule, all scoped to
+     #ca-guts - an ID selector, (1,x,0), which outranks Divi's (0,5,0) !important.
+     Generated from et-core-unified-deferred-18; regenerate if that file changes.
+     ============================================================================ -->
+<style>
+#ca-guts .et_pb_row{padding:2% 0!important}
+#ca-guts .et_pb_section{padding:54px 0!important}
+@media only screen and (min-width:1350px){#ca-guts .et_pb_row{padding:27px 0!important}}
+#ca-guts .et_pb_section_2.et_pb_section,#ca-guts .et_pb_section_3.et_pb_section,#ca-guts .et_pb_section_4.et_pb_section,#ca-guts .et_pb_section_8.et_pb_section,#ca-guts .et_pb_section_9.et_pb_section{padding-top:0px!important;padding-bottom:0px!important;margin-top:0px!important;margin-bottom:0px!important}
+#ca-guts .et_pb_row_1.et_pb_row,#ca-guts .et_pb_row_9.et_pb_row,#ca-guts .et_pb_row_10.et_pb_row,#ca-guts .et_pb_row_11.et_pb_row,#ca-guts .et_pb_row_12.et_pb_row,#ca-guts .et_pb_row_13.et_pb_row,#ca-guts .et_pb_row_15.et_pb_row{padding-top:0px!important;padding-bottom:0px!important;margin-top:0px!important;margin-bottom:0px!important;padding-top:0px!important;padding-bottom:0px!important}
+#ca-guts .et_pb_section_5.et_pb_section{padding-top:7px!important;padding-bottom:0px!important;margin-top:0px!important;margin-bottom:0px!important}
+#ca-guts .et_pb_section_6.et_pb_section{padding-top:50px!important;padding-bottom:0px!important;margin-top:0px!important;margin-bottom:0px!important}
+#ca-guts .et_pb_section_7.et_pb_section{padding-top:100px!important;padding-bottom:100px!important;margin-top:70px!important;margin-bottom:70px!important}
+#ca-guts .et_pb_section_10.et_pb_section{padding-top:0px!important;padding-bottom:90px!important;margin-top:20px!important;margin-bottom:0px!important}
+#ca-guts .et_pb_section_12.et_pb_section{padding-top:16px!important;padding-bottom:15px!important;margin-top:5px!important;margin-bottom:0px!important}
+#ca-guts .et_pb_row_3.et_pb_row,#ca-guts .et_pb_row_4.et_pb_row{padding-top:0px!important;margin-top:0px!important;margin-left:auto!important;margin-right:auto!important;padding-top:0px!important}
+#ca-guts .et_pb_row_6.et_pb_row{padding-top:25px!important;padding-bottom:45px!important;margin-top:0px!important;margin-left:auto!important;margin-right:auto!important;padding-top:25px!important;padding-bottom:45px!important}
+#ca-guts .et_pb_row_14.et_pb_row{padding-top:0px!important;padding-right:7%!important;padding-bottom:0px!important;padding-left:3%!important;margin-top:0px!important;margin-bottom:0px!important;margin-left:auto!important;margin-right:auto!important;padding-top:0px!important;padding-right:7%!important;padding-bottom:0px!important;padding-left:3%!important}
+@media only screen and (max-width:980px){#ca-guts .et_pb_row_6.et_pb_row{padding-top:25px!important;padding-bottom:45px!important;margin-top:0px!important;padding-top:25px!important;padding-bottom:45px!important}}
+@media only screen and (max-width:980px){#ca-guts .et_pb_section_7.et_pb_section{padding-top:80px!important;padding-bottom:50px!important;margin-top:70px!important;margin-bottom:70px!important}}
+@media only screen and (max-width:980px){#ca-guts .et_pb_section_9.et_pb_section{margin-top:0px!important;margin-bottom:0px!important}}
+@media only screen and (max-width:980px){#ca-guts .et_pb_section_10.et_pb_section{margin-top:90px!important;margin-bottom:0px!important}}
+@media only screen and (max-width:980px){#ca-guts .et_pb_row_14.et_pb_row{padding-top:0px!important;padding-right:5%!important;padding-bottom:0px!important;padding-left:5%!important;padding-top:0px!important;padding-right:5%!important;padding-bottom:0px!important;padding-left:5%!important}}
+@media only screen and (max-width:767px){#ca-guts .et_pb_row_6.et_pb_row{padding-top:0px!important;margin-top:0px!important;padding-top:0px!important}}
+@media only screen and (max-width:767px){#ca-guts .et_pb_section_7.et_pb_section{padding-top:90px!important;padding-bottom:90px!important;margin-top:50px!important;margin-bottom:50px!important}}
+@media only screen and (max-width:767px){#ca-guts .et_pb_section_9.et_pb_section{margin-top:55px!important}}
+@media only screen and (max-width:767px){#ca-guts .et_pb_section_10.et_pb_section{margin-top:100px!important}}
+@media only screen and (max-width:767px){#ca-guts .et_pb_row_14.et_pb_row{padding-right:3%!important;padding-left:3%!important;padding-right:3%!important;padding-left:3%!important}}
+</style>
+<!-- ===== /CA FULLWIDTH-SECTION GUARD ===== -->
+<!-- ===== CA HERO SLIDER - Crowd7-owned, zero Divi dependency. Built 2026-07-29. =====
      Replaces Divi's et_pb_slider module. Self-contained: markup + CSS + JS all live here,
      so the hybrid loader's script-rehydration boots it correctly after innerHTML injection.
      Divi's own slider JS runs at DOM-ready and can never see loader-injected content -
