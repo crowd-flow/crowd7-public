@@ -55,3 +55,13 @@ Then promote `preview/` → `production/` when Rachel approves (a `git push` is 
 ## 📸 Image note
 
 Reuses the same farm-wide photo set as the Flower / Season Pass pages (no campfire-specific photos supplied yet). When Rachel/Mat provide actual campfire-at-dusk photos, swap the 6 `gallery-*.png` references + the `hero.png` for campfire imagery to make the page feel purpose-built.
+
+## 🗓️ 2026-07-29 update (Rachel's call) — NATIVE CART / TS-console items, not covered by the content-HTML build
+
+The page copy (dates, fireworks days, logo, wood/roaring language, gallery) was corrected in the same pass — see `queue.md` / `log.md` for the full 11-item list. Three items below are **native TicketSpice config**, out of the loader's reach, and need a live-console check:
+
+1. **Season dates changed to Sept 26 – Nov 1, 2026** (was wrongly built as Sept 12 – Oct 31). If the TS cart's date-picker/Action is scoped to the old range, it needs updating in the console to match — the page copy alone won't restrict which dates are actually bookable.
+2. **No evening campfires Oct 30 + Oct 31** — Rachel already hid these via a TicketSpice Action before this call. **Verify that Action still applies correctly against the corrected Sept 26–Nov 1 range** (Oct 30 is a Friday, Oct 31 a Saturday in 2026 — same two nights, just confirm the Action wasn't scoped to the old season window in a way that could silently stop applying).
+3. **Fireworks nights corrected** — now every Saturday in October, plus Friday Oct 16 and Friday Oct 23 (was wrongly "Saturdays only"). This is copy-only on our side (no cart config drives fireworks) — flagging here only so whoever owns the on-site schedule/signage is aware of the correction.
+
+**Also fixed, no TS action needed:** a white-on-white bug in the native date-picker's day cells (Rachel: "all the text is white and the blocks are white... it looks empty") was a CSS bug in our injected override, not a TicketSpice setting — fixed in the loader-injected CSS, nothing to change in the console.
