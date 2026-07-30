@@ -22,7 +22,7 @@
 
     Go-live date printed below (July 31 – Aug 4) is Bryan's Slack date ("tomorrow" as of
     7/30), NOT yet confirmed against Amanda's transcript date (7/30) — flagged in the build
-    brief as an open ask. One find-and-replace on <!-- GO-LIVE-DATE --> spans once confirmed.
+    brief as an open ask. One find-and-replace on the GO-LIVE-DATE token spans once confirmed.
 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -117,15 +117,6 @@
         z-index: 100 !important;
         box-sizing: border-box !important;
         box-shadow: 0 2px 16px rgba(54,87,140,0.3) !important;
-    }
-    #abf-funnel .abf-logo-text {
-        font-family: var(--abf-font-display) !important;
-        font-weight: 700 !important;
-        font-size: 1.35rem !important;
-        color: white !important;
-        letter-spacing: 0.01em !important;
-        line-height: 1.15 !important;
-        display: block !important;
     }
     #abf-funnel .abf-nav-right {
         display: flex !important; align-items: center !important; gap: 16px !important;
@@ -576,6 +567,10 @@
     img[alt*="TicketSpice" i], img[alt*="United States" i] {
         display: none !important; visibility: hidden !important; height: 0 !important; width: 0 !important;
     }
+
+.abf-logo-wrap{display:flex;align-items:center}
+.abf-logo-wrap img{height:46px;width:auto;display:block;filter:brightness(0) invert(1)}
+@media(max-width:600px){.abf-logo-wrap img{height:36px}}
 </style>
 
 <div id="abf-funnel">
@@ -594,7 +589,7 @@
 
     <!-- NAV -->
     <div class="abf-nav">
-        <span class="abf-logo-text">Amber Brooke<br>Farms</span>
+        <div class="abf-logo-wrap"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/brand/abf-logo-primary-blue.png" alt="Amber Brooke Farms"></div>
         <div class="abf-nav-right">
             <div class="abf-nav-loc">
                 <svg width="12" height="12" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2" viewBox="0 0 24 24">
