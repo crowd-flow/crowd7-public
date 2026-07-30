@@ -1,0 +1,621 @@
+<!--
+    Amber Brooke Farms · Eustis · Any-Day GA Flash Sale 2026 · TicketSpice content block
+    Standalone flash-sale page (Bryan's call — NOT a rework of the main Fall Festival page).
+    First flash sale + first Any-Day ticket type this client has ever run.
+
+    Source data: work/crowd7/projects/amber-brooke-campaign-brief/artifacts/source-sweep.md
+                 work/crowd7/projects/amber-brooke-campaign-brief/artifacts/brand-palette.md
+    Palette: sampled live from amberbrookefarms.com (navy / terracotta / sage / wheat / cream).
+    Typography: serif pairing (Playfair Display display + Lora body) to match the site's
+                transitional-serif register — exact brand fonts not yet supplied; swap at
+                the :root block below if Amanda/Caleb send brand type.
+
+    Messaging call (open ask, resolved as a build decision — see build brief):
+    Any-Day GA is $19.95, identical to the non-peak online price. There is no discount to
+    advertise, so this page leads on FLEXIBILITY + peak-weekend-adjacent access, never on
+    "save $X." Do not add slash-through / compare-at pricing here — it would imply savings
+    that don't hold up against the non-peak price.
+
+    Blackout dates (Oct 24, 25, 31, Nov 1) are Amanda's hard requirement to be "very clear" —
+    treated as a first-class navy-on-wheat notice block, not fine print, and NOT terracotta
+    (terracotta = buy button on this brand).
+
+    Go-live date printed below (July 31 – Aug 4) is Bryan's Slack date ("tomorrow" as of
+    7/30), NOT yet confirmed against Amanda's transcript date (7/30) — flagged in the build
+    brief as an open ask. One find-and-replace on <!-- GO-LIVE-DATE --> spans once confirmed.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+<style>
+    /* ===========================================================
+       AMBER BROOKE FARMS · EUSTIS · ANY-DAY GA FLASH SALE 2026
+       #abf-funnel — sampled live from amberbrookefarms.com
+       =========================================================== */
+    #abf-funnel {
+        --abf-navy: #36578c;
+        --abf-navy-deep: #2a4570;
+        --abf-dusty-blue: #7d98c0;
+        --abf-mid-blue: #647a9a;
+        --abf-terracotta: #c66a2b;
+        --abf-terracotta-hover: #ad5a22;
+        --abf-sage: #5c7f71;
+        --abf-sage-hover: #4c6b5f;
+        --abf-wheat: #debc8c;
+        --abf-cream: #f7f5e7;
+        --abf-blush-cream: #f8f1e7;
+        --abf-floral-white: #fffaf0;
+        --abf-white: #ffffff;
+        --abf-ink: #222222;
+        --abf-ink-soft: #505050;
+        --abf-font-display: 'Playfair Display', 'Times New Roman', serif;
+        --abf-font-body: 'Lora', 'Georgia', serif;
+    }
+
+    #abf-funnel {
+        width: 100vw !important;
+        position: relative !important;
+        left: 50% !important;
+        right: 50% !important;
+        margin-left: -50vw !important;
+        margin-right: -50vw !important;
+        overflow: hidden !important;
+        font-family: var(--abf-font-body) !important;
+        background: var(--abf-cream) !important;
+        color: var(--abf-ink) !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    /* ── BANNER ── */
+    #abf-funnel .abf-banner {
+        width: 100% !important;
+        background: var(--abf-navy) !important;
+        color: white !important;
+        text-align: center !important;
+        padding: 12px 20px !important;
+        font-size: 0.95rem !important;
+        letter-spacing: 0.05em !important;
+        display: block !important;
+        box-sizing: border-box !important;
+    }
+    #abf-funnel .abf-banner-inner {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 10px !important;
+        flex-wrap: wrap !important;
+        color: white !important;
+    }
+    #abf-funnel .abf-banner-inner span,
+    #abf-funnel .abf-banner-inner strong { color: white !important; }
+    #abf-funnel .abf-dot {
+        width: 3px !important; height: 3px !important;
+        background: rgba(255,255,255,0.45) !important;
+        border-radius: 50% !important;
+        display: inline-block !important;
+        flex-shrink: 0 !important;
+    }
+    #abf-funnel .abf-banner-flash {
+        color: var(--abf-wheat) !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.1em !important;
+    }
+
+    /* ── NAV ── */
+    #abf-funnel .abf-nav {
+        width: 100% !important;
+        padding: 0 40px !important;
+        height: 92px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        background: rgba(54,87,140,0.97) !important;
+        position: sticky !important;
+        top: 0 !important;
+        z-index: 100 !important;
+        box-sizing: border-box !important;
+        box-shadow: 0 2px 16px rgba(54,87,140,0.3) !important;
+    }
+    #abf-funnel .abf-logo-text {
+        font-family: var(--abf-font-display) !important;
+        font-weight: 700 !important;
+        font-size: 1.35rem !important;
+        color: white !important;
+        letter-spacing: 0.01em !important;
+        line-height: 1.15 !important;
+        display: block !important;
+    }
+    #abf-funnel .abf-nav-right {
+        display: flex !important; align-items: center !important; gap: 16px !important;
+    }
+    #abf-funnel .abf-nav-loc {
+        font-size: 0.9rem !important;
+        color: rgba(255,255,255,0.85) !important;
+        display: flex !important; align-items: center !important; gap: 5px !important;
+    }
+    #abf-funnel .abf-nav-cta {
+        background: var(--abf-terracotta) !important;
+        color: white !important;
+        padding: 12px 26px !important;
+        border-radius: 6px !important;
+        font-size: 1rem !important;
+        font-weight: 600 !important;
+        text-decoration: none !important;
+        letter-spacing: 0.02em !important;
+        transition: all 0.3s ease !important;
+        white-space: nowrap !important;
+        display: inline-block !important;
+    }
+    #abf-funnel .abf-nav-cta:hover {
+        background: var(--abf-terracotta-hover) !important;
+        color: white !important;
+        text-decoration: none !important;
+        transform: translateY(-1px);
+    }
+
+    /* ── HERO ── */
+    #abf-funnel .abf-hero {
+        width: 100% !important;
+        min-height: clamp(320px, 50vw, 520px) !important;
+        position: relative !important;
+        display: flex !important;
+        align-items: flex-end !important;
+        overflow: hidden !important;
+        background: linear-gradient(135deg, var(--abf-navy-deep) 0%, var(--abf-navy) 55%, var(--abf-sage) 100%) !important;
+        background-color: var(--abf-navy) !important;
+    }
+    #abf-funnel .abf-hero-overlay {
+        position: absolute !important;
+        inset: 0 !important;
+        background: linear-gradient(to bottom, rgba(42,69,112,0.10) 0%, rgba(34,34,34,0.20) 45%, rgba(42,69,112,0.72) 100%) !important;
+        z-index: 1 !important;
+    }
+    #abf-funnel .abf-hero-content {
+        position: relative !important;
+        z-index: 2 !important;
+        padding: 0 48px 52px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    #abf-funnel .abf-hero-eyebrow {
+        font-size: 0.86rem !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.18em !important;
+        text-transform: uppercase !important;
+        color: rgba(255,255,255,0.92) !important;
+        margin-bottom: 10px !important;
+        display: block !important;
+    }
+    #abf-funnel .abf-hero-title {
+        font-family: var(--abf-font-display) !important;
+        font-size: clamp(2.4rem, 7vw, 4.4rem) !important;
+        font-weight: 700 !important;
+        color: white !important;
+        line-height: 1.08 !important;
+        display: block !important;
+        text-shadow: 0 2px 20px rgba(0,0,0,0.3) !important;
+    }
+    #abf-funnel .abf-hero-title em {
+        font-style: italic !important;
+        color: var(--abf-wheat) !important;
+    }
+    #abf-funnel .abf-hero-tagline {
+        font-family: var(--abf-font-body) !important;
+        font-style: italic !important;
+        font-size: clamp(1.05rem, 2.2vw, 1.3rem) !important;
+        color: #fdf6e8 !important;
+        margin-top: 14px !important;
+        display: block !important;
+        max-width: 640px !important;
+        line-height: 1.5 !important;
+    }
+
+    /* ── BLACKOUT NOTICE — first-class element, navy-on-wheat (NOT terracotta) ── */
+    #abf-funnel .abf-blackout {
+        width: 100% !important;
+        background: var(--abf-wheat) !important;
+        border-top: 3px solid var(--abf-navy) !important;
+        border-bottom: 3px solid var(--abf-navy) !important;
+        padding: 26px 48px !important;
+        box-sizing: border-box !important;
+        display: block !important;
+    }
+    #abf-funnel .abf-blackout-inner {
+        max-width: 920px !important;
+        margin: 0 auto !important;
+        display: flex !important;
+        align-items: flex-start !important;
+        gap: 16px !important;
+    }
+    #abf-funnel .abf-blackout-icon {
+        font-size: 1.6rem !important;
+        line-height: 1 !important;
+        flex-shrink: 0 !important;
+    }
+    #abf-funnel .abf-blackout-text {
+        color: var(--abf-navy-deep) !important;
+    }
+    #abf-funnel .abf-blackout-text strong {
+        font-family: var(--abf-font-display) !important;
+        font-size: 1.05rem !important;
+        display: block !important;
+        margin-bottom: 4px !important;
+        color: var(--abf-navy-deep) !important;
+    }
+    #abf-funnel .abf-blackout-text span {
+        font-size: 0.98rem !important;
+        line-height: 1.5 !important;
+        display: block !important;
+        color: var(--abf-navy-deep) !important;
+    }
+    #abf-funnel .abf-blackout-dates {
+        font-weight: 700 !important;
+    }
+
+    /* ── WHAT'S INCLUDED ── */
+    #abf-funnel .abf-benefits {
+        width: 100% !important;
+        background: white !important;
+        padding: 48px 48px !important;
+        display: block !important;
+        box-sizing: border-box !important;
+    }
+    #abf-funnel .abf-benefits-header {
+        text-align: center !important;
+        margin-bottom: 32px !important;
+    }
+    #abf-funnel .abf-eye {
+        font-size: 0.84rem !important; font-weight: 600 !important;
+        letter-spacing: 0.2em !important; text-transform: uppercase !important;
+        color: var(--abf-terracotta) !important; margin-bottom: 8px !important; display: block !important;
+    }
+    #abf-funnel .abf-section-title {
+        font-family: var(--abf-font-display) !important;
+        font-size: clamp(1.8rem, 4.2vw, 2.6rem) !important;
+        font-weight: 700 !important; color: var(--abf-navy) !important;
+        line-height: 1.2 !important; display: block !important;
+    }
+    #abf-funnel .abf-section-title em { font-style: italic; color: var(--abf-sage); }
+    #abf-funnel .abf-benefits-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 20px 40px !important;
+        max-width: 880px !important;
+        margin: 0 auto !important;
+    }
+    #abf-funnel .abf-benefit {
+        display: flex !important;
+        gap: 12px !important;
+        align-items: flex-start !important;
+    }
+    #abf-funnel .abf-benefit-check {
+        color: var(--abf-sage) !important;
+        font-size: 1.2rem !important;
+        line-height: 1.4 !important;
+        flex-shrink: 0 !important;
+    }
+    #abf-funnel .abf-benefit-text { color: var(--abf-ink-soft) !important; line-height: 1.5 !important; }
+    #abf-funnel .abf-benefit-text strong { color: var(--abf-ink) !important; }
+
+    /* ── TICKET HIGHLIGHT ── */
+    #abf-funnel .abf-tickets {
+        width: 100% !important;
+        background: var(--abf-blush-cream) !important;
+        padding: 56px 48px !important;
+        display: block !important; box-sizing: border-box !important;
+    }
+    #abf-funnel .abf-tickets-header { text-align: center !important; margin-bottom: 36px !important; }
+    #abf-funnel .abf-ticket-card {
+        max-width: 460px !important;
+        margin: 0 auto !important;
+        background: white !important;
+        border: 2px solid var(--abf-sage) !important;
+        border-radius: 14px !important;
+        padding: 36px 36px !important;
+        box-sizing: border-box !important;
+        text-align: center !important;
+    }
+    #abf-funnel .abf-ticket-badge {
+        display: inline-block !important;
+        background: var(--abf-sage) !important;
+        color: white !important;
+        font-size: 0.78rem !important; font-weight: 700 !important;
+        letter-spacing: 0.12em !important; text-transform: uppercase !important;
+        padding: 6px 14px !important; border-radius: 20px !important;
+        margin-bottom: 16px !important;
+    }
+    #abf-funnel .abf-ticket-card h3 {
+        font-family: var(--abf-font-display) !important;
+        font-size: 1.7rem !important; font-weight: 700 !important;
+        color: var(--abf-navy) !important; margin-bottom: 12px !important;
+    }
+    #abf-funnel .abf-ticket-price {
+        font-family: var(--abf-font-display) !important;
+        font-size: 3rem !important; font-weight: 700 !important;
+        color: var(--abf-terracotta) !important; line-height: 1 !important;
+        margin-bottom: 6px !important;
+    }
+    #abf-funnel .abf-ticket-note {
+        font-size: 0.92rem !important; color: var(--abf-ink-soft) !important;
+        margin-bottom: 22px !important; line-height: 1.5 !important;
+    }
+    #abf-funnel .abf-ticket-cta {
+        display: inline-block !important;
+        background: var(--abf-terracotta) !important;
+        color: white !important;
+        padding: 14px 40px !important;
+        border-radius: 6px !important;
+        font-size: 1.05rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.03em !important;
+        text-decoration: none !important;
+        transition: all 0.25s ease !important;
+    }
+    #abf-funnel .abf-ticket-cta:hover {
+        background: var(--abf-terracotta-hover) !important;
+        color: white !important;
+        text-decoration: none !important;
+        transform: translateY(-1px) !important;
+    }
+    #abf-funnel .abf-ticket-fees {
+        display: block !important;
+        margin-top: 12px !important;
+        font-size: 0.78rem !important;
+        color: var(--abf-ink-soft) !important;
+        opacity: 0.85 !important;
+    }
+
+    /* ── INFO ROW ── */
+    #abf-funnel .abf-info {
+        width: 100% !important;
+        background: var(--abf-navy) !important;
+        padding: 0 !important; display: block !important; box-sizing: border-box !important;
+    }
+    #abf-funnel .abf-info-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+    #abf-funnel .abf-info-item {
+        text-align: center !important;
+        padding: 26px 20px !important;
+        position: relative !important;
+    }
+    #abf-funnel .abf-info-item:not(:last-child)::after {
+        content: '' !important; position: absolute !important;
+        right: 0 !important; top: 20% !important; bottom: 20% !important;
+        width: 1px !important; background: rgba(255,255,255,0.15) !important;
+    }
+    #abf-funnel .abf-info-label {
+        font-size: 0.76rem !important; font-weight: 700 !important;
+        letter-spacing: 0.15em !important; text-transform: uppercase !important;
+        color: rgba(255,255,255,0.85) !important; display: block !important; margin-bottom: 4px !important;
+    }
+    #abf-funnel .abf-info-value {
+        font-family: var(--abf-font-display) !important;
+        font-size: 1.05rem !important; font-weight: 600 !important;
+        color: white !important; display: block !important; line-height: 1.35 !important;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+        #abf-funnel .abf-nav { padding: 0 24px !important; }
+        #abf-funnel .abf-benefits { padding: 40px 24px !important; }
+        #abf-funnel .abf-tickets { padding: 44px 24px !important; }
+        #abf-funnel .abf-blackout { padding: 22px 24px !important; }
+        #abf-funnel .abf-info-grid { grid-template-columns: 1fr !important; }
+        #abf-funnel .abf-info-item:not(:last-child)::after { display: none !important; }
+        #abf-funnel .abf-info-item:not(:last-child) { border-bottom: 1px solid rgba(255,255,255,0.15) !important; }
+        #abf-funnel .abf-hero-content { padding: 0 24px 40px !important; }
+        #abf-funnel .abf-benefits-grid { grid-template-columns: 1fr !important; }
+    }
+    @media (max-width: 560px) {
+        #abf-funnel .abf-nav { padding: 0 16px !important; height: 76px !important; }
+        #abf-funnel .abf-nav-loc { display: none !important; }
+        #abf-funnel .abf-hero-content { padding: 0 20px 32px !important; }
+        #abf-funnel .abf-blackout-inner { flex-direction: column !important; gap: 8px !important; }
+        #abf-funnel .abf-ticket-card { padding: 28px 22px !important; }
+    }
+
+    /* ── Defensive TS-chrome suppression ── */
+    .WCX-poweredBy, .WCX-footer-poweredBy, [class*="poweredBy"], [class*="powered-by"],
+    [class*="powered_by"], .ticketspice-logo, .tsr-poweredBy, .WCX-footer-flag,
+    .WCX-localeFlag, .country-flag, .locale-flag, [class*="localeFlag"],
+    img[src*="ticketspice"], img[src*="us-flag"], img[src*="us_flag"], img[src*="usa-flag"],
+    img[alt*="TicketSpice" i], img[alt*="United States" i] {
+        display: none !important; visibility: hidden !important; height: 0 !important; width: 0 !important;
+    }
+</style>
+
+<div id="abf-funnel">
+
+    <!-- BANNER -->
+    <div class="abf-banner">
+        <div class="abf-banner-inner">
+            <span class="abf-banner-flash">⚡ 5-DAY FLASH SALE ⚡</span>
+            <span class="abf-dot"></span>
+            <!-- GO-LIVE-DATE: Bryan's Slack date (7/31), unconfirmed vs Amanda's transcript (7/30) — see build brief -->
+            <span><strong>July 31 – August 4</strong></span>
+            <span class="abf-dot"></span>
+            <span>Any-Day GA — New For 2026</span>
+        </div>
+    </div>
+
+    <!-- NAV -->
+    <div class="abf-nav">
+        <span class="abf-logo-text">Amber Brooke<br>Farms</span>
+        <div class="abf-nav-right">
+            <div class="abf-nav-loc">
+                <svg width="12" height="12" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                    <circle cx="12" cy="11" r="3"/>
+                </svg>
+                Eustis, FL
+            </div>
+            <a href="#tickets" class="abf-nav-cta">Buy Tickets</a>
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <div class="abf-hero">
+        <div class="abf-hero-overlay"></div>
+        <div class="abf-hero-content">
+            <span class="abf-hero-eyebrow">6th Annual Fall Festival · Sept 19 – Nov 22, 2026</span>
+            <span class="abf-hero-title">Come <em>Any Day</em> You Like</span>
+            <span class="abf-hero-tagline">A brand-new Any-Day General Admission ticket — pick the day that works for your family, any regular-season day of the festival.</span>
+        </div>
+    </div>
+
+    <!-- BLACKOUT NOTICE — Amanda's hard requirement, first-class element -->
+    <div class="abf-blackout">
+        <div class="abf-blackout-inner">
+            <span class="abf-blackout-icon">⚠️</span>
+            <div class="abf-blackout-text">
+                <strong>Please note before you buy</strong>
+                <span>Any-Day GA does <strong>not</strong> include our four Peak Days: <span class="abf-blackout-dates">October 24, 25, 31 &amp; November 1</span>. This ticket is valid any other day the farm is open during the season. Blackout dates will also appear clearly on your ticket and confirmation email.</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- WHAT'S INCLUDED -->
+    <div class="abf-benefits">
+        <div class="abf-benefits-header">
+            <span class="abf-eye">Any-Day GA</span>
+            <span class="abf-section-title">One ticket, <em>your choice</em> of day</span>
+        </div>
+        <div class="abf-benefits-grid">
+            <div class="abf-benefit">
+                <span class="abf-benefit-check">✓</span>
+                <span class="abf-benefit-text"><strong>Full festival admission</strong> — valid any regular-season day, September through November</span>
+            </div>
+            <div class="abf-benefit">
+                <span class="abf-benefit-check">✓</span>
+                <span class="abf-benefit-text"><strong>Weekends &amp; Columbus Day</strong> — Sept weekends, Oct Fri/Sat/Sun + Columbus Day Monday, Nov weekends</span>
+            </div>
+            <div class="abf-benefit">
+                <span class="abf-benefit-check">✓</span>
+                <span class="abf-benefit-text"><strong>No date lock-in at checkout</strong> — flexibility to plan your visit around your schedule</span>
+            </div>
+            <div class="abf-benefit">
+                <span class="abf-benefit-check">⚠️</span>
+                <span class="abf-benefit-text"><strong>Excludes our 4 Peak Days</strong> — Oct 24, 25, 31 &amp; Nov 1 (see notice above)</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- TICKET -->
+    <div class="abf-tickets" id="tickets">
+        <div class="abf-tickets-header">
+            <span class="abf-eye">Admission</span>
+            <span class="abf-section-title">Get your <em>Any-Day GA</em></span>
+        </div>
+        <div class="abf-ticket-card">
+            <span class="abf-ticket-badge">New For 2026</span>
+            <h3>Any-Day General Admission</h3>
+            <div class="abf-ticket-price">$19.95</div>
+            <div class="abf-ticket-note">Per person · valid any regular-season day (blackout dates above apply)</div>
+            <a href="#ticketBlock" class="abf-ticket-cta">Buy Tickets</a>
+            <span class="abf-ticket-fees">*plus applicable taxes and fees · select your ticket below</span>
+        </div>
+    </div>
+
+    <!-- INFO ROW -->
+    <div class="abf-info">
+        <div class="abf-info-grid">
+            <div class="abf-info-item">
+                <span class="abf-info-label">Location</span>
+                <span class="abf-info-value">Amber Brooke Farms — Eustis<br>36111 County Rd 44A, Eustis, FL 32736</span>
+            </div>
+            <div class="abf-info-item">
+                <span class="abf-info-label">Season</span>
+                <span class="abf-info-value">Sept 19 – Nov 22, 2026</span>
+            </div>
+            <div class="abf-info-item">
+                <span class="abf-info-label">Flash Sale Window</span>
+                <span class="abf-info-value">July 31 – August 4</span>
+            </div>
+        </div>
+    </div>
+
+</div><!-- end #abf-funnel -->
+
+<script>
+    (function() {
+        document.querySelectorAll('#abf-funnel a[href^="#"]').forEach(function(a) {
+            a.addEventListener('click', function(e) {
+                var target = document.querySelector(a.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    })();
+</script>
+
+<!-- ============================================================
+     AMBER BROOKE FARMS — FLOATING BUY TICKETS BUTTON
+     Paste as a SEPARATE Custom HTML block in TicketSpice (not nested
+     inside the page-header HTML above). Fixed to viewport bottom.
+     ============================================================ -->
+<style>
+    #abf-float-btn {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 9999 !important;
+        padding: 12px 16px 20px !important;
+        background: linear-gradient(to top, rgba(247,245,231,0.97) 55%, transparent) !important;
+        display: flex !important;
+        justify-content: center !important;
+        transition: opacity 0.35s ease, transform 0.35s ease !important;
+    }
+    #abf-float-btn.abf-float-hidden {
+        opacity: 0 !important;
+        transform: translateY(24px) !important;
+        pointer-events: none !important;
+    }
+    #abf-float-btn a {
+        display: block !important;
+        width: 100% !important;
+        max-width: 480px !important;
+        background: #c66a2b !important;
+        color: #ffffff !important;
+        font-family: 'Playfair Display', 'Times New Roman', serif !important;
+        font-size: 22px !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.03em !important;
+        text-align: center !important;
+        text-decoration: none !important;
+        padding: 18px 28px !important;
+        border-radius: 8px !important;
+        box-shadow: 0 8px 32px rgba(198,106,43,0.40) !important;
+        transition: transform 0.15s, box-shadow 0.15s, background 0.2s !important;
+        border: none !important;
+        cursor: pointer !important;
+    }
+    #abf-float-btn a:hover {
+        background: #ad5a22 !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 14px 40px rgba(198,106,43,0.55) !important;
+        color: #ffffff !important;
+        text-decoration: none !important;
+    }
+</style>
+
+<div id="abf-float-btn">
+    <a href="#ticketBlock">Buy Tickets</a>
+</div>
+
+<script>
+    (function() {
+        var floatBtn = document.getElementById('abf-float-btn');
+        if (floatBtn) {
+            floatBtn.querySelector('a').addEventListener('click', function() {
+                floatBtn.classList.add('abf-float-hidden');
+            });
+        }
+    })();
+</script>
