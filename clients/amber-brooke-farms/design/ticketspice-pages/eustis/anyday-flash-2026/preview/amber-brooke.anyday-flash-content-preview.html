@@ -15,6 +15,32 @@
 </head>
 <body>
 
+<!--
+    Amber Brooke Farms · Eustis · Any-Day GA Flash Sale 2026 · TicketSpice content block
+    Standalone flash-sale page (Bryan's call — NOT a rework of the main Fall Festival page).
+    First flash sale + first Any-Day ticket type this client has ever run.
+
+    Source data: work/crowd7/projects/amber-brooke-campaign-brief/artifacts/source-sweep.md
+                 work/crowd7/projects/amber-brooke-campaign-brief/artifacts/brand-palette.md
+    Palette: sampled live from amberbrookefarms.com (navy / terracotta / sage / wheat / cream).
+    Typography: serif pairing (Playfair Display display + Lora body) to match the site's
+                transitional-serif register — exact brand fonts not yet supplied; swap at
+                the :root block below if Amanda/Caleb send brand type.
+
+    Messaging call (open ask, resolved as a build decision — see build brief):
+    Any-Day GA is $19.95, identical to the non-peak online price. There is no discount to
+    advertise, so this page leads on FLEXIBILITY + peak-weekend-adjacent access, never on
+    "save $X." Do not add slash-through / compare-at pricing here — it would imply savings
+    that don't hold up against the non-peak price.
+
+    Blackout dates (Oct 24, 25, 31, Nov 1) are Amanda's hard requirement to be "very clear" —
+    treated as a first-class navy-on-wheat notice block, not fine print, and NOT terracotta
+    (terracotta = buy button on this brand).
+
+    Go-live date printed below (July 31 – Aug 4) is Bryan's Slack date ("tomorrow" as of
+    7/30), NOT yet confirmed against Amanda's transcript date (7/30) — flagged in the build
+    brief as an open ask. One find-and-replace on <!-- GO-LIVE-DATE --> spans once confirmed.
+-->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
@@ -154,13 +180,15 @@
         display: flex !important;
         align-items: flex-end !important;
         overflow: hidden !important;
-        background: linear-gradient(135deg, var(--abf-navy-deep) 0%, var(--abf-navy) 55%, var(--abf-sage) 100%) !important;
+        background-image: linear-gradient(135deg, rgba(42,69,112,0.15) 0%, rgba(54,87,140,0.05) 55%, rgba(92,127,113,0.15) 100%), url('https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/ts-hero-3438.jpg') !important;
+        background-size: cover !important;
+        background-position: center 42% !important;
         background-color: var(--abf-navy) !important;
     }
     #abf-funnel .abf-hero-overlay {
         position: absolute !important;
         inset: 0 !important;
-        background: linear-gradient(to bottom, rgba(42,69,112,0.10) 0%, rgba(34,34,34,0.20) 45%, rgba(42,69,112,0.72) 100%) !important;
+        background: linear-gradient(to bottom, rgba(42,69,112,0.15) 0%, rgba(34,34,34,0.22) 45%, rgba(42,69,112,0.78) 100%) !important;
         z-index: 1 !important;
     }
     #abf-funnel .abf-hero-content {
@@ -290,6 +318,62 @@
     #abf-funnel .abf-benefit-text { color: var(--abf-ink-soft) !important; line-height: 1.5 !important; }
     #abf-funnel .abf-benefit-text strong { color: var(--abf-ink) !important; }
 
+    /* ── GALLERY ── */
+    #abf-funnel .abf-gallery {
+        width: 100% !important;
+        background: var(--abf-cream) !important;
+        padding: 56px 0 !important;
+        overflow: hidden !important;
+        display: block !important;
+    }
+    #abf-funnel .abf-gallery-header {
+        text-align: center !important;
+        padding: 0 48px !important;
+        margin-bottom: 32px !important;
+    }
+    #abf-funnel .abf-gallery-mask {
+        width: 100% !important; overflow: hidden !important;
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%) !important;
+        mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%) !important;
+    }
+    #abf-funnel .abf-gallery-track {
+        display: flex !important; gap: 16px !important;
+        width: max-content !important;
+        animation: abfMarquee 42s linear infinite !important;
+        padding: 8px 0 !important;
+    }
+    #abf-funnel .abf-gallery-track:hover { animation-play-state: paused !important; }
+    @keyframes abfMarquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    #abf-funnel .abf-gcard {
+        width: 340px !important; height: 240px !important;
+        border-radius: 16px !important; overflow: hidden !important;
+        flex-shrink: 0 !important; position: relative !important;
+        cursor: pointer !important;
+        background: linear-gradient(135deg, var(--abf-wheat), var(--abf-dusty-blue)) !important;
+        transition: transform 0.4s ease, box-shadow 0.4s ease !important;
+    }
+    #abf-funnel .abf-gcard:hover {
+        transform: scale(1.03) translateY(-5px) !important;
+        box-shadow: 0 24px 50px rgba(54,87,140,0.25) !important; z-index: 2 !important;
+    }
+    #abf-funnel .abf-gcard img {
+        width: 100% !important; height: 100% !important;
+        object-fit: cover !important; display: block !important;
+        position: absolute !important; inset: 0 !important;
+        transition: transform 0.6s ease !important;
+    }
+    #abf-funnel .abf-gcard:hover img { transform: scale(1.08) !important; }
+    #abf-funnel .abf-gcard-label {
+        position: absolute !important; bottom: 12px !important; left: 12px !important;
+        background: rgba(42,69,112,0.62) !important; backdrop-filter: blur(8px) !important;
+        color: white !important; font-size: 0.68rem !important; letter-spacing: 0.1em !important;
+        text-transform: uppercase !important; font-weight: 700 !important;
+        padding: 5px 12px !important; border-radius: 20px !important;
+        opacity: 0 !important; transform: translateY(4px) !important;
+        transition: opacity 0.3s ease, transform 0.3s ease !important; z-index: 2 !important;
+    }
+    #abf-funnel .abf-gcard:hover .abf-gcard-label { opacity: 1 !important; transform: none !important; }
+
     /* ── TICKET HIGHLIGHT ── */
     #abf-funnel .abf-tickets {
         width: 100% !important;
@@ -400,6 +484,8 @@
         #abf-funnel .abf-info-item:not(:last-child) { border-bottom: 1px solid rgba(255,255,255,0.15) !important; }
         #abf-funnel .abf-hero-content { padding: 0 24px 40px !important; }
         #abf-funnel .abf-benefits-grid { grid-template-columns: 1fr !important; }
+        #abf-funnel .abf-gallery-header { padding: 0 24px !important; }
+        #abf-funnel .abf-gcard { width: 280px !important; height: 196px !important; }
     }
     @media (max-width: 560px) {
         #abf-funnel .abf-nav { padding: 0 16px !important; height: 76px !important; }
@@ -407,6 +493,8 @@
         #abf-funnel .abf-hero-content { padding: 0 20px 32px !important; }
         #abf-funnel .abf-blackout-inner { flex-direction: column !important; gap: 8px !important; }
         #abf-funnel .abf-ticket-card { padding: 28px 22px !important; }
+        #abf-funnel .abf-gallery-header { padding: 0 16px !important; }
+        #abf-funnel .abf-gcard { width: 230px !important; height: 160px !important; }
     }
 
     /* ── Defensive TS-chrome suppression ── */
@@ -426,6 +514,7 @@
         <div class="abf-banner-inner">
             <span class="abf-banner-flash">⚡ 5-DAY FLASH SALE ⚡</span>
             <span class="abf-dot"></span>
+            <!-- GO-LIVE-DATE: Bryan's Slack date (7/31), unconfirmed vs Amanda's transcript (7/30) — see build brief -->
             <span><strong>July 31 – August 4</strong></span>
             <span class="abf-dot"></span>
             <span>Any-Day GA — New For 2026</span>
@@ -457,7 +546,7 @@
         </div>
     </div>
 
-    <!-- BLACKOUT NOTICE -->
+    <!-- BLACKOUT NOTICE — Amanda's hard requirement, first-class element -->
     <div class="abf-blackout">
         <div class="abf-blackout-inner">
             <span class="abf-blackout-icon">⚠️</span>
@@ -490,6 +579,45 @@
             <div class="abf-benefit">
                 <span class="abf-benefit-check">⚠️</span>
                 <span class="abf-benefit-text"><strong>Excludes our 4 Peak Days</strong> — Oct 24, 25, 31 &amp; Nov 1 (see notice above)</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- GALLERY -->
+    <div class="abf-gallery">
+        <div class="abf-gallery-header">
+            <span class="abf-eye">Around the Farm</span>
+            <span class="abf-section-title">A season of <em>fall fun</em></span>
+        </div>
+        <div class="abf-gallery-mask">
+            <div class="abf-gallery-track">
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/pumpkin-eater.jpg" alt="A giant pumpkin-eater photo prop at Amber Brooke Farms" loading="lazy"><div class="abf-gcard-label">Pumpkin Fun</div></div>
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/jumping-pillows-pads.jpg" alt="Kids on the jumping pillows at Amber Brooke Farms" loading="lazy"><div class="abf-gcard-label">Jumping Pillows</div></div>
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/slide-hill.jpg" alt="Kids on the giant slide hill at Amber Brooke Farms" loading="lazy"><div class="abf-gcard-label">Slide Hill</div></div>
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/spider-web.jpg" alt="Kids climbing the spider web at Amber Brooke Farms" loading="lazy"><div class="abf-gcard-label">Spider Web Climb</div></div>
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/gemstone-mining.jpg" alt="Kids gemstone mining at Amber Brooke Farms" loading="lazy"><div class="abf-gcard-label">Gemstone Mining</div></div>
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/duck-race.jpg" alt="The duck race attraction at Amber Brooke Farms" loading="lazy"><div class="abf-gcard-label">Duck Races</div></div>
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/cornhole.jpg" alt="Cornhole games at Amber Brooke Farms" loading="lazy"><div class="abf-gcard-label">Cornhole</div></div>
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/platform-playgrounds.jpg" alt="Platform playground at Amber Brooke Farms" loading="lazy"><div class="abf-gcard-label">Playgrounds</div></div>
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/tire-sand-pit-with-diggers-eustis.jpg" alt="Tire sand pit with diggers at Amber Brooke Farms Eustis" loading="lazy"><div class="abf-gcard-label">Tire Sand Pit</div></div>
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/stage.jpg" alt="Live entertainment stage at Amber Brooke Farms" loading="lazy"><div class="abf-gcard-label">Live Entertainment</div></div>
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/sunflowers.jpg" alt="Sunflower fields at Amber Brooke Farms" loading="lazy"><div class="abf-gcard-label">Sunflower Fields</div></div>
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/zinnias.jpg" alt="Zinnia fields at Amber Brooke Farms" loading="lazy"><div class="abf-gcard-label">Zinnia Fields</div></div>
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/Train-Ride-8-scaled.jpg" alt="Train ride at Amber Brooke Farms" loading="lazy"><div class="abf-gcard-label">Train Ride</div></div>
+                <!-- Duplicate set for seamless marquee loop -->
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/pumpkin-eater.jpg" alt="A giant pumpkin-eater photo prop at Amber Brooke Farms" loading="lazy"><div class="abf-gcard-label">Pumpkin Fun</div></div>
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/jumping-pillows-pads.jpg" alt="Kids on the jumping pillows at Amber Brooke Farms" loading="lazy"><div class="abf-gcard-label">Jumping Pillows</div></div>
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/slide-hill.jpg" alt="Kids on the giant slide hill at Amber Brooke Farms" loading="lazy"><div class="abf-gcard-label">Slide Hill</div></div>
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/spider-web.jpg" alt="Kids climbing the spider web at Amber Brooke Farms" loading="lazy"><div class="abf-gcard-label">Spider Web Climb</div></div>
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/gemstone-mining.jpg" alt="Kids gemstone mining at Amber Brooke Farms" loading="lazy"><div class="abf-gcard-label">Gemstone Mining</div></div>
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/duck-race.jpg" alt="The duck race attraction at Amber Brooke Farms" loading="lazy"><div class="abf-gcard-label">Duck Races</div></div>
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/cornhole.jpg" alt="Cornhole games at Amber Brooke Farms" loading="lazy"><div class="abf-gcard-label">Cornhole</div></div>
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/platform-playgrounds.jpg" alt="Platform playground at Amber Brooke Farms" loading="lazy"><div class="abf-gcard-label">Playgrounds</div></div>
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/tire-sand-pit-with-diggers-eustis.jpg" alt="Tire sand pit with diggers at Amber Brooke Farms Eustis" loading="lazy"><div class="abf-gcard-label">Tire Sand Pit</div></div>
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/stage.jpg" alt="Live entertainment stage at Amber Brooke Farms" loading="lazy"><div class="abf-gcard-label">Live Entertainment</div></div>
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/sunflowers.jpg" alt="Sunflower fields at Amber Brooke Farms" loading="lazy"><div class="abf-gcard-label">Sunflower Fields</div></div>
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/zinnias.jpg" alt="Zinnia fields at Amber Brooke Farms" loading="lazy"><div class="abf-gcard-label">Zinnia Fields</div></div>
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/Train-Ride-8-scaled.jpg" alt="Train ride at Amber Brooke Farms" loading="lazy"><div class="abf-gcard-label">Train Ride</div></div>
             </div>
         </div>
     </div>
@@ -544,7 +672,11 @@
     })();
 </script>
 
-<!-- Floating Buy Tickets button -->
+<!-- ============================================================
+     AMBER BROOKE FARMS — FLOATING BUY TICKETS BUTTON
+     Paste as a SEPARATE Custom HTML block in TicketSpice (not nested
+     inside the page-header HTML above). Fixed to viewport bottom.
+     ============================================================ -->
 <style>
     #abf-float-btn {
         position: fixed !important;
