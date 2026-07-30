@@ -231,22 +231,21 @@
         line-height: 1.5 !important;
     }
 
-    /* ── BLACKOUT NOTICE — first-class element, navy-on-wheat (NOT terracotta) ── */
-    #abf-funnel .abf-blackout {
-        width: 100% !important;
+    /* ── BLACKOUT NOTICE — demoted from full-bleed band to an inline notice inside the ticket
+       area (Finding 2, WS7). Amanda's requirement is about the ticket + confirmation email
+       (TS cart, in the build brief), not a landing-page billboard. Content + navy/wheat
+       palette unchanged — only placement and prominence. ── */
+    #abf-funnel .abf-blackout-inline {
+        max-width: 900px !important;
+        margin: 0 auto 32px !important;
         background: var(--abf-wheat) !important;
-        border-top: 3px solid var(--abf-navy) !important;
-        border-bottom: 3px solid var(--abf-navy) !important;
-        padding: 26px 48px !important;
+        border: 2px solid var(--abf-navy) !important;
+        border-radius: 12px !important;
+        padding: 20px 28px !important;
         box-sizing: border-box !important;
-        display: block !important;
-    }
-    #abf-funnel .abf-blackout-inner {
-        max-width: 920px !important;
-        margin: 0 auto !important;
         display: flex !important;
         align-items: flex-start !important;
-        gap: 16px !important;
+        gap: 14px !important;
     }
     #abf-funnel .abf-blackout-icon {
         font-size: 1.6rem !important;
@@ -258,13 +257,13 @@
     }
     #abf-funnel .abf-blackout-text strong {
         font-family: var(--abf-font-display) !important;
-        font-size: 1.05rem !important;
+        font-size: 1rem !important;
         display: block !important;
         margin-bottom: 4px !important;
         color: var(--abf-navy-deep) !important;
     }
     #abf-funnel .abf-blackout-text span {
-        font-size: 0.98rem !important;
+        font-size: 0.92rem !important;
         line-height: 1.5 !important;
         display: block !important;
         color: var(--abf-navy-deep) !important;
@@ -273,17 +272,15 @@
         font-weight: 700 !important;
     }
 
-    /* ── WHAT'S INCLUDED ── */
+    /* ── BENEFITS — unheaded emoji tile strip (house pattern, Finding 1). No eyebrow, no
+       section title, no ✓-sentence copy — emoji + 2–4 word label + one short line. ── */
     #abf-funnel .abf-benefits {
         width: 100% !important;
         background: white !important;
-        padding: 48px 48px !important;
+        padding: 36px 48px !important;
         display: block !important;
         box-sizing: border-box !important;
-    }
-    #abf-funnel .abf-benefits-header {
-        text-align: center !important;
-        margin-bottom: 32px !important;
+        border-bottom: 1px solid rgba(54,87,140,0.08) !important;
     }
     #abf-funnel .abf-eye {
         font-size: 0.84rem !important; font-weight: 600 !important;
@@ -299,24 +296,32 @@
     #abf-funnel .abf-section-title em { font-style: italic; color: var(--abf-sage); }
     #abf-funnel .abf-benefits-grid {
         display: grid !important;
-        grid-template-columns: 1fr 1fr !important;
-        gap: 20px 40px !important;
-        max-width: 880px !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        max-width: 1000px !important;
         margin: 0 auto !important;
     }
     #abf-funnel .abf-benefit {
-        display: flex !important;
-        gap: 12px !important;
-        align-items: flex-start !important;
+        text-align: center !important;
+        padding: 8px 20px !important;
+        position: relative !important;
     }
-    #abf-funnel .abf-benefit-check {
-        color: var(--abf-sage) !important;
-        font-size: 1.2rem !important;
-        line-height: 1.4 !important;
-        flex-shrink: 0 !important;
+    #abf-funnel .abf-benefit:not(:last-child)::after {
+        content: '' !important;
+        position: absolute !important;
+        right: 0 !important; top: 15% !important; bottom: 15% !important;
+        width: 1px !important;
+        background: rgba(54,87,140,0.1) !important;
     }
-    #abf-funnel .abf-benefit-text { color: var(--abf-ink-soft) !important; line-height: 1.5 !important; }
-    #abf-funnel .abf-benefit-text strong { color: var(--abf-ink) !important; }
+    #abf-funnel .abf-benefit-icon { font-size: 1.7rem !important; margin-bottom: 8px !important; display: block !important; }
+    #abf-funnel .abf-benefit-title {
+        font-family: var(--abf-font-display) !important;
+        font-size: 1rem !important; font-weight: 600 !important;
+        color: var(--abf-ink) !important; margin-bottom: 3px !important; display: block !important;
+    }
+    #abf-funnel .abf-benefit-desc {
+        font-size: 0.78rem !important; color: var(--abf-ink-soft) !important;
+        line-height: 1.4 !important; display: block !important; font-style: italic !important;
+    }
 
     /* ── GALLERY ── */
     #abf-funnel .abf-gallery {
@@ -374,75 +379,143 @@
     }
     #abf-funnel .abf-gcard:hover .abf-gcard-label { opacity: 1 !important; transform: none !important; }
 
-    /* ── TICKET HIGHLIGHT ── */
+    /* ── TICKETS — grid of badged cards (Finding 3, WS7). Ported the house `-grid` → badged
+       `-card` → price-row stack; two products per Mat's 2026-07-30 directive. ── */
     #abf-funnel .abf-tickets {
         width: 100% !important;
         background: var(--abf-blush-cream) !important;
         padding: 56px 48px !important;
         display: block !important; box-sizing: border-box !important;
     }
-    #abf-funnel .abf-tickets-header { text-align: center !important; margin-bottom: 36px !important; }
-    #abf-funnel .abf-ticket-card {
-        max-width: 460px !important;
+    #abf-funnel .abf-tickets-header { text-align: center !important; margin-bottom: 32px !important; }
+    #abf-funnel .abf-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 24px !important;
+        max-width: 900px !important;
         margin: 0 auto !important;
+    }
+    #abf-funnel .abf-card {
+        border-radius: 16px !important;
+        padding: 32px 30px !important;
+        position: relative !important;
+        box-sizing: border-box !important;
+        display: flex !important; flex-direction: column !important;
+        transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    }
+    #abf-funnel .abf-card:hover { transform: translateY(-4px) !important; }
+    #abf-funnel .abf-card-primary {
         background: white !important;
         border: 2px solid var(--abf-sage) !important;
-        border-radius: 14px !important;
-        padding: 36px 36px !important;
-        box-sizing: border-box !important;
-        text-align: center !important;
     }
-    #abf-funnel .abf-ticket-badge {
+    #abf-funnel .abf-card-primary:hover { box-shadow: 0 20px 40px rgba(92,127,113,0.2) !important; }
+    #abf-funnel .abf-card-secondary {
+        background: white !important;
+        border: 2px solid rgba(54,87,140,0.18) !important;
+    }
+    #abf-funnel .abf-card-secondary:hover { box-shadow: 0 20px 40px rgba(54,87,140,0.12) !important; }
+    #abf-funnel .abf-card-badge {
         display: inline-block !important;
-        background: var(--abf-sage) !important;
-        color: white !important;
-        font-size: 0.78rem !important; font-weight: 700 !important;
-        letter-spacing: 0.12em !important; text-transform: uppercase !important;
+        font-size: 0.74rem !important; font-weight: 700 !important;
+        letter-spacing: 0.1em !important; text-transform: uppercase !important;
         padding: 6px 14px !important; border-radius: 20px !important;
-        margin-bottom: 16px !important;
+        margin-bottom: 14px !important; width: fit-content !important;
     }
-    #abf-funnel .abf-ticket-card h3 {
+    #abf-funnel .abf-card-badge-sage { background: var(--abf-sage) !important; color: white !important; }
+    #abf-funnel .abf-card-badge-navy { background: var(--abf-navy) !important; color: white !important; }
+    #abf-funnel .abf-card-icon { font-size: 2.2rem !important; margin-bottom: 10px !important; display: block !important; }
+    #abf-funnel .abf-card h3 {
         font-family: var(--abf-font-display) !important;
-        font-size: 1.7rem !important; font-weight: 700 !important;
-        color: var(--abf-navy) !important; margin-bottom: 12px !important;
+        font-size: 1.45rem !important; font-weight: 700 !important;
+        color: var(--abf-navy) !important; line-height: 1.2 !important; margin-bottom: 14px !important; display: block !important;
     }
-    #abf-funnel .abf-ticket-price {
+    #abf-funnel .abf-card-bullets {
+        list-style: none !important; padding: 0 !important; margin: 0 0 20px !important;
+        display: flex !important; flex-direction: column !important; gap: 8px !important;
+    }
+    #abf-funnel .abf-card-bullets li {
+        font-size: 0.92rem !important; line-height: 1.5 !important; color: var(--abf-ink-soft) !important;
+        display: flex !important; align-items: flex-start !important; gap: 8px !important;
+    }
+    /* flat single price (Card 1 — Any-Day GA) */
+    #abf-funnel .abf-card-price {
+        margin-top: auto !important;
+        padding-top: 16px !important;
+        border-top: 1px solid rgba(54,87,140,0.1) !important;
+    }
+    #abf-funnel .abf-price-num {
         font-family: var(--abf-font-display) !important;
-        font-size: 3rem !important; font-weight: 700 !important;
-        color: var(--abf-terracotta) !important; line-height: 1 !important;
-        margin-bottom: 6px !important;
+        font-size: 2.4rem !important; font-weight: 700 !important;
+        color: var(--abf-terracotta) !important; line-height: 1 !important; display: block !important;
     }
-    #abf-funnel .abf-ticket-note {
-        font-size: 0.92rem !important; color: var(--abf-ink-soft) !important;
-        margin-bottom: 22px !important; line-height: 1.5 !important;
+    #abf-funnel .abf-price-label {
+        font-size: 0.82rem !important; color: var(--abf-ink-soft) !important; margin-top: 4px !important; display: block !important;
     }
-    #abf-funnel .abf-ticket-cta {
+    /* online/gate price rows (Card 2 — Standard Dated Admission) */
+    #abf-funnel .abf-price-rows {
+        margin-top: auto !important;
+        padding-top: 16px !important;
+        border-top: 1px solid rgba(54,87,140,0.1) !important;
+        display: flex !important; flex-direction: column !important;
+    }
+    #abf-funnel .abf-price-row {
+        display: flex !important; justify-content: space-between !important; align-items: center !important;
+        padding: 10px 0 !important; gap: 12px !important;
+    }
+    #abf-funnel .abf-price-row:not(:last-child) { border-bottom: 1px solid rgba(54,87,140,0.08) !important; }
+    #abf-funnel .abf-price-row-name {
+        font-family: var(--abf-font-display) !important;
+        font-size: 0.95rem !important; font-weight: 700 !important;
+        color: var(--abf-navy) !important; display: block !important; line-height: 1.2 !important;
+    }
+    #abf-funnel .abf-price-row-desc {
+        font-size: 0.76rem !important; color: var(--abf-ink-soft) !important; display: block !important; margin-top: 2px !important;
+    }
+    #abf-funnel .abf-price-row-vals { text-align: right !important; flex-shrink: 0 !important; }
+    #abf-funnel .abf-price-row-online {
+        font-family: var(--abf-font-display) !important;
+        font-size: 1.5rem !important; font-weight: 700 !important;
+        color: var(--abf-terracotta) !important; line-height: 1 !important; display: block !important;
+    }
+    #abf-funnel .abf-price-row-gate {
+        font-size: 0.76rem !important; color: var(--abf-ink-soft) !important; display: block !important; margin-top: 2px !important;
+    }
+    #abf-funnel .abf-card-cta {
         display: inline-block !important;
         background: var(--abf-terracotta) !important;
         color: white !important;
-        padding: 14px 40px !important;
+        padding: 13px 28px !important;
         border-radius: 6px !important;
-        font-size: 1.05rem !important;
+        font-size: 0.98rem !important;
         font-weight: 700 !important;
-        letter-spacing: 0.03em !important;
+        letter-spacing: 0.02em !important;
         text-decoration: none !important;
+        text-align: center !important;
+        margin-top: 16px !important;
         transition: all 0.25s ease !important;
     }
-    #abf-funnel .abf-ticket-cta:hover {
+    #abf-funnel .abf-card-cta:hover {
         background: var(--abf-terracotta-hover) !important;
         color: white !important;
         text-decoration: none !important;
         transform: translateY(-1px) !important;
     }
-    #abf-funnel .abf-ticket-fees {
-        display: block !important;
-        margin-top: 12px !important;
-        font-size: 0.78rem !important;
-        color: var(--abf-ink-soft) !important;
-        opacity: 0.85 !important;
+    #abf-funnel .abf-card-cta-outline {
+        background: transparent !important;
+        color: var(--abf-navy) !important;
+        border: 2px solid var(--abf-navy) !important;
+        padding: 11px 28px !important;
+    }
+    #abf-funnel .abf-card-cta-outline:hover {
+        background: var(--abf-navy) !important;
+        color: white !important;
+    }
+    #abf-funnel .abf-card-note {
+        font-size: 0.74rem !important; color: var(--abf-ink-soft) !important;
+        margin-top: 10px !important; display: block !important; text-align: center !important; opacity: 0.85 !important;
     }
 
-    /* ── INFO ROW ── */
+    /* ── INFO ROW — enriched (Finding 4): emoji leads, 4 rows, multi-line values ── */
     #abf-funnel .abf-info {
         width: 100% !important;
         background: var(--abf-navy) !important;
@@ -450,7 +523,7 @@
     }
     #abf-funnel .abf-info-grid {
         display: grid !important;
-        grid-template-columns: repeat(3, 1fr) !important;
+        grid-template-columns: repeat(4, 1fr) !important;
     }
     #abf-funnel .abf-info-item {
         text-align: center !important;
@@ -462,6 +535,7 @@
         right: 0 !important; top: 20% !important; bottom: 20% !important;
         width: 1px !important; background: rgba(255,255,255,0.15) !important;
     }
+    #abf-funnel .abf-info-icon { font-size: 1.5rem !important; display: block !important; margin-bottom: 6px !important; }
     #abf-funnel .abf-info-label {
         font-size: 0.76rem !important; font-weight: 700 !important;
         letter-spacing: 0.15em !important; text-transform: uppercase !important;
@@ -473,17 +547,26 @@
         color: white !important; display: block !important; line-height: 1.35 !important;
     }
 
+    /* ── REVEAL — scroll-in, ported verbatim from the house pattern (Finding 5) ── */
+    #abf-funnel .abfr {
+        opacity: 0 !important; transform: translateY(28px) !important;
+        transition: opacity 0.7s cubic-bezier(.16,1,.3,1), transform 0.7s cubic-bezier(.16,1,.3,1) !important;
+    }
+    #abf-funnel .abfr.abfon { opacity: 1 !important; transform: none !important; }
+    #abf-funnel .abfr.d1 { transition-delay: 0.1s !important; }
+    #abf-funnel .abfr.d2 { transition-delay: 0.2s !important; }
+    #abf-funnel .abfr.d3 { transition-delay: 0.3s !important; }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 860px) {
         #abf-funnel .abf-nav { padding: 0 24px !important; }
-        #abf-funnel .abf-benefits { padding: 40px 24px !important; }
+        #abf-funnel .abf-benefits { padding: 32px 24px !important; }
         #abf-funnel .abf-tickets { padding: 44px 24px !important; }
-        #abf-funnel .abf-blackout { padding: 22px 24px !important; }
-        #abf-funnel .abf-info-grid { grid-template-columns: 1fr !important; }
-        #abf-funnel .abf-info-item:not(:last-child)::after { display: none !important; }
-        #abf-funnel .abf-info-item:not(:last-child) { border-bottom: 1px solid rgba(255,255,255,0.15) !important; }
+        #abf-funnel .abf-blackout-inline { padding: 18px 22px !important; }
+        #abf-funnel .abf-grid { grid-template-columns: 1fr !important; max-width: 460px !important; margin-left: auto !important; margin-right: auto !important; }
+        #abf-funnel .abf-info-grid { grid-template-columns: 1fr 1fr !important; }
+        #abf-funnel .abf-info-item:nth-child(2n)::after { display: none !important; }
         #abf-funnel .abf-hero-content { padding: 0 24px 40px !important; }
-        #abf-funnel .abf-benefits-grid { grid-template-columns: 1fr !important; }
         #abf-funnel .abf-gallery-header { padding: 0 24px !important; }
         #abf-funnel .abf-gcard { width: 280px !important; height: 196px !important; }
     }
@@ -491,10 +574,15 @@
         #abf-funnel .abf-nav { padding: 0 16px !important; height: 76px !important; }
         #abf-funnel .abf-nav-loc { display: none !important; }
         #abf-funnel .abf-hero-content { padding: 0 20px 32px !important; }
-        #abf-funnel .abf-blackout-inner { flex-direction: column !important; gap: 8px !important; }
-        #abf-funnel .abf-ticket-card { padding: 28px 22px !important; }
+        #abf-funnel .abf-blackout-inline { flex-direction: column !important; gap: 8px !important; }
+        #abf-funnel .abf-benefits-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 14px 0 !important; }
+        #abf-funnel .abf-benefit:nth-child(2n)::after { display: none !important; }
+        #abf-funnel .abf-card { padding: 26px 22px !important; }
         #abf-funnel .abf-gallery-header { padding: 0 16px !important; }
         #abf-funnel .abf-gcard { width: 230px !important; height: 160px !important; }
+        #abf-funnel .abf-info-grid { grid-template-columns: 1fr !important; }
+        #abf-funnel .abf-info-item:not(:last-child)::after { display: none !important; }
+        #abf-funnel .abf-info-item:not(:last-child) { border-bottom: 1px solid rgba(255,255,255,0.15) !important; }
     }
 
     /* ── Defensive TS-chrome suppression ── */
@@ -546,46 +634,36 @@
         </div>
     </div>
 
-    <!-- BLACKOUT NOTICE — Amanda's hard requirement, first-class element -->
-    <div class="abf-blackout">
-        <div class="abf-blackout-inner">
-            <span class="abf-blackout-icon">⚠️</span>
-            <div class="abf-blackout-text">
-                <strong>Please note before you buy</strong>
-                <span>Any-Day GA does <strong>not</strong> include our four Peak Days: <span class="abf-blackout-dates">October 24, 25, 31 &amp; November 1</span>. This ticket is valid any other day the farm is open during the season. Blackout dates will also appear clearly on your ticket and confirmation email.</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- WHAT'S INCLUDED -->
+    <!-- BENEFITS — unheaded emoji tile strip (house pattern; blackout notice moved to the
+         ticket area below, Finding 2) -->
     <div class="abf-benefits">
-        <div class="abf-benefits-header">
-            <span class="abf-eye">Any-Day GA</span>
-            <span class="abf-section-title">One ticket, <em>your choice</em> of day</span>
-        </div>
         <div class="abf-benefits-grid">
             <div class="abf-benefit">
-                <span class="abf-benefit-check">✓</span>
-                <span class="abf-benefit-text"><strong>Full festival admission</strong> — valid any regular-season day, September through November</span>
+                <span class="abf-benefit-icon">🎟️</span>
+                <span class="abf-benefit-title">Any Day You Like</span>
+                <span class="abf-benefit-desc">No date lock-in at checkout</span>
             </div>
             <div class="abf-benefit">
-                <span class="abf-benefit-check">✓</span>
-                <span class="abf-benefit-text"><strong>Weekends &amp; Columbus Day</strong> — Sept weekends, Oct Fri/Sat/Sun + Columbus Day Monday, Nov weekends</span>
+                <span class="abf-benefit-icon">🍂</span>
+                <span class="abf-benefit-title">Sept–Nov Season</span>
+                <span class="abf-benefit-desc">Valid any regular-season day</span>
             </div>
             <div class="abf-benefit">
-                <span class="abf-benefit-check">✓</span>
-                <span class="abf-benefit-text"><strong>No date lock-in at checkout</strong> — flexibility to plan your visit around your schedule</span>
+                <span class="abf-benefit-icon">🎢</span>
+                <span class="abf-benefit-title">Full Festival Access</span>
+                <span class="abf-benefit-desc">Everything the farm has to offer</span>
             </div>
             <div class="abf-benefit">
-                <span class="abf-benefit-check">⚠️</span>
-                <span class="abf-benefit-text"><strong>Excludes our 4 Peak Days</strong> — Oct 24, 25, 31 &amp; Nov 1 (see notice above)</span>
+                <span class="abf-benefit-icon">⚠️</span>
+                <span class="abf-benefit-title">Excludes 4 Peak Days</span>
+                <span class="abf-benefit-desc">Oct 24, 25, 31 &amp; Nov 1</span>
             </div>
         </div>
     </div>
 
     <!-- GALLERY -->
     <div class="abf-gallery">
-        <div class="abf-gallery-header">
+        <div class="abf-gallery-header abfr">
             <span class="abf-eye">Around the Farm</span>
             <span class="abf-section-title">A season of <em>fall fun</em></span>
         </div>
@@ -624,17 +702,78 @@
 
     <!-- TICKET -->
     <div class="abf-tickets" id="tickets">
-        <div class="abf-tickets-header">
+        <div class="abf-tickets-header abfr">
             <span class="abf-eye">Admission</span>
-            <span class="abf-section-title">Get your <em>Any-Day GA</em></span>
+            <span class="abf-section-title">Pick your <em>ticket</em></span>
         </div>
-        <div class="abf-ticket-card">
-            <span class="abf-ticket-badge">New For 2026</span>
-            <h3>Any-Day General Admission</h3>
-            <div class="abf-ticket-price">$19.95</div>
-            <div class="abf-ticket-note">Per person · valid any regular-season day (blackout dates above apply)</div>
-            <a href="#ticketBlock" class="abf-ticket-cta">Buy Tickets</a>
-            <span class="abf-ticket-fees">*plus applicable taxes and fees · select your ticket below</span>
+
+        <!-- BLACKOUT NOTICE — Amanda's hard requirement, inline in the ticket area
+             (demoted from a full-bleed band, Finding 2) -->
+        <div class="abf-blackout-inline">
+            <span class="abf-blackout-icon">⚠️</span>
+            <div class="abf-blackout-text">
+                <strong>Please note before you buy</strong>
+                <span>Any-Day GA does <strong>not</strong> include our four Peak Days: <span class="abf-blackout-dates">October 24, 25, 31 &amp; November 1</span>. This ticket is valid any other day the farm is open during the season. Blackout dates will also appear clearly on your ticket and confirmation email.</span>
+            </div>
+        </div>
+
+        <div class="abf-grid">
+
+            <!-- CARD 1 — Any-Day GA. The flash-sale product; the page's CTA drives here. -->
+            <div class="abf-card abf-card-primary abfr">
+                <span class="abf-card-badge abf-card-badge-sage">Most Popular</span>
+                <span class="abf-card-icon">🎟️</span>
+                <h3>Any-Day General Admission</h3>
+                <ul class="abf-card-bullets">
+                    <li>✓ Valid any regular-season day, Sept 19 – Nov 22</li>
+                    <li>✓ No date lock-in at checkout</li>
+                    <li>⚠️ Excludes our 4 Peak Days (see notice above)</li>
+                </ul>
+                <div class="abf-card-price">
+                    <span class="abf-price-num">$19.95</span>
+                    <span class="abf-price-label">per person</span>
+                </div>
+                <a href="#ticketBlock" class="abf-card-cta">Get Any-Day GA</a>
+                <span class="abf-card-note">*plus applicable taxes and fees</span>
+            </div>
+
+            <!-- CARD 2 — Standard Dated Admission. Same price as the cheapest dated ticket
+                 with no date lock-in and $5 under the peak gate — makes the Any-Day value
+                 legible by comparison, without claiming a discount that doesn't exist. -->
+            <div class="abf-card abf-card-secondary abfr d2">
+                <span class="abf-card-badge abf-card-badge-navy">Pick Your Date</span>
+                <span class="abf-card-icon">📅</span>
+                <h3>Standard Dated Admission</h3>
+                <ul class="abf-card-bullets">
+                    <li>✓ Pick your date at checkout</li>
+                    <li>✓ Valid on Peak Days</li>
+                </ul>
+                <div class="abf-price-rows">
+                    <div class="abf-price-row">
+                        <div>
+                            <span class="abf-price-row-name">Non-Peak</span>
+                            <span class="abf-price-row-desc">Regular-season days</span>
+                        </div>
+                        <div class="abf-price-row-vals">
+                            <span class="abf-price-row-online">$19.95</span>
+                            <span class="abf-price-row-gate">online · $22.95 at gate</span>
+                        </div>
+                    </div>
+                    <div class="abf-price-row">
+                        <div>
+                            <span class="abf-price-row-name">Peak Days</span>
+                            <span class="abf-price-row-desc">Oct 24, 25, 31 &amp; Nov 1</span>
+                        </div>
+                        <div class="abf-price-row-vals">
+                            <span class="abf-price-row-online">$21.95</span>
+                            <span class="abf-price-row-gate">online · $24.95 at gate</span>
+                        </div>
+                    </div>
+                </div>
+                <a href="#ticketBlock" class="abf-card-cta abf-card-cta-outline">Buy Dated Ticket</a>
+                <span class="abf-card-note">*plus applicable taxes and fees</span>
+            </div>
+
         </div>
     </div>
 
@@ -642,16 +781,24 @@
     <div class="abf-info">
         <div class="abf-info-grid">
             <div class="abf-info-item">
+                <span class="abf-info-icon">📍</span>
                 <span class="abf-info-label">Location</span>
                 <span class="abf-info-value">Amber Brooke Farms — Eustis<br>36111 County Rd 44A, Eustis, FL 32736</span>
             </div>
             <div class="abf-info-item">
-                <span class="abf-info-label">Season</span>
-                <span class="abf-info-value">Sept 19 – Nov 22, 2026</span>
+                <span class="abf-info-icon">📅</span>
+                <span class="abf-info-label">Festival Dates</span>
+                <span class="abf-info-value">Sept 19 – Nov 22, 2026<br>6th Annual Fall Festival</span>
             </div>
             <div class="abf-info-item">
-                <span class="abf-info-label">Flash Sale Window</span>
-                <span class="abf-info-value">July 31 – August 4</span>
+                <span class="abf-info-icon">🕘</span>
+                <span class="abf-info-label">Peak Hours</span>
+                <span class="abf-info-value">Peak Weekends<br>9 AM – 6 PM</span>
+            </div>
+            <div class="abf-info-item">
+                <span class="abf-info-icon">🎟️</span>
+                <span class="abf-info-label">Flash Sale</span>
+                <span class="abf-info-value">On Sale Now<br>July 31 – August 4</span>
             </div>
         </div>
     </div>
@@ -668,6 +815,21 @@
                     target.scrollIntoView({ behavior: 'smooth' });
                 }
             });
+        });
+    })();
+</script>
+
+<!-- Scroll-reveal — ported verbatim from the house pattern (Finding 5, WS7) -->
+<script>
+    (function() {
+        var obs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) {
+                if (e.isIntersecting) { e.target.classList.add('abfon'); obs.unobserve(e.target); }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('#abf-funnel .abfr').forEach(function(el) {
+            obs.observe(el);
+            if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('abfon');
         });
     })();
 </script>
