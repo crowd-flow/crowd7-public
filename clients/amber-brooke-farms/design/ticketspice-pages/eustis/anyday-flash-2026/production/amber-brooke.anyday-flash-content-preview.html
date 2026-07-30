@@ -12,9 +12,42 @@
     <style>
         html, body { margin: 0; padding: 0; background: #fff; font-family: 'Lora', serif; }
     
-.abf-logo-wrap{display:flex;align-items:center}
-.abf-logo-wrap img{height:46px;width:auto;display:block}
-@media(max-width:600px){.abf-logo-wrap img{height:36px}}
+@media(max-width:600px){}
+
+    /* ── LOGO BADGE ── white rounded panel that hangs off the nav bar like a banner.
+       Ported from the Jerry Smith Farm pattern (jsf-logo-badge): square top corners,
+       deeply rounded bottom. Lets the solid-navy brand logo sit on the navy nav
+       without being filtered white. Slash syntax deepens the bottom vertical curve. */
+    #abf-funnel .abf-logo-wrap {
+        position: absolute !important;
+        left: 40px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        z-index: 110 !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+    #abf-funnel .abf-logo-badge {
+        background: #ffffff !important;
+        border-radius: 4px 4px 50% 50% / 4px 4px 60% 60% !important;
+        padding: 12px 24px 22px !important;
+        box-shadow: 0 8px 22px rgba(0,0,0,0.22) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        box-sizing: border-box !important;
+    }
+    #abf-funnel .abf-logo-badge img {
+        display: block !important;
+        height: 72px !important;
+        width: auto !important;
+    }
+    @media (max-width: 900px) { #abf-funnel .abf-logo-wrap { left: 24px !important; } }
+    @media (max-width: 600px) {
+        #abf-funnel .abf-logo-wrap { left: 16px !important; }
+        #abf-funnel .abf-logo-badge { padding: 9px 16px 16px !important; }
+        #abf-funnel .abf-logo-badge img { height: 52px !important; }
+    }
 </style>
 </head>
 <body>
@@ -131,14 +164,13 @@
         height: 92px !important;
         display: flex !important;
         align-items: center !important;
-        justify-content: space-between !important;
-        background: #ffffff !important;
-        border-bottom: 1px solid rgba(54,87,140,0.14) !important;
+        justify-content: flex-end !important;
+        background: rgba(54,87,140,0.97) !important;
         position: sticky !important;
         top: 0 !important;
         z-index: 100 !important;
         box-sizing: border-box !important;
-        box-shadow: 0 2px 14px rgba(54,87,140,0.10) !important;
+        box-shadow: 0 2px 16px rgba(54,87,140,0.3) !important;
     }
     #abf-funnel .abf-nav-right {
         display: flex !important; align-items: center !important; gap: 16px !important;
@@ -607,10 +639,10 @@
 
     <!-- NAV -->
     <div class="abf-nav">
-        <div class="abf-logo-wrap"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/brand/abf-logo-primary-blue.png" alt="Amber Brooke Farms"></div>
+        <div class="abf-logo-wrap"><div class="abf-logo-badge"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/brand/abf-logo-primary-blue.png" alt="Amber Brooke Farms"></div></div>
         <div class="abf-nav-right">
             <div class="abf-nav-loc">
-                <svg width="12" height="12" fill="none" stroke="#36578c" stroke-width="2" viewBox="0 0 24 24">
+                <svg width="12" height="12" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2" viewBox="0 0 24 24">
                     <path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
                     <circle cx="12" cy="11" r="3"/>
                 </svg>
