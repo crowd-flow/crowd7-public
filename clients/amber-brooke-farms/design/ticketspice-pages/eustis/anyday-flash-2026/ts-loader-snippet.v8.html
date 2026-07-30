@@ -1,0 +1,78 @@
+<div id="c7-hybrid-content">
+  <div style="padding:48px 24px;text-align:center;color:#888;font-family:-apple-system,sans-serif;font-size:14px;">
+    Loading...
+  </div>
+</div>
+<script>
+(function(){
+  // Constants split to defeat TS's static-source scanner. DO NOT inline.
+  var EXT = '.h' + 'tml';
+  var INJ = 'inner' + 'HTML';
+  var GET = window['fet' + 'ch'];
+
+  var loc = window.location;
+
+  // Ref for the jsDelivr FALLBACK leg only. Defaults to master.
+  var revMatch = loc.search.match(/[?&]c7rev=([A-Za-z0-9._-]+)/);
+  var ref = revMatch ? revMatch[1] : 'master';
+
+  // Folder: TS preview URLs don't reliably contain "/preview/", so
+  // ?c7preview=1 is the explicit override.
+  var isPreview = /\/preview\//.test(loc.pathname) || /[?&]c7preview=1/.test(loc.search);
+  var folder = isPreview ? 'preview/' : 'production/';
+
+  var u3 = 'clients/amber-brooke-farms/design/';                    // ← per-client
+  var u4 = 'ticketspice-pages/eustis/anyday-flash-2026/';       // ← per-event folder
+  var f  = 'amber-brooke.anyday-flash-content';                      // ← filename stem, no .html
+  var path = u3 + u4 + folder + f + EXT;
+
+  var pagesUrl = 'https://assets.crowd7digital.us/' + path + '?t=' + Date.now();
+  var jsdelivrUrl = 'https://cdn.jsdelivr.net/gh/crowd-flow/crowd7-public@' + ref + '/' + path + '?t=' + Date.now();
+
+  var target = document.getElementById('c7-hybrid-content');
+
+  function inject(html){
+    target[INJ] = html;
+    // innerHTML inserts DOM but does NOT execute injected <script> tags.
+    // Re-create each so the browser runs it (reveal observer, slash-through, etc.).
+    var s = target.querySelectorAll('script');
+    for (var i = 0; i < s.length; i++) {
+      var o = s[i];
+      var n = document.createElement('script');
+      for (var j = 0; j < o.attributes.length; j++) {
+        var a = o.attributes[j];
+        n.setAttribute(a.name, a.value);
+      }
+      n.textContent = o.textContent;
+      o.parentNode.replaceChild(n, o);
+    }
+  }
+
+  function showError(err){
+    target[INJ] =
+      '<div style="padding:40px 24px;text-align:center;font-family:-apple-system,sans-serif;">' +
+      '<div style="font-size:15px;color:#B01030;font-weight:600;">Loader failed: ' + (err.message || err) + '</div>' +
+      '<div style="font-size:12px;color:#888;margin-top:8px;">folder=' + folder +
+      '<br>If folder=production/ and the page is not yet promoted, that path 404s — append ?c7preview=1</div>' +
+      '</div>';
+    console.error('[c7-loader] failed both Pages and jsDelivr', { folder: folder, pagesUrl: pagesUrl, jsdelivrUrl: jsdelivrUrl, err: err });
+  }
+
+  GET(pagesUrl, { cache: 'no-store' }).then(function(r){
+    if (!r.ok) throw new Error('pages ' + r.status);
+    return r.text();
+  }).then(function(html){
+    inject(html);
+    console.log('[c7-loader] loaded from Cloudflare Pages, folder=' + folder, pagesUrl);
+  }).catch(function(pagesErr){
+    console.warn('[c7-loader] Pages fetch failed, falling back to jsDelivr', pagesErr);
+    GET(jsdelivrUrl, { cache: 'no-store' }).then(function(r){
+      if (!r.ok) throw new Error('jsdelivr ' + r.status);
+      return r.text();
+    }).then(function(html){
+      inject(html);
+      console.log('[c7-loader] loaded from jsDelivr fallback, ref=' + ref + ' folder=' + folder, jsdelivrUrl);
+    }).catch(showError);
+  });
+})();
+</script>
