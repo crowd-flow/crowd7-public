@@ -708,6 +708,52 @@
 .campaign-form:not(.legacy-form) .field-purchaseProtection .purchase-protection .purchase-protection-header { background-color: white; border: 2px solid #597792; border-bottom: 2px solid #597792; color: #243642 !important; font-size: 18px; font-weight: 700; padding: 12px 32px; }
 .purchase-protection .purchase-protection-body { background-color: white; padding: 15px; border: 2px solid #597792; }
 .campaign-form:not(.legacy-form) .btn-danger, .campaign-form:not(.legacy-form) .btn-primary, .campaign-form:not(.legacy-form) .btn:not(.btn--transparent):not(.btn--plus):not(.btn--minus):not(.btn--home):not(.btn--tooltipstered):not(.btn--blue) { font-size: 15px; color: white; background-color: #801517; border-radius: 10px; font-family: fatfrank,Segoe UI,Helvetica Neue,Arial,Noto Sans,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji,-apple-system,sans-serif; font-weight: bold; height: 44px; min-height: 44px; padding: 15px 20px; text-transform: uppercase; }
+
+/* ── FIRE PIT NAMES / TICKET-BLOCK TEXT (Rachel + Steven, 2026-07-31) ──
+   The page's global TicketSpice font color is WHITE to serve the dark campfire
+   re-skin, but the native tickets table keeps the light donor's white background
+   -> ticket (fire pit) names rendered white-on-white and vanished. Rachel can't
+   fix it from the TS panel because flipping the global color breaks every other
+   dark-background field. So: force dark ink INSIDE the tickets table only.
+   NOTE: this is the SECOND white-on-white on this page (the wbx-calendar day
+   cells were the first, fixed 2026-07-29). Any dark re-skin over the light donor
+   must re-assert native-cart text colors explicitly. ── */
+.campaign-form:not(.legacy-form) .ticket-block table.holds-tickets td,
+.campaign-form:not(.legacy-form) .ticket-block table.holds-tickets td h1,
+.campaign-form:not(.legacy-form) .ticket-block table.holds-tickets td h2,
+.campaign-form:not(.legacy-form) .ticket-block table.holds-tickets td h3,
+.campaign-form:not(.legacy-form) .ticket-block table.holds-tickets td h4,
+.campaign-form:not(.legacy-form) .ticket-block table.holds-tickets td h5,
+.campaign-form:not(.legacy-form) .ticket-block table.holds-tickets td h6,
+.campaign-form:not(.legacy-form) .ticket-block table.holds-tickets td p,
+.campaign-form:not(.legacy-form) .ticket-block table.holds-tickets td span,
+.campaign-form:not(.legacy-form) .ticket-block table.holds-tickets td label,
+.campaign-form:not(.legacy-form) .ticket-block table.holds-tickets td li,
+.campaign-form:not(.legacy-form) .ticket-block table.holds-tickets td strong,
+.campaign-form:not(.legacy-form) .ticket-block table.holds-tickets td em,
+.campaign-form:not(.legacy-form) .ticket-block table.holds-tickets td small,
+.campaign-form:not(.legacy-form) .ticket-block table.holds-tickets td .ticket-name,
+.campaign-form:not(.legacy-form) .ticket-block table.holds-tickets td .ticket-description {
+  color: #243642 !important;
+}
+/* --- restore the three places white is CORRECT (source order beats the block above) --- */
+.campaign-form:not(.legacy-form) .ticket-block table.holds-tickets th,
+.campaign-form:not(.legacy-form) .ticket-block table.holds-tickets th * {
+  color: #FFFFFF !important;
+}
+.ticket-block .wbx-calendar .row .day.enabled,
+.ticket-block .wbx-calendar .row .day.enabled *,
+.ticket-block .wbx-calendar .row .day.enabled.sold-out,
+.ticket-block .wbx-calendar .row .day.enabled.sold-out * {
+  color: #FFFFFF !important;
+}
+.campaign-form:not(.legacy-form) .ticket-block table.holds-tickets td .btn,
+.campaign-form:not(.legacy-form) .ticket-block table.holds-tickets td .btn *,
+.campaign-form:not(.legacy-form) .ticket-block table.holds-tickets td .btn-primary,
+.campaign-form:not(.legacy-form) .ticket-block table.holds-tickets td .btn-danger,
+.campaign-form:not(.legacy-form) .ticket-block table.holds-tickets td button {
+  color: #FFFFFF !important;
+}
 </style>
 
 <!-- ============================================================
