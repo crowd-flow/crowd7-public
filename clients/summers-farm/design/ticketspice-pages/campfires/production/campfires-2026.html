@@ -1136,6 +1136,45 @@
 .app-container .ticket-block .ticket-number a.show-more { color: #9CC6DE !important; }
 .app-container .ticket-block table.holds-tickets td a,
 .app-container .purchase-protection a { color: #4a8cb2 !important; }
+
+/* ── TICKET-BLOCK DATE / TIME SELECTORS (2026-07-31, screencast tr_20260731_2efc71a) ──
+   Mat: after picking a date (and 1 PM), the fire-pit rows populate correctly but the
+   'Tickets for:' header inputs render blank. TS builds those selectors in JS, and they
+   are NOT plain <input>/<select> - so Layer 1 was painting them light ink (#F4EDE4) on
+   a light control. Fix: inside .ticket-block ONLY, force every control-ish element to a
+   white surface with dark ink, so it is legible no matter which element type TS renders
+   or what the global paragraph colour is set to. Scoped to .ticket-block so it cannot
+   reach our own page design. ── */
+.app-container .ticket-block input,
+.app-container .ticket-block select,
+.app-container .ticket-block select option,
+.app-container .ticket-block textarea,
+.app-container .ticket-block [class*="elect"],
+.app-container .ticket-block [class*="ropdown"],
+.app-container .ticket-block [class*="ingleValue"],
+.app-container .ticket-block [class*="laceholder"],
+.app-container .ticket-block [class*="datePicker"],
+.app-container .ticket-block [class*="dateSelect"],
+.app-container .ticket-block [class*="timeSelect"] {
+  color: #243642 !important;
+}
+.app-container .ticket-block input,
+.app-container .ticket-block select,
+.app-container .ticket-block [class*="ropdown"],
+.app-container .ticket-block [class*="dateSelect"],
+.app-container .ticket-block [class*="timeSelect"],
+.app-container .ticket-block [class*="datePicker"] {
+  background-color: #FFFFFF !important;
+}
+/* the wbx-calendar chips keep their own white-on-blue contract (re-asserted after the above) */
+.app-container .ticket-block .wbx-calendar .row .day.enabled,
+.app-container .ticket-block .wbx-calendar .row .day.enabled *,
+.app-container .ticket-block .wbx-calendar .row .day.enabled.sold-out,
+.app-container .ticket-block .wbx-calendar .row .day.enabled.sold-out * {
+  color: #FFFFFF !important; background-color: transparent !important;
+}
+.app-container .ticket-block .wbx-calendar .row .day.enabled { background-color: #597792 !important; }
+.app-container .ticket-block .wbx-calendar .row .day.enabled.sold-out { background-color: #A9B6BF !important; }
 </style>
 
 <!-- ============================================================
@@ -1423,7 +1462,7 @@
             <!-- AFTERNOON VS NIGHT -->
             <div class="sb-card sb-card-cream sbr d2">
                 <span class="sb-card-badge sb-card-badge-barn">Pick Your Time</span>
-                <span class="sb-card-icon">🕖</span>
+                <span class="sb-card-icon">⏰</span>
                 <h3>Afternoon or Night</h3>
                 <ul class="sb-card-bullets">
                     <li>🔥 Same private campfire, your choice of time</li>
