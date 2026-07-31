@@ -1139,31 +1139,37 @@
 
 /* ── TICKET-BLOCK DATE / TIME SELECTORS (2026-07-31, screencast tr_20260731_2efc71a) ──
    Mat: after picking a date (and 1 PM), the fire-pit rows populate correctly but the
-   'Tickets for:' header inputs render blank. TS builds those selectors in JS, and they
-   are NOT plain <input>/<select> - so Layer 1 was painting them light ink (#F4EDE4) on
-   a light control. Fix: inside .ticket-block ONLY, force every control-ish element to a
-   white surface with dark ink, so it is legible no matter which element type TS renders
-   or what the global paragraph colour is set to. Scoped to .ticket-block so it cannot
-   reach our own page design. ── */
-.app-container .ticket-block input,
-.app-container .ticket-block select,
-.app-container .ticket-block select option,
-.app-container .ticket-block textarea,
-.app-container .ticket-block [class*="elect"],
-.app-container .ticket-block [class*="ropdown"],
-.app-container .ticket-block [class*="ingleValue"],
-.app-container .ticket-block [class*="laceholder"],
-.app-container .ticket-block [class*="datePicker"],
-.app-container .ticket-block [class*="dateSelect"],
-.app-container .ticket-block [class*="timeSelect"] {
+   'Tickets for:' header inputs render blank. Live-DOM-verified (Playwright) root cause:
+   these controls (.datePicker input, #ticketTimeslot select) are real <input>/<select>
+   elements, but they sit INSIDE table.holds-tickets th (the "Tickets" header cell TS
+   nests its date/time widget in) - so Layer 3's `table.holds-tickets th *` white rule
+   (3 classes + 2 type selectors) OUTSPECIFICITIES the plain `.ticket-block input`
+   generic form-control rule (2 classes + 1 type) and wins the !important tie. A first
+   attempt at this fix (same day, superseded here) added `.ticket-block input` etc.
+   without the `table.holds-tickets th` ancestor chain, so it still lost to Layer 3 -
+   confirmed still-broken live before this version. Fix: repeat the ancestor chain so
+   specificity (3 classes + 3 types) beats Layer 3's (3 classes + 2 types) outright,
+   regardless of source order. Kept the broader class-wildcard net (TS sometimes renders
+   these as custom dropdowns, not native <select>) but scoped through the same th path. ── */
+.app-container .ticket-block table.holds-tickets th input,
+.app-container .ticket-block table.holds-tickets th select,
+.app-container .ticket-block table.holds-tickets th select option,
+.app-container .ticket-block table.holds-tickets th textarea,
+.app-container .ticket-block table.holds-tickets th [class*="elect"],
+.app-container .ticket-block table.holds-tickets th [class*="ropdown"],
+.app-container .ticket-block table.holds-tickets th [class*="ingleValue"],
+.app-container .ticket-block table.holds-tickets th [class*="laceholder"],
+.app-container .ticket-block table.holds-tickets th [class*="datePicker"],
+.app-container .ticket-block table.holds-tickets th [class*="dateSelect"],
+.app-container .ticket-block table.holds-tickets th [class*="timeSelect"] {
   color: #243642 !important;
 }
-.app-container .ticket-block input,
-.app-container .ticket-block select,
-.app-container .ticket-block [class*="ropdown"],
-.app-container .ticket-block [class*="dateSelect"],
-.app-container .ticket-block [class*="timeSelect"],
-.app-container .ticket-block [class*="datePicker"] {
+.app-container .ticket-block table.holds-tickets th input,
+.app-container .ticket-block table.holds-tickets th select,
+.app-container .ticket-block table.holds-tickets th [class*="ropdown"],
+.app-container .ticket-block table.holds-tickets th [class*="dateSelect"],
+.app-container .ticket-block table.holds-tickets th [class*="timeSelect"],
+.app-container .ticket-block table.holds-tickets th [class*="datePicker"] {
   background-color: #FFFFFF !important;
 }
 /* the wbx-calendar chips keep their own white-on-blue contract (re-asserted after the above) */
