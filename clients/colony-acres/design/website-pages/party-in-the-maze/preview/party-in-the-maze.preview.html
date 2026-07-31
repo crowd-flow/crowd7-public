@@ -1,50 +1,22 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Colony Acres — Party In The Maze — guts preview</title><link rel="stylesheet" href="https://colonyacres.farm/wp-content/themes/Divi/style.css"><style>body{margin:0;font-family:Georgia,serif} .note{background:#FDF4E8;border-left:4px solid #E68B2F;padding:12px 18px;font:14px/1.5 sans-serif;color:#555}</style></head><body><div class="note"><strong>Guts preview — Party In The Maze.</strong> Divi theme CSS is pulled from the live site, so this approximates but does not perfectly match the real page. Truth is the page itself with <code>?preview=1</code>.</div>
+
 					<div class="et-l et-l--post">
 			<div class="et_builder_inner_content et_pb_gutters3">
-		<div class="et_pb_section et_pb_section_0 et_pb_with_background et_section_regular" >
+		<div class="et_pb_section et_pb_section_maze_hero et_section_regular" >
 				
 				
 				
 				
 				
 				
-				<div class="et_pb_row et_pb_row_0">
-				<div class="et_pb_column et_pb_column_4_4 et_pb_column_0  et_pb_css_mix_blend_mode_passthrough et-last-child">
-				
-				
-				
-				
-				<div class="et_pb_module lwp_divi_breadcrumbs lwp_divi_breadcrumbs_0">
-				
-				
-				
-				
-				
-				
-				<div class="et_pb_module_inner">
-					<div class="lwp-breadcrumbs"> <span class="before"></span> <span vocab="https://schema.org/" typeof="BreadcrumbList"><span property="itemListElement" typeof="ListItem"><a property="item" typeof="WebPage" href="https://colonyacres.farm/" class="home"><span property="name">Home</span></a><meta property="position" content="1"></span> <span class="separator et-pb-icon">9</span> <span class="current">Party In The Maze</span></span></div>
-				</div>
-			</div><div class="et_pb_module et_pb_text et_pb_text_0  et_pb_text_align_left et_pb_bg_layout_light">
-				
-				
-				
-				
-				<div class="et_pb_text_inner"><h1>Party In The Maze</h1></div>
-			</div>
-			</div>
-				
-				
-				
-				
-			</div>
-			<div class="et_pb_row et_pb_row_maze_hero">
+				<div class="et_pb_row et_pb_row_maze_hero">
 			<div class="et_pb_column et_pb_column_4_4 et_pb_column_maze_hero et-last-child">
 			<div class="et_pb_module et_pb_code et_pb_code_maze_hero">
 			<div class="et_pb_code_inner"><div class="cc-maze-hero">
   <img src="https://assets.crowd7digital.us/clients/colony-acres/design/assets/hero/colony-100-years-maze.jpg" alt="Aerial view of the 2026 Colony Acres corn maze, cut with a birthday cake, sunburst, and the words &#39;100 Years / Colony Acres&#39;" loading="lazy">
 </div>
 <style>
-.cc-maze-hero{max-width:1080px;margin:0 auto 24px;}
+.cc-maze-hero{width:100%;margin:0 auto 24px;}
 .cc-maze-hero img{width:100%;height:auto;display:block;border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,.15);}
 </style></div>
 			</div>
@@ -70,7 +42,7 @@
 				
 				
 				
-				<div class="et_pb_text_inner"><h4>Check back four our 2026 dates!</h4></div>
+				<div class="et_pb_text_inner"><h4>Check back for our 2026 dates!</h4></div>
 			</div><div class="et_pb_with_border et_pb_module et_pb_text et_pb_text_3  et_pb_text_align_center et_pb_bg_layout_light">
 				
 				
@@ -171,7 +143,66 @@
 				
 				
 				
-				<div class="et_pb_module dnxte_masonary dnxte_masonary_0">
+				<!-- ===== CA GALLERY GRID FIX - Crowd7-owned. Built 2026-07-31. =====
+     Same defect as Home's masonry gallery, same root cause: Divi Essential lays this
+     out with Isotope at DOM-ready, but the hybrid loader injects page guts AFTER that,
+     so Isotope never runs and the plugin's base rule (.dnxte-msnary-grid{display:flex})
+     crams all 6 party-pavilion tiles into one squeezed row. Fix ported from the Home
+     page (crowd7-public@4ad61da), retargeted to 3-across x 2-down (6 tiles, not 10) -
+     the source module asked for data-columns="6", but 6-across on 6 images is a single
+     thin strip, not how the live Divi grid actually renders. Gap matches this module's
+     own data-gutter="5".
+     ============================================================================ -->
+<style>
+  .dnxte_masonary_0 .dnxte-msnary-grid{display:grid !important;grid-template-columns:repeat(3,1fr);gap:5px;width:100%}
+  .dnxte_masonary_0 .dnxte-msnary-item{width:auto !important;margin-bottom:0 !important;position:relative}
+  .dnxte_masonary_0 .dnxte-msnary-item img{display:block;width:100%;height:auto}
+  .dnxte_masonary_0 .grid-sizer,.dnxte_masonary_0 .gutter-sizer{display:none}
+  @media (max-width:980px){ .dnxte_masonary_0 .dnxte-msnary-grid{grid-template-columns:repeat(2,1fr)} }
+  @media (max-width:767px){ .dnxte_masonary_0 .dnxte-msnary-grid{grid-template-columns:repeat(1,1fr)} }
+  /* lightbox (replaces magnific-popup, which also never initialises under the loader) */
+  .ca-lb{position:fixed;inset:0;z-index:99999;display:none;align-items:center;justify-content:center;
+    background:rgba(0,0,0,.88);cursor:zoom-out}
+  .ca-lb.is-open{display:flex}
+  .ca-lb img{max-width:92vw;max-height:88vh;box-shadow:0 8px 40px rgba(0,0,0,.6)}
+  .ca-lb__close{position:absolute;top:18px;right:24px;background:none;border:0;color:#fff;font-size:40px;
+    line-height:1;cursor:pointer;font-family:Georgia,serif}
+  .ca-lb__nav{position:absolute;top:50%;transform:translateY(-50%);background:none;border:0;color:#fff;
+    font-size:48px;line-height:1;cursor:pointer;padding:0 18px;font-family:Georgia,serif;opacity:.8}
+  .ca-lb__nav:hover{opacity:1}
+  .ca-lb__prev{left:8px} .ca-lb__next{right:8px}
+</style>
+<div class="ca-lb" id="ca-lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button type="button" class="ca-lb__close" aria-label="Close">&#215;</button>
+  <button type="button" class="ca-lb__nav ca-lb__prev" aria-label="Previous image">&#8249;</button>
+  <img alt="">
+  <button type="button" class="ca-lb__nav ca-lb__next" aria-label="Next image">&#8250;</button>
+</div>
+<script>
+(function () {
+  var lb = document.getElementById("ca-lightbox");
+  if (!lb || lb.dataset.caInit === "1") return;
+  lb.dataset.caInit = "1";
+  var links = [].slice.call(document.querySelectorAll(".dnxte_masonary_0 .dnxte-msnary-item a.image-link"));
+  if (!links.length) return;
+  var img = lb.querySelector("img"), n = 0;
+  function open(i){ n=(i+links.length)%links.length; img.src=links[n].getAttribute("href"); lb.classList.add("is-open"); }
+  function close(){ lb.classList.remove("is-open"); img.src=""; }
+  links.forEach(function(a,i){ a.addEventListener("click", function(e){ e.preventDefault(); open(i); }); });
+  lb.querySelector(".ca-lb__close").addEventListener("click", function(e){ e.stopPropagation(); close(); });
+  lb.querySelector(".ca-lb__prev").addEventListener("click", function(e){ e.stopPropagation(); open(n-1); });
+  lb.querySelector(".ca-lb__next").addEventListener("click", function(e){ e.stopPropagation(); open(n+1); });
+  lb.addEventListener("click", function(e){ if (e.target === lb) close(); });
+  document.addEventListener("keydown", function(e){
+    if (!lb.classList.contains("is-open")) return;
+    if (e.key === "Escape") close();
+    else if (e.key === "ArrowRight") open(n+1);
+    else if (e.key === "ArrowLeft") open(n-1);
+  });
+})();
+</script>
+<!-- ===== /CA GALLERY GRID FIX ===== -->
+<div class="et_pb_module dnxte_masonary dnxte_masonary_0">
 				
 				
 				
