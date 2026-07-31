@@ -419,6 +419,39 @@
     #abf-funnel .abf-price-row-gate {
         font-size: 0.76rem !important; color: var(--abf-ink-soft) !important; display: block !important; margin-top: 2px !important;
     }
+
+    /* ── ONE-PRICE BLOCK (2026-07-31, promoted to production) ──────────────────────────
+       Replaces the old two-row peak/non-peak table. Mat's insight: the Any-Day
+       GA's value is that it BYPASSES peak pricing entirely, so a side-by-side
+       grid buried the pitch (and on regular days showed no discount at all).
+       One number, then the peak-day comparison as PROOF rather than as a menu. */
+    #abf-funnel .abf-oneprice {
+        margin-top: auto !important; padding-top: 18px !important;
+        border-top: 1px solid rgba(54,87,140,0.1) !important;
+        display: block !important; text-align: center !important;
+    }
+    #abf-funnel .abf-oneprice-amt {
+        font-family: var(--abf-font-display) !important;
+        font-size: clamp(2.6rem, 7vw, 3.4rem) !important; font-weight: 700 !important;
+        color: var(--abf-terracotta) !important; line-height: 1 !important; display: block !important;
+    }
+    #abf-funnel .abf-oneprice-unit {
+        font-size: 0.86rem !important; font-weight: 600 !important; letter-spacing: 0.04em !important;
+        color: var(--abf-navy) !important; display: block !important; margin-top: 6px !important;
+        text-transform: uppercase !important;
+    }
+    #abf-funnel .abf-oneprice-lead {
+        font-family: var(--abf-font-display) !important;
+        font-size: 1.02rem !important; font-weight: 700 !important; color: var(--abf-sage) !important;
+        display: block !important; margin-top: 10px !important; line-height: 1.3 !important;
+    }
+    #abf-funnel .abf-oneprice-proof {
+        font-size: 0.84rem !important; color: var(--abf-ink-soft) !important;
+        display: block !important; margin-top: 6px !important; line-height: 1.55 !important;
+    }
+    #abf-funnel .abf-oneprice-proof s {
+        color: var(--abf-ink-soft) !important; opacity: 0.75 !important; text-decoration-thickness: 1px !important;
+    }
     #abf-funnel .abf-card-note {
         font-size: 0.74rem !important; color: var(--abf-ink-soft) !important;
         margin-top: 10px !important; display: block !important; text-align: center !important; opacity: 0.85 !important;
@@ -697,6 +730,11 @@
                 <li>✓ Valid any regular-season day, Sept 19 – Nov 22</li>
                 <li>✓ No date lock-in at checkout</li>
               </ul>
+              <div class="abf-oneprice">
+                <span class="abf-oneprice-amt">$19.95</span>
+                <span class="abf-oneprice-lead">One price. Any day.</span>
+                <span class="abf-oneprice-proof">No need to pay <strong>$24.95</strong> on a peak day at the gate. Buy now and with this ticket you pay <strong>$19.95</strong> whichever day you decide to walk in.</span>
+              </div>
               <span class="abf-card-note">*plus applicable taxes and fees</span>
               <div style="margin-top:14px;padding:14px 16px;border-radius:12px;background:rgba(54,87,140,0.06);border:1px solid rgba(54,87,140,0.18);"><span style="display:block;font-weight:700;color:#36578C;font-size:0.95rem;margin-bottom:4px;">Blackout dates &mdash; Halloween Weekend</span><span style="display:block;color:#36578C;font-size:0.9rem;line-height:1.5;">This ticket is <strong>not valid</strong> on <strong>October 24, 25, 31 &amp; November 1</strong>. Those four dates are the farm&rsquo;s Halloween Weekend and run extended hours, 9 AM&ndash;6 PM. Every other festival day, September 19 &ndash; November 22, is open to this ticket.</span></div>
             </div>
