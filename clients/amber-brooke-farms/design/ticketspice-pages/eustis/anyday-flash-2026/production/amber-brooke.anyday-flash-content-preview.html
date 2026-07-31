@@ -48,6 +48,48 @@
         #abf-funnel .abf-logo-badge { padding: 9px 16px 16px !important; }
         #abf-funnel .abf-logo-badge img { height: 52px !important; }
     }
+
+    /* ── GOOD TO KNOW ── calm closing panel, ported from the Summers Farm `sb-fine`
+       pattern. Replaces the tan "warning" callout that used to sit above the ticket
+       cards: same information, stated as guidance rather than an alarm, and placed
+       after the offer instead of in front of it. */
+    #abf-funnel .abf-fine {
+        width: 100% !important;
+        background: var(--abf-blush) !important;
+        padding: 52px 24px 72px !important;
+        box-sizing: border-box !important;
+    }
+    #abf-funnel .abf-fine-inner {
+        max-width: 680px !important;
+        margin: 0 auto !important;
+        background: #ffffff !important;
+        border: 1px solid rgba(54,87,140,0.16) !important;
+        border-radius: 18px !important;
+        padding: 34px 38px !important;
+        box-shadow: 0 16px 40px rgba(54,87,140,0.14) !important;
+        text-align: center !important;
+    }
+    #abf-funnel .abf-fine-title {
+        font-family: 'Playfair Display', 'Times New Roman', serif !important;
+        font-size: 1.5rem !important; font-weight: 700 !important;
+        color: var(--abf-navy) !important; display: block !important;
+        margin-bottom: 16px !important;
+    }
+    #abf-funnel .abf-fine p {
+        font-size: 0.92rem !important; line-height: 1.7 !important;
+        color: #4a5b70 !important; margin: 0 0 14px !important; text-align: left !important;
+    }
+    #abf-funnel .abf-fine p:last-of-type { margin-bottom: 0 !important; }
+    #abf-funnel .abf-fine-contact {
+        text-align: center !important; font-size: 0.84rem !important;
+        color: #6b7c8f !important; margin: 20px 0 0 !important;
+        padding-top: 18px !important;
+        border-top: 1px solid rgba(54,87,140,0.14) !important;
+    }
+    @media (max-width: 600px) {
+        #abf-funnel .abf-fine { padding: 40px 18px 56px !important; }
+        #abf-funnel .abf-fine-inner { padding: 26px 22px !important; }
+    }
 </style>
 </head>
 <body>
@@ -264,42 +306,6 @@
        area (Finding 2, WS7). Amanda's requirement is about the ticket + confirmation email
        (TS cart, in the build brief), not a landing-page billboard. Content + navy/wheat
        palette unchanged — only placement and prominence. ── */
-    #abf-funnel .abf-blackout-inline {
-        max-width: 900px !important;
-        margin: 0 auto 32px !important;
-        background: var(--abf-wheat) !important;
-        border: 2px solid var(--abf-navy) !important;
-        border-radius: 12px !important;
-        padding: 20px 28px !important;
-        box-sizing: border-box !important;
-        display: flex !important;
-        align-items: flex-start !important;
-        gap: 14px !important;
-    }
-    #abf-funnel .abf-blackout-icon {
-        font-size: 1.6rem !important;
-        line-height: 1 !important;
-        flex-shrink: 0 !important;
-    }
-    #abf-funnel .abf-blackout-text {
-        color: var(--abf-navy-deep) !important;
-    }
-    #abf-funnel .abf-blackout-text strong {
-        font-family: var(--abf-font-display) !important;
-        font-size: 1rem !important;
-        display: block !important;
-        margin-bottom: 4px !important;
-        color: var(--abf-navy-deep) !important;
-    }
-    #abf-funnel .abf-blackout-text span {
-        font-size: 0.92rem !important;
-        line-height: 1.5 !important;
-        display: block !important;
-        color: var(--abf-navy-deep) !important;
-    }
-    #abf-funnel .abf-blackout-dates {
-        font-weight: 700 !important;
-    }
 
     /* ── BENEFITS — unheaded emoji tile strip (house pattern, Finding 1). No eyebrow, no
        section title, no ✓-sentence copy — emoji + 2–4 word label + one short line. ── */
@@ -591,7 +597,6 @@
         #abf-funnel .abf-nav { padding: 0 24px !important; }
         #abf-funnel .abf-benefits { padding: 32px 24px !important; }
         #abf-funnel .abf-tickets { padding: 44px 24px !important; }
-        #abf-funnel .abf-blackout-inline { padding: 18px 22px !important; }
         #abf-funnel .abf-grid { grid-template-columns: 1fr !important; max-width: 460px !important; margin-left: auto !important; margin-right: auto !important; }
         #abf-funnel .abf-info-grid { grid-template-columns: 1fr 1fr !important; }
         #abf-funnel .abf-info-item:nth-child(2n)::after { display: none !important; }
@@ -603,7 +608,6 @@
         #abf-funnel .abf-nav { padding: 0 16px !important; height: 76px !important; }
         #abf-funnel .abf-nav-loc { display: none !important; }
         #abf-funnel .abf-hero-content { padding: 0 20px 32px !important; }
-        #abf-funnel .abf-blackout-inline { flex-direction: column !important; gap: 8px !important; }
         #abf-funnel .abf-benefits-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 14px 0 !important; }
         #abf-funnel .abf-benefit:nth-child(2n)::after { display: none !important; }
         #abf-funnel .abf-card { padding: 26px 22px !important; }
@@ -735,17 +739,6 @@
             <span class="abf-eye">Admission</span>
             <span class="abf-section-title">Pick your <em>ticket</em></span>
         </div>
-
-        <!-- BLACKOUT NOTICE — Amanda's hard requirement, inline in the ticket area
-             (demoted from a full-bleed band, Finding 2) -->
-        <div class="abf-blackout-inline">
-            <span class="abf-blackout-icon">⚠️</span>
-            <div class="abf-blackout-text">
-                <strong>Please note before you buy</strong>
-                <span>Any-Day GA does <strong>not</strong> include our four Peak Days: <span class="abf-blackout-dates">October 24, 25, 31 &amp; November 1</span>. This ticket is valid any other day the farm is open during the season. Blackout dates will also appear clearly on your ticket and confirmation email.</span>
-            </div>
-        </div>
-
         <div class="abf-grid">
 
             <!-- CARD 1 — Any-Day GA. The flash-sale product; the page's CTA drives here. -->
@@ -756,7 +749,7 @@
                 <ul class="abf-card-bullets">
                     <li>✓ Valid any regular-season day, Sept 19 – Nov 22</li>
                     <li>✓ No date lock-in at checkout</li>
-                    <li>⚠️ Excludes our 4 Peak Days (see notice above)</li>
+                    <li>Not valid on our 4 Peak Days — see Good to Know below</li>
                 </ul>
                 <div class="abf-card-price">
                     <span class="abf-price-num">$19.95</span>
