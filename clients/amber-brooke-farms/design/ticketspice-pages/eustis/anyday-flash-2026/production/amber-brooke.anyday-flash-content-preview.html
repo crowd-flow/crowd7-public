@@ -486,7 +486,7 @@
     #abf-funnel .abf-price-label {
         font-size: 0.82rem !important; color: var(--abf-ink-soft) !important; margin-top: 4px !important; display: block !important;
     }
-    /* online/gate price rows (Card 2 — Standard Dated Admission) */
+    /* online/gate price rows (Card 1 — Any-Day General Admission) */
     #abf-funnel .abf-price-rows {
         margin-top: auto !important;
         padding-top: 16px !important;
@@ -514,36 +514,6 @@
     }
     #abf-funnel .abf-price-row-gate {
         font-size: 0.76rem !important; color: var(--abf-ink-soft) !important; display: block !important; margin-top: 2px !important;
-    }
-    #abf-funnel .abf-card-cta {
-        display: inline-block !important;
-        background: var(--abf-terracotta) !important;
-        color: white !important;
-        padding: 13px 28px !important;
-        border-radius: 50px !important;
-        font-size: 0.98rem !important;
-        font-weight: 700 !important;
-        letter-spacing: 0.02em !important;
-        text-decoration: none !important;
-        text-align: center !important;
-        margin-top: 16px !important;
-        transition: all 0.25s ease !important;
-    }
-    #abf-funnel .abf-card-cta:hover {
-        background: var(--abf-terracotta-hover) !important;
-        color: white !important;
-        text-decoration: none !important;
-        transform: translateY(-1px) !important;
-    }
-    #abf-funnel .abf-card-cta-outline {
-        background: transparent !important;
-        color: var(--abf-navy) !important;
-        border: 2px solid var(--abf-navy) !important;
-        padding: 11px 28px !important;
-    }
-    #abf-funnel .abf-card-cta-outline:hover {
-        background: var(--abf-navy) !important;
-        color: white !important;
     }
     #abf-funnel .abf-card-note {
         font-size: 0.74rem !important; color: var(--abf-ink-soft) !important;
@@ -740,63 +710,50 @@
             <span class="abf-section-title">Pick your <em>ticket</em></span>
         </div>
         <div class="abf-grid">
-
-            <!-- CARD 1 — Any-Day GA. The flash-sale product; the page's CTA drives here. -->
             <div class="abf-card abf-card-primary abfr">
-                <span class="abf-card-badge abf-card-badge-sage">Most Popular</span>
-                <span class="abf-card-icon">🎟️</span>
-                <h3>Any-Day General Admission</h3>
-                <ul class="abf-card-bullets">
-                    <li>✓ Valid any regular-season day, Sept 19 – Nov 22</li>
-                    <li>✓ No date lock-in at checkout</li>
-                    <li>Not valid on our 4 Peak Days — see Good to Know below</li>
-                </ul>
-                <div class="abf-card-price">
-                    <span class="abf-price-num">$19.95</span>
-                    <span class="abf-price-label">per person</span>
+              <span class="abf-card-badge abf-card-badge-sage">Most Popular</span>
+              <span class="abf-card-icon">🎟️</span>
+              <h3>Any-Day General Admission</h3>
+              <ul class="abf-card-bullets">
+                <li>✓ Valid any regular-season day, Sept 19 – Nov 22</li>
+                <li>✓ No date lock-in at checkout</li>
+              </ul>
+              <div class="abf-price-rows">
+                <div class="abf-price-row">
+                  <div><span class="abf-price-row-name">Regular Season Days</span></div>
+                  <div class="abf-price-row-vals">
+                    <span class="abf-price-row-online">$19.95</span>
+                    <span class="abf-price-row-gate">online &middot; $22.95 at gate</span>
+                  </div>
                 </div>
-                <a href="#ticketBlock" class="abf-card-cta">Get Any-Day GA</a>
-                <span class="abf-card-note">*plus applicable taxes and fees</span>
+                <div class="abf-price-row">
+                  <div>
+                    <span class="abf-price-row-name">Peak Days</span>
+                    <span class="abf-price-row-desc">Oct 24, 25, 31 &amp; Nov 1</span>
+                  </div>
+                  <div class="abf-price-row-vals">
+                    <span class="abf-price-row-online">$21.95</span>
+                    <span class="abf-price-row-gate">online &middot; $24.95 at gate</span>
+                  </div>
+                </div>
+              </div>
+              <span class="abf-card-note">*plus applicable taxes and fees</span>
             </div>
-
-            <!-- CARD 2 — Standard Dated Admission. Same price as the cheapest dated ticket
-                 with no date lock-in and $5 under the peak gate — makes the Any-Day value
-                 legible by comparison, without claiming a discount that doesn't exist. -->
             <div class="abf-card abf-card-secondary abfr d2">
-                <span class="abf-card-badge abf-card-badge-navy">Pick Your Date</span>
-                <span class="abf-card-icon">📅</span>
-                <h3>Standard Dated Admission</h3>
-                <ul class="abf-card-bullets">
-                    <li>✓ Pick your date at checkout</li>
-                    <li>✓ Valid on Peak Days</li>
-                </ul>
-                <div class="abf-price-rows">
-                    <div class="abf-price-row">
-                        <div>
-                            <span class="abf-price-row-name">Non-Peak</span>
-                            <span class="abf-price-row-desc">Regular-season days</span>
-                        </div>
-                        <div class="abf-price-row-vals">
-                            <span class="abf-price-row-online">$19.95</span>
-                            <span class="abf-price-row-gate">online · $22.95 at gate</span>
-                        </div>
-                    </div>
-                    <div class="abf-price-row">
-                        <div>
-                            <span class="abf-price-row-name">Peak Days</span>
-                            <span class="abf-price-row-desc">Oct 24, 25, 31 &amp; Nov 1</span>
-                        </div>
-                        <div class="abf-price-row-vals">
-                            <span class="abf-price-row-online">$21.95</span>
-                            <span class="abf-price-row-gate">online · $24.95 at gate</span>
-                        </div>
-                    </div>
-                </div>
-                <a href="#ticketBlock" class="abf-card-cta abf-card-cta-outline">Buy Dated Ticket</a>
-                <span class="abf-card-note">*plus applicable taxes and fees</span>
+              <span class="abf-card-badge abf-card-badge-navy">Included</span>
+              <span class="abf-card-icon">🍂</span>
+              <h3>What Your Admission Gets You</h3>
+              <ul class="abf-card-bullets">
+                <li>🎃 Pumpkins &amp; the pumpkin patch</li>
+                <li>🚜 Tractor rides around the farm</li>
+                <li>🐐 Farm animals to meet</li>
+                <li>🛝 Playgrounds, jumping pillows &amp; slide hill</li>
+                <li>🌻 Flower fields &amp; fall photo ops</li>
+                <li>🍎 Seasonal treats and a full day of farm fun</li>
+              </ul>
+              <span class="abf-card-note">Ages 2 &amp; under are always free.</span>
             </div>
-
-        </div>
+          </div>
     </div>
 
     <!-- INFO ROW -->
