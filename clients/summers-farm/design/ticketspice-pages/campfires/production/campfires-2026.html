@@ -1181,6 +1181,49 @@
 }
 .app-container .ticket-block .wbx-calendar .row .day.enabled { background-color: #597792 !important; }
 .app-container .ticket-block .wbx-calendar .row .day.enabled.sold-out { background-color: #A9B6BF !important; }
+
+/* ── CALENDAR SURFACE (2026-07-31, from the rendered DOM Mat captured) ──────────
+   ROOT CAUSE of "blank space and a couple of circles":
+     * d3f4e15 gave [class*="datePicker"] a WHITE background - but <div class=
+       "datePicker"> wraps the ENTIRE .wbx-calendar, not a small input.
+     * Layer 1 paints .ticket-block span light cream (#F4EDE4), and every day cell
+       is <span class="day">.
+   => light cream day numbers on a white calendar = invisible. The only readable
+   cells were .day.enabled, which keep their own blue chip - Mat's "couple of
+   circles". Confirmed against the real DOM, not inferred.
+   FIX: define background AND colour together on this surface so contrast can
+   never depend on an assumption again. ── */
+.app-container .ticket-block .datePicker,
+.app-container .ticket-block .wbx-calendar {
+  background-color: #FFFFFF !important;
+}
+.app-container .ticket-block .wbx-calendar,
+.app-container .ticket-block .wbx-calendar *,
+.app-container .ticket-block .wbx-calendar .row .day,
+.app-container .ticket-block .wbx-calendar span,
+.app-container .ticket-block .wbx-calendar .month-label,
+.app-container .ticket-block .wbx-calendar .day-names .day {
+  color: #243642 !important;
+}
+.app-container .ticket-block .wbx-calendar .row .day.enabled,
+.app-container .ticket-block .wbx-calendar .row .day.enabled * {
+  color: #FFFFFF !important; background-color: #597792 !important;
+}
+.app-container .ticket-block .wbx-calendar .row .day.enabled.sold-out {
+  color: #FFFFFF !important; background-color: #A9B6BF !important;
+}
+.app-container .ticket-block .wbx-calendar .row .day.selected,
+.app-container .ticket-block .wbx-calendar .row .day.selected.enabled {
+  color: #FFFFFF !important; background-color: #801517 !important;
+}
+.app-container .ticket-block .wbx-calendar .row .day.different-month {
+  color: #9aa7b1 !important;
+}
+/* the time slot select is a real <select> - white surface, dark ink */
+.app-container .ticket-block select.timeslotSelect,
+.app-container .ticket-block select.timeslotSelect option {
+  color: #243642 !important; background-color: #FFFFFF !important;
+}
 </style>
 
 <!-- ============================================================
