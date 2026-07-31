@@ -1289,6 +1289,46 @@
 .app-container .ticket-block .wbx-calendar header .month-label {
   color: #243642 !important; font-weight: 700 !important;
 }
+
+/* ── SCOPE CORRECTION (2026-07-31) ─────────────────────────────────────────────
+   Mat: the 'Terms & Conditions*' label and 'I have read and agree to the terms
+   above.' came out DARK. My previous block forced the WHOLE .field-tos and
+   .field-purchaseProtection subtrees to dark ink - but only their INNER boxes are
+   white. The field labels and the agree-checkbox text sit on the dark rgba(2,2,2,
+   0.79) panel, so dark-on-dark.
+
+   Correct model: the FIELD is a dark panel -> light ink. Only the white sub-boxes
+   inside it (.holds-terms-text, the purchase-protection header/body) flip to dark.
+   Four-class selectors so the inner exceptions outrank the field-level rule. ── */
+.app-container .registrant-field.field-tos,
+.app-container .registrant-field.field-tos *,
+.app-container .registrant-field.field-purchaseProtection,
+.app-container .registrant-field.field-purchaseProtection * {
+  color: #F4EDE4 !important;
+}
+/* the white terms box keeps dark ink */
+.app-container .registrant-field.field-tos .holds-terms-text,
+.app-container .registrant-field.field-tos .holds-terms-text *,
+.app-container .registrant-field.field-tos .field-area .holds-terms-text,
+.app-container .registrant-field.field-tos .field-area .holds-terms-text * {
+  color: #243642 !important;
+}
+/* the white purchase-protection panels keep dark ink */
+.app-container .registrant-field.field-purchaseProtection .purchase-protection-header,
+.app-container .registrant-field.field-purchaseProtection .purchase-protection-header *,
+.app-container .registrant-field.field-purchaseProtection .purchase-protection-body,
+.app-container .registrant-field.field-purchaseProtection .purchase-protection-body *,
+.app-container .registrant-field.field-purchaseProtection .purchase-protection-container,
+.app-container .registrant-field.field-purchaseProtection .purchase-protection-container * {
+  color: #243642 !important;
+}
+/* real form controls anywhere in these fields stay dark on their own white surface */
+.app-container .registrant-field.field-tos input,
+.app-container .registrant-field.field-tos textarea,
+.app-container .registrant-field.field-purchaseProtection input,
+.app-container .registrant-field.field-purchaseProtection textarea {
+  color: #243642 !important;
+}
 </style>
 
 <!-- ============================================================
