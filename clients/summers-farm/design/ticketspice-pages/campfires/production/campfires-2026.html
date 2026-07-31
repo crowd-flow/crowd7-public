@@ -1224,6 +1224,62 @@
 .app-container .ticket-block select.timeslotSelect option {
   color: #243642 !important; background-color: #FFFFFF !important;
 }
+
+/* ── WHITE-ISLAND OVERRIDES, SPECIFICITY-CORRECTED (2026-07-31) ────────────────
+   Mat: purchase protection + terms & conditions still render very light "brown"
+   (that's #F4EDE4, Layer 1's cream) on a WHITE background.
+
+   WHY the earlier Layer 2 rules lost: CSS specificity, not source order.
+     Layer 1  .app-container .registrant-field div        -> (0,2,1)
+     Layer 2  .app-container .purchase-protection *       -> (0,2,0)
+   A universal selector contributes nothing, so Layer 1's type selector outranked
+   Layer 2 on every div/span/p - !important on both means specificity decides.
+   Both blocks live inside .registrant-field, so Layer 1 kept winning.
+
+   FIX: give the white islands a THREE-class selector (0,3,x), which outranks
+   Layer 1 outright, and pair colour with an explicit background so contrast is
+   defined rather than assumed. ── */
+.app-container .registrant-field.field-purchaseProtection,
+.app-container .registrant-field.field-purchaseProtection *,
+.app-container .registrant-field .purchase-protection,
+.app-container .registrant-field .purchase-protection *,
+.app-container .registrant-field.field-tos,
+.app-container .registrant-field.field-tos *,
+.app-container .registrant-field .holds-terms-text,
+.app-container .registrant-field .holds-terms-text * {
+  color: #243642 !important;
+}
+.app-container .registrant-field .purchase-protection-header,
+.app-container .registrant-field .purchase-protection-body,
+.app-container .registrant-field .purchase-protection-container {
+  background-color: #FFFFFF !important;
+}
+/* radio / checkbox labels inside purchase protection */
+.app-container .registrant-field .purchase-protection-option,
+.app-container .registrant-field .purchase-protection-option *,
+.app-container .registrant-field .purchase-protection__disclaimer,
+.app-container .registrant-field .purchase-protection-covers__description {
+  color: #243642 !important;
+}
+
+/* ── CALENDAR MONTH ARROWS ─────────────────────────────────────────────────────
+   <i class="arrow left fa fa-angle-left disabled"> / "arrow right ... enabled".
+   They sit on the white calendar surface, so give them dark ink, a clear hit
+   area, and an obviously-greyed disabled state. Three classes = outranks Layer 1. */
+.app-container .ticket-block .wbx-calendar .month-display .arrow,
+.app-container .ticket-block .wbx-calendar header .arrow {
+  color: #36578C !important; opacity: 1 !important;
+  font-size: 1.15rem !important; line-height: 1 !important;
+  padding: 4px 10px !important; cursor: pointer !important;
+}
+.app-container .ticket-block .wbx-calendar .month-display .arrow.disabled,
+.app-container .ticket-block .wbx-calendar header .arrow.disabled {
+  color: #c3ccd3 !important; cursor: default !important;
+}
+.app-container .ticket-block .wbx-calendar .month-display .month-label,
+.app-container .ticket-block .wbx-calendar header .month-label {
+  color: #243642 !important; font-weight: 700 !important;
+}
 </style>
 
 <!-- ============================================================
