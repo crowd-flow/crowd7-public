@@ -17,7 +17,44 @@
       </div>
       <img class="cse-card__photo" decoding="async" src="https://cdn.uploads.webconnex.com/84892/1629341335445-Summer%20Dinner%20at%20the%20Patch%20North%20Liberty-56.jpg" alt="Farm-to-table dinner at Colony Acres">
       <span class="cse-card__date">September 10, 2026</span>
-      <p class="cse-card__desc">An intimate farm-to-table Bourbon Dinner at Colony Acres &mdash; a curated evening for adults, limited to 100 seats. Reserve your table early.</p>
+      <p class="cse-card__desc">An intimate farm-to-table dinner celebrating 100 years of Colony Acres &mdash; handcrafted bourbon, a four-course menu built from the farm&rsquo;s own harvest, and live acoustic music. Adults only, 100 seats.</p>
+                <ul class="cse-facts">
+                  <li><strong>Thursday, September 10, 2026</strong></li>
+                  <li>7:00 &ndash; 9:00 PM</li>
+                  <li>$105 per person</li>
+                  <li>100 seats &middot; 21+</li>
+                </ul>
+                <p class="cse-sub">Your ticket includes a guided bourbon tasting with the owners of Century Farms Distillery, a four-course dinner, acoustic music from local artists, a commemorative cup, and a chef-created take-home treat.</p>
+                <details class="cse-menu">
+                  <summary>See the evening menu</summary>
+                  <div class="cse-menu__body">
+                    <p class="cse-menu__chef">Created by featured chef <strong>Cory Barrett</strong>.</p>
+                    <h4>Cocktail Hour Snacks</h4>
+                    <ul>
+                      <li>Smoked Salmon Everything Puffs</li>
+                      <li>BBQ Shrimp Skewer</li>
+                      <li>Dean&rsquo;s Pumpkin Bread with Prosciutto &amp; Apple Butter</li>
+                    </ul>
+                    <h4>Salad</h4>
+                    <ul>
+                      <li>Heirloom Tomato &amp; Caramelized Onion Salad<br><em>Aged Gouda, crispy shallots, sour grape dressing and brown butter bread crumbs</em></li>
+                    </ul>
+                    <h4>Main Courses</h4>
+                    <ul>
+                      <li>Bourbon-Glazed Smoked Pork Loin<br><em>Peaches, arugula, basil and pickled red onion</em></li>
+                      <li>Grilled New York Strip<br><em>Mushroom &amp; cheddar-stuffed pumpkin, roasted summer vegetables and rosemary demi-glace</em></li>
+                    </ul>
+                    <h4>Dessert</h4>
+                    <ul>
+                      <li>&ldquo;September Sundae&rdquo;<br><em>Sweet corn&ndash;brown sugar ice cream, corn bread, bourbon caramel and cinnamon tuile</em></li>
+                    </ul>
+                    <h4>Take-Home Treat</h4>
+                    <ul>
+                      <li>Chewy Bourbon-Vanilla Caramels</li>
+                    </ul>
+                    <p class="cse-menu__addons"><strong>Optional add-ons:</strong> VIP Farm Tour + Cocktail Hour, 6:00&ndash;7:00 PM (+$45 &mdash; signature drink, hayrack ride, guided farm tour) &middot; Bottle of Colony Acres Centennial Bourbon (+$60, retail $67).</p>
+                  </div>
+                </details>
       <a class="cse-card__btn" href="https://colonyacres.ticketspice.com/-colony-acres-bourbon-dinner-2026" target="_blank" rel="noopener">Get Tickets</a>
     </article>
 
@@ -82,6 +119,25 @@
       .cse-card { flex-basis:100%; }
       .cse__partners-logos { flex-direction:column; gap:24px; }
     }
-  </style>
+  
+/* ---- Bourbon Dinner detail block (2026-07-31, Katie's 7/22 + 7/28 asks:
+        pull ticket-page info onto the site and list the menu) ---- */
+.cse-facts{list-style:none;margin:14px 0 10px;padding:0;display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.92rem;line-height:1.4}
+.cse-facts li{position:relative;padding-right:14px}
+.cse-facts li:not(:last-child)::after{content:"\00b7";position:absolute;right:0;opacity:.5}
+.cse-sub{font-size:.92rem;line-height:1.55;margin:0 0 14px}
+.cse-menu{margin:0 0 16px;border-top:1px dotted rgba(110,98,89,.5);border-bottom:1px dotted rgba(110,98,89,.5);padding:10px 0}
+.cse-menu>summary{cursor:pointer;font-weight:700;font-size:.95rem;list-style:none;padding:2px 0}
+.cse-menu>summary::-webkit-details-marker{display:none}
+.cse-menu>summary::after{content:" \25be";font-size:.8em}
+.cse-menu[open]>summary::after{content:" \25b4"}
+.cse-menu__body{padding-top:10px}
+.cse-menu__chef{font-size:.9rem;margin:0 0 12px}
+.cse-menu__body h4{font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;margin:14px 0 6px;opacity:.75}
+.cse-menu__body ul{margin:0;padding-left:18px;font-size:.92rem;line-height:1.5}
+.cse-menu__body ul li{margin-bottom:6px}
+.cse-menu__body em{font-size:.86rem;opacity:.8;font-style:italic}
+.cse-menu__addons{font-size:.86rem;line-height:1.5;margin:16px 0 0;opacity:.9}
+</style>
 </div>
 </body></html>
