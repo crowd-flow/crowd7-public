@@ -3,71 +3,82 @@
 			<div class="et_builder_inner_content et_pb_gutters3">
 		
 <style>
-/* ── LEFT SIDEBAR PANEL — EXACT Divi rules, ported verbatim (2026-07-31) ───────
-   Source of truth: Divi's own generated stylesheet for this page (id 791),
-   https://colonyacres.farm/wp-content/et-cache/791/et-core-unified-tb-664-tb-666-deferred-791.min.css
-   pulled after Mat saved the original page. The first attempt at this panel was
-   hand-approximated and wrong on every count - it missed the real wood texture
-   asset (button-bgd.webp), the color-burn blend, the asymmetric 0 8px 0 8px
-   radius, the 2px white border, the inset shadow, the -80px overlap that pulls
-   the box up over the hero, and the dotted top+bottom rules on the paragraph.
-   These are now the actual Divi declarations, byte-for-byte, at all three
-   breakpoints. Scoped to this page's section+column so nothing leaks. ── */
-.et_pb_section_1 .et_pb_column_1 .et_pb_text_2 {
-  line-height: 1.3em !important;
-  font-family: 'Source Sans Pro', Helvetica, Arial, Lucida, sans-serif !important;
-  font-size: 15px !important;
-  background-blend-mode: color-burn !important;
-  background-image: url(https://colonyacres.farm/wp-content/uploads/2023/05/button-bgd.webp) !important;
-  background-color: #472426 !important;
-  border-radius: 0 8px 0 8px !important;
-  overflow: hidden !important;
-  border-style: solid !important;
-  border-width: 2px !important;
-  border-color: #FFFFFF !important;
-  padding: 30px 20px 40px 20px !important;
-  margin-top: -80px !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  box-shadow: inset 0px 0px 18px 0px rgba(0,0,0,0.51) !important;
+/* ── DIVI PAGE CSS, PORTED VERBATIM (2026-07-31) ───────────────────────────────
+   Source of truth: Divi's generated stylesheet for this page (id 791) —
+   wp-content/et-cache/791/et-core-unified-tb-664-tb-666-deferred-791.min.css
+   pulled live after Mat saved the original page.
+
+   WHY THIS EXISTS: the loader injects markup only. Divi keeps a page's real
+   styling in this generated per-page sheet, which the loader never receives, so
+   every styled module renders naked. Approximating it by eye failed repeatedly
+   (wrong panel, wrong radius, missing texture, and the h2s losing their orange).
+   These are Divi's own declarations, copied.
+
+   NOT scoped, deliberately: this guts file is only ever injected into the
+   party-in-the-maze page, so unscoped selectors reproduce Divi's exact
+   specificity behaviour. Theme-builder header/footer rules (*_tb_header /
+   *_tb_footer) are intentionally NOT ported — those stay WordPress-owned. ── */
+
+/* ---- left sidebar: the "Check back" panel ---- */
+.et_pb_text_2 {
+  line-height:1.3em !important; font-family:'Source Sans Pro',Helvetica,Arial,Lucida,sans-serif !important; font-size:15px !important;
+  background-blend-mode:color-burn !important;
+  background-image:url(https://colonyacres.farm/wp-content/uploads/2023/05/button-bgd.webp) !important;
+  background-color:#472426 !important; border-radius:0 8px 0 8px !important;
+  overflow:hidden !important; border-style:solid !important; border-width:2px !important;
+  border-color:#FFFFFF !important; padding:30px 20px 40px 20px !important;
+  margin-top:-80px !important; margin-left:auto !important; margin-right:auto !important;
+  box-shadow:inset 0px 0px 18px 0px rgba(0,0,0,0.51) !important;
 }
-.et_pb_section_1 .et_pb_column_1 .et_pb_text_2,
-.et_pb_section_1 .et_pb_column_1 .et_pb_text_2 .et_pb_text_inner {
-  color: #FFFFFF !important;
+.et_pb_text_2.et_pb_text, .et_pb_text_2 .et_pb_text_inner { color:#FFFFFF !important; }
+.et_pb_text_2 h4 {
+  font-family:'Source Sans Pro',Helvetica,Arial,Lucida,sans-serif !important; font-weight:700 !important; font-size:22px !important;
+  color:#FFFFFF !important; line-height:1.2em !important; text-align:center !important;
+  text-shadow:0.03em 0.03em 0.04em rgba(0,0,0,0.4) !important; margin:0 !important;
 }
-.et_pb_section_1 .et_pb_column_1 .et_pb_text_2 h4 {
-  font-family: 'Source Sans Pro', Helvetica, Arial, Lucida, sans-serif !important;
-  font-weight: 700 !important;
-  font-size: 22px !important;
-  color: #FFFFFF !important;
-  line-height: 1.2em !important;
-  text-align: center !important;
-  text-shadow: 0.03em 0.03em 0.04em rgba(0,0,0,0.4) !important;
-  margin: 0 !important;
+
+/* ---- left sidebar: the closure paragraph ---- */
+.et_pb_text_3 {
+  line-height:1.3em !important; font-size:14px !important;
+  border-top-width:1px !important; border-bottom-width:1px !important;
+  border-top-style:dotted !important; border-bottom-style:dotted !important;
+  border-top-color:rgba(110,98,89,0.59) !important;
+  border-bottom-color:rgba(110,98,89,0.59) !important;
+  padding:15px 4% !important; margin-top:25px !important;
 }
-.et_pb_section_1 .et_pb_column_1 .et_pb_text_3 {
-  line-height: 1.3em !important;
-  font-size: 14px !important;
-  border-top-width: 1px !important;
-  border-bottom-width: 1px !important;
-  border-top-style: dotted !important;
-  border-bottom-style: dotted !important;
-  border-top-color: rgba(110,98,89,0.59) !important;
-  border-bottom-color: rgba(110,98,89,0.59) !important;
-  padding: 15px 4% !important;
-  margin-top: 25px !important;
+
+/* ---- headings + body copy in BOTH columns (this is the orange) ---- */
+.et_pb_text_3 h2, .et_pb_text_4 h2 {
+  font-family:'Source Sans Pro',Helvetica,Arial,Lucida,sans-serif !important; font-weight:700 !important; font-size:30px !important;
+  color:#FF8F1C !important; line-height:1.2em !important;
 }
-@media only screen and (max-width: 980px) {
-  .et_pb_section_1 .et_pb_column_1 .et_pb_text_2 {
-    margin-top: -80px !important; width: 70% !important; }
-  .et_pb_section_1 .et_pb_column_1 .et_pb_text_3 {
-    padding-right: 0% !important; padding-left: 0% !important; }
+.et_pb_text_3 h5 {
+  font-family:'Source Sans Pro',Helvetica,Arial,Lucida,sans-serif !important; font-weight:700 !important; font-size:17px !important;
+  color:#009A44 !important; line-height:1.2em !important;
 }
-@media only screen and (max-width: 767px) {
-  .et_pb_section_1 .et_pb_column_1 .et_pb_text_2 {
-    margin-top: -80px !important; width: 100% !important; }
-  .et_pb_section_1 .et_pb_column_1 .et_pb_text_3 {
-    padding-right: 0% !important; padding-left: 0% !important; }
+.et_pb_text_4 { font-size:15px !important; padding-right:4% !important; padding-left:4% !important; }
+.et_pb_text_4.et_pb_text a, .et_pb_text_4 a { color:#FF8F1C !important; }
+.et_pb_text_4 h6 {
+  font-family:'Retrology Clean',Helvetica,Arial,Lucida,sans-serif !important;
+  font-size:32px !important; color:#009A44 !important;
+}
+.et_pb_text_4 ul { padding-left:30px !important; }
+
+@media only screen and (max-width:980px) {
+  .et_pb_text_2 { margin-top:-80px !important; width:70% !important; }
+  .et_pb_text_2.et_pb_module { margin-left:auto !important; margin-right:auto !important; }
+  .et_pb_text_3 { padding-right:0% !important; padding-left:0% !important; }
+  .et_pb_text_4 { padding-right:0% !important; padding-left:0% !important; }
+  .et_pb_text_3 h2, .et_pb_text_4 h2 { font-size:30px !important; text-align:center !important; }
+  .et_pb_section_2.et_pb_section { padding-top:30px !important; padding-bottom:30px !important; }
+}
+@media only screen and (max-width:767px) {
+  .et_pb_text_2 { margin-top:-80px !important; width:100% !important; }
+  .et_pb_text_3 { padding-right:0% !important; padding-left:0% !important; }
+  .et_pb_text_3 h2, .et_pb_text_4 h2 { font-size:26px !important; text-align:center !important; }
+  .et_pb_section_1.et_pb_section { padding-top:30px !important; padding-bottom:0px !important;
+    margin-top:0px !important; margin-bottom:0px !important; }
+  .et_pb_section_2.et_pb_section { padding-top:20px !important; padding-bottom:20px !important; }
 }
 </style>
 <div class="et_pb_section et_pb_section_1 et_section_regular" >
