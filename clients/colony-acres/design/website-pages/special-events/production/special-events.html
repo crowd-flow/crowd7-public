@@ -46,19 +46,19 @@
       </div>
       <span class="cse-card__date">Saturday, November 7, 2026</span>
       <p class="cse-card__desc">Miles in the Maize is a unique running experience for people of all ages and abilities! With a 5K and Maize Mile, this event takes competitors through a unique off-road course weaving around a corn maze, pumpkin patch, and other beautiful fall Iowa scenery!</p>
-      <a class="cse-card__btn" href="https://runsignup.com/Race/IA/NorthLiberty/MilesintheMaize" target="_blank" rel="noopener">Register Now</a>
+      
+                <div class="cse-card__partners">
+                  <span class="cse-card__partners-title">Event Partners</span>
+                  <div class="cse-card__partners-logos">
+                    <img decoding="async" loading="lazy" src="https://cdn.uploads.webconnex.com/84892/colonyacres-logo-circular-4cspot.jpg?1718392912482" alt="Colony Acres">
+                    <img decoding="async" loading="lazy" src="https://cdn.uploads.webconnex.com/84892/fitnesssportslogotest-300x70.webp?1778276791589" alt="Fitness Sports">
+                  </div>
+                </div>
+                <a class="cse-card__btn" href="https://runsignup.com/Race/IA/NorthLiberty/MilesintheMaize" target="_blank" rel="noopener">Register Now</a>
     </article>
 
   </div>
-
-  <!-- ===== Miles in the Maize partners ===== -->
-  <div class="cse__partners">
-    <h3 class="cse__partners-title">Miles in the Maize Partners</h3>
-    <div class="cse__partners-logos">
-      <img decoding="async" src="https://cdn.uploads.webconnex.com/84892/colonyacres-logo-circular-4cspot.jpg?1718392912482" alt="Colony Acres">
-      <img decoding="async" src="https://cdn.uploads.webconnex.com/84892/fitnesssportslogotest-300x70.webp?1778276791589" alt="Fitness Sports">
-    </div>
-  </div>
+</div>
 
   <style>
     .cse { --amber:#8a5a2b; --red:#C8102E; max-width:1000px; margin:0 auto; padding:32px 16px; box-sizing:border-box; }
@@ -137,6 +137,13 @@
 .cse-modal__body{padding-top:6px}
 body.cse-modal-open{overflow:hidden}
 @media (max-width:600px){.cse-modal{padding:12px}.cse-modal__panel{padding:28px 20px 22px}}
+
+/* ---- partners, now inside the Miles in the Maize card (Mat 2026-07-31) ---- */
+.cse-card__partners{width:100%;margin:18px 0 20px;padding:16px 12px 14px;border-top:1px dotted rgba(110,98,89,.45);border-bottom:1px dotted rgba(110,98,89,.45)}
+.cse-card__partners-title{display:block;font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;font-weight:700;color:#C8102E;opacity:.85;margin-bottom:12px}
+.cse-card__partners-logos{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:26px}
+.cse-card__partners-logos img{max-height:56px;width:auto;height:auto;max-width:44%;object-fit:contain}
+@media (max-width:420px){.cse-card__partners-logos{gap:18px}.cse-card__partners-logos img{max-height:46px}}
 </style>
 
 <!-- ===== Bourbon Dinner menu modal ===== -->
@@ -174,7 +181,7 @@ body.cse-modal-open{overflow:hidden}
                   </div>
   </div>
 </div>
-</div>
+
 
 <script>
 (function(){
