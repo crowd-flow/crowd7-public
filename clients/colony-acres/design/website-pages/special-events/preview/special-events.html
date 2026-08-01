@@ -25,37 +25,10 @@
                   <li>100 seats &middot; 21+</li>
                 </ul>
                 <p class="cse-sub">Your ticket includes a guided bourbon tasting with the owners of Century Farms Distillery, a four-course dinner, acoustic music from local artists, a commemorative cup, and a chef-created take-home treat.</p>
-                <details class="cse-menu">
-                  <summary>See the evening menu</summary>
-                  <div class="cse-menu__body">
-                    <p class="cse-menu__chef">Created by featured chef <strong>Cory Barrett</strong>.</p>
-                    <h4>Cocktail Hour Snacks</h4>
-                    <ul>
-                      <li>Smoked Salmon Everything Puffs</li>
-                      <li>BBQ Shrimp Skewer</li>
-                      <li>Dean&rsquo;s Pumpkin Bread with Prosciutto &amp; Apple Butter</li>
-                    </ul>
-                    <h4>Salad</h4>
-                    <ul>
-                      <li>Heirloom Tomato &amp; Caramelized Onion Salad<br><em>Aged Gouda, crispy shallots, sour grape dressing and brown butter bread crumbs</em></li>
-                    </ul>
-                    <h4>Main Courses</h4>
-                    <ul>
-                      <li>Bourbon-Glazed Smoked Pork Loin<br><em>Peaches, arugula, basil and pickled red onion</em></li>
-                      <li>Grilled New York Strip<br><em>Mushroom &amp; cheddar-stuffed pumpkin, roasted summer vegetables and rosemary demi-glace</em></li>
-                    </ul>
-                    <h4>Dessert</h4>
-                    <ul>
-                      <li>&ldquo;September Sundae&rdquo;<br><em>Sweet corn&ndash;brown sugar ice cream, corn bread, bourbon caramel and cinnamon tuile</em></li>
-                    </ul>
-                    <h4>Take-Home Treat</h4>
-                    <ul>
-                      <li>Chewy Bourbon-Vanilla Caramels</li>
-                    </ul>
-                    <p class="cse-menu__addons"><strong>Optional add-ons:</strong> VIP Farm Tour + Cocktail Hour, 6:00&ndash;7:00 PM (+$45 &mdash; signature drink, hayrack ride, guided farm tour) &middot; Bottle of Colony Acres Centennial Bourbon (+$60, retail $67).</p>
-                  </div>
-                </details>
-      <a class="cse-card__btn" href="https://colonyacres.ticketspice.com/-colony-acres-bourbon-dinner-2026" target="_blank" rel="noopener">Get Tickets</a>
+      <div class="cse-card__btns">
+                  <a class="cse-card__btn" href="https://colonyacres.ticketspice.com/-colony-acres-bourbon-dinner-2026" target="_blank" rel="noopener">Get Tickets</a>
+                  <button type="button" class="cse-card__btn cse-card__btn--menu" data-cse-open="cse-menu-modal">See the Menu</button>
+                </div>
     </article>
 
     <!-- ===== Miles in the Maize (accent: race red) ===== -->
@@ -138,5 +111,81 @@
 .cse-menu__body ul li{margin-bottom:6px}
 .cse-menu__body em{font-size:.86rem;opacity:.8;font-style:italic}
 .cse-menu__addons{font-size:.86rem;line-height:1.5;margin:16px 0 0;opacity:.9}
+
+/* ---- paired buttons + menu modal (Mat 2026-07-31) ---- */
+.cse-card__btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:auto}
+.cse-card__btns .cse-card__btn{margin-top:0;padding:14px 26px;border:0;cursor:pointer;font-family:inherit;-webkit-appearance:none;appearance:none}
+.cse-modal[hidden]{display:none}
+.cse-modal{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;padding:24px}
+.cse-modal__overlay{position:absolute;inset:0;background:rgba(20,12,6,.72)}
+.cse-modal__panel{position:relative;background:#fff;border-radius:12px;max-width:620px;width:100%;max-height:85vh;overflow-y:auto;padding:32px 30px 30px;box-shadow:0 24px 60px rgba(0,0,0,.35)}
+.cse-modal__x{position:absolute;top:10px;right:14px;background:none;border:0;font-size:30px;line-height:1;cursor:pointer;color:#8a5a2b;padding:4px 8px}
+.cse-modal__title{margin:0 0 4px;font-size:1.6rem;color:#8a5a2b}
+.cse-modal__body{padding-top:6px}
+body.cse-modal-open{overflow:hidden}
+@media (max-width:600px){.cse-modal{padding:12px}.cse-modal__panel{padding:28px 20px 22px}}
 </style>
+
+<!-- ===== Bourbon Dinner menu modal ===== -->
+<div class="cse-modal" id="cse-menu-modal" hidden>
+  <div class="cse-modal__overlay" data-cse-close></div>
+  <div class="cse-modal__panel" role="dialog" aria-modal="true" aria-labelledby="cse-menu-title">
+    <button type="button" class="cse-modal__x" data-cse-close aria-label="Close">&times;</button>
+    <h3 class="cse-modal__title" id="cse-menu-title">Evening Menu</h3>
+    <div class="cse-modal__body">
+                    <p class="cse-menu__chef">Created by featured chef <strong>Cory Barrett</strong>.</p>
+                    <h4>Cocktail Hour Snacks</h4>
+                    <ul>
+                      <li>Smoked Salmon Everything Puffs</li>
+                      <li>BBQ Shrimp Skewer</li>
+                      <li>Dean&rsquo;s Pumpkin Bread with Prosciutto &amp; Apple Butter</li>
+                    </ul>
+                    <h4>Salad</h4>
+                    <ul>
+                      <li>Heirloom Tomato &amp; Caramelized Onion Salad<br><em>Aged Gouda, crispy shallots, sour grape dressing and brown butter bread crumbs</em></li>
+                    </ul>
+                    <h4>Main Courses</h4>
+                    <ul>
+                      <li>Bourbon-Glazed Smoked Pork Loin<br><em>Peaches, arugula, basil and pickled red onion</em></li>
+                      <li>Grilled New York Strip<br><em>Mushroom &amp; cheddar-stuffed pumpkin, roasted summer vegetables and rosemary demi-glace</em></li>
+                    </ul>
+                    <h4>Dessert</h4>
+                    <ul>
+                      <li>&ldquo;September Sundae&rdquo;<br><em>Sweet corn&ndash;brown sugar ice cream, corn bread, bourbon caramel and cinnamon tuile</em></li>
+                    </ul>
+                    <h4>Take-Home Treat</h4>
+                    <ul>
+                      <li>Chewy Bourbon-Vanilla Caramels</li>
+                    </ul>
+                    <p class="cse-menu__addons"><strong>Optional add-ons:</strong> VIP Farm Tour + Cocktail Hour, 6:00&ndash;7:00 PM (+$45 &mdash; signature drink, hayrack ride, guided farm tour) &middot; Bottle of Colony Acres Centennial Bourbon (+$60, retail $67).</p>
+                  </div>
+  </div>
 </div>
+</div>
+
+<script>
+(function(){
+  function boot(){
+    var root=document;
+    root.querySelectorAll('[data-cse-open]').forEach(function(b){
+      b.addEventListener('click',function(){
+        var m=root.getElementById(b.getAttribute('data-cse-open'));
+        if(!m) return; m.hidden=false; document.body.classList.add('cse-modal-open');
+        var x=m.querySelector('.cse-modal__x'); if(x) x.focus();
+      });
+    });
+    root.querySelectorAll('.cse-modal').forEach(function(m){
+      m.querySelectorAll('[data-cse-close]').forEach(function(c){
+        c.addEventListener('click',function(){ m.hidden=true; document.body.classList.remove('cse-modal-open'); });
+      });
+    });
+    document.addEventListener('keydown',function(e){
+      if(e.key!=='Escape') return;
+      root.querySelectorAll('.cse-modal:not([hidden])').forEach(function(m){
+        m.hidden=true; document.body.classList.remove('cse-modal-open');
+      });
+    });
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',boot);}else{boot();}
+})();
+</script>
