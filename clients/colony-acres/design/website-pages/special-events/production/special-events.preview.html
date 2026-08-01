@@ -32,17 +32,13 @@ body.cse-modal-open{overflow:hidden}
       <span class="cse-card__date">September 10, 2026</span>
       <p class="cse-card__desc">An intimate farm-to-table dinner celebrating 100 years of Colony Acres &mdash; handcrafted bourbon, a four-course menu built from the farm&rsquo;s own harvest, and live acoustic music. Adults only, 100 seats.</p>
                 <div class="cse-facts">
-                  <div class="cse-fact">
+                  <div class="cse-fact cse-fact--wide">
                     <span class="cse-fact__label">Date</span>
                     <span class="cse-fact__value">Thursday, September&nbsp;10, 2026</span>
                   </div>
                   <div class="cse-fact">
                     <span class="cse-fact__label">Time</span>
                     <span class="cse-fact__value">7:00 &ndash; 9:00 PM</span>
-                  </div>
-                  <div class="cse-fact">
-                    <span class="cse-fact__label">Price</span>
-                    <span class="cse-fact__value">$105 <span class="cse-fact__unit">per person</span></span>
                   </div>
                   <div class="cse-fact">
                     <span class="cse-fact__label">Seating</span>
@@ -122,6 +118,7 @@ body.cse-modal-open{overflow:hidden}
         pull ticket-page info onto the site and list the menu) ---- */
 .cse-facts{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin:16px 0 14px;padding:1px;
   background:rgba(138,90,43,.18);border:1px solid rgba(138,90,43,.22);border-radius:10px;overflow:hidden}
+.cse-fact--wide{grid-column:1 / -1}
 .cse-fact{background:#fffdfa;padding:12px 14px;display:flex;flex-direction:column;gap:3px}
 .cse-fact__label{font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;font-weight:700;color:#8a5a2b;opacity:.85}
 .cse-fact__value{font-size:1rem;font-weight:700;line-height:1.25;color:#3a2a1c}
