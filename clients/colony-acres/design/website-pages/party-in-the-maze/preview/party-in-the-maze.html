@@ -3,42 +3,71 @@
 			<div class="et_builder_inner_content et_pb_gutters3">
 		
 <style>
-/* ── LEFT SIDEBAR PANEL — Crowd7-owned rebuild (2026-07-31) ────────────────────
-   Mat, comparing old-vs-new side by side: the "Check back for our 2026 dates!"
-   heading used to sit in a dark wood-toned panel with white text, and the
-   closure paragraph had a divider above it. Both blocks carry Divi's
-   et_pb_with_border / et_pb_text_2 / et_pb_text_3 classes, but the actual
-   styling lived in Divi's generated per-page CSS - which the loader never
-   receives. Classic failure-axis (b): markup survives, styling doesn't.
-   Rebuilt self-contained so it renders identically under the loader.
-   Scoped to this page's section+column so it cannot leak. ── */
+/* ── LEFT SIDEBAR PANEL — EXACT Divi rules, ported verbatim (2026-07-31) ───────
+   Source of truth: Divi's own generated stylesheet for this page (id 791),
+   https://colonyacres.farm/wp-content/et-cache/791/et-core-unified-tb-664-tb-666-deferred-791.min.css
+   pulled after Mat saved the original page. The first attempt at this panel was
+   hand-approximated and wrong on every count - it missed the real wood texture
+   asset (button-bgd.webp), the color-burn blend, the asymmetric 0 8px 0 8px
+   radius, the 2px white border, the inset shadow, the -80px overlap that pulls
+   the box up over the hero, and the dotted top+bottom rules on the paragraph.
+   These are now the actual Divi declarations, byte-for-byte, at all three
+   breakpoints. Scoped to this page's section+column so nothing leaks. ── */
 .et_pb_section_1 .et_pb_column_1 .et_pb_text_2 {
-  background: linear-gradient(180deg, #5b3a2b 0%, #462c20 100%) !important;
-  border: 1px solid rgba(0,0,0,0.35) !important;
-  border-radius: 4px !important;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.18) !important;
-  padding: 26px 22px !important;
-  margin-bottom: 22px !important;
+  line-height: 1.3em !important;
+  font-family: 'Source Sans Pro', Helvetica, Arial, Lucida, sans-serif !important;
+  font-size: 15px !important;
+  background-blend-mode: color-burn !important;
+  background-image: url(https://colonyacres.farm/wp-content/uploads/2023/05/button-bgd.webp) !important;
+  background-color: #472426 !important;
+  border-radius: 0 8px 0 8px !important;
+  overflow: hidden !important;
+  border-style: solid !important;
+  border-width: 2px !important;
+  border-color: #FFFFFF !important;
+  padding: 30px 20px 40px 20px !important;
+  margin-top: -80px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  box-shadow: inset 0px 0px 18px 0px rgba(0,0,0,0.51) !important;
 }
-.et_pb_section_1 .et_pb_column_1 .et_pb_text_2 .et_pb_text_inner h4,
+.et_pb_section_1 .et_pb_column_1 .et_pb_text_2,
+.et_pb_section_1 .et_pb_column_1 .et_pb_text_2 .et_pb_text_inner {
+  color: #FFFFFF !important;
+}
 .et_pb_section_1 .et_pb_column_1 .et_pb_text_2 h4 {
-  color: #ffffff !important;
-  font-size: 1.28rem !important;
-  line-height: 1.3 !important;
+  font-family: 'Source Sans Pro', Helvetica, Arial, Lucida, sans-serif !important;
   font-weight: 700 !important;
-  margin: 0 !important;
+  font-size: 22px !important;
+  color: #FFFFFF !important;
+  line-height: 1.2em !important;
   text-align: center !important;
+  text-shadow: 0.03em 0.03em 0.04em rgba(0,0,0,0.4) !important;
+  margin: 0 !important;
 }
 .et_pb_section_1 .et_pb_column_1 .et_pb_text_3 {
-  border-top: 1px solid rgba(0,0,0,0.16) !important;
-  padding-top: 18px !important;
+  line-height: 1.3em !important;
+  font-size: 14px !important;
+  border-top-width: 1px !important;
+  border-bottom-width: 1px !important;
+  border-top-style: dotted !important;
+  border-bottom-style: dotted !important;
+  border-top-color: rgba(110,98,89,0.59) !important;
+  border-bottom-color: rgba(110,98,89,0.59) !important;
+  padding: 15px 4% !important;
+  margin-top: 25px !important;
 }
-.et_pb_section_1 .et_pb_column_1 .et_pb_text_3 .et_pb_text_inner p,
-.et_pb_section_1 .et_pb_column_1 .et_pb_text_3 p {
-  font-size: 0.92rem !important;
-  line-height: 1.6 !important;
-  text-align: center !important;
-  margin: 0 !important;
+@media only screen and (max-width: 980px) {
+  .et_pb_section_1 .et_pb_column_1 .et_pb_text_2 {
+    margin-top: -80px !important; width: 70% !important; }
+  .et_pb_section_1 .et_pb_column_1 .et_pb_text_3 {
+    padding-right: 0% !important; padding-left: 0% !important; }
+}
+@media only screen and (max-width: 767px) {
+  .et_pb_section_1 .et_pb_column_1 .et_pb_text_2 {
+    margin-top: -80px !important; width: 100% !important; }
+  .et_pb_section_1 .et_pb_column_1 .et_pb_text_3 {
+    padding-right: 0% !important; padding-left: 0% !important; }
 }
 </style>
 <div class="et_pb_section et_pb_section_1 et_section_regular" >
