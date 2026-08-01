@@ -98,7 +98,7 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
 }
 /* Legend — pseudo-element after the grid. Two color swatches inline. */
 .ticket-block .datePicker .wbx-calendar::after {
-  content: '🟩 Christmas in July $21        🟥 Standard $35' !important;
+  content: '🟩 Christmas in July $28        🟥 Standard $35' !important;
   display: block !important;
   font-family: 'Montserrat', sans-serif !important;
   font-size: 0.74rem !important;
@@ -254,24 +254,24 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
 }
 /* Christmas-in-July discounted dates (from Teresa Thompson's 7/16 email) —
    tagged by JS with .cap-value-date (date-keyed, NOT column-keyed).
-   Green cell + $21 price. Non-discounted enabled dates stay red at $35. */
+   Green cell + $28 price. Non-discounted enabled dates stay red at $35. */
 .ticket-block .datePicker .wbx-calendar .row.week .day.cap-value-date {
   background: #28bf38 !important;
   color: #fff !important;
 }
 .ticket-block .datePicker .wbx-calendar .row.week .day.cap-value-date::after {
-  content: '$21' !important;
+  content: '$28' !important;
   color: #eafbe9 !important;
 }
 /* ── BUYER-PATH PRICING ──────────────────────────────────────────────────
    Tier cards stamp <html data-buyer-path="ga|premium|vip"> on Select
    (capSetPath, wired in the reveal script). Swap the calendar's per-night
    prices + legend to match, so a Premium/VIP buyer never sees GA numbers.
-   GA (default) = $35 standard / $21 value, set above. */
-/* Premium: standard $70 / value (Christmas-in-July 40% off) $42 */
+   GA (default) = $35 standard / $28 value, set above. */
+/* Premium: standard $70 / value (Christmas-in-July 20% off) $56 */
 html[data-buyer-path="premium"] .ticket-block .datePicker .wbx-calendar .row.week .day::after { content: '$70' !important; }
-html[data-buyer-path="premium"] .ticket-block .datePicker .wbx-calendar .row.week .day.cap-value-date::after { content: '$42' !important; }
-html[data-buyer-path="premium"] .ticket-block .datePicker .wbx-calendar::after { content: '🟩 Christmas in July $42        🟥 Standard $70' !important; }
+html[data-buyer-path="premium"] .ticket-block .datePicker .wbx-calendar .row.week .day.cap-value-date::after { content: '$56' !important; }
+html[data-buyer-path="premium"] .ticket-block .datePicker .wbx-calendar::after { content: '🟩 Christmas in July $56        🟥 Standard $70' !important; }
 /* VIP: fire tables are per-table & dynamic — priced in the Reserve flow, not here.
    Hide the per-night number; keep green/red so discount-vs-standard nights still read. */
 html[data-buyer-path="vip"] .ticket-block .datePicker .wbx-calendar .row.week .day::after { content: '' !important; display: none !important; }
@@ -500,7 +500,6 @@ html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar::after { c
 
   <!-- 1) DYNAMIC SALE-PHASE CARDS -->
   <section style="background:#fff;padding-bottom:51px;"><div class="cap-wrap">
-    <div class="sec-head"><div class="eye">Limited-Time Pricing</div><h2>Lock in the best deals of the season!</h2></div>
     <!-- phase-price 3-card row removed 2026-07-21 (Mat) — kept the teaser header + line below -->
 
     <div class="cap-divider" aria-hidden="true">&#10022;</div>
@@ -512,31 +511,22 @@ html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar::after { c
     <div class="tier-row">
       <div class="tier" data-buyer="ga">
         <h3>General Admission</h3><div class="saletag" data-saletag="&#127876; The Traditional Experience"></div>
-        <div class="starting">Starting at</div>
-        <div class="price">$21 <small>/ person</small><span class="was">$35 / person</span></div>
+        <div class="price">$28 <small>/ person</small></div>
         <ul><li>17 Million Christmas Lights</li><li>The Village</li><li>Princess Express Train</li></ul>
         <button class="btn btn-out" onclick="capOpenStar()">Select</button>
       </div>
       <div class="tier feature" data-buyer="premium"><span class="ribbon">NEW</span>
         <h3>Premium Admission</h3><div class="saletag" data-saletag="&#10024; Best value upgrade"></div>
-        <div class="starting">Starting at</div>
-        <div class="price">$42 <small>/ person</small><span class="was">$70 / person</span></div>
+        <div class="price">$56 <small>/ person</small></div>
         <ul><li>Includes General Admission</li><li>Communal fire tables, available on a first-come basis</li><li>S&rsquo;mores &amp; Hot Cocoa Bar</li></ul>
         <button class="btn btn-solid">Select</button>
       </div>
       <div class="tier" data-buyer="vip">
         <h3>VIP Experiences</h3><div class="saletag" data-saletag="&#128293; Private Igloos &amp; Fire Tables"></div>
-        <div class="starting">Starting at</div>
         <div class="price">$250 <small>/ table</small></div>
         <ul><li>Includes General Admission Tickets</li><li>Includes Valet Parking ($125 Value)</li><li>Seats 4&ndash;8 guests</li><li>Premium bar service</li></ul>
         <button class="btn btn-out">Reserve</button>
       </div>
-    </div>
-    <div class="cap-santa-note">
-      <span class="cap-santa-tag">Limited-Time Offer</span>
-      <h3>40% off the <em>Ultimate Santa</em> Experience</h3>
-      <p>Enjoy this offer November 1st &ndash; December 24th. Valid on specific time slots.</p>
-      <button type="button" class="cap-santa-cta" onclick="capSantaCta()">Add the Ultimate Santa Experience</button>
     </div>
   </div></section>
 
@@ -558,8 +548,7 @@ html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar::after { c
   <div class="cap-ov" id="capOvPremium"><div class="cap-modal starlight"><button class="x" onclick="capCloseAll()">&times;</button>
     <div class="cap-promo-eye">Premium Admission</div>
     <h3>&#10024; Here&rsquo;s what&rsquo;s included</h3>
-    <div class="p-price">$42 <small>/ person</small></div>
-    <div class="p-was">$70 / person</div>
+    <div class="p-price">$56 <small>/ person</small></div>
     <ul class="p-list">
       <li>Includes General Admission</li>
       <li>Communal fire tables, available on a first-come basis</li>
@@ -660,7 +649,7 @@ html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar::after { c
   })();
 
   // 2b) VALUE-DATE HIGHLIGHT — green Teresa Thompson's real Christmas-in-July
-  //     discounted ADMISSION dates (7/16 email, GA/Premium only) + show $21;
+  //     discounted ADMISSION dates (7/16 email, GA/Premium only) + show $28;
   //     standard enabled dates stay red at $35. Date-keyed (reads the
   //     month-label + each day number), re-applied on every calendar
   //     re-render. Replaces the old Mon–Thu column placeholder.
