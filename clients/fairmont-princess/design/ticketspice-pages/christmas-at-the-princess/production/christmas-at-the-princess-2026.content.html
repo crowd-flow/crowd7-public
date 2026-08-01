@@ -34,7 +34,9 @@
 .campaign-form:not(.legacy-form) .btn-danger, .campaign-form:not(.legacy-form) .btn-primary, .campaign-form:not(.legacy-form) .btn:not(.btn--transparent):not(.btn--plus):not(.btn--minus):not(.btn--home):not(.btn--tooltipstered):not(.btn--blue) { font-size: 15px; color: white; border-radius: 10px; font-family: fatfrank,Segoe UI,Helvetica Neue,Arial,Noto Sans,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji,-apple-system,sans-serif; font-weight: bold; height: 44px; min-height: 44px; padding: 15px 20px; text-transform: uppercase; }
 .ti.josefin-sans { font-family: "Josefin Sans", sans-serif; font-weight: 100!important; font-style: normal; }
 body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; font-weight: 300!important; }
-.ticket-block .wbx-calendar .row .day.enabled:not(.low-inventory):not(.partial):not(.sold-out) { background: #C82844; color:#ffffff; }
+/* Red standard-date chip retired 2026-07-31 (Mat: "ditch the whole red thing").
+   Standard dates now sit on brand cream; only value dates carry colour. */
+.ticket-block .wbx-calendar .row .day.enabled:not(.low-inventory):not(.partial):not(.sold-out) { background: #f3eeea; color:#3a2a2a; }
 
 /* ════════════════════════════════════════════════════════════════════
    PATH C v4 — IN-PLACE MODAL. The .wbx-calendar stays exactly where
@@ -98,7 +100,7 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
 }
 /* Legend — pseudo-element after the grid. Two color swatches inline. */
 .ticket-block .datePicker .wbx-calendar::after {
-  content: '🟩 Value Dates $28        🟥 Standard $35' !important;
+  content: '🟩 Value Dates $28        Standard $35' !important;
   display: block !important;
   font-family: 'Montserrat', sans-serif !important;
   font-size: 0.74rem !important;
@@ -252,7 +254,8 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
   margin-top: 3px;
   letter-spacing: 0.02em;
 }
-/* Christmas-in-July discounted dates (from Teresa Thompson's 7/16 email) —
+/* Value dates (from Teresa Thompson's 7/16 email; formerly "Christmas in July",
+   which ended 2026-07-31) —
    tagged by JS with .cap-value-date (date-keyed, NOT column-keyed).
    Green cell + $28 price. Non-discounted enabled dates stay red at $35. */
 .ticket-block .datePicker .wbx-calendar .row.week .day.cap-value-date {
@@ -268,14 +271,14 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
    (capSetPath, wired in the reveal script). Swap the calendar's per-night
    prices + legend to match, so a Premium/VIP buyer never sees GA numbers.
    GA (default) = $35 standard / $28 value, set above. */
-/* Premium: standard $70 / value (Christmas-in-July 20% off) $56 */
+/* Premium: standard $70 / value (20% off) $56 */
 html[data-buyer-path="premium"] .ticket-block .datePicker .wbx-calendar .row.week .day::after { content: '$70' !important; }
 html[data-buyer-path="premium"] .ticket-block .datePicker .wbx-calendar .row.week .day.cap-value-date::after { content: '$56' !important; }
-html[data-buyer-path="premium"] .ticket-block .datePicker .wbx-calendar::after { content: '🟩 Value Dates $56        🟥 Standard $70' !important; }
+html[data-buyer-path="premium"] .ticket-block .datePicker .wbx-calendar::after { content: '🟩 Value Dates $56        Standard $70' !important; }
 /* VIP: fire tables are per-table & dynamic — priced in the Reserve flow, not here.
    Hide the per-night number; keep green/red so discount-vs-standard nights still read. */
 html[data-buyer-path="vip"] .ticket-block .datePicker .wbx-calendar .row.week .day::after { content: '' !important; display: none !important; }
-html[data-buyer-path="vip"] .ticket-block .datePicker .wbx-calendar::after { content: '🟩 Discount dates        🟥 Standard dates  ·  table pricing shown when you reserve' !important; }
+html[data-buyer-path="vip"] .ticket-block .datePicker .wbx-calendar::after { content: '🟩 Discount dates        Standard dates  ·  table pricing shown when you reserve' !important; }
 /* Ultimate Santa (Mat 2026-07-28): this calendar differs by buyer path, and Ultimate
    Santa is a separate daytime experience — GA/Premium per-night numbers and the
    green value-night treatment are both meaningless here. Show plain dates only:
@@ -648,7 +651,7 @@ html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar::after { c
     });
   })();
 
-  // 2b) VALUE-DATE HIGHLIGHT — green Teresa Thompson's real Christmas-in-July
+  // 2b) VALUE-DATE HIGHLIGHT — green Teresa Thompson's real value
   //     discounted ADMISSION dates (7/16 email, GA/Premium only) + show $28;
   //     standard enabled dates stay red at $35. Date-keyed (reads the
   //     month-label + each day number), re-applied on every calendar

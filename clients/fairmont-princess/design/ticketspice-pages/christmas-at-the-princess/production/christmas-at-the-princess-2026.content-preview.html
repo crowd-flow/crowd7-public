@@ -28,7 +28,9 @@
 .campaign-form:not(.legacy-form) .btn-danger, .campaign-form:not(.legacy-form) .btn-primary, .campaign-form:not(.legacy-form) .btn:not(.btn--transparent):not(.btn--plus):not(.btn--minus):not(.btn--home):not(.btn--tooltipstered):not(.btn--blue) { font-size: 15px; color: white; border-radius: 10px; font-family: fatfrank,Segoe UI,Helvetica Neue,Arial,Noto Sans,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji,-apple-system,sans-serif; font-weight: bold; height: 44px; min-height: 44px; padding: 15px 20px; text-transform: uppercase; }
 .ti.josefin-sans { font-family: "Josefin Sans", sans-serif; font-weight: 100!important; font-style: normal; }
 body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; font-weight: 300!important; }
-.ticket-block .wbx-calendar .row .day.enabled:not(.low-inventory):not(.partial):not(.sold-out) { background: #C82844; color:#ffffff; }
+/* Red standard-date chip retired 2026-07-31 (Mat: "ditch the whole red thing").
+   Standard dates now sit on brand cream; only value dates carry colour. */
+.ticket-block .wbx-calendar .row .day.enabled:not(.low-inventory):not(.partial):not(.sold-out) { background: #f3eeea; color:#3a2a2a; }
 
 /* ════════════════════════════════════════════════════════════════════
    PATH C v4 — IN-PLACE MODAL. The .wbx-calendar stays exactly where
