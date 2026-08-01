@@ -84,7 +84,7 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
 }
 /* Header — tighter so it doesn't eat vertical space */
 .ticket-block .datePicker .wbx-calendar::before {
-  content: 'Christmas in July — Pick Your Date' !important;
+  content: 'Pick Your Date' !important;
   display: block !important;
   font-family: 'Playfair Display', Georgia, serif !important;
   font-size: 1.45rem !important;
@@ -98,7 +98,7 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
 }
 /* Legend — pseudo-element after the grid. Two color swatches inline. */
 .ticket-block .datePicker .wbx-calendar::after {
-  content: '🟩 Christmas in July $28        🟥 Standard $35' !important;
+  content: '🟩 Value Dates $28        🟥 Standard $35' !important;
   display: block !important;
   font-family: 'Montserrat', sans-serif !important;
   font-size: 0.74rem !important;
@@ -271,7 +271,7 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
 /* Premium: standard $70 / value (Christmas-in-July 20% off) $56 */
 html[data-buyer-path="premium"] .ticket-block .datePicker .wbx-calendar .row.week .day::after { content: '$70' !important; }
 html[data-buyer-path="premium"] .ticket-block .datePicker .wbx-calendar .row.week .day.cap-value-date::after { content: '$56' !important; }
-html[data-buyer-path="premium"] .ticket-block .datePicker .wbx-calendar::after { content: '🟩 Christmas in July $56        🟥 Standard $70' !important; }
+html[data-buyer-path="premium"] .ticket-block .datePicker .wbx-calendar::after { content: '🟩 Value Dates $56        🟥 Standard $70' !important; }
 /* VIP: fire tables are per-table & dynamic — priced in the Reserve flow, not here.
    Hide the per-night number; keep green/red so discount-vs-standard nights still read. */
 html[data-buyer-path="vip"] .ticket-block .datePicker .wbx-calendar .row.week .day::after { content: '' !important; display: none !important; }
