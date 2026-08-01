@@ -421,14 +421,6 @@ html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar::after { c
   #cap-funnel .cap-santa-note .cap-santa-tag{display:inline-block;background:#fde8ec;color:var(--accent);font-family:'Montserrat',sans-serif;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:4px 12px;border-radius:20px;margin-bottom:12px;}
   #cap-funnel .cap-santa-note h3{font-family:'Playfair Display',Georgia,serif;font-size:clamp(1.15rem,2.4vw,1.5rem);font-weight:700;color:var(--red);margin:0 0 8px;line-height:1.25;}
   #cap-funnel .cap-santa-note h3 em{font-style:italic;color:var(--accent);}
-  /* Price display (crossed-out vs. sale price) — added per Bryan's ask on the
-     2026-07-24 CAP email call: "your pricing for it so it says like 500 and
-     then 350." Mirrors the .tier .price .was pattern used on the three cards
-     above. PLACEHOLDER FIGURES — Bryan said he'd supply the real Ultimate
-     Santa price himself; swap $500/$350 for his numbers before promoting to
-     production. [clickup:86bb39zft] */
-  #cap-funnel .cap-santa-note .cap-santa-price{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--ink);margin:8px 0 2px;}
-  #cap-funnel .cap-santa-note .cap-santa-price .was{display:block;font-family:'Montserrat',sans-serif;font-size:.95rem;font-weight:400;color:var(--muted);text-decoration:line-through;margin-top:2px;}
   #cap-funnel .cap-santa-note p{margin:0;font-family:'Montserrat',sans-serif;font-size:.88rem;line-height:1.5;color:var(--muted);}
   #cap-funnel .cap-santa-note .cap-santa-cta{display:inline-block;margin-top:18px;background:var(--accent);color:#fff;border:0;border-radius:40px;padding:13px 30px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.92rem;letter-spacing:.02em;cursor:pointer;transition:background .2s;}
   #cap-funnel .cap-santa-note .cap-santa-cta:hover{background:var(--accent2);}
@@ -543,7 +535,6 @@ html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar::after { c
     <div class="cap-santa-note">
       <span class="cap-santa-tag">Limited-Time Offer</span>
       <h3>40% off the <em>Ultimate Santa</em> Experience</h3>
-      <div class="cap-santa-price">$350 <span class="was">$500</span></div>
       <p>Enjoy this offer November 1st &ndash; December 24th. Valid on specific time slots.</p>
       <button type="button" class="cap-santa-cta" onclick="capSantaCta()">Add the Ultimate Santa Experience</button>
     </div>
