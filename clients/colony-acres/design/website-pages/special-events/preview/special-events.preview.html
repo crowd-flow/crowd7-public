@@ -31,12 +31,24 @@ body.cse-modal-open{overflow:hidden}
       <img class="cse-card__photo" decoding="async" src="https://cdn.uploads.webconnex.com/84892/1629341335445-Summer%20Dinner%20at%20the%20Patch%20North%20Liberty-56.jpg" alt="Farm-to-table dinner at Colony Acres">
       <span class="cse-card__date">September 10, 2026</span>
       <p class="cse-card__desc">An intimate farm-to-table dinner celebrating 100 years of Colony Acres &mdash; handcrafted bourbon, a four-course menu built from the farm&rsquo;s own harvest, and live acoustic music. Adults only, 100 seats.</p>
-                <ul class="cse-facts">
-                  <li><strong>Thursday, September 10, 2026</strong></li>
-                  <li>7:00 &ndash; 9:00 PM</li>
-                  <li>$105 per person</li>
-                  <li>100 seats &middot; 21+</li>
-                </ul>
+                <div class="cse-facts">
+                  <div class="cse-fact">
+                    <span class="cse-fact__label">Date</span>
+                    <span class="cse-fact__value">Thursday, September&nbsp;10, 2026</span>
+                  </div>
+                  <div class="cse-fact">
+                    <span class="cse-fact__label">Time</span>
+                    <span class="cse-fact__value">7:00 &ndash; 9:00 PM</span>
+                  </div>
+                  <div class="cse-fact">
+                    <span class="cse-fact__label">Price</span>
+                    <span class="cse-fact__value">$105 <span class="cse-fact__unit">per person</span></span>
+                  </div>
+                  <div class="cse-fact">
+                    <span class="cse-fact__label">Seating</span>
+                    <span class="cse-fact__value">100 seats <span class="cse-fact__unit">&middot; 21+</span></span>
+                  </div>
+                </div>
                 <p class="cse-sub">Your ticket includes a guided bourbon tasting with the owners of Century Farms Distillery, a four-course dinner, acoustic music from local artists, a commemorative cup, and a chef-created take-home treat.</p>
       <div class="cse-card__btns">
                   <a class="cse-card__btn" href="https://colonyacres.ticketspice.com/-colony-acres-bourbon-dinner-2026" target="_blank" rel="noopener">Get Tickets</a>
@@ -108,9 +120,13 @@ body.cse-modal-open{overflow:hidden}
   
 /* ---- Bourbon Dinner detail block (2026-07-31, Katie's 7/22 + 7/28 asks:
         pull ticket-page info onto the site and list the menu) ---- */
-.cse-facts{list-style:none;margin:14px 0 10px;padding:0;display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.92rem;line-height:1.4}
-.cse-facts li{position:relative;padding-right:14px}
-.cse-facts li:not(:last-child)::after{content:"\00b7";position:absolute;right:0;opacity:.5}
+.cse-facts{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin:16px 0 14px;padding:1px;
+  background:rgba(138,90,43,.18);border:1px solid rgba(138,90,43,.22);border-radius:10px;overflow:hidden}
+.cse-fact{background:#fffdfa;padding:12px 14px;display:flex;flex-direction:column;gap:3px}
+.cse-fact__label{font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;font-weight:700;color:#8a5a2b;opacity:.85}
+.cse-fact__value{font-size:1rem;font-weight:700;line-height:1.25;color:#3a2a1c}
+.cse-fact__unit{font-size:.82rem;font-weight:400;opacity:.7}
+@media (max-width:420px){.cse-facts{grid-template-columns:1fr}}
 .cse-sub{font-size:.92rem;line-height:1.55;margin:0 0 14px}
 .cse-menu{margin:0 0 16px;border-top:1px dotted rgba(110,98,89,.5);border-bottom:1px dotted rgba(110,98,89,.5);padding:10px 0}
 .cse-menu>summary{cursor:pointer;font-weight:700;font-size:.95rem;list-style:none;padding:2px 0}
