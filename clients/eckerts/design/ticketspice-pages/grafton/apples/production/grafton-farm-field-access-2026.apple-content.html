@@ -1,8 +1,10 @@
 <!-- ════════════════════════════════════════════════════════════════════════
      ECKERT'S GRAFTON — APPLE SEASON · Field Access (peach→apple swap)
      STAGED PRE-BUILD (2026-06-09, Crowdly). Cloned from grafton/peaches/.
-     Grafton is PYO-only (no playground / mega slide / Fun Pass) — 2-card layout,
-     standardized field-access pricing only. So unlike Versailles there is NO apple
+     Grafton is PYO-only (no playground / mega slide / Fun Pass) — 3-card layout
+     (PYO Field Access Pass + Opening Day info + Season Pass, restored 2026-08-06
+     per the diff-against-live-peach pass — the peach page carries a Season Pass
+     card the June apple build had dropped). So unlike Versailles there is NO apple
      Fun Pass gap here; the field-access pricing is standardized and final.
      NOT FOR PUBLISH until the two gaps below close + Amanda confirms go-live date.
 
@@ -291,8 +293,8 @@
     #sbv-funnel .sbv-tickets-header { text-align: center !important; margin-bottom: 48px !important; }
     #sbv-funnel .sbv-grid {
         display: grid !important;
-        /* 2-up: PYO Field Access Pass (dark) + Opening Day info card (pink). Grafton is PYO-only (no playground / mega slide). */
-        grid-template-columns: repeat(2, minmax(0, 440px)) !important;
+        /* 3-up: PYO Field Access Pass (dark) + Opening Day info card (pink) + Season Pass (dark). */
+        grid-template-columns: repeat(3, minmax(0, 400px)) !important;
         gap: 24px !important;
         justify-content: center !important;
         max-width: 1280px !important;
@@ -338,6 +340,7 @@
     #sbv-funnel .sbv-badge-light { background: rgba(255,255,255,0.18) !important; color: white !important; }
     #sbv-funnel .sbv-badge-red { background: #B01030 !important; color: white !important; }
     #sbv-funnel .sbv-badge-green { background: #2D5016 !important; color: white !important; }
+    #sbv-funnel .sbv-badge-gold { background: #F5D080 !important; color: #7A0020 !important; }
 
     #sbv-funnel .sbv-card-icon { font-size: 2.6rem !important; margin-bottom: 14px !important; display: block !important; }
 
@@ -408,6 +411,51 @@
         color: rgba(255,255,255,0.35) !important;
         line-height: 1 !important;
         display: block !important;
+    }
+
+    /* Season pass tier rows (adapted from Belleville sb-season-tiers) */
+    #sbv-funnel .sbv-season-tiers {
+        margin-top: 20px !important;
+        padding-top: 16px !important;
+        border-top: 1px solid rgba(255,255,255,0.12) !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0 !important;
+        flex: 1 !important;
+    }
+    #sbv-funnel .sbv-season-tier {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 14px 0 !important;
+        gap: 12px !important;
+    }
+    #sbv-funnel .sbv-season-tier:not(:last-child) {
+        border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+    }
+    #sbv-funnel .sbv-season-tier-name {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 1rem !important; font-weight: 700 !important;
+        color: white !important; display: block !important; line-height: 1.2 !important;
+    }
+    #sbv-funnel .sbv-season-tier-desc {
+        font-size: 0.75rem !important;
+        color: rgba(255,255,255,0.5) !important;
+        display: block !important; margin-top: 2px !important;
+    }
+    #sbv-funnel .sbv-season-tier-price {
+        text-align: right !important; flex-shrink: 0 !important;
+    }
+    #sbv-funnel .sbv-season-tier-was {
+        font-size: 0.75rem !important;
+        color: rgba(255,255,255,0.35) !important;
+        text-decoration: line-through !important;
+        display: block !important; line-height: 1 !important;
+    }
+    #sbv-funnel .sbv-season-tier-now {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 1.8rem !important; font-weight: 700 !important;
+        color: #F5D080 !important; line-height: 1 !important; display: block !important;
     }
 
     /* ── CALLOUT (buy-online-and-save) ── */
