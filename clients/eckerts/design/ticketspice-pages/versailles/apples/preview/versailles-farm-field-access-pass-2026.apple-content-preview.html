@@ -138,9 +138,9 @@
         display: flex !important;
         align-items: flex-end !important;
         overflow: hidden !important;
-        background-image: url('https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/apples/0U6A5657-3.jpg') !important;
+        background-image: url('https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/apples/_MG_0207.JPG') !important;
         background-size: cover !important;
-        background-position: center 45% !important;
+        background-position: center 40% !important;
     }
     #sbv-funnel .sbv-hero-overlay {
         position: absolute !important;
@@ -299,7 +299,7 @@
     #sbv-funnel .sbv-tickets-header { text-align: center !important; margin-bottom: 48px !important; }
     #sbv-funnel .sbv-grid {
         display: grid !important;
-        grid-template-columns: repeat(3, minmax(0, 400px)) !important;
+        grid-template-columns: repeat(4, minmax(0, 300px)) !important;
         gap: 24px !important;
         justify-content: center !important;
         max-width: 1280px !important;
@@ -542,19 +542,7 @@
         line-height: 1.6 !important; display: block !important; margin: 0 !important;
     }
 
-    /* ── FALL BONFIRES (Versailles-only) ── */
-    #sbv-funnel .sbv-bonfire {
-        width: 100% !important;
-        background: #FFF8F8 !important;
-        padding: 56px 48px !important;
-        box-sizing: border-box !important;
-        display: block !important;
-        border-top: 1px solid rgba(176,16,48,0.08) !important;
-    }
-    #sbv-funnel .sbv-bonfire-inner {
-        max-width: 420px !important;
-        margin: 0 auto !important;
-    }
+    /* ── FALL BONFIRE CARD (Versailles-only — 4th card in the main ticket grid) ── */
     #sbv-funnel .sbv-bonfire-img {
         width: 100% !important;
         aspect-ratio: 4 / 3 !important;
@@ -827,28 +815,18 @@
                 <span class="sbv-card-note">Per person · ages 17 &amp; older · + applicable fees</span>
             </div>
 
-            <div class="sbv-slide-text" style="grid-column: 1 / -1 !important; text-align: center !important;">
-                <h4>Mega Slide Now Open Weekends!</h4>
-                <p>The Mega Slide is open Saturday &amp; Sunday from 10 AM – 5 PM. The playground &amp; field access is open Tuesday through Sunday — the last wagon goes out at 5 PM. Tag us on Facebook &amp; Instagram — we'd love to see your farm-fresh memories! 📸</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- FALL BONFIRES — Versailles-only. Findability, not volume (Amanda 8/6 call): buyers
-         currently can't find bonfires from the Kentucky apple page. Bryan's constraint: keep
-         the page apple/fall-dominant, so this is a single promo card, not a bonfire-first
-         section. Ticket details confirmed 2026-08-06 from Mat's screenshot of the live TS
-         "Bonfire Site Rental" block — see projects/eckerts-fall-crop-switchover/state.md WS3.
-         NOT hard-coding the live "38 remaining" inventory count as a scarcity signal — it
-         would go stale the moment it sells. Flagged to Mat; can add later if TS exposes a
-         live-inventory embed for this page. -->
-    <div class="sbv-bonfire">
-        <div class="sbv-gallery-header sbvr">
-            <span class="sbv-eye">Fall Evenings</span>
-            <span class="sbv-title">Reserve a <em>bonfire site</em></span>
-        </div>
-        <div class="sbv-bonfire-inner">
-            <div class="sbv-bonfire-card sbv-card sbv-card-dark sbvr">
+            <!-- FALL BONFIRE — Versailles-only, merged into the main ticket grid as the 4th
+                 card (Mat directive 2026-08-06: the standalone section below the grid read as
+                 an orphaned card at a 3-col width; folding it into the grid as card 4 fixes the
+                 layout AND better serves Amanda's findability ask — it's one of the equal
+                 purchase options, not a bolted-on section). Bryan's constraint: keep the page
+                 apple/fall-dominant — this stays one card among four, not a bonfire-first
+                 section. Ticket details confirmed 2026-08-06 from Mat's screenshot of the live
+                 TS "Bonfire Site Rental" block — see projects/eckerts-fall-crop-switchover/state.md WS3.
+                 NOT hard-coding the live "38 remaining" inventory count as a scarcity signal —
+                 it would go stale the moment it sells. Flagged to Mat; can add later if TS
+                 exposes a live-inventory embed for this page. -->
+            <div class="sbv-bonfire-card sbv-card sbv-card-dark sbvr d2">
                 <img class="sbv-bonfire-img" src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/bonfires/bonfire-23.jpg" alt="A bonfire site with straw bale seating set up for the evening">
                 <span class="sbv-card-badge sbv-badge-red">Versailles Orchard</span>
                 <h3>Fall Bonfire Site Rental</h3>
@@ -865,6 +843,11 @@
                     <span class="sbv-price-online">per site</span>
                 </div>
                 <span class="sbv-card-note">Eckert's Versailles Orchard.</span>
+            </div>
+
+            <div class="sbv-slide-text" style="grid-column: 1 / -1 !important; text-align: center !important;">
+                <h4>Mega Slide Now Open Weekends!</h4>
+                <p>The Mega Slide is open Saturday &amp; Sunday from 10 AM – 5 PM. The playground &amp; field access is open Tuesday through Sunday — the last wagon goes out at 5 PM. Tag us on Facebook &amp; Instagram — we'd love to see your farm-fresh memories! 📸</p>
             </div>
         </div>
     </div>
