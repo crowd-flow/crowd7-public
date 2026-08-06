@@ -542,6 +542,40 @@
         line-height: 1.6 !important; display: block !important; margin: 0 !important;
     }
 
+    /* ── FALL BONFIRES (Versailles-only) ── */
+    #sbv-funnel .sbv-bonfire {
+        width: 100% !important;
+        background: #FFF8F8 !important;
+        padding: 56px 48px !important;
+        box-sizing: border-box !important;
+        display: block !important;
+        border-top: 1px solid rgba(176,16,48,0.08) !important;
+    }
+    #sbv-funnel .sbv-bonfire-inner {
+        max-width: 420px !important;
+        margin: 0 auto !important;
+    }
+    #sbv-funnel .sbv-bonfire-img {
+        width: 100% !important;
+        aspect-ratio: 4 / 3 !important;
+        object-fit: cover !important;
+        border-radius: 14px !important;
+        display: block !important;
+        margin-bottom: 18px !important;
+    }
+    #sbv-funnel .sbv-bonfire-callout {
+        font-size: 0.85rem !important;
+        font-weight: 700 !important;
+        color: #F5D080 !important;
+        background: rgba(245,208,128,0.12) !important;
+        border: 1px solid rgba(245,208,128,0.3) !important;
+        border-radius: 10px !important;
+        padding: 10px 14px !important;
+        margin: 0 0 16px !important;
+        line-height: 1.4 !important;
+        display: block !important;
+    }
+
     /* ── INFO ROW ── */
     #sbv-funnel .sbv-info {
         width: 100% !important;
@@ -715,10 +749,8 @@
         </div>
         <div class="sbv-grid">
 
-            <!-- APPLE FUN PASS -->
-            <!-- ⚠️ PRICE PENDING AMANDA: $16 online / $20 gate + (donut + cider) is the PEACH formula carried over as a
-                 placeholder. Confirm the apple Fun Pass price + bundle contents (apple quantity/unit; whether donut + cider
-                 carry over). If it changes, update BOTH this card AND the GATE map in the slash-through script at the bottom. -->
+            <!-- APPLE FUN PASS — price/contents confirmed 2026-08-06 (Mat: matches established Fun Pass
+                 formula, $16 online / $20 gate, apples swapped in). -->
             <div class="sbv-card sbv-card-red sbvr">
                 <span class="sbv-card-badge sbv-badge-light">Most Popular</span>
                 <span class="sbv-card-icon">🍎</span>
@@ -802,6 +834,41 @@
         </div>
     </div>
 
+    <!-- FALL BONFIRES — Versailles-only. Findability, not volume (Amanda 8/6 call): buyers
+         currently can't find bonfires from the Kentucky apple page. Bryan's constraint: keep
+         the page apple/fall-dominant, so this is a single promo card, not a bonfire-first
+         section. Ticket details confirmed 2026-08-06 from Mat's screenshot of the live TS
+         "Bonfire Site Rental" block — see projects/eckerts-fall-crop-switchover/state.md WS3.
+         NOT hard-coding the live "38 remaining" inventory count as a scarcity signal — it
+         would go stale the moment it sells. Flagged to Mat; can add later if TS exposes a
+         live-inventory embed for this page. -->
+    <div class="sbv-bonfire">
+        <div class="sbv-gallery-header sbvr">
+            <span class="sbv-eye">Fall Evenings</span>
+            <span class="sbv-title">Reserve a <em>bonfire site</em></span>
+        </div>
+        <div class="sbv-bonfire-inner">
+            <div class="sbv-bonfire-card sbv-card sbv-card-dark sbvr">
+                <img class="sbv-bonfire-img" src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/bonfires/bonfire-23.jpg" alt="A bonfire site with straw bale seating set up for the evening">
+                <span class="sbv-card-badge sbv-badge-red">Versailles Orchard</span>
+                <h3>Fall Bonfire Site Rental</h3>
+                <p class="sbv-bonfire-callout">⚠️ Site rental only — each guest age 2 &amp; up needs a separate playground admission ticket.</p>
+                <ul class="sbv-card-bullets">
+                    <li>👥 Up to 25 guests · straw bale seating included</li>
+                    <li>🕓 Arrive as early as 4 PM · farm closes at 10 PM</li>
+                    <li>🍎 Come early for pick-your-own before the last wagon at 5 PM</li>
+                    <li>📍 First-come, first-served — specific sites can't be reserved</li>
+                    <li>🗓️ Fridays &amp; Saturdays, starting the first Friday in October</li>
+                </ul>
+                <div class="sbv-card-price">
+                    <span class="sbv-price-num">$50</span>
+                    <span class="sbv-price-online">per site</span>
+                </div>
+                <span class="sbv-card-note">Eckert's Versailles Orchard.</span>
+            </div>
+        </div>
+    </div>
+
     <!-- INFO ROW -->
     <div class="sbv-info">
         <div class="sbv-info-grid">
@@ -857,7 +924,7 @@
      Weekday/weekend are DISTINCT tickets (Tuesday-Friday vs Saturday-Sunday), so the static
      name->gate map works with no day-collision. Gates from the design card + native price
      (online + fee): plain Field Access $6, Tue-Fri combo $8, Sat-Sun combo $10, Apple Pass $20.
-     ⚠️ Apple Fun Pass gate ($20) is the PEACH placeholder — update if Amanda confirms a different apple price. -->
+     Apple Fun Pass gate ($20) confirmed 2026-08-06 — matches established Fun Pass formula. -->
 <script>
 (function(){
   var GATE = {
