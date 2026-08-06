@@ -285,7 +285,7 @@
     #sbv-funnel .sbv-tickets-header { text-align: center !important; margin-bottom: 48px !important; }
     #sbv-funnel .sbv-grid {
         display: grid !important;
-        grid-template-columns: repeat(4, minmax(0, 300px)) !important;
+        grid-template-columns: repeat(3, minmax(0, 400px)) !important;
         gap: 24px !important;
         justify-content: center !important;
         max-width: 1280px !important;
@@ -496,6 +496,17 @@
         font-size: 2.4rem !important; font-weight: 700 !important;
         color: #B01030 !important; flex-shrink: 0 !important;
     }
+
+    /* Split card — two stacked halves in one grid cell (same product, one variable).
+       See crowd7/data/clients/_patterns/ticket-card-grid-three-max.md */
+    #sbv-funnel .sbv-card-half { display: block !important; }
+    #sbv-funnel .sbv-card-half-title {
+        font-size: 0.72rem !important; font-weight: 700 !important;
+        letter-spacing: 0.08em !important; text-transform: uppercase !important;
+        color: rgba(255,255,255,0.55) !important;
+        margin-bottom: 10px !important; display: block !important;
+    }
+    #sbv-funnel .sbv-card-half-b { margin-top: 24px !important; }
 
     /* ── MEGA SLIDE CALLOUT ── */
     #sbv-funnel .sbv-slide {
@@ -745,60 +756,64 @@
                 <span class="sbv-card-note">Versailles Orchard · apple season only</span>
             </div>
 
-            <!-- FIELD ACCESS + PLAYGROUND -->
+            <!-- FIELD ACCESS — merged card, split into two halves (with-playground / field-
+                 access-only). Same product; the playground is the only variable. Keeps the
+                 grid at three cards total per crowd7/data/clients/_patterns/ticket-card-grid-
+                 three-max.md — do not split this back into two cards. -->
             <div class="sbv-card sbv-card-dark sbvr d1">
                 <span class="sbv-card-badge sbv-badge-green">Most Fun</span>
                 <span class="sbv-card-icon">🛝</span>
-                <h3>Field Access + Playground</h3>
-                <ul class="sbv-card-bullets">
-                    <li>🚜 Wagon ride to the orchard &amp; back</li>
-                    <li>🛝 Playground access</li>
-                    <li><span>🎢 Mega Slide (Sat &amp; Sun, 10 AM–5 PM) - <span class="bold">Must be 42" tall or taller to ride</span></span></li>
-                    <li>🌱 Required for ages 2–16</li>
-                </ul>
-                <div class="sbv-price-rows" style="border-top: 1px solid rgba(255,255,255,0.12) !important;">
-                    <div class="sbv-price-row">
-                        <div>
-                            <span class="sbv-price-row-label" style="color: white !important;">Tue – Fri</span>
-                            <span class="sbv-price-row-sub" style="color: rgba(255,255,255,0.5) !important;">10 AM – 5 PM</span>
-                        </div>
-                        <div class="sbv-price-row-slash">
-                            <span class="sbv-price-row-was">$8 gate</span>
-                            <span class="sbv-price-row-amt" style="color: #F5D080 !important;">$5</span>
-                        </div>
-                    </div>
-                    <div class="sbv-price-row">
-                        <div>
-                            <span class="sbv-price-row-label" style="color: white !important;">Sat &amp; Sun</span>
-                            <span class="sbv-price-row-sub" style="color: rgba(255,255,255,0.5) !important;">9 AM – 5 PM · Mega Slide open</span>
-                        </div>
-                        <div class="sbv-price-row-slash">
-                            <span class="sbv-price-row-was">$10 gate</span>
-                            <span class="sbv-price-row-amt" style="color: #F5D080 !important;">$7</span>
-                        </div>
-                    </div>
-                </div>
-                <span class="sbv-card-note">Per person · + applicable fees at checkout</span>
-            </div>
+                <h3>Field Access</h3>
 
-            <!-- JUST FIELD ACCESS -->
-            <div class="sbv-card sbv-card-pink sbvr d2">
-                <span class="sbv-card-badge sbv-badge-red">Field Access</span>
-                <span class="sbv-card-icon">🎟</span>
-                <h3>Just Field Access</h3>
-                <ul class="sbv-card-bullets">
-                    <li>🚜 Wagon ride to the orchard &amp; back</li>
-                    <li>🧺 Basket provided for picking</li>
-                    <li>🌱 Required for ages 17 &amp; older</li>
-                </ul>
-                <div class="sbv-card-price">
-                    <span class="sbv-price-num">$3</span>
-                    <div class="sbv-price-slash">
-                        <span class="sbv-price-online">Online Price</span>
-                        <span class="sbv-price-was">$5 at gate</span>
+                <div class="sbv-card-half">
+                    <span class="sbv-card-half-title">With Playground &amp; Mega Slide</span>
+                    <ul class="sbv-card-bullets">
+                        <li>🚜 Wagon ride to the orchard &amp; back</li>
+                        <li>🛝 Playground access</li>
+                        <li><span>🎢 Mega Slide (Sat &amp; Sun, 10 AM–5 PM) - <span class="bold">Must be 42" tall or taller to ride</span></span></li>
+                        <li>🌱 Required for ages 2–16</li>
+                    </ul>
+                    <div class="sbv-price-rows" style="border-top: 1px solid rgba(255,255,255,0.12) !important;">
+                        <div class="sbv-price-row">
+                            <div>
+                                <span class="sbv-price-row-label" style="color: white !important;">Tue – Fri</span>
+                                <span class="sbv-price-row-sub" style="color: rgba(255,255,255,0.5) !important;">10 AM – 5 PM</span>
+                            </div>
+                            <div class="sbv-price-row-slash">
+                                <span class="sbv-price-row-was">$8 gate</span>
+                                <span class="sbv-price-row-amt" style="color: #F5D080 !important;">$5</span>
+                            </div>
+                        </div>
+                        <div class="sbv-price-row">
+                            <div>
+                                <span class="sbv-price-row-label" style="color: white !important;">Sat &amp; Sun</span>
+                                <span class="sbv-price-row-sub" style="color: rgba(255,255,255,0.5) !important;">9 AM – 5 PM · Mega Slide open</span>
+                            </div>
+                            <div class="sbv-price-row-slash">
+                                <span class="sbv-price-row-was">$10 gate</span>
+                                <span class="sbv-price-row-amt" style="color: #F5D080 !important;">$7</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <span class="sbv-card-note">Per person · ages 17 &amp; older · + applicable fees</span>
+
+                <div class="sbv-card-half sbv-card-half-b">
+                    <span class="sbv-card-half-title">Field Access Only</span>
+                    <ul class="sbv-card-bullets">
+                        <li>🚜 Wagon ride to the orchard &amp; back</li>
+                        <li>🧺 Basket provided for picking</li>
+                        <li>🌱 Required for ages 17 &amp; older</li>
+                    </ul>
+                    <div class="sbv-card-price">
+                        <span class="sbv-price-num">$3</span>
+                        <div class="sbv-price-slash">
+                            <span class="sbv-price-online">Online Price</span>
+                            <span class="sbv-price-was">$5 at gate</span>
+                        </div>
+                    </div>
+                </div>
+
+                <span class="sbv-card-note">Per person · + applicable fees at checkout</span>
             </div>
 
             <!-- FALL BONFIRE — Versailles-only, merged into the main ticket grid as the 4th
