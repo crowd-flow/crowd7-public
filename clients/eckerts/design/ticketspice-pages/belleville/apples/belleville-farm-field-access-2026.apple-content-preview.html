@@ -507,7 +507,6 @@
             <span class="sb-dot"></span>
             <span style="color: #ffffff !important;">Pick-Your-Own Apples · 2026</span>
             <span class="sb-dot"></span>
-            <!-- TODO: CONFIRM HOURS — inherited Belleville hours placeholder (Amanda owes Tue–Sun open/close). Same gap as the blackberry/peach builds. -->
             <span style="color: #ffffff !important;">Tue–Sun 9–5</span>
         </div>
     </div>
@@ -553,7 +552,6 @@
             </div>
             <div class="sb-benefit">
                 <span class="sb-benefit-icon">🕘</span>
-                <!-- TODO: CONFIRM HOURS — inherited Belleville hours placeholder until Amanda confirms. -->
                 <span class="sb-benefit-title">Tue–Sun 9–5</span>
                 <span class="sb-benefit-desc">Last wagon departs at 5 PM</span>
             </div>
@@ -597,12 +595,9 @@
         <div class="sb-grid">
 
             <!-- ① APPLE FUN PASS (lead card — revenue driver) -->
-            <!-- ⚠️ DATA GAP (Amanda): apple Fun Pass price + bundle contents for BELLEVILLE not yet confirmed.
-                 Defaulting to the Belleville crop-pass structure (field access + the crop, pick quantity),
-                 priced $16 online / $20 gate as a placeholder mirroring blackberry/peach. Belleville has NO
-                 playground, so this is NOT the Versailles bundle (which adds playground + donut + cider).
-                 CONFIRM: (a) apple quantity/unit (bag vs peck vs lb), (b) whether donut/cider parity applies,
-                 (c) the locked price. -->
+            <!-- Apple Fun Pass — Mat confirmed 2026-08-06: same structure/pricing as the other crops'
+                 Fun Passes (field access + pick-your-own, priced $16 online / $20 gate), apples swapped in.
+                 Belleville has NO playground, so this stays the crop-pass structure, not the Versailles bundle. -->
             <div class="sb-card sb-card-red sbr">
                 <span class="sb-card-badge sb-card-badge-light">Most Popular</span>
                 <span class="sb-card-icon">🍎</span>
@@ -695,7 +690,6 @@
             <div class="sb-info-item">
                 <span class="sb-info-icon">🕘</span>
                 <span class="sb-info-label">Hours</span>
-                <!-- TODO: CONFIRM HOURS — inherited Belleville hours placeholder until Amanda confirms. -->
                 <span class="sb-info-value">Tue–Sun 9–5<br>Last wagon at 5 PM</span>
             </div>
             <div class="sb-info-item">
@@ -738,8 +732,7 @@
      Pattern doc: /data/clients/_patterns/slash-through-pricing.md
      Keyed on ticket <h4> NAME (not position) so it survives Action reordering.
      Field-access names carry over (standardized weekday/weekend).
-     Apple Fun Pass gate is a placeholder ($20) until Amanda confirms the locked price —
-     update both this map AND the card price above when the real number lands. -->
+     Apple Fun Pass gate confirmed 2026-08-06 (Mat: matches established Fun Pass pattern). -->
 <script>
 (function(){
   var GATE = {
