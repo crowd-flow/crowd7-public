@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jack's Lighted Trail — Belleville 2026 — Preview</title>
+<style>
+  html, body { margin: 0; padding: 0; background: #0a0a0a; }
+  #jlt-funnel .jltr { opacity: 1 !important; transform: none !important; }
+  #jlt-funnel .jlt-hero-eyebrow,
+  #jlt-funnel .jlt-hero-title,
+  #jlt-funnel .jlt-hero-sub,
+  #jlt-funnel .jlt-hero-dates { opacity: 1 !important; animation: none !important; }
+</style>
+</head>
+<body>
+<!-- ════════════════════════════════════════════════════════════════════
+     ECKERT'S JACK'S LIGHTED TRAIL · BELLEVILLE · 2026  —  HYBRID-LOADER CONTENT
+     Design overlay on Amanda's existing TicketSpice cart (actions/dates/prices
+     already built by Amanda — this page does NOT rebuild the cart, only the
+     look). Standalone "Jack's Lighted Trail" sub-brand — match the Jack's
+     website theme, NOT Eckert's house style, per Mat directive 2026-08-06.
+     Imagery: harvested from Jack's own Wix site CDN (placeholder-grade until
+     Amanda's Dropbox night photography lands — see Open Asks in state.md).
+     Flash sale: "Launch Day Steal" $10-off tier → sells out into a $7-off
+     Tier 2, both September dates only, codeless (no discount code — auto-
+     applied per Amanda's prior-year confirmation). THRESHOLD, EXACT TICKET
+     NAMES, and OCTOBER PRICING are OPEN — placeholder-and-flag, not blockers.
+     ════════════════════════════════════════════════════════════════════ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Creepster&family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+    #jlt-funnel {
+        width: 100vw !important;
+        position: relative !important;
+        left: 50% !important; right: 50% !important;
+        margin-left: -50vw !important; margin-right: -50vw !important;
+        overflow: hidden !important;
+        font-family: 'Nunito', -apple-system, sans-serif !important;
+        background: #0a0a0a !important;
+        color: #ffffff !important;
+        padding: 0 !important; box-sizing: border-box !important;
+    }
+
+    /* ── BANNER ── */
+    #jlt-funnel .jlt-banner {
+        width: 100% !important;
+        background: linear-gradient(90deg, #471f73, #7730c5) !important;
+        color: #ffffff !important;
+        text-align: center !important;
+        padding: 11px 20px !important;
+        font-size: 0.8rem !important;
+        letter-spacing: 0.04em !important;
+        display: block !important; box-sizing: border-box !important;
+    }
+    #jlt-funnel .jlt-banner-inner {
+        display: flex !important; align-items: center !important;
+        justify-content: center !important; gap: 10px !important; flex-wrap: wrap !important;
+    }
+    #jlt-funnel .jlt-banner strong { color: #ffe730 !important; }
+    #jlt-funnel .jlt-dot {
+        width: 3px !important; height: 3px !important;
+        background: rgba(255,255,255,0.45) !important;
+        border-radius: 50% !important; display: inline-block !important; flex-shrink: 0 !important;
+    }
+
+    /* ── NAV ── */
+    #jlt-funnel .jlt-nav {
+        width: 100% !important;
+        padding: 0 40px !important;
+        height: 68px !important;
+        display: flex !important; align-items: center !important;
+        justify-content: space-between !important;
+        background: rgba(10,10,10,0.92) !important;
+        border-bottom: 1px solid rgba(255,110,0,0.25) !important;
+        position: sticky !important; top: 0 !important; z-index: 100 !important;
+        box-sizing: border-box !important;
+        backdrop-filter: blur(6px) !important;
+    }
+    #jlt-funnel .jlt-logo-wrap {
+        display: flex !important; align-items: center !important;
+        height: 48px !important; width: 190px !important;
+        flex-shrink: 0 !important; overflow: hidden !important;
+    }
+    #jlt-funnel .jlt-logo-wrap img {
+        height: 48px !important; width: 190px !important;
+        max-width: 190px !important; max-height: 48px !important;
+        object-fit: contain !important; object-position: left center !important; display: block !important;
+    }
+    #jlt-funnel .jlt-nav-right { display: flex !important; align-items: center !important; gap: 16px !important; }
+    #jlt-funnel .jlt-nav-loc {
+        font-size: 0.78rem !important; color: rgba(255,255,255,0.65) !important;
+        display: flex !important; align-items: center !important; gap: 5px !important;
+    }
+    #jlt-funnel .jlt-nav-cta {
+        background: #ff6e00 !important; color: #0a0a0a !important;
+        padding: 9px 22px !important; border-radius: 50px !important;
+        font-size: 0.83rem !important; font-weight: 700 !important;
+        text-decoration: none !important; letter-spacing: 0.03em !important;
+        transition: all 0.3s ease !important; white-space: nowrap !important; display: inline-block !important;
+    }
+    #jlt-funnel .jlt-nav-cta:hover { background: #ffe730 !important; color: #0a0a0a !important; text-decoration: none !important; }
+
+    /* ── HERO ── */
+    #jlt-funnel .jlt-hero {
+        width: 100% !important;
+        min-height: clamp(400px, 68vw, 680px) !important;
+        position: relative !important;
+        display: flex !important; align-items: flex-end !important;
+        overflow: hidden !important;
+        background: url('https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/jacks-lighted-trail/hero-pumpkin-trail-red.jpg') center 40%/cover no-repeat, linear-gradient(135deg, #471f73 0%, #1a0f2e 55%, #0a0a0a 100%) !important;
+    }
+    #jlt-funnel .jlt-hero-overlay {
+        position: absolute !important; inset: 0 !important;
+        background: linear-gradient(to bottom, rgba(10,8,4,0.15) 0%, rgba(10,8,4,0.25) 35%, rgba(10,8,4,0.88) 100%) !important;
+        z-index: 1 !important;
+    }
+    #jlt-funnel .jlt-hero-content {
+        position: relative !important; z-index: 2 !important;
+        padding: 0 48px 48px !important; width: 100% !important; box-sizing: border-box !important;
+    }
+    #jlt-funnel .jlt-hero-eyebrow {
+        font-family: 'Baloo 2', sans-serif !important;
+        font-size: 0.78rem !important; font-weight: 700 !important;
+        letter-spacing: 0.2em !important; text-transform: uppercase !important;
+        color: #f9bb3e !important; margin-bottom: 10px !important; display: block !important;
+        opacity: 0; animation: jltFadeUp 0.6s ease 0.2s forwards;
+    }
+    #jlt-funnel .jlt-hero-title {
+        font-family: 'Creepster', cursive !important;
+        font-size: clamp(2.8rem, 9vw, 6rem) !important; font-weight: 400 !important;
+        color: #ff6e00 !important; line-height: 0.95 !important; display: block !important;
+        text-shadow: 0 0 24px rgba(255,110,0,0.55), 0 4px 20px rgba(0,0,0,0.6) !important;
+        letter-spacing: 0.02em !important;
+        opacity: 0; animation: jltFadeUp 0.7s ease 0.35s forwards;
+    }
+    #jlt-funnel .jlt-hero-sub {
+        font-family: 'Baloo 2', sans-serif !important;
+        font-size: clamp(1rem, 2.4vw, 1.35rem) !important; font-weight: 600 !important;
+        color: #fff18a !important; margin-top: 12px !important; display: block !important;
+        opacity: 0; animation: jltFadeUp 0.7s ease 0.5s forwards;
+    }
+    #jlt-funnel .jlt-hero-dates {
+        display: inline-flex !important; align-items: center !important; gap: 10px !important;
+        margin-top: 22px !important; padding: 10px 18px !important; border-radius: 50px !important;
+        background: rgba(255,110,0,0.14) !important; border: 1px solid rgba(255,110,0,0.4) !important;
+        font-size: 0.85rem !important; color: #ffffff !important;
+        opacity: 0; animation: jltFadeUp 0.7s ease 0.65s forwards;
+    }
+    #jlt-funnel .jlt-hero-dates strong { color: #ffe730 !important; }
+    @keyframes jltFadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ── BENEFITS / ATTRACTIONS BAND ── */
+    #jlt-funnel .jlt-benefits {
+        width: 100% !important; background: #150d08 !important;
+        padding: 40px 48px !important; display: block !important; box-sizing: border-box !important;
+        border-bottom: 1px solid rgba(255,110,0,0.14) !important;
+    }
+    #jlt-funnel .jlt-benefits-grid { display: grid !important; grid-template-columns: repeat(4, 1fr) !important; }
+    #jlt-funnel .jlt-benefit { text-align: center !important; padding: 8px 20px !important; position: relative !important; }
+    #jlt-funnel .jlt-benefit:not(:last-child)::after {
+        content: '' !important; position: absolute !important;
+        right: 0 !important; top: 15% !important; bottom: 15% !important;
+        width: 1px !important; background: rgba(255,110,0,0.16) !important;
+    }
+    #jlt-funnel .jlt-benefit-icon { font-size: 1.8rem !important; margin-bottom: 8px !important; display: block !important; }
+    #jlt-funnel .jlt-benefit-title {
+        font-family: 'Baloo 2', sans-serif !important;
+        font-size: 1rem !important; font-weight: 700 !important;
+        color: #f9bb3e !important; margin-bottom: 3px !important; display: block !important;
+        text-transform: uppercase !important; letter-spacing: 0.02em !important;
+    }
+    #jlt-funnel .jlt-benefit-desc { font-size: 0.76rem !important; color: rgba(255,255,255,0.55) !important; line-height: 1.4 !important; display: block !important; }
+
+    /* ── FEATURE SECTION ── */
+    #jlt-funnel .jlt-feature {
+        width: 100% !important; position: relative !important; overflow: hidden !important;
+        padding: 80px 48px !important; box-sizing: border-box !important; text-align: center !important;
+        background: linear-gradient(180deg, #0a0a0a 0%, #1a0f2e 100%) !important;
+    }
+    #jlt-funnel .jlt-eye {
+        font-family: 'Baloo 2', sans-serif !important;
+        font-size: 0.72rem !important; font-weight: 700 !important;
+        letter-spacing: 0.24em !important; text-transform: uppercase !important;
+        color: #7730c5 !important; margin-bottom: 10px !important; display: block !important;
+    }
+    #jlt-funnel .jlt-title {
+        font-family: 'Baloo 2', sans-serif !important;
+        font-size: clamp(1.9rem, 4.8vw, 3rem) !important; font-weight: 700 !important;
+        color: #f9bb3e !important; line-height: 1.15 !important; display: block !important;
+        text-transform: uppercase !important;
+    }
+    #jlt-funnel .jlt-title em { font-style: normal !important; color: #ff6e00 !important; }
+    #jlt-funnel .jlt-feature-copy {
+        max-width: 680px !important; margin: 18px auto 0 !important;
+        font-size: 1.02rem !important; line-height: 1.7 !important; color: rgba(255,255,255,0.78) !important;
+    }
+
+    /* ── GALLERY ── */
+    #jlt-funnel .jlt-gallery { width: 100% !important; background: #0a0a0a !important; padding: 0 0 72px !important; overflow: hidden !important; display: block !important; }
+    #jlt-funnel .jlt-gallery-mask {
+        width: 100% !important; overflow: hidden !important;
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%) !important;
+        mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%) !important;
+    }
+    #jlt-funnel .jlt-gallery-track {
+        display: flex !important; gap: 16px !important; width: max-content !important;
+        animation: jltMarquee 28s linear infinite !important; padding: 8px 0 !important;
+    }
+    #jlt-funnel .jlt-gallery-track:hover { animation-play-state: paused !important; }
+    @keyframes jltMarquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    #jlt-funnel .jlt-gcard {
+        width: 380px !important; height: 260px !important;
+        border-radius: 20px !important; overflow: hidden !important;
+        flex-shrink: 0 !important; position: relative !important; cursor: pointer !important;
+        background: linear-gradient(135deg, #471f73, #1a0f2e) !important;
+        display: flex !important; align-items: center !important; justify-content: center !important;
+        transition: transform 0.4s ease, box-shadow 0.4s ease !important;
+        border: 1px solid rgba(255,110,0,0.18) !important;
+    }
+    #jlt-funnel .jlt-gcard:hover { transform: scale(1.03) translateY(-5px) !important; box-shadow: 0 24px 50px rgba(255,110,0,0.25) !important; z-index: 2 !important; }
+    #jlt-funnel .jlt-gcard img { width: 100% !important; height: 100% !important; object-fit: cover !important; display: block !important; }
+    #jlt-funnel .jlt-gcard-label {
+        position: absolute !important; bottom: 12px !important; left: 12px !important;
+        background: rgba(10,10,10,0.7) !important; backdrop-filter: blur(8px) !important;
+        color: #ffe730 !important; font-size: 0.68rem !important; letter-spacing: 0.1em !important;
+        text-transform: uppercase !important; font-weight: 700 !important;
+        padding: 5px 12px !important; border-radius: 20px !important; z-index: 2 !important;
+    }
+
+    /* ── ATTRACTION CARDS ── */
+    #jlt-funnel .jlt-attractions { width: 100% !important; background: #150d08 !important; padding: 72px 48px !important; box-sizing: border-box !important; }
+    #jlt-funnel .jlt-attractions-header { text-align: center !important; margin-bottom: 44px !important; }
+    #jlt-funnel .jlt-agrid {
+        display: grid !important; grid-template-columns: repeat(4, 1fr) !important;
+        gap: 20px !important; max-width: 1180px !important; margin: 0 auto !important;
+    }
+    #jlt-funnel .jlt-acard {
+        border-radius: 18px !important; overflow: hidden !important; position: relative !important;
+        height: 300px !important; display: flex !important; align-items: flex-end !important;
+        transition: transform 0.35s ease, box-shadow 0.35s ease !important;
+    }
+    #jlt-funnel .jlt-acard:hover { transform: translateY(-6px) !important; box-shadow: 0 20px 44px rgba(255,110,0,0.22) !important; }
+    #jlt-funnel .jlt-acard img { position: absolute !important; inset: 0 !important; width: 100% !important; height: 100% !important; object-fit: cover !important; }
+    #jlt-funnel .jlt-acard-overlay { position: absolute !important; inset: 0 !important; background: linear-gradient(to bottom, rgba(10,8,4,0.05) 0%, rgba(10,8,4,0.9) 100%) !important; }
+    #jlt-funnel .jlt-acard-body { position: relative !important; z-index: 2 !important; padding: 18px !important; box-sizing: border-box !important; }
+    #jlt-funnel .jlt-acard-title {
+        font-family: 'Baloo 2', sans-serif !important; font-size: 1.1rem !important; font-weight: 800 !important;
+        color: #f9bb3e !important; text-transform: uppercase !important; display: block !important; line-height: 1.15 !important;
+    }
+    #jlt-funnel .jlt-acard-desc { font-size: 0.78rem !important; color: rgba(255,255,255,0.75) !important; margin-top: 4px !important; display: block !important; line-height: 1.4 !important; }
+
+    /* ── TICKET CARDS ── */
+    #jlt-funnel .jlt-tickets { width: 100% !important; background: linear-gradient(180deg, #1a0f2e 0%, #0a0a0a 100%) !important; padding: 80px 48px !important; display: block !important; box-sizing: border-box !important; }
+    #jlt-funnel .jlt-tickets-header { text-align: center !important; margin-bottom: 18px !important; }
+    #jlt-funnel .jlt-flash {
+        text-align: center !important; max-width: 760px !important; margin: 0 auto 44px !important;
+        background: rgba(255,110,0,0.1) !important; border: 1px solid rgba(255,110,0,0.4) !important;
+        border-radius: 14px !important; padding: 18px 24px !important;
+        font-size: 0.9rem !important; color: rgba(255,255,255,0.88) !important; line-height: 1.65 !important;
+    }
+    #jlt-funnel .jlt-flash strong { color: #ffe730 !important; }
+    #jlt-funnel .jlt-flash-tag {
+        display: inline-block !important; background: #ed1c24 !important; color: #fff !important;
+        font-size: 0.62rem !important; font-weight: 800 !important; letter-spacing: 0.12em !important;
+        text-transform: uppercase !important; padding: 4px 10px !important; border-radius: 20px !important;
+        margin-bottom: 10px !important;
+    }
+    #jlt-funnel .jlt-grid {
+        display: grid !important; grid-template-columns: repeat(3, minmax(0, 320px)) !important;
+        gap: 22px !important; justify-content: center !important;
+        max-width: 1040px !important; margin-left: auto !important; margin-right: auto !important;
+    }
+    #jlt-funnel .jlt-card {
+        border-radius: 20px !important; padding: 36px 32px !important;
+        position: relative !important; overflow: hidden !important;
+        transition: transform 0.35s ease, box-shadow 0.35s ease !important;
+        display: flex !important; flex-direction: column !important;
+    }
+    #jlt-funnel .jlt-card:hover { transform: translateY(-6px) !important; }
+    #jlt-funnel a.jlt-card { cursor: pointer !important; text-decoration: none !important; color: inherit !important; }
+    #jlt-funnel .jlt-card-fire { background: linear-gradient(160deg, #ff6e00, #b34d00) !important; color: #0a0a0a !important; }
+    #jlt-funnel .jlt-card-fire:hover { box-shadow: 0 20px 44px rgba(255,110,0,0.4) !important; }
+    #jlt-funnel .jlt-card-purple { background: #2a1747 !important; color: white !important; border: 1px solid rgba(119,48,197,0.5) !important; }
+    #jlt-funnel .jlt-card-purple:hover { box-shadow: 0 20px 44px rgba(71,31,115,0.5) !important; }
+    #jlt-funnel .jlt-card-dark { background: #150d08 !important; color: white !important; border: 1px solid rgba(255,110,0,0.18) !important; }
+    #jlt-funnel .jlt-card-dark:hover { box-shadow: 0 20px 44px rgba(0,0,0,0.4) !important; }
+
+    #jlt-funnel .jlt-card-badge {
+        display: inline-block !important; font-size: 0.62rem !important; font-weight: 800 !important;
+        letter-spacing: 0.14em !important; text-transform: uppercase !important;
+        padding: 4px 10px !important; border-radius: 20px !important; margin-bottom: 14px !important; width: fit-content !important;
+    }
+    #jlt-funnel .jlt-card-badge-dark { background: rgba(10,10,10,0.2) !important; color: #0a0a0a !important; }
+    #jlt-funnel .jlt-card-badge-light { background: rgba(255,255,255,0.14) !important; color: #ffe730 !important; }
+    #jlt-funnel .jlt-card-badge-alert { background: #ed1c24 !important; color: #fff !important; }
+
+    #jlt-funnel .jlt-card-icon { font-size: 2.6rem !important; margin-bottom: 14px !important; display: block !important; }
+    #jlt-funnel .jlt-card h3 {
+        font-family: 'Baloo 2', sans-serif !important;
+        font-size: 1.5rem !important; font-weight: 800 !important;
+        line-height: 1.15 !important; margin-bottom: 14px !important; display: block !important;
+        text-transform: uppercase !important;
+    }
+    #jlt-funnel .jlt-card-fire h3 { color: #0a0a0a !important; }
+    #jlt-funnel .jlt-card-purple h3 { color: #ffe730 !important; }
+    #jlt-funnel .jlt-card-dark h3 { color: #f9bb3e !important; }
+    #jlt-funnel .jlt-card-bullets { list-style: none !important; padding: 0 !important; margin: 0 0 auto !important; display: flex !important; flex-direction: column !important; gap: 6px !important; }
+    #jlt-funnel .jlt-card-bullets li { font-size: 0.92rem !important; line-height: 1.55 !important; display: flex !important; align-items: flex-start !important; gap: 8px !important; }
+    #jlt-funnel .jlt-card-fire .jlt-card-bullets li { color: rgba(10,10,10,0.82) !important; }
+    #jlt-funnel .jlt-card-purple .jlt-card-bullets li { color: rgba(255,255,255,0.8) !important; }
+    #jlt-funnel .jlt-card-dark .jlt-card-bullets li { color: rgba(255,255,255,0.7) !important; }
+
+    #jlt-funnel .jlt-card-price { display: flex !important; align-items: baseline !important; gap: 6px !important; margin-top: 20px !important; padding-top: 16px !important; }
+    #jlt-funnel .jlt-card-fire .jlt-card-price { border-top: 1px solid rgba(10,10,10,0.22) !important; }
+    #jlt-funnel .jlt-card-purple .jlt-card-price { border-top: 1px solid rgba(255,255,255,0.16) !important; }
+    #jlt-funnel .jlt-card-dark .jlt-card-price { border-top: 1px solid rgba(255,110,0,0.18) !important; }
+    #jlt-funnel .jlt-price-num { font-family: 'Baloo 2', sans-serif !important; font-size: 2.6rem !important; font-weight: 800 !important; line-height: 1 !important; }
+    #jlt-funnel .jlt-card-fire .jlt-price-num { color: #0a0a0a !important; }
+    #jlt-funnel .jlt-card-purple .jlt-price-num { color: #ffe730 !important; }
+    #jlt-funnel .jlt-card-dark .jlt-price-num { color: #ff6e00 !important; }
+    #jlt-funnel .jlt-price-label { font-size: 0.86rem !important; line-height: 1.4 !important; }
+    #jlt-funnel .jlt-card-fire .jlt-price-label { color: rgba(10,10,10,0.65) !important; }
+    #jlt-funnel .jlt-card-purple .jlt-price-label { color: rgba(255,255,255,0.55) !important; }
+    #jlt-funnel .jlt-card-dark .jlt-price-label { color: rgba(255,255,255,0.45) !important; }
+    #jlt-funnel .jlt-card-note { font-size: 0.72rem !important; font-style: italic !important; margin-top: 10px !important; display: block !important; line-height: 1.5 !important; }
+    #jlt-funnel .jlt-card-fire .jlt-card-note { color: rgba(10,10,10,0.6) !important; }
+    #jlt-funnel .jlt-card-purple .jlt-card-note { color: rgba(255,255,255,0.42) !important; }
+    #jlt-funnel .jlt-card-dark .jlt-card-note { color: rgba(255,255,255,0.4) !important; }
+    #jlt-funnel .jlt-placeholder { color: #ed1c24 !important; font-weight: 700 !important; }
+
+    /* ── INFO ROW ── */
+    #jlt-funnel .jlt-info { width: 100% !important; background: linear-gradient(90deg, #471f73, #7730c5) !important; padding: 0 !important; display: block !important; box-sizing: border-box !important; }
+    #jlt-funnel .jlt-info-grid { display: grid !important; grid-template-columns: repeat(4, 1fr) !important; }
+    #jlt-funnel .jlt-info-item { text-align: center !important; padding: 28px 20px !important; position: relative !important; }
+    #jlt-funnel .jlt-info-item:not(:last-child)::after { content: '' !important; position: absolute !important; right: 0 !important; top: 20% !important; bottom: 20% !important; width: 1px !important; background: rgba(255,255,255,0.18) !important; }
+    #jlt-funnel .jlt-info-icon { font-size: 1.5rem !important; display: block !important; margin-bottom: 6px !important; }
+    #jlt-funnel .jlt-info-label { font-size: 0.62rem !important; font-weight: 700 !important; letter-spacing: 0.16em !important; text-transform: uppercase !important; color: rgba(255,255,255,0.65) !important; display: block !important; margin-bottom: 4px !important; }
+    #jlt-funnel .jlt-info-value { font-family: 'Baloo 2', sans-serif !important; font-size: 0.95rem !important; font-weight: 700 !important; color: white !important; display: block !important; line-height: 1.3 !important; }
+
+    /* ── EMAIL CAPTURE ── */
+    #jlt-funnel .jlt-capture { width: 100% !important; background: #0a0a0a !important; padding: 64px 48px !important; text-align: center !important; box-sizing: border-box !important; }
+    #jlt-funnel .jlt-capture-title { font-family: 'Baloo 2', sans-serif !important; font-size: clamp(1.4rem, 3.4vw, 2rem) !important; font-weight: 800 !important; color: #f9bb3e !important; text-transform: uppercase !important; display: block !important; }
+    #jlt-funnel .jlt-capture-sub { font-size: 0.9rem !important; color: rgba(255,255,255,0.55) !important; margin-top: 8px !important; display: block !important; }
+    #jlt-funnel .jlt-capture-form { max-width: 420px !important; margin: 22px auto 0 !important; display: flex !important; gap: 10px !important; }
+    #jlt-funnel .jlt-capture-input { flex: 1 1 auto !important; padding: 12px 16px !important; border-radius: 50px !important; border: 1px solid rgba(255,110,0,0.35) !important; background: #150d08 !important; color: white !important; font-size: 0.88rem !important; box-sizing: border-box !important; }
+    #jlt-funnel .jlt-capture-btn { background: #ff6e00 !important; color: #0a0a0a !important; border: 0 !important; border-radius: 50px !important; padding: 12px 26px !important; font-weight: 800 !important; font-size: 0.85rem !important; cursor: pointer !important; letter-spacing: 0.03em !important; }
+
+    /* ── FOOTER ── */
+    #jlt-funnel .jlt-footer { width: 100% !important; background: #0a0a0a !important; border-top: 1px solid rgba(255,110,0,0.12) !important; padding: 24px 48px !important; text-align: center !important; box-sizing: border-box !important; }
+    #jlt-funnel .jlt-footer-text { font-size: 0.72rem !important; color: rgba(255,255,255,0.35) !important; }
+
+    /* ── REVEAL ── */
+    #jlt-funnel .jltr { opacity: 0 !important; transform: translateY(28px) !important; transition: opacity 0.7s cubic-bezier(.16,1,.3,1), transform 0.7s cubic-bezier(.16,1,.3,1) !important; }
+    #jlt-funnel .jltr.jlton { opacity: 1 !important; transform: none !important; }
+    #jlt-funnel .jltr.d1 { transition-delay: 0.1s !important; }
+    #jlt-funnel .jltr.d2 { transition-delay: 0.2s !important; }
+    #jlt-funnel .jltr.d3 { transition-delay: 0.3s !important; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1080px) {
+        #jlt-funnel .jlt-grid { grid-template-columns: repeat(2, minmax(0, 380px)) !important; max-width: 820px !important; }
+        #jlt-funnel .jlt-agrid { grid-template-columns: repeat(2, 1fr) !important; }
+    }
+    @media (max-width: 860px) {
+        #jlt-funnel .jlt-nav { padding: 0 24px !important; }
+        #jlt-funnel .jlt-hero-content { padding: 0 28px 32px !important; }
+        #jlt-funnel .jlt-benefits { padding: 32px 24px !important; }
+        #jlt-funnel .jlt-feature { padding: 56px 24px !important; }
+        #jlt-funnel .jlt-attractions { padding: 56px 24px !important; }
+        #jlt-funnel .jlt-tickets { padding: 56px 24px !important; }
+        #jlt-funnel .jlt-info-grid { grid-template-columns: 1fr 1fr !important; }
+        #jlt-funnel .jlt-info-item:nth-child(2n)::after { display: none !important; }
+        #jlt-funnel .jlt-gcard { width: 300px !important; height: 210px !important; }
+        #jlt-funnel .jlt-acard { height: 240px !important; }
+    }
+    @media (max-width: 560px) {
+        #jlt-funnel .jlt-nav { padding: 0 16px !important; }
+        #jlt-funnel .jlt-logo-wrap { width: 130px !important; height: 36px !important; }
+        #jlt-funnel .jlt-logo-wrap img { width: 130px !important; height: 36px !important; max-width: 130px !important; max-height: 36px !important; }
+        #jlt-funnel .jlt-nav-cta { padding: 8px 16px !important; font-size: 0.76rem !important; }
+        #jlt-funnel .jlt-hero-content { padding: 0 18px 24px !important; }
+        #jlt-funnel .jlt-nav-loc { display: none !important; }
+        #jlt-funnel .jlt-benefits { padding: 24px 16px !important; }
+        #jlt-funnel .jlt-benefits-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 18px 0 !important; }
+        #jlt-funnel .jlt-benefit:nth-child(2n)::after { display: none !important; }
+        #jlt-funnel .jlt-feature { padding: 48px 16px !important; }
+        #jlt-funnel .jlt-attractions { padding: 48px 16px !important; }
+        #jlt-funnel .jlt-agrid { grid-template-columns: 1fr 1fr !important; gap: 12px !important; }
+        #jlt-funnel .jlt-acard { height: 180px !important; }
+        #jlt-funnel .jlt-tickets { padding: 48px 16px !important; }
+        #jlt-funnel .jlt-grid { grid-template-columns: 1fr !important; }
+        #jlt-funnel .jlt-capture-form { flex-direction: column !important; }
+        #jlt-funnel .jlt-gcard { width: 240px !important; height: 170px !important; }
+    }
+</style>
+
+<div id="jlt-funnel">
+
+    <!-- BANNER -->
+    <div class="jlt-banner">
+        <div class="jlt-banner-inner">
+            <span>🎃 <strong>Flash Sale Starts Mon, Aug. 31!</strong></span>
+            <span class="jlt-dot"></span>
+            <span>Opening Fri, Sept. 11</span>
+            <span class="jlt-dot"></span>
+            <span>Belleville Farm · 2026</span>
+        </div>
+    </div>
+
+    <!-- NAV -->
+    <div class="jlt-nav">
+        <div class="jlt-logo-wrap">
+            <img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/jacks-lighted-trail/logo-jacks-lighted-trail.png" alt="Jack's Lighted Trail">
+        </div>
+        <div class="jlt-nav-right">
+            <div class="jlt-nav-loc">
+                <svg width="12" height="12" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                    <circle cx="12" cy="11" r="3"/>
+                </svg>
+                Belleville, IL
+            </div>
+            <a href="#ticketBlock" class="jlt-nav-cta">Get Tickets</a>
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <div class="jlt-hero">
+        <div class="jlt-hero-overlay"></div>
+        <div class="jlt-hero-content">
+            <span class="jlt-hero-eyebrow">St. Louis's Glowing Pumpkin Experience</span>
+            <span class="jlt-hero-title">Jack's Lighted Trail</span>
+            <span class="jlt-hero-sub">the spookiest event near st. louis</span>
+            <div class="jlt-hero-dates">
+                🎟️ <strong>Launch Day Steal</strong> starts Mon, Aug 31 — first tickets get <strong>$10 off</strong>, no code needed
+            </div>
+        </div>
+    </div>
+
+    <!-- BENEFITS -->
+    <div class="jlt-benefits">
+        <div class="jlt-benefits-grid">
+            <div class="jlt-benefit">
+                <span class="jlt-benefit-icon">🌽</span>
+                <span class="jlt-benefit-title">Corn Stalk Lighted Path</span>
+                <span class="jlt-benefit-desc">A glowing trail through towering corn stalks</span>
+            </div>
+            <div class="jlt-benefit">
+                <span class="jlt-benefit-icon">👨‍👩‍👧‍👦</span>
+                <span class="jlt-benefit-title">Family Fun</span>
+                <span class="jlt-benefit-desc">Made for all ages — from twinkling pumpkins to friendly surprises</span>
+            </div>
+            <div class="jlt-benefit">
+                <span class="jlt-benefit-icon">🍩</span>
+                <span class="jlt-benefit-title">Tasty Treats</span>
+                <span class="jlt-benefit-desc">Fall favorites and spooky sweet snacks along the way</span>
+            </div>
+            <div class="jlt-benefit">
+                <span class="jlt-benefit-icon">🥃</span>
+                <span class="jlt-benefit-title">Cider Shed / Spook-Easy</span>
+                <span class="jlt-benefit-desc">Sneak away for a hauntingly good sip and unwind</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- FEATURE -->
+    <div class="jlt-feature">
+        <span class="jlt-eye jltr">Lighted Pumpkin Trail</span>
+        <span class="jlt-title jltr">a can't-miss experience at <em>Eckert's Belleville Farm</em></span>
+        <p class="jlt-feature-copy jltr d1">Larger-than-life carvings and dazzling displays light up a trail through towering corn stalks on this spellbinding Halloween stroll. This glow-filled adventure is made for all ages — from twinkling pumpkins to friendly surprises, it's the perfect way to enjoy fall fun together.</p>
+    </div>
+
+    <!-- GALLERY -->
+    <div class="jlt-gallery">
+        <div class="jlt-gallery-mask">
+            <div class="jlt-gallery-track">
+                <div class="jlt-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/jacks-lighted-trail/hero-lantern-installation-1.jpg" alt="Lighted lantern installation along the trail" loading="lazy"><div class="jlt-gcard-label">Lantern Displays</div></div>
+                <div class="jlt-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/jacks-lighted-trail/hero-jackolanterns-colorful.jpg" alt="Colorful glowing jack-o-lanterns" loading="lazy"><div class="jlt-gcard-label">Jack-o'-Lanterns</div></div>
+                <div class="jlt-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/jacks-lighted-trail/hero-graveyard-fog.jpg" alt="Foggy graveyard display" loading="lazy"><div class="jlt-gcard-label">Spooky Scenes</div></div>
+                <div class="jlt-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/jacks-lighted-trail/hero-scarecrow-night.jpg" alt="Scarecrow lit up at night" loading="lazy"><div class="jlt-gcard-label">Night Trail</div></div>
+                <div class="jlt-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/jacks-lighted-trail/hero-trail-purple-trees.jpg" alt="Purple-lit trees along the trail" loading="lazy"><div class="jlt-gcard-label">Glowing Woods</div></div>
+                <div class="jlt-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/jacks-lighted-trail/hero-lantern-installation-2.jpg" alt="Second lantern installation view" loading="lazy"><div class="jlt-gcard-label">Lantern Art</div></div>
+                <div class="jlt-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/jacks-lighted-trail/hero-pumpkin-trail-red.jpg" alt="Red-lit pumpkin trail" loading="lazy"><div class="jlt-gcard-label">Pumpkin Trail</div></div>
+                <!-- Duplicate for seamless loop -->
+                <div class="jlt-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/jacks-lighted-trail/hero-lantern-installation-1.jpg" alt="" aria-hidden="true" loading="lazy"><div class="jlt-gcard-label">Lantern Displays</div></div>
+                <div class="jlt-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/jacks-lighted-trail/hero-jackolanterns-colorful.jpg" alt="" aria-hidden="true" loading="lazy"><div class="jlt-gcard-label">Jack-o'-Lanterns</div></div>
+                <div class="jlt-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/jacks-lighted-trail/hero-graveyard-fog.jpg" alt="" aria-hidden="true" loading="lazy"><div class="jlt-gcard-label">Spooky Scenes</div></div>
+                <div class="jlt-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/jacks-lighted-trail/hero-scarecrow-night.jpg" alt="" aria-hidden="true" loading="lazy"><div class="jlt-gcard-label">Night Trail</div></div>
+                <div class="jlt-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/jacks-lighted-trail/hero-trail-purple-trees.jpg" alt="" aria-hidden="true" loading="lazy"><div class="jlt-gcard-label">Glowing Woods</div></div>
+                <div class="jlt-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/jacks-lighted-trail/hero-lantern-installation-2.jpg" alt="" aria-hidden="true" loading="lazy"><div class="jlt-gcard-label">Lantern Art</div></div>
+                <div class="jlt-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/jacks-lighted-trail/hero-pumpkin-trail-red.jpg" alt="" aria-hidden="true" loading="lazy"><div class="jlt-gcard-label">Pumpkin Trail</div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ATTRACTIONS -->
+    <div class="jlt-attractions">
+        <div class="jlt-attractions-header jltr">
+            <span class="jlt-eye">Along the Trail</span>
+            <span class="jlt-title">four ways to <em>get spooked</em></span>
+        </div>
+        <div class="jlt-agrid">
+            <div class="jlt-acard jltr">
+                <img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/jacks-lighted-trail/section-lantern-cups.jpg" alt="Corn Stalk Lighted Path">
+                <div class="jlt-acard-overlay"></div>
+                <div class="jlt-acard-body">
+                    <span class="jlt-acard-title">Corn Stalk Lighted Path</span>
+                    <span class="jlt-acard-desc">A glowing stroll through towering stalks</span>
+                </div>
+            </div>
+            <div class="jlt-acard jltr d1">
+                <img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/jacks-lighted-trail/section-family-photo-op.jpg" alt="Family Fun photo op">
+                <div class="jlt-acard-overlay"></div>
+                <div class="jlt-acard-body">
+                    <span class="jlt-acard-title">Family Fun</span>
+                    <span class="jlt-acard-desc">Photo ops and friendly surprises for all ages</span>
+                </div>
+            </div>
+            <div class="jlt-acard jltr d2">
+                <img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/jacks-lighted-trail/section-cider-donuts.jpg" alt="Tasty Treats — cider and donuts">
+                <div class="jlt-acard-overlay"></div>
+                <div class="jlt-acard-body">
+                    <span class="jlt-acard-title">Tasty Treats</span>
+                    <span class="jlt-acard-desc">Fall favorites and spooky sweet snacks</span>
+                </div>
+            </div>
+            <div class="jlt-acard jltr d3">
+                <img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/jacks-lighted-trail/section-witch-photobooth-neon.jpg" alt="Spook-Easy neon photobooth">
+                <div class="jlt-acard-overlay"></div>
+                <div class="jlt-acard-body">
+                    <span class="jlt-acard-title">Cider Shed &amp; Spook-Easy</span>
+                    <span class="jlt-acard-desc">Sneak away for a hauntingly good sip</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TICKETS -->
+    <div class="jlt-tickets" id="tickets">
+        <div class="jlt-tickets-header jltr">
+            <span class="jlt-eye">Flash Sale Tickets</span>
+            <span class="jlt-title">get in before <em>it sells out</em></span>
+        </div>
+        <div class="jlt-flash jltr">
+            <span class="jlt-flash-tag">No Code Needed</span><br>
+            <strong>Launch Day Steal</strong> opens Mon, Aug 31 — the first
+            <span class="jlt-placeholder">[[THRESHOLD TBD — Amanda/Bryan to confirm]]</span> September tickets
+            are <strong>$10 off</strong>, applied automatically at checkout. Once those sell out, pricing steps
+            down to <strong>$7 off</strong> for the rest of the flash window — still no code required.
+            October dates stay full price and remain bookable throughout.
+        </div>
+        <div class="jlt-grid">
+
+            <!-- LAUNCH DAY STEAL -->
+            <a href="#ticketBlock" class="jlt-card jlt-card-fire jltr" aria-label="Buy Launch Day Steal tickets">
+                <span class="jlt-card-badge jlt-card-badge-dark">Launch Day Steal</span>
+                <span class="jlt-card-icon">⚡</span>
+                <h3>Launch Day Steal</h3>
+                <ul class="jlt-card-bullets">
+                    <li>🎟️ General admission for one — September dates only</li>
+                    <li>⚡ $10 off, auto-applied, no code</li>
+                    <li>🌽 Full trail access — lanterns, cider shed, photo ops</li>
+                </ul>
+                <div class="jlt-card-price">
+                    <span class="jlt-price-num jlt-placeholder">[[$X.XX]]</span>
+                    <span class="jlt-price-label">online<br><span style="text-decoration:line-through;opacity:0.7;">[[gate price]]</span></span>
+                </div>
+                <span class="jlt-card-note">Sells out fast — once gone, steps down to the $7-off tier below.</span>
+            </a>
+
+            <!-- TIER 2 — $7 OFF -->
+            <a href="#ticketBlock" class="jlt-card jlt-card-purple jltr d1" aria-label="Buy September Savings tickets">
+                <span class="jlt-card-badge jlt-card-badge-light">$7 Off · September</span>
+                <span class="jlt-card-icon">🎃</span>
+                <h3>September Savings</h3>
+                <ul class="jlt-card-bullets">
+                    <li>🎟️ General admission for one — September dates only</li>
+                    <li>🎃 $7 off, auto-applied, no code</li>
+                    <li>🌽 Full trail access — lanterns, cider shed, photo ops</li>
+                </ul>
+                <div class="jlt-card-price">
+                    <span class="jlt-price-num jlt-placeholder">[[$X.XX]]</span>
+                    <span class="jlt-price-label">online<br><span style="text-decoration:line-through;opacity:0.7;">[[gate price]]</span></span>
+                </div>
+                <span class="jlt-card-note">Active once Launch Day Steal sells out, through the rest of the flash window.</span>
+            </a>
+
+            <!-- OCTOBER / STANDARD -->
+            <a href="#ticketBlock" class="jlt-card jlt-card-dark jltr d2" aria-label="Buy October dates tickets">
+                <span class="jlt-card-badge jlt-card-badge-light">Full Season</span>
+                <span class="jlt-card-icon">🕯️</span>
+                <h3>October Dates</h3>
+                <ul class="jlt-card-bullets">
+                    <li>🎟️ General admission for one — any October date</li>
+                    <li>🕯️ Trail runs Sept 11 – Oct 30 (dark on Halloween)</li>
+                    <li>🌽 Full trail access — lanterns, cider shed, photo ops</li>
+                </ul>
+                <div class="jlt-card-price">
+                    <span class="jlt-price-num jlt-placeholder">[[$X.XX]]</span>
+                    <span class="jlt-price-label">standard online price</span>
+                </div>
+                <span class="jlt-card-note">Full price — no flash discount applies to October dates.</span>
+            </a>
+
+        </div>
+    </div>
+
+    <!-- INFO ROW -->
+    <div class="jlt-info">
+        <div class="jlt-info-grid">
+            <div class="jlt-info-item">
+                <span class="jlt-info-icon">📍</span>
+                <span class="jlt-info-label">Location</span>
+                <span class="jlt-info-value">Eckert's Belleville Farm<br><span style="font-size:0.72rem !important; font-weight:400 !important; color:rgba(255,255,255,0.7) !important;">951 S. Green Mount Rd., Belleville, IL 62220</span></span>
+            </div>
+            <div class="jlt-info-item">
+                <span class="jlt-info-icon">📅</span>
+                <span class="jlt-info-label">Trail Dates</span>
+                <span class="jlt-info-value">Sept 11 – Oct 30<br>(dark on Halloween)</span>
+            </div>
+            <div class="jlt-info-item">
+                <span class="jlt-info-icon">⚡</span>
+                <span class="jlt-info-label">Flash Sale</span>
+                <span class="jlt-info-value">Starts Mon, Aug 31<br>through midnight Fri, Sept 4</span>
+            </div>
+            <div class="jlt-info-item">
+                <span class="jlt-info-icon">🕘</span>
+                <span class="jlt-info-label">Hours</span>
+                <span class="jlt-info-value">Fri–Sat &amp; Thu–Sun evenings<br><span style="font-size:0.72rem !important; font-weight:400 !important; color:rgba(255,255,255,0.7) !important;">[[exact windows TBD — confirm w/ Amanda]]</span></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- EMAIL CAPTURE -->
+    <div class="jlt-capture">
+        <span class="jlt-capture-title">Carve Your Name on the List!</span>
+        <span class="jlt-capture-sub">Be first to know when the Launch Day Steal opens.</span>
+        <div class="jlt-capture-form">
+            <input type="email" class="jlt-capture-input" placeholder="you@example.com" aria-label="Email address">
+            <button type="button" class="jlt-capture-btn">Notify Me</button>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="jlt-footer">
+        <span class="jlt-footer-text">© 2026 Eckert's Farms. Jack's Lighted Trail — Belleville, IL.</span>
+    </div>
+
+</div><!-- end #jlt-funnel -->
+
+<script>
+    (function() {
+        var obs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) {
+                if (e.isIntersecting) { e.target.classList.add('jlton'); obs.unobserve(e.target); }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('#jlt-funnel .jltr').forEach(function(el) {
+            obs.observe(el);
+            if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('jlton');
+        });
+        document.querySelectorAll('#jlt-funnel a[href^="#"]').forEach(function(a) {
+            a.addEventListener('click', function(e) {
+                e.preventDefault();
+                var t = document.querySelector(a.getAttribute('href'));
+                if (t) t.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    })();
+</script>
+
+<!-- ═══ FLASH-SALE SOLD-OUT + HIDDEN-PRICE TREATMENT (native #ticketBlock) ═══
+     Boom Ball pattern (Bryan, 8/6 check-in): once "Launch Day Steal" sells out
+     in TicketSpice's native cart, hide its price entirely rather than showing
+     a struck-through old price — "so they're not going, oh, I missed it. They
+     go, I better get now before these are sold out." Name-keyed + MutationObserver,
+     same approach as the slash-through-pricing pattern (crowd7/data/clients/_patterns/
+     slash-through-pricing.md) — matches on the ticket <h4> name, NOT DOM position,
+     so it survives Action-driven reordering. TICKET_NAME below is a placeholder —
+     wire the exact live name once Amanda's cart names are confirmed (Open Asks).
+     Full pattern write-up: crowd7/data/clients/_patterns/flash-sale-tiered-sellout.md -->
+<script>
+(function(){
+  var SOLD_OUT_HIDE_PRICE = ["Launch Day Steal"]; // ← confirm exact TS ticket name(s)
+  function isSoldOut(row){
+    var txt = row.textContent || '';
+    return /sold\s*out/i.test(txt) || row.classList.contains('sold-out');
+  }
+  function tag(){
+    document.querySelectorAll('#ticketBlock .ticket-type').forEach(function(row){
+      var h4 = row.querySelector('h4');
+      var cost = row.querySelector('.ticket-cost');
+      if(!h4 || !cost) return;
+      var name = h4.textContent.trim();
+      if (SOLD_OUT_HIDE_PRICE.indexOf(name) === -1) return;
+      if (isSoldOut(row)) {
+        cost.setAttribute('data-price-hidden', '1');
+      } else {
+        cost.removeAttribute('data-price-hidden');
+      }
+    });
+  }
+  var tb = document.getElementById('ticketBlock') || document.body;
+  new MutationObserver(tag).observe(tb, {childList:true, subtree:true, characterData:true});
+  tag();
+})();
+</script>
+<style>
+  #ticketBlock .ticket-cost[data-price-hidden]{ visibility: hidden !important; position: relative !important; }
+  #ticketBlock .ticket-cost[data-price-hidden]::after{
+    visibility: visible !important; content: "SOLD OUT"; position: absolute; left: 0; top: 0;
+    color: #ed1c24; font-weight: 800; letter-spacing: 0.04em;
+  }
+</style>
+</body>
+</html>
