@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Riamede Farm -- Season 2026 -- Preview</title>
+<style>
+  html, body { margin: 0; padding: 0; background: #FBF4E6; }
+  #rmf-funnel .rmfr { opacity: 1 !important; transform: none !important; }
+  #rmf-funnel .rmf-hero-eyebrow,
+  #rmf-funnel .rmf-hero-title,
+  #rmf-funnel .rmf-hero-sub,
+  #rmf-funnel .rmf-hero-dates { opacity: 1 !important; animation: none !important; }
+</style>
+</head>
+<body>
+<!-- ════════════════════════════════════════════════════════════════════
+     RIAMEDE FARM · CHESTER, NJ · SEASON 2026 (BLOOMFEST → FALL FEST)  —
+     HYBRID-LOADER CONTENT
+     Design overlay on Ashley's existing TicketSpice cart, form 1017178
+     (actions/dates/prices built by Ashley — this page does NOT rebuild
+     the cart, only the look + season-stepping marketing layer).
+     Spec: crowd7/data/clients/riamede/ticket-types-2026.md, locked 2026-08-03.
+     One page, ONE TicketSpice form, FIVE ticket families that step up
+     across the season via a client-side, Eastern-time-anchored phase
+     engine — no human/cron redeploy required at each step. Pattern
+     generalized from the Millstadt Christmas-in-July popup's
+     easternStamp() date-window gate (see build-plan.md WS1 §2).
+     Sub-brand: orchard/harvest palette — NOT the Jack's Lighted Trail
+     dark Halloween theme. Imagery harvested from riamedefarm.com (Wix),
+     see artifacts/image-url-check.md.
+     OPEN: exact live TicketSpice <h4> ticket names (placeholder-and-flag,
+     not a blocker — see Open Asks in state.md). Family Bundle value-claim
+     copy intentionally omits the disputed "$117 value / save $37" figure
+     pending Mat's correction — leads with itemized inclusions instead.
+     ════════════════════════════════════════════════════════════════════ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800;9..144,900&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+    #rmf-funnel {
+        width: 100vw !important;
+        position: relative !important;
+        left: 50% !important; right: 50% !important;
+        margin-left: -50vw !important; margin-right: -50vw !important;
+        overflow: hidden !important;
+        font-family: 'Nunito', -apple-system, sans-serif !important;
+        background: #FBF4E6 !important;
+        color: #2B2013 !important;
+        padding: 0 !important; box-sizing: border-box !important;
+    }
+
+    /* ── BANNER ── */
+    #rmf-funnel .rmf-banner {
+        width: 100% !important;
+        background: linear-gradient(90deg, #2F4A2C, #4C7040) !important;
+        color: #FBF4E6 !important;
+        text-align: center !important;
+        padding: 11px 20px !important;
+        font-size: 0.8rem !important;
+        letter-spacing: 0.02em !important;
+        display: block !important; box-sizing: border-box !important;
+    }
+    #rmf-funnel .rmf-banner-inner {
+        display: flex !important; align-items: center !important;
+        justify-content: center !important; gap: 10px !important; flex-wrap: wrap !important;
+    }
+    #rmf-funnel .rmf-banner strong { color: #F2C265 !important; }
+    #rmf-funnel .rmf-dot {
+        width: 3px !important; height: 3px !important;
+        background: rgba(255,255,255,0.45) !important;
+        border-radius: 50% !important; display: inline-block !important; flex-shrink: 0 !important;
+    }
+
+    /* ── NAV ── */
+    #rmf-funnel .rmf-nav {
+        width: 100% !important;
+        padding: 0 40px !important;
+        height: 72px !important;
+        display: flex !important; align-items: center !important;
+        justify-content: space-between !important;
+        background: rgba(251,244,230,0.96) !important;
+        border-bottom: 1px solid rgba(47,74,44,0.18) !important;
+        position: sticky !important; top: 0 !important; z-index: 100 !important;
+        box-sizing: border-box !important;
+        backdrop-filter: blur(6px) !important;
+    }
+    #rmf-funnel .rmf-logo-wrap {
+        display: flex !important; align-items: center !important;
+        height: 52px !important; width: 160px !important;
+        flex-shrink: 0 !important; overflow: hidden !important;
+    }
+    #rmf-funnel .rmf-logo-wrap img {
+        height: 52px !important; width: 160px !important;
+        max-width: 160px !important; max-height: 52px !important;
+        object-fit: contain !important; object-position: left center !important; display: block !important;
+    }
+    #rmf-funnel .rmf-nav-right { display: flex !important; align-items: center !important; gap: 16px !important; }
+    #rmf-funnel .rmf-nav-loc {
+        font-size: 0.78rem !important; color: rgba(43,32,19,0.6) !important;
+        display: flex !important; align-items: center !important; gap: 5px !important;
+    }
+    #rmf-funnel .rmf-nav-cta {
+        background: #B3241D !important; color: #FBF4E6 !important;
+        padding: 10px 24px !important; border-radius: 50px !important;
+        font-size: 0.85rem !important; font-weight: 700 !important;
+        text-decoration: none !important; letter-spacing: 0.02em !important;
+        transition: all 0.3s ease !important; white-space: nowrap !important; display: inline-block !important;
+    }
+    #rmf-funnel .rmf-nav-cta:hover { background: #8F1B15 !important; color: #FBF4E6 !important; text-decoration: none !important; }
+
+    /* ── HERO ── */
+    #rmf-funnel .rmf-hero {
+        width: 100% !important;
+        min-height: clamp(420px, 66vw, 660px) !important;
+        position: relative !important;
+        display: flex !important; align-items: flex-end !important;
+        overflow: hidden !important;
+        background: url('https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/riamede/design/assets/hero/aerial-farm-overview.jpg') center center/cover no-repeat, linear-gradient(135deg, #4C7040 0%, #2F4A2C 60%, #1D2E1B 100%) !important;
+    }
+    #rmf-funnel .rmf-hero-overlay {
+        position: absolute !important; inset: 0 !important;
+        background: linear-gradient(to bottom, rgba(20,16,8,0.1) 0%, rgba(20,16,8,0.28) 40%, rgba(18,14,6,0.86) 100%) !important;
+        z-index: 1 !important;
+    }
+    #rmf-funnel .rmf-hero-content {
+        position: relative !important; z-index: 2 !important;
+        padding: 0 48px 48px !important; width: 100% !important; box-sizing: border-box !important;
+    }
+    #rmf-funnel .rmf-hero-eyebrow {
+        font-family: 'Fraunces', serif !important;
+        font-size: 0.8rem !important; font-weight: 700 !important;
+        letter-spacing: 0.16em !important; text-transform: uppercase !important;
+        color: #F2C265 !important; margin-bottom: 10px !important; display: block !important;
+        opacity: 0; animation: rmfFadeUp 0.6s ease 0.2s forwards;
+    }
+    #rmf-funnel .rmf-hero-title {
+        font-family: 'Fraunces', serif !important;
+        font-size: clamp(2.6rem, 7.6vw, 5rem) !important; font-weight: 800 !important;
+        color: #FBF4E6 !important; line-height: 1.02 !important; display: block !important;
+        text-shadow: 0 4px 24px rgba(0,0,0,0.4) !important;
+        letter-spacing: 0.005em !important;
+        opacity: 0; animation: rmfFadeUp 0.7s ease 0.35s forwards;
+    }
+    #rmf-funnel .rmf-hero-sub {
+        font-family: 'Nunito', sans-serif !important;
+        font-size: clamp(1rem, 2.2vw, 1.3rem) !important; font-weight: 600 !important;
+        color: #F3E9D4 !important; margin-top: 12px !important; display: block !important;
+        opacity: 0; animation: rmfFadeUp 0.7s ease 0.5s forwards;
+    }
+    #rmf-funnel .rmf-hero-dates {
+        display: inline-flex !important; align-items: center !important; gap: 10px !important;
+        margin-top: 22px !important; padding: 11px 20px !important; border-radius: 50px !important;
+        background: rgba(178,36,29,0.22) !important; border: 1px solid rgba(242,194,101,0.55) !important;
+        font-size: 0.85rem !important; color: #FBF4E6 !important;
+        opacity: 0; animation: rmfFadeUp 0.7s ease 0.65s forwards;
+    }
+    #rmf-funnel .rmf-hero-dates strong { color: #F2C265 !important; }
+    @keyframes rmfFadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ── BENEFITS BAND ── */
+    #rmf-funnel .rmf-benefits {
+        width: 100% !important; background: #F3E9D4 !important;
+        padding: 40px 48px !important; display: block !important; box-sizing: border-box !important;
+        border-bottom: 1px solid rgba(47,74,44,0.12) !important;
+    }
+    #rmf-funnel .rmf-benefits-grid { display: grid !important; grid-template-columns: repeat(4, 1fr) !important; }
+    #rmf-funnel .rmf-benefit { text-align: center !important; padding: 8px 20px !important; position: relative !important; }
+    #rmf-funnel .rmf-benefit:not(:last-child)::after {
+        content: '' !important; position: absolute !important;
+        right: 0 !important; top: 15% !important; bottom: 15% !important;
+        width: 1px !important; background: rgba(47,74,44,0.16) !important;
+    }
+    #rmf-funnel .rmf-benefit-icon { font-size: 1.8rem !important; margin-bottom: 8px !important; display: block !important; }
+    #rmf-funnel .rmf-benefit-title {
+        font-family: 'Fraunces', serif !important;
+        font-size: 1rem !important; font-weight: 700 !important;
+        color: #2F4A2C !important; margin-bottom: 3px !important; display: block !important;
+    }
+    #rmf-funnel .rmf-benefit-desc { font-size: 0.78rem !important; color: rgba(43,32,19,0.65) !important; line-height: 1.4 !important; display: block !important; }
+
+    /* ── FEATURE SECTION ── */
+    #rmf-funnel .rmf-feature {
+        width: 100% !important; position: relative !important; overflow: hidden !important;
+        padding: 76px 48px !important; box-sizing: border-box !important; text-align: center !important;
+        background: #FBF4E6 !important;
+    }
+    #rmf-funnel .rmf-eye {
+        font-family: 'Fraunces', serif !important;
+        font-size: 0.75rem !important; font-weight: 700 !important;
+        letter-spacing: 0.2em !important; text-transform: uppercase !important;
+        color: #B3241D !important; margin-bottom: 10px !important; display: block !important;
+    }
+    #rmf-funnel .rmf-title {
+        font-family: 'Fraunces', serif !important;
+        font-size: clamp(1.8rem, 4.4vw, 2.8rem) !important; font-weight: 700 !important;
+        color: #2F4A2C !important; line-height: 1.18 !important; display: block !important;
+    }
+    #rmf-funnel .rmf-title em { font-style: normal !important; color: #B3241D !important; }
+    #rmf-funnel .rmf-feature-copy {
+        max-width: 680px !important; margin: 18px auto 0 !important;
+        font-size: 1.02rem !important; line-height: 1.7 !important; color: rgba(43,32,19,0.82) !important;
+    }
+
+    /* ── GALLERY ── */
+    #rmf-funnel .rmf-gallery { width: 100% !important; background: #F3E9D4 !important; padding: 0 0 72px !important; overflow: hidden !important; display: block !important; }
+    #rmf-funnel .rmf-gallery-mask {
+        width: 100% !important; overflow: hidden !important;
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%) !important;
+        mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%) !important;
+    }
+    #rmf-funnel .rmf-gallery-track {
+        display: flex !important; gap: 16px !important; width: max-content !important;
+        animation: rmfMarquee 30s linear infinite !important; padding: 8px 0 !important;
+    }
+    #rmf-funnel .rmf-gallery-track:hover { animation-play-state: paused !important; }
+    @keyframes rmfMarquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    #rmf-funnel .rmf-gcard {
+        width: 360px !important; height: 250px !important;
+        border-radius: 18px !important; overflow: hidden !important;
+        flex-shrink: 0 !important; position: relative !important; cursor: pointer !important;
+        background: linear-gradient(135deg, #4C7040, #2F4A2C) !important;
+        display: flex !important; align-items: center !important; justify-content: center !important;
+        transition: transform 0.4s ease, box-shadow 0.4s ease !important;
+        border: 1px solid rgba(47,74,44,0.14) !important;
+    }
+    #rmf-funnel .rmf-gcard:hover { transform: scale(1.03) translateY(-5px) !important; box-shadow: 0 24px 50px rgba(47,74,44,0.25) !important; z-index: 2 !important; }
+    #rmf-funnel .rmf-gcard img { width: 100% !important; height: 100% !important; object-fit: cover !important; display: block !important; }
+    #rmf-funnel .rmf-gcard-label {
+        position: absolute !important; bottom: 12px !important; left: 12px !important;
+        background: rgba(29,46,27,0.72) !important; backdrop-filter: blur(8px) !important;
+        color: #F2C265 !important; font-size: 0.68rem !important; letter-spacing: 0.08em !important;
+        text-transform: uppercase !important; font-weight: 700 !important;
+        padding: 5px 12px !important; border-radius: 20px !important; z-index: 2 !important;
+    }
+
+    /* ── TICKET CARDS ── */
+    #rmf-funnel .rmf-tickets { width: 100% !important; background: linear-gradient(180deg, #FBF4E6 0%, #F3E9D4 100%) !important; padding: 80px 48px !important; display: block !important; box-sizing: border-box !important; }
+    #rmf-funnel .rmf-tickets-header { text-align: center !important; margin-bottom: 18px !important; }
+    #rmf-funnel .rmf-phase-tag {
+        text-align: center !important; max-width: 760px !important; margin: 0 auto 44px !important;
+        background: rgba(178,36,29,0.08) !important; border: 1px solid rgba(178,36,29,0.35) !important;
+        border-radius: 14px !important; padding: 16px 24px !important;
+        font-size: 0.9rem !important; color: rgba(43,32,19,0.85) !important; line-height: 1.6 !important;
+    }
+    #rmf-funnel .rmf-phase-tag strong { color: #B3241D !important; }
+
+    #rmf-funnel .rmf-phase-block { display: none !important; }
+    #rmf-funnel .rmf-grid {
+        display: grid !important; grid-template-columns: repeat(3, minmax(0, 320px)) !important;
+        gap: 22px !important; justify-content: center !important;
+        max-width: 1040px !important; margin-left: auto !important; margin-right: auto !important;
+    }
+    #rmf-funnel .rmf-card {
+        border-radius: 20px !important; padding: 36px 32px !important;
+        position: relative !important; overflow: hidden !important;
+        transition: transform 0.35s ease, box-shadow 0.35s ease !important;
+        display: flex !important; flex-direction: column !important;
+    }
+    #rmf-funnel .rmf-card:hover { transform: translateY(-6px) !important; }
+    #rmf-funnel a.rmf-card { cursor: pointer !important; text-decoration: none !important; color: inherit !important; }
+    #rmf-funnel .rmf-card-red { background: linear-gradient(160deg, #C0342B, #8F1B15) !important; color: #FBF4E6 !important; }
+    #rmf-funnel .rmf-card-red:hover { box-shadow: 0 20px 44px rgba(178,36,29,0.4) !important; }
+    #rmf-funnel .rmf-card-green { background: #2F4A2C !important; color: #FBF4E6 !important; border: 1px solid rgba(242,194,101,0.35) !important; }
+    #rmf-funnel .rmf-card-green:hover { box-shadow: 0 20px 44px rgba(47,74,44,0.45) !important; }
+    #rmf-funnel .rmf-card-cream { background: #FFFFFF !important; color: #2B2013 !important; border: 1px solid rgba(47,74,44,0.18) !important; }
+    #rmf-funnel .rmf-card-cream:hover { box-shadow: 0 20px 44px rgba(47,74,44,0.16) !important; }
+
+    #rmf-funnel .rmf-card-badge {
+        display: inline-block !important; font-size: 0.62rem !important; font-weight: 800 !important;
+        letter-spacing: 0.12em !important; text-transform: uppercase !important;
+        padding: 4px 10px !important; border-radius: 20px !important; margin-bottom: 14px !important; width: fit-content !important;
+    }
+    #rmf-funnel .rmf-card-badge-dark { background: rgba(0,0,0,0.18) !important; color: #FBF4E6 !important; }
+    #rmf-funnel .rmf-card-badge-gold { background: rgba(242,194,101,0.22) !important; color: #F2C265 !important; }
+    #rmf-funnel .rmf-card-badge-green { background: rgba(47,74,44,0.1) !important; color: #2F4A2C !important; }
+
+    #rmf-funnel .rmf-card-icon { font-size: 2.4rem !important; margin-bottom: 14px !important; display: block !important; }
+    #rmf-funnel .rmf-card h3 {
+        font-family: 'Fraunces', serif !important;
+        font-size: 1.45rem !important; font-weight: 800 !important;
+        line-height: 1.15 !important; margin-bottom: 14px !important; display: block !important;
+    }
+    #rmf-funnel .rmf-card-red h3 { color: #FBF4E6 !important; }
+    #rmf-funnel .rmf-card-green h3 { color: #F2C265 !important; }
+    #rmf-funnel .rmf-card-cream h3 { color: #2F4A2C !important; }
+    #rmf-funnel .rmf-card-bullets { list-style: none !important; padding: 0 !important; margin: 0 0 auto !important; display: flex !important; flex-direction: column !important; gap: 6px !important; }
+    #rmf-funnel .rmf-card-bullets li { font-size: 0.9rem !important; line-height: 1.5 !important; display: flex !important; align-items: flex-start !important; gap: 8px !important; }
+    #rmf-funnel .rmf-card-red .rmf-card-bullets li { color: rgba(251,244,230,0.9) !important; }
+    #rmf-funnel .rmf-card-green .rmf-card-bullets li { color: rgba(251,244,230,0.82) !important; }
+    #rmf-funnel .rmf-card-cream .rmf-card-bullets li { color: rgba(43,32,19,0.72) !important; }
+
+    #rmf-funnel .rmf-card-price { display: flex !important; align-items: baseline !important; gap: 6px !important; margin-top: 20px !important; padding-top: 16px !important; }
+    #rmf-funnel .rmf-card-red .rmf-card-price { border-top: 1px solid rgba(251,244,230,0.28) !important; }
+    #rmf-funnel .rmf-card-green .rmf-card-price { border-top: 1px solid rgba(242,194,101,0.3) !important; }
+    #rmf-funnel .rmf-card-cream .rmf-card-price { border-top: 1px solid rgba(47,74,44,0.16) !important; }
+    #rmf-funnel .rmf-price-num { font-family: 'Fraunces', serif !important; font-size: 2.5rem !important; font-weight: 800 !important; line-height: 1 !important; }
+    #rmf-funnel .rmf-card-red .rmf-price-num { color: #FBF4E6 !important; }
+    #rmf-funnel .rmf-card-green .rmf-price-num { color: #F2C265 !important; }
+    #rmf-funnel .rmf-card-cream .rmf-price-num { color: #B3241D !important; }
+    #rmf-funnel .rmf-price-label { font-size: 0.85rem !important; line-height: 1.4 !important; }
+    #rmf-funnel .rmf-card-red .rmf-price-label { color: rgba(251,244,230,0.78) !important; }
+    #rmf-funnel .rmf-card-green .rmf-price-label { color: rgba(251,244,230,0.6) !important; }
+    #rmf-funnel .rmf-card-cream .rmf-price-label { color: rgba(43,32,19,0.55) !important; }
+    #rmf-funnel .rmf-card-note { font-size: 0.72rem !important; font-style: italic !important; margin-top: 10px !important; display: block !important; line-height: 1.5 !important; }
+    #rmf-funnel .rmf-card-red .rmf-card-note { color: rgba(251,244,230,0.72) !important; }
+    #rmf-funnel .rmf-card-green .rmf-card-note { color: rgba(251,244,230,0.58) !important; }
+    #rmf-funnel .rmf-card-cream .rmf-card-note { color: rgba(43,32,19,0.5) !important; }
+    #rmf-funnel .rmf-strike { text-decoration: line-through !important; opacity: 0.65 !important; }
+
+    /* Fall Fest price-tier swap (one card, three date-keyed price texts) */
+    #rmf-funnel .rmf-ff-price { display: none !important; }
+    #rmf-funnel .rmf-ff-price.rmf-ff-active { display: flex !important; }
+
+    /* ── INFO ROW ── */
+    #rmf-funnel .rmf-info { width: 100% !important; background: linear-gradient(90deg, #2F4A2C, #4C7040) !important; padding: 0 !important; display: block !important; box-sizing: border-box !important; }
+    #rmf-funnel .rmf-info-grid { display: grid !important; grid-template-columns: repeat(4, 1fr) !important; }
+    #rmf-funnel .rmf-info-item { text-align: center !important; padding: 28px 20px !important; position: relative !important; }
+    #rmf-funnel .rmf-info-item:not(:last-child)::after { content: '' !important; position: absolute !important; right: 0 !important; top: 20% !important; bottom: 20% !important; width: 1px !important; background: rgba(251,244,230,0.18) !important; }
+    #rmf-funnel .rmf-info-icon { font-size: 1.5rem !important; display: block !important; margin-bottom: 6px !important; }
+    #rmf-funnel .rmf-info-label { font-size: 0.62rem !important; font-weight: 700 !important; letter-spacing: 0.16em !important; text-transform: uppercase !important; color: rgba(251,244,230,0.65) !important; display: block !important; margin-bottom: 4px !important; }
+    #rmf-funnel .rmf-info-value { font-family: 'Fraunces', serif !important; font-size: 0.95rem !important; font-weight: 700 !important; color: #FBF4E6 !important; display: block !important; line-height: 1.3 !important; }
+
+    /* ── FOOTER ── */
+    #rmf-funnel .rmf-footer { width: 100% !important; background: #FBF4E6 !important; border-top: 1px solid rgba(47,74,44,0.14) !important; padding: 24px 48px !important; text-align: center !important; box-sizing: border-box !important; }
+    #rmf-funnel .rmf-footer-text { font-size: 0.72rem !important; color: rgba(43,32,19,0.45) !important; }
+
+    /* ── REVEAL ── */
+    #rmf-funnel .rmfr { opacity: 0 !important; transform: translateY(28px) !important; transition: opacity 0.7s cubic-bezier(.16,1,.3,1), transform 0.7s cubic-bezier(.16,1,.3,1) !important; }
+    #rmf-funnel .rmfr.rmfon { opacity: 1 !important; transform: none !important; }
+    #rmf-funnel .rmfr.d1 { transition-delay: 0.1s !important; }
+    #rmf-funnel .rmfr.d2 { transition-delay: 0.2s !important; }
+    #rmf-funnel .rmfr.d3 { transition-delay: 0.3s !important; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1080px) {
+        #rmf-funnel .rmf-grid { grid-template-columns: repeat(2, minmax(0, 380px)) !important; max-width: 820px !important; }
+    }
+    @media (max-width: 860px) {
+        #rmf-funnel .rmf-nav { padding: 0 24px !important; }
+        #rmf-funnel .rmf-hero-content { padding: 0 28px 32px !important; }
+        #rmf-funnel .rmf-benefits { padding: 32px 24px !important; }
+        #rmf-funnel .rmf-feature { padding: 56px 24px !important; }
+        #rmf-funnel .rmf-tickets { padding: 56px 24px !important; }
+        #rmf-funnel .rmf-info-grid { grid-template-columns: 1fr 1fr !important; }
+        #rmf-funnel .rmf-info-item:nth-child(2n)::after { display: none !important; }
+        #rmf-funnel .rmf-gcard { width: 280px !important; height: 200px !important; }
+    }
+    @media (max-width: 560px) {
+        #rmf-funnel .rmf-nav { padding: 0 16px !important; }
+        #rmf-funnel .rmf-logo-wrap { width: 120px !important; height: 40px !important; }
+        #rmf-funnel .rmf-logo-wrap img { width: 120px !important; height: 40px !important; max-width: 120px !important; max-height: 40px !important; }
+        #rmf-funnel .rmf-nav-cta { padding: 9px 16px !important; font-size: 0.76rem !important; }
+        #rmf-funnel .rmf-hero-content { padding: 0 18px 24px !important; }
+        #rmf-funnel .rmf-nav-loc { display: none !important; }
+        #rmf-funnel .rmf-benefits { padding: 24px 16px !important; }
+        #rmf-funnel .rmf-benefits-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 18px 0 !important; }
+        #rmf-funnel .rmf-benefit:nth-child(2n)::after { display: none !important; }
+        #rmf-funnel .rmf-feature { padding: 48px 16px !important; }
+        #rmf-funnel .rmf-tickets { padding: 48px 16px !important; }
+        #rmf-funnel .rmf-grid { grid-template-columns: 1fr !important; }
+        #rmf-funnel .rmf-gcard { width: 240px !important; height: 170px !important; }
+    }
+</style>
+
+<div id="rmf-funnel">
+
+    <!-- BANNER (phase-aware micro-copy, text swapped by JS) -->
+    <div class="rmf-banner">
+        <div class="rmf-banner-inner">
+            <span id="rmf-banner-text">🍏 Riamede Farm · Chester, NJ · 2026 Season</span>
+            <span class="rmf-dot"></span>
+            <span>Bloomfest Aug 15 &middot; Fall Fest Sept 5 &ndash; Nov 1</span>
+        </div>
+    </div>
+
+    <!-- NAV -->
+    <div class="rmf-nav">
+        <div class="rmf-logo-wrap">
+            <img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/riamede/design/assets/logo/logo-riamede-farm.png" alt="Riamede Farm">
+        </div>
+        <div class="rmf-nav-right">
+            <div class="rmf-nav-loc">
+                <svg width="12" height="12" fill="none" stroke="rgba(43,32,19,0.55)" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                    <circle cx="12" cy="11" r="3"/>
+                </svg>
+                Chester, NJ
+            </div>
+            <a href="#tickets" class="rmf-nav-cta">Get Tickets</a>
+        </div>
+    </div>
+
+    <!-- HERO (phase-aware headline/sub/dates) -->
+    <div class="rmf-hero">
+        <div class="rmf-hero-overlay"></div>
+        <div class="rmf-hero-content">
+            <span class="rmf-hero-eyebrow" id="rmf-hero-eyebrow">NJ's Original Pick-Your-Own Apple Orchard</span>
+            <span class="rmf-hero-title">Riamede Farm</span>
+            <span class="rmf-hero-sub" id="rmf-hero-sub">68 acres of orchards, flowers &amp; fall fun in Chester, NJ</span>
+            <div class="rmf-hero-dates" id="rmf-hero-dates">🎟️ <strong>Flash Sale</strong> Aug 10&ndash;14 — the best pricing of the season, before Bloomfest opens</div>
+        </div>
+    </div>
+
+    <!-- BENEFITS -->
+    <div class="rmf-benefits">
+        <div class="rmf-benefits-grid">
+            <div class="rmf-benefit">
+                <span class="rmf-benefit-icon">🍎</span>
+                <span class="rmf-benefit-title">Pick Your Own</span>
+                <span class="rmf-benefit-desc">68 acres of orchard — NJ's oldest pick-your-own apple farm</span>
+            </div>
+            <div class="rmf-benefit">
+                <span class="rmf-benefit-icon">🌻</span>
+                <span class="rmf-benefit-title">Flower Fields</span>
+                <span class="rmf-benefit-desc">Sunflowers, zinnias &amp; snapdragons — Bloomfest's signature photo op</span>
+            </div>
+            <div class="rmf-benefit">
+                <span class="rmf-benefit-icon">🚜</span>
+                <span class="rmf-benefit-title">Wagon Rides</span>
+                <span class="rmf-benefit-desc">Hay wagons out to the pumpkin patch, starting Labor Day weekend</span>
+            </div>
+            <div class="rmf-benefit">
+                <span class="rmf-benefit-icon">🍩</span>
+                <span class="rmf-benefit-title">Farm Treats</span>
+                <span class="rmf-benefit-desc">Cider slushies, apple cider donuts &amp; a full concession stand</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- FEATURE -->
+    <div class="rmf-feature">
+        <span class="rmf-eye rmfr">Fifty Years Growing</span>
+        <span class="rmf-title rmfr">one farm, <em>one season</em>, from blooms to harvest</span>
+        <p class="rmf-feature-copy rmfr d1">Riamede is one event that steps up as the season goes — Bloomfest's flower fields and soft-open concessions in August fold straight into Fall Fest's wagon rides, pumpkin patch and full harvest festival by Labor Day. Same farm, same ticket, more happening every week you visit.</p>
+    </div>
+
+    <!-- GALLERY -->
+    <div class="rmf-gallery">
+        <div class="rmf-gallery-mask">
+            <div class="rmf-gallery-track">
+                <div class="rmf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/riamede/design/assets/hero/hero-wagon-tractor-ride.jpg" alt="Hay wagon ride through the pumpkin patch" loading="lazy"><div class="rmf-gcard-label">Wagon Rides</div></div>
+                <div class="rmf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/riamede/design/assets/bloomfest/sunflower-field-wide.jpg" alt="Sunflower field in bloom" loading="lazy"><div class="rmf-gcard-label">Bloomfest Flowers</div></div>
+                <div class="rmf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/riamede/design/assets/orchard/orchard-you-pick-apples.jpg" alt="You-pick apple orchard" loading="lazy"><div class="rmf-gcard-label">The Orchard</div></div>
+                <div class="rmf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/riamede/design/assets/fall-fest/family-pumpkin-patch.jpg" alt="Family in the pumpkin patch" loading="lazy"><div class="rmf-gcard-label">Pumpkin Patch</div></div>
+                <div class="rmf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/riamede/design/assets/fall-fest/corn-maze-boy.jpg" alt="Corn maze" loading="lazy"><div class="rmf-gcard-label">Corn Maze</div></div>
+                <div class="rmf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/riamede/design/assets/store/apple-cider-donuts.jpeg" alt="Apple cider donuts" loading="lazy"><div class="rmf-gcard-label">Farm Treats</div></div>
+                <div class="rmf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/riamede/design/assets/fall-fest/live-music-band.jpg" alt="Live music at the farm" loading="lazy"><div class="rmf-gcard-label">Live Music</div></div>
+                <!-- Duplicate for seamless loop -->
+                <div class="rmf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/riamede/design/assets/hero/hero-wagon-tractor-ride.jpg" alt="" aria-hidden="true" loading="lazy"><div class="rmf-gcard-label">Wagon Rides</div></div>
+                <div class="rmf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/riamede/design/assets/bloomfest/sunflower-field-wide.jpg" alt="" aria-hidden="true" loading="lazy"><div class="rmf-gcard-label">Bloomfest Flowers</div></div>
+                <div class="rmf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/riamede/design/assets/orchard/orchard-you-pick-apples.jpg" alt="" aria-hidden="true" loading="lazy"><div class="rmf-gcard-label">The Orchard</div></div>
+                <div class="rmf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/riamede/design/assets/fall-fest/family-pumpkin-patch.jpg" alt="" aria-hidden="true" loading="lazy"><div class="rmf-gcard-label">Pumpkin Patch</div></div>
+                <div class="rmf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/riamede/design/assets/fall-fest/corn-maze-boy.jpg" alt="" aria-hidden="true" loading="lazy"><div class="rmf-gcard-label">Corn Maze</div></div>
+                <div class="rmf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/riamede/design/assets/store/apple-cider-donuts.jpeg" alt="" aria-hidden="true" loading="lazy"><div class="rmf-gcard-label">Farm Treats</div></div>
+                <div class="rmf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/riamede/design/assets/fall-fest/live-music-band.jpg" alt="" aria-hidden="true" loading="lazy"><div class="rmf-gcard-label">Live Music</div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TICKETS — season-stepping phase engine -->
+    <div class="rmf-tickets" id="tickets">
+        <div class="rmf-tickets-header rmfr">
+            <span class="rmf-eye">Season 2026 Tickets</span>
+            <span class="rmf-title">get in for <em id="rmf-tickets-title-phase">the flash sale</em></span>
+        </div>
+        <div class="rmf-phase-tag rmfr" id="rmf-phase-tag">
+            <strong>Flash Sale — Aug 10&ndash;14 only.</strong> The lowest pricing of the whole season, before Bloomfest opens Aug 15. Buy now, use any day this season.
+        </div>
+
+        <!-- PHASE 1 — FLASH SALE (Aug 10-14): 3 cards, exact grid fit -->
+        <div class="rmf-phase-block" data-phases="1">
+            <div class="rmf-grid">
+
+                <a href="#ticketBlock" class="rmf-card rmf-card-red rmfr" aria-label="Buy Family Four-Pack Fall Bundle tickets">
+                    <span class="rmf-card-badge rmf-card-badge-dark">Best Value</span>
+                    <span class="rmf-card-icon">🧺</span>
+                    <h3>Family Four-Pack Fall Bundle</h3>
+                    <ul class="rmf-card-bullets">
+                        <li>🎟️ 4 admissions, redeemable Sept 1 &ndash; Nov 1</li>
+                        <li>🍩 A bag of farm-made donuts</li>
+                        <li>🧺 A commemorative apple basket, filled with farm-fresh apples</li>
+                    </ul>
+                    <div class="rmf-card-price">
+                        <span class="rmf-price-num">$79.95</span>
+                        <span class="rmf-price-label">per bundle<br>4 admissions + donuts + basket</span>
+                    </div>
+                    <span class="rmf-card-note">Basket is filled with farm-fresh apples — not guaranteed you-pick. Redeemable after Aug 29 (Sept 1 &ndash; Nov 1 only).</span>
+                </a>
+
+                <a href="#ticketBlock" class="rmf-card rmf-card-green rmfr d1" aria-label="Buy Flash Sale Season Pass tickets">
+                    <span class="rmf-card-badge rmf-card-badge-gold">Season Pass</span>
+                    <span class="rmf-card-icon">🎫</span>
+                    <h3>Flash Sale Season Pass</h3>
+                    <ul class="rmf-card-bullets">
+                        <li>🎟️ Unlimited visits, all season — Bloomfest through Fall Fest</li>
+                        <li>🛍️ 10% off every in-store purchase, all season</li>
+                        <li>👥 One single-use guest ticket included</li>
+                    </ul>
+                    <div class="rmf-card-price">
+                        <span class="rmf-price-num">$29.95</span>
+                        <span class="rmf-price-label">per pass<br>flash-sale price only</span>
+                    </div>
+                    <span class="rmf-card-note">Guest ticket redeems as a checkbox on your pass at the gate — no separate QR code.</span>
+                </a>
+
+                <a href="#ticketBlock" class="rmf-card rmf-card-cream rmfr d2" aria-label="Buy Flash Sale Any-Day Admission tickets">
+                    <span class="rmf-card-badge rmf-card-badge-green">Any-Day</span>
+                    <span class="rmf-card-icon">🍏</span>
+                    <h3>Flash Sale Any-Day Admission</h3>
+                    <ul class="rmf-card-bullets">
+                        <li>🎟️ Valid any single operating day, all season</li>
+                        <li>💰 Redeem on a $15.50&ndash;$19.50 peak day for the best value</li>
+                        <li>📅 Pick your date at checkout or decide later</li>
+                    </ul>
+                    <div class="rmf-card-price">
+                        <span class="rmf-price-num">$11.49</span>
+                        <span class="rmf-price-label">per admission<br>flash-sale price only</span>
+                    </div>
+                    <span class="rmf-card-note">Buy at $11.49, use it on a day that would otherwise cost up to $19.50 at the gate.</span>
+                </a>
+
+            </div>
+        </div>
+
+        <!-- PHASE 2 — BLOOMFEST (Aug 15-30): 2 cards (Bloomfest + Weekday) -->
+        <div class="rmf-phase-block" data-phases="2">
+            <div class="rmf-grid">
+
+                <a href="#ticketBlock" class="rmf-card rmf-card-red rmfr" aria-label="Buy Bloomfest Weekend Admission tickets">
+                    <span class="rmf-card-badge rmf-card-badge-dark">Weekends</span>
+                    <span class="rmf-card-icon">🌻</span>
+                    <h3>Bloomfest Weekend Admission</h3>
+                    <ul class="rmf-card-bullets">
+                        <li>🌻 Flower fields, you-pick tomatoes &amp; peppers</li>
+                        <li>🍦 Concessions, donuts, cider slushies &amp; live music</li>
+                        <li>📸 A soft opening — no wagon, ponies or petting zoo yet</li>
+                    </ul>
+                    <div class="rmf-card-price">
+                        <span class="rmf-price-num">$8.95</span>
+                        <span class="rmf-price-label">online <span class="rmf-strike">$12.95 at the gate</span></span>
+                    </div>
+                    <span class="rmf-card-note">Saturdays &amp; Sundays, Aug 15&ndash;30. Full Fall Fest offering starts Labor Day weekend.</span>
+                </a>
+
+                <a href="#ticketBlock" class="rmf-card rmf-card-cream rmfr d1" aria-label="Buy Weekday Admission tickets">
+                    <span class="rmf-card-badge rmf-card-green">Weekday</span>
+                    <span class="rmf-card-icon">🌳</span>
+                    <h3>Weekday Admission</h3>
+                    <ul class="rmf-card-bullets">
+                        <li>🍎 Walk-in orchard access, any weekday (closed Tuesdays)</li>
+                        <li>🎒 Grab a bag at the register, pick, pay by the pound</li>
+                        <li>🚫 No music, wagon or concession stand on weekdays</li>
+                    </ul>
+                    <div class="rmf-card-price">
+                        <span class="rmf-price-num">$5</span>
+                        <span class="rmf-price-label">per person<br>flat, all season</span>
+                    </div>
+                    <span class="rmf-card-note">This year's apple crop is limited — weekday admission helps us plan staffing, not a discount.</span>
+                </a>
+
+            </div>
+        </div>
+
+        <!-- PHASES 3/4/5 — FALL FEST (Sept 1 - Nov 1): 2 cards (Fall Fest admission w/ 3-tier price swap + Weekday) -->
+        <div class="rmf-phase-block" data-phases="3,4,5">
+            <div class="rmf-grid">
+
+                <a href="#ticketBlock" class="rmf-card rmf-card-red rmfr" aria-label="Buy Fall Fest Weekend and Holiday Admission tickets">
+                    <span class="rmf-card-badge rmf-card-dark rmf-card-badge-dark">Weekends &amp; Holidays</span>
+                    <span class="rmf-card-icon">🎃</span>
+                    <h3>Fall Fest Weekend &amp; Holiday Admission</h3>
+                    <ul class="rmf-card-bullets">
+                        <li>🚜 Wagon rides &amp; ponies</li>
+                        <li>🎃 Pumpkin patch (open Sept 19 &ndash; Oct 25)</li>
+                        <li>📅 Weekends plus Labor Day (9/7) &amp; Columbus Day (10/12)</li>
+                    </ul>
+
+                    <div class="rmf-card-price rmf-ff-price" data-ff-phase="3">
+                        <span class="rmf-price-num">$12.50</span>
+                        <span class="rmf-price-label">online <span class="rmf-strike">$16.50 at the gate</span></span>
+                    </div>
+                    <div class="rmf-card-price rmf-ff-price" data-ff-phase="4">
+                        <span class="rmf-price-num">$15.50</span>
+                        <span class="rmf-price-label">online <span class="rmf-strike">$19.50 at the gate</span></span>
+                    </div>
+                    <div class="rmf-card-price rmf-ff-price" data-ff-phase="5">
+                        <span class="rmf-price-num">$12.50</span>
+                        <span class="rmf-price-label">online <span class="rmf-strike">$16.50 at the gate</span></span>
+                    </div>
+
+                    <span class="rmf-card-note" id="rmf-ff-note">Sept 1&ndash;19: wagons &amp; ponies open Labor Day weekend.</span>
+                </a>
+
+                <a href="#ticketBlock" class="rmf-card rmf-card-cream rmfr d1" aria-label="Buy Weekday Admission tickets">
+                    <span class="rmf-card-badge rmf-card-green">Weekday</span>
+                    <span class="rmf-card-icon">🌳</span>
+                    <h3>Weekday Admission</h3>
+                    <ul class="rmf-card-bullets">
+                        <li>🍎 Walk-in orchard access, any weekday (closed Tuesdays)</li>
+                        <li>🎒 Grab a bag at the register, pick, pay by the pound</li>
+                        <li>🚫 No music, wagon or concession stand on weekdays</li>
+                    </ul>
+                    <div class="rmf-card-price">
+                        <span class="rmf-price-num">$5</span>
+                        <span class="rmf-price-label">per person<br>flat, all season</span>
+                    </div>
+                    <span class="rmf-card-note">This year's apple crop is limited — weekday admission helps us plan staffing, not a discount.</span>
+                </a>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- INFO ROW -->
+    <div class="rmf-info">
+        <div class="rmf-info-grid">
+            <div class="rmf-info-item">
+                <span class="rmf-info-icon">📍</span>
+                <span class="rmf-info-label">Location</span>
+                <span class="rmf-info-value">Riamede Farm<br><span style="font-size:0.72rem !important; font-weight:400 !important; color:rgba(251,244,230,0.75) !important;">122 Oakdale Rd, Chester, NJ 07930</span></span>
+            </div>
+            <div class="rmf-info-item">
+                <span class="rmf-info-icon">📅</span>
+                <span class="rmf-info-label">Season</span>
+                <span class="rmf-info-value">Bloomfest Aug 15<br>Fall Fest Sept 5 &ndash; Nov 1</span>
+            </div>
+            <div class="rmf-info-item">
+                <span class="rmf-info-icon">⚡</span>
+                <span class="rmf-info-label">Flash Sale</span>
+                <span class="rmf-info-value">Aug 10 &ndash; 14<br>before Bloomfest opens</span>
+            </div>
+            <div class="rmf-info-item">
+                <span class="rmf-info-icon">🕘</span>
+                <span class="rmf-info-label">Hours</span>
+                <span class="rmf-info-value">Open daily<br><span style="font-size:0.72rem !important; font-weight:400 !important; color:rgba(251,244,230,0.75) !important;">Closed Tuesdays</span></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="rmf-footer">
+        <span class="rmf-footer-text">© 2026 Riamede Farm. Chester, NJ.</span>
+    </div>
+
+</div><!-- end #rmf-funnel -->
+
+<script>
+    (function() {
+        var obs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) {
+                if (e.isIntersecting) { e.target.classList.add('rmfon'); obs.unobserve(e.target); }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('#rmf-funnel .rmfr').forEach(function(el) {
+            obs.observe(el);
+            if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('rmfon');
+        });
+        document.querySelectorAll('#rmf-funnel a[href^="#"]').forEach(function(a) {
+            a.addEventListener('click', function(e) {
+                e.preventDefault();
+                var t = document.querySelector(a.getAttribute('href'));
+                if (t) t.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    })();
+</script>
+
+<!-- ═══ SEASON-STEPPING PHASE ENGINE ═══════════════════════════════════════
+     Eastern-time-anchored (America/New_York — the farm's own timezone),
+     independent of the visitor's device clock. Generalizes the Millstadt
+     Christmas-in-July popup's easternStamp() date-window gate (see
+     crowd7-public/clients/eckerts/.../millstadt/farm-admission-2026/...)
+     from gating one popup to gating whole ticket-card phase blocks.
+
+     PHASES (see build-plan.md WS1 §2 for the full table):
+       0 = pre-launch (before Aug 10)     3 = Fall Fest early  (Sept 1-19)
+       1 = Flash Sale  (Aug 10-15)        4 = Fall Fest peak   (Sept 19-Oct 26)
+       2 = Bloomfest    (Aug 15-Sept 1)   5 = Fall Fest close  (Oct 26-Nov 2)
+
+     FORCE:  ?c7phase=N overrides getPhase() for QA/preview of any phase
+             without waiting for the calendar (mirrors Millstadt's ?c7xmas=1).
+     KILL:   not applicable — this engine IS the page's core ticket display,
+             there's no "off" state; phase 0 covers "before flash sale".
+     ═══════════════════════════════════════════════════════════════════════ -->
+<script>
+(function(){
+  function easternStamp(d){
+    var p = {};
+    new Intl.DateTimeFormat('en-US', {
+      timeZone: 'America/New_York', year:'numeric', month:'2-digit', day:'2-digit',
+      hour:'2-digit', minute:'2-digit', second:'2-digit', hour12:false
+    }).formatToParts(d).forEach(function(x){ p[x.type] = x.value; });
+    return p.year + p.month + p.day + (p.hour === '24' ? '00' : p.hour) + p.minute + p.second;
+  }
+
+  function getPhase(){
+    var forced = window.location.search.match(/[?&]c7phase=(\d)/);
+    if (forced) return parseInt(forced[1], 10);
+    var s = easternStamp(new Date());
+    if (s < '20260810000000') return 0;  // pre-launch
+    if (s < '20260815000000') return 1;  // flash sale
+    if (s < '20260901000000') return 2;  // bloomfest
+    if (s < '20260919000000') return 3;  // fall fest early
+    if (s < '20261026000000') return 4;  // fall fest peak
+    return 5;                            // fall fest close (through 11/1)
+  }
+
+  var COPY = {
+    0: { banner: "🍏 Riamede Farm · Chester, NJ · Flash Sale starts Aug 10", eyebrow: "Coming Soon", sub: "Our best pricing of the season launches Aug 10", dates: "🎟️ <strong>Flash Sale</strong> opens Aug 10 — get ready", ticketsTitle: "the season" },
+    1: { banner: "⚡ Flash Sale — Aug 10&ndash;14 only, before Bloomfest opens", eyebrow: "NJ's Original Pick-Your-Own Apple Orchard", sub: "Flash Sale — the lowest pricing of the whole 2026 season", dates: "🎟️ <strong>Flash Sale</strong> Aug 10&ndash;14 — the best pricing of the season, before Bloomfest opens", ticketsTitle: "the flash sale" },
+    2: { banner: "🌻 Bloomfest is open — weekends through Aug 30", eyebrow: "Bloomfest — Now Open", sub: "Flower fields, farm treats &amp; a soft-open taste of fall", dates: "🌻 <strong>Bloomfest weekends</strong> now through Aug 30 — $8.95 online", ticketsTitle: "Bloomfest" },
+    3: { banner: "🍎 Fall Fest is open — wagons &amp; ponies start Labor Day weekend", eyebrow: "Fall Fest — Now Open", sub: "Wagon rides, ponies &amp; the full harvest festival", dates: "🎃 <strong>Fall Fest weekends</strong> from $12.50 online — wagons run Labor Day weekend", ticketsTitle: "Fall Fest" },
+    4: { banner: "🎃 Pumpkin patch is open — peak Fall Fest weekends through Oct 25", eyebrow: "Fall Fest — Peak Season", sub: "The pumpkin patch is open — our busiest weekends of the year", dates: "🎃 <strong>Pumpkin patch open</strong> through Oct 25 — $15.50 online", ticketsTitle: "Fall Fest" },
+    5: { banner: "🍁 Fall Fest's final stretch — through Nov 1", eyebrow: "Fall Fest — Final Weeks", sub: "The last weekends of the 2026 season", dates: "🍁 <strong>Fall Fest closes Nov 1</strong> — $12.50 online", ticketsTitle: "Fall Fest" }
+  };
+
+  var FF_NOTE = {
+    3: "Sept 1&ndash;19: wagons &amp; ponies open Labor Day weekend.",
+    4: "Sept 19&ndash;Oct 25: pumpkin patch open — our peak-season pricing.",
+    5: "Oct 26&ndash;Nov 1: pumpkin season winding down, price steps back down."
+  };
+
+  function applyPhase(){
+    var phase = getPhase();
+    document.documentElement.setAttribute('data-rmf-phase', phase);
+
+    document.querySelectorAll('#rmf-funnel .rmf-phase-block').forEach(function(el){
+      var phases = (el.getAttribute('data-phases') || '').split(',').map(function(s){ return s.trim(); });
+      el.style.display = phases.indexOf(String(phase)) !== -1 ? '' : 'none';
+    });
+
+    var ffPhase = (phase >= 3 && phase <= 5) ? phase : 3;
+    document.querySelectorAll('#rmf-funnel .rmf-ff-price').forEach(function(el){
+      el.classList.toggle('rmf-ff-active', el.getAttribute('data-ff-phase') === String(ffPhase));
+    });
+    var ffNote = document.getElementById('rmf-ff-note');
+    if (ffNote && FF_NOTE[ffPhase]) ffNote.innerHTML = FF_NOTE[ffPhase];
+
+    var c = COPY[phase] || COPY[1];
+    var banner = document.getElementById('rmf-banner-text');
+    var eyebrow = document.getElementById('rmf-hero-eyebrow');
+    var sub = document.getElementById('rmf-hero-sub');
+    var dates = document.getElementById('rmf-hero-dates');
+    var tag = document.getElementById('rmf-phase-tag');
+    var ticketsTitle = document.getElementById('rmf-tickets-title-phase');
+    if (banner) banner.innerHTML = c.banner;
+    if (eyebrow) eyebrow.innerHTML = c.eyebrow;
+    if (sub) sub.innerHTML = c.sub;
+    if (dates) dates.innerHTML = c.dates;
+    if (ticketsTitle) ticketsTitle.innerHTML = c.ticketsTitle;
+    if (tag) tag.innerHTML = '<strong>' + c.eyebrow + '.</strong> ' + c.sub;
+
+    console.log('[rmf-phase]', { phase: phase, forced: /[?&]c7phase=/.test(window.location.search) });
+  }
+
+  applyPhase();
+})();
+</script>
+
+<!-- ═══ SLASH-THROUGH PRICING (TS native #ticketBlock) ═══════════════════════
+     Pattern: crowd7/data/clients/_patterns/slash-through-pricing.md
+     Name-keyed + MutationObserver, immune to Action-driven reordering.
+     ⚠️ OPEN — exact live TS <h4> ticket names are UNCONFIRMED (blocked
+     on a form 1017178 dump, see Open Asks). Placeholder names below;
+     swap once confirmed — one-character mismatch = silent no-op.
+     ⚠️ Fall Fest admission gate price is PHASE-AWARE (steps 3x across the
+     season on the same ticket type) — the standard pattern assumes one
+     static gate per name for the page's life, so GATE is rebuilt on every
+     phase change here rather than being a flat object.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<script>
+(function(){
+  function currentFfPhase(){
+    var p = parseInt(document.documentElement.getAttribute('data-rmf-phase'), 10);
+    return (p >= 3 && p <= 5) ? p : 3;
+  }
+  var FF_GATE = { 3: "$16.50", 4: "$19.50", 5: "$16.50" };
+
+  function buildGate(){
+    return {
+      "Bloomfest Weekend Admission": "$12.95",                 // ← confirm exact TS name
+      "Fall Fest Weekend & Holiday Admission": FF_GATE[currentFfPhase()] // ← confirm exact TS name
+    };
+  }
+
+  function tag(){
+    var GATE = buildGate();
+    document.querySelectorAll('#ticketBlock .ticket-type').forEach(function(row){
+      var h4 = row.querySelector('h4');
+      var cost = row.querySelector('.ticket-cost');
+      if(!h4 || !cost) return;
+      var g = GATE[h4.textContent.trim()];
+      if (g) { cost.setAttribute('data-gate', g); }
+      else { cost.removeAttribute('data-gate'); }
+    });
+  }
+
+  var tb = document.getElementById('ticketBlock') || document.body;
+  new MutationObserver(tag).observe(tb, {childList:true, subtree:true});
+  tag();
+
+  // Re-tag if the phase changes (rare — a visitor open across midnight ET),
+  // in case a future refresh re-runs the phase engine without reload.
+  document.addEventListener('DOMContentLoaded', tag);
+})();
+</script>
+<style>
+  #ticketBlock .ticket-cost[data-gate]::before{
+    content: attr(data-gate) " "; text-decoration: line-through;
+    color:#8a7a5c; font-weight:200;
+  }
+  #ticketBlock .ticket-cost[data-gate]{ color:#2F4A2C !important; }
+</style>
+
+</body>
+</html>
