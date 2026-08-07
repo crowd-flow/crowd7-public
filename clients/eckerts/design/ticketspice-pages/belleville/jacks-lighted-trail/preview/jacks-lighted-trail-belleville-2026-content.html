@@ -361,15 +361,12 @@
     /* ── MAP / DIRECTIONS ── */
     #jlt-funnel .jlt-map { width: 100% !important; background: #0a0a0a !important; padding: 72px 48px !important; text-align: center !important; box-sizing: border-box !important; }
     #jlt-funnel .jlt-map-header { margin-bottom: 30px !important; }
-    #jlt-funnel .jlt-map-frame { display: block !important; max-width: 980px !important; margin: 0 auto !important; border-radius: 18px !important; overflow: hidden !important; border: 2px solid rgba(119,48,197,0.65) !important; box-shadow: 0 0 44px rgba(119,48,197,0.38) !important; cursor: zoom-in !important; background: #0a0a0a !important; line-height: 0 !important; }
+    #jlt-funnel .jlt-map-frame { display: block !important; max-width: 860px !important; margin: 0 auto !important; border-radius: 18px !important; overflow: hidden !important; border: 2px solid rgba(119,48,197,0.65) !important; box-shadow: 0 0 44px rgba(119,48,197,0.38) !important; cursor: zoom-in !important; background: #0a0a0a !important; line-height: 0 !important; }
     #jlt-funnel .jlt-map-frame img { width: 100% !important; height: auto !important; display: block !important; max-width: 100% !important; }
     #jlt-funnel .jlt-map-hint { display: block !important; margin-top: 14px !important; font-family: 'Baloo 2', sans-serif !important; font-size: 0.74rem !important; font-weight: 700 !important; letter-spacing: 0.18em !important; text-transform: uppercase !important; color: #f9bb3e !important; }
-    #jlt-funnel .jlt-map-details { max-width: 980px !important; margin: 32px auto 0 !important; display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 18px !important; text-align: left !important; }
-    #jlt-funnel .jlt-map-item { background: rgba(255,255,255,0.04) !important; border-left: 3px solid #ff6e00 !important; border-radius: 10px !important; padding: 18px 22px !important; }
-    #jlt-funnel .jlt-map-label { display: block !important; font-family: 'Baloo 2', sans-serif !important; font-size: 0.68rem !important; font-weight: 700 !important; letter-spacing: 0.2em !important; text-transform: uppercase !important; color: #7730c5 !important; margin-bottom: 7px !important; }
-    #jlt-funnel .jlt-map-value { display: block !important; font-size: 0.94rem !important; color: #ffffff !important; line-height: 1.5 !important; }
-    #jlt-funnel .jlt-map-cta { display: inline-block !important; margin-top: 28px !important; background: #ff6e00 !important; color: #0a0a0a !important; font-family: 'Baloo 2', sans-serif !important; font-weight: 800 !important; font-size: 0.86rem !important; letter-spacing: 0.08em !important; text-transform: uppercase !important; padding: 14px 34px !important; border-radius: 999px !important; text-decoration: none !important; }
-
+    #jlt-funnel .jlt-stops { max-width: 900px !important; margin: 30px auto 0 !important; display: flex !important; flex-wrap: wrap !important; justify-content: center !important; gap: 10px !important; }
+    #jlt-funnel .jlt-stop { display: inline-block !important; background: rgba(119,48,197,0.18) !important; border: 1px solid rgba(119,48,197,0.6) !important; border-radius: 999px !important; padding: 8px 16px !important; font-family: 'Baloo 2', sans-serif !important; font-weight: 600 !important; font-size: 0.8rem !important; color: #ffffff !important; letter-spacing: 0.02em !important; white-space: nowrap !important; }
+    #jlt-funnel .jlt-map-foot { display: block !important; margin-top: 24px !important; font-size: 0.82rem !important; color: rgba(255,255,255,0.6) !important; }
     /* ── MAP LIGHTBOX ── */
     #jlt-funnel .jlt-lb { position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important; background: rgba(0,0,0,0.94) !important; z-index: 99999 !important; display: none !important; align-items: center !important; justify-content: center !important; padding: 24px !important; cursor: zoom-out !important; box-sizing: border-box !important; }
     #jlt-funnel .jlt-lb.jlt-lb-open { display: flex !important; }
@@ -395,7 +392,6 @@
         #jlt-funnel .jlt-acard { height: 240px !important; }
         #jlt-funnel .jlt-nights { padding: 56px 24px !important; }
         #jlt-funnel .jlt-map { padding: 56px 24px !important; }
-        #jlt-funnel .jlt-map-details { grid-template-columns: 1fr !important; }
     }
     @media (max-width: 560px) {
         #jlt-funnel .jlt-nav { padding: 0 16px !important; }
@@ -418,7 +414,7 @@
         #jlt-funnel .jlt-nights { padding: 48px 16px !important; }
         #jlt-funnel .jlt-ngrid { grid-template-columns: 1fr !important; }
         #jlt-funnel .jlt-map { padding: 48px 16px !important; }
-        #jlt-funnel .jlt-map-cta { width: 100% !important; box-sizing: border-box !important; text-align: center !important; }
+        #jlt-funnel .jlt-stop { font-size: 0.72rem !important; padding: 7px 13px !important; }
     }
 </style>
 
@@ -703,36 +699,42 @@
         </div>
     </div>
 
-    <!-- MAP / DIRECTIONS -->
-    <div class="jlt-map" id="map">
+    <!-- TRAIL MAP (grounds) -->
+    <div class="jlt-map" id="trail-map">
         <div class="jlt-map-header jltr">
-            <span class="jlt-eye">Finding Us</span>
-            <span class="jlt-title">how to <em>get here</em></span>
+            <span class="jlt-eye">The Trail</span>
+            <span class="jlt-title">every stop <em>along the way</em></span>
         </div>
 
-        <span class="jlt-map-frame jltr" id="jlt-map-open" role="button" tabindex="0" aria-label="Open a larger version of the map">
-            <img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/jacks-lighted-trail/map-jacks-lighted-trail.jpg" alt="Map showing Jack's Lighted Trail at Eckert's Belleville Farm, just southeast of Belleville, Illinois in the St. Louis metro area" loading="lazy">
+        <span class="jlt-map-frame jltr" id="jlt-map-open" role="button" tabindex="0" aria-label="Open a larger version of the trail map">
+            <img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/jacks-lighted-trail/map-jacks-lighted-trail-grounds.jpg" alt="Map of the Jack's Lighted Trail grounds showing the glowing route from entrance to exit past Alice in Wonderland, the Witches, Jack's Patch, the Corn Maze, the Spookeasy, the Cemetery, the Shipwreck and more" loading="lazy">
         </span>
         <span class="jlt-map-hint">Click the map to zoom in</span>
 
-        <div class="jlt-map-details jltr d1">
-            <div class="jlt-map-item">
-                <span class="jlt-map-label">Suggested Route</span>
-                <span class="jlt-map-value">I-255 to IL-15 E toward Belleville</span>
-            </div>
-            <div class="jlt-map-item">
-                <span class="jlt-map-label">Located At</span>
-                <span class="jlt-map-value">Eckert&rsquo;s Belleville Farm<br>951 S. Green Mount Rd., Belleville, IL 62220</span>
-            </div>
+        <div class="jlt-stops jltr d1">
+            <span class="jlt-stop">Alice in Wonderland</span>
+            <span class="jlt-stop">Witches</span>
+            <span class="jlt-stop">Local Treasures</span>
+            <span class="jlt-stop">Mad Farmer Chris</span>
+            <span class="jlt-stop">Jack&rsquo;s Patch</span>
+            <span class="jlt-stop">Spookeasy</span>
+            <span class="jlt-stop">Corn Maze</span>
+            <span class="jlt-stop">Scarecrows &amp; Ghosts</span>
+            <span class="jlt-stop">Cemetery</span>
+            <span class="jlt-stop">Tunnel</span>
+            <span class="jlt-stop">Day of the Dead</span>
+            <span class="jlt-stop">Classic Monsters</span>
+            <span class="jlt-stop">Nature</span>
+            <span class="jlt-stop">Wizard of Oz</span>
+            <span class="jlt-stop">Shipwreck</span>
         </div>
-
-        <a class="jlt-map-cta jltr d2" href="https://www.google.com/maps/dir/?api=1&amp;destination=951+S+Green+Mount+Rd%2C+Belleville%2C+IL+62220" target="_blank" rel="noopener">Get Directions</a>
+        <span class="jlt-map-foot jltr d2">One glowing loop, entrance to exit &mdash; fifteen lit-up scenes along the way.</span>
     </div>
 
-    <!-- MAP LIGHTBOX -->
+    <!-- TRAIL MAP LIGHTBOX -->
     <div class="jlt-lb" id="jlt-map-lb" role="dialog" aria-modal="true" aria-label="Enlarged trail map">
         <button type="button" class="jlt-lb-close" id="jlt-map-close" aria-label="Close map">&times;</button>
-        <img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/jacks-lighted-trail/map-jacks-lighted-trail-zoom.jpg" alt="Enlarged map showing Jack's Lighted Trail at Eckert's Belleville Farm" loading="lazy">
+        <img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/jacks-lighted-trail/map-jacks-lighted-trail-grounds-zoom.jpg" alt="Enlarged map of the Jack's Lighted Trail grounds" loading="lazy">
     </div>
 
     <script>
