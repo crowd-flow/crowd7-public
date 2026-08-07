@@ -15,24 +15,28 @@
 </head>
 <body>
 <!-- ════════════════════════════════════════════════════════════════════
-     RIAMEDE FARM · CHESTER, NJ · SEASON 2026 (BLOOMFEST → FALL FEST)  —
-     HYBRID-LOADER CONTENT
+     RIAMEDE FARM · CHESTER, NJ · FLASH SALE (Aug 10-14) — HYBRID-LOADER CONTENT
      Design overlay on Ashley's existing TicketSpice cart, form 1017178
-     (actions/dates/prices built by Ashley — this page does NOT rebuild
-     the cart, only the look + season-stepping marketing layer).
+     (actions/dates/prices built by Ashley — this page does NOT rebuild the
+     cart, only the look + marketing layer).
      Spec: crowd7/data/clients/riamede/ticket-types-2026.md, locked 2026-08-03.
-     One page, ONE TicketSpice form, FIVE ticket families that step up
-     across the season via a client-side, Eastern-time-anchored phase
-     engine — no human/cron redeploy required at each step. Pattern
-     generalized from the Millstadt Christmas-in-July popup's
-     easternStamp() date-window gate (see build-plan.md WS1 §2).
-     Sub-brand: orchard/harvest palette — NOT the Jack's Lighted Trail
-     dark Halloween theme. Imagery harvested from riamedefarm.com (Wix),
-     see artifacts/image-url-check.md.
-     OPEN: exact live TicketSpice <h4> ticket names (placeholder-and-flag,
-     not a blocker — see Open Asks in state.md). Family Bundle value-claim
-     copy intentionally omits the disputed "$117 value / save $37" figure
-     pending Mat's correction — leads with itemized inclusions instead.
+
+     ⚠️ FLASH-SALE-ONLY BUILD, MANUAL SWITCHOVER (Mat directive 2026-08-07).
+     The automatic Eastern-time phase engine was REMOVED — Mat drives each
+     season step by hand with Crowdly rather than letting the page self-advance.
+     This page shows the three Aug 10-14 flash tickets and nothing else.
+     Later-phase cards (Bloomfest, Fall Fest 3-tier) are built, priced and
+     parked at:
+       notes/work/crowd7/projects/riamede-season-page/artifacts/later-phase-cards.ARCHIVE.html
+     Switchover dates to action manually: Aug 15 (Bloomfest), Sept 1 (Fall Fest).
+
+     Sub-brand: orchard/harvest palette — NOT the Jack's Lighted Trail dark
+     Halloween theme. Imagery harvested from riamedefarm.com (Wix), see
+     artifacts/image-url-check.md.
+     OPEN: exact live TicketSpice <h4> ticket names (placeholder-and-flag, not
+     a blocker — see Open Asks in state.md). Family Bundle value-claim copy
+     intentionally omits the disputed "$117 value / save $37" figure pending
+     Mat's correction — leads with itemized inclusions instead.
      ════════════════════════════════════════════════════════════════════ -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -246,7 +250,6 @@
     }
     #rmf-funnel .rmf-phase-tag strong { color: #B3241D !important; }
 
-    #rmf-funnel .rmf-phase-block { display: none !important; }
     #rmf-funnel .rmf-grid {
         display: grid !important; grid-template-columns: repeat(3, minmax(0, 320px)) !important;
         gap: 22px !important; justify-content: center !important;
@@ -310,8 +313,6 @@
     #rmf-funnel .rmf-strike { text-decoration: line-through !important; opacity: 0.65 !important; }
 
     /* Fall Fest price-tier swap (one card, three date-keyed price texts) */
-    #rmf-funnel .rmf-ff-price { display: none !important; }
-    #rmf-funnel .rmf-ff-price.rmf-ff-active { display: flex !important; }
 
     /* ── INFO ROW ── */
     #rmf-funnel .rmf-info { width: 100% !important; background: linear-gradient(90deg, #2F4A2C, #4C7040) !important; padding: 0 !important; display: block !important; box-sizing: border-box !important; }
@@ -366,10 +367,10 @@
 
 <div id="rmf-funnel">
 
-    <!-- BANNER (phase-aware micro-copy, text swapped by JS) -->
+    <!-- BANNER -->
     <div class="rmf-banner">
         <div class="rmf-banner-inner">
-            <span id="rmf-banner-text">🍏 Riamede Farm · Chester, NJ · 2026 Season</span>
+            <span id="rmf-banner-text">⚡ Flash Sale — Aug 10&ndash;14 only, before Bloomfest opens</span>
             <span class="rmf-dot"></span>
             <span>Bloomfest Aug 15 &middot; Fall Fest Sept 5 &ndash; Nov 1</span>
         </div>
@@ -392,7 +393,7 @@
         </div>
     </div>
 
-    <!-- HERO (phase-aware headline/sub/dates) -->
+    <!-- HERO -->
     <div class="rmf-hero">
         <div class="rmf-hero-overlay"></div>
         <div class="rmf-hero-content">
@@ -459,7 +460,7 @@
         </div>
     </div>
 
-    <!-- TICKETS — season-stepping phase engine -->
+    <!-- TICKETS — Flash Sale (Aug 10-14) -->
     <div class="rmf-tickets" id="tickets">
         <div class="rmf-tickets-header rmfr">
             <span class="rmf-eye">Season 2026 Tickets</span>
@@ -469,8 +470,8 @@
             <strong>Flash Sale — Aug 10&ndash;14 only.</strong> The lowest pricing of the whole season, before Bloomfest opens Aug 15. Buy now, use any day this season.
         </div>
 
-        <!-- PHASE 1 — FLASH SALE (Aug 10-14): 3 cards, exact grid fit -->
-        <div class="rmf-phase-block" data-phases="1">
+        <!-- FLASH SALE — 3 cards, exact grid fit -->
+        <div class="rmf-flash-block">
             <div class="rmf-grid">
 
                 <a href="#ticketBlock" class="rmf-card rmf-card-red rmfr" aria-label="Buy Family Four-Pack Fall Bundle tickets">
@@ -523,96 +524,6 @@
 
             </div>
         </div>
-
-        <!-- PHASE 2 — BLOOMFEST (Aug 15-30): 2 cards (Bloomfest + Weekday) -->
-        <div class="rmf-phase-block" data-phases="2">
-            <div class="rmf-grid">
-
-                <a href="#ticketBlock" class="rmf-card rmf-card-red rmfr" aria-label="Buy Bloomfest Weekend Admission tickets">
-                    <span class="rmf-card-badge rmf-card-badge-dark">Weekends</span>
-                    <span class="rmf-card-icon">🌻</span>
-                    <h3>Bloomfest Weekend Admission</h3>
-                    <ul class="rmf-card-bullets">
-                        <li>🌻 Flower fields, you-pick tomatoes &amp; peppers</li>
-                        <li>🍦 Concessions, donuts, cider slushies &amp; live music</li>
-                        <li>📸 A soft opening — no wagon, ponies or petting zoo yet</li>
-                    </ul>
-                    <div class="rmf-card-price">
-                        <span class="rmf-price-num">$8.95</span>
-                        <span class="rmf-price-label">online <span class="rmf-strike">$12.95 at the gate</span></span>
-                    </div>
-                    <span class="rmf-card-note">Saturdays &amp; Sundays, Aug 15&ndash;30. Full Fall Fest offering starts Labor Day weekend.</span>
-                </a>
-
-                <a href="#ticketBlock" class="rmf-card rmf-card-cream rmfr d1" aria-label="Buy Weekday Admission tickets">
-                    <span class="rmf-card-badge rmf-card-green">Weekday</span>
-                    <span class="rmf-card-icon">🌳</span>
-                    <h3>Weekday Admission</h3>
-                    <ul class="rmf-card-bullets">
-                        <li>🍎 Walk-in orchard access, any weekday (closed Tuesdays)</li>
-                        <li>🎒 Grab a bag at the register, pick, pay by the pound</li>
-                        <li>🚫 No music, wagon or concession stand on weekdays</li>
-                    </ul>
-                    <div class="rmf-card-price">
-                        <span class="rmf-price-num">$5</span>
-                        <span class="rmf-price-label">per person<br>flat, all season</span>
-                    </div>
-                    <span class="rmf-card-note">This year's apple crop is limited — weekday admission helps us plan staffing, not a discount.</span>
-                </a>
-
-            </div>
-        </div>
-
-        <!-- PHASES 3/4/5 — FALL FEST (Sept 1 - Nov 1): 2 cards (Fall Fest admission w/ 3-tier price swap + Weekday) -->
-        <div class="rmf-phase-block" data-phases="3,4,5">
-            <div class="rmf-grid">
-
-                <a href="#ticketBlock" class="rmf-card rmf-card-red rmfr" aria-label="Buy Fall Fest Weekend and Holiday Admission tickets">
-                    <span class="rmf-card-badge rmf-card-dark rmf-card-badge-dark">Weekends &amp; Holidays</span>
-                    <span class="rmf-card-icon">🎃</span>
-                    <h3>Fall Fest Weekend &amp; Holiday Admission</h3>
-                    <ul class="rmf-card-bullets">
-                        <li>🚜 Wagon rides &amp; ponies</li>
-                        <li>🎃 Pumpkin patch (open Sept 19 &ndash; Oct 25)</li>
-                        <li>📅 Weekends plus Labor Day (9/7) &amp; Columbus Day (10/12)</li>
-                    </ul>
-
-                    <div class="rmf-card-price rmf-ff-price" data-ff-phase="3">
-                        <span class="rmf-price-num">$12.50</span>
-                        <span class="rmf-price-label">online <span class="rmf-strike">$16.50 at the gate</span></span>
-                    </div>
-                    <div class="rmf-card-price rmf-ff-price" data-ff-phase="4">
-                        <span class="rmf-price-num">$15.50</span>
-                        <span class="rmf-price-label">online <span class="rmf-strike">$19.50 at the gate</span></span>
-                    </div>
-                    <div class="rmf-card-price rmf-ff-price" data-ff-phase="5">
-                        <span class="rmf-price-num">$12.50</span>
-                        <span class="rmf-price-label">online <span class="rmf-strike">$16.50 at the gate</span></span>
-                    </div>
-
-                    <span class="rmf-card-note" id="rmf-ff-note">Sept 1&ndash;19: wagons &amp; ponies open Labor Day weekend.</span>
-                </a>
-
-                <a href="#ticketBlock" class="rmf-card rmf-card-cream rmfr d1" aria-label="Buy Weekday Admission tickets">
-                    <span class="rmf-card-badge rmf-card-green">Weekday</span>
-                    <span class="rmf-card-icon">🌳</span>
-                    <h3>Weekday Admission</h3>
-                    <ul class="rmf-card-bullets">
-                        <li>🍎 Walk-in orchard access, any weekday (closed Tuesdays)</li>
-                        <li>🎒 Grab a bag at the register, pick, pay by the pound</li>
-                        <li>🚫 No music, wagon or concession stand on weekdays</li>
-                    </ul>
-                    <div class="rmf-card-price">
-                        <span class="rmf-price-num">$5</span>
-                        <span class="rmf-price-label">per person<br>flat, all season</span>
-                    </div>
-                    <span class="rmf-card-note">This year's apple crop is limited — weekday admission helps us plan staffing, not a discount.</span>
-                </a>
-
-            </div>
-        </div>
-
-    </div>
 
     <!-- INFO ROW -->
     <div class="rmf-info">
@@ -668,126 +579,34 @@
     })();
 </script>
 
-<!-- ═══ SEASON-STEPPING PHASE ENGINE ═══════════════════════════════════════
-     Eastern-time-anchored (America/New_York — the farm's own timezone),
-     independent of the visitor's device clock. Generalizes the Millstadt
-     Christmas-in-July popup's easternStamp() date-window gate (see
-     crowd7-public/clients/eckerts/.../millstadt/farm-admission-2026/...)
-     from gating one popup to gating whole ticket-card phase blocks.
-
-     PHASES (see build-plan.md WS1 §2 for the full table):
-       0 = pre-launch (before Aug 10)     3 = Fall Fest early  (Sept 1-19)
-       1 = Flash Sale  (Aug 10-15)        4 = Fall Fest peak   (Sept 19-Oct 26)
-       2 = Bloomfest    (Aug 15-Sept 1)   5 = Fall Fest close  (Oct 26-Nov 2)
-
-     FORCE:  ?c7phase=N overrides getPhase() for QA/preview of any phase
-             without waiting for the calendar (mirrors Millstadt's ?c7xmas=1).
-     KILL:   not applicable — this engine IS the page's core ticket display,
-             there's no "off" state; phase 0 covers "before flash sale".
-     ═══════════════════════════════════════════════════════════════════════ -->
-<script>
-(function(){
-  function easternStamp(d){
-    var p = {};
-    new Intl.DateTimeFormat('en-US', {
-      timeZone: 'America/New_York', year:'numeric', month:'2-digit', day:'2-digit',
-      hour:'2-digit', minute:'2-digit', second:'2-digit', hour12:false
-    }).formatToParts(d).forEach(function(x){ p[x.type] = x.value; });
-    return p.year + p.month + p.day + (p.hour === '24' ? '00' : p.hour) + p.minute + p.second;
-  }
-
-  function getPhase(){
-    var forced = window.location.search.match(/[?&]c7phase=(\d)/);
-    if (forced) return parseInt(forced[1], 10);
-    var s = easternStamp(new Date());
-    if (s < '20260810000000') return 0;  // pre-launch
-    if (s < '20260815000000') return 1;  // flash sale
-    if (s < '20260901000000') return 2;  // bloomfest
-    if (s < '20260919000000') return 3;  // fall fest early
-    if (s < '20261026000000') return 4;  // fall fest peak
-    return 5;                            // fall fest close (through 11/1)
-  }
-
-  var COPY = {
-    0: { banner: "🍏 Riamede Farm · Chester, NJ · Flash Sale starts Aug 10", eyebrow: "Coming Soon", sub: "Our best pricing of the season launches Aug 10", dates: "🎟️ <strong>Flash Sale</strong> opens Aug 10 — get ready", ticketsTitle: "the season" },
-    1: { banner: "⚡ Flash Sale — Aug 10&ndash;14 only, before Bloomfest opens", eyebrow: "NJ's Original Pick-Your-Own Apple Orchard", sub: "Flash Sale — the lowest pricing of the whole 2026 season", dates: "🎟️ <strong>Flash Sale</strong> Aug 10&ndash;14 — the best pricing of the season, before Bloomfest opens", ticketsTitle: "the flash sale" },
-    2: { banner: "🌻 Bloomfest is open — weekends through Aug 30", eyebrow: "Bloomfest — Now Open", sub: "Flower fields, farm treats &amp; a soft-open taste of fall", dates: "🌻 <strong>Bloomfest weekends</strong> now through Aug 30 — $8.95 online", ticketsTitle: "Bloomfest" },
-    3: { banner: "🍎 Fall Fest is open — wagons &amp; ponies start Labor Day weekend", eyebrow: "Fall Fest — Now Open", sub: "Wagon rides, ponies &amp; the full harvest festival", dates: "🎃 <strong>Fall Fest weekends</strong> from $12.50 online — wagons run Labor Day weekend", ticketsTitle: "Fall Fest" },
-    4: { banner: "🎃 Pumpkin patch is open — peak Fall Fest weekends through Oct 25", eyebrow: "Fall Fest — Peak Season", sub: "The pumpkin patch is open — our busiest weekends of the year", dates: "🎃 <strong>Pumpkin patch open</strong> through Oct 25 — $15.50 online", ticketsTitle: "Fall Fest" },
-    5: { banner: "🍁 Fall Fest's final stretch — through Nov 1", eyebrow: "Fall Fest — Final Weeks", sub: "The last weekends of the 2026 season", dates: "🍁 <strong>Fall Fest closes Nov 1</strong> — $12.50 online", ticketsTitle: "Fall Fest" }
-  };
-
-  var FF_NOTE = {
-    3: "Sept 1&ndash;19: wagons &amp; ponies open Labor Day weekend.",
-    4: "Sept 19&ndash;Oct 25: pumpkin patch open — our peak-season pricing.",
-    5: "Oct 26&ndash;Nov 1: pumpkin season winding down, price steps back down."
-  };
-
-  function applyPhase(){
-    var phase = getPhase();
-    document.documentElement.setAttribute('data-rmf-phase', phase);
-
-    document.querySelectorAll('#rmf-funnel .rmf-phase-block').forEach(function(el){
-      var phases = (el.getAttribute('data-phases') || '').split(',').map(function(s){ return s.trim(); });
-      el.style.display = phases.indexOf(String(phase)) !== -1 ? '' : 'none';
-    });
-
-    var ffPhase = (phase >= 3 && phase <= 5) ? phase : 3;
-    document.querySelectorAll('#rmf-funnel .rmf-ff-price').forEach(function(el){
-      el.classList.toggle('rmf-ff-active', el.getAttribute('data-ff-phase') === String(ffPhase));
-    });
-    var ffNote = document.getElementById('rmf-ff-note');
-    if (ffNote && FF_NOTE[ffPhase]) ffNote.innerHTML = FF_NOTE[ffPhase];
-
-    var c = COPY[phase] || COPY[1];
-    var banner = document.getElementById('rmf-banner-text');
-    var eyebrow = document.getElementById('rmf-hero-eyebrow');
-    var sub = document.getElementById('rmf-hero-sub');
-    var dates = document.getElementById('rmf-hero-dates');
-    var tag = document.getElementById('rmf-phase-tag');
-    var ticketsTitle = document.getElementById('rmf-tickets-title-phase');
-    if (banner) banner.innerHTML = c.banner;
-    if (eyebrow) eyebrow.innerHTML = c.eyebrow;
-    if (sub) sub.innerHTML = c.sub;
-    if (dates) dates.innerHTML = c.dates;
-    if (ticketsTitle) ticketsTitle.innerHTML = c.ticketsTitle;
-    if (tag) tag.innerHTML = '<strong>' + c.eyebrow + '.</strong> ' + c.sub;
-
-    console.log('[rmf-phase]', { phase: phase, forced: /[?&]c7phase=/.test(window.location.search) });
-  }
-
-  applyPhase();
-})();
-</script>
 
 <!-- ═══ SLASH-THROUGH PRICING (TS native #ticketBlock) ═══════════════════════
      Pattern: crowd7/data/clients/_patterns/slash-through-pricing.md
      Name-keyed + MutationObserver, immune to Action-driven reordering.
-     ⚠️ OPEN — exact live TS <h4> ticket names are UNCONFIRMED (blocked
-     on a form 1017178 dump, see Open Asks). Placeholder names below;
-     swap once confirmed — one-character mismatch = silent no-op.
-     ⚠️ Fall Fest admission gate price is PHASE-AWARE (steps 3x across the
-     season on the same ticket type) — the standard pattern assumes one
-     static gate per name for the page's life, so GATE is rebuilt on every
-     phase change here rather than being a flat object.
+
+     ⚠️ INERT DURING THE FLASH SALE — by design. The three flash tickets
+     ($79.95 / $29.95 / $11.49) have no gate-vs-online spread, so there is
+     nothing to strike through Aug 10-14. The map below is pre-loaded with the
+     Bloomfest + Fall Fest gate prices so it goes live the moment those ticket
+     types appear in the cart at the manual switchover — no code change needed
+     then, just confirm the names.
+     ⚠️ Fall Fest gate steps 3x across the season on the SAME ticket type
+     ($16.50 -> $19.50 -> $16.50). With the phase engine removed, set
+     FALL_FEST_GATE by hand at each step (Sept 1, Sept 19, Oct 26).
+     ⚠️ Exact live TS <h4> names UNCONFIRMED (blocked on a form 1017178 dump,
+     see Open Asks). One-character mismatch = silent no-op.
      ═══════════════════════════════════════════════════════════════════════ -->
 <script>
 (function(){
-  function currentFfPhase(){
-    var p = parseInt(document.documentElement.getAttribute('data-rmf-phase'), 10);
-    return (p >= 3 && p <= 5) ? p : 3;
-  }
-  var FF_GATE = { 3: "$16.50", 4: "$19.50", 5: "$16.50" };
+  // Manual switchover knob — see Sept 1 / Sept 19 / Oct 26 above.
+  var FALL_FEST_GATE = "$16.50";
 
-  function buildGate(){
-    return {
-      "Bloomfest Weekend Admission": "$12.95",                 // ← confirm exact TS name
-      "Fall Fest Weekend & Holiday Admission": FF_GATE[currentFfPhase()] // ← confirm exact TS name
-    };
-  }
+  var GATE = {
+    "Bloomfest Weekend Admission": "$12.95",                    // ← confirm exact TS name
+    "Fall Fest Weekend & Holiday Admission": FALL_FEST_GATE     // ← confirm exact TS name
+  };
 
   function tag(){
-    var GATE = buildGate();
     document.querySelectorAll('#ticketBlock .ticket-type').forEach(function(row){
       var h4 = row.querySelector('h4');
       var cost = row.querySelector('.ticket-cost');
@@ -801,9 +620,6 @@
   var tb = document.getElementById('ticketBlock') || document.body;
   new MutationObserver(tag).observe(tb, {childList:true, subtree:true});
   tag();
-
-  // Re-tag if the phase changes (rare — a visitor open across midnight ET),
-  // in case a future refresh re-runs the phase engine without reload.
   document.addEventListener('DOMContentLoaded', tag);
 })();
 </script>
