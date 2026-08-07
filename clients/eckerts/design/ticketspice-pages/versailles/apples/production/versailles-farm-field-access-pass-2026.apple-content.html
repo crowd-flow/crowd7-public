@@ -540,13 +540,55 @@
     }
 
     /* ── FALL BONFIRE CARD (Versailles-only — 4th card in the main ticket grid) ── */
-    #sbv-funnel .sbv-bonfire-img {
+    /* Bonfire banner — full-width skinny card BELOW the 3-card grid (Mat 2026-08-06).
+       Image left, details right, price rail far right. Spans every grid column, so the
+       grid itself stays at THREE cards per _patterns/ticket-card-grid-three-max.md. */
+    #sbv-funnel .sbv-bonfire-card {
+        grid-column: 1 / -1 !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 28px !important;
+        padding: 22px 26px !important;
         width: 100% !important;
+        box-sizing: border-box !important;
+        margin-top: 4px !important;
+    }
+    #sbv-funnel .sbv-bonfire-img {
+        width: 240px !important;
+        flex: 0 0 240px !important;
         aspect-ratio: 4 / 3 !important;
         object-fit: cover !important;
         border-radius: 14px !important;
         display: block !important;
-        margin-bottom: 18px !important;
+        margin-bottom: 0 !important;
+    }
+    #sbv-funnel .sbv-bonfire-body { flex: 1 1 auto !important; min-width: 0 !important; }
+    #sbv-funnel .sbv-bonfire-body h3 { margin-bottom: 10px !important; }
+    #sbv-funnel .sbv-bonfire-bullets {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 2px 24px !important;
+        margin-bottom: 0 !important;
+    }
+    #sbv-funnel .sbv-bonfire-cta {
+        flex: 0 0 auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-end !important;
+        text-align: right !important;
+        padding-left: 26px !important;
+        border-left: 1px solid rgba(255,255,255,0.14) !important;
+    }
+    #sbv-funnel .sbv-bonfire-cta .sbv-card-price { margin-bottom: 4px !important; }
+    @media (max-width: 900px) {
+        #sbv-funnel .sbv-bonfire-card { flex-direction: column !important; align-items: stretch !important; gap: 18px !important; }
+        #sbv-funnel .sbv-bonfire-img { width: 100% !important; flex: 0 0 auto !important; aspect-ratio: 16 / 9 !important; }
+        #sbv-funnel .sbv-bonfire-bullets { grid-template-columns: 1fr !important; }
+        #sbv-funnel .sbv-bonfire-cta {
+            align-items: flex-start !important; text-align: left !important;
+            padding-left: 0 !important; border-left: none !important;
+            border-top: 1px solid rgba(255,255,255,0.14) !important; padding-top: 14px !important;
+        }
     }
     #sbv-funnel .sbv-bonfire-callout {
         font-size: 0.85rem !important;
@@ -763,57 +805,54 @@
             <div class="sbv-card sbv-card-dark sbvr d1">
                 <span class="sbv-card-badge sbv-badge-green">Most Fun</span>
                 <span class="sbv-card-icon">🛝</span>
-                <h3>Field Access</h3>
-
-                <div class="sbv-card-half">
-                    <span class="sbv-card-half-title">Field Access Only</span>
-                    <ul class="sbv-card-bullets">
-                        <li>🚜 Wagon ride to the orchard &amp; back</li>
-                        <li>🧺 Basket provided for picking</li>
-                        <li>🌱 Required for ages 17 &amp; older</li>
-                    </ul>
-                    <div class="sbv-card-price">
-                        <span class="sbv-price-num">$3</span>
-                        <div class="sbv-price-slash">
-                            <span class="sbv-price-online">Online Price</span>
-                            <span class="sbv-price-was">$5 at gate</span>
+                <h3>Field Access + Playground</h3>
+                <ul class="sbv-card-bullets">
+                    <li>🚜 Wagon ride to the orchard &amp; back</li>
+                    <li>🛝 Playground access</li>
+                    <li><span>🎢 Mega Slide (Sat &amp; Sun, 10 AM–5 PM) - <span class="bold">Must be 42" tall or taller to ride</span></span></li>
+                    <li>🌱 Required for ages 2–16</li>
+                </ul>
+                <div class="sbv-price-rows" style="border-top: 1px solid rgba(255,255,255,0.12) !important;">
+                    <div class="sbv-price-row">
+                        <div>
+                            <span class="sbv-price-row-label" style="color: white !important;">Tue – Fri</span>
+                            <span class="sbv-price-row-sub" style="color: rgba(255,255,255,0.5) !important;">10 AM – 5 PM</span>
+                        </div>
+                        <div class="sbv-price-row-slash">
+                            <span class="sbv-price-row-was">$8 gate</span>
+                            <span class="sbv-price-row-amt" style="color: #F5D080 !important;">$5</span>
+                        </div>
+                    </div>
+                    <div class="sbv-price-row">
+                        <div>
+                            <span class="sbv-price-row-label" style="color: white !important;">Sat &amp; Sun</span>
+                            <span class="sbv-price-row-sub" style="color: rgba(255,255,255,0.5) !important;">9 AM – 5 PM · Mega Slide open</span>
+                        </div>
+                        <div class="sbv-price-row-slash">
+                            <span class="sbv-price-row-was">$10 gate</span>
+                            <span class="sbv-price-row-amt" style="color: #F5D080 !important;">$7</span>
                         </div>
                     </div>
                 </div>
-
-                <div class="sbv-card-half sbv-card-half-b">
-                    <span class="sbv-card-half-title">Field Access + Playground</span>
-                    <ul class="sbv-card-bullets">
-                        <li>🚜 Wagon ride to the orchard &amp; back</li>
-                        <li>🛝 Playground access</li>
-                        <li><span>🎢 Mega Slide (Sat &amp; Sun, 10 AM–5 PM) - <span class="bold">Must be 42" tall or taller to ride</span></span></li>
-                        <li>🌱 Required for ages 2–16</li>
-                    </ul>
-                    <div class="sbv-price-rows" style="border-top: 1px solid rgba(255,255,255,0.12) !important;">
-                        <div class="sbv-price-row">
-                            <div>
-                                <span class="sbv-price-row-label" style="color: white !important;">Tue – Fri</span>
-                                <span class="sbv-price-row-sub" style="color: rgba(255,255,255,0.5) !important;">10 AM – 5 PM</span>
-                            </div>
-                            <div class="sbv-price-row-slash">
-                                <span class="sbv-price-row-was">$8 gate</span>
-                                <span class="sbv-price-row-amt" style="color: #F5D080 !important;">$5</span>
-                            </div>
-                        </div>
-                        <div class="sbv-price-row">
-                            <div>
-                                <span class="sbv-price-row-label" style="color: white !important;">Sat &amp; Sun</span>
-                                <span class="sbv-price-row-sub" style="color: rgba(255,255,255,0.5) !important;">9 AM – 5 PM · Mega Slide open</span>
-                            </div>
-                            <div class="sbv-price-row-slash">
-                                <span class="sbv-price-row-was">$10 gate</span>
-                                <span class="sbv-price-row-amt" style="color: #F5D080 !important;">$7</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <span class="sbv-card-note">Per person · + applicable fees at checkout</span>
+            </div>
+            <div class="sbv-card sbv-card-pink sbvr d2">
+                <span class="sbv-card-badge sbv-badge-red">Field Access</span>
+                <span class="sbv-card-icon">🎟</span>
+                <h3>Field Access</h3>
+                <ul class="sbv-card-bullets">
+                    <li>🚜 Wagon ride to the orchard &amp; back</li>
+                    <li>🧺 Basket provided for picking</li>
+                    <li>🌱 Required for ages 17 &amp; older</li>
+                </ul>
+                <div class="sbv-card-price">
+                    <span class="sbv-price-num">$3</span>
+                    <div class="sbv-price-slash">
+                        <span class="sbv-price-online">Online Price</span>
+                        <span class="sbv-price-was">$5 at gate</span>
+                    </div>
+                </div>
+                <span class="sbv-card-note">Per person · ages 17 &amp; older · + applicable fees</span>
             </div>
 
             <!-- FALL BONFIRE — Versailles-only, merged into the main ticket grid as the 4th
@@ -829,20 +868,24 @@
                  exposes a live-inventory embed for this page. -->
             <div class="sbv-bonfire-card sbv-card sbv-card-dark sbvr d2">
                 <img class="sbv-bonfire-img" src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/bonfires/bonfire-23.jpg" alt="A bonfire site with straw bale seating set up for the evening">
-                <span class="sbv-card-badge sbv-badge-red">Versailles Orchard</span>
-                <h3>Fall Bonfire Site Rental</h3>
-                <ul class="sbv-card-bullets">
-                    <li>👥 Up to 25 guests · straw bale seating included</li>
-                    <li>🕓 Arrive as early as 4 PM · farm closes at 10 PM</li>
-                    <li>🍎 Come early for pick-your-own before the last wagon at 5 PM</li>
-                    <li>📍 First-come, first-served — specific sites can't be reserved</li>
-                    <li>🗓️ Fridays &amp; Saturdays, starting the first Friday in October</li>
-                </ul>
-                <div class="sbv-card-price">
-                    <span class="sbv-price-num">$50</span>
-                    <span class="sbv-price-online">per site</span>
+                <div class="sbv-bonfire-body">
+                    <span class="sbv-card-badge sbv-badge-red">Versailles Orchard</span>
+                    <h3>Fall Bonfire Site Rental</h3>
+                    <ul class="sbv-card-bullets sbv-bonfire-bullets">
+                        <li>👥 Up to 25 guests · straw bale seating included</li>
+                        <li>🕓 Arrive as early as 4 PM · farm closes at 10 PM</li>
+                        <li>🍎 Come early for pick-your-own before the last wagon at 5 PM</li>
+                        <li>📍 First-come, first-served — specific sites can't be reserved</li>
+                        <li>🗓️ Fridays &amp; Saturdays, starting the first Friday in October</li>
+                    </ul>
                 </div>
-                <span class="sbv-card-note">Eckert's Versailles Orchard.</span>
+                <div class="sbv-bonfire-cta">
+                    <div class="sbv-card-price">
+                        <span class="sbv-price-num">$50</span>
+                        <span class="sbv-price-online">per site</span>
+                    </div>
+                    <span class="sbv-card-note">Eckert's Versailles Orchard.</span>
+                </div>
             </div>
 
             <div class="sbv-slide-text" style="grid-column: 1 / -1 !important; text-align: center !important;">
