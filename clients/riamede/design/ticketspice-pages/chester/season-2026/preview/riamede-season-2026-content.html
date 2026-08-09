@@ -591,6 +591,122 @@
 
 </div><!-- end #rmf-funnel -->
 
+<!-- ═══ FLOATING BUY-TICKETS BAR ═══════════════════════════════════════════
+     Riamede skin of the canonical block:
+     clients/colony-acres/design/ticketspice-pages/_blocks/floating-buy-bar.html
+     (Mat directive 2026-08-09 — the season-2026 page had no persistent buy CTA.)
+
+     ⚠️ DELIBERATELY OUTSIDE #rmf-funnel. The funnel wrapper carries
+     `overflow: hidden`, and any future transform/filter on an ancestor would
+     turn it into a containing block and break `position: fixed`. Keeping the
+     bar as a top-level sibling makes it immune. Self-contained: own <style>,
+     markup and <script>.
+
+     Ships via the hybrid loader — no TicketSpice paste needed.
+
+     WHAT TO SWAP: the label inside the <a>. Leave href="#ticketBlock" alone —
+     that is TicketSpice's native cart anchor.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<style>
+    #rmf-float-btn {
+        position: fixed !important;
+        bottom: 0 !important; left: 0 !important; right: 0 !important;
+        z-index: 9999 !important;
+        padding: 10px 16px calc(14px + env(safe-area-inset-bottom, 0px)) !important;
+        background: linear-gradient(to top, rgba(251,244,230,0.97) 78%, rgba(251,244,230,0)) !important;
+        display: flex !important;
+        justify-content: center !important;
+        transition: opacity 0.35s ease, transform 0.35s ease !important;
+    }
+    #rmf-float-btn.rmf-float-hidden {
+        opacity: 0 !important;
+        transform: translateY(28px) !important;
+        pointer-events: none !important;
+    }
+    #rmf-float-btn a {
+        display: block !important;
+        width: 100% !important;
+        max-width: 460px !important;
+        background: #B3241D !important;
+        color: #FBF4E6 !important;
+        font-family: 'Fraunces', Georgia, serif !important;
+        font-size: 21px !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.04em !important;
+        text-align: center !important;
+        text-decoration: none !important;
+        padding: 17px 28px !important;
+        border-radius: 50px !important;
+        box-shadow: 0 8px 30px rgba(179,36,29,0.38) !important;
+        transition: transform 0.15s, box-shadow 0.15s, background 0.2s !important;
+        border: none !important;
+        cursor: pointer !important;
+    }
+    #rmf-float-btn a:hover,
+    #rmf-float-btn a:focus {
+        background: #8E1C16 !important;
+        color: #FBF4E6 !important;
+        text-decoration: none !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 14px 38px rgba(179,36,29,0.52) !important;
+    }
+    @media (max-width: 520px) {
+        #rmf-float-btn a { font-size: 19px !important; padding: 15px 22px !important; }
+    }
+</style>
+
+<div id="rmf-float-btn" class="rmf-float-hidden">
+    <a href="#ticketBlock">Buy Tickets</a>
+</div>
+
+<script>
+(function () {
+    var bar = document.getElementById('rmf-float-btn');
+    if (!bar) return;
+    var link = bar.querySelector('a');
+
+    function show() { bar.classList.remove('rmf-float-hidden'); }
+    function hide() { bar.classList.add('rmf-float-hidden'); }
+
+    // Reveal once the visitor has scrolled past the hero, so it never covers
+    // the first paint.
+    function onScroll() {
+        if ((window.pageYOffset || document.documentElement.scrollTop) > 320) show();
+        else hide();
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // Hide while the native cart is actually on screen -- the button is
+    // redundant there. Guarded: if #ticketBlock never renders, the observer
+    // never attaches and the scroll behaviour above stays in charge.
+    var cartObserved = false;
+    function watchCart() {
+        if (cartObserved) return true;
+        var cart = document.getElementById('ticketBlock');
+        if (!cart || !window.IntersectionObserver) return false;
+        cartObserved = true;
+        new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (e.isIntersecting) hide();
+                else onScroll();
+            });
+        }, { threshold: 0.12 }).observe(cart);
+        return true;
+    }
+    // TicketSpice injects the cart asynchronously -- retry briefly, then stop.
+    if (!watchCart()) {
+        var tries = 0;
+        var poll = setInterval(function () {
+            if (watchCart() || ++tries > 40) clearInterval(poll);
+        }, 250);
+    }
+
+    link.addEventListener('click', hide);
+})();
+</script>
+
+
 <script>
     (function() {
         var obs = new IntersectionObserver(function(entries) {
