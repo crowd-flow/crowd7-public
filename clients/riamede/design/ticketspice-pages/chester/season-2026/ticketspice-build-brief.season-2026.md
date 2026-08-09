@@ -56,7 +56,11 @@ No quantity caps called for in the spec (unlike the Eckert's Jack's Lighted Trai
 
 ## 7. Native TS cart cleanup (Ashley, 8/8 review — live-console-only, not fixable from this repo)
 
+**Verified 2026-08-09: these are genuinely native-TS content, not this repo's.** The content-HTML overlay contains exactly one "Important Things to Know" block and zero `2025` references (confirmed by grep) — so Ashley's two remaining complaints below point at markup this repo does not own.
+
 - **Delete the duplicate "Important Things to Know" box on the native cart page.** Ashley flagged it as redundant — the design-overlay content HTML above already carries the authoritative version (6 items, updated 8/8). Whatever default/legacy "Important Things to Know" block TS is rendering natively in the cart widget should come out so there's only one on the page.
+- **Scrub every `2025` reference on the native cart page** — Ashley: *"there are several."* Same treatment as the content-HTML sweep: check every month/year/day-of-week against the confirmed 2026 facts (Wed–Mon open, closed Tuesdays; last picking entry 4:00 PM; Bloomfest hours 10 AM–4 PM; Fall Fest basket redemption Sept 1–Nov 1; slingshot opens mid-September).
+- **⚠️ Could not produce the exact-text/exact-replacement list this cycle — need the live form URL.** Tried to locate form `1017178` to dump its native content: `riamedefarm.ticketspice.com/admission` (2025's page — now retired, 301s to the TS marketing homepage), `/season-2026`, and `/2026-season-tickets` all 301 to `ticketspice.com` (same "TS-scanner 301s to marketing homepage" pattern already documented for Eckert's in the runbook — guessing further slugs is low-value). The season-2026 form likely isn't publicly linked yet since the loader hasn't been pasted into it (gated behind Mat's `preview/`→`production/` promotion). **Needs Bryan or Ashley to either send the direct form-1017178 URL or paste/screenshot the native cart's current "Important Things to Know" text + any 2025 refs** so this section can carry exact current-text → replacement-text, per the standing rule against guessing client-facing copy.
 
 ## 8. Copy / disclaimer requirements (must appear verbatim near the Family Bundle)
 
