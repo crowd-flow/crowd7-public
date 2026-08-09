@@ -52,8 +52,13 @@ No quantity caps called for in the spec (unlike the Eckert's Jack's Lighted Trai
 
 - **Family Bundle basket** — Ashley has physical apple baskets pre-stocked (confirmed "a case or two" on the call). No separate merch SKU needed if the basket redemption is handled as part of the bundle ticket type; flag to Ashley if she wants it broken out as a trackable inventory item.
 - **Season Pass 10% discount** — in-store only, redeemed by showing the pass (same mechanism as last year's 5% version, just the percentage changed).
+- **🗑️ Add-ons — delete the pre-paid "huge bag of apples" add-on entirely (Ashley, 8/8 review).** Apples price for 2026 is **$3.99/lb** — sell loose at that per-lb rate, not as a pre-paid bag SKU. Live-console-only change (native TS add-on, not owned by the content HTML).
 
-## 7. Copy / disclaimer requirements (must appear verbatim near the Family Bundle)
+## 7. Native TS cart cleanup (Ashley, 8/8 review — live-console-only, not fixable from this repo)
+
+- **Delete the duplicate "Important Things to Know" box on the native cart page.** Ashley flagged it as redundant — the design-overlay content HTML above already carries the authoritative version (6 items, updated 8/8). Whatever default/legacy "Important Things to Know" block TS is rendering natively in the cart widget should come out so there's only one on the page.
+
+## 8. Copy / disclaimer requirements (must appear verbatim near the Family Bundle)
 
 > Basket is filled with **farm-fresh** apples — not guaranteed you-pick. Redeemable after Aug 29 (Sept 1 – Nov 1).
 
