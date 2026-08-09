@@ -104,6 +104,13 @@
         }, 250);
     }
 
-    link.addEventListener('click', hide);
+    link.addEventListener('click', function (e) {
+        var cart = document.getElementById('ticketBlock');
+        if (cart) {
+            e.preventDefault();
+            cart.scrollIntoView({ behavior: 'smooth' });
+        }
+        hide();
+    });
 })();
 </script>

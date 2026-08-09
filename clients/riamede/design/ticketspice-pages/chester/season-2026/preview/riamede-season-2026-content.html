@@ -400,7 +400,7 @@
                 </svg>
                 Chester, NJ
             </div>
-            <a href="#tickets" class="rmf-nav-cta">Get Tickets</a>
+            <a href="#ticketBlock" class="rmf-nav-cta">Get Tickets</a>
         </div>
     </div>
 
@@ -697,7 +697,14 @@
         }, 250);
     }
 
-    link.addEventListener('click', hide);
+    link.addEventListener('click', function (e) {
+        var cart = document.getElementById('ticketBlock');
+        if (cart) {
+            e.preventDefault();
+            cart.scrollIntoView({ behavior: 'smooth' });
+        }
+        hide();
+    });
 })();
 </script>
 
