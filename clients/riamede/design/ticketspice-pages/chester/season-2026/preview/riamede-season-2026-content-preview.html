@@ -283,7 +283,7 @@
     #rmf-funnel .rmf-card-green .rmf-card-bullets li { color: rgba(251,244,230,0.82) !important; }
     #rmf-funnel .rmf-card-cream .rmf-card-bullets li { color: rgba(43,32,19,0.72) !important; }
 
-    #rmf-funnel .rmf-card-price { display: flex !important; align-items: baseline !important; gap: 6px !important; margin-top: 20px !important; padding-top: 16px !important; }
+    #rmf-funnel .rmf-card-price { display: flex !important; align-items: baseline !important; flex-wrap: wrap !important; gap: 6px !important; margin-top: 20px !important; padding-top: 16px !important; }
     #rmf-funnel .rmf-card-red .rmf-card-price { border-top: 1px solid rgba(251,244,230,0.28) !important; }
     #rmf-funnel .rmf-card-green .rmf-card-price { border-top: 1px solid rgba(242,194,101,0.3) !important; }
     #rmf-funnel .rmf-card-cream .rmf-card-price { border-top: 1px solid rgba(47,74,44,0.16) !important; }
@@ -291,7 +291,7 @@
     #rmf-funnel .rmf-card-red .rmf-price-num { color: #FBF4E6 !important; }
     #rmf-funnel .rmf-card-green .rmf-price-num { color: #F2C265 !important; }
     #rmf-funnel .rmf-card-cream .rmf-price-num { color: #B3241D !important; }
-    #rmf-funnel .rmf-price-label { font-size: 0.85rem !important; line-height: 1.4 !important; }
+    #rmf-funnel .rmf-price-label { font-size: 0.85rem !important; line-height: 1.4 !important; flex: 1 0 100% !important; margin-top: 6px !important; }
     #rmf-funnel .rmf-card-red .rmf-price-label { color: rgba(251,244,230,0.78) !important; }
     #rmf-funnel .rmf-card-green .rmf-price-label { color: rgba(251,244,230,0.6) !important; }
     #rmf-funnel .rmf-card-cream .rmf-price-label { color: rgba(43,32,19,0.55) !important; }
@@ -304,6 +304,10 @@
     #rmf-funnel .rmf-card-red .rmf-price-was { color: rgba(251,244,230,0.7) !important; }
     #rmf-funnel .rmf-card-green .rmf-price-was { color: rgba(242,194,101,0.7) !important; }
     #rmf-funnel .rmf-card-cream .rmf-price-was { color: rgba(43,32,19,0.5) !important; }
+    #rmf-funnel .rmf-card-fee { font-size: 0.8rem !important; font-style: italic !important; margin-top: 8px !important; display: block !important; line-height: 1.4 !important; }
+    #rmf-funnel .rmf-card-red .rmf-card-fee { color: rgba(251,244,230,0.85) !important; }
+    #rmf-funnel .rmf-card-green .rmf-card-fee { color: rgba(251,244,230,0.72) !important; }
+    #rmf-funnel .rmf-card-cream .rmf-card-fee { color: rgba(43,32,19,0.62) !important; }
 
     /* Fall Fest price-tier swap (one card, three date-keyed price texts) */
 
@@ -511,8 +515,9 @@
                     </ul>
                     <div class="rmf-card-price">
                         <span class="rmf-price-num">$79.95</span>
-                        <span class="rmf-price-label">per bundle plus fees<br>4 admissions + donuts + basket</span>
+                        <span class="rmf-price-label">per bundle<br>4 admissions + donuts + basket</span>
                     </div>
+                    <span class="rmf-card-fee">Plus fees</span>
                     <span class="rmf-card-note">Basket is filled with farm-fresh apples — not guaranteed you-pick. Redeemable after Aug 29 (Sept 1 &ndash; Nov 1 only).</span>
                 </a>
 
@@ -527,8 +532,9 @@
                     </ul>
                     <div class="rmf-card-price">
                         <span class="rmf-price-num">$29.95</span>
-                        <span class="rmf-price-label">per pass plus fees<br>flash-sale price only</span>
+                        <span class="rmf-price-label">per pass<br>flash-sale price only</span>
                     </div>
+                    <span class="rmf-card-fee">Plus fees</span>
                     <span class="rmf-card-note">Guest ticket redeems as a checkbox on your pass at the gate — no separate QR code.</span>
                 </a>
 
@@ -544,8 +550,9 @@
                     <div class="rmf-card-price">
                         <span class="rmf-price-was rmf-strike">$19.50</span>
                         <span class="rmf-price-num">$11.49</span>
-                        <span class="rmf-price-label">per admission plus fees<br>flash-sale price only</span>
+                        <span class="rmf-price-label">per admission<br>flash-sale price only</span>
                     </div>
+                    <span class="rmf-card-fee">Plus fees</span>
                     <span class="rmf-card-note">Buy at $11.49, use it on a day that would otherwise cost up to $19.50 at the gate.</span>
                 </a>
 
