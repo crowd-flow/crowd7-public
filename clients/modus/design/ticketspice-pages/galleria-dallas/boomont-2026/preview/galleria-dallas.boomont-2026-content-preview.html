@@ -2,199 +2,706 @@
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>BooMont Hotel 2026 — preview</title>
-<style>html,body{margin:0;padding:0}</style>
-<!-- STANDALONE BROWSER PREVIEW. Generated from the sibling content block.
-     The loader does NOT pull this file - it only serves the parent
-     preview/ or production/ folder. Mock cart below simulates the native
-     TicketSpice ticket block so the cart skin + struck gate price are visible. -->
+<style>html,body{margin:0;padding:0;background:#10081c}</style>
+<!-- STANDALONE BROWSER PREVIEW - generated from the sibling content block.
+     The loader never pulls this file; it serves the parent preview/ or
+     production/ folder only. Mock cart below stands in for the native
+     TicketSpice ticket block so the cart skin + struck prices are visible. -->
 </head><body>
-<!--
-  ============================================================
-  BOOMONT HOTEL — SEASON 2026 — TicketSpice ticket page (content block)
-  ============================================================
-  Built by Crowdly 2026-08-11 for Modus (BooMont Hotel, Galleria Dallas).
-  Design overlay on Modus's existing native TS cart — ticket types, prices,
-  date rules, timed slots and Actions all stay NATIVE in TicketSpice.
-  Hybrid-loader page: lives in crowd7-public, pulled into the live TS page at
-  render time — v8 loader -> Cloudflare Pages (assets.crowd7digital.us).
-  Born on Cloudflare: NO jsDelivr, NO purge script, a push IS the deploy.
+<!-- ════════════════════════════════════════════════════════════════════
+     MODUS · BOOMONT HOTEL · GALLERIA DALLAS · 2026  —  HYBRID-LOADER CONTENT
+     Design overlay on Modus's existing TicketSpice cart (ticket types, prices,
+     date rules and timed slots already built there — this page does NOT rebuild
+     the cart, only the look). Built on the Jack's Lighted Trail template
+     (Mat directive 2026-08-11 — closest concept: Halloween, night, walkthrough)
+     re-skinned to the BooMont sub-brand established on the 2026-08-10 flash
+     waitlist page: base #10081c, purple #6D468F, gold #C9A24B, emerald #006347
+     CTA, Futura PT (Typekit apb7rtz).
+     Hero + wordmark are the client's own assets, already served on the live page.
+     Ships as the FLASH SALE state (Aug 12-16, 30% off all types). Per the Riamede
+     precedent the page does NOT self-advance on a date gate.
+     OPEN: exact native ticket names for the gate map; gallery imagery (only 3
+     client assets exist); operating hours by day type.
+     ════════════════════════════════════════════════════════════════════ -->
+<link rel="stylesheet" href="https://use.typekit.net/apb7rtz.css">
 
-  Sub-brand inherited verbatim from the 2026-08-10 flash-waitlist build so the
-  two pages read as one campaign:
-    black #000000 + white #FFFFFF = BASE ; purple #6D468F = ACCENT ;
-    emerald #006347 / #024732 = CTA ; gold #C9A24B = MONOGRAM.
-    Type: Futura PT (Typekit apb7rtz).
-
-  ⚠️ CURRENT STATE = FLASH SALE (Aug 12-16, 30% off all ticket types).
-  Per the Riamede precedent (Mat directive 2026-08-07) this page does NOT
-  self-advance on a date gate. Crowdly pastes the next phase block manually.
-  Later-phase card blocks are archived with switchover instructions at:
-    work/crowd7/projects/boomont-ticket-page/artifacts/later-phase-cards.ARCHIVE.txt
-
-  ⚠️ TWO OPEN PLACEHOLDERS - both tagged NEEDS-CONFIRM below:
-    1. GATE map ticket names must match the native cart EXACTLY (see the
-       slash-through block). Confirm from a live cart dump before promoting.
-    2. Operating hours per day-type are not yet sourced.
-  ============================================================
--->
 <style>
-  @import url("https://use.typekit.net/apb7rtz.css");
+    #bm-funnel {
+        width: 100vw !important;
+        position: relative !important;
+        left: 50% !important; right: 50% !important;
+        margin-left: -50vw !important; margin-right: -50vw !important;
+        overflow: hidden !important;
+        font-family: "futura-pt", -apple-system, sans-serif !important;
+        background: #10081c !important;
+        color: #ffffff !important;
+        padding: 0 !important; box-sizing: border-box !important;
+    }
 
-  /* ---- global page skin ----
-     Re-based 2026-08-11 onto the LIVE page's own theme rather than pure black:
-     the TS form sets --background-color-inner: rgb(16,8,28) = #10081c. Matching it
-     means our injected content sits in the same family as the native cart instead
-     of fighting it. The arch pattern stays as low-opacity texture only. */
-  body, .page, .form-page{
-    background-color:#10081c !important;
-    background-image:
-      linear-gradient(180deg, rgba(16,8,28,0) 0%, rgba(16,8,28,.42) 45%, rgba(16,8,28,.96) 100%),
-      radial-gradient(120% 70% at 50% -8%, rgba(109,70,143,.18), transparent 60%),
-      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='60' viewBox='0 0 120 60'><g fill='none' stroke='%236D468F' stroke-width='1.4' opacity='0.28'><path d='M0 60 A30 30 0 0 1 60 60'/><path d='M60 60 A30 30 0 0 1 120 60'/><path d='M-30 30 A30 30 0 0 1 30 30'/><path d='M30 30 A30 30 0 0 1 90 30'/><path d='M90 30 A30 30 0 0 1 150 30'/></g></svg>") !important;
-    background-repeat:no-repeat, no-repeat, repeat !important;
-    background-position:top center, top center, top center !important;
-    background-attachment:scroll, fixed, fixed !important;
-    color:#fff !important;
-    font-family:"futura-pt",Futura,"Century Gothic",sans-serif !important;
-  }
+    /* ── BANNER ── */
+    #bm-funnel .bm-banner {
+        width: 100% !important;
+        background: linear-gradient(90deg, #3a2450, #6D468F) !important;
+        color: #ffffff !important;
+        text-align: center !important;
+        padding: 11px 20px !important;
+        font-size: 0.8rem !important;
+        letter-spacing: 0.04em !important;
+        display: block !important; box-sizing: border-box !important;
+    }
+    #bm-funnel .bm-banner-inner {
+        display: flex !important; align-items: center !important;
+        justify-content: center !important; gap: 10px !important; flex-wrap: wrap !important;
+    }
+    #bm-funnel .bm-banner strong { color: #C9A24B !important; }
+    #bm-funnel .bm-dot {
+        width: 3px !important; height: 3px !important;
+        background: rgba(255,255,255,0.45) !important;
+        border-radius: 50% !important; display: inline-block !important; flex-shrink: 0 !important;
+    }
 
-  /* ---- HERO BAND — the live page's own treatment, rebuilt inside our flow ----
-     Assets are the client's own, already served on this page from the WebConnex
-     CDN: the "tall building" banner art + the stacked white wordmark.
-     Mirrors the native banner field's geometry (min-height 589 / 500 mobile). */
-  #bm-hero{
-    position:relative;width:100%;min-height:589px;
-    display:flex;flex-direction:column;align-items:center;justify-content:center;
-    padding:56px 20px;text-align:center;overflow:hidden;
-  }
-  #bm-hero::before{
-    content:"";position:absolute;inset:0;z-index:0;
-    background-image:url("https://cdn.uploads.webconnex.com/200217/tall%20building.png");
-    background-position:center center;background-size:cover;background-repeat:no-repeat;
-  }
-  /* scrim: keeps the wordmark and headline legible over the artwork */
-  #bm-hero::after{
-    content:"";position:absolute;inset:0;z-index:1;
-    background:linear-gradient(180deg, rgba(16,8,28,.42) 0%, rgba(16,8,28,.30) 40%, rgba(16,8,28,.92) 100%);
-  }
-  #bm-hero > *{position:relative;z-index:2}
-  #bm-hero .bm-wordmark{width:300px;max-width:72%;height:auto;margin:0 auto 26px;display:block}
+    /* ── NAV ── */
+    #bm-funnel .bm-nav {
+        width: 100% !important;
+        padding: 0 40px !important;
+        height: 68px !important;
+        display: flex !important; align-items: center !important;
+        justify-content: space-between !important;
+        background: rgba(16,8,28,0.92) !important;
+        border-bottom: 1px solid rgba(109,70,143,0.25) !important;
+        position: sticky !important; top: 0 !important; z-index: 100 !important;
+        box-sizing: border-box !important;
+        backdrop-filter: blur(6px) !important;
+    }
+    #bm-funnel .bm-logo-wrap {
+        display: flex !important; align-items: center !important;
+        height: 48px !important; width: 190px !important;
+        flex-shrink: 0 !important; overflow: hidden !important;
+    }
+    #bm-funnel .bm-logo-wrap img {
+        height: 48px !important; width: 190px !important;
+        max-width: 190px !important; max-height: 48px !important;
+        object-fit: contain !important; object-position: left center !important; display: block !important;
+    }
+    #bm-funnel .bm-nav-right { display: flex !important; align-items: center !important; gap: 16px !important; }
+    #bm-funnel .bm-nav-loc {
+        font-size: 0.78rem !important; color: rgba(255,255,255,0.65) !important;
+        display: flex !important; align-items: center !important; gap: 5px !important;
+    }
+    #bm-funnel .bm-nav-cta {
+        background: #6D468F !important; color: #10081c !important;
+        padding: 9px 22px !important; border-radius: 50px !important;
+        font-size: 0.83rem !important; font-weight: 700 !important;
+        text-decoration: none !important; letter-spacing: 0.03em !important;
+        transition: all 0.3s ease !important; white-space: nowrap !important; display: inline-block !important;
+    }
+    #bm-funnel .bm-nav-cta:hover { background: #C9A24B !important; color: #10081c !important; text-decoration: none !important; }
 
-  /* ---- shared type ---- */
-  #bm-funnel{max-width:1280px;margin:0 auto;padding:40px 20px 8px;text-align:center}
-  #bm-funnel .bm-logo{width:210px;max-width:64%;height:auto;margin:0 auto 26px;display:block}
-  #bm-hero .bm-eyebrow, #bm-funnel .bm-eyebrow{
-    font-family:"futura-pt-bold","futura-pt",sans-serif;font-weight:600;
-    letter-spacing:.42em;text-transform:uppercase;font-size:12px;color:#C9A24B;
-    margin-bottom:16px;padding-left:.42em;
-  }
-  /* over the artwork the headline goes white — purple-on-photo loses too much
-     contrast. Purple stays as the glow. */
-  #bm-hero h1.bm-head, #bm-funnel h1.bm-head{
-    font-family:"futura-pt",sans-serif;font-weight:500;color:#fff;
-    text-transform:uppercase;letter-spacing:.10em;line-height:1.06;
-    font-size:clamp(34px,7vw,52px);margin:0 0 22px;
-    text-shadow:0 2px 18px rgba(0,0,0,.75), 0 0 34px rgba(109,70,143,.55);
-  }
-  #bm-funnel .bm-lede{font-size:clamp(16px,2.3vw,19px);line-height:1.55;color:#fff;max-width:560px;margin:0 auto 10px;font-weight:400}
-  #bm-funnel .bm-body{font-size:15px;line-height:1.62;color:rgba(255,255,255,.62);max-width:620px;margin:0 auto}
-  #bm-funnel .bm-body .hl{color:#fff}
-  #bm-funnel .bm-rule{width:54px;height:1px;background:linear-gradient(90deg,transparent,#C9A24B,transparent);margin:26px auto}
+    /* ── HERO ── */
+    #bm-funnel .bm-hero {
+        width: 100% !important;
+        min-height: clamp(400px, 68vw, 680px) !important;
+        position: relative !important;
+        display: flex !important; align-items: flex-end !important;
+        overflow: hidden !important;
+        background: url('https://cdn.uploads.webconnex.com/200217/tall%20building.png') center center/cover no-repeat, linear-gradient(135deg, #3a2450 0%, #150a24 55%, #10081c 100%) !important;
+    }
+    #bm-funnel .bm-hero-overlay {
+        position: absolute !important; inset: 0 !important;
+        background: linear-gradient(to bottom, rgba(13,9,16,0.15) 0%, rgba(13,9,16,0.25) 35%, rgba(13,9,16,0.88) 100%) !important;
+        z-index: 1 !important;
+    }
+    #bm-funnel .bm-hero-content {
+        position: relative !important; z-index: 2 !important;
+        padding: 0 48px 48px !important; width: 100% !important; box-sizing: border-box !important;
+    }
+    #bm-funnel .bm-hero-eyebrow {
+        font-family: "futura-pt-bold", sans-serif !important;
+        font-size: 0.78rem !important; font-weight: 700 !important;
+        letter-spacing: 0.2em !important; text-transform: uppercase !important;
+        color: #C9A24B !important; margin-bottom: 10px !important; display: block !important;
+        opacity: 0; animation: bmFadeUp 0.6s ease 0.2s forwards;
+    }
+    #bm-funnel .bm-hero-title {
+        font-family: "futura-pt", sans-serif !important;
+        font-size: clamp(2.8rem, 9vw, 6rem) !important; font-weight: 400 !important;
+        color: #6D468F !important; line-height: 0.95 !important; display: block !important;
+        text-shadow: 0 0 24px rgba(109,70,143,0.55), 0 4px 20px rgba(0,0,0,0.6) !important;
+        letter-spacing: 0.02em !important;
+        opacity: 0; animation: bmFadeUp 0.7s ease 0.35s forwards;
+    }
+    #bm-funnel .bm-hero-sub {
+        font-family: "futura-pt-bold", sans-serif !important;
+        font-size: clamp(1rem, 2.4vw, 1.35rem) !important; font-weight: 600 !important;
+        color: #e0c583 !important; margin-top: 12px !important; display: block !important;
+        opacity: 0; animation: bmFadeUp 0.7s ease 0.5s forwards;
+    }
+    #bm-funnel .bm-hero-dates {
+        display: inline-flex !important; align-items: center !important; gap: 10px !important;
+        margin-top: 22px !important; padding: 10px 18px !important; border-radius: 50px !important;
+        background: rgba(109,70,143,0.14) !important; border: 1px solid rgba(109,70,143,0.4) !important;
+        font-size: 0.85rem !important; color: #ffffff !important;
+        opacity: 0; animation: bmFadeUp 0.7s ease 0.65s forwards;
+    }
+    #bm-funnel .bm-hero-dates strong { color: #C9A24B !important; }
+    @keyframes bmFadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
 
-  /* ---- flash-sale urgency bar ---- */
-  #bm-hero .bm-flash, #bm-funnel .bm-flash{
-    display:inline-block;margin:0 auto;padding:11px 26px;
-    border:1px solid rgba(201,162,75,.62);border-radius:3px;
-    background:linear-gradient(180deg, rgba(109,70,143,.42), rgba(16,8,28,.62));
-    backdrop-filter:blur(2px);
-    font-family:"futura-pt-bold","futura-pt",sans-serif;font-weight:600;
-    letter-spacing:.20em;text-transform:uppercase;font-size:12.5px;color:#fff;
-  }
-  #bm-hero .bm-flash .bm-flash-pct, #bm-funnel .bm-flash .bm-flash-pct{color:#C9A24B}
+    /* ── BENEFITS / ATTRACTIONS BAND ── */
+    #bm-funnel .bm-benefits {
+        width: 100% !important; background: #0d0910 !important;
+        padding: 40px 48px !important; display: block !important; box-sizing: border-box !important;
+        border-bottom: 1px solid rgba(109,70,143,0.14) !important;
+    }
+    #bm-funnel .bm-benefits-grid { display: grid !important; grid-template-columns: repeat(4, 1fr) !important; }
+    #bm-funnel .bm-benefit { text-align: center !important; padding: 8px 20px !important; position: relative !important; }
+    #bm-funnel .bm-benefit:not(:last-child)::after {
+        content: '' !important; position: absolute !important;
+        right: 0 !important; top: 15% !important; bottom: 15% !important;
+        width: 1px !important; background: rgba(109,70,143,0.16) !important;
+    }
+    #bm-funnel .bm-benefit-icon { font-size: 1.8rem !important; margin-bottom: 8px !important; display: block !important; }
+    #bm-funnel .bm-benefit-title {
+        font-family: "futura-pt-bold", sans-serif !important;
+        font-size: 1rem !important; font-weight: 700 !important;
+        color: #C9A24B !important; margin-bottom: 3px !important; display: block !important;
+        text-transform: uppercase !important; letter-spacing: 0.02em !important;
+    }
+    #bm-funnel .bm-benefit-desc { font-size: 0.76rem !important; color: rgba(255,255,255,0.55) !important; line-height: 1.4 !important; display: block !important; }
 
-  /* ---- ticket-card grid: THREE cards, never four (pattern: ticket-card-grid-three-max) ---- */
-  #bm-funnel .bm-grid{
-    display:grid;grid-template-columns:repeat(3, minmax(0,400px));
-    justify-content:center;gap:20px;max-width:1280px;margin:0 auto;text-align:left;
-  }
-  #bm-funnel .bm-card{
-    display:flex;flex-direction:column;background:rgba(13,9,16,.86);
-    border:1px solid rgba(109,70,143,.42);border-radius:4px;padding:26px 24px 24px;
-  }
-  #bm-funnel .bm-card.is-featured{border-color:rgba(201,162,75,.68);box-shadow:0 0 34px rgba(109,70,143,.22)}
-  #bm-funnel .bm-card-tag{
-    align-self:flex-start;margin-bottom:14px;padding:5px 12px;border-radius:2px;
-    background:#C9A24B;color:#000;font-family:"futura-pt-bold",sans-serif;font-weight:600;
-    letter-spacing:.16em;text-transform:uppercase;font-size:10px;
-  }
-  #bm-funnel .bm-card h3{
-    font-family:"futura-pt",sans-serif;font-weight:500;color:#fff;text-transform:uppercase;
-    letter-spacing:.09em;font-size:22px;margin:0 0 12px;
-  }
-  #bm-funnel .bm-price-row{display:flex;align-items:baseline;gap:10px;margin-bottom:4px}
-  #bm-funnel .bm-price-was{font-size:17px;color:rgba(255,255,255,.42);text-decoration:line-through}
-  #bm-funnel .bm-price-now{font-family:"futura-pt-bold",sans-serif;font-weight:600;font-size:34px;color:#C9A24B;line-height:1}
-  #bm-funnel .bm-price-note{font-size:12px;color:rgba(255,255,255,.46);margin-bottom:18px}
-  #bm-funnel .bm-card ul{list-style:none;margin:0 0 20px;padding:0}
-  #bm-funnel .bm-card li{
-    position:relative;padding-left:20px;margin-bottom:9px;
-    font-size:14.5px;line-height:1.5;color:rgba(255,255,255,.76);
-  }
-  #bm-funnel .bm-card li::before{content:"";position:absolute;left:0;top:8px;width:7px;height:7px;border-radius:50%;background:#6D468F}
-  #bm-funnel .bm-card .bm-card-foot{margin-top:auto;font-size:12.5px;color:rgba(255,255,255,.44);line-height:1.5}
+    /* ── FEATURE SECTION ── */
+    #bm-funnel .bm-feature {
+        width: 100% !important; position: relative !important; overflow: hidden !important;
+        padding: 80px 48px !important; box-sizing: border-box !important; text-align: center !important;
+        background: linear-gradient(180deg, #10081c 0%, #150a24 100%) !important;
+    }
+    #bm-funnel .bm-eye {
+        font-family: "futura-pt-bold", sans-serif !important;
+        font-size: 0.72rem !important; font-weight: 700 !important;
+        letter-spacing: 0.24em !important; text-transform: uppercase !important;
+        color: #6D468F !important; margin-bottom: 10px !important; display: block !important;
+    }
+    #bm-funnel .bm-title {
+        font-family: "futura-pt-bold", sans-serif !important;
+        font-size: clamp(1.9rem, 4.8vw, 3rem) !important; font-weight: 700 !important;
+        color: #C9A24B !important; line-height: 1.15 !important; display: block !important;
+        text-transform: uppercase !important;
+    }
+    #bm-funnel .bm-title em { font-style: normal !important; color: #6D468F !important; }
+    #bm-funnel .bm-feature-copy {
+        max-width: 680px !important; margin: 18px auto 0 !important;
+        font-size: 1.02rem !important; line-height: 1.7 !important; color: rgba(255,255,255,0.78) !important;
+    }
 
-  /* ---- the FOURTH offer: full-width banner card BELOW the grid (never a 4th column) ---- */
-  #bm-funnel .bm-banner{
-    grid-column:1 / -1;display:flex;flex-direction:row;align-items:center;gap:28px;
-    padding:22px 26px;margin-top:20px;text-align:left;
-    background:linear-gradient(90deg, rgba(109,70,143,.26), rgba(13,9,16,.9));
-    border:1px solid rgba(201,162,75,.5);border-radius:4px;
-  }
-  #bm-funnel .bm-banner-main{flex:1 1 auto}
-  #bm-funnel .bm-banner h3{margin-bottom:8px}
-  #bm-funnel .bm-banner-bullets{display:grid;grid-template-columns:repeat(2,1fr);gap:2px 22px}
-  #bm-funnel .bm-banner-rail{flex:0 0 auto;padding-left:28px;border-left:1px solid rgba(201,162,75,.34);text-align:center}
+    /* ── GALLERY ── */
+    #bm-funnel .bm-gallery { width: 100% !important; background: #10081c !important; padding: 0 0 72px !important; overflow: hidden !important; display: block !important; }
+    #bm-funnel .bm-gallery-mask {
+        width: 100% !important; overflow: hidden !important;
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%) !important;
+        mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%) !important;
+    }
+    #bm-funnel .bm-gallery-track {
+        display: flex !important; gap: 16px !important; width: max-content !important;
+        animation: bmMarquee 28s linear infinite !important; padding: 8px 0 !important;
+    }
+    #bm-funnel .bm-gallery-track:hover { animation-play-state: paused !important; }
+    @keyframes bmMarquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    #bm-funnel .bm-gcard {
+        width: 380px !important; height: 260px !important;
+        border-radius: 20px !important; overflow: hidden !important;
+        flex-shrink: 0 !important; position: relative !important; cursor: pointer !important;
+        background: linear-gradient(135deg, #3a2450, #150a24) !important;
+        display: flex !important; align-items: center !important; justify-content: center !important;
+        transition: transform 0.4s ease, box-shadow 0.4s ease !important;
+        border: 1px solid rgba(109,70,143,0.18) !important;
+    }
+    #bm-funnel .bm-gcard:hover { transform: scale(1.03) translateY(-5px) !important; box-shadow: 0 24px 50px rgba(109,70,143,0.25) !important; z-index: 2 !important; }
+    #bm-funnel .bm-gcard img { width: 100% !important; height: 100% !important; object-fit: cover !important; display: block !important; }
+    #bm-funnel .bm-gcard-label {
+        position: absolute !important; bottom: 12px !important; left: 12px !important;
+        background: rgba(16,8,28,0.7) !important; backdrop-filter: blur(8px) !important;
+        color: #C9A24B !important; font-size: 0.68rem !important; letter-spacing: 0.1em !important;
+        text-transform: uppercase !important; font-weight: 700 !important;
+        padding: 5px 12px !important; border-radius: 20px !important; z-index: 2 !important;
+    }
 
-  /* ---- experience + know-before-you-go ---- */
-  #bm-funnel .bm-cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px;max-width:900px;margin:0 auto;text-align:left}
-  #bm-funnel .bm-panel{background:rgba(13,9,16,.62);border:1px solid rgba(109,70,143,.3);border-radius:4px;padding:24px}
-  #bm-funnel .bm-panel h4{
-    font-family:"futura-pt-bold",sans-serif;font-weight:600;letter-spacing:.2em;
-    text-transform:uppercase;font-size:11px;color:#C9A24B;margin:0 0 14px;
-  }
-  #bm-funnel .bm-panel p, #bm-funnel .bm-panel li{font-size:14.5px;line-height:1.6;color:rgba(255,255,255,.74)}
-  #bm-funnel .bm-panel ul{margin:0;padding-left:18px}
-  #bm-funnel .bm-panel li{margin-bottom:8px}
+    /* ── ATTRACTION CARDS ── */
+    #bm-funnel .bm-attractions { width: 100% !important; background: #0d0910 !important; padding: 72px 48px !important; box-sizing: border-box !important; }
+    #bm-funnel .bm-attractions-header { text-align: center !important; margin-bottom: 44px !important; }
+    #bm-funnel .bm-agrid {
+        display: grid !important; grid-template-columns: repeat(4, 1fr) !important;
+        gap: 20px !important; max-width: 1180px !important; margin: 0 auto !important;
+    }
+    #bm-funnel .bm-acard {
+        border-radius: 18px !important; overflow: hidden !important; position: relative !important;
+        height: 300px !important; display: flex !important; align-items: flex-end !important;
+        transition: transform 0.35s ease, box-shadow 0.35s ease !important;
+    }
+    #bm-funnel .bm-acard:hover { transform: translateY(-6px) !important; box-shadow: 0 20px 44px rgba(109,70,143,0.22) !important; }
+    #bm-funnel .bm-acard img { position: absolute !important; inset: 0 !important; width: 100% !important; height: 100% !important; object-fit: cover !important; }
+    #bm-funnel .bm-acard-overlay { position: absolute !important; inset: 0 !important; background: linear-gradient(to bottom, rgba(13,9,16,0.05) 0%, rgba(13,9,16,0.9) 100%) !important; }
+    #bm-funnel .bm-acard-body { position: relative !important; z-index: 2 !important; padding: 18px !important; box-sizing: border-box !important; }
+    #bm-funnel .bm-acard-title {
+        font-family: "futura-pt-bold", sans-serif !important; font-size: 1.1rem !important; font-weight: 800 !important;
+        color: #C9A24B !important; text-transform: uppercase !important; display: block !important; line-height: 1.15 !important;
+    }
+    #bm-funnel .bm-acard-desc { font-size: 0.78rem !important; color: rgba(255,255,255,0.75) !important; margin-top: 4px !important; display: block !important; line-height: 1.4 !important; }
 
-  @media (max-width:767px){
-    /* matches the live page's own mobile banner height */
-    #bm-hero{min-height:500px;padding:44px 18px}
-    #bm-hero .bm-wordmark{width:230px}
-  }
+    /* ── TICKET CARDS ── */
+    #bm-funnel .bm-tickets { width: 100% !important; background: linear-gradient(180deg, #150a24 0%, #10081c 100%) !important; padding: 80px 48px !important; display: block !important; box-sizing: border-box !important; }
+    #bm-funnel .bm-tickets-header { text-align: center !important; margin-bottom: 18px !important; }
+    #bm-funnel .bm-flash {
+        text-align: center !important; max-width: 760px !important; margin: 0 auto 44px !important;
+        background: rgba(109,70,143,0.1) !important; border: 1px solid rgba(109,70,143,0.4) !important;
+        border-radius: 14px !important; padding: 18px 24px !important;
+        font-size: 0.9rem !important; color: rgba(255,255,255,0.88) !important; line-height: 1.65 !important;
+    }
+    #bm-funnel .bm-flash strong { color: #C9A24B !important; }
+    #bm-funnel .bm-flash-tag {
+        display: inline-block !important; background: #ff3a3a !important; color: #fff !important;
+        font-size: 0.62rem !important; font-weight: 800 !important; letter-spacing: 0.12em !important;
+        text-transform: uppercase !important; padding: 4px 10px !important; border-radius: 20px !important;
+        margin-bottom: 10px !important;
+    }
+    #bm-funnel .bm-grid {
+        display: grid !important; grid-template-columns: repeat(3, minmax(0, 320px)) !important;
+        gap: 22px !important; justify-content: center !important;
+        max-width: 1040px !important; margin-left: auto !important; margin-right: auto !important;
+    }
+    #bm-funnel .bm-card {
+        border-radius: 20px !important; padding: 36px 32px !important;
+        position: relative !important; overflow: hidden !important;
+        transition: transform 0.35s ease, box-shadow 0.35s ease !important;
+        display: flex !important; flex-direction: column !important;
+    }
+    #bm-funnel .bm-card:hover { transform: translateY(-6px) !important; }
+    #bm-funnel a.bm-card { cursor: pointer !important; text-decoration: none !important; color: inherit !important; }
+    #bm-funnel .bm-card-fire { background: linear-gradient(160deg, #6D468F, #4a2f63) !important; color: #10081c !important; }
+    #bm-funnel .bm-card-fire:hover { box-shadow: 0 20px 44px rgba(109,70,143,0.4) !important; }
+    #bm-funnel .bm-card-purple { background: #241338 !important; color: white !important; border: 1px solid rgba(109,70,143,0.5) !important; }
+    #bm-funnel .bm-card-purple:hover { box-shadow: 0 20px 44px rgba(58,36,80,0.5) !important; }
+    #bm-funnel .bm-card-dark { background: #0d0910 !important; color: white !important; border: 1px solid rgba(109,70,143,0.18) !important; }
+    #bm-funnel .bm-card-dark:hover { box-shadow: 0 20px 44px rgba(0,0,0,0.4) !important; }
 
-  @media (max-width:980px){
-    #bm-funnel .bm-grid{grid-template-columns:1fr;max-width:440px}
-    #bm-funnel .bm-banner{flex-direction:column;align-items:stretch;gap:18px}
-    #bm-funnel .bm-banner-rail{padding-left:0;padding-top:18px;border-left:0;border-top:1px solid rgba(201,162,75,.34)}
-    #bm-funnel .bm-banner-bullets{grid-template-columns:1fr}
-    #bm-funnel .bm-cols{grid-template-columns:1fr;max-width:440px}
-  }
+    #bm-funnel .bm-card-badge {
+        display: inline-block !important; font-size: 0.62rem !important; font-weight: 800 !important;
+        letter-spacing: 0.14em !important; text-transform: uppercase !important;
+        padding: 4px 10px !important; border-radius: 20px !important; margin-bottom: 14px !important; width: fit-content !important;
+    }
+    #bm-funnel .bm-card-badge-dark { background: rgba(16,8,28,0.2) !important; color: #10081c !important; }
+    #bm-funnel .bm-card-badge-light { background: rgba(255,255,255,0.14) !important; color: #C9A24B !important; }
+    #bm-funnel .bm-card-badge-alert { background: #ff3a3a !important; color: #fff !important; }
 
-  /* ---- skin the NATIVE TS cart (ticket block renders below this content) ---- */
-  #ticketBlock h4{font-family:"futura-pt",sans-serif !important;color:#fff !important;letter-spacing:.05em !important}
-  #ticketBlock .ticket-cost{color:#C9A24B !important;font-family:"futura-pt-bold",sans-serif !important}
+    #bm-funnel .bm-card-icon { font-size: 2.6rem !important; margin-bottom: 14px !important; display: block !important; }
+    #bm-funnel .bm-card h3 {
+        font-family: "futura-pt-bold", sans-serif !important;
+        font-size: 1.5rem !important; font-weight: 800 !important;
+        line-height: 1.15 !important; margin-bottom: 14px !important; display: block !important;
+        text-transform: uppercase !important;
+    }
+    #bm-funnel .bm-card-fire h3 { color: #10081c !important; }
+    #bm-funnel .bm-card-purple h3 { color: #C9A24B !important; }
+    #bm-funnel .bm-card-dark h3 { color: #C9A24B !important; }
+    #bm-funnel .bm-card-bullets { list-style: none !important; padding: 0 !important; margin: 0 0 auto !important; display: flex !important; flex-direction: column !important; gap: 6px !important; }
+    #bm-funnel .bm-card-bullets li { font-size: 0.92rem !important; line-height: 1.55 !important; display: flex !important; align-items: flex-start !important; gap: 8px !important; }
+    #bm-funnel .bm-card-fire .bm-card-bullets li { color: rgba(16,8,28,0.82) !important; }
+    #bm-funnel .bm-card-purple .bm-card-bullets li { color: rgba(255,255,255,0.8) !important; }
+    #bm-funnel .bm-card-dark .bm-card-bullets li { color: rgba(255,255,255,0.7) !important; }
+
+    #bm-funnel .bm-card-price { display: flex !important; align-items: baseline !important; gap: 6px !important; margin-top: 20px !important; padding-top: 16px !important; }
+    #bm-funnel .bm-card-fire .bm-card-price { border-top: 1px solid rgba(16,8,28,0.22) !important; }
+    #bm-funnel .bm-card-purple .bm-card-price { border-top: 1px solid rgba(255,255,255,0.16) !important; }
+    #bm-funnel .bm-card-dark .bm-card-price { border-top: 1px solid rgba(109,70,143,0.18) !important; }
+    #bm-funnel .bm-price-num { font-family: "futura-pt-bold", sans-serif !important; font-size: 2.6rem !important; font-weight: 800 !important; line-height: 1 !important; }
+    #bm-funnel .bm-card-fire .bm-price-num { color: #10081c !important; }
+    #bm-funnel .bm-card-purple .bm-price-num { color: #C9A24B !important; }
+    #bm-funnel .bm-card-dark .bm-price-num { color: #6D468F !important; }
+    #bm-funnel .bm-price-label { font-size: 0.86rem !important; line-height: 1.4 !important; }
+    #bm-funnel .bm-card-fire .bm-price-label { color: rgba(16,8,28,0.65) !important; }
+    #bm-funnel .bm-card-purple .bm-price-label { color: rgba(255,255,255,0.55) !important; }
+    #bm-funnel .bm-card-dark .bm-price-label { color: rgba(255,255,255,0.45) !important; }
+    #bm-funnel .bm-card-note { font-size: 0.72rem !important; font-style: italic !important; margin-top: 10px !important; display: block !important; line-height: 1.5 !important; }
+    #bm-funnel .bm-card-fire .bm-card-note { color: rgba(16,8,28,0.6) !important; }
+    #bm-funnel .bm-card-purple .bm-card-note { color: rgba(255,255,255,0.42) !important; }
+    #bm-funnel .bm-card-dark .bm-card-note { color: rgba(255,255,255,0.4) !important; }
+    #bm-funnel .bm-placeholder { color: #ff3a3a !important; font-weight: 700 !important; }
+
+    /* ── INFO ROW ── */
+    #bm-funnel .bm-info { width: 100% !important; background: linear-gradient(90deg, #3a2450, #6D468F) !important; padding: 0 !important; display: block !important; box-sizing: border-box !important; }
+    #bm-funnel .bm-info-grid { display: grid !important; grid-template-columns: repeat(4, 1fr) !important; }
+    #bm-funnel .bm-info-item { text-align: center !important; padding: 28px 20px !important; position: relative !important; }
+    #bm-funnel .bm-info-item:not(:last-child)::after { content: '' !important; position: absolute !important; right: 0 !important; top: 20% !important; bottom: 20% !important; width: 1px !important; background: rgba(255,255,255,0.18) !important; }
+    #bm-funnel .bm-info-icon { font-size: 1.5rem !important; display: block !important; margin-bottom: 6px !important; }
+    #bm-funnel .bm-info-label { font-size: 0.62rem !important; font-weight: 700 !important; letter-spacing: 0.16em !important; text-transform: uppercase !important; color: rgba(255,255,255,0.65) !important; display: block !important; margin-bottom: 4px !important; }
+    #bm-funnel .bm-info-value { font-family: "futura-pt-bold", sans-serif !important; font-size: 0.95rem !important; font-weight: 700 !important; color: white !important; display: block !important; line-height: 1.3 !important; }
+
+    /* ── EMAIL CAPTURE ── */
+
+    /* ── FOOTER ── */
+    #bm-funnel .bm-footer { width: 100% !important; background: #10081c !important; border-top: 1px solid rgba(109,70,143,0.12) !important; padding: 24px 48px !important; text-align: center !important; box-sizing: border-box !important; }
+    #bm-funnel .bm-footer-text { font-size: 0.72rem !important; color: rgba(255,255,255,0.35) !important; }
+
+    /* ── REVEAL ── */
+    #bm-funnel .bmr { opacity: 0 !important; transform: translateY(28px) !important; transition: opacity 0.7s cubic-bezier(.16,1,.3,1), transform 0.7s cubic-bezier(.16,1,.3,1) !important; }
+    #bm-funnel .bmr.bmon { opacity: 1 !important; transform: none !important; }
+    #bm-funnel .bmr.d1 { transition-delay: 0.1s !important; }
+    #bm-funnel .bmr.d2 { transition-delay: 0.2s !important; }
+    #bm-funnel .bmr.d3 { transition-delay: 0.3s !important; }
+
+
+    /* ── SPECIAL NIGHTS ── */
+    #bm-funnel .bm-nights { width: 100% !important; background: #10081c !important; padding: 72px 48px !important; box-sizing: border-box !important; }
+    #bm-funnel .bm-nights-header { text-align: center !important; margin-bottom: 38px !important; }
+    #bm-funnel .bm-ngrid { display: grid !important; grid-template-columns: repeat(4, 1fr) !important; gap: 18px !important; max-width: 1180px !important; margin: 0 auto !important; }
+    #bm-funnel .bm-ncard { background: linear-gradient(160deg, #170c26, #0d0716) !important; border: 1px solid rgba(109,70,143,0.55) !important; border-radius: 16px !important; padding: 26px 20px !important; text-align: center !important; display: flex !important; flex-direction: column !important; box-shadow: 0 18px 40px rgba(0,0,0,0.5) !important; box-sizing: border-box !important; }
+    #bm-funnel .bm-ndate { display: inline-block !important; align-self: center !important; background: #6D468F !important; color: #10081c !important; font-family: "futura-pt-bold", sans-serif !important; font-weight: 800 !important; font-size: 0.7rem !important; letter-spacing: 0.1em !important; text-transform: uppercase !important; padding: 5px 13px !important; border-radius: 999px !important; margin-bottom: 14px !important; }
+    #bm-funnel .bm-nicon { display: block !important; font-size: 1.7rem !important; line-height: 1 !important; margin-bottom: 10px !important; }
+    #bm-funnel .bm-nname { display: block !important; font-family: "futura-pt-bold", sans-serif !important; font-weight: 700 !important; font-size: 1.02rem !important; color: #C9A24B !important; line-height: 1.2 !important; text-transform: uppercase !important; margin-bottom: 8px !important; }
+    #bm-funnel .bm-ntime { display: block !important; font-size: 0.8rem !important; color: rgba(255,255,255,0.78) !important; margin-bottom: 14px !important; }
+    #bm-funnel .bm-nprice { display: block !important; font-family: "futura-pt-bold", sans-serif !important; font-weight: 800 !important; font-size: 1.55rem !important; color: #ffffff !important; line-height: 1 !important; }
+    #bm-funnel .bm-nper { display: block !important; margin-bottom: 14px !important; font-size: 0.66rem !important; letter-spacing: 0.14em !important; text-transform: uppercase !important; color: rgba(255,255,255,0.5) !important; margin-top: 4px !important; }
+    #bm-funnel .bm-nnote { display: block !important; margin-top: auto !important; font-size: 0.72rem !important; color: rgba(255,255,255,0.62) !important; line-height: 1.45 !important; padding-top: 12px !important; border-top: 1px solid rgba(255,255,255,0.1) !important; }
+    #bm-funnel .bm-nights-foot { display: block !important; text-align: center !important; margin-top: 26px !important; font-size: 0.78rem !important; color: rgba(255,255,255,0.55) !important; }
+
+    /* ── MAP / DIRECTIONS ── */
+    #bm-funnel .bm-map { width: 100% !important; background: #10081c !important; padding: 72px 48px !important; text-align: center !important; box-sizing: border-box !important; }
+    #bm-funnel .bm-map-header { margin-bottom: 30px !important; }
+    #bm-funnel .bm-map-frame { display: block !important; max-width: 860px !important; margin: 0 auto !important; border-radius: 18px !important; overflow: hidden !important; border: 2px solid rgba(109,70,143,0.65) !important; box-shadow: 0 0 44px rgba(109,70,143,0.38) !important; cursor: zoom-in !important; background: #10081c !important; line-height: 0 !important; }
+    #bm-funnel .bm-map-frame img { width: 100% !important; height: auto !important; display: block !important; max-width: 100% !important; }
+    #bm-funnel .bm-map-hint { display: block !important; margin-top: 14px !important; font-family: "futura-pt-bold", sans-serif !important; font-size: 0.74rem !important; font-weight: 700 !important; letter-spacing: 0.18em !important; text-transform: uppercase !important; color: #C9A24B !important; }
+    #bm-funnel .bm-stops { max-width: 900px !important; margin: 30px auto 0 !important; display: flex !important; flex-wrap: wrap !important; justify-content: center !important; gap: 10px !important; }
+    #bm-funnel .bm-stop { display: inline-block !important; background: rgba(109,70,143,0.18) !important; border: 1px solid rgba(109,70,143,0.6) !important; border-radius: 999px !important; padding: 8px 16px !important; font-family: "futura-pt-bold", sans-serif !important; font-weight: 600 !important; font-size: 0.8rem !important; color: #ffffff !important; letter-spacing: 0.02em !important; white-space: nowrap !important; }
+    #bm-funnel .bm-map-foot { display: block !important; margin-top: 24px !important; font-size: 0.82rem !important; color: rgba(255,255,255,0.6) !important; }
+    /* ── MAP LIGHTBOX ── */
+    #bm-funnel .bm-lb { position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important; background: rgba(0,0,0,0.94) !important; z-index: 99999 !important; display: none !important; align-items: center !important; justify-content: center !important; padding: 24px !important; cursor: zoom-out !important; box-sizing: border-box !important; }
+    #bm-funnel .bm-lb.bm-lb-open { display: flex !important; }
+    #bm-funnel .bm-lb img { max-width: 100% !important; max-height: 90vh !important; width: auto !important; height: auto !important; border-radius: 12px !important; border: 2px solid rgba(109,70,143,0.6) !important; }
+    #bm-funnel .bm-lb-close { position: absolute !important; top: 16px !important; right: 22px !important; color: #C9A24B !important; font-family: "futura-pt-bold", sans-serif !important; font-size: 2rem !important; line-height: 1 !important; background: none !important; border: 0 !important; cursor: pointer !important; padding: 6px 10px !important; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1080px) {
+        #bm-funnel .bm-grid { grid-template-columns: repeat(2, minmax(0, 380px)) !important; max-width: 820px !important; }
+        #bm-funnel .bm-agrid { grid-template-columns: repeat(2, 1fr) !important; }
+        #bm-funnel .bm-ngrid { grid-template-columns: repeat(2, 1fr) !important; max-width: 760px !important; }
+    }
+    @media (max-width: 860px) {
+        #bm-funnel .bm-nav { padding: 0 24px !important; }
+        #bm-funnel .bm-hero-content { padding: 0 28px 32px !important; }
+        #bm-funnel .bm-benefits { padding: 32px 24px !important; }
+        #bm-funnel .bm-feature { padding: 56px 24px !important; }
+        #bm-funnel .bm-attractions { padding: 56px 24px !important; }
+        #bm-funnel .bm-tickets { padding: 56px 24px !important; }
+        #bm-funnel .bm-info-grid { grid-template-columns: 1fr 1fr !important; }
+        #bm-funnel .bm-info-item:nth-child(2n)::after { display: none !important; }
+        #bm-funnel .bm-gcard { width: 300px !important; height: 210px !important; }
+        #bm-funnel .bm-acard { height: 240px !important; }
+        #bm-funnel .bm-nights { padding: 56px 24px !important; }
+        #bm-funnel .bm-map { padding: 56px 24px !important; }
+    }
+    @media (max-width: 560px) {
+        #bm-funnel .bm-nav { padding: 0 16px !important; }
+        #bm-funnel .bm-logo-wrap { width: 130px !important; height: 36px !important; }
+        #bm-funnel .bm-logo-wrap img { width: 130px !important; height: 36px !important; max-width: 130px !important; max-height: 36px !important; }
+        #bm-funnel .bm-nav-cta { padding: 8px 16px !important; font-size: 0.76rem !important; }
+        #bm-funnel .bm-hero-content { padding: 0 18px 24px !important; }
+        #bm-funnel .bm-nav-loc { display: none !important; }
+        #bm-funnel .bm-benefits { padding: 24px 16px !important; }
+        #bm-funnel .bm-benefits-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 18px 0 !important; }
+        #bm-funnel .bm-benefit:nth-child(2n)::after { display: none !important; }
+        #bm-funnel .bm-feature { padding: 48px 16px !important; }
+        #bm-funnel .bm-attractions { padding: 48px 16px !important; }
+        #bm-funnel .bm-agrid { grid-template-columns: 1fr 1fr !important; gap: 12px !important; }
+        #bm-funnel .bm-acard { height: 180px !important; }
+        #bm-funnel .bm-tickets { padding: 48px 16px !important; }
+        #bm-funnel .bm-grid { grid-template-columns: 1fr !important; }
+        #bm-funnel .bm-gcard { width: 240px !important; height: 170px !important; }
+        #bm-funnel .bm-nights { padding: 48px 16px !important; }
+        #bm-funnel .bm-ngrid { grid-template-columns: 1fr !important; }
+        #bm-funnel .bm-map { padding: 48px 16px !important; }
+        #bm-funnel .bm-stop { font-size: 0.72rem !important; padding: 7px 13px !important; }
+    }
+</style>
+
+<div id="bm-funnel">
+
+    <!-- BANNER -->
+    <div class="bm-banner">
+        <div class="bm-banner-inner">
+            <span>👻 <strong>Flash Sale · Aug 12–16 · 30% Off Everything</strong></span>
+            <span class="bm-dot"></span>
+            <span>Opens Fri, Sept 4</span>
+            <span class="bm-dot"></span>
+            <span>Galleria Dallas · 2026</span>
+        </div>
+    </div>
+
+    <!-- NAV -->
+    <div class="bm-nav">
+        <div class="bm-logo-wrap">
+            <img src="https://s3.amazonaws.com/uploads.webconnex.com/200217%2F1785957466869-BoomontHotel_Stacked-WHITE.png" alt="The BooMont Hotel">
+        </div>
+        <div class="bm-nav-right">
+            <div class="bm-nav-loc">
+                <svg width="12" height="12" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                    <circle cx="12" cy="11" r="3"/>
+                </svg>
+                Dallas, TX
+            </div>
+            <a href="#ticketBlock" class="bm-nav-cta">Get Tickets</a>
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <div class="bm-hero">
+        <div class="bm-hero-overlay"></div>
+        <div class="bm-hero-content">
+            <span class="bm-hero-eyebrow">Inside Galleria Dallas</span>
+            <span class="bm-hero-title">The BooMont Hotel</span>
+            <span class="bm-hero-sub">check in, if you dare</span>
+            <div class="bm-hero-dates">
+                👻 <strong>Flash Sale</strong> runs Aug 12–16 — <strong>30% off every ticket</strong>, the best price of the season
+            </div>
+        </div>
+    </div>
+
+    <!-- BENEFITS -->
+    <div class="bm-benefits">
+        <div class="bm-benefits-grid">
+            <div class="bm-benefit">
+                <span class="bm-benefit-icon">🏊</span>
+                <span class="bm-benefit-title">The Ghoul Pool</span>
+                <span class="bm-benefit-desc">All-new for 2026 — and the room everyone will be talking about</span>
+            </div>
+            <div class="bm-benefit">
+                <span class="bm-benefit-icon">🪞</span>
+                <span class="bm-benefit-title">Haunted Mirror Maze</span>
+                <span class="bm-benefit-desc">You will lose your bearings. That's rather the point.</span>
+            </div>
+            <div class="bm-benefit">
+                <span class="bm-benefit-icon">🔑</span>
+                <span class="bm-benefit-title">RFID Scavenger Hunt</span>
+                <span class="bm-benefit-desc">13 stops through the hotel — VIP guests keep the key</span>
+            </div>
+            <div class="bm-benefit">
+                <span class="bm-benefit-icon">👨‍👩‍👧‍👦</span>
+                <span class="bm-benefit-title">Spooky, Not Scary</span>
+                <span class="bm-benefit-desc">Built for families and groups — no chainsaws, no grabbing</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- FEATURE -->
+    <div class="bm-feature">
+        <span class="bm-eye bmr">45 Minutes. Four Floors of Trouble.</span>
+        <span class="bm-title bmr">a walkthrough through <em>the halls of the BooMont</em></span>
+        <p class="bm-feature-copy bmr d1">The BooMont Hotel is a 45-minute escape-room-style walkthrough inside Galleria Dallas — part story, part spectacle, built for anyone who likes a good haunt without the jump scares. 2026 brings an expanded footprint, two brand-new rooms, and an RFID scavenger hunt that runs the length of the hotel. We closed in July to make it bigger. This is what we reopened with.</p>
+    </div>
+
+    <!-- TICKETS -->
+    <div class="bm-tickets" id="tickets">
+        <div class="bm-tickets-header bmr">
+            <span class="bm-eye">Flash Sale · Aug 12–16</span>
+            <span class="bm-title">five days, <em>30% off everything</em></span>
+        </div>
+        <div class="bm-grid">
+
+            <!-- GENERAL ADMISSION -->
+            <a href="#ticketBlock" class="bm-card bm-card-dark bmr" aria-label="Buy General Admission tickets">
+                <span class="bm-card-badge bm-card-badge-light">General Admission</span>
+                <span class="bm-card-icon">🎟️</span>
+                <h3>General Admission</h3>
+                <ul class="bm-card-bullets">
+                    <li>👻 The full 45-minute walkthrough</li>
+                    <li>🪞 Both new rooms — Ghoul Pool + Mirror Maze</li>
+                    <li>🔑 RFID scavenger hunt access</li>
+                    <li>🕐 Reserved arrival time</li>
+                </ul>
+                <div class="bm-card-price">
+                    <span class="bm-price-num">$20.97</span>
+                    <span class="bm-price-label">flash price<br><span style="text-decoration:line-through;opacity:0.7;">$29.95</span></span>
+                </div>
+                <span class="bm-card-note">October weekends are $34.95 at standard pricing.</span>
+            </a>
+
+            <!-- VIP -->
+            <a href="#ticketBlock" class="bm-card bm-card-fire bmr d1" aria-label="Buy VIP tickets">
+                <span class="bm-card-badge bm-card-badge-dark">Most Popular</span>
+                <span class="bm-card-icon">✨</span>
+                <h3>VIP</h3>
+                <ul class="bm-card-bullets">
+                    <li>👻 Everything in General Admission</li>
+                    <li>⚡ Skip the line at check-in</li>
+                    <li>🔑 Keep the RFID scavenger-hunt keychain</li>
+                    <li>🖼️ Commemorative prints and magnets</li>
+                </ul>
+                <div class="bm-card-price">
+                    <span class="bm-price-num">$27.97</span>
+                    <span class="bm-price-label">flash price<br><span style="text-decoration:line-through;opacity:0.7;">$39.95</span></span>
+                </div>
+                <span class="bm-card-note">About $25 of inclusions. VIP preview night opens Sept 1.</span>
+            </a>
+
+            <!-- 3-EVENT GA COMBO -->
+            <a href="#ticketBlock" class="bm-card bm-card-purple bmr d2" aria-label="Buy 3-Event Combo tickets">
+                <span class="bm-card-badge bm-card-badge-light">All Three Events</span>
+                <span class="bm-card-icon">🎫</span>
+                <h3>3-Event Combo</h3>
+                <ul class="bm-card-bullets">
+                    <li>👻 BooMont Hotel — this fall</li>
+                    <li>❄️ Snowday Dallas — winter</li>
+                    <li>🎄 Santaland — Christmas</li>
+                    <li>🎟️ General admission to all three</li>
+                </ul>
+                <div class="bm-card-price">
+                    <span class="bm-price-num">$52.47</span>
+                    <span class="bm-price-label">flash price<br><span style="text-decoration:line-through;opacity:0.7;">$74.95</span></span>
+                </div>
+                <span class="bm-card-note">One purchase covers the whole season at the Galleria.</span>
+            </a>
+
+            <!-- 3-EVENT VIP COMBO — full-width banner card (three-max grid rule) -->
+            <a href="#ticketBlock" class="bm-card bm-card-purple bmr d3" style="grid-column:1/-1;" aria-label="Buy 3-Event VIP Combo tickets">
+                <span class="bm-card-badge bm-card-badge-dark">Best Value</span>
+                <span class="bm-card-icon">👑</span>
+                <h3>3-Event VIP Combo</h3>
+                <ul class="bm-card-bullets">
+                    <li>✨ VIP access to all three Modus events</li>
+                    <li>⚡ Skip the line at every one</li>
+                    <li>🔑 Keepsake RFID keychain and prints</li>
+                    <li>🎄 Every new room, every season</li>
+                </ul>
+                <div class="bm-card-price">
+                    <span class="bm-price-num">$69.97</span>
+                    <span class="bm-price-label">flash price<br><span style="text-decoration:line-through;opacity:0.7;">$99.95</span></span>
+                </div>
+                <span class="bm-card-note">The top of the ladder — every event, every upgrade.</span>
+            </a>
+
+        </div>
+    </div>
+
+    <!-- KEY DATES -->
+    <div class="bm-nights" id="key-dates">
+        <div class="bm-nights-header bmr">
+            <span class="bm-eye">Mark Your Calendar</span>
+            <span class="bm-title">the <em>season at a glance</em></span>
+        </div>
+        <div class="bm-ngrid">
+
+            <div class="bm-ncard bmr">
+                <span class="bm-ndate">Wed, Aug 12</span>
+                <span class="bm-nicon">⚡</span>
+                <span class="bm-nname">Flash Sale Opens</span>
+                <span class="bm-ntime">30% off every ticket type</span>
+                <span class="bm-nprice">5 days</span>
+                <span class="bm-nper">closes Sun, Aug 16</span>
+            </div>
+
+            <div class="bm-ncard bmr d1">
+                <span class="bm-ndate">Mon, Aug 17</span>
+                <span class="bm-nicon">🕯️</span>
+                <span class="bm-nname">Early Bird</span>
+                <span class="bm-ntime">Pre-sale pricing until doors open</span>
+                <span class="bm-nprice">15% off</span>
+                <span class="bm-nper">through Sept 3</span>
+            </div>
+
+            <div class="bm-ncard bmr d2">
+                <span class="bm-ndate">Tue, Sept 1</span>
+                <span class="bm-nicon">✨</span>
+                <span class="bm-nname">VIP Preview Night</span>
+                <span class="bm-ntime">First guests through the doors</span>
+                <span class="bm-nprice">VIP</span>
+                <span class="bm-nper">before public opening</span>
+            </div>
+
+            <div class="bm-ncard bmr d3">
+                <span class="bm-ndate">Fri, Sept 4</span>
+                <span class="bm-nicon">🏨</span>
+                <span class="bm-nname">Doors Open</span>
+                <span class="bm-ntime">The 2026 season begins</span>
+                <span class="bm-nprice">Sept 4</span>
+                <span class="bm-nper">through Nov 1</span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- INFO -->
+    <div class="bm-info">
+        <div class="bm-info-grid">
+            <div class="bm-info-item">
+                <span class="bm-info-icon">📍</span>
+                <span class="bm-info-label">Where</span>
+                <span class="bm-info-value">Galleria Dallas<br>13350 Dallas Pkwy, Dallas, TX 75240</span>
+            </div>
+            <div class="bm-info-item">
+                <span class="bm-info-icon">🗓️</span>
+                <span class="bm-info-label">Season</span>
+                <span class="bm-info-value">Sept 4 – Nov 1, 2026<br>VIP preview Sept 1</span>
+            </div>
+            <div class="bm-info-item">
+                <span class="bm-info-icon">⏱️</span>
+                <span class="bm-info-label">How Long</span>
+                <span class="bm-info-value">About 45 minutes<br>start to finish</span>
+            </div>
+            <div class="bm-info-item">
+                <span class="bm-info-icon">🎟️</span>
+                <span class="bm-info-label">Arrival</span>
+                <span class="bm-info-value">Timed entry — pick your slot<br>at checkout and arrive within it</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="bm-footer">
+        <span class="bm-footer-text">© 2026 Modus · The BooMont Hotel — Galleria Dallas, TX.</span>
+    </div>
+
+</div><!-- end #bm-funnel -->
+
+<script>
+    (function() {
+        var obs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) {
+                if (e.isIntersecting) { e.target.classList.add('bmon'); obs.unobserve(e.target); }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('#bm-funnel .bmr').forEach(function(el) {
+            obs.observe(el);
+            if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('bmon');
+        });
+        document.querySelectorAll('#bm-funnel a[href^="#"]').forEach(function(a) {
+            a.addEventListener('click', function(e) {
+                e.preventDefault();
+                var t = document.querySelector(a.getAttribute('href'));
+                if (t) t.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    })();
+</script>
+
+<!-- ════ NATIVE TICKETSPICE CART SKIN ════
+     The cart below this content is TicketSpice's own. Skin it to the BooMont
+     sub-brand so the page reads as one piece. Carried over from the 2026-08-10
+     waitlist build, including its hard-won gotcha. -->
+<style>
+  #ticketBlock h4{ font-family:"futura-pt",sans-serif !important; color:#fff !important; letter-spacing:.05em !important; }
+  #ticketBlock .ticket-cost{ color:#C9A24B !important; font-family:"futura-pt-bold",sans-serif !important; }
   input[type="email"], input[type="tel"], input[type="text"], input[type="number"], select{
-    background:#0d0910 !important;border:1px solid rgba(109,70,143,.55) !important;
-    border-radius:3px !important;padding:14px !important;color:#fff !important;
-    font-family:"futura-pt",sans-serif !important;font-size:16px !important;
+    background:#0d0910 !important; border:1px solid rgba(109,70,143,.55) !important;
+    border-radius:3px !important; padding:14px !important; color:#fff !important;
+    font-family:"futura-pt",sans-serif !important; font-size:16px !important;
   }
-  input::placeholder{color:rgba(255,255,255,.32) !important}
-  input:focus{border-color:#6D468F !important;box-shadow:0 0 0 3px rgba(109,70,143,.28) !important;outline:none !important}
-  label{font-family:"futura-pt-bold",sans-serif !important;font-size:11px !important;letter-spacing:.18em !important;text-transform:uppercase;color:rgba(255,255,255,.62) !important}
-  /* submit button: emerald, TS-native COMPACT size.
-     ⚠️ NEVER use [class*="submit"] — it matches the full-width .submit-row WRAPPER and
-     paints the whole row green. Target the button element only. (Waitlist-page lesson.) */
-  .campaign-form .submit-row{ text-align:center !important; background:transparent !important; padding:0 !important; margin-top:50px !important; }
+  input::placeholder{ color:rgba(255,255,255,.32) !important; }
+  input:focus{ border-color:#6D468F !important; box-shadow:0 0 0 3px rgba(109,70,143,.28) !important; outline:none !important; }
+  label{ font-family:"futura-pt-bold",sans-serif !important; font-size:11px !important;
+         letter-spacing:.18em !important; text-transform:uppercase; color:rgba(255,255,255,.62) !important; }
+  /* Emerald submit, TS-native COMPACT size.
+     WARNING: never use [class*="submit"] — it matches the full-width .submit-row
+     WRAPPER and paints the whole row green. Target the button element only. */
+  .campaign-form .submit-row{ text-align:center !important; background:transparent !important;
+                              padding:0 !important; margin-top:50px !important; }
   .campaign-form .next.btn.btn-primary, .campaign-form button[type="submit"]{
     display:inline-block !important; width:auto !important; margin:0 auto !important;
     background:#006347 !important; color:#fff !important; border:0 !important; border-radius:3px !important;
@@ -202,147 +709,25 @@
     text-transform:uppercase !important; letter-spacing:.16em !important; font-size:15px !important;
     padding:14px 54px !important; cursor:pointer !important;
   }
-  .campaign-form .next.btn.btn-primary:hover, .campaign-form button[type="submit"]:hover{ background:#024732 !important }
+  .campaign-form .next.btn.btn-primary:hover, .campaign-form button[type="submit"]:hover{ background:#024732 !important; }
   .campaign-form a{ color:#C9A24B !important; }
 
-  /* slash-through on the NATIVE ticket block — rendered from data-gate (see script) */
+  /* struck flash-sale gate price, rendered from data-gate (see script) */
   #ticketBlock .ticket-cost[data-gate]::before{
-    content: attr(data-gate) " ";
-    text-decoration: line-through;
-    color: rgba(255,255,255,.42);
-    font-weight: 200;
-    margin-right: 4px;
+    content: attr(data-gate) " "; text-decoration: line-through;
+    color: rgba(255,255,255,.42); font-weight: 200; margin-right: 4px;
   }
 </style>
 
-<div id="bm-hero">
-  <img class="bm-wordmark" src="https://s3.amazonaws.com/uploads.webconnex.com/200217%2F1785957466869-BoomontHotel_Stacked-WHITE.png" alt="The BooMont Hotel">
-  <div class="bm-eyebrow">Galleria Dallas · September 4 – November 1</div>
-  <h1 class="bm-head">Check In,<br>If You Dare</h1>
-  <div class="bm-flash">Flash Sale · Aug 12–16 · <span class="bm-flash-pct">30% Off Everything</span></div>
-</div>
-
-<div id="bm-funnel">
-
-  <p class="bm-lede">A 45-minute walkthrough through the halls of the BooMont Hotel. Spooky, not scary — built for families, groups, and anyone who likes a good story.</p>
-  <p class="bm-body">2026 brings two all-new rooms — the <span class="hl">Ghoul Pool</span> and the <span class="hl">Haunted Mirror Maze</span> — plus an <span class="hl">RFID scavenger hunt</span> running the length of the hotel. This is the lowest pricing of the entire season, and it closes <span class="hl">Sunday, August 16</span>.</p>
-
-  <div class="bm-rule"></div>
-
-  <div class="bm-grid">
-
-    <div class="bm-card">
-      <h3>General Admission</h3>
-      <div class="bm-price-row">
-        <span class="bm-price-was">$29.95</span>
-        <span class="bm-price-now">$20.97</span>
-      </div>
-      <div class="bm-price-note">Flash sale price · plus fees</div>
-      <ul>
-        <li>Full 45-minute BooMont Hotel walkthrough</li>
-        <li>Both new rooms — Ghoul Pool + Haunted Mirror Maze</li>
-        <li>RFID scavenger hunt access</li>
-        <li>Reserved arrival time</li>
-      </ul>
-      <div class="bm-card-foot">Valid any operating day. October weekends are $34.95 at standard pricing.</div>
-    </div>
-
-    <div class="bm-card is-featured">
-      <span class="bm-card-tag">Most Popular</span>
-      <h3>VIP</h3>
-      <div class="bm-price-row">
-        <span class="bm-price-was">$39.95</span>
-        <span class="bm-price-now">$27.97</span>
-      </div>
-      <div class="bm-price-note">Flash sale price · plus fees</div>
-      <ul>
-        <li>Everything in General Admission</li>
-        <li><strong style="color:#fff">Skip the line</strong> at check-in</li>
-        <li>RFID scavenger-hunt keychain — 13 stops, yours to keep</li>
-        <li>Commemorative prints and magnets</li>
-      </ul>
-      <div class="bm-card-foot">Roughly $25 of inclusions. VIP preview night opens September 1.</div>
-    </div>
-
-    <div class="bm-card">
-      <h3>3-Event Combo</h3>
-      <div class="bm-price-row">
-        <span class="bm-price-was">$74.95</span>
-        <span class="bm-price-now">$52.47</span>
-      </div>
-      <div class="bm-price-note">Flash sale price · plus fees</div>
-      <ul>
-        <li>General Admission to <strong style="color:#fff">all three</strong> Modus events</li>
-        <li>BooMont Hotel — this fall</li>
-        <li>Snowday Dallas — winter</li>
-        <li>Santaland — Christmas</li>
-      </ul>
-      <div class="bm-card-foot">One purchase covers the whole season at the Galleria.</div>
-    </div>
-
-    <div class="bm-banner">
-      <div class="bm-banner-main">
-        <span class="bm-card-tag">Best Value</span>
-        <h3>3-Event VIP Combo</h3>
-        <div class="bm-banner-bullets">
-          <ul>
-            <li>VIP access to all three Modus events</li>
-            <li>Skip the line at every one</li>
-          </ul>
-          <ul>
-            <li>Keepsake RFID keychain + prints</li>
-            <li>Every new room, every season</li>
-          </ul>
-        </div>
-      </div>
-      <div class="bm-banner-rail">
-        <div class="bm-price-row" style="justify-content:center">
-          <span class="bm-price-was">$99.95</span>
-          <span class="bm-price-now">$69.97</span>
-        </div>
-        <div class="bm-price-note" style="margin-bottom:0">Flash sale price · plus fees</div>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="bm-rule"></div>
-
-  <div class="bm-cols">
-    <div class="bm-panel">
-      <h4>New for 2026</h4>
-      <ul>
-        <li><strong style="color:#fff">The Ghoul Pool</strong> — an all-new room, and the one everyone will be talking about.</li>
-        <li><strong style="color:#fff">The Haunted Mirror Maze</strong> — you will lose your bearings. That's the point.</li>
-        <li><strong style="color:#fff">RFID Scavenger Hunt</strong> — 13 stops through the hotel. VIP guests keep the key.</li>
-        <li>An expanded footprint and a refreshed walkthrough end to end.</li>
-      </ul>
-    </div>
-    <div class="bm-panel">
-      <h4>Know Before You Go</h4>
-      <ul>
-        <li><strong style="color:#fff">Where:</strong> Galleria Dallas, 13350 Dallas Pkwy, Dallas, TX 75240</li>
-        <li><strong style="color:#fff">Season:</strong> September 4 – November 1, 2026. VIP preview September 1.</li>
-        <li><strong style="color:#fff">How long:</strong> about 45 minutes, start to finish.</li>
-        <li><strong style="color:#fff">Arrival:</strong> tickets are sold in timed slots — pick your time at checkout and arrive within it.</li>
-        <li><strong style="color:#fff">Scare level:</strong> spooky, not scary. No chainsaws, no actors grabbing you.</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="bm-rule"></div>
-
-</div>
-
-<!-- ════ SLASH-THROUGH PRICING on the NATIVE ticket block ════
-     Tags each ticket row by its <h4> NAME (never nth-child — a conditional Action
-     that shows/hides a ticket shifts every positional index silently).
+<!-- ════ SLASH-THROUGH PRICING on the native ticket block ════
+     Tags each ticket row by its <h4> NAME, never nth-child — a conditional
+     Action that shows/hides a ticket shifts every positional index silently.
      Pattern: crowd7/data/clients/_patterns/slash-through-pricing.md
 
-     ⚠️ NEEDS-CONFIRM: the four keys below are our BEST GUESS at the native ticket
-     names. They must match the cart EXACTLY (trimmed text of each row's h4) or the
-     struck price simply will not render. Confirm from a live cart dump and correct
-     these before promoting to production. -->
+     NEEDS-CONFIRM: these four keys are a BEST GUESS at the native ticket names.
+     They must match the live cart exactly or the struck price simply will not
+     render — no error, it just silently does nothing. Confirm from a live cart
+     dump and correct before promoting to production. -->
 <script>
 (function(){
   var GATE = {
@@ -366,7 +751,7 @@
 })();
 </script>
 
-<div style="max-width:760px;margin:40px auto 90px;padding:0 20px">
+<div style="max-width:760px;margin:0 auto 90px;padding:40px 20px 0">
   <div style="font:600 11px/1 'futura-pt-bold',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#C9A24B;margin-bottom:14px">
     &darr; mock native TicketSpice cart (preview only)
   </div>
