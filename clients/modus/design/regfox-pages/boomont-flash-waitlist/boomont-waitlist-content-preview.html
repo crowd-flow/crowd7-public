@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BooMont Waitlist — RegFox skin preview</title>
+<link rel="icon" href="https://theboomont.com/wp-content/uploads/2025/07/Boo_FaviconG-300x300.png">
+<!--
+  Content-preview sibling (mirrors the TS *-content-preview.html convention).
+  This markup imitates a NATIVE RegFox page's DOM — an image element, headings,
+  paragraphs, email/tel inputs, a register button — so it proves our skin
+  (boomont-waitlist.css) binds via broad element/attribute selectors WITHOUT
+  needing RegFox's exact class names. On the live RegFox page, this content is
+  built with native RegFox elements and skinned by the SAME css via @import.
+-->
+<link rel="stylesheet" href="production/boomont-waitlist.css">
+<style>
+  /* preview-only scaffolding (NOT part of the shipped skin) — layout centering + spacing a RegFox page provides itself */
+  .rf-page{max-width:600px;margin:0 auto;padding:46px 24px 64px;text-align:center;min-height:100vh}
+  .rf-field{text-align:left;margin:0 auto 16px;max-width:440px}
+  .rf-form-shell{max-width:440px;margin:8px auto 0;background:rgba(13,9,16,.72);border:1px solid rgba(109,70,143,.55);border-radius:4px;padding:30px 26px 28px}
+  .rf-page > p{max-width:470px;margin:0 auto 14px}
+  .rf-preview-flag{position:fixed;top:10px;left:10px;background:rgba(109,70,143,.9);color:#fff;font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:5px 9px;border-radius:3px;font-family:"futura-pt-bold",sans-serif;z-index:9}
+  .rf-rule{width:54px;height:1px;background:linear-gradient(90deg,transparent,#C9A24B,transparent);margin:30px auto}
+  footer{margin-top:52px}
+  footer img{width:52px;opacity:.85;margin-bottom:10px}
+  footer .handle{font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:rgba(255,255,255,.62)}
+</style>
+</head>
+<body>
+<div class="rf-preview-flag">Preview · skin = boomont-waitlist.css</div>
+<div class="rf-page">
+
+  <!-- native RegFox image element -->
+  <img class="c7-logo" src="https://theboomont.com/wp-content/uploads/2026/02/BoomontHotel_Stacked-WHITE.png" alt="The BooMont Hotel">
+
+  <!-- native RegFox text element -->
+  <p class="c7-eyebrow">Galleria Dallas · 2026</p>
+
+  <!-- native RegFox heading -->
+  <h1>Join the Guest List</h1>
+
+  <p style="color:#fff;font-size:18px;line-height:1.55">Be first through the doors. Get <strong>early access</strong> to the biggest ticket offer of the season — before it opens to anyone else.</p>
+
+  <p>The BooMont Hotel returns for 2026 with the all-new <span style="color:#fff">Ghoul Pool</span> and the <span style="color:#fff">Haunted Mirror Maze</span> — plus a new VIP experience and 3-event combo passes. Guest-list members get the first look when the offer drops. <span style="color:#fff">Five days only, beginning August 12.</span></p>
+
+  <div class="rf-rule"></div>
+
+  <!-- native RegFox fields + register button (skinned by our CSS) -->
+  <div class="rf-form-shell">
+    <div class="rf-field">
+      <label>Email Address</label>
+      <input type="email" placeholder="you@email.com">
+    </div>
+    <div class="rf-field">
+      <label>Mobile Number</label>
+      <input type="tel" placeholder="(555) 555-5555">
+    </div>
+    <button class="register-button" type="button">Reserve My Early Access</button>
+    <p class="c7-consent" style="margin-top:16px">By joining, I agree to receive marketing emails and text messages from The BooMont Hotel. Msg &amp; data rates may apply. Reply STOP to unsubscribe.</p>
+  </div>
+
+  <footer>
+    <img src="https://theboomont.com/wp-content/uploads/2025/08/BooMonogramDetail.png" alt="">
+    <div class="handle">@theboomont</div>
+  </footer>
+
+</div>
+</body>
+</html>
