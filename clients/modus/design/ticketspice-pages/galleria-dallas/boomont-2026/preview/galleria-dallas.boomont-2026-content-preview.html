@@ -3,10 +3,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>BooMont Hotel 2026 — preview</title>
 <style>html,body{margin:0;padding:0;background:#10081c}</style>
-<!-- STANDALONE BROWSER PREVIEW - generated from the sibling content block.
-     The loader never pulls this file; it serves the parent preview/ or
-     production/ folder only. Mock cart below stands in for the native
-     TicketSpice ticket block so the cart skin + struck prices are visible. -->
+<!-- STANDALONE BROWSER PREVIEW - generated from the sibling content block. -->
 </head><body>
 <!-- ════════════════════════════════════════════════════════════════════
      MODUS · BOOMONT HOTEL · GALLERIA DALLAS · 2026  —  HYBRID-LOADER CONTENT
@@ -307,6 +304,19 @@
     #bm-funnel .bm-card-purple .bm-card-bullets li { color: rgba(255,255,255,0.8) !important; }
     #bm-funnel .bm-card-dark .bm-card-bullets li { color: rgba(255,255,255,0.7) !important; }
 
+    /* ── WIDE CARD ──
+       The fourth offer never becomes a fourth column (three-max grid rule).
+       It spans the full row instead, and its bullets run in TWO columns so the
+       card stays short rather than turning into a tall orphan. */
+    #bm-funnel .bm-card-wide { grid-column: 1 / -1 !important; }
+    #bm-funnel .bm-card-wide .bm-card-bullets {
+        display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        column-gap: 28px !important; row-gap: 6px !important;
+    }
+    @media (max-width: 720px) {
+        #bm-funnel .bm-card-wide .bm-card-bullets { grid-template-columns: 1fr !important; }
+    }
+
     #bm-funnel .bm-card-price { display: flex !important; align-items: baseline !important; gap: 6px !important; margin-top: 20px !important; padding-top: 16px !important; }
     #bm-funnel .bm-card-fire .bm-card-price { border-top: 1px solid rgba(16,8,28,0.22) !important; }
     #bm-funnel .bm-card-purple .bm-card-price { border-top: 1px solid rgba(255,255,255,0.16) !important; }
@@ -560,9 +570,9 @@
             </a>
 
             <!-- 3-EVENT VIP COMBO — full-width banner card (three-max grid rule) -->
-            <a href="#ticketBlock" class="bm-card bm-card-purple bmr d3" style="grid-column:1/-1;" aria-label="Buy 3-Event VIP Combo tickets">
+            <a href="#ticketBlock" class="bm-card bm-card-purple bm-card-wide bmr d3" aria-label="Buy 3-Event VIP Combo tickets">
                 <span class="bm-card-badge bm-card-badge-dark">Best Value</span>
-                <span class="bm-card-icon">👑</span>
+                <span class="bm-card-icon">🎭</span>
                 <h3>3-Event VIP Combo</h3>
                 <ul class="bm-card-bullets">
                     <li>✨ VIP access to all three Modus events</li>
