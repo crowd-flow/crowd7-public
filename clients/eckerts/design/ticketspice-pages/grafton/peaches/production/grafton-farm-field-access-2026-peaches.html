@@ -899,3 +899,61 @@
   })();
   </script>
   <!-- =================== SHIPPABLE BLOCK END =================== -->
+
+<!-- =================== SHIPPABLE BLOCK START =================== -->
+  <!-- Grafton "extreme-heat closure" pop-up — August 11-12, 2026 ONLY. Self-contained:
+       namespaced gclosepop-* + IIFE so it can't clash with TS or any other popup on this page.
+       This is a TODAY status alert (not tied to a selected ticket date) — shows immediately on
+       page load whenever the visitor's local clock reads Aug 11 or Aug 12, 2026.
+       To DISABLE: set window.GCLOSE_ENABLED = false (or delete this block).
+       AUTO-EXPIRES: dormant on/after Aug 13, 2026 (KILL date) — still delete this whole block
+       after the event (self-queued takedown). Copy is Amanda's own verbatim wording — do not reword. -->
+  <div id="gclosepop-overlay" class="gclosepop-overlay" role="dialog" aria-modal="true" aria-labelledby="gclosepop-title" hidden>
+    <div class="gclosepop-card">
+      <button class="gclosepop-close" aria-label="Close">&times;</button>
+      <div class="gclosepop-icon">🌡️</div>
+      <h3 id="gclosepop-title" class="gclosepop-h">Early closure &mdash; extreme heat</h3>
+      <p class="gclosepop-p">
+        The Grafton Farm closes today at 2pm due to the extreme heat. Last wagon out at 1:30pm.
+      </p>
+      <button class="gclosepop-ok">Got it</button>
+    </div>
+  </div>
+
+  <style>
+    .gclosepop-overlay{position:fixed;inset:0;z-index:2147483000;display:flex;align-items:center;justify-content:center;
+      background:rgba(26,8,8,.62);padding:20px;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+    .gclosepop-overlay[hidden]{display:none;}
+    .gclosepop-card{position:relative;background:#fff;max-width:430px;width:100%;border-radius:16px;padding:30px 26px 26px;
+      box-shadow:0 24px 60px rgba(0,0,0,.4);text-align:center;font-family:'Open Sans',system-ui,sans-serif;
+      animation:gclosepop-in .25s ease;box-sizing:border-box;}
+    @keyframes gclosepop-in{from{opacity:0;transform:translateY(14px) scale(.97);}to{opacity:1;transform:none;}}
+    .gclosepop-icon{font-size:2.6rem;line-height:1;margin-bottom:10px;}
+    .gclosepop-h{font-family:'Zilla Slab','Times New Roman',serif;font-size:1.4rem;font-weight:700;color:#B01030;margin:0 0 12px;line-height:1.2;}
+    .gclosepop-p{font-size:.95rem;line-height:1.55;color:#3a2020;margin:0 0 22px;}
+    .gclosepop-ok{background:#B01030;color:#fff;border:0;border-radius:50px;padding:12px 34px;font-size:.95rem;font-weight:700;
+      cursor:pointer;letter-spacing:.02em;}
+    .gclosepop-ok:hover{background:#7A0820;}
+    .gclosepop-close{position:absolute;top:10px;right:14px;background:none;border:0;font-size:1.7rem;line-height:1;color:#b88;cursor:pointer;}
+    .gclosepop-close:hover{color:#B01030;}
+  </style>
+
+  <script>
+  (function(){
+    if (window.GCLOSE_ENABLED === false) return;          // kill switch
+    if (new Date() >= new Date(2026, 7, 13)) return;       // auto-dormant on/after Aug 13, 2026
+    if (new Date() < new Date(2026, 7, 11)) return;        // not yet in the closure window
+    var ov = document.getElementById('gclosepop-overlay');
+    if(!ov) return;
+    var dismissed = false;
+
+    function show(){ if(!dismissed){ ov.hidden = false; } }
+    function hide(){ ov.hidden = true; }
+    ov.querySelector('.gclosepop-close').addEventListener('click', function(){ dismissed=true; hide(); });
+    ov.querySelector('.gclosepop-ok').addEventListener('click',  function(){ dismissed=true; hide(); });
+    ov.addEventListener('click', function(e){ if(e.target===ov){ dismissed=true; hide(); } });
+
+    if(document.readyState!=='loading') show(); else document.addEventListener('DOMContentLoaded', show);
+  })();
+  </script>
+  <!-- =================== SHIPPABLE BLOCK END =================== -->
