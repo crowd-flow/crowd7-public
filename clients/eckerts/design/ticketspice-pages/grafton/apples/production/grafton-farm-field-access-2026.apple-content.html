@@ -867,8 +867,17 @@
   <script>
   (function(){
     if (window.GCLOSE_ENABLED === false) return;          // kill switch
-    if (new Date() >= new Date(2026, 7, 13)) return;       // auto-dormant on/after Aug 13, 2026
-    if (new Date() < new Date(2026, 7, 11)) return;        // not yet in the closure window
+    // Gate on America/Chicago wall-clock date (Eckert's is Illinois, Central time) —
+    // NOT the visitor's local browser timezone, which would drift the window by hours.
+    function chicagoYMD(){
+      var fmt = new Intl.DateTimeFormat('en-US', {timeZone: 'America/Chicago', year:'numeric', month:'2-digit', day:'2-digit'});
+      var parts = fmt.formatToParts(new Date()), y, m, d;
+      parts.forEach(function(p){ if(p.type==='year') y=+p.value; if(p.type==='month') m=+p.value; if(p.type==='day') d=+p.value; });
+      return {y:y, m:m, d:d};
+    }
+    var today = chicagoYMD();
+    var inWindow = today.y===2026 && today.m===8 && (today.d===11 || today.d===12);
+    if (!inWindow) return;                                  // outside 8/11-8/12 Central, do not show
     var ov = document.getElementById('gclosepop-overlay');
     if(!ov) return;
     var dismissed = false;
