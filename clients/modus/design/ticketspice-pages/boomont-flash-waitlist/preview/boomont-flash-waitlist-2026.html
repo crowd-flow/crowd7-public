@@ -63,18 +63,21 @@
   input::placeholder{color:rgba(255,255,255,.32) !important}
   input:focus{border-color:#6D468F !important;box-shadow:0 0 0 3px rgba(109,70,143,.28) !important;outline:none !important}
   label{font-family:"futura-pt-bold",sans-serif !important;font-size:11px !important;letter-spacing:.18em !important;text-transform:uppercase;color:rgba(255,255,255,.62) !important}
-  button, .register-button, [class*="submit"], input[type="submit"], a.button{
-    background:#006347 !important;color:#fff !important;border:0 !important;
-    font-family:"futura-pt-bold","futura-pt",sans-serif !important;font-weight:600 !important;
-    text-transform:uppercase !important;letter-spacing:.16em !important;font-size:16px !important;
-    padding:16px 18px !important;border-radius:3px !important;cursor:pointer;
+  /* submit button: OUR emerald, but TS-native COMPACT size — auto-width + centered (NOT full-bleed).
+     ⚠️ NEVER use [class*="submit"] — it matches the full-width .submit-row WRAPPER and paints the
+     whole row green, which is what made the button look full-bleed. Target the button element only. */
+  .campaign-form .submit-row{ text-align:center !important; background:transparent !important; padding:0 !important; }
+  .campaign-form .next.btn.btn-primary, .campaign-form button[type="submit"]{
+    display:inline-block !important; width:auto !important; margin:0 auto !important;
+    background:#006347 !important; color:#fff !important; border:0 !important; border-radius:3px !important;
+    font-family:"futura-pt-bold","futura-pt",sans-serif !important; font-weight:600 !important;
+    text-transform:uppercase !important; letter-spacing:.16em !important; font-size:15px !important;
+    padding:14px 54px !important; cursor:pointer !important;
   }
-  button:hover, .register-button:hover, [class*="submit"]:hover, input[type="submit"]:hover{background:#024732 !important}
+  .campaign-form .next.btn.btn-primary:hover, .campaign-form button[type="submit"]:hover{ background:#024732 !important }
 
   /* ---- native TS form refinements ----
-     Form fields REVERTED to TS full-width (the cap+labels-left combo looked cramped — Mat 2026-08-10). */
-  /* submit button: reduce height ~25% (16px -> 10px vertical padding) */
-  .campaign-form .next.btn.btn-primary{ padding-top:10px !important; padding-bottom:10px !important; }
+     Form fields left at TS full-width (Mat 2026-08-10). */
   /* terms/privacy (and any form link) → brand gold, not the default orange */
   .campaign-form a{ color:#C9A24B !important; }
 </style>
