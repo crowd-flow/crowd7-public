@@ -279,15 +279,45 @@
 
     /* ── WIDE CARD ──
        The fourth offer never becomes a fourth column (three-max grid rule).
-       It spans the full row instead, and its bullets run in TWO columns so the
-       card stays short rather than turning into a tall orphan. */
-    #bm-funnel .bm-card-wide { grid-column: 1 / -1 !important; }
-    #bm-funnel .bm-card-wide .bm-card-bullets {
-        display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-        column-gap: 28px !important; row-gap: 6px !important;
+       It spans the full row instead and splits into TWO columns: details on the
+       left (bullets stay a single list), price rail on the right with a divider.
+       Same shape as Colony's bonfire banner card. Stacks under 820px. */
+    #bm-funnel .bm-card-wide {
+        grid-column: 1 / -1 !important;
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) minmax(230px, 290px) !important;
+        column-gap: 40px !important;
+        align-items: start !important;
     }
-    @media (max-width: 720px) {
-        #bm-funnel .bm-card-wide .bm-card-bullets { grid-template-columns: 1fr !important; }
+    #bm-funnel .bm-card-wide .bm-card-badge,
+    #bm-funnel .bm-card-wide .bm-card-icon,
+    #bm-funnel .bm-card-wide h3,
+    #bm-funnel .bm-card-wide .bm-card-bullets { grid-column: 1 !important; }
+    #bm-funnel .bm-card-wide .bm-card-price,
+    #bm-funnel .bm-card-wide .bm-card-note { grid-column: 2 !important; }
+    /* price rail: divider moves from top-border to left-border */
+    #bm-funnel .bm-card-wide .bm-card-price {
+        border-top: 0 !important;
+        border-left: 1px solid rgba(255,255,255,0.16) !important;
+        padding-top: 0 !important; padding-left: 30px !important;
+        margin-top: 4px !important;
+        flex-wrap: wrap !important;
+    }
+    #bm-funnel .bm-card-wide .bm-card-note { padding-left: 30px !important; margin-top: 12px !important; }
+    @media (max-width: 820px) {
+        #bm-funnel .bm-card-wide { grid-template-columns: 1fr !important; }
+        #bm-funnel .bm-card-wide .bm-card-badge,
+        #bm-funnel .bm-card-wide .bm-card-icon,
+        #bm-funnel .bm-card-wide h3,
+        #bm-funnel .bm-card-wide .bm-card-bullets,
+        #bm-funnel .bm-card-wide .bm-card-price,
+        #bm-funnel .bm-card-wide .bm-card-note { grid-column: 1 !important; }
+        #bm-funnel .bm-card-wide .bm-card-price {
+            border-left: 0 !important;
+            border-top: 1px solid rgba(255,255,255,0.16) !important;
+            padding-left: 0 !important; padding-top: 16px !important; margin-top: 20px !important;
+        }
+        #bm-funnel .bm-card-wide .bm-card-note { padding-left: 0 !important; }
     }
 
     #bm-funnel .bm-card-price { display: flex !important; align-items: baseline !important; gap: 6px !important; margin-top: 20px !important; padding-top: 16px !important; }
