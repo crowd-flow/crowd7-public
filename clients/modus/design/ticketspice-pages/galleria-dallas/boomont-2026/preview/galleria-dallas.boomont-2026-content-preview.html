@@ -99,7 +99,7 @@
         width: 100% !important;
         min-height: clamp(400px, 68vw, 680px) !important;
         position: relative !important;
-        display: flex !important; align-items: flex-end !important;
+        display: flex !important; align-items: center !important; justify-content: center !important;
         overflow: hidden !important;
         background: url('https://cdn.uploads.webconnex.com/200217/tall%20building.png') center center/cover no-repeat, linear-gradient(135deg, #3a2450 0%, #150a24 55%, #10081c 100%) !important;
     }
@@ -110,37 +110,17 @@
     }
     #bm-funnel .bm-hero-content {
         position: relative !important; z-index: 2 !important;
-        padding: 0 48px 48px !important; width: 100% !important; box-sizing: border-box !important;
+        padding: 48px !important; width: 100% !important; box-sizing: border-box !important;
+        display: flex !important; align-items: center !important; justify-content: center !important;
     }
-    #bm-funnel .bm-hero-eyebrow {
-        font-family: "futura-pt-bold", sans-serif !important;
-        font-size: 0.78rem !important; font-weight: 700 !important;
-        letter-spacing: 0.2em !important; text-transform: uppercase !important;
-        color: #C9A24B !important; margin-bottom: 10px !important; display: block !important;
-        opacity: 0; animation: bmFadeUp 0.6s ease 0.2s forwards;
+    #bm-funnel .bm-hero-wordmark {
+        width: min(560px, 68%) !important; height: auto !important; display: block !important;
+        filter: drop-shadow(0 6px 28px rgba(0,0,0,0.65)) !important;
+        opacity: 0; animation: bmFadeUp 0.8s ease 0.25s forwards;
     }
-    #bm-funnel .bm-hero-title {
-        font-family: "futura-pt", sans-serif !important;
-        font-size: clamp(2.8rem, 9vw, 6rem) !important; font-weight: 400 !important;
-        color: #6D468F !important; line-height: 0.95 !important; display: block !important;
-        text-shadow: 0 0 24px rgba(109,70,143,0.55), 0 4px 20px rgba(0,0,0,0.6) !important;
-        letter-spacing: 0.02em !important;
-        opacity: 0; animation: bmFadeUp 0.7s ease 0.35s forwards;
+    @media (max-width: 767px) {
+        #bm-funnel .bm-hero-wordmark { width: min(320px, 78%) !important; }
     }
-    #bm-funnel .bm-hero-sub {
-        font-family: "futura-pt-bold", sans-serif !important;
-        font-size: clamp(1rem, 2.4vw, 1.35rem) !important; font-weight: 600 !important;
-        color: #e0c583 !important; margin-top: 12px !important; display: block !important;
-        opacity: 0; animation: bmFadeUp 0.7s ease 0.5s forwards;
-    }
-    #bm-funnel .bm-hero-dates {
-        display: inline-flex !important; align-items: center !important; gap: 10px !important;
-        margin-top: 22px !important; padding: 10px 18px !important; border-radius: 50px !important;
-        background: rgba(109,70,143,0.14) !important; border: 1px solid rgba(109,70,143,0.4) !important;
-        font-size: 0.85rem !important; color: #ffffff !important;
-        opacity: 0; animation: bmFadeUp 0.7s ease 0.65s forwards;
-    }
-    #bm-funnel .bm-hero-dates strong { color: #C9A24B !important; }
     @keyframes bmFadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
 
     /* ── BENEFITS / ATTRACTIONS BAND ── */
@@ -359,18 +339,6 @@
 
 
     /* ── SPECIAL NIGHTS ── */
-    #bm-funnel .bm-nights { width: 100% !important; background: #10081c !important; padding: 72px 48px !important; box-sizing: border-box !important; }
-    #bm-funnel .bm-nights-header { text-align: center !important; margin-bottom: 38px !important; }
-    #bm-funnel .bm-ngrid { display: grid !important; grid-template-columns: repeat(4, 1fr) !important; gap: 18px !important; max-width: 1180px !important; margin: 0 auto !important; }
-    #bm-funnel .bm-ncard { background: linear-gradient(160deg, #170c26, #0d0716) !important; border: 1px solid rgba(109,70,143,0.55) !important; border-radius: 16px !important; padding: 26px 20px !important; text-align: center !important; display: flex !important; flex-direction: column !important; box-shadow: 0 18px 40px rgba(0,0,0,0.5) !important; box-sizing: border-box !important; }
-    #bm-funnel .bm-ndate { display: inline-block !important; align-self: center !important; background: #6D468F !important; color: #10081c !important; font-family: "futura-pt-bold", sans-serif !important; font-weight: 800 !important; font-size: 0.7rem !important; letter-spacing: 0.1em !important; text-transform: uppercase !important; padding: 5px 13px !important; border-radius: 999px !important; margin-bottom: 14px !important; }
-    #bm-funnel .bm-nicon { display: block !important; font-size: 1.7rem !important; line-height: 1 !important; margin-bottom: 10px !important; }
-    #bm-funnel .bm-nname { display: block !important; font-family: "futura-pt-bold", sans-serif !important; font-weight: 700 !important; font-size: 1.02rem !important; color: #C9A24B !important; line-height: 1.2 !important; text-transform: uppercase !important; margin-bottom: 8px !important; }
-    #bm-funnel .bm-ntime { display: block !important; font-size: 0.8rem !important; color: rgba(255,255,255,0.78) !important; margin-bottom: 14px !important; }
-    #bm-funnel .bm-nprice { display: block !important; font-family: "futura-pt-bold", sans-serif !important; font-weight: 800 !important; font-size: 1.55rem !important; color: #ffffff !important; line-height: 1 !important; }
-    #bm-funnel .bm-nper { display: block !important; margin-bottom: 14px !important; font-size: 0.66rem !important; letter-spacing: 0.14em !important; text-transform: uppercase !important; color: rgba(255,255,255,0.5) !important; margin-top: 4px !important; }
-    #bm-funnel .bm-nnote { display: block !important; margin-top: auto !important; font-size: 0.72rem !important; color: rgba(255,255,255,0.62) !important; line-height: 1.45 !important; padding-top: 12px !important; border-top: 1px solid rgba(255,255,255,0.1) !important; }
-    #bm-funnel .bm-nights-foot { display: block !important; text-align: center !important; margin-top: 26px !important; font-size: 0.78rem !important; color: rgba(255,255,255,0.55) !important; }
 
     /* ── MAP / DIRECTIONS ── */
     #bm-funnel .bm-map { width: 100% !important; background: #10081c !important; padding: 72px 48px !important; text-align: center !important; box-sizing: border-box !important; }
@@ -391,7 +359,6 @@
     @media (max-width: 1080px) {
         #bm-funnel .bm-grid { grid-template-columns: repeat(2, minmax(0, 380px)) !important; max-width: 820px !important; }
         #bm-funnel .bm-agrid { grid-template-columns: repeat(2, 1fr) !important; }
-        #bm-funnel .bm-ngrid { grid-template-columns: repeat(2, 1fr) !important; max-width: 760px !important; }
     }
     @media (max-width: 860px) {
         #bm-funnel .bm-nav { padding: 0 24px !important; }
@@ -404,7 +371,6 @@
         #bm-funnel .bm-info-item:nth-child(2n)::after { display: none !important; }
         #bm-funnel .bm-gcard { width: 300px !important; height: 210px !important; }
         #bm-funnel .bm-acard { height: 240px !important; }
-        #bm-funnel .bm-nights { padding: 56px 24px !important; }
         #bm-funnel .bm-map { padding: 56px 24px !important; }
     }
     @media (max-width: 560px) {
@@ -424,8 +390,6 @@
         #bm-funnel .bm-tickets { padding: 48px 16px !important; }
         #bm-funnel .bm-grid { grid-template-columns: 1fr !important; }
         #bm-funnel .bm-gcard { width: 240px !important; height: 170px !important; }
-        #bm-funnel .bm-nights { padding: 48px 16px !important; }
-        #bm-funnel .bm-ngrid { grid-template-columns: 1fr !important; }
         #bm-funnel .bm-map { padding: 48px 16px !important; }
         #bm-funnel .bm-stop { font-size: 0.72rem !important; padding: 7px 13px !important; }
     }
@@ -461,16 +425,11 @@
         </div>
     </div>
 
-    <!-- HERO -->
+    <!-- HERO — wordmark centred over the hotel artwork, no text overlay -->
     <div class="bm-hero">
         <div class="bm-hero-overlay"></div>
         <div class="bm-hero-content">
-            <span class="bm-hero-eyebrow">Inside Galleria Dallas</span>
-            <span class="bm-hero-title">The BooMont Hotel</span>
-            <span class="bm-hero-sub">check in, if you dare</span>
-            <div class="bm-hero-dates">
-                👻 <strong>Flash Sale</strong> runs Aug 12–16 — <strong>30% off every ticket</strong>, the best price of the season
-            </div>
+            <img class="bm-hero-wordmark" src="https://s3.amazonaws.com/uploads.webconnex.com/200217%2F1785957466869-BoomontHotel_Stacked-WHITE.png" alt="The BooMont Hotel">
         </div>
     </div>
 
@@ -586,53 +545,6 @@
                 </div>
                 <span class="bm-card-note">The top of the ladder — every event, every upgrade.</span>
             </a>
-
-        </div>
-    </div>
-
-    <!-- KEY DATES -->
-    <div class="bm-nights" id="key-dates">
-        <div class="bm-nights-header bmr">
-            <span class="bm-eye">Mark Your Calendar</span>
-            <span class="bm-title">the <em>season at a glance</em></span>
-        </div>
-        <div class="bm-ngrid">
-
-            <div class="bm-ncard bmr">
-                <span class="bm-ndate">Wed, Aug 12</span>
-                <span class="bm-nicon">⚡</span>
-                <span class="bm-nname">Flash Sale Opens</span>
-                <span class="bm-ntime">30% off every ticket type</span>
-                <span class="bm-nprice">5 days</span>
-                <span class="bm-nper">closes Sun, Aug 16</span>
-            </div>
-
-            <div class="bm-ncard bmr d1">
-                <span class="bm-ndate">Mon, Aug 17</span>
-                <span class="bm-nicon">🕯️</span>
-                <span class="bm-nname">Early Bird</span>
-                <span class="bm-ntime">Pre-sale pricing until doors open</span>
-                <span class="bm-nprice">15% off</span>
-                <span class="bm-nper">through Sept 3</span>
-            </div>
-
-            <div class="bm-ncard bmr d2">
-                <span class="bm-ndate">Tue, Sept 1</span>
-                <span class="bm-nicon">✨</span>
-                <span class="bm-nname">VIP Preview Night</span>
-                <span class="bm-ntime">First guests through the doors</span>
-                <span class="bm-nprice">VIP</span>
-                <span class="bm-nper">before public opening</span>
-            </div>
-
-            <div class="bm-ncard bmr d3">
-                <span class="bm-ndate">Fri, Sept 4</span>
-                <span class="bm-nicon">🏨</span>
-                <span class="bm-nname">Doors Open</span>
-                <span class="bm-ntime">The 2026 season begins</span>
-                <span class="bm-nprice">Sept 4</span>
-                <span class="bm-nper">through Nov 1</span>
-            </div>
 
         </div>
     </div>
