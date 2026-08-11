@@ -1,22 +1,22 @@
 <!--
   ============================================================
-  BOOMONT HOTEL — Flash-Sale Guest-List (email-warming) page
-  TicketSpice hybrid-loader CONTENT HTML  ·  Crowd7
+  BOOMONT HOTEL — FLASH-SALE GUEST LIST 2026 — TicketSpice landing page (content block)
   ============================================================
   Built by Crowdly 2026-08-10 for Modus (BooMont Hotel, Galleria Dallas).
-  Lead-up email-capture page for the Aug 12–16 flash sale.
+  Email-warming lead-capture page for the Aug 12–16 flash sale.
   Spec: work/crowd7/proposals/2026-08-03-boomont-leadup-page-spec.md
+  Hybrid-loader page: lives in crowd7-public, fetched into the live TS
+  page at render time — v8 loader -> Cloudflare Pages (assets.crowd7digital.us).
 
-  Pattern: same self-contained content block as every other TS page (cf.
-  summers-farm flower-festival-2026.html). The loader injects THIS into the
-  TS Raw HTML block's #c7-hybrid-content. Ticket/registrant FIELDS stay
-  native in TicketSpice (WBX side) — this block is the DESIGN + it skins the
-  native form (dark inputs, emerald register button) the same way our ticket
-  pages skin #ticketBlock.
+  BRAND PALETTE (from theboomont.com live):
+    black #000000 + white #FFFFFF = BASE ; purple #6D468F = ACCENT (headings + pattern) ;
+    emerald #006347 / #024732 = CTA ; gold #C9A24B = MONOGRAM.
+    Type: Futura PT (Typekit apb7rtz).
 
-  Brand (from theboomont.com live): black #000 · white #FFF · purple #6D468F ·
-  emerald #006347/#024732 · gold #C9A24B · type Futura PT (Typekit apb7rtz).
-  Browser eyeball: the sibling *-content-preview.html.
+  CONTENT: this block is the DESIGN + it skins the native TS registrant form
+  (dark inputs, emerald register button). The email/mobile FIELDS stay native
+  in TicketSpice (WBX side), the same way ticket types stay native on a ticket
+  page. Browser eyeball: the sibling *-content-preview.html.
   ============================================================
 -->
 <style>
