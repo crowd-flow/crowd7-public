@@ -71,23 +71,10 @@
   }
   button:hover, .register-button:hover, [class*="submit"]:hover, input[type="submit"]:hover{background:#024732 !important}
 
-  /* ---- native TS form refinements (real selectors from the live DOM) ---- */
-  /* cap + center the whole form → kills the full-bleed fields AND the full-bleed submit bar */
-  .campaign-form{ max-width:540px !important; margin-left:auto !important; margin-right:auto !important; }
-  .campaign-form .submit-row{ margin-top:22px !important; }
-  .campaign-form .next.btn.btn-primary{ width:100% !important; }
-  /* consent block: undo the accidental ALL-CAPS our label{} rule was applying to the <label>,
-     and tone it down so it stops competing with the headline */
-  .campaign-form .field-copyRegInfo,
-  .campaign-form .field-copyRegInfo label,
-  .campaign-form .field-copyRegInfo *{
-    text-transform:none !important; letter-spacing:normal !important;
-    font-family:"futura-pt",sans-serif !important;
-  }
-  .campaign-form .field-copyRegInfo,
-  .campaign-form .field-copyRegInfo label{
-    font-size:12px !important; color:rgba(255,255,255,.5) !important; line-height:1.5 !important; font-weight:400 !important;
-  }
+  /* ---- native TS form refinements ----
+     Form fields REVERTED to TS full-width (the cap+labels-left combo looked cramped — Mat 2026-08-10). */
+  /* submit button: reduce height ~25% (16px -> 10px vertical padding) */
+  .campaign-form .next.btn.btn-primary{ padding-top:10px !important; padding-bottom:10px !important; }
   /* terms/privacy (and any form link) → brand gold, not the default orange */
   .campaign-form a{ color:#C9A24B !important; }
 </style>
