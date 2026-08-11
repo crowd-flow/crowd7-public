@@ -26,11 +26,12 @@
   body, .page, .form-page{
     background-color:#000 !important;
     background-image:
+      linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.38) 45%, rgba(0,0,0,.96) 100%),
       radial-gradient(120% 70% at 50% -8%, rgba(109,70,143,.22), transparent 60%),
       url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='60' viewBox='0 0 120 60'><g fill='none' stroke='%236D468F' stroke-width='1.4' opacity='0.5'><path d='M0 60 A30 30 0 0 1 60 60'/><path d='M60 60 A30 30 0 0 1 120 60'/><path d='M-30 30 A30 30 0 0 1 30 30'/><path d='M30 30 A30 30 0 0 1 90 30'/><path d='M90 30 A30 30 0 0 1 150 30'/></g></svg>") !important;
-    background-repeat:no-repeat, repeat !important;
-    background-position:top center, top center !important;
-    background-attachment:fixed, fixed !important;
+    background-repeat:no-repeat, no-repeat, repeat !important;
+    background-position:top center, top center, top center !important;
+    background-attachment:scroll, fixed, fixed !important;
     color:#fff !important;
     font-family:"futura-pt",Futura,"Century Gothic",sans-serif !important;
   }
@@ -66,7 +67,7 @@
   /* submit button: OUR emerald, but TS-native COMPACT size — auto-width + centered (NOT full-bleed).
      ⚠️ NEVER use [class*="submit"] — it matches the full-width .submit-row WRAPPER and paints the
      whole row green, which is what made the button look full-bleed. Target the button element only. */
-  .campaign-form .submit-row{ text-align:center !important; background:transparent !important; padding:0 !important; }
+  .campaign-form .submit-row{ text-align:center !important; background:transparent !important; padding:0 !important; margin-top:50px !important; }
   .campaign-form .next.btn.btn-primary, .campaign-form button[type="submit"]{
     display:inline-block !important; width:auto !important; margin:0 auto !important;
     background:#006347 !important; color:#fff !important; border:0 !important; border-radius:3px !important;
