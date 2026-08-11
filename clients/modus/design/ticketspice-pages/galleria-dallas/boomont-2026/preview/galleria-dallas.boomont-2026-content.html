@@ -142,7 +142,10 @@
     #bm-funnel .bm-feature {
         width: 100% !important; position: relative !important; overflow: hidden !important;
         padding: 80px 48px !important; box-sizing: border-box !important; text-align: center !important;
-        background: linear-gradient(180deg, #10081c 0%, #150a24 100%) !important;
+        /* settles DARKER at its foot so the tickets band reads as lifted above it.
+           These two sections used to meet at the identical #150a24 and the seam
+           vanished — JLT had a gallery + attractions between them; we don't. */
+        background: linear-gradient(180deg, #10081c 0%, #0c0616 100%) !important;
     }
     #bm-funnel .bm-eye {
         font-family: "futura-pt-bold", sans-serif !important;
@@ -217,7 +220,23 @@
     #bm-funnel .bm-acard-desc { font-size: 0.78rem !important; color: rgba(255,255,255,0.75) !important; margin-top: 4px !important; display: block !important; line-height: 1.4 !important; }
 
     /* ── TICKET CARDS ── */
-    #bm-funnel .bm-tickets { width: 100% !important; background: linear-gradient(180deg, #150a24 0%, #10081c 100%) !important; padding: 80px 48px !important; display: block !important; box-sizing: border-box !important; }
+    /* TICKETS — its own ground. The heart of the page, so it gets a lifted
+       field rather than continuing the prose band above it, plus a brand
+       seam: faint purple hairline full-width + a centred gold fade. */
+    #bm-funnel .bm-tickets {
+        width: 100% !important;
+        background: linear-gradient(180deg, #1d1030 0%, #160b26 58%, #10081c 100%) !important;
+        border-top: 1px solid rgba(109,70,143,0.30) !important;
+        padding: 76px 48px 80px !important;
+        display: block !important; box-sizing: border-box !important;
+        position: relative !important;
+    }
+    #bm-funnel .bm-tickets::before {
+        content: '' !important; position: absolute !important;
+        top: -1px !important; left: 50% !important; transform: translateX(-50%) !important;
+        width: min(240px, 42%) !important; height: 2px !important;
+        background: linear-gradient(90deg, transparent, #C9A24B, transparent) !important;
+    }
     #bm-funnel .bm-tickets-header { text-align: center !important; margin-bottom: 18px !important; }
     #bm-funnel .bm-flash {
         text-align: center !important; max-width: 760px !important; margin: 0 auto 44px !important;
@@ -622,6 +641,122 @@
     </div>
 
 </div><!-- end #bm-funnel -->
+
+<!-- ═══ FLOATING BUY-TICKETS BAR ═══════════════════════════════════════════
+     BooMont skin of the canonical block:
+     clients/colony-acres/design/ticketspice-pages/_blocks/floating-buy-bar
+     via the Riamede implementation (which added the cart-visibility gate).
+
+     ⚠️ DELIBERATELY OUTSIDE #bm-funnel. The funnel wrapper carries
+     `overflow: hidden`, and any transform/filter on an ancestor would turn it
+     into a containing block and break `position: fixed`. Keeping the bar a
+     top-level sibling makes it immune. Self-contained: own style, markup, script.
+
+     Ships via the hybrid loader — no separate TicketSpice paste needed.
+
+     WHAT TO SWAP: the label inside the <a>. Leave href="#ticketBlock" alone —
+     that is TicketSpice's native cart anchor.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<style>
+    #bm-float-btn {
+        position: fixed !important;
+        bottom: 0 !important; left: 0 !important; right: 0 !important;
+        z-index: 9999 !important;
+        padding: 10px 16px calc(14px + env(safe-area-inset-bottom, 0px)) !important;
+        background: linear-gradient(to top, rgba(16,8,28,0.97) 78%, rgba(16,8,28,0)) !important;
+        display: flex !important;
+        justify-content: center !important;
+        transition: opacity 0.35s ease, transform 0.35s ease !important;
+    }
+    #bm-float-btn.bm-float-hidden {
+        opacity: 0 !important;
+        transform: translateY(28px) !important;
+        pointer-events: none !important;
+    }
+    #bm-float-btn a {
+        display: block !important;
+        width: 100% !important;
+        max-width: 460px !important;
+        background: #006347 !important;
+        color: #ffffff !important;
+        font-family: "futura-pt-bold", "futura-pt", sans-serif !important;
+        font-size: 19px !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.14em !important;
+        text-transform: uppercase !important;
+        text-align: center !important;
+        text-decoration: none !important;
+        padding: 17px 28px !important;
+        border-radius: 50px !important;
+        border: 1px solid rgba(201,162,75,0.30) !important;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.55) !important;
+        transition: transform 0.15s, box-shadow 0.15s, background 0.2s !important;
+        cursor: pointer !important;
+    }
+    #bm-float-btn a:hover,
+    #bm-float-btn a:focus {
+        background: #024732 !important;
+        color: #ffffff !important;
+        text-decoration: none !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 14px 38px rgba(0,0,0,0.65) !important;
+    }
+    @media (max-width: 520px) {
+        #bm-float-btn a { font-size: 17px !important; padding: 15px 22px !important; letter-spacing: 0.10em !important; }
+    }
+</style>
+
+<div id="bm-float-btn">
+    <a href="#ticketBlock">Get Tickets</a>
+</div>
+
+<script>
+(function () {
+    var bar = document.getElementById('bm-float-btn');
+    if (!bar) return;
+    var link = bar.querySelector('a');
+
+    function show() { bar.classList.remove('bm-float-hidden'); }
+    function hide() { bar.classList.add('bm-float-hidden'); }
+
+    // Visible from first paint — no scroll gate; the CTA is present immediately.
+    show();
+
+    // Hide only while the native cart is actually on screen (the button is
+    // redundant there). Guarded: if #ticketBlock never renders the observer
+    // never attaches and the bar simply stays visible — the safe default.
+    var cartObserved = false;
+    function watchCart() {
+        if (cartObserved) return true;
+        var cart = document.getElementById('ticketBlock');
+        if (!cart || !window.IntersectionObserver) return false;
+        cartObserved = true;
+        new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (e.isIntersecting) hide();
+                else show();
+            });
+        }, { threshold: 0.12 }).observe(cart);
+        return true;
+    }
+    // TicketSpice injects the cart asynchronously — retry briefly, then stop.
+    if (!watchCart()) {
+        var tries = 0;
+        var poll = setInterval(function () {
+            if (watchCart() || ++tries > 40) clearInterval(poll);
+        }, 250);
+    }
+
+    link.addEventListener('click', function (e) {
+        var cart = document.getElementById('ticketBlock');
+        if (cart) {
+            e.preventDefault();
+            cart.scrollIntoView({ behavior: 'smooth' });
+        }
+        hide();
+    });
+})();
+</script>
 
 <script>
     (function() {
