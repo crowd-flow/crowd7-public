@@ -60,7 +60,7 @@ Confirm slots are **15 guests per 15-minute interval**, and that the slot picker
 ### 4. Season dates
 
 - Public season: **September 4 – November 1, 2026**
-- **VIP preview: September 1** — confirm whether preview access is a separate ticket type or an Action on the VIP ticket. The page currently states it as a VIP inclusion.
+- **VIP preview night: REMOVED** — Bryan 2026-08-11: the VIP preview night is off the VIP card and off the page entirely. Do not reintroduce it.
 
 ### 5. Combo mechanics
 
