@@ -4,11 +4,19 @@
      DATES CORRECTED 2026-07-21 (Amanda round-2 feedback) — page was cloned
      from Belleville and carried Belleville's dates. Real Versailles dates:
      Flash Sale Aug 14–17 · Festival Aug 22–Sep 6 (TS-native ticket window,
-     see build brief). Mason jar lemonade is a non-alcoholic add-on for
-     Versailles (no boozy option, unlike Belleville); Picnic Basket add-on
-     removed (not offered at Versailles); truck photo removed from gallery.
+     see build brief). Picnic Basket add-on removed (not offered at
+     Versailles); truck photo removed from gallery.
+     ROUND 3 — 2026-08-12 (Amanda via Mat): the souvenir mason jar is no
+     longer a standalone add-on; it is bundled into the Flower Power Pass
+     with lavender lemonade (non-alcoholic, no boozy option unlike
+     Belleville). The Family & Friends Package card is pulled in favour of
+     the Flower Power Pass — PROVISIONAL, pending Amanda's open "Summer
+     Nights Sunflower Edition KY?" question. Both removed blocks are
+     archived verbatim with paste-back steps at
+     work/crowd7/projects/eckerts-amanda-page-edits-aug2026/artifacts/
+     sunflower-removed-blocks.ARCHIVE.txt
      PENDING (clearly tagged in-page): real sunflower photos (Amanda→Dropbox),
-     flash-sale price sign-off, mason-jar add-on price/TS cart product.
+     flash-sale price sign-off.
      ════════════════════════════════════════════════════════════════════ -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -204,6 +212,14 @@
         gap: 22px !important; justify-content: center !important;
         max-width: 980px !important; margin-left: auto !important; margin-right: auto !important;
     }
+    /* TWO-CARD variant — Family & Friends pulled 2026-08-12 pending Amanda's
+       Summer Nights KY answer. Without this the 3-track grid leaves an empty
+       column and the pair sits off-centre. REVERT: drop sf-grid--two from the
+       markup when the third card comes back. */
+    #sf-funnel .sf-grid--two {
+        grid-template-columns: repeat(2, minmax(0, 320px)) !important;
+        max-width: 700px !important;
+    }
     #sf-funnel .sf-card {
         border-radius: 20px !important; padding: 36px 32px !important;
         position: relative !important; overflow: hidden !important;
@@ -384,7 +400,7 @@
             <div class="sf-benefit">
                 <span class="sf-benefit-icon">🥂</span>
                 <span class="sf-benefit-title">Sips &amp; Treats</span>
-                <span class="sf-benefit-desc">Souvenir mason jar lemonade — add it at checkout</span>
+                <span class="sf-benefit-desc">Souvenir mason jar of lavender lemonade — included with the Flower Power Pass</span>
             </div>
         </div>
     </div>
@@ -420,7 +436,7 @@
             <span class="sf-eye">Festival Tickets</span>
             <span class="sf-title">Pick your <em>sunflower experience</em></span>
         </div>
-        <div class="sf-grid">
+        <div class="sf-grid sf-grid--two">
 
             <!-- GENERAL ADMISSION -->
             <a href="#ticketBlock" class="sf-card sf-card-gold sfr" aria-label="Buy General Admission tickets">
@@ -446,6 +462,7 @@
                     <li>🌻 General admission for one</li>
                     <li>✂️ One cut-your-own sunflower</li>
                     <li>👑 One flower crown</li>
+                    <li>🍋 One souvenir mason jar with lavender lemonade</li>
                 </ul>
                 <div class="sf-card-price">
                     <span class="sf-price-num">$19.95</span>
@@ -453,36 +470,22 @@
                 </div>
             </a>
 
-            <!-- FAMILY & FRIENDS -->
-            <a href="#ticketBlock" class="sf-card sf-card-cream sfr d2" aria-label="Buy Family &amp; Friends Package tickets">
-                <span class="sf-card-badge sf-card-badge-gold">Best Value</span>
-                <span class="sf-card-icon">👨‍👩‍👧‍👦</span>
-                <h3>Family &amp; Friends<br>Package</h3>
-                <ul class="sf-card-bullets">
-                    <li>👨‍👩‍👧‍👦 General admission for four</li>
-                    <li>✂️ Four cut-your-own sunflowers</li>
-                    <li>👑 Two flower crowns</li>
-                    <li>🕶️ Two pairs of flower sunglasses</li>
-                </ul>
-                <div class="sf-card-price">
-                    <span class="sf-price-num">$74.95</span>
-                    <span class="sf-price-label">online<br><span style="text-decoration:line-through;opacity:0.7;">$80 at gate</span></span>
-                </div>
-            </a>
+            <!-- FAMILY & FRIENDS — REMOVED 2026-08-12 (Mat directive).
+                 Swapped out in favour of the Flower Power Pass while Amanda's
+                 "Summer Nights Sunflower Edition KY?" question is still open.
+                 TO REVERT: paste the archived card back here, and drop the
+                 sf-grid--two class off the .sf-grid div above.
+                 Archived verbatim at: work/crowd7/projects/eckerts-amanda-page-edits-aug2026/
+                 artifacts/sunflower-removed-blocks.ARCHIVE.txt -->
 
         </div>
 
-        <!-- ADD-ONS -->
-        <div class="sf-addon-list sfr">
-            <div class="sf-addon">
-                <span class="sf-addon-icon">🥂</span>
-                <span class="sf-addon-body">
-                    <span class="sf-addon-title">Souvenir Mason Jar Lemonade</span>
-                    <span class="sf-addon-desc">Take home a souvenir mason jar filled with fresh lemonade. Non-alcoholic. Add at checkout.</span>
-                </span>
-                <span class="sf-addon-price">TBD</span>
-            </div>
-        </div>
+        <!-- ADD-ONS — REMOVED 2026-08-12 (Amanda, via Mat): the souvenir mason
+             jar is no longer sold as a standalone add-on. It is now bundled into
+             the Flower Power Pass instead (see that card's bullets).
+             TO REVERT: paste the archived block back here.
+             Archived verbatim at: work/crowd7/projects/eckerts-amanda-page-edits-aug2026/
+             artifacts/sunflower-removed-blocks.ARCHIVE.txt -->
     </div>
 
     <!-- INFO ROW -->
