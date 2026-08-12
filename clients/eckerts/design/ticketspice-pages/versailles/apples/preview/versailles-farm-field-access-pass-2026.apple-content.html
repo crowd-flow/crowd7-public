@@ -603,6 +603,57 @@
         display: block !important;
     }
 
+    /* ── FAMILY & FRIENDS PACKAGE (Versailles-only — banner card below the grid, same
+       shape as the Fall Bonfire banner above; see crowd7/data/clients/_patterns/
+       ticket-card-grid-three-max.md "PREFERRED — full-width banner below the grid".) ── */
+    #sbv-funnel .sbv-family-card {
+        grid-column: 1 / -1 !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 28px !important;
+        padding: 22px 26px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        margin-top: 4px !important;
+    }
+    #sbv-funnel .sbv-family-img {
+        width: 240px !important;
+        flex: 0 0 240px !important;
+        aspect-ratio: 4 / 3 !important;
+        object-fit: cover !important;
+        border-radius: 14px !important;
+        display: block !important;
+        margin-bottom: 0 !important;
+    }
+    #sbv-funnel .sbv-family-body { flex: 1 1 auto !important; min-width: 0 !important; }
+    #sbv-funnel .sbv-family-body h3 { margin-bottom: 10px !important; }
+    #sbv-funnel .sbv-family-bullets {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 2px 24px !important;
+        margin-bottom: 0 !important;
+    }
+    #sbv-funnel .sbv-family-cta {
+        flex: 0 0 auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-end !important;
+        text-align: right !important;
+        padding-left: 26px !important;
+        border-left: 1px solid rgba(176,16,48,0.12) !important;
+    }
+    #sbv-funnel .sbv-family-cta .sbv-card-price { margin-bottom: 4px !important; }
+    @media (max-width: 900px) {
+        #sbv-funnel .sbv-family-card { flex-direction: column !important; align-items: stretch !important; gap: 18px !important; }
+        #sbv-funnel .sbv-family-img { width: 100% !important; flex: 0 0 auto !important; aspect-ratio: 16 / 9 !important; }
+        #sbv-funnel .sbv-family-bullets { grid-template-columns: 1fr !important; }
+        #sbv-funnel .sbv-family-cta {
+            align-items: flex-start !important; text-align: left !important;
+            padding-left: 0 !important; border-left: none !important;
+            border-top: 1px solid rgba(176,16,48,0.12) !important; padding-top: 14px !important;
+        }
+    }
+
     /* ── INFO ROW ── */
     #sbv-funnel .sbv-info {
         width: 100% !important;
@@ -885,6 +936,38 @@
                         <span class="sbv-price-online">per site</span>
                     </div>
                     <span class="sbv-card-note">Eckert's Versailles Orchard.</span>
+                </div>
+            </div>
+
+            <!-- FAMILY & FRIENDS PACKAGE — Versailles-only, banner card below the grid
+                 (Mat directive 2026-08-12, cycle-2 Ask 4: "a little combination of HTML
+                 stuff ... plus some cart things" — ship the card here, the discount rule
+                 itself is a native-cart change, see artifacts/native-cart-brief.md).
+                 4 admission tickets at the Field Access + Playground weekend online rate
+                 ($7 x 4 = $28 per the price rows above), 25% off = $21. Same full-width
+                 banner shape as the Fall Bonfire card, per crowd7/data/clients/_patterns/
+                 ticket-card-grid-three-max.md. -->
+            <div class="sbv-family-card sbv-card sbv-card-pink sbvr d2">
+                <img class="sbv-family-img" src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/apples/20160817_084732-1.jpg" alt="A group of kids showing off their apple haul in the orchard">
+                <div class="sbv-family-body">
+                    <span class="sbv-card-badge sbv-badge-red">Save 25%</span>
+                    <h3>Family &amp; Friends Package</h3>
+                    <ul class="sbv-card-bullets sbv-family-bullets">
+                        <li>🎟️ 4 admission tickets — Field Access + Playground, weekend rate</li>
+                        <li>👨‍👩‍👧‍👦 Great for a group outing with family or friends</li>
+                        <li>🍎 Pick-your-own apples included for the whole group</li>
+                        <li>🛝 Playground &amp; Mega Slide access (Sat &amp; Sun, 10 AM–5 PM)</li>
+                    </ul>
+                </div>
+                <div class="sbv-family-cta">
+                    <div class="sbv-card-price">
+                        <span class="sbv-price-num">$21</span>
+                        <div class="sbv-price-slash">
+                            <span class="sbv-price-online">For 4 Tickets</span>
+                            <span class="sbv-price-was">$28 individually</span>
+                        </div>
+                    </div>
+                    <span class="sbv-card-note">Priced at the weekend admission rate · ages 2–16 · + applicable fees</span>
                 </div>
             </div>
 
