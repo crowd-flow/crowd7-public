@@ -27,32 +27,34 @@ Work top to bottom. Anything that doesn't match, change in TicketSpice — not i
 
 ### 1. Ticket types and flash pricing
 
-Flash sale is **30% off all four types**, running Aug 12–16 only.
+**✅ REPRICED 2026-08-11 PM** — Mat/Aiden got Brian on the phone (transcript: `meetings/2026/8.11.26.Crowd7MatAndAdenMeetingDetails.transcript.md`) and locked final numbers. **The 3-Event GA/VIP Combo is pulled from the sale entirely — not a ticket type on this page anymore.** Three types only, flash sale is **30% off**, running Aug 12–16 only:
 
-| Ticket | Standard | Oct weekends | Flash (30% off) |
-|---|---|---|---|
-| General Admission | $29.95 | $34.95 | **$20.97** |
-| VIP | $39.95 | $44.95 | **$27.97** |
-| 3-Event GA Combo | $74.95 | — | **$52.47** |
-| 3-Event VIP Combo | $99.95 | — | **$69.97** |
+| Ticket | In-season | Flash (30% off) |
+|---|---|---|
+| General Admission | $24.95 | **$17.47** |
+| Admission + Master Key Bundle | $34.95 | **$24.47** |
+| VIP Ultimate BooMont Experience | $49.95 | **$34.97** |
 
-Confirm all four exist, are live, and carry the flash price for the Aug 12–16 window.
+The old "Oct weekend step-up" tier from the original spec is gone under this pricing model — don't reintroduce it without a fresh confirm.
+
+Confirm all three exist, are live, and carry the flash price for the Aug 12–16 window.
 
 ### 2. 🚨 Ticket names — the one thing that will silently break
 
 The struck-through gate price is applied by matching each ticket row's `<h4>` text against a name map in the page. **The names must match exactly, character for character.** If they don't, no error appears — the struck price just never renders and nobody notices until a client asks why the discount isn't visible.
 
-The page currently ships with these **best-guess** keys:
+The page now ships with these keys, **read off a dictated phone call with Brian (not a live cart dump)** — two spellings hedged per tier so the match fires regardless of which one the live cart actually uses:
 
 ```
 "General Admission"
-"VIP"
-"3-Event GA Combo"
-"3-Event VIP Combo"
+"Admission Plus Master Key Bundle" / "Admission + Master Key Bundle"
+"VIP Anytime Admission" / "VIP Ultimate BooMont Experience"
 ```
 
-**Action:** open the live cart, copy each ticket's display name verbatim, and correct the `GATE` map in
-`preview/galleria-dallas.boomont-2026-content.html` before promoting. This is the single highest-risk item in the build.
+Brian's own framing on the call: GA, then "Admission Plus Master Key Bundle" (the same ticket Aiden read off Ben's doc as "GA plus... master key"), then the top tier — Brian confirmed the name to use is "VIP Ultimate BooMont Experience," but the actual cart line per Aiden's read was "VIP Anytime Admission (VIP Ultimate BooMont Experience)" — hence the hedge.
+
+**Action still open:** open the live cart, copy each ticket's display name verbatim, and prune the wrong spelling from the `GATE` map in
+`production/galleria-dallas.boomont-2026-content.html` (already promoted — edit both `preview/` and `production/`). Lower risk than before (real numbers from Brian, not a guess), but still the single highest-risk item in the build.
 
 ### 3. Timed slots
 
@@ -93,6 +95,6 @@ Later-phase blocks and switchover instructions live at
 
 The sub-brand is inherited verbatim from the 2026-08-10 flash-waitlist page so the two read as one campaign: black/white base, purple `#6D468F` accent, emerald `#006347` CTA, gold `#C9A24B` monogram, Futura PT (Typekit `apb7rtz`), and the arch-pattern background.
 
-The offer grid holds **three cards** with the 3-Event VIP Combo as a full-width banner beneath — per the three-max grid rule. A fourth column wraps into an orphaned card and breaks the layout.
+The offer grid holds a clean **three-card grid** (General Admission / Admission + Master Key Bundle / VIP Ultimate BooMont Experience) — no wide banner card needed since the 3-Event Combo tiers were pulled from scope 2026-08-11 PM.
 
 **No client photography exists in the repo for Modus.** The page is CSS-only (gradients, SVG pattern) plus the hosted BooMont logo, matching how the waitlist page was built. If Modus supplies imagery, the hero and cards are the places it should land.
