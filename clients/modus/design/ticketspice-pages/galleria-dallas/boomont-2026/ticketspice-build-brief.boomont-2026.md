@@ -39,22 +39,19 @@ The old "Oct weekend step-up" tier from the original spec is gone under this pri
 
 Confirm all three exist, are live, and carry the flash price for the Aug 12–16 window.
 
-### 2. 🚨 Ticket names — the one thing that will silently break
+### 2. ✅ RESOLVED 2026-08-11 PM — Ticket names
 
 The struck-through gate price is applied by matching each ticket row's `<h4>` text against a name map in the page. **The names must match exactly, character for character.** If they don't, no error appears — the struck price just never renders and nobody notices until a client asks why the discount isn't visible.
 
-The page now ships with these keys, **read off a dictated phone call with Brian (not a live cart dump)** — two spellings hedged per tier so the match fires regardless of which one the live cart actually uses:
+Previously hedged two spellings per tier (Brian's dictated call vs. a possible live-cart variant). **Resolved by a second independent source:** Ben Haschke (client, Motus) shared an official "BOOMONT TICKET TYPES" doc (`docs.google.com/document/d/16em-YDQaDglXDBGYqmSF8L4c50NdmMeMyTn5VCdVOvk`, 8/11 2:52pm) that spells the same three tiers identically to Brian's call — and identically to what the page's own offer cards already display. Both sources agree, so the hedge is pruned:
 
 ```
 "General Admission"
-"Admission Plus Master Key Bundle" / "Admission + Master Key Bundle"
-"VIP Anytime Admission" / "VIP Ultimate BooMont Experience"
+"Admission + Master Key Bundle"
+"VIP Ultimate BooMont Experience"
 ```
 
-Brian's own framing on the call: GA, then "Admission Plus Master Key Bundle" (the same ticket Aiden read off Ben's doc as "GA plus... master key"), then the top tier — Brian confirmed the name to use is "VIP Ultimate BooMont Experience," but the actual cart line per Aiden's read was "VIP Anytime Admission (VIP Ultimate BooMont Experience)" — hence the hedge.
-
-**Action still open:** open the live cart, copy each ticket's display name verbatim, and prune the wrong spelling from the `GATE` map in
-`production/galleria-dallas.boomont-2026-content.html` (already promoted — edit both `preview/` and `production/`). Lower risk than before (real numbers from Brian, not a guess), but still the single highest-risk item in the build.
+`GATE` map pruned to these three in both `preview/` and `production/galleria-dallas.boomont-2026-content.html`, plus the standalone `*-content-preview.html` mock cart in both folders so the strike-through demos correctly (`crowd7-public@6ccf21d`). **Still worth a final live-cart glance** if the strike price doesn't render once the page is pasted in — two written sources agreeing is strong but isn't a literal cart export.
 
 ### 3. Timed slots
 
@@ -69,16 +66,15 @@ Confirm slots are **15 guests per 15-minute interval**, and that the slot picker
 
 The 3-event combos cover BooMont Hotel + Snowday Dallas + Santaland. Confirm how redemption works across the three events (single QR reused, or three separate credits) — the page describes the offer but makes no redemption claim, so nothing is wrong today. Worth pinning before In Season copy is written.
 
-## 🔌 Loader paste — Mat-hands, one time
+## 🔌 Loader paste — Mat/Bryan-hands, one time, URGENT
 
-The loader snippet is not yet instantiated because it needs the live TS URL. Once you send me the page's TicketSpice URL/slug I'll generate the v8 snippet and hand it back; you paste it into that page's **Raw HTML block** once and never again — every later change ships by `git push`.
+**The loader snippet is already fully instantiated** — `crowd7/data/clients/modus/design/ticketspice-loaders/galleria-dallas.boomont-2026.ts-loader-snippet.v8.html`, zero placeholders (the v8 pattern detects `preview/` vs `production/` off the page's own URL, so it never needed a hardcoded TS URL to generate). What was actually missing was knowing **which TS page** to paste it into.
+
+**Found 2026-08-11 in Slack** (`#modus-snowday-santaland-boomont`, Mat → Kristi/Ben, 2:51pm): `https://baymo.ticketspice.com/preview/005fd067c5554c9a86616c6fbbf9029e` — "TicketSpice page: ... Let me know your thoughts!" ⚠️ Note the `/preview/` in that URL — confirm with Bryan/Aiden whether this is still the page to paste into, or whether it's since been published under a different slug (the same Slack channel shows Aiden fighting a "can't track ticket orders — is it because the page isn't live?" issue this same evening, which points at the page needing to be published before pasting matters for tracking). **Flash sale email #1 goes out 7am 8/12** — this is the single item most worth Bryan/Mat's eyes tonight.
 
 ## ⚠️ Open placeholders in the page
 
-Both are tagged in-file as `NEEDS-CONFIRM`:
-
-1. **Exact native ticket names** for the gate map (see §2 above)
-2. **Operating hours by day type** — not sourced anywhere in our account data. The Know-Before-You-Go panel currently gives location, season, duration, arrival and scare level, but no hours.
+1. **Operating hours by day type** — not sourced anywhere in our account data. The Know-Before-You-Go panel currently gives location, season, duration, arrival and scare level, but no hours.
 
 ## 🔁 Phase switchover — manual, not automatic
 
