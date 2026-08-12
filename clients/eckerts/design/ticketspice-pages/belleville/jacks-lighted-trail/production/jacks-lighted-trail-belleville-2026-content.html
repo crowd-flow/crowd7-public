@@ -314,6 +314,14 @@
     #jlt-funnel .jlt-card-purple .jlt-card-note { color: rgba(255,255,255,0.42) !important; }
     #jlt-funnel .jlt-card-dark .jlt-card-note { color: rgba(255,255,255,0.4) !important; }
     #jlt-funnel .jlt-placeholder { color: #ed1c24 !important; font-weight: 700 !important; }
+    #jlt-funnel .jlt-card-price .jlt-price-num.jlt-placeholder { font-size: 1.3rem !important; line-height: 1.25 !important; letter-spacing: 0.01em !important; }
+    #jlt-funnel .jlt-closed-badge {
+        display: inline-block !important; margin-top: 4px !important;
+        background: rgba(237,28,36,0.16) !important; border: 1px solid rgba(237,28,36,0.55) !important;
+        color: #ff8a8a !important; font-size: 0.66rem !important; font-weight: 800 !important;
+        letter-spacing: 0.08em !important; text-transform: uppercase !important;
+        padding: 3px 10px !important; border-radius: 20px !important;
+    }
 
     /* ── INFO ROW ── */
     #jlt-funnel .jlt-info { width: 100% !important; background: linear-gradient(90deg, #471f73, #7730c5) !important; padding: 0 !important; display: block !important; box-sizing: border-box !important; }
@@ -347,6 +355,9 @@
     #jlt-funnel .jlt-nicon { display: block !important; font-size: 1.7rem !important; line-height: 1 !important; margin-bottom: 10px !important; }
     #jlt-funnel .jlt-nname { display: block !important; font-family: 'Baloo 2', sans-serif !important; font-weight: 700 !important; font-size: 1.02rem !important; color: #f9bb3e !important; line-height: 1.2 !important; text-transform: uppercase !important; margin-bottom: 8px !important; }
     #jlt-funnel .jlt-ntime { display: block !important; font-size: 0.8rem !important; color: rgba(255,255,255,0.78) !important; margin-bottom: 14px !important; }
+    #jlt-funnel .jlt-nphases { display: block !important; margin-bottom: 14px !important; }
+    #jlt-funnel .jlt-nphase { display: block !important; font-size: 0.74rem !important; color: rgba(255,255,255,0.78) !important; line-height: 1.5 !important; }
+    #jlt-funnel .jlt-nphase strong { color: #f9bb3e !important; }
     #jlt-funnel .jlt-nprice { display: block !important; font-family: 'Baloo 2', sans-serif !important; font-weight: 800 !important; font-size: 1.55rem !important; color: #ffffff !important; line-height: 1 !important; }
     #jlt-funnel .jlt-nper { display: block !important; margin-bottom: 14px !important; font-size: 0.66rem !important; letter-spacing: 0.14em !important; text-transform: uppercase !important; color: rgba(255,255,255,0.5) !important; margin-top: 4px !important; }
     #jlt-funnel .jlt-nnote { display: block !important; margin-top: auto !important; font-size: 0.72rem !important; color: rgba(255,255,255,0.62) !important; line-height: 1.45 !important; padding-top: 12px !important; border-top: 1px solid rgba(255,255,255,0.1) !important; }
@@ -571,9 +582,10 @@
                     <li>🌽 Full trail access — lanterns, cider shed, photo ops</li>
                 </ul>
                 <div class="jlt-card-price">
-                    <span class="jlt-price-num jlt-placeholder">[[$X.XX]]</span>
-                    <span class="jlt-price-label">online<br><span style="text-decoration:line-through;opacity:0.7;">[[gate price]]</span></span>
+                    <span class="jlt-price-num jlt-placeholder">Pricing</span>
+                    <span class="jlt-price-label">announced soon</span>
                 </div>
+                <!-- OWED: Launch Day Steal exact online price + struck gate price — Amanda/Bryan; unblocks before production promotion -->
                 <span class="jlt-card-note">Sells out fast — once gone, steps down to the $7-off tier below.</span>
             </a>
 
@@ -588,9 +600,10 @@
                     <li>🌽 Full trail access — lanterns, cider shed, photo ops</li>
                 </ul>
                 <div class="jlt-card-price">
-                    <span class="jlt-price-num jlt-placeholder">[[$X.XX]]</span>
-                    <span class="jlt-price-label">online<br><span style="text-decoration:line-through;opacity:0.7;">[[gate price]]</span></span>
+                    <span class="jlt-price-num jlt-placeholder">Pricing</span>
+                    <span class="jlt-price-label">announced soon</span>
                 </div>
+                <!-- OWED: September Savings exact online price + struck gate price — Amanda/Bryan; unblocks before production promotion -->
                 <span class="jlt-card-note">Active once Launch Day Steal sells out, through the rest of the flash window.</span>
             </a>
 
@@ -601,13 +614,14 @@
                 <h3>October Dates</h3>
                 <ul class="jlt-card-bullets">
                     <li>🎟️ General admission for one — any October date</li>
-                    <li>🕯️ Trail runs Sept 11 – Oct 30 (dark on Halloween)</li>
+                    <li>🕯️ Trail runs Sept 11 – Oct 30<br><span class="jlt-closed-badge">Closed on Halloween</span></li>
                     <li>🌽 Full trail access — lanterns, cider shed, photo ops</li>
                 </ul>
                 <div class="jlt-card-price">
-                    <span class="jlt-price-num jlt-placeholder">[[$X.XX]]</span>
-                    <span class="jlt-price-label">standard online price</span>
+                    <span class="jlt-price-num jlt-placeholder">Pricing</span>
+                    <span class="jlt-price-label">announced soon</span>
                 </div>
+                <!-- OWED: October standard online price — Amanda/Bryan; unblocks before production promotion -->
                 <span class="jlt-card-note">Full price — no flash discount applies to October dates.</span>
             </a>
 
@@ -626,10 +640,14 @@
                 <span class="jlt-ndate">Sat, Sept 19</span>
                 <span class="jlt-nicon">🧡</span>
                 <span class="jlt-nname">Low Sensory Night</span>
-                <span class="jlt-ntime">6:30 &ndash; 9:30 PM</span>
+                <span class="jlt-nphases">
+                    <span class="jlt-nphase"><strong>6:30&ndash;7:30 PM</strong> &middot; Quiet Hour (low-sensory)</span>
+                    <span class="jlt-nphase"><strong>7:30&ndash;9:30 PM</strong> &middot; Regular Activities</span>
+                </span>
                 <span class="jlt-nprice">$22</span>
                 <span class="jlt-nper">per person</span>
-                <span class="jlt-nnote">[[Low-sensory accommodations TBD &mdash; confirm w/ Amanda before publishing detail]]</span>
+                <!-- OWED: low-sensory accommodation specifics (what's dimmed/quieted during the quiet hour) — Amanda -->
+                <span class="jlt-nnote jlt-placeholder">Accommodation details coming soon.</span>
             </div>
 
             <div class="jlt-ncard jltr d1">
@@ -639,7 +657,8 @@
                 <span class="jlt-ntime">7:00 &ndash; 9:30 PM &middot; Live Action Night</span>
                 <span class="jlt-nprice">$22</span>
                 <span class="jlt-nper">per person</span>
-                <span class="jlt-nnote">Includes a character passport and a commemorative souvenir. [[Both still to be defined &mdash; Amanda]]</span>
+                <!-- OWED: character passport + commemorative souvenir — in or out? — Amanda/Bryan (undecided since 8/6) -->
+                <span class="jlt-nnote jlt-placeholder">Extras and inclusions coming soon.</span>
             </div>
 
             <div class="jlt-ncard jltr d2">
@@ -649,7 +668,8 @@
                 <span class="jlt-ntime">6:30 &ndash; 9:30 PM &middot; Adults Only</span>
                 <span class="jlt-nprice">$27</span>
                 <span class="jlt-nper">per person &middot; current</span>
-                <span class="jlt-nnote">[[Format not locked &mdash; base + add-ons vs. all-inclusive VIP. Acoustic music, fire pits, Bites/Flights/Frights under discussion.]]</span>
+                <!-- OWED: Jack's After Dark structure — base + add-ons vs. cocktail package vs. all-inclusive VIP — Amanda/Bryan -->
+                <span class="jlt-nnote jlt-placeholder">Format details coming soon.</span>
             </div>
 
             <div class="jlt-ncard jltr d3">
@@ -677,7 +697,7 @@
             <div class="jlt-info-item">
                 <span class="jlt-info-icon">📅</span>
                 <span class="jlt-info-label">Trail Dates</span>
-                <span class="jlt-info-value">Sept 11 – Oct 30<br>(dark on Halloween)</span>
+                <span class="jlt-info-value">Sept 11 – Oct 30<br><span class="jlt-closed-badge">Closed on Halloween</span></span>
             </div>
             <div class="jlt-info-item">
                 <span class="jlt-info-icon">⚡</span>
@@ -687,7 +707,8 @@
             <div class="jlt-info-item">
                 <span class="jlt-info-icon">🕘</span>
                 <span class="jlt-info-label">Hours</span>
-                <span class="jlt-info-value">Fri–Sat &amp; Thu–Sun evenings<br><span style="font-size:0.72rem !important; font-weight:400 !important; color:rgba(255,255,255,0.7) !important;">[[exact windows TBD — confirm w/ Amanda]]</span></span>
+<!-- OWED: exact daily open/close windows — Amanda -->
+                <span class="jlt-info-value">Fri–Sat &amp; Thu–Sun evenings<br><span class="jlt-placeholder" style="font-size:0.72rem !important; font-weight:400 !important;">Exact hours coming soon</span></span>
             </div>
         </div>
     </div>
