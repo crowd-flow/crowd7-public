@@ -38,22 +38,32 @@
      TicketSpice header read "Montpelier Family Farm Park", and Adrianne
      signs "Montpelier Farms, LLC". Use Montpelier Farms throughout.
 
-  ⚡ ARCHITECTURE — ONE PAGE, THREE PHASES (Mat directive 2026-08-13).
-     Adrianne (8/13) + Josh at TicketSpice both asked for a single page:
-     "if we don't use the same page we're going to have to enter all of
-     the actions that we have in the other page, it is a lot!"
-     SHIPPING STATE = FLASH SALE (Aug 26-30).
-       Aug 31 -> Labor Day block (20% off, through Sept 7)
-       Sept 8 -> In Season block (full price)
-     Manual switchover; the page does NOT self-advance (Riamede precedent).
+  ⚡ ARCHITECTURE — TWO SEPARATE PAGES (Bryan, phone 2026-08-13,
+     transcript 8.13.26.Crowd7CallWithBryanJaphet).
+       THIS PAGE = Fall Festival 2026 — DAY-BASED, in-season pricing
+       SIBLING   = Flash Sale 2026    — any-day, 40% off (../flash-sale/)
+     Bryan verbatim: "the day based page, once you publish it, you can't
+     go back." So the flash sale lives on its own any-day page and this
+     one carries the normal season.
+     Supersedes the one-page-three-phases plan built earlier today.
 
-  📋 PRICING — Bryan's 2026-08-13 email to Adrianne, which supersedes the
-     5/27 event-info where they differ:
-       Flash General ............ $17.95
-       Flash Super Pass ......... $35.95   (door $48.95)
-       Flash Family 4-Pack ...... $69.95
-     40% off, capped at 3,750 tickets. Ultimate excluded from the flash
-     sale (Bryan: "hard to get 40% off that early"); Adrianne agreed.
+  📋 IN-SEASON PRICING (5/27 event-info; flash pricing lives on the
+     sibling page):
+       General Admission ... $19.95 online   (peak weekends $24.95)
+       Super Pass .......... $35.95 online   (peak $43.95 · door $43.95,
+                                              peak door $48.95)
+       Ultimate Pass ....... $68 online  ⚠️ UNCONFIRMED — see below
+       Season Pass ......... $65.95
+       Family 4-Pack Super Admission Bundle $159.95 — OCTOBER DATES ONLY
+     PEAK WEEKENDS = Oct 17-18 and Oct 23-24, +$5 on every type.
+
+  🚩 ULTIMATE PRICE IS NOT CONFIRMED. The 5/27 event-info records it as a
+     RANGE ("~$68-$73.95"), which is not a price. Adrianne then asked on
+     8/12: "Are we not offering the Ultimate Ticket Level at $65.95?" —
+     and Bryan never answered the number. $65.95 is the Season Pass price
+     in the spec, so she may be conflating the two. $68 is used here as
+     the event-info figure. CONFIRM BEFORE PUBLISH. This is exactly the
+     failure mode that put a stale $50.50 on the Summers Farm page.
 
   ⚠️ ADD-ONS ARE PAID, NOT INCLUDED. Corrected 2026-08-13 from a live
      capture of their TicketSpice page. The first build listed Mega Slide,
@@ -68,8 +78,9 @@
      EVENING ONLY (5-10pm), which the earlier build got wrong by implying
      Tue-Sun were all daytime.
 
-  ⚠️ NO ANY-DAY / ANY-TIME TICKETS — Adrianne 8/12, capacity driven. Every
-     ticket is date-and-time specific. Do not reintroduce an any-day type.
+  ✅ DAY-BASED BY DESIGN. Every ticket here is date-and-time specific —
+     Adrianne 8/12 cited capacity. The any-day tickets live ONLY on the
+     sibling flash-sale page.
 
   🚩 STILL OPEN — do not invent answers:
      1. Family 4-Pack inclusion item — nothing locked; sold on price alone.
@@ -79,10 +90,14 @@
         email signature says 20774. Using 20772 (the cart is what buyers
         navigate from) but this needs confirming.
      4. Group check-in scanning for the 4-Pack — broke for Tulips spring
-        2026, still untested. Gates the flash sale, not this build.
+        2026, still untested.
+     5. Family 4-Pack Super Admission Bundle ($159.95) is OCTOBER-ONLY per
+        the spec — a TS Action shows it on October dates only. Not given a
+        card here; it surfaces in the cart on qualifying dates.
 
-  NATIVE TS CART: ticket types, prices, the 3,750 cap, date/time selection,
-  add-on products and the cap-redirect all stay native in TicketSpice.
+  NATIVE TS CART: ticket types, prices, date/time selection, the peak-
+  weekend +$5 bump, the October-only bundle visibility and the add-on
+  products all stay native in TicketSpice.
   ============================================================
 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -189,7 +204,7 @@
         max-width: 1120px !important; margin: 0 auto !important;
         padding: 0 24px clamp(40px,5.5vw,68px) !important;
     }
-    #mf-funnel .mf-flash-pill {
+    #mf-funnel .mf-season-pill {
         display: inline-block !important; background: var(--mf-red) !important; color: #fff !important;
         font-size: .73rem !important; font-weight: 700 !important; letter-spacing: .13em !important;
         text-transform: uppercase !important; padding: 9px 18px !important; border-radius: 6px !important;
@@ -352,11 +367,11 @@
 
     <div class="mf-banner">
         <div class="mf-banner-inner">
-            <span>🎃 <strong>Flash Sale — 40% Off</strong></span>
+            <span>🎃 <strong>Fall Festival 2026</strong></span>
             <span class="mf-dot"></span>
-            <span>August 26–30 only</span>
+            <span>September 12 – November 8</span>
             <span class="mf-dot"></span>
-            <span>Limited to 3,750 tickets</span>
+            <span>Upper Marlboro, MD</span>
         </div>
     </div>
 
@@ -371,42 +386,42 @@
     <div class="mf-hero">
         <div class="mf-hero-scrim"></div>
         <div class="mf-hero-inner">
-            <span class="mf-flash-pill">⚡ Flash Sale · Aug 26–30</span>
+            <span class="mf-season-pill">🍂 Season · Sept 12 – Nov 8</span>
             <span class="mf-hero-title">Fall Festival <em>2026</em></span>
-            <span class="mf-hero-sub">The best pricing of the whole season — 40% off for five days, capped at 3,750 tickets. Pick your date and time, then come spend the day with us.</span>
+            <span class="mf-hero-sub">Pick-your-own pumpkins, hay bales, farm animals and a whole park built for a family day out. Choose your date and time, and come spend the day with us.</span>
         </div>
     </div>
 
     <div class="mf-sec mf-how">
         <div class="mf-head mfr">
-            <span class="mf-eye">Five Days Only</span>
-            <span class="mf-title">How the <em>Flash Sale</em> works</span>
-            <p class="mf-lede">The lowest prices we offer all season. Once the 3,750 tickets are gone, they're gone — full pricing returns August 31.</p>
+            <span class="mf-eye">Before You Come</span>
+            <span class="mf-title">Planning your <em>visit</em></span>
+            <p class="mf-lede">Every ticket is for a specific day and arrival window, so the farm never gets overcrowded and your family always gets room to play.</p>
         </div>
         <div class="mf-steps mfr d1">
             <div class="mf-step">
                 <span class="mf-step-n">1</span>
-                <span class="mf-step-t">Buy Aug 26–30</span>
-                <span class="mf-step-d">Five days, Wednesday through Sunday. No extensions.</span>
+                <span class="mf-step-t">Pick your ticket</span>
+                <span class="mf-step-d">General Admission, Super Pass or the Ultimate — whichever fits your day.</span>
             </div>
             <div class="mf-step">
                 <span class="mf-step-n">2</span>
-                <span class="mf-step-t">Pick your date &amp; time</span>
-                <span class="mf-step-d">Every ticket is for a specific day and arrival window — chosen at checkout.</span>
+                <span class="mf-step-t">Choose date &amp; time</span>
+                <span class="mf-step-d">Select the day and arrival window you want at checkout.</span>
             </div>
             <div class="mf-step">
                 <span class="mf-step-n">3</span>
-                <span class="mf-step-t">Come out this fall</span>
-                <span class="mf-step-d">Gates open September 12 and we run right through November 8.</span>
+                <span class="mf-step-t">Add your extras</span>
+                <span class="mf-step-d">Mining, paintball, the Mega Slide and more — add them at checkout or on the day.</span>
             </div>
         </div>
     </div>
 
     <div class="mf-sec mf-tickets" id="tickets">
         <div class="mf-head mfr">
-            <span class="mf-eye">Flash Sale Pricing</span>
+            <span class="mf-eye">Season Pricing</span>
             <span class="mf-title">Three ways to do <em>fall</em></span>
-            <p class="mf-lede">All three are date-and-time specific. Ages 2 and under are always free.</p>
+            <p class="mf-lede">Every ticket is date-and-time specific. Ages 2 and under are always free.</p>
         </div>
         <div class="mf-grid">
 
@@ -415,8 +430,8 @@
                 <h3>General Admission</h3>
                 <span class="mf-card-sub">One day, one admission</span>
                 <div class="mf-price-row">
-                    <span class="mf-price">$17.95</span>
-                    <span class="mf-save">40% Off</span>
+                    <span class="mf-price">$19.95</span>
+                    <span class="mf-save">Online</span>
                 </div>
                 <ul class="mf-list">
                     <li><span class="mf-tick">✓</span><span>Full access to the fall festival</span></li>
@@ -424,7 +439,7 @@
                     <li><span class="mf-tick">✓</span><span>Farm animals, play areas &amp; photo ops</span></li>
                     <li><span class="mf-tick">✓</span><span>Ages 2 &amp; under free — no ticket needed</span></li>
                 </ul>
-                <span class="mf-card-note">Choose your date and arrival time at checkout. Good for one entry on the date selected.</span>
+                <span class="mf-card-note">$24.95 on peak weekends (Oct 17–18 and Oct 23–24). Choose your date and arrival time at checkout.</span>
             </div>
 
             <div class="mf-card mf-card-feature mfr d1">
@@ -433,38 +448,38 @@
                 <span class="mf-card-sub">Admission plus the big attractions</span>
                 <div class="mf-price-row">
                     <span class="mf-price">$35.95</span>
-                    <span class="mf-was">$48.95</span>
+                    <span class="mf-was">$43.95</span>
                 </div>
                 <ul class="mf-list">
                     <li><span class="mf-tick">✓</span><span>Everything in General Admission</span></li>
                     <li><span class="mf-tick">✓</span><span>Mining Mania included</span></li>
-                    <li><span class="mf-tick">✓</span><span>The biggest per-ticket saving of the sale</span></li>
+                    <li><span class="mf-tick">✓</span><span>Best value per attraction on the farm</span></li>
                     <li><span class="mf-tick">✓</span><span>Ages 2 &amp; under free — no ticket needed</span></li>
                 </ul>
-                <span class="mf-card-note">$48.95 at the door on peak weekends. Choose your date and arrival time at checkout.</span>
+                <span class="mf-card-note">$43.95 at the door, $48.95 on peak weekends. Peak online is $43.95. Choose your date and time at checkout.</span>
             </div>
 
             <div class="mf-card mfr d2">
-                <span class="mf-badge">Family Deal</span>
-                <h3>Family 4-Pack</h3>
-                <span class="mf-card-sub">Four general admissions, one purchase</span>
+                <span class="mf-badge">Most Fun Package</span>
+                <h3>Ultimate Pass</h3>
+                <span class="mf-card-sub">Everything, all in one ticket</span>
                 <div class="mf-price-row">
-                    <span class="mf-price">$69.95</span>
-                    <span class="mf-save">For Four</span>
+                    <span class="mf-price">$68</span>
+                    <span class="mf-save">All-In</span>
                 </div>
                 <ul class="mf-list">
-                    <li><span class="mf-tick">✓</span><span>Four general admission tickets</span></li>
-                    <li><span class="mf-tick">✓</span><span>All four on the same date and time</span></li>
-                    <li><span class="mf-tick">✓</span><span>Everything General Admission includes</span></li>
-                    <li><span class="mf-tick">✓</span><span>Ages 2 &amp; under free — no ticket needed</span></li>
+                    <li><span class="mf-tick">✓</span><span>Everything in General Admission</span></li>
+                    <li><span class="mf-tick">✓</span><span>Unlimited Super Mega Slide</span></li>
+                    <li><span class="mf-tick">✓</span><span>Duck Race, Paint-a-Pumpkin &amp; Mining Mania</span></li>
+                    <li><span class="mf-tick">✓</span><span>100 shots of paintball + a Build-a-Buddy</span></li>
                 </ul>
-                <span class="mf-card-note">Bought in one transaction. Choose your date and arrival time at checkout.</span>
+                <span class="mf-card-note">Every add-on below, bundled. Peak weekends add $5. Choose your date and arrival time at checkout.</span>
             </div>
 
         </div>
 
         <div class="mf-cap mfr d3">
-            <span>⏳ <strong>3,750 tickets only.</strong> When they're gone the flash sale closes — full-season pricing resumes August 31.</span>
+            <span>🍁 <strong>Peak weekends</strong> — October 17–18 and 23–24 — add $5 to every ticket type. Coming more than twice? A <strong>Season Pass</strong> is $65.95.</span>
         </div>
     </div>
 
@@ -472,7 +487,7 @@
         <div class="mf-head mfr">
             <span class="mf-eye">Add Them At Checkout</span>
             <span class="mf-title">Make it a <em>bigger</em> day</span>
-            <p class="mf-lede">These are extras, not part of admission — add any of them to your order when you check out.</p>
+            <p class="mf-lede">These are extras, not part of General Admission — add any of them at checkout. The Ultimate Pass bundles them all.</p>
         </div>
         <div class="mf-addon-grid mfr d1">
             <div class="mf-addon"><span class="mf-addon-n">🦆 Duck Races — keep your duck</span><span class="mf-addon-p">$2</span></div>
@@ -522,8 +537,8 @@
                 <span class="mf-info-v">September 12 –<br>November 8, 2026</span>
             </div>
             <div>
-                <span class="mf-info-l">Flash Sale</span>
-                <span class="mf-info-v">August 26–30<br>3,750 tickets only</span>
+                <span class="mf-info-l">Season Pass</span>
+                <span class="mf-info-v">$65.95<br>unlimited visits</span>
             </div>
             <div>
                 <span class="mf-info-l">Who Needs a Ticket</span>
@@ -577,7 +592,7 @@
     #mf-float a:hover { background: #8E3A2C !important; transform: translateY(-2px) !important; color: #fff !important; }
 </style>
 <div id="mf-float">
-    <a href="#ticketBlock">Get Flash Sale Tickets</a>
+    <a href="#ticketBlock">Get Fall Festival Tickets</a>
 </div>
 <script>
     (function() {
@@ -588,7 +603,7 @@
 
 <div id="ticketBlock">
   <h2>Native TicketSpice cart renders here</h2>
-  <div class="c7-cart-stub">Ticket types, prices, the 3,750 cap, date + time selection, the add-on products and the cap-redirect all stay native in TicketSpice.<br>This stub exists so the page scrolls and the CTAs resolve.</div>
+  <div class="c7-cart-stub">Ticket types, prices, date + time selection, the peak-weekend +$5 bump, the October-only bundle and the add-on products all stay native in TicketSpice.</div>
 </div>
 </body>
 </html>
