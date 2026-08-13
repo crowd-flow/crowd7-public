@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Montpelier Farms — Fall Festival 2026 (preview)</title>
 <style>
-  body { margin:0; font-family:-apple-system,system-ui,sans-serif; background:#FDFAF4; }
-  .c7-note { background:#2B2B2E; color:#fff; padding:10px 16px; font-size:12.5px; text-align:center; }
-  .c7-note b { color:#E3B75E; }
+  body { margin:0; font-family:-apple-system,system-ui,sans-serif; background:#FBF7F0; }
+  .c7-note { background:#22332E; color:#fff; padding:10px 16px; font-size:12.5px; text-align:center; }
+  .c7-note b { color:#D9A441; }
   #ticketBlock { max-width:820px; margin:0 auto; padding:56px 24px 120px; }
-  #ticketBlock h2 { font-family:'Fraunces',Georgia,serif; color:#6B2D3C; }
-  .c7-cart-stub { border:2px dashed #DFCFB4; border-radius:16px; padding:34px; text-align:center; color:#7A7A80; background:#fff; }
+  #ticketBlock h2 { font-family:'Bitter',Georgia,serif; color:#B04A3A; }
+  .c7-cart-stub { border:2px dashed #DBCBB4; border-radius:12px; padding:34px; text-align:center; color:#7C8078; background:#fff; }
 </style>
 </head>
 <body>
@@ -19,99 +19,89 @@
   ============================================================
   MONTPELIER FARMS — FALL FESTIVAL 2026 — TicketSpice content block
   ============================================================
-  Upper Marlboro, MD · Adrianne Dunn (Owner/Operator)
+  1720 Crain Hwy, Upper Marlboro, MD · Adrianne Dunn (Owner/Operator)
   Rebuilt 2026-08-13 by Crowdly on Mat's directive.
 
-  ⚡ THIS REPLACES the 2026-05-29 placeholder build. That build was cloned
-  from the Colony Acres scaffold, was 100% gradient placeholders, and had
-  sat untouched at External Wait since 5/29 while the spec moved on.
+  ⚡ SECOND REBUILD, same day. The first pass this morning invented a
+  wine/gold palette and a text wordmark because I concluded "no brand
+  assets exist" from the email attachments. Wrong — their whole brand was
+  on their own website. Now built on the real thing.
 
-  🔴 WHY THE REBUILD WAS URGENT
-    Flash Sale opens Aug 26 (13 days out at build time). Lead-up campaign
-    launches the week of Aug 17-23. Adrianne, 2026-08-12: "I'd like to see
-    those as soon as possible please, as we are just a couple weeks out
-    from the Flash Sale."
+  🎨 REAL BRAND, sampled from their own primary logo:
+     forest green #2F4640  — the MONTPELIER wordmark
+     brick red    #B04A3A  — the barn roof + FAMILY FARM PARK
+     Assets scraped from montpelierfarms.com 2026-08-13 and committed to
+     crowd7-public/clients/montpelier/design/assets/ (see its README).
 
-  ⚡ ARCHITECTURE — ONE PAGE, THREE PHASES (Mat directive 2026-08-13)
-    Adrianne (8/13) + Josh at TicketSpice both asked for a single page
-    covering Flash Sale, Labor Day and in-season rather than three separate
-    pages: "if we don't use the same page we're going to have to enter all
-    of the actions that we have in the other page, it is a lot!"
-    So: ONE cart, ONE loader, ONE content file. Phases swap by editing the
-    card block and pushing — the page does NOT self-advance on a date gate
-    (Riamede precedent, Mat 2026-08-07). Later-phase card blocks are
-    archived alongside this file for the manual switchover.
+  📛 NAME — "Montpelier Farms" (Mat's call 2026-08-13). Their assets carry
+     three variants: the logos read "Montpelier Farms", the badge and the
+     TicketSpice header read "Montpelier Family Farm Park", and Adrianne
+     signs "Montpelier Farms, LLC". Use Montpelier Farms throughout.
 
-    SHIPPING STATE = FLASH SALE (Aug 26-30).
-      Aug 31 -> swap to the Labor Day block (20% off, through Sept 7)
-      Sept 8 -> swap to the In Season block (full price)
+  ⚡ ARCHITECTURE — ONE PAGE, THREE PHASES (Mat directive 2026-08-13).
+     Adrianne (8/13) + Josh at TicketSpice both asked for a single page:
+     "if we don't use the same page we're going to have to enter all of
+     the actions that we have in the other page, it is a lot!"
+     SHIPPING STATE = FLASH SALE (Aug 26-30).
+       Aug 31 -> Labor Day block (20% off, through Sept 7)
+       Sept 8 -> In Season block (full price)
+     Manual switchover; the page does NOT self-advance (Riamede precedent).
 
-  📋 PRICING — from Bryan's 2026-08-13 email to Adrianne (most recent,
-     client-facing, supersedes the 5/27 event-info where they differ):
-       Flash Sale General .............. $17.95
-       Flash Sale Super Pass ........... $35.95   (door $48.95)
-       Flash Sale Family 4-Pack Bundle . $69.95
-       In Season Family 4-Pack Super ... $159.95  (save 20%)
-     Flash sale is 40% off, capped at 3,750 tickets (up from 3,500 LY).
+  📋 PRICING — Bryan's 2026-08-13 email to Adrianne, which supersedes the
+     5/27 event-info where they differ:
+       Flash General ............ $17.95
+       Flash Super Pass ......... $35.95   (door $48.95)
+       Flash Family 4-Pack ...... $69.95
+     40% off, capped at 3,750 tickets. Ultimate excluded from the flash
+     sale (Bryan: "hard to get 40% off that early"); Adrianne agreed.
 
-  ⚠️ NO ANY-DAY / ANY-TIME TICKETS — Adrianne 2026-08-12, capacity driven:
-     "We will not be doing Any Day, Any Time ticketing for any of the sales
-     due to our capacity issues... We need them to be able to pick a date
-     and time on the Flash Sale and Labor Day Sale pages." Every card says
-     so explicitly; do not reintroduce an any-day ticket.
+  ⚠️ ADD-ONS ARE PAID, NOT INCLUDED. Corrected 2026-08-13 from a live
+     capture of their TicketSpice page. The first build listed Mega Slide,
+     Duck Races, Paint-a-Pumpkin, Mining Mania and Paintball as "included
+     with admission" — they are à-la-carte. Prices below are theirs,
+     verbatim from the cart. This also explains the Ultimate Pass: its
+     inclusions are exactly this add-on list, which is why Bryan calls it
+     the price anchor.
 
-  ⚠️ DATE CORRECTIONS vs the 5/27 event-info:
-     Labor Day sale is Aug 31 - Sept 7 (NOT Sept 4-7) — Adrianne 8/12.
-     Full price resumes Sept 8. Final weekend Nov 7-8 — Adrianne 8/12.
-     Ultimate is deliberately EXCLUDED from the flash sale — Bryan 8/13
-     ("the ultimate has so much value it's hard to get 40% off that
-     early"); Adrianne agreed.
+  ⚠️ HOURS are exact, from the same live capture — NOT the vague
+     "shorter hours" language of the 5/27 spec. Note Friday in October is
+     EVENING ONLY (5-10pm), which the earlier build got wrong by implying
+     Tue-Sun were all daytime.
 
-  🎨 NO BRAND ASSETS EXIST. Adrianne has never sent photography, a logo,
-     fonts or hex codes — the 16 attachments on the 8/13 thread are all
-     269-823 byte signature spacers, not assets. This build is therefore
-     CSS-only (gradient + pattern + type), deliberately distinct from the
-     Summers Farm palette so the two do not read as the same page. The
-     whole palette is hoisted into CSS variables on #mfp-funnel — when
-     branding arrives it is a one-place swap. Photo slots are marked
-     ASSET-SLOT so they are obvious.
+  ⚠️ NO ANY-DAY / ANY-TIME TICKETS — Adrianne 8/12, capacity driven. Every
+     ticket is date-and-time specific. Do not reintroduce an any-day type.
 
-  🚩 STILL OPEN (do not invent answers):
-     1. Family 4-Pack inclusion item — Bryan wanted "something just so
-        small"; donuts and slushies were ruled out; nothing locked. The
-        card currently sells it on price alone.
-     2. GA door price — never stated, so the GA card shows no struck
-        compare-at. Super Pass has one ($48.95) because Bryan stated it.
-     3. Super Pass + Season Pass full inclusion lists — never enumerated.
+  🚩 STILL OPEN — do not invent answers:
+     1. Family 4-Pack inclusion item — nothing locked; sold on price alone.
+     2. GA door price — never stated, so no struck compare-at on that card.
+        Super Pass has one ($48.95) because Bryan stated it.
+     3. ZIP CODE CONFLICT — their TicketSpice page says 20772, Adrianne's
+        email signature says 20774. Using 20772 (the cart is what buyers
+        navigate from) but this needs confirming.
      4. Group check-in scanning for the 4-Pack — broke for Tulips spring
         2026, still untested. Gates the flash sale, not this build.
 
-  NATIVE TS CART: ticket types, prices, caps, date/time selection and the
-  3,750-cap redirect all stay native in TicketSpice.
+  NATIVE TS CART: ticket types, prices, the 3,750 cap, date/time selection,
+  add-on products and the cap-redirect all stay native in TicketSpice.
   ============================================================
 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;0,700;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
-    /* ══════════════════════════════════════════════════════════
-       MONTPELIER PALETTE — harvest evening. Wine leads, gold
-       accents, moss + charcoal ground. Deliberately NOT the
-       Summers Farm barn-red/amber family.
-       Swap these six values when Adrianne sends branding.
-       ══════════════════════════════════════════════════════════ */
-    #mfp-funnel {
-        --mfp-wine:    #6B2D3C;
-        --mfp-wine-dk: #4A1E2A;
-        --mfp-wine-lt: #8C4054;
-        --mfp-gold:    #C9962C;
-        --mfp-gold-lt: #E3B75E;
-        --mfp-moss:    #4A5D45;
-        --mfp-char:    #2B2B2E;
-        --mfp-cream:   #FDFAF4;
-        --mfp-sand:    #F2E8D8;
-        --mfp-sand-dk: #DFCFB4;
+    #mf-funnel {
+        --mf-green:    #2F4640;
+        --mf-green-dk: #22332E;
+        --mf-green-lt: #3F5C53;
+        --mf-red:      #B04A3A;
+        --mf-red-dk:   #8E3A2C;
+        --mf-red-lt:   #C86A57;
+        --mf-gold:     #D9A441;
+        --mf-cream:    #FBF7F0;
+        --mf-sand:     #F0E6D8;
+        --mf-sand-dk:  #DBCBB4;
+        --mf-ink:      #2A2A28;
 
         width: 100vw !important;
         position: relative !important;
@@ -119,465 +109,443 @@
         margin-left: -50vw !important; margin-right: -50vw !important;
         overflow: hidden !important;
         font-family: 'Inter', -apple-system, sans-serif !important;
-        background: var(--mfp-cream) !important;
-        color: var(--mfp-char) !important;
+        background: var(--mf-cream) !important;
+        color: var(--mf-ink) !important;
         padding: 0 !important;
     }
-    #mfp-funnel *, #mfp-funnel *::before, #mfp-funnel *::after { box-sizing: border-box !important; }
+    #mf-funnel *, #mf-funnel *::before, #mf-funnel *::after { box-sizing: border-box !important; }
 
-    #mfp-funnel .mfpr { opacity: 0 !important; transform: translateY(20px) !important;
+    #mf-funnel .mfr { opacity: 0 !important; transform: translateY(20px) !important;
         transition: opacity .65s ease, transform .65s ease !important; }
-    #mfp-funnel .mfpr.mfpon { opacity: 1 !important; transform: none !important; }
-    #mfp-funnel .d1 { transition-delay: .09s !important; }
-    #mfp-funnel .d2 { transition-delay: .18s !important; }
-    #mfp-funnel .d3 { transition-delay: .27s !important; }
+    #mf-funnel .mfr.mfon { opacity: 1 !important; transform: none !important; }
+    #mf-funnel .d1 { transition-delay: .09s !important; }
+    #mf-funnel .d2 { transition-delay: .18s !important; }
+    #mf-funnel .d3 { transition-delay: .27s !important; }
 
-    #mfp-funnel .mfp-sec { padding: clamp(56px, 7.5vw, 92px) 24px !important; }
-    #mfp-funnel .mfp-wrap { max-width: 1120px !important; margin: 0 auto !important; }
-    #mfp-funnel .mfp-eye {
+    #mf-funnel .mf-sec { padding: clamp(56px, 7.5vw, 92px) 24px !important; }
+    #mf-funnel .mf-eye {
         display: block !important; font-size: .71rem !important; font-weight: 600 !important;
         letter-spacing: .2em !important; text-transform: uppercase !important;
-        color: var(--mfp-gold) !important; margin-bottom: 13px !important;
+        color: var(--mf-red) !important; margin-bottom: 13px !important;
     }
-    #mfp-funnel .mfp-title {
-        display: block !important; font-family: 'Fraunces', Georgia, serif !important;
-        font-size: clamp(1.9rem, 4.3vw, 3rem) !important; font-weight: 700 !important;
-        line-height: 1.12 !important; color: var(--mfp-char) !important; margin: 0 !important;
+    #mf-funnel .mf-title {
+        display: block !important; font-family: 'Bitter', Georgia, serif !important;
+        font-size: clamp(1.9rem, 4.3vw, 2.9rem) !important; font-weight: 700 !important;
+        line-height: 1.14 !important; color: var(--mf-green) !important; margin: 0 !important;
     }
-    #mfp-funnel .mfp-title em { font-style: italic !important; color: var(--mfp-wine) !important; }
-    #mfp-funnel .mfp-lede {
+    #mf-funnel .mf-title em { font-style: italic !important; color: var(--mf-red) !important; }
+    #mf-funnel .mf-lede {
         font-size: 1.01rem !important; line-height: 1.68 !important;
-        color: #55555B !important; margin: 17px 0 0 !important; max-width: 52ch !important;
+        color: #55584F !important; margin: 16px 0 0 !important; max-width: 54ch !important;
     }
-    #mfp-funnel .mfp-head { text-align: center !important; max-width: 720px !important; margin: 0 auto clamp(32px,4.5vw,50px) !important; }
-    #mfp-funnel .mfp-head .mfp-lede { margin-left: auto !important; margin-right: auto !important; }
+    #mf-funnel .mf-head { text-align: center !important; max-width: 720px !important; margin: 0 auto clamp(32px,4.5vw,50px) !important; }
+    #mf-funnel .mf-head .mf-lede { margin-left: auto !important; margin-right: auto !important; }
 
     /* ── BANNER ── */
-    #mfp-funnel .mfp-banner {
-        background: var(--mfp-wine-dk) !important; color: #fff !important;
-        text-align: center !important; padding: 11px 20px !important;
-        font-size: .79rem !important; letter-spacing: .05em !important;
+    #mf-funnel .mf-banner {
+        background: var(--mf-red) !important; text-align: center !important;
+        padding: 11px 20px !important; font-size: .79rem !important; letter-spacing: .05em !important;
     }
-    #mfp-funnel .mfp-banner, #mfp-funnel .mfp-banner span, #mfp-funnel .mfp-banner strong {
-        color: #ffffff !important;   /* TS ships its own span rules; inherited colour loses to them */
-    }
-    #mfp-funnel .mfp-banner strong { color: var(--mfp-gold-lt) !important; }
-    #mfp-funnel .mfp-banner-inner { display: flex !important; align-items: center !important;
+    /* TS ships its own span/strong colour rules; inherited colour loses to them */
+    #mf-funnel .mf-banner, #mf-funnel .mf-banner span, #mf-funnel .mf-banner strong { color: #ffffff !important; }
+    #mf-funnel .mf-banner-inner { display: flex !important; align-items: center !important;
         justify-content: center !important; gap: 11px !important; flex-wrap: wrap !important; }
-    #mfp-funnel .mfp-dot { width: 3px !important; height: 3px !important; border-radius: 50% !important;
-        background: rgba(255,255,255,.45) !important; display: inline-block !important; flex-shrink: 0 !important; }
+    #mf-funnel .mf-dot { width: 3px !important; height: 3px !important; border-radius: 50% !important;
+        background: rgba(255,255,255,.5) !important; display: inline-block !important; flex-shrink: 0 !important; }
 
     /* ── NAV ── */
-    #mfp-funnel .mfp-nav {
-        height: 66px !important; padding: 0 clamp(16px,4vw,40px) !important;
+    #mf-funnel .mf-nav {
+        height: 78px !important; padding: 0 clamp(16px,4vw,40px) !important;
         display: flex !important; align-items: center !important; justify-content: space-between !important;
-        background: rgba(43,43,46,.97) !important; position: sticky !important; top: 0 !important;
-        z-index: 100 !important; box-shadow: 0 2px 18px rgba(43,43,46,.3) !important;
+        background: rgba(34,51,46,.97) !important; position: sticky !important; top: 0 !important;
+        z-index: 100 !important; box-shadow: 0 2px 18px rgba(34,51,46,.32) !important;
     }
-    /* ASSET-SLOT — swap for Adrianne's logo file when it arrives */
-    #mfp-funnel .mfp-logo {
-        font-family: 'Fraunces', Georgia, serif !important; font-size: 1.22rem !important;
-        font-weight: 700 !important; color: #fff !important; letter-spacing: .01em !important;
-    }
-    #mfp-funnel .mfp-logo span { color: var(--mfp-gold) !important; font-style: italic !important; }
-    #mfp-funnel .mfp-nav-right { display: flex !important; align-items: center !important; gap: 16px !important; }
-    #mfp-funnel .mfp-nav-loc { font-size: .79rem !important; color: rgba(255,255,255,.68) !important; }
-    #mfp-funnel .mfp-nav-cta {
-        background: var(--mfp-gold) !important; color: var(--mfp-char) !important;
-        text-decoration: none !important; font-weight: 600 !important; font-size: .83rem !important;
-        padding: 10px 21px !important; border-radius: 50px !important; white-space: nowrap !important;
+    #mf-funnel .mf-logo { height: 54px !important; width: auto !important; display: block !important; flex-shrink: 0 !important; }
+    #mf-funnel .mf-nav-right { display: flex !important; align-items: center !important; gap: 16px !important; }
+    #mf-funnel .mf-nav-loc { font-size: .79rem !important; color: rgba(255,255,255,.66) !important; }
+    #mf-funnel .mf-nav-cta {
+        background: var(--mf-red) !important; color: #fff !important; text-decoration: none !important;
+        font-weight: 600 !important; font-size: .83rem !important; padding: 11px 22px !important;
+        border-radius: 6px !important; white-space: nowrap !important;
         transition: background .2s, transform .15s !important;
     }
-    #mfp-funnel .mfp-nav-cta:hover { background: var(--mfp-gold-lt) !important; transform: translateY(-1px) !important; color: var(--mfp-char) !important; }
+    #mf-funnel .mf-nav-cta:hover { background: var(--mf-red-lt) !important; transform: translateY(-1px) !important; color: #fff !important; }
 
-    /* ── HERO — CSS-only until photography arrives (ASSET-SLOT) ── */
-    #mfp-funnel .mfp-hero {
-        position: relative !important; overflow: hidden !important;
-        padding: clamp(64px,10vw,120px) 24px clamp(56px,8vw,96px) !important;
-        background:
-            radial-gradient(ellipse at 20% 0%, rgba(201,150,44,.24) 0%, transparent 55%),
-            radial-gradient(ellipse at 85% 100%, rgba(74,93,69,.32) 0%, transparent 60%),
-            linear-gradient(160deg, var(--mfp-wine) 0%, var(--mfp-wine-dk) 58%, var(--mfp-char) 100%) !important;
+    /* ── HERO ── */
+    #mf-funnel .mf-hero {
+        position: relative !important; width: 100% !important;
+        min-height: clamp(420px, 64vw, 660px) !important;
+        display: flex !important; align-items: flex-end !important; overflow: hidden !important;
+        background-image: url('https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/montpelier/design/assets/photos/hero-family-in-pumpkins.jpg') !important;
+        background-size: cover !important; background-position: center 42% !important;
     }
-    #mfp-funnel .mfp-hero::before {
-        content: '' !important; position: absolute !important; inset: 0 !important;
-        opacity: .07 !important; pointer-events: none !important;
-        background-image:
-            repeating-linear-gradient(45deg, #fff 0 1px, transparent 1px 14px),
-            repeating-linear-gradient(-45deg, #fff 0 1px, transparent 1px 14px) !important;
+    #mf-funnel .mf-hero-scrim {
+        position: absolute !important; inset: 0 !important; z-index: 1 !important;
+        background: linear-gradient(to top,
+            rgba(34,51,46,.88) 0%, rgba(34,51,46,.55) 26%, rgba(34,51,46,.18) 48%, rgba(34,51,46,0) 66%) !important;
     }
-    #mfp-funnel .mfp-hero-inner { position: relative !important; z-index: 2 !important;
-        max-width: 1120px !important; margin: 0 auto !important; text-align: center !important; }
-    #mfp-funnel .mfp-flash-pill {
-        display: inline-flex !important; align-items: center !important; gap: 9px !important;
-        background: var(--mfp-gold) !important; color: var(--mfp-char) !important;
-        font-size: .74rem !important; font-weight: 700 !important; letter-spacing: .13em !important;
-        text-transform: uppercase !important; padding: 9px 19px !important; border-radius: 50px !important;
-        margin-bottom: 22px !important;
+    #mf-funnel .mf-hero-inner {
+        position: relative !important; z-index: 2 !important; width: 100% !important;
+        max-width: 1120px !important; margin: 0 auto !important;
+        padding: 0 24px clamp(40px,5.5vw,68px) !important;
     }
-    #mfp-funnel .mfp-hero-title {
-        display: block !important; font-family: 'Fraunces', Georgia, serif !important;
-        font-size: clamp(2.5rem, 7.5vw, 5rem) !important; font-weight: 700 !important;
-        line-height: 1.03 !important; color: #fff !important; margin-bottom: 18px !important;
+    #mf-funnel .mf-flash-pill {
+        display: inline-block !important; background: var(--mf-red) !important; color: #fff !important;
+        font-size: .73rem !important; font-weight: 700 !important; letter-spacing: .13em !important;
+        text-transform: uppercase !important; padding: 9px 18px !important; border-radius: 6px !important;
+        margin-bottom: 18px !important;
     }
-    #mfp-funnel .mfp-hero-title em { font-style: italic !important; color: var(--mfp-gold-lt) !important; }
-    #mfp-funnel .mfp-hero-sub {
-        display: block !important; max-width: 56ch !important; margin: 0 auto !important;
-        font-size: 1.06rem !important; line-height: 1.66 !important; color: rgba(255,255,255,.9) !important;
+    #mf-funnel .mf-hero-title {
+        display: block !important; font-family: 'Bitter', Georgia, serif !important;
+        font-size: clamp(2.4rem, 7vw, 4.6rem) !important; font-weight: 700 !important;
+        line-height: 1.05 !important; color: #fff !important; margin-bottom: 15px !important;
+        text-shadow: 0 3px 24px rgba(0,0,0,.4) !important;
     }
-    #mfp-funnel .mfp-hero-meta {
-        display: flex !important; justify-content: center !important; flex-wrap: wrap !important;
-        gap: 10px 26px !important; margin-top: 30px !important;
+    #mf-funnel .mf-hero-title em { font-style: italic !important; color: var(--mf-gold) !important; }
+    #mf-funnel .mf-hero-sub {
+        display: block !important; max-width: 54ch !important; font-size: 1.05rem !important;
+        line-height: 1.64 !important; color: rgba(255,255,255,.94) !important;
+        text-shadow: 0 2px 14px rgba(0,0,0,.45) !important;
     }
-    #mfp-funnel .mfp-hero-meta span { font-size: .87rem !important; color: rgba(255,255,255,.8) !important; }
-    #mfp-funnel .mfp-hero-meta b { color: var(--mfp-gold-lt) !important; font-weight: 600 !important; }
 
-    /* ── HOW THE FLASH SALE WORKS ── */
-    #mfp-funnel .mfp-how { background: var(--mfp-char) !important; }
-    #mfp-funnel .mfp-how .mfp-title { color: #fff !important; }
-    #mfp-funnel .mfp-how .mfp-title em { color: var(--mfp-gold-lt) !important; }
-    #mfp-funnel .mfp-how .mfp-lede { color: rgba(255,255,255,.75) !important; }
-    #mfp-funnel .mfp-steps {
-        display: grid !important; grid-template-columns: repeat(3, 1fr) !important;
-        gap: clamp(18px,3vw,34px) !important; max-width: 1000px !important; margin: 0 auto !important;
-    }
-    #mfp-funnel .mfp-step { text-align: center !important; }
-    #mfp-funnel .mfp-step-n {
+    /* ── HOW IT WORKS ── */
+    #mf-funnel .mf-how { background: var(--mf-green) !important; }
+    #mf-funnel .mf-how .mf-title { color: #fff !important; }
+    #mf-funnel .mf-how .mf-title em { color: var(--mf-gold) !important; }
+    #mf-funnel .mf-how .mf-eye { color: var(--mf-gold) !important; }
+    #mf-funnel .mf-how .mf-lede { color: rgba(255,255,255,.78) !important; }
+    #mf-funnel .mf-steps { display: grid !important; grid-template-columns: repeat(3,1fr) !important;
+        gap: clamp(18px,3vw,34px) !important; max-width: 1000px !important; margin: 0 auto !important; }
+    #mf-funnel .mf-step { text-align: center !important; }
+    #mf-funnel .mf-step-n {
         display: inline-flex !important; align-items: center !important; justify-content: center !important;
         width: 40px !important; height: 40px !important; border-radius: 50% !important;
-        background: rgba(201,150,44,.16) !important; border: 1px solid var(--mfp-gold) !important;
-        color: var(--mfp-gold-lt) !important; font-family: 'Fraunces', serif !important;
-        font-weight: 700 !important; font-size: 1.05rem !important; margin-bottom: 14px !important;
+        background: rgba(217,164,65,.15) !important; border: 1px solid var(--mf-gold) !important;
+        color: var(--mf-gold) !important; font-family: 'Bitter', serif !important;
+        font-weight: 700 !important; margin-bottom: 14px !important;
     }
-    #mfp-funnel .mfp-step-t { display: block !important; font-weight: 600 !important; color: #fff !important;
-        font-size: 1rem !important; margin-bottom: 7px !important; }
-    #mfp-funnel .mfp-step-d { display: block !important; font-size: .89rem !important; line-height: 1.6 !important;
-        color: rgba(255,255,255,.7) !important; }
+    #mf-funnel .mf-step-t { display: block !important; font-weight: 600 !important; color: #fff !important; margin-bottom: 7px !important; }
+    #mf-funnel .mf-step-d { display: block !important; font-size: .89rem !important; line-height: 1.6 !important; color: rgba(255,255,255,.72) !important; }
 
-    /* ── TICKET CARDS ── */
-    #mfp-funnel .mfp-tickets { background: var(--mfp-sand) !important; }
-    #mfp-funnel .mfp-grid {
-        display: grid !important; grid-template-columns: repeat(3, minmax(0,1fr)) !important;
-        gap: 22px !important; max-width: 1120px !important; margin: 0 auto !important;
-    }
-    #mfp-funnel .mfp-card {
-        background: #fff !important; border-radius: 20px !important; padding: 34px 28px !important;
+    /* ── TICKETS ── */
+    #mf-funnel .mf-tickets { background: var(--mf-sand) !important; }
+    #mf-funnel .mf-grid { display: grid !important; grid-template-columns: repeat(3,minmax(0,1fr)) !important;
+        gap: 22px !important; max-width: 1120px !important; margin: 0 auto !important; }
+    #mf-funnel .mf-card {
+        background: #fff !important; border-radius: 14px !important; padding: 34px 28px !important;
         display: flex !important; flex-direction: column !important; position: relative !important;
-        box-shadow: 0 16px 44px rgba(43,43,46,.12) !important;
+        box-shadow: 0 14px 40px rgba(42,42,40,.11) !important;
     }
-    #mfp-funnel .mfp-card-feature { background: var(--mfp-wine) !important; }
-    #mfp-funnel .mfp-badge {
+    #mf-funnel .mf-card-feature { background: var(--mf-green) !important; }
+    #mf-funnel .mf-badge {
         position: absolute !important; top: -12px !important; left: 28px !important;
-        font-size: .65rem !important; font-weight: 700 !important; letter-spacing: .13em !important;
-        text-transform: uppercase !important; padding: 6px 15px !important; border-radius: 50px !important;
-        background: var(--mfp-gold) !important; color: var(--mfp-char) !important;
+        font-size: .64rem !important; font-weight: 700 !important; letter-spacing: .13em !important;
+        text-transform: uppercase !important; padding: 6px 14px !important; border-radius: 5px !important;
+        background: var(--mf-red) !important; color: #fff !important;
     }
-    #mfp-funnel .mfp-card h3 {
-        font-family: 'Fraunces', Georgia, serif !important; font-size: 1.42rem !important;
-        font-weight: 700 !important; margin: 6px 0 6px !important; line-height: 1.22 !important;
-        color: var(--mfp-char) !important;
+    #mf-funnel .mf-card-feature .mf-badge { background: var(--mf-gold) !important; color: var(--mf-green-dk) !important; }
+    #mf-funnel .mf-card h3 {
+        font-family: 'Bitter', Georgia, serif !important; font-size: 1.38rem !important;
+        font-weight: 700 !important; margin: 6px 0 5px !important; color: var(--mf-green) !important;
     }
-    #mfp-funnel .mfp-card-feature h3 { color: #fff !important; }
-    #mfp-funnel .mfp-card-sub { display: block !important; font-size: .84rem !important;
-        color: #7A7A80 !important; margin-bottom: 20px !important; }
-    #mfp-funnel .mfp-card-feature .mfp-card-sub { color: rgba(255,255,255,.72) !important; }
-    #mfp-funnel .mfp-price-row { display: flex !important; align-items: baseline !important; gap: 11px !important; flex-wrap: wrap !important; }
-    #mfp-funnel .mfp-price {
-        font-family: 'Fraunces', Georgia, serif !important; font-size: 2.5rem !important;
-        font-weight: 700 !important; line-height: 1 !important; color: var(--mfp-wine) !important;
+    #mf-funnel .mf-card-feature h3 { color: #fff !important; }
+    #mf-funnel .mf-card-sub { display: block !important; font-size: .83rem !important; color: #7C8078 !important; margin-bottom: 20px !important; }
+    #mf-funnel .mf-card-feature .mf-card-sub { color: rgba(255,255,255,.72) !important; }
+    #mf-funnel .mf-price-row { display: flex !important; align-items: baseline !important; gap: 11px !important; flex-wrap: wrap !important; }
+    #mf-funnel .mf-price {
+        font-family: 'Bitter', Georgia, serif !important; font-size: 2.45rem !important;
+        font-weight: 700 !important; line-height: 1 !important; color: var(--mf-red) !important;
     }
-    #mfp-funnel .mfp-card-feature .mfp-price { color: #fff !important; }
-    #mfp-funnel .mfp-was {
-        font-size: 1.05rem !important; color: #9A9AA0 !important;
-        text-decoration: line-through !important; text-decoration-thickness: 2px !important;
-    }
-    #mfp-funnel .mfp-card-feature .mfp-was { color: rgba(255,255,255,.6) !important; }
-    #mfp-funnel .mfp-save {
-        display: inline-block !important; font-size: .7rem !important; font-weight: 700 !important;
+    #mf-funnel .mf-card-feature .mf-price { color: #fff !important; }
+    #mf-funnel .mf-was { font-size: 1.04rem !important; color: #9BA096 !important;
+        text-decoration: line-through !important; text-decoration-thickness: 2px !important; }
+    #mf-funnel .mf-card-feature .mf-was { color: rgba(255,255,255,.58) !important; }
+    #mf-funnel .mf-save {
+        display: inline-block !important; font-size: .69rem !important; font-weight: 700 !important;
         letter-spacing: .08em !important; text-transform: uppercase !important;
-        background: var(--mfp-moss) !important; color: #fff !important;
-        padding: 4px 11px !important; border-radius: 50px !important;
+        background: var(--mf-red) !important; color: #fff !important; padding: 4px 11px !important; border-radius: 4px !important;
     }
-    #mfp-funnel .mfp-list { list-style: none !important; padding: 0 !important; margin: 22px 0 0 !important; flex-grow: 1 !important; }
-    #mfp-funnel .mfp-list li {
+    #mf-funnel .mf-card-feature .mf-save { background: var(--mf-gold) !important; color: var(--mf-green-dk) !important; }
+    #mf-funnel .mf-list { list-style: none !important; padding: 0 !important; margin: 22px 0 0 !important; flex-grow: 1 !important; }
+    #mf-funnel .mf-list li {
         display: flex !important; gap: 11px !important; align-items: flex-start !important;
-        font-size: .92rem !important; line-height: 1.5 !important; color: #4E4E55 !important;
-        padding: 8px 0 !important;
+        font-size: .91rem !important; line-height: 1.5 !important; color: #4E524A !important; padding: 8px 0 !important;
     }
-    #mfp-funnel .mfp-card-feature .mfp-list li { color: rgba(255,255,255,.9) !important; }
-    #mfp-funnel .mfp-tick { color: var(--mfp-gold) !important; font-weight: 700 !important; flex-shrink: 0 !important; }
-    #mfp-funnel .mfp-card-note {
-        font-size: .77rem !important; line-height: 1.5 !important; color: #8A8A90 !important;
-        margin-top: 18px !important; padding-top: 15px !important; border-top: 1px solid var(--mfp-sand-dk) !important;
+    #mf-funnel .mf-card-feature .mf-list li { color: rgba(255,255,255,.9) !important; }
+    #mf-funnel .mf-tick { color: var(--mf-red) !important; font-weight: 700 !important; flex-shrink: 0 !important; }
+    #mf-funnel .mf-card-feature .mf-tick { color: var(--mf-gold) !important; }
+    #mf-funnel .mf-card-note {
+        font-size: .76rem !important; line-height: 1.5 !important; color: #8A8E85 !important;
+        margin-top: 18px !important; padding-top: 15px !important; border-top: 1px solid var(--mf-sand-dk) !important;
     }
-    #mfp-funnel .mfp-card-feature .mfp-card-note { color: rgba(255,255,255,.7) !important; border-top-color: rgba(255,255,255,.2) !important; }
-
-    /* ── cap notice under the grid ── */
-    #mfp-funnel .mfp-cap {
-        max-width: 1120px !important; margin: 22px auto 0 !important;
-        display: flex !important; align-items: center !important; justify-content: center !important;
-        gap: 12px !important; flex-wrap: wrap !important; text-align: center !important;
-        background: var(--mfp-wine) !important; color: #fff !important;
-        padding: 17px 24px !important; border-radius: 14px !important;
+    #mf-funnel .mf-card-feature .mf-card-note { color: rgba(255,255,255,.7) !important; border-top-color: rgba(255,255,255,.2) !important; }
+    #mf-funnel .mf-cap {
+        max-width: 1120px !important; margin: 22px auto 0 !important; text-align: center !important;
+        background: var(--mf-green) !important; padding: 17px 24px !important; border-radius: 10px !important;
         font-size: .89rem !important; line-height: 1.5 !important;
     }
-    #mfp-funnel .mfp-cap strong { color: var(--mfp-gold-lt) !important; }
+    #mf-funnel .mf-cap, #mf-funnel .mf-cap span, #mf-funnel .mf-cap strong { color: #ffffff !important; }
+    #mf-funnel .mf-cap strong { color: var(--mf-gold) !important; }
 
-    /* ── INCLUDED ── */
-    #mfp-funnel .mfp-incl { background: var(--mfp-cream) !important; }
-    #mfp-funnel .mfp-chips { display: flex !important; flex-wrap: wrap !important; gap: 11px !important;
-        justify-content: center !important; max-width: 940px !important; margin: 0 auto !important; }
-    #mfp-funnel .mfp-chip {
-        background: #fff !important; border: 1px solid var(--mfp-sand-dk) !important;
-        color: #4E4E55 !important; font-size: .88rem !important; font-weight: 500 !important;
-        padding: 10px 19px !important; border-radius: 50px !important;
+    /* ── ADD-ONS (paid, not included) ── */
+    #mf-funnel .mf-addons { background: var(--mf-cream) !important; }
+    #mf-funnel .mf-addon-grid {
+        display: grid !important; grid-template-columns: repeat(3,minmax(0,1fr)) !important;
+        gap: 14px !important; max-width: 1000px !important; margin: 0 auto !important;
+    }
+    #mf-funnel .mf-addon {
+        display: flex !important; align-items: center !important; justify-content: space-between !important;
+        gap: 14px !important; background: #fff !important; border: 1px solid var(--mf-sand-dk) !important;
+        border-radius: 10px !important; padding: 15px 18px !important;
+    }
+    #mf-funnel .mf-addon-n { font-size: .9rem !important; font-weight: 500 !important; color: #4E524A !important; line-height: 1.4 !important; }
+    #mf-funnel .mf-addon-p {
+        font-family: 'Bitter', Georgia, serif !important; font-weight: 700 !important;
+        font-size: 1.08rem !important; color: var(--mf-red) !important; white-space: nowrap !important;
     }
 
-    /* ── SEASON ── */
-    #mfp-funnel .mfp-season { background: var(--mfp-moss) !important; }
-    #mfp-funnel .mfp-season .mfp-title { color: #fff !important; }
-    #mfp-funnel .mfp-season .mfp-title em { color: var(--mfp-gold-lt) !important; }
-    #mfp-funnel .mfp-season .mfp-eye { color: var(--mfp-gold-lt) !important; }
-    #mfp-funnel .mfp-months {
-        display: grid !important; grid-template-columns: repeat(3, 1fr) !important;
-        gap: 16px !important; max-width: 1000px !important; margin: 0 auto !important;
+    /* ── HOURS ── */
+    #mf-funnel .mf-hours { background: var(--mf-green-dk) !important; }
+    #mf-funnel .mf-hours .mf-title { color: #fff !important; }
+    #mf-funnel .mf-hours .mf-title em { color: var(--mf-gold) !important; }
+    #mf-funnel .mf-hours .mf-eye { color: var(--mf-gold) !important; }
+    #mf-funnel .mf-months { display: grid !important; grid-template-columns: repeat(3,1fr) !important;
+        gap: 16px !important; max-width: 1060px !important; margin: 0 auto !important; }
+    #mf-funnel .mf-month {
+        background: rgba(255,255,255,.07) !important; border: 1px solid rgba(255,255,255,.18) !important;
+        border-radius: 12px !important; padding: 24px 22px !important;
     }
-    #mfp-funnel .mfp-month {
-        background: rgba(255,255,255,.09) !important; border: 1px solid rgba(255,255,255,.2) !important;
-        border-radius: 14px !important; padding: 22px 20px !important;
-    }
-    #mfp-funnel .mfp-month-n { display: block !important; font-family: 'Fraunces', serif !important;
-        font-size: 1.16rem !important; font-weight: 700 !important; color: var(--mfp-gold-lt) !important; margin-bottom: 8px !important; }
-    #mfp-funnel .mfp-month-d { display: block !important; font-size: .9rem !important; line-height: 1.55 !important; color: rgba(255,255,255,.86) !important; }
+    #mf-funnel .mf-month-n { display: block !important; font-family: 'Bitter', serif !important;
+        font-size: 1.14rem !important; font-weight: 700 !important; color: var(--mf-gold) !important; margin-bottom: 12px !important; }
+    #mf-funnel .mf-hr { display: flex !important; justify-content: space-between !important; gap: 12px !important;
+        padding: 7px 0 !important; border-bottom: 1px solid rgba(255,255,255,.1) !important;
+        font-size: .88rem !important; color: rgba(255,255,255,.86) !important; }
+    #mf-funnel .mf-hr:last-child { border-bottom: none !important; }
+    #mf-funnel .mf-hr b { color: #fff !important; font-weight: 600 !important; white-space: nowrap !important; }
+    #mf-funnel .mf-hours-note { text-align: center !important; margin: 26px auto 0 !important; max-width: 640px !important;
+        font-size: .87rem !important; line-height: 1.6 !important; color: rgba(255,255,255,.66) !important; }
 
     /* ── INFO ── */
-    #mfp-funnel .mfp-info { background: var(--mfp-cream) !important; border-top: 1px solid var(--mfp-sand-dk) !important;
+    #mf-funnel .mf-info { background: var(--mf-cream) !important; border-top: 1px solid var(--mf-sand-dk) !important;
         padding: clamp(42px,5.5vw,66px) 24px !important; }
-    #mfp-funnel .mfp-info-grid { display: grid !important; grid-template-columns: repeat(4,1fr) !important;
+    #mf-funnel .mf-info-grid { display: grid !important; grid-template-columns: repeat(4,1fr) !important;
         gap: clamp(18px,3vw,36px) !important; max-width: 1120px !important; margin: 0 auto !important; text-align: center !important; }
-    #mfp-funnel .mfp-info-l { display: block !important; font-size: .68rem !important; font-weight: 700 !important;
-        letter-spacing: .14em !important; text-transform: uppercase !important; color: var(--mfp-gold) !important; margin-bottom: 8px !important; }
-    #mfp-funnel .mfp-info-v { display: block !important; font-size: .93rem !important; line-height: 1.55 !important; color: #55555B !important; }
+    #mf-funnel .mf-info-l { display: block !important; font-size: .67rem !important; font-weight: 700 !important;
+        letter-spacing: .14em !important; text-transform: uppercase !important; color: var(--mf-red) !important; margin-bottom: 8px !important; }
+    #mf-funnel .mf-info-v { display: block !important; font-size: .92rem !important; line-height: 1.55 !important; color: #55584F !important; }
 
     @media (max-width: 900px) {
-        #mfp-funnel .mfp-grid { grid-template-columns: 1fr !important; max-width: 460px !important; }
-        #mfp-funnel .mfp-steps, #mfp-funnel .mfp-months { grid-template-columns: 1fr !important; max-width: 460px !important; }
-        #mfp-funnel .mfp-info-grid { grid-template-columns: repeat(2,1fr) !important; gap: 28px 18px !important; }
+        #mf-funnel .mf-grid, #mf-funnel .mf-steps, #mf-funnel .mf-months { grid-template-columns: 1fr !important; max-width: 470px !important; }
+        #mf-funnel .mf-addon-grid { grid-template-columns: repeat(2,1fr) !important; max-width: 640px !important; }
+        #mf-funnel .mf-info-grid { grid-template-columns: repeat(2,1fr) !important; gap: 28px 18px !important; }
     }
     @media (max-width: 560px) {
-        #mfp-funnel .mfp-nav { padding: 0 14px !important; }
-        #mfp-funnel .mfp-nav-loc { display: none !important; }
-        #mfp-funnel .mfp-sec { padding-bottom: 96px !important; }
+        #mf-funnel .mf-nav { height: 66px !important; padding: 0 14px !important; }
+        #mf-funnel .mf-logo { height: 44px !important; }
+        #mf-funnel .mf-nav-loc { display: none !important; }
+        #mf-funnel .mf-addon-grid { grid-template-columns: 1fr !important; max-width: 400px !important; }
+        #mf-funnel .mf-sec { padding-bottom: 96px !important; }
     }
 </style>
 
-<div id="mfp-funnel">
+<div id="mf-funnel">
 
-    <!-- BANNER -->
-    <div class="mfp-banner">
-        <div class="mfp-banner-inner">
-            <span>🍂 <strong>Flash Sale — 40% Off</strong></span>
-            <span class="mfp-dot"></span>
+    <div class="mf-banner">
+        <div class="mf-banner-inner">
+            <span>🎃 <strong>Flash Sale — 40% Off</strong></span>
+            <span class="mf-dot"></span>
             <span>August 26–30 only</span>
-            <span class="mfp-dot"></span>
+            <span class="mf-dot"></span>
             <span>Limited to 3,750 tickets</span>
         </div>
     </div>
 
-    <!-- NAV -->
-    <div class="mfp-nav">
-        <span class="mfp-logo">Montpelier <span>Farms</span></span>
-        <div class="mfp-nav-right">
-            <span class="mfp-nav-loc">Upper Marlboro, MD</span>
-            <a href="#ticketBlock" class="mfp-nav-cta">Get Tickets</a>
+    <div class="mf-nav">
+        <img class="mf-logo" src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/montpelier/design/assets/logos/montpelier-logo-cream-stacked.png" alt="Montpelier Farms">
+        <div class="mf-nav-right">
+            <span class="mf-nav-loc">Upper Marlboro, MD</span>
+            <a href="#ticketBlock" class="mf-nav-cta">Get Tickets</a>
         </div>
     </div>
 
-    <!-- HERO -->
-    <div class="mfp-hero">
-        <div class="mfp-hero-inner">
-            <span class="mfp-flash-pill">⚡ Flash Sale · Aug 26–30</span>
-            <span class="mfp-hero-title">Fall Festival <em>2026</em></span>
-            <span class="mfp-hero-sub">The best pricing of the entire season — 40% off, five days only, capped at 3,750 tickets. Pick your date and time, then come spend the day with us.</span>
-            <div class="mfp-hero-meta">
-                <span>📅 Season <b>Sept 12 – Nov 8</b></span>
-                <span>📍 <b>Upper Marlboro, MD</b></span>
-                <span>🎟️ From <b>$17.95</b></span>
-            </div>
+    <div class="mf-hero">
+        <div class="mf-hero-scrim"></div>
+        <div class="mf-hero-inner">
+            <span class="mf-flash-pill">⚡ Flash Sale · Aug 26–30</span>
+            <span class="mf-hero-title">Fall Festival <em>2026</em></span>
+            <span class="mf-hero-sub">The best pricing of the whole season — 40% off for five days, capped at 3,750 tickets. Pick your date and time, then come spend the day with us.</span>
         </div>
     </div>
 
-    <!-- HOW IT WORKS -->
-    <div class="mfp-sec mfp-how">
-        <div class="mfp-head mfpr">
-            <span class="mfp-eye">Five Days Only</span>
-            <span class="mfp-title">How the <em>Flash Sale</em> works</span>
-            <p class="mfp-lede">The lowest prices we offer all season. Once the 3,750 tickets are gone, they're gone — pricing goes back up on August 31.</p>
+    <div class="mf-sec mf-how">
+        <div class="mf-head mfr">
+            <span class="mf-eye">Five Days Only</span>
+            <span class="mf-title">How the <em>Flash Sale</em> works</span>
+            <p class="mf-lede">The lowest prices we offer all season. Once the 3,750 tickets are gone, they're gone — full pricing returns August 31.</p>
         </div>
-        <div class="mfp-steps mfpr d1">
-            <div class="mfp-step">
-                <span class="mfp-step-n">1</span>
-                <span class="mfp-step-t">Buy Aug 26–30</span>
-                <span class="mfp-step-d">The sale runs five days, Wednesday through Sunday. No extensions.</span>
+        <div class="mf-steps mfr d1">
+            <div class="mf-step">
+                <span class="mf-step-n">1</span>
+                <span class="mf-step-t">Buy Aug 26–30</span>
+                <span class="mf-step-d">Five days, Wednesday through Sunday. No extensions.</span>
             </div>
-            <div class="mfp-step">
-                <span class="mfp-step-n">2</span>
-                <span class="mfp-step-t">Pick your date &amp; time</span>
-                <span class="mfp-step-d">Choose the day and arrival window you want at checkout. Every ticket is for a specific date.</span>
+            <div class="mf-step">
+                <span class="mf-step-n">2</span>
+                <span class="mf-step-t">Pick your date &amp; time</span>
+                <span class="mf-step-d">Every ticket is for a specific day and arrival window — chosen at checkout.</span>
             </div>
-            <div class="mfp-step">
-                <span class="mfp-step-n">3</span>
-                <span class="mfp-step-t">Come out this fall</span>
-                <span class="mfp-step-d">Gates open September 12 and we run right through November 8.</span>
+            <div class="mf-step">
+                <span class="mf-step-n">3</span>
+                <span class="mf-step-t">Come out this fall</span>
+                <span class="mf-step-d">Gates open September 12 and we run right through November 8.</span>
             </div>
         </div>
     </div>
 
-    <!-- TICKETS -->
-    <div class="mfp-sec mfp-tickets" id="tickets">
-        <div class="mfp-head mfpr">
-            <span class="mfp-eye">Flash Sale Pricing</span>
-            <span class="mfp-title">Three ways to do <em>fall</em></span>
-            <p class="mfp-lede">All three are date-and-time specific. Ages 2 and under are always free.</p>
+    <div class="mf-sec mf-tickets" id="tickets">
+        <div class="mf-head mfr">
+            <span class="mf-eye">Flash Sale Pricing</span>
+            <span class="mf-title">Three ways to do <em>fall</em></span>
+            <p class="mf-lede">All three are date-and-time specific. Ages 2 and under are always free.</p>
         </div>
-        <div class="mfp-grid">
+        <div class="mf-grid">
 
-            <div class="mfp-card mfpr">
-                <span class="mfp-badge">Best Value</span>
+            <div class="mf-card mfr">
+                <span class="mf-badge">Best Value</span>
                 <h3>General Admission</h3>
-                <span class="mfp-card-sub">One day, one admission</span>
-                <div class="mfp-price-row">
-                    <span class="mfp-price">$17.95</span>
-                    <span class="mfp-save">40% Off</span>
+                <span class="mf-card-sub">One day, one admission</span>
+                <div class="mf-price-row">
+                    <span class="mf-price">$17.95</span>
+                    <span class="mf-save">40% Off</span>
                 </div>
-                <ul class="mfp-list">
-                    <li><span class="mfp-tick">✓</span><span>Full access to fall festival activities</span></li>
-                    <li><span class="mfp-tick">✓</span><span>Pick-your-own pumpkin patch access</span></li>
-                    <li><span class="mfp-tick">✓</span><span>Free pumpkin pad</span></li>
-                    <li><span class="mfp-tick">✓</span><span>Ages 2 &amp; under free — no ticket needed</span></li>
+                <ul class="mf-list">
+                    <li><span class="mf-tick">✓</span><span>Full access to the fall festival</span></li>
+                    <li><span class="mf-tick">✓</span><span>Pick-your-own pumpkin patch</span></li>
+                    <li><span class="mf-tick">✓</span><span>Farm animals, play areas &amp; photo ops</span></li>
+                    <li><span class="mf-tick">✓</span><span>Ages 2 &amp; under free — no ticket needed</span></li>
                 </ul>
-                <span class="mfp-card-note">Choose your date and arrival time at checkout. Good for one entry on the date selected.</span>
+                <span class="mf-card-note">Choose your date and arrival time at checkout. Good for one entry on the date selected.</span>
             </div>
 
-            <div class="mfp-card mfp-card-feature mfpr d1">
-                <span class="mfp-badge">Best Opportunity</span>
+            <div class="mf-card mf-card-feature mfr d1">
+                <span class="mf-badge">Best Opportunity</span>
                 <h3>Super Pass</h3>
-                <span class="mfp-card-sub">Admission plus the big attractions</span>
-                <div class="mfp-price-row">
-                    <span class="mfp-price">$35.95</span>
-                    <span class="mfp-was">$48.95</span>
+                <span class="mf-card-sub">Admission plus the big attractions</span>
+                <div class="mf-price-row">
+                    <span class="mf-price">$35.95</span>
+                    <span class="mf-was">$48.95</span>
                 </div>
-                <ul class="mfp-list">
-                    <li><span class="mfp-tick">✓</span><span>Everything in General Admission</span></li>
-                    <li><span class="mfp-tick">✓</span><span>Mining Mania included</span></li>
-                    <li><span class="mfp-tick">✓</span><span>The season's biggest saving per ticket</span></li>
-                    <li><span class="mfp-tick">✓</span><span>Ages 2 &amp; under free — no ticket needed</span></li>
+                <ul class="mf-list">
+                    <li><span class="mf-tick">✓</span><span>Everything in General Admission</span></li>
+                    <li><span class="mf-tick">✓</span><span>Mining Mania included</span></li>
+                    <li><span class="mf-tick">✓</span><span>The biggest per-ticket saving of the sale</span></li>
+                    <li><span class="mf-tick">✓</span><span>Ages 2 &amp; under free — no ticket needed</span></li>
                 </ul>
-                <span class="mfp-card-note">$48.95 at the door during peak weekends. Choose your date and arrival time at checkout.</span>
+                <span class="mf-card-note">$48.95 at the door on peak weekends. Choose your date and arrival time at checkout.</span>
             </div>
 
-            <div class="mfp-card mfpr d2">
-                <span class="mfp-badge">Family Deal</span>
+            <div class="mf-card mfr d2">
+                <span class="mf-badge">Family Deal</span>
                 <h3>Family 4-Pack</h3>
-                <span class="mfp-card-sub">Four general admissions, one purchase</span>
-                <div class="mfp-price-row">
-                    <span class="mfp-price">$69.95</span>
-                    <span class="mfp-save">For Four</span>
+                <span class="mf-card-sub">Four general admissions, one purchase</span>
+                <div class="mf-price-row">
+                    <span class="mf-price">$69.95</span>
+                    <span class="mf-save">For Four</span>
                 </div>
-                <ul class="mfp-list">
-                    <li><span class="mfp-tick">✓</span><span>Four general admission tickets</span></li>
-                    <li><span class="mfp-tick">✓</span><span>All four on the same date and time</span></li>
-                    <li><span class="mfp-tick">✓</span><span>Everything General Admission includes</span></li>
-                    <li><span class="mfp-tick">✓</span><span>Ages 2 &amp; under free — no ticket needed</span></li>
+                <ul class="mf-list">
+                    <li><span class="mf-tick">✓</span><span>Four general admission tickets</span></li>
+                    <li><span class="mf-tick">✓</span><span>All four on the same date and time</span></li>
+                    <li><span class="mf-tick">✓</span><span>Everything General Admission includes</span></li>
+                    <li><span class="mf-tick">✓</span><span>Ages 2 &amp; under free — no ticket needed</span></li>
                 </ul>
-                <span class="mfp-card-note">Buy in one transaction. Choose your date and arrival time at checkout.</span>
+                <span class="mf-card-note">Bought in one transaction. Choose your date and arrival time at checkout.</span>
             </div>
 
         </div>
 
-        <div class="mfp-cap mfpr d3">
+        <div class="mf-cap mfr d3">
             <span>⏳ <strong>3,750 tickets only.</strong> When they're gone the flash sale closes — full-season pricing resumes August 31.</span>
         </div>
     </div>
 
-    <!-- WHAT'S INCLUDED -->
-    <div class="mfp-sec mfp-incl">
-        <div class="mfp-head mfpr">
-            <span class="mfp-eye">Included With Admission</span>
-            <span class="mfp-title">A whole day on the <em>farm</em></span>
+    <div class="mf-sec mf-addons">
+        <div class="mf-head mfr">
+            <span class="mf-eye">Add Them At Checkout</span>
+            <span class="mf-title">Make it a <em>bigger</em> day</span>
+            <p class="mf-lede">These are extras, not part of admission — add any of them to your order when you check out.</p>
         </div>
-        <div class="mfp-chips mfpr d1">
-            <span class="mfp-chip">Pick-Your-Own Pumpkins</span>
-            <span class="mfp-chip">Pumpkin Pad</span>
-            <span class="mfp-chip">Super Mega Slide</span>
-            <span class="mfp-chip">Duck Races</span>
-            <span class="mfp-chip">Paint-a-Pumpkin</span>
-            <span class="mfp-chip">Mining Mania</span>
-            <span class="mfp-chip">Paintball Gallery</span>
-            <span class="mfp-chip">Farm Animals</span>
-            <span class="mfp-chip">Play Areas</span>
-            <span class="mfp-chip">Fall Photo Ops</span>
+        <div class="mf-addon-grid mfr d1">
+            <div class="mf-addon"><span class="mf-addon-n">🦆 Duck Races — keep your duck</span><span class="mf-addon-p">$2</span></div>
+            <div class="mf-addon"><span class="mf-addon-n">🎨 Paint-a-Pumpkin — pumpkin included</span><span class="mf-addon-p">$6</span></div>
+            <div class="mf-addon"><span class="mf-addon-n">🛝 Super Mega Slide — unlimited, 42&quot; min</span><span class="mf-addon-p">$6</span></div>
+            <div class="mf-addon"><span class="mf-addon-n">💎 Mining Mania — 6 varieties</span><span class="mf-addon-p">$8</span></div>
+            <div class="mf-addon"><span class="mf-addon-n">🎯 Paintball Gallery — 100 shots</span><span class="mf-addon-p">$10</span></div>
+            <div class="mf-addon"><span class="mf-addon-n">🧸 Build-a-Buddy — with backpack</span><span class="mf-addon-p">$21.99</span></div>
         </div>
     </div>
 
-    <!-- SEASON -->
-    <div class="mfp-sec mfp-season">
-        <div class="mfp-head mfpr">
-            <span class="mfp-eye">September 12 – November 8</span>
-            <span class="mfp-title">When we're <em>open</em></span>
+    <div class="mf-sec mf-hours">
+        <div class="mf-head mfr">
+            <span class="mf-eye">September 12 – November 8</span>
+            <span class="mf-title">When we're <em>open</em></span>
         </div>
-        <div class="mfp-months mfpr d1">
-            <div class="mfp-month">
-                <span class="mfp-month-n">September</span>
-                <span class="mfp-month-d">Saturdays &amp; Sundays only, from September 12. Shorter hours than October.</span>
+        <div class="mf-months mfr d1">
+            <div class="mf-month">
+                <span class="mf-month-n">September</span>
+                <div class="mf-hr"><span>Saturday</span><b>10am – 9pm</b></div>
+                <div class="mf-hr"><span>Sunday</span><b>10am – 6pm</b></div>
             </div>
-            <div class="mfp-month">
-                <span class="mfp-month-n">October</span>
-                <span class="mfp-month-d">Tuesday through Sunday from October 6 — weekday Play Days plus full weekends.</span>
+            <div class="mf-month">
+                <span class="mf-month-n">October</span>
+                <div class="mf-hr"><span>Tue – Thu · Playdays</span><b>10am – 3pm</b></div>
+                <div class="mf-hr"><span>Friday</span><b>5pm – 10pm</b></div>
+                <div class="mf-hr"><span>Saturday</span><b>10am – 10pm</b></div>
+                <div class="mf-hr"><span>Sunday</span><b>10am – 7pm</b></div>
             </div>
-            <div class="mfp-month">
-                <span class="mfp-month-n">November</span>
-                <span class="mfp-month-d">Saturdays &amp; Sundays on limited hours. Final weekend is November 7–8.</span>
+            <div class="mf-month">
+                <span class="mf-month-n">November</span>
+                <div class="mf-hr"><span>Saturday</span><b>10am – 9pm</b></div>
+                <div class="mf-hr"><span>Sunday</span><b>10am – 6pm</b></div>
+            </div>
+        </div>
+        <p class="mf-hours-note">Last admission is sold one hour before close. Weekday Playdays run Tuesday through Thursday in October. Our final weekend is November 7–8.</p>
+    </div>
+
+    <div class="mf-info">
+        <div class="mf-info-grid">
+            <div>
+                <span class="mf-info-l">Location</span>
+                <span class="mf-info-v">1720 Crain Hwy<br>Upper Marlboro, MD 20772</span>
+            </div>
+            <div>
+                <span class="mf-info-l">Season</span>
+                <span class="mf-info-v">September 12 –<br>November 8, 2026</span>
+            </div>
+            <div>
+                <span class="mf-info-l">Flash Sale</span>
+                <span class="mf-info-v">August 26–30<br>3,750 tickets only</span>
+            </div>
+            <div>
+                <span class="mf-info-l">Who Needs a Ticket</span>
+                <span class="mf-info-v">Everyone 3 and up<br>2 &amp; under free</span>
             </div>
         </div>
     </div>
 
-    <!-- INFO -->
-    <div class="mfp-info">
-        <div class="mfp-info-grid">
-            <div>
-                <span class="mfp-info-l">Location</span>
-                <span class="mfp-info-v">1720 Crain Highway North<br>Upper Marlboro, MD 20774</span>
-            </div>
-            <div>
-                <span class="mfp-info-l">Season</span>
-                <span class="mfp-info-v">September 12 –<br>November 8, 2026</span>
-            </div>
-            <div>
-                <span class="mfp-info-l">Flash Sale</span>
-                <span class="mfp-info-v">August 26–30<br>3,750 tickets only</span>
-            </div>
-            <div>
-                <span class="mfp-info-l">Who Needs a Ticket</span>
-                <span class="mfp-info-v">Everyone 3 and up<br>2 &amp; under free</span>
-            </div>
-        </div>
-    </div>
-
-</div><!-- end #mfp-funnel -->
+</div><!-- end #mf-funnel -->
 
 <script>
     (function() {
         var obs = new IntersectionObserver(function(entries) {
             entries.forEach(function(e) {
-                if (e.isIntersecting) { e.target.classList.add('mfpon'); obs.unobserve(e.target); }
+                if (e.isIntersecting) { e.target.classList.add('mfon'); obs.unobserve(e.target); }
             });
         }, { threshold: 0.1 });
-        document.querySelectorAll('#mfp-funnel .mfpr').forEach(function(el) {
+        document.querySelectorAll('#mf-funnel .mfr').forEach(function(el) {
             obs.observe(el);
-            if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('mfpon');
+            if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('mfon');
         });
-        document.querySelectorAll('#mfp-funnel a[href^="#"]').forEach(function(a) {
+        document.querySelectorAll('#mf-funnel a[href^="#"]').forEach(function(a) {
             a.addEventListener('click', function(e) {
                 e.preventDefault();
                 var t = document.querySelector(a.getAttribute('href'));
@@ -588,39 +556,39 @@
 </script>
 
 <style>
-    #mfp-float {
+    #mf-float {
         position: fixed !important; bottom: 0 !important; left: 0 !important; right: 0 !important;
         z-index: 9999 !important; padding: 12px 16px 20px !important;
-        background: linear-gradient(to top, rgba(253,250,244,.97) 55%, transparent) !important;
+        background: linear-gradient(to top, rgba(251,247,240,.97) 55%, transparent) !important;
         display: flex !important; justify-content: center !important;
         transition: opacity .35s ease, transform .35s ease !important;
     }
-    #mfp-float.mfp-float-hidden { opacity: 0 !important; transform: translateY(24px) !important; pointer-events: none !important; }
-    #mfp-float a {
+    #mf-float.mf-float-hidden { opacity: 0 !important; transform: translateY(24px) !important; pointer-events: none !important; }
+    #mf-float a {
         display: block !important; width: 100% !important; max-width: 480px !important;
-        background: #6B2D3C !important; color: #fff !important;
-        font-family: 'Fraunces', Georgia, serif !important;
-        font-size: 21px !important; font-weight: 700 !important; letter-spacing: .04em !important;
+        background: #B04A3A !important; color: #fff !important;
+        font-family: 'Bitter', Georgia, serif !important;
+        font-size: 21px !important; font-weight: 700 !important; letter-spacing: .03em !important;
         text-align: center !important; text-decoration: none !important;
-        padding: 18px 28px !important; border-radius: 50px !important;
-        box-shadow: 0 8px 32px rgba(107,45,60,.4) !important;
+        padding: 18px 28px !important; border-radius: 8px !important;
+        box-shadow: 0 8px 30px rgba(176,74,58,.42) !important;
         transition: transform .15s, box-shadow .15s, background .2s !important;
     }
-    #mfp-float a:hover { background: #4A1E2A !important; transform: translateY(-2px) !important; color: #fff !important; }
+    #mf-float a:hover { background: #8E3A2C !important; transform: translateY(-2px) !important; color: #fff !important; }
 </style>
-<div id="mfp-float">
+<div id="mf-float">
     <a href="#ticketBlock">Get Flash Sale Tickets</a>
 </div>
 <script>
     (function() {
-        var fb = document.getElementById('mfp-float');
-        if (fb) { fb.querySelector('a').addEventListener('click', function() { fb.classList.add('mfp-float-hidden'); }); }
+        var fb = document.getElementById('mf-float');
+        if (fb) { fb.querySelector('a').addEventListener('click', function() { fb.classList.add('mf-float-hidden'); }); }
     })();
 </script>
 
 <div id="ticketBlock">
   <h2>Native TicketSpice cart renders here</h2>
-  <div class="c7-cart-stub">Ticket types, prices, the 3,750 cap, date + time selection and the cap-redirect all stay native in TicketSpice.<br>This stub exists so the page scrolls and the CTAs resolve.</div>
+  <div class="c7-cart-stub">Ticket types, prices, the 3,750 cap, date + time selection, the add-on products and the cap-redirect all stay native in TicketSpice.<br>This stub exists so the page scrolls and the CTAs resolve.</div>
 </div>
 </body>
 </html>

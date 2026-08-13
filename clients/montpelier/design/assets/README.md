@@ -36,17 +36,24 @@ https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/montpe
 
 | File | What it is |
 |---|---|
-| `montpelier-logo-ver-2.png` | Stacked lockup — barn-roof + sunflower mark over **MONTPELIER FARMS**, laurel branches. **Cream/light — for dark grounds.** |
-| `montpelier-logo-ver-4.png` | Circular badge — *FAMILY FARM PARK* arc, mark, **MONTPELIER FARMS**, *UPPER MARLBORO, MD* arc. **Cream/light.** |
-| `farm-edaf45.png` | Fourth variant, darker sample — likely the colour/dark-ground version. **Verify before use.** |
-| `farm-3e9c36.png` | Square mark, opaque background. **Verify before use.** |
+| `montpelier-logo-color.png` | **PRIMARY.** Full-colour lockup on transparent — brick-red barn roof + sunflower, forest-green **MONTPELIER**, brick-red *FAMILY FARM PARK*, green laurels. Use on light grounds. |
+| `montpelier-logo-cream-stacked.png` | Stacked lockup, **cream/light** — for dark grounds. Used in the Fall Festival page nav. |
+| `montpelier-logo-cream-badge.png` | Circular badge, cream — *FAMILY FARM PARK* / *UPPER MARLBORO, MD* arcs. |
+| `montpelier-mark-square.png` | Square mark, opaque background. |
 
-⚠️ **Both confirmed logos are cream/light**, built for dark backgrounds. If a light-ground
-lockup is needed, ask Adrianne — or use `farm-edaf45.png` after checking it renders correctly.
+## 🎨 Brand colours — sampled from `montpelier-logo-color.png`
 
-⚠️ **Two different names are in play.** The logos read **"Montpelier Farms"**; the badge and
-their TicketSpice header read **"Montpelier Family Farm Park"**; Adrianne's email signature
-signs **"Montpelier Farms, LLC"**. Pick one for page copy and stay consistent.
+| Token | Hex | Where it comes from |
+|---|---|---|
+| Forest green | **`#2F4640`** | the MONTPELIER wordmark + laurels |
+| Brick red | **`#B04A3A`** | the barn roof + *FAMILY FARM PARK* |
+
+These are the real brand, not an approximation — pulled by decoding the logo PNG and counting
+dominant non-white pixels. Anything built for Montpelier should start here.
+
+⚠️ **Name:** use **"Montpelier Farms"** (Mat's call, 2026-08-13). The assets carry three
+variants — the logos read *Montpelier Farms*, the badge and their TicketSpice header read
+*Montpelier Family Farm Park*, and Adrianne signs *Montpelier Farms, LLC*.
 
 ## `photos/`
 
@@ -54,9 +61,13 @@ Not individually curated — this is the full usable set, filtered only for junk
 a party-rentals banner, anything under 700px). Named from the source filename where Wix
 preserved one; otherwise `farm-<hash>` and you'll want to open them to see what they are.
 
-**Known-good fall imagery** (verified by eye): `farm-022afc.jpg` is an overhead bin of heirloom
-pumpkins and gourds in golden light — strong hero or full-bleed candidate. `farm-a79b4e`,
-`farm-c4916c`, `farm-f67b47` and `farm-c7dd94` are from the same shoot at the same dimensions.
+**Named and verified by eye:**
+
+| File | What it is |
+|---|---|
+| `hero-family-in-pumpkins.jpg` | Mother + two girls in a sea of orange pumpkins, hay-bale tiers behind. **The hero** on the Fall Festival page. |
+| `heirloom-pumpkin-bin.jpg` | Overhead bin of heirloom pumpkins and gourds, golden light. Strong full-bleed candidate. |
+| `pumpkins-field-01..04.jpg` | Same shoot as the heirloom bin, all 5272×3948 originals. |
 
 **⚠️ Not all of these are fall.** The set includes tulip-festival imagery
 (`beautiful-tulip-flower-garden-*.jpg`) — that's the **spring** event on a separate page — plus
