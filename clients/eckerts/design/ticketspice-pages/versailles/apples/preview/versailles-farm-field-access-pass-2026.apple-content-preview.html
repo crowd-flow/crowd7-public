@@ -967,10 +967,11 @@
                  crowd7/data/clients/_patterns/ticket-card-grid-three-max.md. Gated to
                  not display before 2026-09-12 ET — see the reveal script below the
                  ticket grid. -->
-            <div id="sbv-family-card" class="sbv-family-card sbv-card sbv-card-pink sbvr d2" hidden>
+            <div id="sbv-family-card" class="sbv-family-card sbv-card sbv-card-pink sbvr d2">
                 <img class="sbv-family-img" src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/apples/20160817_084732-1.jpg" alt="A group of kids showing off their apple haul in the orchard">
                 <div class="sbv-family-body">
                     <span class="sbv-card-badge sbv-badge-red">Save 25%</span>
+                    <span class="sbv-card-badge sbv-badge-green" id="sbv-family-soon">Starting September 12th</span>
                     <h3>Family &amp; Friends Package</h3>
                     <ul class="sbv-card-bullets sbv-family-bullets">
                         <li>🎟️ 4 admission tickets — Field Access + Playground, weekend rate</li>
@@ -1104,9 +1105,14 @@
   function isLive(){
     return easternStamp(new Date()) >= '20260912000000';
   }
+  // Bryan 2026-08-13: show the card NOW with a "Starting September 12th"
+  // label rather than hiding it until then — pre-announce, don't conceal.
+  // The gate now controls the BADGE, not the card's visibility.
   var card = document.getElementById('sbv-family-card');
   if (!card) return;
-  if (isLive()) card.removeAttribute('hidden');
+  card.removeAttribute('hidden');
+  var soon = document.getElementById('sbv-family-soon');
+  if (soon && isLive()) soon.remove();
 })();
 </script>
 
