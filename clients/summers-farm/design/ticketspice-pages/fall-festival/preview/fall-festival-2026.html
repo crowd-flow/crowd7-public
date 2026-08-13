@@ -157,6 +157,19 @@
         border-radius: 50% !important; display: inline-block !important; flex-shrink: 0 !important;
     }
 
+    /* ⚠️ TicketSpice ships its own span/strong colour rules. An INHERITED
+       colour always loses to a directly-matching rule regardless of
+       specificity — !important on the parent never enters that contest. So
+       every text node sitting on a coloured band must carry colour on the
+       ELEMENT, not just its container. Fixed 2026-08-12 after the banner
+       rendered black-on-amber live. */
+    #sb-funnel .sb-banner,
+    #sb-funnel .sb-banner-inner,
+    #sb-funnel .sb-banner span,
+    #sb-funnel .sb-banner strong,
+    #sb-funnel .sb-banner b,
+    #sb-funnel .sb-banner a { color: #ffffff !important; }
+
     /* ── 2. NAV — deep barn red (was blue) ── */
     #sb-funnel .sb-nav {
         width: 100% !important; padding: 0 clamp(16px, 4vw, 40px) !important; height: 64px !important;
@@ -294,6 +307,7 @@
     }
     #sb-funnel .sb-inc-list li:last-child { border-bottom: none !important; }
     #sb-funnel .sb-inc-ico { font-size: 1.2rem !important; line-height: 1.3 !important; flex-shrink: 0 !important; }
+    #sb-funnel .sb-inc-list li span { color: #40505A !important; }
 
     /* ── 7. TICKETS — cream ground, EACH CARD ITS OWN COLOUR ── */
     #sb-funnel .sb-tickets { background: var(--sf-cream) !important; }
