@@ -957,11 +957,17 @@
                  (Mat directive 2026-08-12, cycle-2 Ask 4: "a little combination of HTML
                  stuff ... plus some cart things" — ship the card here, the discount rule
                  itself is a native-cart change, see artifacts/native-cart-brief.md).
-                 4 admission tickets at the Field Access + Playground weekend online rate
-                 ($7 x 4 = $28 per the price rows above), 25% off = $21. Same full-width
-                 banner shape as the Fall Bonfire card, per crowd7/data/clients/_patterns/
-                 ticket-card-grid-three-max.md. -->
-            <div class="sbv-family-card sbv-card sbv-card-pink sbvr d2">
+                 4 admission tickets at the Field Access + Playground weekend rate
+                 ($10 x 4 = $40), 25% off = $30. CORRECTED 2026-08-13 — Amanda flagged
+                 (email "Versailles Farm Field Access Page", 8/13 07:27) that the actual
+                 weekend rate is $10, not the $7 online-discount figure the price row
+                 above displays; see native-cart-brief.md for the reconciliation and the
+                 open question on whether that $7 online figure is itself stale. Same
+                 full-width banner shape as the Fall Bonfire card, per
+                 crowd7/data/clients/_patterns/ticket-card-grid-three-max.md. Gated to
+                 not display before 2026-09-12 ET — see the reveal script below the
+                 ticket grid. -->
+            <div id="sbv-family-card" class="sbv-family-card sbv-card sbv-card-pink sbvr d2" hidden>
                 <img class="sbv-family-img" src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/apples/20160817_084732-1.jpg" alt="A group of kids showing off their apple haul in the orchard">
                 <div class="sbv-family-body">
                     <span class="sbv-card-badge sbv-badge-red">Save 25%</span>
@@ -975,10 +981,10 @@
                 </div>
                 <div class="sbv-family-cta">
                     <div class="sbv-card-price">
-                        <span class="sbv-price-num">$21</span>
+                        <span class="sbv-price-num">$30</span>
                         <div class="sbv-price-slash">
                             <span class="sbv-price-online">For 4 Tickets</span>
-                            <span class="sbv-price-was">$28 individually</span>
+                            <span class="sbv-price-was">$40 individually</span>
                         </div>
                     </div>
                     <span class="sbv-card-note">Priced at the weekend admission rate · ages 2–16 · + applicable fees</span>
@@ -1053,7 +1059,7 @@
   var GATE = {
     "Field Access": "$6.00",                                           // online $3
     "Playground Admission + Field Access (Tuesday-Friday)": "$8.00",   // online $5
-    "Playground Admission + Field Access (Saturday-Sunday)": "$8.00", // online $7
+    "Playground Admission + Field Access (Saturday-Sunday)": "$10.00", // online $7 — FIXED 2026-08-13, was wrongly duplicating the Tue-Fri $8.00 gate value; the comment above this block always said Sat-Sun gate is $10
     "Apple Fun Pass 🍎": "$20.00"                   // online $16 (confirmed — matches other-crop Fun Pass formula, Mat 8/6)
   };
   function tag(){
@@ -1077,6 +1083,32 @@
   }
   #ticketBlock .ticket-cost[data-gate]{ color:#5db75b !important; }
 </style>
+
+<!-- FAMILY & FRIENDS PACKAGE — self-activating start-date gate (Mat directive
+     2026-08-13, Amanda's "shouldn't this start 9/12" ask). Card carries `hidden` by
+     default in the markup above; this reveals it automatically once the calendar
+     clock crosses 2026-09-12 00:00 ET — no manual future edit needed. Same
+     Intl.DateTimeFormat America/New_York EST-lock pattern as the Versailles CIJ
+     popup / Millstadt Xmas overlay (fires identically for every visitor regardless
+     of device timezone). -->
+<script>
+(function(){
+  function easternStamp(d){
+    var p = {};
+    new Intl.DateTimeFormat('en-US', {
+      timeZone: 'America/New_York', year:'numeric', month:'2-digit', day:'2-digit',
+      hour:'2-digit', minute:'2-digit', second:'2-digit', hour12:false
+    }).formatToParts(d).forEach(function(x){ p[x.type] = x.value; });
+    return p.year + p.month + p.day + (p.hour === '24' ? '00' : p.hour) + p.minute + p.second;
+  }
+  function isLive(){
+    return easternStamp(new Date()) >= '20260912000000';
+  }
+  var card = document.getElementById('sbv-family-card');
+  if (!card) return;
+  if (isLive()) card.removeAttribute('hidden');
+})();
+</script>
 
 
 </body>
