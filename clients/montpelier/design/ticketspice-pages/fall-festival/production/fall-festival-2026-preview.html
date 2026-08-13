@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Montpelier Farms — Fall Festival 2026 (preview)</title>
 <style>
   body { margin:0; font-family:-apple-system,system-ui,sans-serif; background:#FBF7F0; }
@@ -11,9 +8,7 @@
   #ticketBlock { max-width:820px; margin:0 auto; padding:56px 24px 120px; }
   #ticketBlock h2 { font-family:'Bitter',Georgia,serif; color:#B04A3A; }
   .c7-cart-stub { border:2px dashed #DBCBB4; border-radius:12px; padding:34px; text-align:center; color:#7C8078; background:#fff; }
-</style>
-</head>
-<body>
+</style></head><body>
 <div class="c7-note">PREVIEW WRAPPER — not the deployed file. The loader injects <b>fall-festival-2026.html</b> only.</div>
 <!--
   ============================================================
@@ -299,9 +294,19 @@
         max-width: 1120px !important; margin: 22px auto 0 !important;
         background: #fff !important; border: 2px solid var(--mf-green) !important;
         border-radius: 14px !important; padding: 30px 32px !important;
-        display: grid !important; grid-template-columns: minmax(0,1fr) minmax(180px,230px) !important;
-        column-gap: 34px !important; align-items: stretch !important; position: relative !important;
+        display: grid !important;
+        grid-template-columns: minmax(190px,250px) minmax(0,1fr) minmax(170px,215px) !important;
+        column-gap: 30px !important; align-items: stretch !important; position: relative !important;
+        overflow: hidden !important;
         box-shadow: 0 14px 40px rgba(42,42,40,.10) !important;
+    }
+    /* photo bleeds to the card's left/top/bottom edge — Eckerts Millstadt
+       treatment (negative margins against the card's own padding). */
+    #mf-funnel .mf-wide-photo {
+        margin: -30px 0 -30px -32px !important; position: relative !important; overflow: hidden !important;
+    }
+    #mf-funnel .mf-wide-photo img {
+        width: 100% !important; height: 100% !important; object-fit: cover !important; display: block !important;
     }
     #mf-funnel .mf-wide-main { display: flex !important; flex-direction: column !important; justify-content: center !important; }
     #mf-funnel .mf-wide-main h3 { margin-top: 6px !important; }
@@ -369,6 +374,7 @@
         #mf-funnel .mf-grid, #mf-funnel .mf-steps, #mf-funnel .mf-months { grid-template-columns: 1fr !important; max-width: 470px !important; }
         #mf-funnel .mf-addon-grid { grid-template-columns: repeat(2,1fr) !important; max-width: 640px !important; }
         #mf-funnel .mf-wide { grid-template-columns: 1fr !important; max-width: 470px !important; row-gap: 20px !important; }
+        #mf-funnel .mf-wide-photo { margin: -30px -32px 0 !important; height: 170px !important; }
         #mf-funnel .mf-wide-rail { border-left: none !important; border-top: 1px solid var(--mf-sand-dk) !important;
             padding-left: 0 !important; padding-top: 18px !important; align-items: flex-start !important; }
         #mf-funnel .mf-wide-lbl { text-align: left !important; }
@@ -408,7 +414,7 @@
         <div class="mf-hero-inner">
             <span class="mf-season-pill">🍂 Season · Sept 12 – Nov 8</span>
             <span class="mf-hero-title">Fall Festival <em>2026</em></span>
-            <span class="mf-hero-sub">Pick-your-own pumpkins, hay bales, farm animals and a whole park built for a family day out. Choose your date and time, and come spend the day with us.</span>
+            <span class="mf-hero-sub">A 7-acre interactive corn maze, pick-your-own pumpkins, giant hill slides, hay rides and barnyard animals — a whole park built for a family day out. Choose your date and time, and come spend the day with us.</span>
         </div>
     </div>
 
@@ -454,9 +460,9 @@
                     <span class="mf-save">Online</span>
                 </div>
                 <ul class="mf-list">
-                    <li><span class="mf-tick">✓</span><span>Full access to the fall festival</span></li>
-                    <li><span class="mf-tick">✓</span><span>Pick-your-own pumpkin patch</span></li>
-                    <li><span class="mf-tick">✓</span><span>Farm animals, play areas &amp; photo ops</span></li>
+                    <li><span class="mf-tick">✓</span><span>7-acre interactive corn maze</span></li>
+                    <li><span class="mf-tick">✓</span><span>Pick-your-own pumpkin patch &amp; hay rides</span></li>
+                    <li><span class="mf-tick">✓</span><span>Giant hill slides &amp; barnyard animals</span></li>
                     <li><span class="mf-tick">✓</span><span>Ages 2 &amp; under free — no ticket needed</span></li>
                 </ul>
                 <span class="mf-card-note">$24.95 on peak weekends (Oct 17–18 and Oct 23–24). Choose your date and arrival time at checkout.</span>
@@ -499,6 +505,9 @@
         </div>
 
         <div class="mf-wide mfr d3">
+            <div class="mf-wide-photo">
+                <img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/montpelier/design/assets/photos/heirloom-pumpkin-bin.jpg" alt="Heirloom pumpkins and gourds at Montpelier Farms" loading="lazy">
+            </div>
             <div class="mf-wide-main">
                 <span class="mf-badge">Best For Repeat Visits</span>
                 <h3>Season Pass</h3>
@@ -636,9 +645,5 @@
     })();
 </script>
 
-<div id="ticketBlock">
-  <h2>Native TicketSpice cart renders here</h2>
-  <div class="c7-cart-stub">Ticket types, prices, date + time selection, the peak-weekend +$5 bump, the October-only bundle and the add-ons stay native in TicketSpice.</div>
-</div>
-</body>
-</html>
+<div id="ticketBlock"><h2>Native TicketSpice cart renders here</h2>
+<div class="c7-cart-stub">Ticket types, prices, date + time selection, the peak +$5 bump and the add-ons stay native in TicketSpice.</div></div></body></html>
