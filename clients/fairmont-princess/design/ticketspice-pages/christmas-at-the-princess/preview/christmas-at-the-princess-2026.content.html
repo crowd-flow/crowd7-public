@@ -509,27 +509,28 @@ html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar::after { c
   </div></section>
 
   <!-- 2) TICKET TIERS -->
-  <!-- HIDDEN 2026-08-13 at Katie Johnson's request (Slack #crowd7-and-the-princess,
-       "can you hide these three boxes asap"). Hidden, NOT deleted — restore by
-       removing the inline display:none below. -->
-  <section id="cap-tickets" data-prices-hidden-2026-08-13="pending-client-confirm"><div class="cap-wrap">
-    <!-- 2026-08-13 (Mat): cards RESTORED so guests can buy again. Prices hidden until
-         Katie/Cassidy confirm correct figures — the old $28/$56/$250 were 20%-off and
-         a non-existent table rate. Restore = delete the #cap-tickets .price rule in
-         the <style> block below and this comment. Tracked:
-         work/crowd7/projects/fairmont-cap-pricing-correction/ -->
-    <style>#cap-tickets .price{display:none !important}</style>
+  <!-- 2026-08-13 (Crowdly): GA + Premium prices RESTORED — Katie confirmed in Slack
+       (#crowd7-and-the-princess) that GA/Premium run on-peak/off-peak pricing on the
+       same date windows as the old "Christmas in July" deal, and that "Starting at"
+       should show the off-peak figure, which matches the site's own calendar logic
+       above ($28/$56 off-peak vs $35/$70 standard). VIP/fire-table price stays hidden:
+       Katie's answer ("$250 is the cheapest fire table price right now") conflicts with
+       our verified live-cart pull ($799 lowest regular-season table) — flagged back to
+       her, not yet confirmed. Restore VIP = delete the .tier[data-buyer="vip"] .price
+       rule below once she confirms. Tracked: work/crowd7/projects/fairmont-cap-pricing-correction/ -->
+  <section id="cap-tickets"><div class="cap-wrap">
+    <style>#cap-tickets .tier[data-buyer="vip"] .price{display:none !important}</style>
     <div class="sec-head"><h2>Pick your tickets</h2></div>
     <div class="tier-row">
       <div class="tier" data-buyer="ga">
         <h3>General Admission</h3><div class="saletag" data-saletag="&#127876; The Traditional Experience"></div>
-        <div class="price">$28 <small>/ person</small></div>
+        <div class="price">Starting at $28 <small>/ person</small></div>
         <ul><li>17 Million Christmas Lights</li><li>The Village</li><li>Princess Express Train</li></ul>
         <button class="btn btn-out" onclick="capOpenStar()">Select</button>
       </div>
       <div class="tier feature" data-buyer="premium"><span class="ribbon">NEW</span>
         <h3>Premium Admission</h3><div class="saletag" data-saletag="&#10024; Best value upgrade"></div>
-        <div class="price">$56 <small>/ person</small></div>
+        <div class="price">Starting at $56 <small>/ person</small></div>
         <ul><li>Includes General Admission</li><li>Communal fire tables, available on a first-come basis</li><li>S&rsquo;mores &amp; Hot Cocoa Bar</li></ul>
         <button class="btn btn-solid">Select</button>
       </div>
@@ -560,7 +561,7 @@ html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar::after { c
   <div class="cap-ov" id="capOvPremium"><div class="cap-modal starlight"><button class="x" onclick="capCloseAll()">&times;</button>
     <div class="cap-promo-eye">Premium Admission</div>
     <h3>&#10024; Here&rsquo;s what&rsquo;s included</h3>
-    <div class="p-price">$56 <small>/ person</small></div>
+    <div class="p-price">Starting at $56 <small>/ person</small></div>
     <ul class="p-list">
       <li>Includes General Admission</li>
       <li>Communal fire tables, available on a first-come basis</li>
