@@ -209,15 +209,17 @@
        eyeballed: the hero's bottom band averages RGB(131,123,65), where white
        text scores 4.31:1 — under the 4.5:1 AA needs for the normal-size
        subtitle. A 0.15 alpha already clears it; this peaks at 0.32 at the very
-       bottom edge (~7.4:1) and fades to nothing by 62%, so the sky and the
-       upper photo stay completely untouched. */
+       bottom edge and fades to nothing by 64%, so the sky and the upper photo
+       stay untouched. Deepened 2026-08-12 on Mat's "a touch darker":
+       .32/.18/.06 -> .45/.28/.12, which moves the subtitle band from 5.94:1
+       to 7.13:1. Still pure black, no colour tint. */
     #sb-funnel .sb-hero-overlay {
         position: absolute !important; inset: 0 !important; z-index: 1 !important;
         background: linear-gradient(to top,
-            rgba(0,0,0,.32) 0%,
-            rgba(0,0,0,.18) 26%,
-            rgba(0,0,0,.06) 45%,
-            rgba(0,0,0,0)   62%) !important;
+            rgba(0,0,0,.45) 0%,
+            rgba(0,0,0,.28) 26%,
+            rgba(0,0,0,.12) 45%,
+            rgba(0,0,0,0)   64%) !important;
     }
     #sb-funnel .sb-hero-content {
         position: relative !important; z-index: 2 !important;
