@@ -205,11 +205,20 @@
         background-image: url('https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/summers-farm/design/assets/farm-top-shot.png') !important;
         background-size: cover !important; background-position: center 46% !important;
     }
-    /* Hero gradient removed 2026-08-12 (Mat) — the photo carries the hero on
-       its own. Text legibility now rests on the text-shadows below: measured
-       contrast of white on the bottom band of farm-top-shot.png is 4.31:1,
-       which clears WCAG AA for large text. To restore, re-add a
-       .sb-hero-overlay div and a linear-gradient here. */
+    /* Slight black scrim, bottom only (Mat 2026-08-12). Calibrated, not
+       eyeballed: the hero's bottom band averages RGB(131,123,65), where white
+       text scores 4.31:1 — under the 4.5:1 AA needs for the normal-size
+       subtitle. A 0.15 alpha already clears it; this peaks at 0.32 at the very
+       bottom edge (~7.4:1) and fades to nothing by 62%, so the sky and the
+       upper photo stay completely untouched. */
+    #sb-funnel .sb-hero-overlay {
+        position: absolute !important; inset: 0 !important; z-index: 1 !important;
+        background: linear-gradient(to top,
+            rgba(0,0,0,.32) 0%,
+            rgba(0,0,0,.18) 26%,
+            rgba(0,0,0,.06) 45%,
+            rgba(0,0,0,0)   62%) !important;
+    }
     #sb-funnel .sb-hero-content {
         position: relative !important; z-index: 2 !important;
         max-width: 1120px !important; margin: 0 auto !important; width: 100% !important;
@@ -460,8 +469,9 @@
         </div>
     </div>
 
-    <!-- ── 3. HERO — farm aerial, no overlay ── -->
+    <!-- ── 3. HERO — farm aerial, slight bottom scrim ── -->
     <div class="sb-hero">
+        <div class="sb-hero-overlay"></div>
         <div class="sb-hero-content">
             <span class="sb-hero-eyebrow">Middletown, MD · Fall Festival 2026</span>
             <span class="sb-hero-title">Fall <em>Festival</em></span>
