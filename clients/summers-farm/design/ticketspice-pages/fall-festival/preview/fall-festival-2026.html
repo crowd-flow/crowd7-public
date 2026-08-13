@@ -22,12 +22,15 @@
    2. SECTION RHYTHM — no longer a uniform stack of icon-card grids. The
       page now alternates: colour band -> asymmetric image split -> full
       bleed photo band -> reversed split -> ticket cards -> solid colour
-      band -> photo mosaic -> info. Each section gets its own ground colour
-      so nothing reads as "the same block again."
-   3. IMAGERY — 10 images, up from 7 (6 of which were 275px thumbnails
-      buried in one marquee). The large 1900px farm photos now carry
-      full-bleed and split-panel roles; the small fall photos are used ONLY
-      in the mosaic, at a size their resolution actually supports.
+      band -> info. Each section gets its own ground colour so nothing
+      reads as "the same block again."
+   3. IMAGERY — the large 1900px farm photos carry full-bleed and
+      split-panel roles (hero, stat band, both splits).
+      ⚡ 2026-08-12 (Mat): the PHOTO MOSAIC section was removed outright —
+      header ("29+ Years · Four Generations" / "A whole season of fall
+      fun") and all six tiles. Those tiles were the 275px fall set and read
+      soft. Page is now 4 images. The six photos remain in assets/fall/,
+      unused, ready to return if high-res originals arrive.
    4. DE-DUPLICATED — the old build had TWO adjacent sections ("Why families
       make it a tradition" and "Benefits") listing the SAME four items with
       the SAME icons. Merged into one.
@@ -37,13 +40,12 @@
   which is off-convention AND is pruned periodically, so the live page had a
   standing breakage risk. Migrated 2026-08-12.
 
-  ⚠️ IMAGE RESOLUTION CONSTRAINT: the six fall photos (hay rides, families,
-  autumn light) are only 275-311px. They are genuinely the best *fall*
-  imagery we hold, but they cannot carry a hero or full-bleed band. They are
-  confined to the mosaic. The large photos available (farm aerial, kids
-  playing, giant slide) are summer/generic rather than autumn. ASK RACHEL
-  FOR HIGH-RES AUTUMN ORIGINALS — they drop into the same slots with no
-  layout change.
+  ⚠️ IMAGE RESOLUTION CONSTRAINT: the six fall photos are only 275-311px.
+  They are the best *fall* imagery we hold but are too soft to feature, and
+  the mosaic that used them has been removed. Every large photo we hold
+  (farm aerial, kids playing, giant slide) is summer/generic rather than
+  autumn. ASK RACHEL FOR HIGH-RES AUTUMN ORIGINALS — with them, the mosaic
+  can come back and the hero can finally read autumn.
 
   CONTENT SOURCE / GROUNDING (live summersfarm.com/fall-festival + the
   2025 draft assessment, captured via web 2026-06-30):
@@ -378,32 +380,7 @@
         padding: 10px 19px !important; border-radius: 50px !important;
     }
 
-    /* ── 9. MOSAIC — small fall photos at a size 275px supports ── */
-    #sb-funnel .sb-mosaic { background: var(--sf-slate) !important; }
-    #sb-funnel .sb-mosaic .sb-title { color: #fff !important; }
-    #sb-funnel .sb-mosaic .sb-title em { color: var(--sf-amber-lt) !important; }
-    #sb-funnel .sb-mosaic .sb-eye { color: var(--sf-amber-lt) !important; }
-    #sb-funnel .sb-mosaic .sb-lede { color: rgba(255,255,255,.78) !important; }
-    #sb-funnel .sb-mosaic-grid {
-        display: grid !important; grid-template-columns: repeat(6, 1fr) !important;
-        gap: 12px !important; max-width: 1120px !important; margin: 0 auto !important;
-    }
-    #sb-funnel .sb-mtile {
-        position: relative !important; border-radius: 12px !important; overflow: hidden !important;
-        line-height: 0 !important; box-shadow: 0 10px 26px rgba(0,0,0,.28) !important;
-    }
-    #sb-funnel .sb-mtile img { width: 100% !important; height: 100% !important; object-fit: cover !important;
-        display: block !important; aspect-ratio: 1/1 !important; }
-    #sb-funnel .sb-mtile-tall { grid-row: span 2 !important; }
-    #sb-funnel .sb-mtile-tall img { aspect-ratio: 1/2.06 !important; }
-    #sb-funnel .sb-mtile-lbl {
-        position: absolute !important; left: 0 !important; right: 0 !important; bottom: 0 !important;
-        padding: 18px 12px 9px !important; font-size: .73rem !important; font-weight: 600 !important;
-        letter-spacing: .04em !important; color: #fff !important; line-height: 1.3 !important;
-        background: linear-gradient(to top, rgba(0,0,0,.74), transparent) !important;
-    }
-
-    /* ── 10. INFO — cream, amber icons ── */
+    /* ── 9. INFO — cream, amber icons ── */
     #sb-funnel .sb-info { background: var(--sf-cream) !important; border-top: 1px solid var(--sf-sand-dk) !important;
         padding: clamp(44px,6vw,70px) 24px !important; }
     #sb-funnel .sb-info-grid {
@@ -427,15 +404,11 @@
         #sb-funnel .sb-grid { grid-template-columns: 1fr !important; max-width: 460px !important; }
         #sb-funnel .sb-band-inner { grid-template-columns: repeat(2, 1fr) !important; gap: 32px 18px !important; }
         #sb-funnel .sb-info-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 30px 18px !important; }
-        #sb-funnel .sb-mosaic-grid { grid-template-columns: repeat(3, 1fr) !important; }
-        #sb-funnel .sb-mtile-tall { grid-row: span 1 !important; }
-        #sb-funnel .sb-mtile-tall img { aspect-ratio: 1/1 !important; }
     }
     @media (max-width: 560px) {
         #sb-funnel .sb-nav { padding: 0 14px !important; }
         #sb-funnel .sb-nav-loc { display: none !important; }
         #sb-funnel .sb-banner { font-size: .72rem !important; }
-        #sb-funnel .sb-mosaic-grid { grid-template-columns: repeat(2, 1fr) !important; }
         #sb-funnel .sb-sec { padding-bottom: 96px !important; }
     }
 </style>
@@ -638,41 +611,7 @@
         </div>
     </div>
 
-    <!-- ── 9. MOSAIC — the fall photo set, used small ── -->
-    <div class="sb-sec sb-mosaic">
-        <div class="sb-sec-head sbr">
-            <span class="sb-eye">29+ Years · Four Generations</span>
-            <span class="sb-title">A whole season of <em>fall fun</em></span>
-        </div>
-        <div class="sb-mosaic-grid sbr d1">
-            <div class="sb-mtile sb-mtile-tall">
-                <img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/summers-farm/design/assets/fall/gallery-6.png" alt="A family together at the fall festival" loading="lazy">
-                <span class="sb-mtile-lbl">Fall Memories</span>
-            </div>
-            <div class="sb-mtile">
-                <img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/summers-farm/design/assets/fall/gallery-1.png" alt="Fresh farm food at Summers Farm" loading="lazy">
-                <span class="sb-mtile-lbl">Cider Donuts</span>
-            </div>
-            <div class="sb-mtile">
-                <img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/summers-farm/design/assets/fall/gallery-2.png" alt="A family out in the fields" loading="lazy">
-                <span class="sb-mtile-lbl">Family Fun</span>
-            </div>
-            <div class="sb-mtile">
-                <img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/summers-farm/design/assets/fall/gallery-3.png" alt="Racing down the Mega Slide" loading="lazy">
-                <span class="sb-mtile-lbl">Mega Slide</span>
-            </div>
-            <div class="sb-mtile">
-                <img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/summers-farm/design/assets/fall/gallery-4.png" alt="Dad and toddler on the jumping pillow" loading="lazy">
-                <span class="sb-mtile-lbl">Jumping Pillows</span>
-            </div>
-            <div class="sb-mtile">
-                <img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/summers-farm/design/assets/fall/gallery-5.png" alt="A couple enjoying a fall weekend" loading="lazy">
-                <span class="sb-mtile-lbl">Fall Weekends</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- ── 10. INFO ── -->
+    <!-- ── 9. INFO ── -->
     <div class="sb-info">
         <div class="sb-info-grid">
             <div class="sb-info-item">
