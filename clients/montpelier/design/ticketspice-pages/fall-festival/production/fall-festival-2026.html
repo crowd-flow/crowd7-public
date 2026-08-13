@@ -285,13 +285,13 @@
         display: grid !important;
         grid-template-columns: minmax(190px,250px) minmax(0,1fr) minmax(170px,215px) !important;
         column-gap: 30px !important; align-items: stretch !important; position: relative !important;
-        overflow: hidden !important;
         box-shadow: 0 14px 40px rgba(42,42,40,.10) !important;
     }
     /* photo bleeds to the card's left/top/bottom edge — Eckerts Millstadt
        treatment (negative margins against the card's own padding). */
     #mf-funnel .mf-wide-photo {
-        margin: -30px 0 -30px -32px !important; position: relative !important; overflow: hidden !important;
+        margin: -30px 0 -30px -32px !important; position: relative !important;
+        overflow: hidden !important; border-radius: 12px 0 0 12px !important;
     }
     #mf-funnel .mf-wide-photo img {
         width: 100% !important; height: 100% !important; object-fit: cover !important; display: block !important;
@@ -362,7 +362,8 @@
         #mf-funnel .mf-grid, #mf-funnel .mf-steps, #mf-funnel .mf-months { grid-template-columns: 1fr !important; max-width: 470px !important; }
         #mf-funnel .mf-addon-grid { grid-template-columns: repeat(2,1fr) !important; max-width: 640px !important; }
         #mf-funnel .mf-wide { grid-template-columns: 1fr !important; max-width: 470px !important; row-gap: 20px !important; }
-        #mf-funnel .mf-wide-photo { margin: -30px -32px 0 !important; height: 170px !important; }
+        #mf-funnel .mf-wide-photo { margin: -30px -32px 0 !important; height: 170px !important;
+            border-radius: 12px 12px 0 0 !important; }
         #mf-funnel .mf-wide-rail { border-left: none !important; border-top: 1px solid var(--mf-sand-dk) !important;
             padding-left: 0 !important; padding-top: 18px !important; align-items: flex-start !important; }
         #mf-funnel .mf-wide-lbl { text-align: left !important; }
