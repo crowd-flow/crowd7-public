@@ -189,16 +189,18 @@
 
     /* ── 2. NAV — deep barn red (was blue) ── */
     #sb-funnel .sb-nav {
-        width: 100% !important; padding: 0 clamp(16px, 4vw, 40px) !important; height: 64px !important;
+        width: 100% !important; padding: 0 clamp(16px, 4vw, 40px) !important; height: 78px !important;
         display: flex !important; align-items: center !important; justify-content: space-between !important;
         background: rgba(94,15,17,.97) !important; position: sticky !important; top: 0 !important;
         z-index: 100 !important; box-shadow: 0 2px 16px rgba(94,15,17,.35) !important;
     }
-    #sb-funnel .sb-logo-text {
-        font-family: 'Zilla Slab', serif !important; font-size: 1.28rem !important; font-weight: 700 !important;
-        color: #fff !important; letter-spacing: .01em !important;
+    /* Real Summers Farm lockup. NOTE: assets/logo.png is an AVIF file behind a
+       .png extension - use summers-farm-logo-white.png, a genuine PNG with an
+       alpha channel and a white wordmark built for dark grounds. */
+    #sb-funnel .sb-logo-img {
+        height: 58px !important; width: auto !important; display: block !important;
+        object-fit: contain !important; flex-shrink: 0 !important;
     }
-    #sb-funnel .sb-logo-text span { color: var(--sf-amber-lt) !important; font-style: italic !important; }
     #sb-funnel .sb-nav-right { display: flex !important; align-items: center !important; gap: 18px !important; }
     #sb-funnel .sb-nav-loc {
         display: flex !important; align-items: center !important; gap: 6px !important;
@@ -437,7 +439,8 @@
         #sb-funnel .sb-info-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 30px 18px !important; }
     }
     @media (max-width: 560px) {
-        #sb-funnel .sb-nav { padding: 0 14px !important; }
+        #sb-funnel .sb-nav { padding: 0 14px !important; height: 64px !important; }
+        #sb-funnel .sb-logo-img { height: 46px !important; }
         #sb-funnel .sb-nav-loc { display: none !important; }
         #sb-funnel .sb-banner { font-size: .72rem !important; }
         #sb-funnel .sb-sec { padding-bottom: 96px !important; }
@@ -459,7 +462,9 @@
 
     <!-- ── 2. NAV (barn red) ── -->
     <div class="sb-nav">
-        <span class="sb-logo-text">Summers <span>Farm</span></span>
+        <img class="sb-logo-img"
+             src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/summers-farm/design/assets/summers-farm-logo-white.png"
+             alt="Summers Farm">
         <div class="sb-nav-right">
             <div class="sb-nav-loc">
                 <svg width="12" height="12" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="2" viewBox="0 0 24 24">
