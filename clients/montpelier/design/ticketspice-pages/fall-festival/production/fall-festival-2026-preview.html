@@ -218,24 +218,35 @@
         text-shadow: 0 2px 14px rgba(0,0,0,.45) !important;
     }
 
-    /* ── HOW IT WORKS ── */
-    #mf-funnel .mf-how { background: var(--mf-green) !important; }
-    #mf-funnel .mf-how .mf-title { color: #fff !important; }
-    #mf-funnel .mf-how .mf-title em { color: var(--mf-gold) !important; }
-    #mf-funnel .mf-how .mf-eye { color: var(--mf-gold) !important; }
-    #mf-funnel .mf-how .mf-lede { color: rgba(255,255,255,.78) !important; }
-    #mf-funnel .mf-steps { display: grid !important; grid-template-columns: repeat(3,1fr) !important;
-        gap: clamp(18px,3vw,34px) !important; max-width: 1000px !important; margin: 0 auto !important; }
-    #mf-funnel .mf-step { text-align: center !important; }
-    #mf-funnel .mf-step-n {
-        display: inline-flex !important; align-items: center !important; justify-content: center !important;
-        width: 40px !important; height: 40px !important; border-radius: 50% !important;
-        background: rgba(217,164,65,.15) !important; border: 1px solid var(--mf-gold) !important;
-        color: var(--mf-gold) !important; font-family: 'Bitter', serif !important;
-        font-weight: 700 !important; margin-bottom: 14px !important;
+    /* ── 04 SEASON STRIP · thin band under the hero (house block 04) ── */
+    #mf-funnel .mf-seasonbar {
+        background: var(--mf-green) !important; padding: 15px 20px !important; text-align: center !important;
     }
-    #mf-funnel .mf-step-t { display: block !important; font-weight: 600 !important; color: #fff !important; margin-bottom: 7px !important; }
-    #mf-funnel .mf-step-d { display: block !important; font-size: .89rem !important; line-height: 1.6 !important; color: rgba(255,255,255,.72) !important; }
+    #mf-funnel .mf-seasonbar, #mf-funnel .mf-seasonbar span { color: #ffffff !important; }
+    #mf-funnel .mf-seasonbar-t {
+        display: inline-block !important; font-size: clamp(.95rem,2.2vw,1.18rem) !important;
+        font-weight: 700 !important; letter-spacing: .02em !important; line-height: 1.5 !important;
+    }
+    #mf-funnel .mf-sb-dot { opacity: .5 !important; padding: 0 12px !important; }
+
+    /* ── 05 BENEFITS · 4 highlights, divided (house block 05) ── */
+    #mf-funnel .mf-benefits { background: #fff !important; padding: clamp(34px,4.5vw,52px) 24px !important; }
+    #mf-funnel .mf-benefits-grid {
+        display: grid !important; grid-template-columns: repeat(4,1fr) !important;
+        max-width: 1120px !important; margin: 0 auto !important;
+    }
+    #mf-funnel .mf-benefit {
+        text-align: center !important; padding: 4px 18px !important;
+        border-right: 1px solid var(--mf-sand-dk) !important;
+    }
+    #mf-funnel .mf-benefit:last-child { border-right: none !important; }
+    #mf-funnel .mf-benefit-title {
+        display: block !important; font-family: 'Bitter', Georgia, serif !important;
+        font-size: 1.02rem !important; font-weight: 700 !important;
+        color: var(--mf-green) !important; margin-bottom: 6px !important;
+    }
+    #mf-funnel .mf-benefit-desc { display: block !important; font-size: .86rem !important;
+        line-height: 1.5 !important; color: #6E7268 !important; }
 
     /* ── TICKETS ── */
     #mf-funnel .mf-tickets { background: var(--mf-sand) !important; }
@@ -371,7 +382,7 @@
     #mf-funnel .mf-info-v { display: block !important; font-size: .92rem !important; line-height: 1.55 !important; color: #55584F !important; }
 
     @media (max-width: 900px) {
-        #mf-funnel .mf-grid, #mf-funnel .mf-steps, #mf-funnel .mf-months { grid-template-columns: 1fr !important; max-width: 470px !important; }
+        #mf-funnel .mf-grid, #mf-funnel .mf-months { grid-template-columns: 1fr !important; max-width: 470px !important; }
         #mf-funnel .mf-addon-grid { grid-template-columns: repeat(2,1fr) !important; max-width: 640px !important; }
         #mf-funnel .mf-wide { grid-template-columns: 1fr !important; max-width: 470px !important; row-gap: 20px !important; }
         #mf-funnel .mf-wide-photo { margin: -30px -32px 0 !important; height: 170px !important;
@@ -380,6 +391,8 @@
             padding-left: 0 !important; padding-top: 18px !important; align-items: flex-start !important; }
         #mf-funnel .mf-wide-lbl { text-align: left !important; }
         #mf-funnel .mf-info-grid { grid-template-columns: repeat(2,1fr) !important; gap: 28px 18px !important; }
+        #mf-funnel .mf-benefits-grid { grid-template-columns: repeat(2,1fr) !important; row-gap: 26px !important; }
+        #mf-funnel .mf-benefit:nth-child(2) { border-right: none !important; }
     }
     @media (max-width: 560px) {
         #mf-funnel .mf-nav { height: 96px !important; padding: 0 14px !important; }
@@ -419,27 +432,29 @@
         </div>
     </div>
 
-    <div class="mf-sec mf-how">
-        <div class="mf-head mfr">
-            <span class="mf-eye">Before You Come</span>
-            <span class="mf-title">Planning your <em>visit</em></span>
-            <p class="mf-lede">Every ticket is for a specific day and arrival window, so the farm never gets overcrowded and your family always gets room to play.</p>
-        </div>
-        <div class="mf-steps mfr d1">
-            <div class="mf-step">
-                <span class="mf-step-n">1</span>
-                <span class="mf-step-t">Choose date &amp; time</span>
-                <span class="mf-step-d">Pick the day and arrival window you want — that comes first.</span>
+    <!-- 04 · SEASON STRIP (house block 04) -->
+    <div class="mf-seasonbar">
+        <span class="mf-seasonbar-t">September 12 – November 8, 2026<span class="mf-sb-dot">·</span>Weekends + October weekdays<span class="mf-sb-dot">·</span>Last admission 1 hour before close</span>
+    </div>
+
+    <!-- 05 · BENEFITS — 4 highlights (house block 05) -->
+    <div class="mf-benefits">
+        <div class="mf-benefits-grid mfr">
+            <div class="mf-benefit">
+                <span class="mf-benefit-title">7-Acre Corn Maze</span>
+                <span class="mf-benefit-desc">Wind your way through the interactive maze</span>
             </div>
-            <div class="mf-step">
-                <span class="mf-step-n">2</span>
-                <span class="mf-step-t">Then pick your pass</span>
-                <span class="mf-step-d">General Admission, Super Pass, the Ultimate or a Season Pass.</span>
+            <div class="mf-benefit">
+                <span class="mf-benefit-title">Pumpkin Patch</span>
+                <span class="mf-benefit-desc">Pick your own, straight out of the field</span>
             </div>
-            <div class="mf-step">
-                <span class="mf-step-n">3</span>
-                <span class="mf-step-t">Add your extras</span>
-                <span class="mf-step-d">Mining, paintball, the Mega Slide and more — add them at checkout or on the day.</span>
+            <div class="mf-benefit">
+                <span class="mf-benefit-title">Giant Hill Slides</span>
+                <span class="mf-benefit-desc">Race a friend down the hillside</span>
+            </div>
+            <div class="mf-benefit">
+                <span class="mf-benefit-title">Hay Rides &amp; Barnyard</span>
+                <span class="mf-benefit-desc">Ride out and meet the animals</span>
             </div>
         </div>
     </div>

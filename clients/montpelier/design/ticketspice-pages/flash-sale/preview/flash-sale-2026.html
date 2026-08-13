@@ -208,24 +208,35 @@
         text-shadow: 0 2px 14px rgba(0,0,0,.45) !important;
     }
 
-    /* ── HOW IT WORKS ── */
-    #fs-funnel .fs-how { background: var(--fs-green) !important; }
-    #fs-funnel .fs-how .fs-title { color: #fff !important; }
-    #fs-funnel .fs-how .fs-title em { color: var(--fs-gold) !important; }
-    #fs-funnel .fs-how .fs-eye { color: var(--fs-gold) !important; }
-    #fs-funnel .fs-how .fs-lede { color: rgba(255,255,255,.78) !important; }
-    #fs-funnel .fs-steps { display: grid !important; grid-template-columns: repeat(3,1fr) !important;
-        gap: clamp(18px,3vw,34px) !important; max-width: 1000px !important; margin: 0 auto !important; }
-    #fs-funnel .fs-step { text-align: center !important; }
-    #fs-funnel .fs-step-n {
-        display: inline-flex !important; align-items: center !important; justify-content: center !important;
-        width: 40px !important; height: 40px !important; border-radius: 50% !important;
-        background: rgba(217,164,65,.15) !important; border: 1px solid var(--fs-gold) !important;
-        color: var(--fs-gold) !important; font-family: 'Bitter', serif !important;
-        font-weight: 700 !important; margin-bottom: 14px !important;
+    /* ── 04 SEASON STRIP · thin band under the hero (house block 04) ── */
+    #fs-funnel .fs-seasonbar {
+        background: var(--fs-green) !important; padding: 15px 20px !important; text-align: center !important;
     }
-    #fs-funnel .fs-step-t { display: block !important; font-weight: 600 !important; color: #fff !important; margin-bottom: 7px !important; }
-    #fs-funnel .fs-step-d { display: block !important; font-size: .89rem !important; line-height: 1.6 !important; color: rgba(255,255,255,.72) !important; }
+    #fs-funnel .fs-seasonbar, #fs-funnel .fs-seasonbar span { color: #ffffff !important; }
+    #fs-funnel .fs-seasonbar-t {
+        display: inline-block !important; font-size: clamp(.95rem,2.2vw,1.18rem) !important;
+        font-weight: 700 !important; letter-spacing: .02em !important; line-height: 1.5 !important;
+    }
+    #fs-funnel .fs-sb-dot { opacity: .5 !important; padding: 0 12px !important; }
+
+    /* ── 05 BENEFITS · 4 highlights, divided (house block 05) ── */
+    #fs-funnel .fs-benefits { background: #fff !important; padding: clamp(34px,4.5vw,52px) 24px !important; }
+    #fs-funnel .fs-benefits-grid {
+        display: grid !important; grid-template-columns: repeat(4,1fr) !important;
+        max-width: 1120px !important; margin: 0 auto !important;
+    }
+    #fs-funnel .fs-benefit {
+        text-align: center !important; padding: 4px 18px !important;
+        border-right: 1px solid var(--fs-sand-dk) !important;
+    }
+    #fs-funnel .fs-benefit:last-child { border-right: none !important; }
+    #fs-funnel .fs-benefit-title {
+        display: block !important; font-family: 'Bitter', Georgia, serif !important;
+        font-size: 1.02rem !important; font-weight: 700 !important;
+        color: var(--fs-green) !important; margin-bottom: 6px !important;
+    }
+    #fs-funnel .fs-benefit-desc { display: block !important; font-size: .86rem !important;
+        line-height: 1.5 !important; color: #6E7268 !important; }
 
     /* ── TICKETS ── */
     #fs-funnel .fs-tickets { background: var(--fs-sand) !important; }
@@ -335,9 +346,11 @@
     #fs-funnel .fs-info-v { display: block !important; font-size: .92rem !important; line-height: 1.55 !important; color: #55584F !important; }
 
     @media (max-width: 900px) {
-        #fs-funnel .fs-grid, #fs-funnel .fs-steps, #fs-funnel .fs-months { grid-template-columns: 1fr !important; max-width: 470px !important; }
+        #fs-funnel .fs-grid, #fs-funnel .fs-months { grid-template-columns: 1fr !important; max-width: 470px !important; }
         #fs-funnel .fs-addon-grid { grid-template-columns: repeat(2,1fr) !important; max-width: 640px !important; }
         #fs-funnel .fs-info-grid { grid-template-columns: repeat(2,1fr) !important; gap: 28px 18px !important; }
+        #fs-funnel .fs-benefits-grid { grid-template-columns: repeat(2,1fr) !important; row-gap: 26px !important; }
+        #fs-funnel .fs-benefit:nth-child(2) { border-right: none !important; }
     }
     @media (max-width: 560px) {
         #fs-funnel .fs-nav { height: 96px !important; padding: 0 14px !important; }
@@ -377,27 +390,29 @@
         </div>
     </div>
 
-    <div class="fs-sec fs-how">
-        <div class="fs-head mfr">
-            <span class="fs-eye">Five Days Only</span>
-            <span class="fs-title">How the <em>Flash Sale</em> works</span>
-            <p class="fs-lede">The lowest prices we offer all season. Once they're gone, they're gone — full pricing returns August 31.</p>
-        </div>
-        <div class="fs-steps mfr d1">
-            <div class="fs-step">
-                <span class="fs-step-n">1</span>
-                <span class="fs-step-t">Buy Aug 26–30</span>
-                <span class="fs-step-d">Five days, Wednesday through Sunday.</span>
+    <!-- 04 · SEASON STRIP (house block 04) -->
+    <div class="fs-seasonbar">
+        <span class="fs-seasonbar-t">Sale: August 26 – 30<span class="fs-sb-dot">·</span>Valid September 12 – November 8<span class="fs-sb-dot">·</span>Good any operating day</span>
+    </div>
+
+    <!-- 05 · BENEFITS — 4 highlights (house block 05) -->
+    <div class="fs-benefits">
+        <div class="fs-benefits-grid fsr">
+            <div class="fs-benefit">
+                <span class="fs-benefit-title">7-Acre Corn Maze</span>
+                <span class="fs-benefit-desc">Wind your way through the interactive maze</span>
             </div>
-            <div class="fs-step">
-                <span class="fs-step-n">2</span>
-                <span class="fs-step-t">No date to pick</span>
-                <span class="fs-step-d">Flash-sale tickets are good any day we're open — decide when you come later.</span>
+            <div class="fs-benefit">
+                <span class="fs-benefit-title">Pumpkin Patch</span>
+                <span class="fs-benefit-desc">Pick your own, straight out of the field</span>
             </div>
-            <div class="fs-step">
-                <span class="fs-step-n">3</span>
-                <span class="fs-step-t">Come out this fall</span>
-                <span class="fs-step-d">Gates open September 12 and we run right through November 8.</span>
+            <div class="fs-benefit">
+                <span class="fs-benefit-title">Giant Hill Slides</span>
+                <span class="fs-benefit-desc">Race a friend down the hillside</span>
+            </div>
+            <div class="fs-benefit">
+                <span class="fs-benefit-title">Hay Rides &amp; Barnyard</span>
+                <span class="fs-benefit-desc">Ride out and meet the animals</span>
             </div>
         </div>
     </div>
