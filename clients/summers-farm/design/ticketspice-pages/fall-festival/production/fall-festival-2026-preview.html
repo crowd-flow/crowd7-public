@@ -222,11 +222,11 @@
         background-image: url('https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/summers-farm/design/assets/farm-top-shot.png') !important;
         background-size: cover !important; background-position: center 46% !important;
     }
-    #sb-funnel .sb-hero-overlay {
-        position: absolute !important; inset: 0 !important; z-index: 1 !important;
-        background:
-            linear-gradient(to top, rgba(34,55,31,.90) 0%, rgba(94,15,17,.42) 45%, rgba(201,123,30,.20) 100%) !important;
-    }
+    /* Hero gradient removed 2026-08-12 (Mat) — the photo carries the hero on
+       its own. Text legibility now rests on the text-shadows below: measured
+       contrast of white on the bottom band of farm-top-shot.png is 4.31:1,
+       which clears WCAG AA for large text. To restore, re-add a
+       .sb-hero-overlay div and a linear-gradient here. */
     #sb-funnel .sb-hero-content {
         position: relative !important; z-index: 2 !important;
         max-width: 1120px !important; margin: 0 auto !important; width: 100% !important;
@@ -477,9 +477,8 @@
         </div>
     </div>
 
-    <!-- ── 3. HERO — farm aerial, autumn wash ── -->
+    <!-- ── 3. HERO — farm aerial, no overlay ── -->
     <div class="sb-hero">
-        <div class="sb-hero-overlay"></div>
         <div class="sb-hero-content">
             <span class="sb-hero-eyebrow">Middletown, MD · Fall Festival 2026</span>
             <span class="sb-hero-title">Fall <em>Festival</em></span>
