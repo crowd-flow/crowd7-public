@@ -512,7 +512,13 @@ html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar::after { c
   <!-- HIDDEN 2026-08-13 at Katie Johnson's request (Slack #crowd7-and-the-princess,
        "can you hide these three boxes asap"). Hidden, NOT deleted — restore by
        removing the inline display:none below. -->
-  <section id="cap-tickets" style="display:none" data-hidden-2026-08-13="katie-request"><div class="cap-wrap">
+  <section id="cap-tickets" data-prices-hidden-2026-08-13="pending-client-confirm"><div class="cap-wrap">
+    <!-- 2026-08-13 (Mat): cards RESTORED so guests can buy again. Prices hidden until
+         Katie/Cassidy confirm correct figures — the old $28/$56/$250 were 20%-off and
+         a non-existent table rate. Restore = delete the #cap-tickets .price rule in
+         the <style> block below and this comment. Tracked:
+         work/crowd7/projects/fairmont-cap-pricing-correction/ -->
+    <style>#cap-tickets .price{display:none !important}</style>
     <div class="sec-head"><h2>Pick your tickets</h2></div>
     <div class="tier-row">
       <div class="tier" data-buyer="ga">
