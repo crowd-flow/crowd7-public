@@ -409,6 +409,10 @@ html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar::after { c
   #cap-funnel .tier .starting{font-family:'Montserrat',sans-serif;font-size:.74rem;color:var(--muted);margin-bottom:4px;letter-spacing:.02em;}
   #cap-funnel .tier .tier-sub{font-family:'Montserrat',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin:-2px 0 8px;}
   #cap-funnel .tier .price small{font-size:.95rem;color:var(--muted);font-weight:400;}
+  /* 2026-08-13 (Mat): 'Starting at' must be small — same size as the feature bullets
+     (.95rem), not the big Playfair price. Applies to tier cards + the Premium modal. */
+  #cap-funnel .tier .price .startat,
+  #cap-funnel .p-price .startat{display:block;font-family:'Montserrat',sans-serif;font-size:.95rem;font-weight:400;color:var(--muted);letter-spacing:.02em;margin-bottom:2px;}
   #cap-funnel .tier ul{list-style:none;padding:0;margin:16px 0 22px;}
   #cap-funnel .tier li{padding:6px 0;border-bottom:1px dashed var(--line);font-size:.95rem;}
   #cap-funnel .tier .btn{margin-top:auto;border:0;border-radius:40px;padding:13px;font-weight:700;cursor:pointer;font-size:1rem;}
@@ -524,13 +528,13 @@ html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar::after { c
     <div class="tier-row">
       <div class="tier" data-buyer="ga">
         <h3>General Admission</h3><div class="saletag" data-saletag="&#127876; The Traditional Experience"></div>
-        <div class="price">Starting at $28 <small>/ person</small></div>
+        <div class="price"><span class="startat">Starting at</span>$28 <small>/ person</small></div>
         <ul><li>17 Million Christmas Lights</li><li>The Village</li><li>Princess Express Train</li></ul>
         <button class="btn btn-out" onclick="capOpenStar()">Select</button>
       </div>
       <div class="tier feature" data-buyer="premium"><span class="ribbon">NEW</span>
         <h3>Premium Admission</h3><div class="saletag" data-saletag="&#10024; Best value upgrade"></div>
-        <div class="price">Starting at $56 <small>/ person</small></div>
+        <div class="price"><span class="startat">Starting at</span>$56 <small>/ person</small></div>
         <ul><li>Includes General Admission</li><li>Communal fire tables, available on a first-come basis</li><li>S&rsquo;mores &amp; Hot Cocoa Bar</li></ul>
         <button class="btn btn-solid">Select</button>
       </div>
@@ -561,7 +565,7 @@ html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar::after { c
   <div class="cap-ov" id="capOvPremium"><div class="cap-modal starlight"><button class="x" onclick="capCloseAll()">&times;</button>
     <div class="cap-promo-eye">Premium Admission</div>
     <h3>&#10024; Here&rsquo;s what&rsquo;s included</h3>
-    <div class="p-price">Starting at $56 <small>/ person</small></div>
+    <div class="p-price"><span class="startat">Starting at</span>$56 <small>/ person</small></div>
     <ul class="p-list">
       <li>Includes General Admission</li>
       <li>Communal fire tables, available on a first-come basis</li>
