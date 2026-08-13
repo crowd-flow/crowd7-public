@@ -400,14 +400,23 @@
     #sb-funnel .sb-card-cream .sb-card-price { border-top: 1px solid var(--sf-sand-dk) !important; }
     #sb-funnel .sb-card-cream .sb-price-label, #sb-funnel .sb-card-cream .sb-card-note { color: #6E8190 !important; }
     #sb-funnel .sb-card-cream .sb-card-badge { background: var(--sf-barn) !important; color: #fff !important; }
-    #sb-funnel .sb-season-tier {
+
+    /* add-on note under the three cards (house pattern from season-pass) */
+    #sb-funnel .sb-addon-note { max-width: 1120px !important; margin: 22px auto 0 !important; }
+    #sb-funnel .sb-addon {
         display: flex !important; align-items: center !important; justify-content: space-between !important;
-        gap: 12px !important; padding: 13px 0 !important; border-bottom: 1px solid var(--sf-sand-dk) !important;
+        gap: 18px !important; padding: 16px 22px !important; background: #fff !important;
+        border: 1px solid var(--sf-sand-dk) !important; border-radius: 14px !important;
     }
-    #sb-funnel .sb-season-tier:last-child { border-bottom: none !important; }
-    #sb-funnel .sb-season-tier-name { display: block !important; font-weight: 600 !important; font-size: .93rem !important; color: var(--sf-slate) !important; }
-    #sb-funnel .sb-season-tier-desc { display: block !important; font-size: .78rem !important; color: #6E8190 !important; margin-top: 3px !important; }
-    #sb-funnel .sb-season-tier-now { font-family: 'Zilla Slab', serif !important; font-size: 1.32rem !important; font-weight: 700 !important; color: var(--sf-barn) !important; white-space: nowrap !important; }
+    #sb-funnel .sb-addon-name { font-size: .88rem !important; line-height: 1.5 !important; color: #4A5A63 !important; }
+    #sb-funnel .sb-addon-name strong { color: var(--sf-barn) !important; }
+    #sb-funnel .sb-addon-price {
+        font-family: 'Zilla Slab', serif !important; font-weight: 700 !important;
+        color: var(--sf-barn) !important; font-size: 1.25rem !important; white-space: nowrap !important;
+    }
+    @media (max-width: 560px) {
+        #sb-funnel .sb-addon { flex-direction: column !important; align-items: flex-start !important; gap: 8px !important; }
+    }
 
     /* ── 8. ATTRACTIONS — solid barn-red band, outlined chips ── */
     #sb-funnel .sb-attractions { background: var(--sf-barn) !important; }
@@ -563,71 +572,71 @@
     <div class="sb-sec sb-tickets" id="tickets">
         <div class="sb-sec-head sbr">
             <span class="sb-eye">Summers Farm Fall Festival</span>
-            <span class="sb-title">Pick your <em>fall</em></span>
-            <p class="sb-lede">Ages 3–99 need a ticket. Two and under are always free.</p>
+            <span class="sb-title">Pick your <em>day</em></span>
+            <p class="sb-lede">Every ticket includes all 45+ activities. Ages 2 &amp; under are free and don't need a ticket. Buy online — gate prices are $4 higher.</p>
         </div>
         <div class="sb-grid">
 
-            <div class="sb-card sb-card-barn sbr">
-                <span class="sb-card-badge">Most Popular</span>
-                <span class="sb-card-icon">🎟️</span>
-                <h3>General Admission</h3>
+            <div class="sb-card sb-card-forest sbr">
+                <span class="sb-card-badge">Monday – Friday</span>
+                <span class="sb-card-icon">🌾</span>
+                <h3>Weekday Admission</h3>
                 <ul class="sb-card-bullets">
-                    <li>🌽 The 5-acre corn maze &amp; pumpkin train</li>
-                    <li>🚜 Wagon rides out to the pumpkin patch</li>
-                    <li>🎪 All 45+ attractions included with admission</li>
-                    <li>👶 Ages 3–99 ticketed · 2 &amp; under always free</li>
+                    <li>🎪 All 45+ activities — corn maze, jumping pillows, giant slides</li>
+                    <li>👴 Seniors 60+ $13.95 — <strong>grandparents free on Thursdays</strong></li>
+                    <li>🕚 Extended Hours Oct 12, 16 &amp; 26 — gates open 11:30am</li>
+                    <li>👶 Ages 2 &amp; under free, no ticket needed</li>
                 </ul>
                 <div class="sb-card-price">
-                    <span class="sb-price-num">$16.95</span>
-                    <span class="sb-price-label">starting at<br>weekday · online</span>
+                    <span class="sb-price-num">$15.95</span>
+                    <span class="sb-price-label">per person<br>online</span>
                 </div>
-                <span class="sb-card-note">Weekend admission priced a little higher — final price shown at checkout. Buy online to save.</span>
+                <span class="sb-card-note">$19.95 at the gate — buy online and save $4. Rides run 3:30–6:30pm; wagon rides to the patch 2–6pm.</span>
             </div>
 
-            <div class="sb-card sb-card-forest sbr d1">
-                <span class="sb-card-badge">What You Get</span>
+            <div class="sb-card sb-card-barn sbr d1">
+                <span class="sb-card-badge">Most Popular</span>
                 <span class="sb-card-icon">🍂</span>
-                <h3>Everything Admission Unlocks</h3>
+                <h3>Weekend Admission</h3>
                 <ul class="sb-card-bullets">
-                    <li>🎃 Pumpkin train, Pumpkin Hut &amp; the Apple Blaster</li>
-                    <li>🐐 Barnyard animals, corn pits &amp; jumping pillows</li>
-                    <li>🪁 Flying Pigs zip line, giant slides &amp; obstacle course</li>
-                    <li>🍩 Cider donuts, fresh lemonade &amp; farm-fresh food</li>
+                    <li>🎪 All 45+ activities, plus the full weekend line-up</li>
+                    <li>👴 Seniors 60+ $15.95</li>
+                    <li>👨‍👩‍👧‍👦 Groups of 15+ from $18.95 — booked in one transaction</li>
+                    <li>👶 Ages 2 &amp; under free, no ticket needed</li>
                 </ul>
                 <div class="sb-card-price">
-                    <span class="sb-price-num">45+</span>
-                    <span class="sb-price-label">attractions<br>all one price</span>
+                    <span class="sb-price-num">$19.95</span>
+                    <span class="sb-price-label">per person<br>online</span>
                 </div>
-                <span class="sb-card-note">Mega Slide available as an add-on — or free every visit with a Season Pass.</span>
+                <span class="sb-card-note">$23.95 at the gate — buy online and save $4. Saturdays &amp; Sundays; see the calendar for opening times.</span>
             </div>
 
             <div class="sb-card sb-card-cream sbr d2">
-                <span class="sb-card-badge">Coming Back? Best Value</span>
-                <span class="sb-card-icon">♾️</span>
-                <h3>Go Season Pass</h3>
+                <span class="sb-card-badge">Best Value</span>
+                <span class="sb-card-icon">🧺</span>
+                <h3>Ultimate Family 4-Pack</h3>
                 <ul class="sb-card-bullets">
-                    <li>🍁 Visiting more than twice this fall? A pass pays off</li>
+                    <li>🎟️ 4 general admission tickets</li>
+                    <li>🥤 2 lemonades</li>
+                    <li>🍿 2 large kettle corns</li>
                 </ul>
-                <div class="sb-season-tiers">
-                    <div class="sb-season-tier">
-                        <div>
-                            <span class="sb-season-tier-name">Season Pass</span>
-                            <span class="sb-season-tier-desc">Unlimited visits · free Mega Slide every time</span>
-                        </div>
-                        <div class="sb-season-tier-price"><span class="sb-season-tier-now">$50.50</span></div>
-                    </div>
-                    <div class="sb-season-tier">
-                        <div>
-                            <span class="sb-season-tier-name">Pays for Itself</span>
-                            <span class="sb-season-tier-desc">In about 3 visits vs. daily admission</span>
-                        </div>
-                        <div class="sb-season-tier-price"><span class="sb-season-tier-now">♾️</span></div>
-                    </div>
+                <div class="sb-card-price">
+                    <span class="sb-price-num">$79.95</span>
+                    <span class="sb-price-label">for four<br>weekends only</span>
                 </div>
-                <span class="sb-card-note">See the Season Pass page for full details. Ages 2 &amp; under free — no ticket needed.</span>
+                <span class="sb-card-note">Four weekend admissions on their own are $79.80 — so the lemonade and kettle corn come along for free.</span>
             </div>
 
+        </div>
+
+        <div class="sb-addon-note sbr d3">
+            <div class="sb-addon">
+                <span class="sb-addon-name">
+                    <strong>🛝 Mega Slide</strong> — unlimited rides all day. Must be 42&quot; or taller.
+                    Opens 3:30pm weekdays, 10am weekends. Add it to any ticket at checkout.
+                </span>
+                <span class="sb-addon-price">+$5</span>
+            </div>
         </div>
     </div>
 
@@ -669,7 +678,7 @@
             <div class="sb-info-item">
                 <span class="sb-info-icon">🍂</span>
                 <span class="sb-info-label">Season</span>
-                <span class="sb-info-value">September – October<br>2026 · dates coming soon</span>
+                <span class="sb-info-value">September 26 – November 1<br>2026 season</span>
             </div>
             <div class="sb-info-item">
                 <span class="sb-info-icon">🕒</span>
@@ -679,7 +688,7 @@
             <div class="sb-info-item">
                 <span class="sb-info-icon">🎟️</span>
                 <span class="sb-info-label">Who Needs a Ticket</span>
-                <span class="sb-info-value">Ages 3–99<br>2 &amp; under free</span>
+                <span class="sb-info-value">Everyone 3 and up<br>2 &amp; under free</span>
             </div>
         </div>
     </div>
