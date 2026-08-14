@@ -725,6 +725,22 @@
        point when the message is "we're closing early after all."
      · Kill switch: set window.C7A_ENABLED = false before this block.
 ============================================================================ -->
+<style>
+/* OPTIONAL per-page theme — filled from the page's own palette (theme
+   retrofit, added post-install since this page's block predates v2's
+   theming support). See THEME note above the CrowdView block comment
+   header. */
+:root {
+  --c7a-card-bg: #FBF7F0;
+  --c7a-ink: #2A2A28;
+  --c7a-ink-dim: #55584F;
+  --c7a-btn-bg: #B04A3A;
+  --c7a-btn-ink: #ffffff;
+  --c7a-scrim: rgba(42,42,40,.55);
+  --c7a-radius: 14px;
+  --c7a-font: 'Bitter',Georgia,serif;
+}
+</style>
 <div id="c7a-root" hidden></div>
 <script>
 (function () {
