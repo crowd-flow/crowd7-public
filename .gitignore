@@ -1,2 +1,11 @@
 *.idea/
 *.DS_Store
+
+# Cloudflare Pages rejects any file over 25 MiB and FAILS THE WHOLE BUILD.
+# TIFFs are camera/source originals, unusable in a browser, and routinely 29MB.
+# Convert to JPEG before committing. (Incident 2026-08-13: four 29MB .tif files
+# broke every deploy repo-wide for ~9h, blocking a live flash-sale fix.)
+*.tif
+*.tiff
+*.TIF
+*.TIFF
