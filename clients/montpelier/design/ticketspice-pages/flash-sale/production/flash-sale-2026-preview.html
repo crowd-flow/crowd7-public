@@ -95,6 +95,39 @@
 
   NATIVE TS CART: ticket types, prices, the 3,750 cap, date/time selection,
   add-on products and the cap-redirect all stay native in TicketSpice.
+
+  ✏️ 2026-08-14 — Adrianne punch-list content fixes (CrowdView request #8,
+     thread 19ffe8864a491075). Applied here: Super Pass "2 & under free"
+     line removed (GA-only benefit); GA + Family 4-Pack "2 & under free"
+     qualified "for General Admission"; "Choose your Pass" lede replaced
+     with Adrianne's verbatim copy; hayride/animals framing on the benefits
+     row no longer implies the hayride is how you reach the animals;
+     Mining Mania add-on now reads "Prices Vary" (matches their own site,
+     the 6 individual prices are still unconfirmed — see project state.md);
+     Paintball add-on gained the 300-shot/$25 tier; hero copy now signals
+     more than the 4 listed attractions ("and so much more"). "Spookly"
+     was never in this build (N/A). Ultimate was already excluded (N/A).
+
+  ✏️ 2026-08-14 (pass 2) — Mat's calls: attraction count set to 35+
+     (her email number, over the site's 30+) in the hero copy; Super Pass
+     card rewritten to her exact inclusion list (GA + Super Mega Slide +
+     Duck Races + Paint-a-Pumpkin + Mining Mania gems/seashells only —
+     no paintball/buddy pass, those are Ultimate-tier). Draft record:
+     projects/montpelier-flash-sale-edits-aug2026/artifacts/superpass-copy-draft.md
+
+  🚨 NOT FIXABLE HERE — TicketSpice-native, needs Mat/Bryan in the TS
+     admin panel, not a content edit:
+     - The Family 4-Pack ticket TYPE is priced $17.49 in TicketSpice
+       itself (confirmed live 2026-08-14: montpelier.ticketspice.com
+       preview cart shows "Family 4-Pack General Admission: $19.60
+       ($17.49 + $2.11 fee)"). This card already displays $69.95
+       correctly — the bug is the underlying TS ticket price, not this
+       page's copy. Someone appears to have configured TS off Bryan's
+       8/13 email, which itself transposed GA and Family 4-Pack figures.
+     - Ultimate Pass Admission ($65.95) is still a live, purchasable
+       ticket type on the flash-sale TS event even though it's absent
+       from this page's cards — hiding/disabling it for the flash sale
+       is a TS admin action.
   ============================================================
 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -402,7 +435,7 @@
         <div class="fs-hero-inner">
             <span class="fs-flash-pill">⚡ Flash Sale · Aug 26–30</span>
             <span class="fs-hero-title">Fall Festival <em>2026</em></span>
-            <span class="fs-hero-sub">Save 40% on tickets — five days only, limited quantity. The 7-acre corn maze, pumpkin patch, hay rides, giant hill slides and barnyard animals, all season long.</span>
+            <span class="fs-hero-sub">Save 40% on tickets — five days only, limited quantity. The 7-acre corn maze, pumpkin patch, hay rides, giant hill slides, barnyard animals — 35+ attractions and so much more, all season long.</span>
         </div>
     </div>
 
@@ -432,7 +465,7 @@
             <div class="fs-benefit">
                 <span class="fs-benefit-ico">🚜</span>
                 <span class="fs-benefit-title">Hay Rides &amp; Barnyard</span>
-                <span class="fs-benefit-desc">Ride out and meet the animals</span>
+                <span class="fs-benefit-desc">Two of our most-loved stops on the farm</span>
             </div>
         </div>
     </div>
@@ -441,7 +474,7 @@
         <div class="fs-head mfr">
             <span class="fs-eye">Flash Sale Pricing</span>
             <span class="fs-title">Choose your <em>pass</em></span>
-            <p class="fs-lede">Every flash-sale ticket is good on any operating day of the season. Ages 2 and under are always free.</p>
+            <p class="fs-lede">Every flash sale ticket is good on any operating day of the season and no reservation is required! Ages 2 and under are always free for General Admission.</p>
         </div>
         <div class="fs-grid">
 
@@ -457,7 +490,7 @@
                     <li><span class="fs-tick">✓</span><span>7-acre interactive corn maze</span></li>
                     <li><span class="fs-tick">✓</span><span>Pick-your-own pumpkin patch &amp; hay rides</span></li>
                     <li><span class="fs-tick">✓</span><span>Giant hill slides &amp; barnyard animals</span></li>
-                    <li><span class="fs-tick">✓</span><span>Ages 2 &amp; under free — no ticket needed</span></li>
+                    <li><span class="fs-tick">✓</span><span>Ages 2 &amp; under free for General Admission</span></li>
                 </ul>
                 <span class="fs-card-note">Good for one entry on any operating day of the 2026 season. No date selection needed.</span>
             </div>
@@ -472,9 +505,8 @@
                 </div>
                 <ul class="fs-list">
                     <li><span class="fs-tick">✓</span><span>Everything in General Admission</span></li>
-                    <li><span class="fs-tick">✓</span><span>Mining Mania included</span></li>
-                    <li><span class="fs-tick">✓</span><span>The biggest per-ticket saving of the sale</span></li>
-                    <li><span class="fs-tick">✓</span><span>Ages 2 &amp; under free — no ticket needed</span></li>
+                    <li><span class="fs-tick">✓</span><span>Super Mega Slide, Duck Races &amp; Paint-a-Pumpkin</span></li>
+                    <li><span class="fs-tick">✓</span><span>Mining Mania — gems or seashells</span></li>
                 </ul>
                 <span class="fs-card-note">$48.95 at the door on peak weekends. Good any operating day of the season.</span>
             </div>
@@ -491,7 +523,7 @@
                     <li><span class="fs-tick">✓</span><span>Four general admission tickets</span></li>
                     <li><span class="fs-tick">✓</span><span>Use them together or split across separate visits</span></li>
                     <li><span class="fs-tick">✓</span><span>Everything General Admission includes</span></li>
-                    <li><span class="fs-tick">✓</span><span>Ages 2 &amp; under free — no ticket needed</span></li>
+                    <li><span class="fs-tick">✓</span><span>Ages 2 &amp; under free for General Admission</span></li>
                 </ul>
                 <span class="fs-card-note">Bought in one transaction. Good any operating day of the season.</span>
             </div>
@@ -513,8 +545,9 @@
             <div class="fs-addon"><span class="fs-addon-n">🦆 Duck Races — keep your duck</span><span class="fs-addon-p">$2</span></div>
             <div class="fs-addon"><span class="fs-addon-n">🎨 Paint-a-Pumpkin — pumpkin included</span><span class="fs-addon-p">$6</span></div>
             <div class="fs-addon"><span class="fs-addon-n">🛝 Super Mega Slide — unlimited, 42&quot; min</span><span class="fs-addon-p">$6</span></div>
-            <div class="fs-addon"><span class="fs-addon-n">💎 Mining Mania — 6 varieties</span><span class="fs-addon-p">$8</span></div>
+            <div class="fs-addon"><span class="fs-addon-n">💎 Mining Mania — 6 varieties</span><span class="fs-addon-p">Prices Vary</span></div>
             <div class="fs-addon"><span class="fs-addon-n">🎯 Paintball Gallery — 100 shots</span><span class="fs-addon-p">$10</span></div>
+            <div class="fs-addon"><span class="fs-addon-n">🎯 Paintball Gallery — 300 shots</span><span class="fs-addon-p">$25</span></div>
             <div class="fs-addon"><span class="fs-addon-n">🧸 Build-a-Buddy — with backpack</span><span class="fs-addon-p">$21.99</span></div>
         </div>
     </div>
@@ -562,7 +595,7 @@
             </div>
             <div>
                 <span class="fs-info-l">Who Needs a Ticket</span>
-                <span class="fs-info-v">Everyone 3 and up<br>2 &amp; under free</span>
+                <span class="fs-info-v">Everyone 3 and up<br>2 &amp; under free for General Admission</span>
             </div>
         </div>
     </div>
