@@ -938,3 +938,214 @@
   <!-- =================== SHIPPABLE BLOCK END =================== -->
 </body>
 </html>
+<!-- ============================================================================
+     CrowdView client announcement block  ·  v2  ·  2026-08-14
+     Project: crowdview-client-announcements / popup-render-block-install (WS6)
+
+     WHAT IT DOES
+     Renders a pop-up on this TicketSpice page whenever the client has one
+     scheduled in CrowdView right now. The client publishes it themselves at
+     https://crowd7-team-hub.vercel.app/client/announcements (five fields:
+     page, start, end, title, message) — Crowd7 does nothing per announcement.
+
+     WHY IT EXISTS
+     Eckert's check-in 2026-08-12. Amanda Morgan: "there's so many things that
+     I cannot change myself and I am not used to relying on somebody... I am a
+     doer." Her cases are same-day and operational — a 107-degree Saturday
+     means closing at 2 PM — and she works Central while Crowd7 is Pacific, so
+     "ask Crowd7 and wait" is structurally too slow. Page content lives in
+     crowd7-public and ships by git push, which is exactly what puts it out of
+     her reach. This block is the narrow carve-out.
+
+     INSTALL — two tokens, then paste at the END of the page's content HTML:
+       C7A_ACCOUNT  the account slug in CrowdView   (e.g. 'eckerts')
+       C7A_PAGE     the PAGE slug in CrowdView      (e.g. 'belleville')
+
+     ⚠️  C7A_PAGE is the `page.slug` COLUMN IN THE DATABASE, which is NOT
+     always the crowd7-public folder name. Eckert's `versailles` folder, for
+     instance, backs TWO page rows: 'versailles-ky' and
+     'versailles-sunflower-festival'. Read the slug off the page picker in the
+     client portal (or `select slug from page where account_id = …`) — do not
+     infer it from the directory you are editing. A wrong slug fails silently:
+     no banner, no error, nothing to see.
+
+     THEME (optional, per-page) — fill in the :root block below with values
+     read OFF THE PAGE'S OWN CONTENT HTML (never invented). Omit any token you
+     don't want to override; it falls back to today's neutral card, so a page
+     with no theme block renders identically to before this version shipped.
+     Keep the set small:
+       --c7a-card-bg   card background
+       --c7a-ink       title text (needs strong contrast against card-bg)
+       --c7a-ink-dim   body text + close icon (still needs to read clearly)
+       --c7a-btn-bg    "Got it" button background
+       --c7a-btn-ink   "Got it" button text
+       --c7a-scrim     the full-screen backdrop behind the card
+       --c7a-radius    card corner radius
+       --c7a-font      TITLE ONLY — leave unset unless the page has a real
+                        display face; body/button always use the system stack
+     When card-bg goes dark, ink/ink-dim MUST flip to a light color — a dark
+     card with the old #3c4147 body text is unreadable. Check every themed
+     page, don't assume the palette is safe.
+
+     SAFE BY CONSTRUCTION
+     · Read-only GET to a public endpoint. No credentials sent or accepted.
+     · Every field is injected via textContent, never innerHTML — a client
+       cannot inject markup or script into their own live cart page.
+     · Fails silent. Network error, bad JSON, missing element → no pop-up, no
+       console noise for a buyer, page otherwise untouched.
+     · Shows once per browser session PER ANNOUNCEMENT. The dedupe key is a
+       hash of the content, so a NEW or EDITED announcement re-shows to
+       someone who already dismissed the previous one — which is the whole
+       point when the message is "we're closing early after all."
+     · Kill switch: set window.C7A_ENABLED = false before this block.
+============================================================================ -->
+<style>
+/* OPTIONAL per-page theme — fill from the page's own palette, or delete this
+   block entirely for the default neutral card. See THEME note above. */
+:root {
+  --c7a-card-bg: #FFF8F8;
+  --c7a-ink: #1a0808;
+  --c7a-ink-dim: #9a6060;
+  --c7a-btn-bg: #B01030;
+  --c7a-btn-ink: #ffffff;
+  --c7a-scrim: rgba(26,8,8,.55);
+  --c7a-radius: 16px;
+  --c7a-font: 'Zilla Slab','Times New Roman',serif;
+}
+</style>
+<div id="c7a-root" hidden></div>
+<script>
+(function () {
+  'use strict';
+  if (window.C7A_ENABLED === false) return;
+  if (window.__c7aInit) return;          // never double-init if pasted twice
+  window.__c7aInit = true;
+
+  var C7A_ACCOUNT = 'eckerts';
+  var C7A_PAGE    = 'belleville';
+  var ENDPOINT    = 'https://crowd7-team-hub.vercel.app/api/live-announcement';
+
+  if (C7A_ACCOUNT.indexOf('__') === 0 || C7A_PAGE.indexOf('__') === 0) {
+    // Unfilled tokens — a paste that was never configured. Do nothing rather
+    // than query for an account literally named 'eckerts'.
+    return;
+  }
+
+  // Small, stable string hash (djb2) — only used as a sessionStorage dedupe
+  // key, never for anything security-relevant.
+  function hash(s) {
+    var h = 5381, i = s.length;
+    while (i) h = (h * 33) ^ s.charCodeAt(--i);
+    return (h >>> 0).toString(36);
+  }
+
+  function seen(key) {
+    try { return sessionStorage.getItem('c7a_' + key) === '1'; } catch (e) { return false; }
+  }
+  function markSeen(key) {
+    try { sessionStorage.setItem('c7a_' + key, '1'); } catch (e) { /* private mode */ }
+  }
+
+  function render(a) {
+    var key = hash(a.title + ' ' + a.message);
+    if (seen(key)) return;
+
+    var style = document.createElement('style');
+    style.textContent = [
+      '#c7a-ov{position:fixed;inset:0;z-index:2147483000;display:flex;align-items:center;',
+      'justify-content:center;padding:20px;background:var(--c7a-scrim,rgba(12,14,17,.55));',
+      '-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);',
+      'opacity:0;transition:opacity .18s ease;}',
+      '#c7a-ov.c7a-in{opacity:1;}',
+      '#c7a-card{position:relative;background:var(--c7a-card-bg,#fff);color:var(--c7a-ink,#1a1d21);',
+      'border-radius:var(--c7a-radius,12px);',
+      'padding:24px 26px 20px;max-width:400px;width:100%;text-align:center;',
+      'box-shadow:0 14px 44px rgba(0,0,0,.3);',
+      'font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;',
+      'transform:translateY(8px) scale(.98);transition:transform .18s ease;}',
+      '#c7a-ov.c7a-in #c7a-card{transform:none;}',
+      '#c7a-x{position:absolute;top:6px;right:10px;background:none;border:0;font-size:22px;',
+      'line-height:1;color:var(--c7a-ink-dim,#9aa0a6);cursor:pointer;padding:4px 6px;}',
+      '#c7a-x:hover{color:var(--c7a-ink,#5f666e);}',
+      '#c7a-t{font-size:18px;font-weight:650;letter-spacing:-.01em;margin:0 0 9px;',
+      'overflow-wrap:anywhere;font-family:var(--c7a-font,inherit);}',
+      '#c7a-m{font-size:14.5px;line-height:1.55;color:var(--c7a-ink-dim,#3c4147);margin:0 0 18px;',
+      'white-space:pre-wrap;overflow-wrap:anywhere;}',
+      '#c7a-ok{background:var(--c7a-btn-bg,#1a1d21);color:var(--c7a-btn-ink,#fff);border:0;',
+      'border-radius:8px;padding:10px 24px;',
+      'font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;}',
+      '#c7a-ok:hover{filter:brightness(1.15);}',
+      '@media (prefers-reduced-motion:reduce){#c7a-ov,#c7a-card{transition:none;}}'
+    ].join('');
+
+    var ov = document.createElement('div');
+    ov.id = 'c7a-ov';
+    ov.setAttribute('role', 'dialog');
+    ov.setAttribute('aria-modal', 'true');
+    ov.setAttribute('aria-labelledby', 'c7a-t');
+
+    var card = document.createElement('div');
+    card.id = 'c7a-card';
+
+    var x = document.createElement('button');
+    x.id = 'c7a-x'; x.type = 'button';
+    x.setAttribute('aria-label', 'Close');
+    x.textContent = '×';
+
+    var h = document.createElement('h2');
+    h.id = 'c7a-t';
+    h.textContent = a.title;               // textContent, never innerHTML
+
+    var p = document.createElement('p');
+    p.id = 'c7a-m';
+    p.textContent = a.message;             // textContent, never innerHTML
+
+    var ok = document.createElement('button');
+    ok.id = 'c7a-ok'; ok.type = 'button';
+    ok.textContent = 'Got it';
+
+    card.appendChild(x); card.appendChild(h); card.appendChild(p); card.appendChild(ok);
+    ov.appendChild(card);
+    document.head.appendChild(style);
+    document.body.appendChild(ov);
+    requestAnimationFrame(function () { ov.classList.add('c7a-in'); });
+
+    function close() {
+      markSeen(key);
+      ov.classList.remove('c7a-in');
+      setTimeout(function () { if (ov.parentNode) ov.parentNode.removeChild(ov); }, 200);
+      document.removeEventListener('keydown', onKey);
+    }
+    function onKey(e) { if (e.key === 'Escape' || e.key === 'Esc') close(); }
+
+    x.addEventListener('click', close);
+    ok.addEventListener('click', close);
+    ov.addEventListener('click', function (e) { if (e.target === ov) close(); });
+    document.addEventListener('keydown', onKey);
+    ok.focus();
+  }
+
+  function go() {
+    var url = ENDPOINT
+      + '?account=' + encodeURIComponent(C7A_ACCOUNT)
+      + '&page='    + encodeURIComponent(C7A_PAGE);
+    // No credentials — the endpoint is public and must stay that way for the
+    // CORS wildcard to be valid.
+    fetch(url, { credentials: 'omit', mode: 'cors' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (d) {
+        if (d && d.announcement && d.announcement.title && d.announcement.message) {
+          render(d.announcement);
+        }
+      })
+      .catch(function () { /* fail silent — see SAFE BY CONSTRUCTION */ });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', go);
+  } else {
+    go();
+  }
+})();
+</script>
+<!-- =================== END CrowdView announcement block =================== -->
