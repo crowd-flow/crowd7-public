@@ -100,7 +100,7 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
 }
 /* Legend — pseudo-element after the grid. Two color swatches inline. */
 .ticket-block .datePicker .wbx-calendar::after {
-  content: '🟩 Value Dates $28        Standard $35' !important;
+  content: 'Standard pricing: $35 / person' !important;
   display: block !important;
   font-family: 'Montserrat', sans-serif !important;
   font-size: 0.74rem !important;
@@ -255,9 +255,9 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
   letter-spacing: 0.02em;
 }
 /* Value dates (from Teresa Thompson's 7/16 email; formerly "Christmas in July",
-   which ended 2026-07-31) —
-   tagged by JS with .cap-value-date (date-keyed, NOT column-keyed).
-   Green cell + $28 price. Non-discounted enabled dates stay red at $35. */
+   which ended 2026-07-31) — PARKED 2026-08-14 (Mat/Bryan, chat): the JS below
+   no longer applies .cap-value-date to anything, so this rule is inert. Left
+   in place, not deleted, for whenever value dates come back for early bird. */
 .ticket-block .datePicker .wbx-calendar .row.week .day.cap-value-date {
   background: #28bf38 !important;
   color: #fff !important;
@@ -270,15 +270,16 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
    Tier cards stamp <html data-buyer-path="ga|premium|vip"> on Select
    (capSetPath, wired in the reveal script). Swap the calendar's per-night
    prices + legend to match, so a Premium/VIP buyer never sees GA numbers.
-   GA (default) = $35 standard / $28 value, set above. */
-/* Premium: standard $70 / value (20% off) $56 */
+   GA (default) = $35 standard, set above. Value pricing PARKED 2026-08-14 —
+   the .cap-value-date rules below are inert (JS never applies the class). */
+/* Premium: standard $70. Value pricing PARKED, same as GA above. */
 html[data-buyer-path="premium"] .ticket-block .datePicker .wbx-calendar .row.week .day::after { content: '$70' !important; }
 html[data-buyer-path="premium"] .ticket-block .datePicker .wbx-calendar .row.week .day.cap-value-date::after { content: '$56' !important; }
-html[data-buyer-path="premium"] .ticket-block .datePicker .wbx-calendar::after { content: '🟩 Value Dates $56        Standard $70' !important; }
+html[data-buyer-path="premium"] .ticket-block .datePicker .wbx-calendar::after { content: 'Standard pricing: $70 / person' !important; }
 /* VIP: fire tables are per-table & dynamic — priced in the Reserve flow, not here.
    Hide the per-night number; keep green/red so discount-vs-standard nights still read. */
 html[data-buyer-path="vip"] .ticket-block .datePicker .wbx-calendar .row.week .day::after { content: '' !important; display: none !important; }
-html[data-buyer-path="vip"] .ticket-block .datePicker .wbx-calendar::after { content: '🟩 Discount dates        Standard dates  ·  table pricing shown when you reserve' !important; }
+html[data-buyer-path="vip"] .ticket-block .datePicker .wbx-calendar::after { content: 'Table pricing shown when you reserve' !important; }
 /* Ultimate Santa (Mat 2026-07-28): this calendar differs by buyer path, and Ultimate
    Santa is a separate daytime experience — GA/Premium per-night numbers and the
    green value-night treatment are both meaningless here. Show plain dates only:
@@ -521,20 +522,25 @@ html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar::after { c
        Katie's answer ("$250 is the cheapest fire table price right now") conflicts with
        our verified live-cart pull ($799 lowest regular-season table) — flagged back to
        her, not yet confirmed. Restore VIP = delete the .tier[data-buyer="vip"] .price
-       rule below once she confirms. Tracked: work/crowd7/projects/fairmont-cap-pricing-correction/ -->
+       rule below once she confirms. Tracked: work/crowd7/projects/fairmont-cap-pricing-correction/
+       2026-08-14 (Mat/Bryan, chat): value pricing PARKED — page now shows standard/full
+       price everywhere ($35 GA, $70 Premium), off-peak figure removed. Bryan is
+       reactivating value dates for early bird separately on the cart side; the off-peak
+       numbers this comment used to cite are historical, not live. Tracked:
+       work/crowd7/projects/fairmont-full-price-reset/ -->
   <section id="cap-tickets"><div class="cap-wrap">
     <style>#cap-tickets .tier[data-buyer="vip"] .price{display:none !important}</style>
     <div class="sec-head"><h2>Pick your tickets</h2></div>
     <div class="tier-row">
       <div class="tier" data-buyer="ga">
         <h3>General Admission</h3><div class="saletag" data-saletag="&#127876; The Traditional Experience"></div>
-        <div class="price"><span class="startat">Starting at</span>$28 <small>/ person</small></div>
+        <div class="price"><span class="startat">Starting at</span>$35 <small>/ person</small></div>
         <ul><li>17 Million Christmas Lights</li><li>The Village</li><li>Princess Express Train</li></ul>
         <button class="btn btn-out" onclick="capOpenStar()">Select</button>
       </div>
       <div class="tier feature" data-buyer="premium"><span class="ribbon">NEW</span>
         <h3>Premium Admission</h3><div class="saletag" data-saletag="&#10024; Best value upgrade"></div>
-        <div class="price"><span class="startat">Starting at</span>$56 <small>/ person</small></div>
+        <div class="price"><span class="startat">Starting at</span>$70 <small>/ person</small></div>
         <ul><li>Includes General Admission</li><li>Communal fire tables, available on a first-come basis</li><li>S&rsquo;mores &amp; Hot Cocoa Bar</li></ul>
         <button class="btn btn-solid">Select</button>
       </div>
@@ -565,7 +571,7 @@ html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar::after { c
   <div class="cap-ov" id="capOvPremium"><div class="cap-modal starlight"><button class="x" onclick="capCloseAll()">&times;</button>
     <div class="cap-promo-eye">Premium Admission</div>
     <h3>&#10024; Here&rsquo;s what&rsquo;s included</h3>
-    <div class="p-price"><span class="startat">Starting at</span>$56 <small>/ person</small></div>
+    <div class="p-price"><span class="startat">Starting at</span>$70 <small>/ person</small></div>
     <ul class="p-list">
       <li>Includes General Admission</li>
       <li>Communal fire tables, available on a first-come basis</li>
@@ -665,27 +671,26 @@ html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar::after { c
     });
   })();
 
-  // 2b) VALUE-DATE HIGHLIGHT — green Teresa Thompson's real value
-  //     discounted ADMISSION dates (7/16 email, GA/Premium only) + show $28;
-  //     standard enabled dates stay red at $35. Date-keyed (reads the
-  //     month-label + each day number), re-applied on every calendar
-  //     re-render. Replaces the old Mon–Thu column placeholder.
+  // 2b) VALUE-DATE HIGHLIGHT — PARKED 2026-08-14 (Mat/Bryan, chat): page shows
+  //     full/standard price everywhere now, so this no longer tags any date
+  //     .cap-value-date. Teresa Thompson's real discounted-admission date list
+  //     (VALUE) and Bryan's VIP fire-table date list (VIP_VALUE) are left in
+  //     place, unread, for when value dates come back for early bird — not
+  //     deleted, just unused. Tracked: work/crowd7/projects/fairmont-full-price-reset/
   //
-  //     VIP fire-table dates are a SEPARATE, smaller set — Bryan dictated the
-  //     authoritative list clean on the 2026-07-21 call: "November 20th through
-  //     the 26th, November 29th, December 1st, December 2nd, December 7th,
-  //     December 8th, December 9th, December 28th, 29th, 30th, the 1st and the
-  //     2nd of January" (meetings/2026/7.21.26.Crowd7CallWithBryanJaphetWithCAPVIPDates
-  //     L1-3; Mat: "I'll make sure that gets updated"). This SUPERSEDES the
-  //     earlier garbled cross-reference pass off the CAPMeeting/pre-meeting
-  //     audio (Bryan self-corrected mid-call, "my eyes were completely crossed").
+  //     Original 7/16 + 7/21 provenance, kept for whoever reactivates this:
+  //     GA/Premium dates from Teresa's 7/16 email. VIP fire-table dates dictated
+  //     clean by Bryan on the 2026-07-21 call: "November 20th through the 26th,
+  //     November 29th, December 1st, December 2nd, December 7th, December 8th,
+  //     December 9th, December 28th, 29th, 30th, the 1st and the 2nd of January"
+  //     (meetings/2026/7.21.26.Crowd7CallWithBryanJaphetWithCAPVIPDates L1-3).
   (function(){
-    var VALUE = {                      // month(1-12) -> { day: 1 } discounted admission dates (GA/Premium)
+    var VALUE = {                      // month(1-12) -> { day: 1 } discounted admission dates (GA/Premium) — PARKED, unused
       11: {24:1,25:1,26:1},
       12: {1:1,2:1,3:1,7:1,8:1,9:1,10:1,11:1,14:1,15:1,16:1,29:1,30:1,31:1},
       1:  {2:1,3:1}
     };
-    var VIP_VALUE = {                  // month(1-12) -> { day: 1 } discounted fire-table dates (VIP only, Bryan 7/21 clean dictation)
+    var VIP_VALUE = {                  // month(1-12) -> { day: 1 } discounted fire-table dates (VIP only) — PARKED, unused
       11: {20:1,21:1,22:1,23:1,24:1,25:1,26:1,29:1},                       // "November 20th through the 26th" + Nov 29
       12: {1:1,2:1,7:1,8:1,9:1,28:1,29:1,30:1},                            // Dec 1,2,7,8,9,28,29,30
       1:  {1:1,2:1}                                                        // Jan 1,2
@@ -698,16 +703,12 @@ html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar::after { c
       return 0;
     }
     function tag(){
+      // Value dates parked — every enabled date renders standard. Just strip
+      // the class so nothing lingers from a prior render.
       var cal = document.querySelector('.ticket-block .datePicker .wbx-calendar');
       if(!cal) return;
-      var path = (window.capGetPath && capGetPath()) || 'default';
-      var map = (path === 'vip') ? VIP_VALUE : VALUE;
-      var set = map[currentMonth(cal)] || {};
-      cal.querySelectorAll('.row.week .day').forEach(function(d){
-        var m = (d.textContent || '').match(/\d+/);
-        var n = m ? parseInt(m[0], 10) : 0;
-        if(n && set[n] && !d.classList.contains('different-month')) d.classList.add('cap-value-date');
-        else d.classList.remove('cap-value-date');
+      cal.querySelectorAll('.row.week .day.cap-value-date').forEach(function(d){
+        d.classList.remove('cap-value-date');
       });
     }
     var mo = new MutationObserver(function(){ tag(); });

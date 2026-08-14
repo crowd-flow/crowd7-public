@@ -3,7 +3,7 @@
 <title>Christmas at the Princess 2026 - DEMO (Crowd7)</title>
 <style>html,body{margin:0;padding:0;} .demo-flag{background:#fff4d6;border-bottom:1px solid #e8d690;color:#7a5a10;font-size:.8rem;text-align:center;padding:7px 12px;font-weight:600;font-family:system-ui,sans-serif;}</style>
 </head><body>
-<div class="demo-flag">CROWD7 DEMO (preview) - production is a Coming Soon placeholder. Santa pop-up paused.</div>
+<div class="demo-flag">CROWD7 DEMO (preview) - production is a Coming Soon placeholder. Santa pop-up paused. Regenerated 2026-08-14 from content.html (was 386 lines stale, missing weeks of Ultimate Santa work and running an old $48/$35 pricing scheme).</div>
 <!-- ===== GLOBAL: native TicketSpice cart CSS (Mat's paste 2026-06-17). NOT scoped.
      3 syntax bugs fixed: missing ; after hr.line-break border-color; empty `border: 3px solid` → #000; missing ; after `background-color: white`. Colors left as pasted. ===== -->
 <style>
@@ -94,7 +94,7 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
 }
 /* Legend — pseudo-element after the grid. Two color swatches inline. */
 .ticket-block .datePicker .wbx-calendar::after {
-  content: '◼ Standard $48        ◼ Value Night $35 (save $5)' !important;
+  content: 'Standard pricing: $35 / person' !important;
   display: block !important;
   font-family: 'Montserrat', sans-serif !important;
   font-size: 0.74rem !important;
@@ -238,9 +238,9 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
   min-height: 0 !important;
   width: auto !important;
 }
-/* PRICE under day number — default $48 for all cells via ::after */
+/* PRICE under day number — default $35 (standard) for all cells via ::after */
 .ticket-block .datePicker .wbx-calendar .row.week .day::after {
-  content: '$48';
+  content: '$35';
   display: block;
   font-size: 0.6rem;
   font-weight: 400;
@@ -248,23 +248,44 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
   margin-top: 3px;
   letter-spacing: 0.02em;
 }
-/* MON–THU = value nights: green cells with $35 price.
-   Webconnex doesn't have a "value night" class so we color by COLUMN
-   (nth-child 2-5 in a 7-col grid where 1=Sun, 2=Mon, ..., 7=Sat). */
-.ticket-block .datePicker .wbx-calendar .row.week .day:nth-child(2),
-.ticket-block .datePicker .wbx-calendar .row.week .day:nth-child(3),
-.ticket-block .datePicker .wbx-calendar .row.week .day:nth-child(4),
-.ticket-block .datePicker .wbx-calendar .row.week .day:nth-child(5) {
+/* Value dates (from Teresa Thompson's 7/16 email; formerly "Christmas in July",
+   which ended 2026-07-31) — PARKED 2026-08-14 (Mat/Bryan, chat): the JS below
+   no longer applies .cap-value-date to anything, so this rule is inert. Left
+   in place, not deleted, for whenever value dates come back for early bird. */
+.ticket-block .datePicker .wbx-calendar .row.week .day.cap-value-date {
   background: #28bf38 !important;
   color: #fff !important;
 }
-.ticket-block .datePicker .wbx-calendar .row.week .day:nth-child(2)::after,
-.ticket-block .datePicker .wbx-calendar .row.week .day:nth-child(3)::after,
-.ticket-block .datePicker .wbx-calendar .row.week .day:nth-child(4)::after,
-.ticket-block .datePicker .wbx-calendar .row.week .day:nth-child(5)::after {
-  content: '$35' !important;
+.ticket-block .datePicker .wbx-calendar .row.week .day.cap-value-date::after {
+  content: '$28' !important;
   color: #eafbe9 !important;
 }
+/* ── BUYER-PATH PRICING ──────────────────────────────────────────────────
+   Tier cards stamp <html data-buyer-path="ga|premium|vip"> on Select
+   (capSetPath, wired in the reveal script). Swap the calendar's per-night
+   prices + legend to match, so a Premium/VIP buyer never sees GA numbers.
+   GA (default) = $35 standard, set above. Value pricing PARKED 2026-08-14 —
+   the .cap-value-date rules below are inert (JS never applies the class). */
+/* Premium: standard $70. Value pricing PARKED, same as GA above. */
+html[data-buyer-path="premium"] .ticket-block .datePicker .wbx-calendar .row.week .day::after { content: '$70' !important; }
+html[data-buyer-path="premium"] .ticket-block .datePicker .wbx-calendar .row.week .day.cap-value-date::after { content: '$56' !important; }
+html[data-buyer-path="premium"] .ticket-block .datePicker .wbx-calendar::after { content: 'Standard pricing: $70 / person' !important; }
+/* VIP: fire tables are per-table & dynamic — priced in the Reserve flow, not here.
+   Hide the per-night number; keep green/red so discount-vs-standard nights still read. */
+html[data-buyer-path="vip"] .ticket-block .datePicker .wbx-calendar .row.week .day::after { content: '' !important; display: none !important; }
+html[data-buyer-path="vip"] .ticket-block .datePicker .wbx-calendar::after { content: 'Table pricing shown when you reserve' !important; }
+/* Ultimate Santa (Mat 2026-07-28): this calendar differs by buyer path, and Ultimate
+   Santa is a separate daytime experience — GA/Premium per-night numbers and the
+   green value-night treatment are both meaningless here. Show plain dates only:
+   NO price value, NO green. */
+html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar .row.week .day::after,
+html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar .row.week .day.cap-value-date::after { content: '' !important; display: none !important; }
+/* 2026-07-28 fix: the base rule paints EVERY enabled day red (#C82844), so overriding
+   only .cap-value-date left the whole month red. Neutralise both to brand cream. */
+html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar .row.week .day.enabled,
+html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar .row.week .day.cap-value-date { background: #f3eeea !important; color: #3a2a2a !important; }
+html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar .row.week .day.enabled:hover { background: #e6dcd5 !important; color: #3a2a2a !important; }
+html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar::after { content: 'Pick your Ultimate Santa date' !important; }
 /* Different-month / disabled cells: muted, no price, no green */
 .ticket-block .datePicker .wbx-calendar .row.week .day.different-month,
 .ticket-block .datePicker .wbx-calendar .row.week .day:not(.enabled):not(.different-month),
@@ -306,20 +327,8 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
 .ticket-block .datePicker .wbx-calendar .row.week .day.active::after {
   color: #fff !important;
 }
-/* Value-night green for cells Webconnex marks as low-inventory or partial */
-/* (Mat: if your value-night dates use a different class on the live page, */
-/* tell me what class and I'll target it explicitly.) */
-.ticket-block .wbx-calendar .day.enabled.low-inventory,
-.ticket-block .wbx-calendar .day.enabled.partial {
-  background: #28bf38 !important;
-  color: #fff !important;
-  border-color: #28bf38 !important;
-}
-.ticket-block .wbx-calendar .day.enabled.low-inventory:hover,
-.ticket-block .wbx-calendar .day.enabled.partial:hover {
-  background: #1aa628 !important;
-  border-color: #1aa628 !important;
-}
+/* (Removed the low-inventory/partial green guess — value dates are now
+   JS-tagged from Teresa's real date list via .cap-value-date above.) */
 </style>
 
 <div id="cap-funnel">
@@ -378,6 +387,10 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
   #cap-funnel .phase-card.active .tag{color:var(--accent);}
   #cap-funnel .phase-card .live{display:none;position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;font-size:.7rem;font-weight:700;padding:4px 14px;border-radius:20px;letter-spacing:.06em;}
   #cap-funnel .phase-card.active .live{display:block;}
+  #cap-funnel .cap-divider{max-width:460px;margin:16px auto 0;display:flex;align-items:center;justify-content:center;gap:18px;color:#c9a24b;font-size:1rem;line-height:1;}
+  #cap-funnel .cap-divider::before,#cap-funnel .cap-divider::after{content:'';flex:1;height:1px;}
+  #cap-funnel .cap-divider::before{background:linear-gradient(to right,transparent,#c9a24b);}
+  #cap-funnel .cap-divider::after{background:linear-gradient(to left,transparent,#c9a24b);}
 
   /* 2) TICKET TIERS */
   #cap-funnel .tier-row{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch;}
@@ -401,6 +414,19 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
   #cap-funnel .tier .btn-out{background:#fff;border:2px solid var(--red);color:var(--red);}
   #cap-funnel .tier .btn-solid{background:var(--accent);color:#fff;}
   #cap-funnel .tier .btn-solid:hover{background:var(--accent2);}
+
+  /* Ultimate Santa heads-up note — small info box under the tier cards,
+     NOT a pop-up (Mat/team call, CAP meeting 2026-07-21). */
+  /* Ultimate Santa offer strip — matches the tier-card language (white fill, hairline
+     --line border, 18px radius, pill tag, Playfair headline). Restyled 2026-07-22. */
+  #cap-funnel .cap-santa-note{margin-top:28px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px 30px;text-align:center;}
+  #cap-funnel .cap-santa-note .cap-santa-tag{display:inline-block;background:#fde8ec;color:var(--accent);font-family:'Montserrat',sans-serif;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:4px 12px;border-radius:20px;margin-bottom:12px;}
+  #cap-funnel .cap-santa-note h3{font-family:'Playfair Display',Georgia,serif;font-size:clamp(1.15rem,2.4vw,1.5rem);font-weight:700;color:var(--red);margin:0 0 8px;line-height:1.25;}
+  #cap-funnel .cap-santa-note h3 em{font-style:italic;color:var(--accent);}
+  #cap-funnel .cap-santa-note p{margin:0;font-family:'Montserrat',sans-serif;font-size:.88rem;line-height:1.5;color:var(--muted);}
+  #cap-funnel .cap-santa-note .cap-santa-cta{display:inline-block;margin-top:18px;background:var(--accent);color:#fff;border:0;border-radius:40px;padding:13px 30px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.92rem;letter-spacing:.02em;cursor:pointer;transition:background .2s;}
+  #cap-funnel .cap-santa-note .cap-santa-cta:hover{background:var(--accent2);}
+  @media (max-width:560px){#cap-funnel .cap-santa-note{padding:22px 18px;}}
 
   /* 3) DATE CTA + calendar (now lives inside a modal) */
   #cap-funnel .date-cta{background:var(--red);color:#fff;border:0;border-radius:50px;padding:15px 34px;font-weight:700;font-size:1.05rem;cursor:pointer;font-family:'Montserrat';}
@@ -453,8 +479,6 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
   }
   </style>
 
-  <!-- FLOATING Get Tickets -->
-
   <!-- HERO (video bg) with transparent nav floating over it -->
   <header class="cap-hero">
     <video class="cap-hero-vid cap-hero-vid--desktop" autoplay loop muted playsinline preload="metadata" poster="https://cdn.uploads.webconnex.com/49430/christmas%20quest%20crystal%20bubble%20tag%20wand.jpg">
@@ -467,7 +491,6 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
     <div class="cap-hero-overlay"></div>
     <nav class="cap-nav"><div class="cap-wrap">
       <a href="https://christmasattheprincess.com" target="_blank"><img class="cap-logo" src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/fairmont-princess/design/assets/logos/christmast-at-the-princess-logo.svg" alt="Christmas at the Princess"></a>
-      <div class="cap-nav-links"><span>Tickets</span><span class="sep">&#10052;</span><span>Experiences</span><span class="sep">&#10052;</span><span>Value Dates</span></div>
       <a href="#cap-tickets" class="cap-nav-cta">Book Your Experience</a>
     </div></nav>
     <div class="cap-hero-content">
@@ -476,6 +499,13 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
       <div class="connector"></div>
     </div>
   </header>
+
+  <!-- 1) DYNAMIC SALE-PHASE CARDS -->
+  <section style="background:#fff;padding-bottom:51px;"><div class="cap-wrap">
+    <!-- phase-price 3-card row removed 2026-07-21 (Mat) — kept the teaser header + line below -->
+
+    <div class="cap-divider" aria-hidden="true">&#10022;</div>
+  </div></section>
 
   <!-- 2) TICKET TIERS -->
   <!-- 2026-08-13 (Crowdly): GA + Premium prices RESTORED — Katie confirmed in Slack
@@ -486,20 +516,25 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
        Katie's answer ("$250 is the cheapest fire table price right now") conflicts with
        our verified live-cart pull ($799 lowest regular-season table) — flagged back to
        her, not yet confirmed. Restore VIP = delete the .tier[data-buyer="vip"] .price
-       rule below once she confirms. Tracked: work/crowd7/projects/fairmont-cap-pricing-correction/ -->
+       rule below once she confirms. Tracked: work/crowd7/projects/fairmont-cap-pricing-correction/
+       2026-08-14 (Mat/Bryan, chat): value pricing PARKED — page now shows standard/full
+       price everywhere ($35 GA, $70 Premium), off-peak figure removed. Bryan is
+       reactivating value dates for early bird separately on the cart side; the off-peak
+       numbers this comment used to cite are historical, not live. Tracked:
+       work/crowd7/projects/fairmont-full-price-reset/ -->
   <section id="cap-tickets"><div class="cap-wrap">
     <style>#cap-tickets .tier[data-buyer="vip"] .price{display:none !important}</style>
     <div class="sec-head"><h2>Pick your tickets</h2></div>
     <div class="tier-row">
       <div class="tier" data-buyer="ga">
         <h3>General Admission</h3><div class="saletag" data-saletag="&#127876; The Traditional Experience"></div>
-        <div class="price"><span class="startat">Starting at</span>$28 <small>/ person</small></div>
+        <div class="price"><span class="startat">Starting at</span>$35 <small>/ person</small></div>
         <ul><li>17 Million Christmas Lights</li><li>The Village</li><li>Princess Express Train</li></ul>
         <button class="btn btn-out" onclick="capOpenStar()">Select</button>
       </div>
       <div class="tier feature" data-buyer="premium"><span class="ribbon">NEW</span>
         <h3>Premium Admission</h3><div class="saletag" data-saletag="&#10024; Best value upgrade"></div>
-        <div class="price"><span class="startat">Starting at</span>$56 <small>/ person</small></div>
+        <div class="price"><span class="startat">Starting at</span>$70 <small>/ person</small></div>
         <ul><li>Includes General Admission</li><li>Communal fire tables, available on a first-come basis</li><li>S&rsquo;mores &amp; Hot Cocoa Bar</li></ul>
         <button class="btn btn-solid">Select</button>
       </div>
@@ -530,7 +565,7 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
   <div class="cap-ov" id="capOvPremium"><div class="cap-modal starlight"><button class="x" onclick="capCloseAll()">&times;</button>
     <div class="cap-promo-eye">Premium Admission</div>
     <h3>&#10024; Here&rsquo;s what&rsquo;s included</h3>
-    <div class="p-price"><span class="startat">Starting at</span>$56 <small>/ person</small></div>
+    <div class="p-price"><span class="startat">Starting at</span>$70 <small>/ person</small></div>
     <ul class="p-list">
       <li>Includes General Admission</li>
       <li>Communal fire tables, available on a first-come basis</li>
@@ -551,6 +586,23 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
     <button class="mlink" onclick="capCloseAll()">No thanks, maybe later</button>
   </div></div>
 
+  <!-- Ultimate Santa -> General Admission upsell — fires once the buyer sets a real
+       quantity on the native "Ultimate Santa" ticket row. Separate from capOvPromo
+       (the buyer-path promo above) because Ultimate Santa buyers land directly on the
+       ticket block without going through the GA/Premium/VIP picker, so no buyer path
+       is known (CAP email meeting 2026-07-24: "the ultimate santa is it's a daytime
+       experience that you do not get any tickets... to christmas of the princess...
+       maybe this is actually like a kind of a fourth category where after they get put
+       onto the page we then do a pop-up saying hey you should also get a ticket").
+       [clickup:86bb39ztb] -->
+  <div class="cap-ov" id="capOvSantaGA"><div class="cap-modal starlight"><button class="x" onclick="capCloseAll()">&times;</button>
+    <div class="cap-promo-eye">Don&rsquo;t miss the show</div>
+    <h3>Add Premium Admission?</h3>
+    <p style="color:var(--muted);font-size:.92rem;line-height:1.5;">Ultimate Santa is a daytime-only experience &mdash; it doesn&rsquo;t include entry to Christmas at the Princess. Add Premium Admission so you can come back for the lights, the market, and the show &mdash; with lounge access, fire pits, the s&rsquo;mores &amp; cocoa bar, and premium bar service.</p>
+    <button class="mbtn gold" onclick="capSantaGaCta()">Add Premium Admission</button>
+    <button class="mlink" onclick="capCloseAll()">No thanks, Ultimate Santa only</button>
+  </div></div>
+
   <script>
   /* ════════════════════════════════════════════════════════════════════
      PATH C v8 — kills Bootstrap .row::before/.row::after clearfix that
@@ -559,19 +611,9 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
      ════════════════════════════════════════════════════════════════════ */
   console.log('%c[cap-C v8] 2026-06-17 11:35pm — Bootstrap .row pseudo fix','color:#671416;font-weight:700;');
 
-  // 1) sale-phase detection
-  (function(){
-    var root = document.getElementById('cap-funnel'); if(!root) return;
-    var today = new Date();
-    root.querySelectorAll('#capPhaseRow .phase-card').forEach(function(c){
-      var s = new Date(c.getAttribute('data-start')+'T00:00:00');
-      var e = new Date(c.getAttribute('data-end')+'T23:59:59');
-      if(today >= s && today <= e) c.classList.add('active');
-    });
-    if(!root.querySelector('#capPhaseRow .phase-card.active')){
-      root.querySelector('#capPhaseRow .phase-card').classList.add('active');
-    }
-  })();
+  // 1) sale-phase detection — REMOVED 2026-07-21 (Mat): the 3-card phase row was deleted,
+  //    so there's nothing to highlight. (Its fallback querySelector would otherwise have
+  //    thrown on the now-absent .phase-card and halted the rest of this script block.)
 
   // 2) BACKDROP ONLY: when .wbx-calendar mounts, add a body-level backdrop.
   //    Zero DOM moves. The calendar stays where React put it; CSS makes it
@@ -623,6 +665,52 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
     });
   })();
 
+  // 2b) VALUE-DATE HIGHLIGHT — PARKED 2026-08-14 (Mat/Bryan, chat): page shows
+  //     full/standard price everywhere now, so this no longer tags any date
+  //     .cap-value-date. Teresa Thompson's real discounted-admission date list
+  //     (VALUE) and Bryan's VIP fire-table date list (VIP_VALUE) are left in
+  //     place, unread, for when value dates come back for early bird — not
+  //     deleted, just unused. Tracked: work/crowd7/projects/fairmont-full-price-reset/
+  //
+  //     Original 7/16 + 7/21 provenance, kept for whoever reactivates this:
+  //     GA/Premium dates from Teresa's 7/16 email. VIP fire-table dates dictated
+  //     clean by Bryan on the 2026-07-21 call: "November 20th through the 26th,
+  //     November 29th, December 1st, December 2nd, December 7th, December 8th,
+  //     December 9th, December 28th, 29th, 30th, the 1st and the 2nd of January"
+  //     (meetings/2026/7.21.26.Crowd7CallWithBryanJaphetWithCAPVIPDates L1-3).
+  (function(){
+    var VALUE = {                      // month(1-12) -> { day: 1 } discounted admission dates (GA/Premium) — PARKED, unused
+      11: {24:1,25:1,26:1},
+      12: {1:1,2:1,3:1,7:1,8:1,9:1,10:1,11:1,14:1,15:1,16:1,29:1,30:1,31:1},
+      1:  {2:1,3:1}
+    };
+    var VIP_VALUE = {                  // month(1-12) -> { day: 1 } discounted fire-table dates (VIP only) — PARKED, unused
+      11: {20:1,21:1,22:1,23:1,24:1,25:1,26:1,29:1},                       // "November 20th through the 26th" + Nov 29
+      12: {1:1,2:1,7:1,8:1,9:1,28:1,29:1,30:1},                            // Dec 1,2,7,8,9,28,29,30
+      1:  {1:1,2:1}                                                        // Jan 1,2
+    };
+    var MON = {january:1,february:2,march:3,april:4,may:5,june:6,july:7,august:8,september:9,october:10,november:11,december:12};
+    function currentMonth(cal){
+      var lbl = cal.querySelector('.month-label') || cal.querySelector('.month-display');
+      var t = ((lbl && lbl.textContent) || '').toLowerCase();
+      for(var name in MON){ if(t.indexOf(name) !== -1) return MON[name]; }
+      return 0;
+    }
+    function tag(){
+      // Value dates parked — every enabled date renders standard. Just strip
+      // the class so nothing lingers from a prior render.
+      var cal = document.querySelector('.ticket-block .datePicker .wbx-calendar');
+      if(!cal) return;
+      cal.querySelectorAll('.row.week .day.cap-value-date').forEach(function(d){
+        d.classList.remove('cap-value-date');
+      });
+    }
+    var mo = new MutationObserver(function(){ tag(); });
+    mo.observe(document.body, { childList: true, subtree: true });
+    if(document.readyState !== 'loading') tag();
+    else document.addEventListener('DOMContentLoaded', tag);
+  })();
+
   // 3) modal helpers for Santa + Starlight upsells
   function capShow(id){
     var ov = document.getElementById(id); if(!ov) return;
@@ -653,7 +741,7 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
      {detail:{path, prev}} on every set. Wrapped so it can never throw.
      ════════════════════════════════════════════════════════════════════ */
   (function(){
-    var KEY='capBuyerPath', VALID={ga:1,premium:1,vip:1};
+    var KEY='capBuyerPath', VALID={ga:1,premium:1,vip:1,santa:1};
     function get(){ try{ return sessionStorage.getItem(KEY)||null; }catch(_){ return window._capBuyerPath||null; } }
     function stamp(p){ try{ document.documentElement.setAttribute('data-buyer-path', p); }catch(_){} }
     function set(p){
@@ -672,7 +760,7 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
      POST-DATE PROMO — after the visitor picks a date, fire ONE popup with
      a REAL event offer, chosen by their buyer path. Real offers, sourced
      from the 6/18–19 Fairmont summit:
-       ga      → Starlight Lounge upgrade, +$25/guest  (nudge bottom tier up)
+       ga      → Premium Admission upgrade             (nudge bottom tier up)
        premium → Photos with Santa add-on              (families upgrading GA)
        vip     → 40% off your resort room (Feature J)   (make it an overnight)
        default → 40% off room  (hero-CTA path, buyer unknown)
@@ -692,6 +780,15 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
       if(!CAP_PROMO_ENABLED) return;   // kill switch (temp); all code below preserved
       if(_capPromoFired) return;
       var path = (window.capGetPath && capGetPath()) || 'default';
+      // 2026-07-28 (Mat: "too many pop ups"): Ultimate Santa buyers get their OWN upsell
+      // (capOvSantaGA → Premium). They must never also get the generic buyer-path promo.
+      // There is no CAP_PROMOS['santa'], so this was falling through to 'default' and
+      // firing "40% off your resort room" on top of the Premium modal.
+      if(path === 'santa'){ return; }
+      // Our own capSantaGaCta sets the Premium quantity programmatically and dispatches a
+      // change event; that bubbles to the cart listener, which saw a non-santa row and
+      // fired this promo. Suppress while we're driving the cart ourselves.
+      if(window._capSuppressPromo){ return; }
       var p = CAP_PROMOS[path] || CAP_PROMOS['default']; if(!p) return;
       var m = document.getElementById('capOvPromo'); if(!m) return;
       _capPromoFired = true;
@@ -714,17 +811,277 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
     if(!sel) return;
     var qty = parseInt(sel.value, 10) || 0;
     if(qty < 1) return;
+    var row = sel.closest('tr.ticket.ticket-type');
+    var h = row && row.querySelector('h4');
+    if(h && /ultimate.*santa/i.test(h.textContent||'')){
+      // Ultimate Santa gets its own Premium upsell instead of the generic buyer-path promo.
+      // 2026-07-28 (Mat): fire only once the selection is complete "all the way" — the row
+      // has a timeslot AND a quantity. Firing on the first <select> change popped the modal
+      // mid-flow, before the buyer had actually chosen anything.
+      if(capSantaSelectionComplete(row) && window.capFireSantaGA) capFireSantaGA();
+      return;
+    }
     if(window.capFirePromo) capFirePromo();
   });
+  // Set a native TS ticket's quantity by matching its <h4> name — bypasses React's
+  // value guard (native setter) then fires a bubbling change TS/Webconnex listens for.
+  // Confirmed on the live cart 2026-07-21: the qty control is a <select> (0–25).
+  function capSetTicketQty(nameRe, qty){
+    try{
+      var row = Array.prototype.slice.call(document.querySelectorAll('#ticketBlock tr.ticket.ticket-type'))
+        .filter(function(r){ var h=r.querySelector('h4'); return h && nameRe.test(h.textContent||''); })[0];
+      if(!row) return false;
+      var sel = row.querySelector('select'); if(!sel) return false;
+      var setter = Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype, 'value').set;
+      setter.call(sel, String(qty));
+      sel.dispatchEvent(new Event('change', { bubbles: true }));
+      return true;
+    }catch(e){ return false; }
+  }
+  window.capSetTicketQty = capSetTicketQty;
+
   function capPromoCta(){
     try{
       var m = document.getElementById('capOvPromo');
       var path = m ? m.getAttribute('data-promo-for') : '';
       capCloseAll();
-      if(path === 'premium' && window.capSantaLaunch){ capSantaLaunch(); }
+      if(path === 'premium' && window.capSantaLaunch){ capSantaLaunch(); return; }
+      if(path === 'ga'){
+        // GA buyer accepted the Premium upsell → move them to Premium.
+        // Match their current GA quantity (min 1), then zero GA so they don't pay for both.
+        var gaRow = Array.prototype.slice.call(document.querySelectorAll('#ticketBlock tr.ticket.ticket-type'))
+          .filter(function(r){ var h=r.querySelector('h4'); return h && /general admission/i.test(h.textContent||''); })[0];
+        var gaSel = gaRow && gaRow.querySelector('select');
+        var n = Math.max(1, parseInt((gaSel && gaSel.value) || '0', 10) || 0);
+        capSetTicketQty(/premium admission/i, n);
+        if(gaSel) capSetTicketQty(/general admission/i, 0);
+      }
     }catch(e){}
   }
   window.capPromoCta = capPromoCta;
+
+  /* ════════════════════════════════════════════════════════════════════
+     ULTIMATE SANTA → GENERAL ADMISSION upsell — fires once, the first time
+     the buyer sets a real quantity (>=1) on the native "Ultimate Santa"
+     ticket row (branch wired into the #ticketBlock change listener above).
+     Ticket-triggered, not buyer-path-triggered, per capOvSantaGA's note.
+     [clickup:86bb39ztb]
+     ════════════════════════════════════════════════════════════════════ */
+  // 2026-07-28 (Mat): "complete" means the timeslot + quantity selects AND the required
+  // "Ticket #1 Details" registrant fields (the yes/no merchandise radios) — firing after
+  // the two selects alone popped the modal while the buyer was still filling the ticket out.
+  // Locate the "Ticket #1 Details" block by its heading text, then climb to the nearest
+  // ancestor that actually contains a required radio. Text-anchored because TS gives the
+  // section no stable id/class, and DOM-order guesses ("the first group") picked the wrong one.
+  function capTicketDetailsSection(){
+    try{
+      var all = document.querySelectorAll('#registrants *, .ticket-block *, form *');
+      for(var i=0;i<all.length;i++){
+        var n=all[i];
+        if(n.children.length) continue;                    // leaf nodes only
+        var t=(n.textContent||'').trim();
+        if(!/^ticket\s*#?\s*1\s*details/i.test(t)) continue;
+        for(var a=n; a && a!==document.body; a=a.parentElement){
+          if(a.querySelector && a.querySelector('input[type="radio"][required]')) return a;
+        }
+      }
+    }catch(e){}
+    return null;
+  }
+  window.capTicketDetailsSection = capTicketDetailsSection;
+  // One-shot inventory of every required radio group — name, label, checked, in-section.
+  window.capSantaRadioDump = function(){
+    var sect = capTicketDetailsSection();
+    var out = [], seen = {};
+    document.querySelectorAll('input[type="radio"][required]').forEach(function(el){
+      if(!el.name || seen[el.name]) return; seen[el.name]=1;
+      var host = el.closest('.registrant-field') || el.parentElement;
+      var any = document.querySelector('input[name="'+el.name+'"]:checked');
+      out.push({ name: el.name,
+                 label: ((host && host.textContent) || '').trim().replace(/\s+/g,' ').slice(0,90),
+                 checked: !!any,
+                 inTicket1Section: !!(sect && sect.contains(el)),
+                 visible: !!(host && (host.offsetWidth || host.offsetHeight)) });
+    });
+    console.table(out); return out;
+  };
+  function capSantaSelectionComplete(row){
+    try{
+      var why = null, sels = row ? row.querySelectorAll('select') : [];
+      var selVals = [];
+      if(!sels.length){ why='no selects in the santa row'; }
+      for(var i=0;i<sels.length && !why;i++){
+        var v=(sels[i].value||'').trim(); selVals.push(v);
+        if(!v || v==='0') why='select #'+i+' empty/zero';
+      }
+      // 2026-07-28 (4th pass): the trace proved "first required radio group" was the WRONG
+      // group — it resolved to xff87c53e179a6ffe76b0, the yes/no merchandise question, not
+      // the additional-persons radios under the "Ticket #1 Details" heading that Mat picks.
+      // Anchor on the heading TEXT instead, which is what he actually described.
+      // FAIL-OPEN: if the section can't be located, gate on the selects only. On a live
+      // sale, firing slightly early beats never firing at all.
+      var sect = capTicketDetailsSection();
+      var groups = [], seen = {};
+      var scope = sect || null;
+      if(scope){
+        var radios = scope.querySelectorAll('input[type="radio"][required]');
+        for(var r=0;r<radios.length;r++){
+          var el=radios[r], nm=el.name; if(!nm) continue;
+          if(!(nm in seen)){ seen[nm]={name:nm, checked:false}; groups.push(seen[nm]); }
+          if(el.checked) seen[nm].checked = true;
+        }
+        for(var gi=0; gi<groups.length && !why; gi++){
+          if(!groups[gi].checked) why='Ticket #1 Details radio group ("'+groups[gi].name+'") unchecked';
+        }
+      }
+      if(window.CAP_SANTA_DEBUG){
+        try{ console.log('%c[cap-santa] check','color:#c82844;font-weight:700',
+          {selects:selVals, radioGroups:groups.map(function(g){return g.name+'='+g.checked;}), blockedBy: why || 'nothing — COMPLETE'}); }catch(_){}
+      }
+      return !why;
+    }catch(e){ if(window.CAP_SANTA_DEBUG){ try{console.log('[cap-santa] check threw', e);}catch(_){}} return false; }
+  }
+  window.capSantaSelectionComplete = capSantaSelectionComplete;
+  var CAP_SANTA_GA_ENABLED = true;
+  var _capSantaGaFired = false;
+  function capFireSantaGA(){
+    try{
+      if(!CAP_SANTA_GA_ENABLED || _capSantaGaFired) return;
+      _capSantaGaFired = true;
+      setTimeout(function(){ capShow('capOvSantaGA'); }, 800);   // brief pause after the qty pick, then the upsell
+      console.log('%c[cap-santa-ga] fired','color:#c82844;font-weight:700;');
+    }catch(e){ /* decorative — never break the page */ }
+  }
+  window.capFireSantaGA = capFireSantaGA;
+  // Pick the QUANTITY select in a ticket row: the one whose options are all numeric.
+  // capSetTicketQty grabs row.querySelector('select') — the FIRST select — which on a
+  // timeslotted ticket is the timeslot, so it was setting the wrong control.
+  function capQtySelect(row){
+    try{
+      var sels = row.querySelectorAll('select');
+      for(var i=sels.length-1;i>=0;i--){
+        var o=sels[i].options, allNum=o.length>0;
+        for(var j=0;j<o.length && allNum;j++){ if(!/^\d+$/.test((o[j].value||'').trim())) allNum=false; }
+        if(allNum) return sels[i];
+      }
+      return sels[sels.length-1]||null;
+    }catch(e){ return null; }
+  }
+  // Inventory of every ticket row — run capSantaTicketDump() in the console to see the
+  // EXACT h4 names, so a name-matching regex is never a guess again.
+  window.capSantaTicketDump = function(){
+    var out=[];
+    document.querySelectorAll('#ticketBlock tr.ticket.ticket-type').forEach(function(r){
+      var h=r.querySelector('h4'), q=capQtySelect(r);
+      out.push({ name:(h&&h.textContent||'').trim().replace(/\s+/g,' ').slice(0,70),
+                 selects:r.querySelectorAll('select').length,
+                 qtyValue:q?q.value:'(none)',
+                 matchesPremium:/premium\s*admission/i.test((h&&h.textContent)||'') });
+    });
+    console.table(out); return out;
+  };
+
+  function capSantaGaCta(){
+    // 2026-07-28: this button was a dead end — capSetTicketQty returns false silently on
+    // "row not found" or "no select", and it targeted the row's FIRST select. Now it
+    // verifies the value actually changed, logs what happened, and if it can't set the
+    // quantity it at least takes the buyer to the Premium row instead of doing nothing.
+    var dbg2 = function(){ if(window.CAP_SANTA_DEBUG){ try{ console.log.apply(console, ['%c[cap-santa-cta]','color:#c82844;font-weight:700'].concat([].slice.call(arguments))); }catch(_){} } };
+    try{
+      capCloseAll();
+      var rows = Array.prototype.slice.call(document.querySelectorAll('#ticketBlock tr.ticket.ticket-type'));
+      var names = rows.map(function(r){ var h=r.querySelector('h4'); return (h&&h.textContent||'').trim(); });
+      var santaRow = rows.filter(function(r){ var h=r.querySelector('h4'); return h && /ultimate.*santa/i.test(h.textContent||''); })[0];
+      var santaQty = santaRow && capQtySelect(santaRow);
+      var n = Math.max(1, parseInt((santaQty && santaQty.value) || '0', 10) || 0);
+
+      var premRow = rows.filter(function(r){ var h=r.querySelector('h4'); return h && /premium\s*admission/i.test(h.textContent||''); })[0]
+                 || rows.filter(function(r){ var h=r.querySelector('h4'); return h && /premium/i.test(h.textContent||''); })[0];
+      if(!premRow){ dbg2('NO Premium row found. Rows present:', names); capScrollToTickets(); return; }
+
+      var q = capQtySelect(premRow);
+      if(!q){ dbg2('Premium row found but no quantity select', premRow); capScrollToRow(premRow); return; }
+
+      var before = q.value;
+      window._capSuppressPromo = true;             // our own change event must not trigger a promo
+      setTimeout(function(){ window._capSuppressPromo = false; }, 2500);
+      try{
+        var setter = Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype, 'value').set;
+        setter.call(q, String(n));
+        q.dispatchEvent(new Event('input',  { bubbles: true }));
+        q.dispatchEvent(new Event('change', { bubbles: true }));
+      }catch(e){ dbg2('setter threw', e); }
+
+      setTimeout(function(){
+        var after = q.value;
+        dbg2('Premium qty', {row:(premRow.querySelector('h4')||{}).textContent, before:before, requested:n, after:after, worked: after === String(n)});
+        // Whether or not the programmatic set stuck, put the buyer in front of the row.
+        capScrollToRow(premRow);
+      }, 250);
+    }catch(e){ dbg2('threw', e); }
+  }
+  function capScrollToRow(el){
+    try{
+      var vh = window.innerHeight || document.documentElement.clientHeight;
+      window.scrollTo({ top: Math.max(0, el.getBoundingClientRect().top + window.pageYOffset - vh/3), behavior:'smooth' });
+    }catch(_){}
+  }
+  function capScrollToTickets(){
+    var tb=document.getElementById('ticketBlock')||document.querySelector('.ticket-block');
+    if(tb) capScrollToRow(tb);
+  }
+  window.capSantaGaCta = capSantaGaCta;
+
+  /* ════════════════════════════════════════════════════════════════════
+     ULTIMATE SANTA WATCHERS (Mat 2026-07-28, third pass)
+     Two failures this replaces, both from hooking the wrong thing:
+       • SCROLL was hung off reveal(), which fires once and may already have
+         run — so the scroll silently never happened. Now it's an independent
+         watcher keyed on the buyer path, retrying until the row is on screen.
+       • UPSELL was gated behind `e.target.closest('#ticketBlock select')`, so a
+         radio click in #registrants NEVER reached the handler. Once the selects
+         were done, nothing re-evaluated completion again and the modal never
+         fired. Now any change/click anywhere re-checks.
+     Set window.CAP_SANTA_DEBUG = true in the console for a step trace.
+     ════════════════════════════════════════════════════════════════════ */
+  (function(){
+    function dbg(){ if(window.CAP_SANTA_DEBUG){ try{ console.log.apply(console, ['%c[cap-santa]','color:#c82844;font-weight:700'].concat([].slice.call(arguments))); }catch(_){} } }
+    function santaRow(){
+      return Array.prototype.slice.call(document.querySelectorAll('#ticketBlock tr.ticket.ticket-type'))
+        .filter(function(r){ var h=r.querySelector('h4'); return h && /ultimate.*santa/i.test(h.textContent||''); })[0] || null;
+    }
+    window.capSantaRow = santaRow;
+
+    // ── SCROLL REMOVED 2026-07-28 (Mat) ───────────────────────────────────
+    // There used to be a watcher here that scrolled the buyer to the Ultimate Santa
+    // row after the date gate lifted. It worked mechanically (measured: pageYOffset
+    // 3416 -> 3592, row landed in view) but always fired LATE — the row does not
+    // exist in the DOM for ~20-40s after the CTA, by which point the buyer has
+    // already scrolled there themselves, so the nudge read as "nothing happened".
+    // The fix was not better scrolling; the premise was wrong. Ditched per Mat
+    // rather than adding more machinery to fight TS's render timing — and it keeps
+    // the page lighter, which is what Bryan asked for on 7/24.
+    // NOTE: capScrollToRow() still exists and IS used — capSantaGaCta scrolls to the
+    // Premium row after the upsell. That one fires on a click, when the row already
+    // exists, and works. Do not remove it.
+
+    // ── B) re-check completion on ANY change/click, not just #ticketBlock ──
+    function recheck(){
+      try{
+        var row=santaRow(); if(!row) return;
+        if(!window.capSantaSelectionComplete){ dbg('helper missing'); return; }
+        if(!capSantaSelectionComplete(row)){ dbg('selection not complete yet'); return; }
+        dbg('selection complete -> firing Premium upsell');
+        if(window.capFireSantaGA) capFireSantaGA();   // has its own once-only guard
+      }catch(e){ dbg('recheck error', e); }
+    }
+    window.capSantaRecheck = recheck;
+    document.addEventListener('change', function(){ setTimeout(recheck, 60); }, true);
+    document.addEventListener('click',  function(e){
+      if(e.target && e.target.closest && e.target.closest('#registrants, #ticketBlock')) setTimeout(recheck, 120);
+    }, true);
+  })();
+
   </script>
 
   <!-- 🎅 CAP Photos-with-Santa modal V2 — functional: hijacks the REAL native
@@ -1049,6 +1406,18 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
   // Expose the trigger so the page button can drive it.
   window.capSantaLaunch = launch;   // un-paused by Mat 2026-07-17 (wired to premium promo CTA)
 
+  // Ultimate Santa strip CTA (added 2026-07-23, Katie's ask) — scrolls the buyer to the real
+  // native Ultimate Santa ticket row. No modal, by decision (see note inside).
+  window.capSantaCta = function(){
+    // 2026-07-28 (Mat): the ticket block is behind the date gate, so the Ultimate Santa row
+    // does not exist in the DOM yet -- scrolling here just landed on 'Pick Your Tickets'.
+    // Correct flow, same shape as the tier-card buttons: tag the buyer path, open the
+    // calendar, and let the reveal hook scroll to the Ultimate Santa row once it exists.
+    if(window.capSetPath) capSetPath('santa');
+    if(window.capOpenPicker){ capOpenPicker(); return; }
+    var t=document.querySelector('#cap-tickets'); if(t) t.scrollIntoView({behavior:'smooth',block:'start'});
+  };
+
   // ── trigger ───────────────────────────────────────────────────────────────
   if (AUTO_OPEN) {
     launch();
@@ -1087,7 +1456,6 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
   #cap-funnel .cap-gate-cta button{background:var(--accent2);color:#fff;border:0;border-radius:50px;font-family:'Montserrat',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:1.25rem;padding:22px 54px;cursor:pointer;box-shadow:0 12px 40px rgba(217,47,37,.45);transition:transform .15s,box-shadow .15s,background .2s;}
   #cap-funnel .cap-gate-cta button:hover{background:var(--accent);transform:translateY(-2px);box-shadow:0 18px 52px rgba(217,47,37,.55);}
   #cap-funnel .cap-gate-cta .cap-gate-hint{display:block;margin-top:16px;color:var(--muted);font-size:.86rem;font-family:'Montserrat',sans-serif;letter-spacing:.02em;}
-  /* Floating "Reserve Your Spot" button (gated state) — scrolls to the ticket cards; retires once a date is picked */
   /* Stand-in date-picker (PREVIEW ONLY — the live page uses the native TS calendar) */
   #capGateDemo{position:fixed;inset:0;background:rgba(40,10,12,.7);z-index:2147483200;display:none;align-items:center;justify-content:center;padding:20px;}
   #capGateDemo.on{display:flex;}
@@ -1118,7 +1486,22 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
     document.body.classList.add('cap-native-gated');
 
     var revealed=false;
-    function reveal(){ if(revealed)return; revealed=true; root.classList.remove('cap-gated'); document.body.classList.remove('cap-native-gated'); document.body.classList.remove('cap-step2'); }   // promo now fires on ticket-qty select, not on date-reveal -- see capFirePromo wiring above
+    function reveal(){ if(revealed)return; revealed=true; root.classList.remove('cap-gated'); document.body.classList.remove('cap-native-gated'); document.body.classList.remove('cap-step2');
+      // 2026-07-28: Ultimate Santa buyers came in via the strip CTA -- now that the native
+      // cart is on-screen, take them to that row. Retry briefly; TS renders rows async.
+      try{ if(window.capGetPath && capGetPath()==='santa'){ var n=0,iv=setInterval(function(){
+        var row=Array.prototype.slice.call(document.querySelectorAll('#ticketBlock tr.ticket.ticket-type'))
+          .filter(function(r){ var h=r.querySelector('h4'); return h && /ultimate.*santa/i.test(h.textContent||''); })[0];
+        // must be VISIBLE, not merely present — the gate un-hides the cart a beat after
+        // reveal(), and scrollIntoView on an off-screen node is a no-op. Re-scroll once to
+        // survive TS's own post-render scroll.
+        if(row && row.offsetParent !== null){ clearInterval(iv);
+          row.scrollIntoView({behavior:'smooth',block:'center'});
+          setTimeout(function(){ try{ row.scrollIntoView({behavior:'smooth',block:'center'}); }catch(_){} }, 700);
+        }
+        else if(++n>60) clearInterval(iv);
+      },150); } }catch(_){}
+    }   // promo now fires on ticket-qty select, not on date-reveal -- see capFirePromo wiring above
 
     // Stand-in picker (preview only — live page uses the native TS calendar)
     var demo=null;
@@ -1144,9 +1527,9 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
       setTimeout(function(){ if(!popNativeDate()){ buildDemo().classList.add('on'); } }, 80);  // pop the now-usable native date picker; demo picker in preview
     }
     // ticket-tier card buttons ("Select"/"Reserve") tag the buyer path (data-buyer on the .tier), then open the ticket block — drop their old inline handlers.
-    // Premium is the one exception: it shows its own price/details modal (capOvPremium) first —
-    // GA and VIP behavior is unchanged (straight to the ticket block).
-    root.querySelectorAll('#cap-tickets .tier .btn').forEach(function(b){ b.removeAttribute('onclick'); b.addEventListener('click',function(e){ e.preventDefault(); var t=b.closest('.tier'); var path=t&&t.getAttribute('data-buyer'); if(path==='premium'){ capOpenPremium(); return; } if(path&&window.capSetPath) capSetPath(path); openPicker(); }); });
+    // All tiers go straight to the date picker (Premium's intermediate details modal removed 2026-07-21 per Mat).
+    root.querySelectorAll('#cap-tickets .tier .btn').forEach(function(b){ b.removeAttribute('onclick'); b.addEventListener('click',function(e){ e.preventDefault(); var t=b.closest('.tier'); var path=t&&t.getAttribute('data-buyer'); if(path&&window.capSetPath) capSetPath(path); openPicker(); }); });
+    window.capOpenPicker=openPicker;   // 2026-07-28: Ultimate Santa strip CTA drives the same picker
     window.capProceedPremium=function(){ if(window.capSetPath) capSetPath('premium'); openPicker(); };
 
     // Hero "Book Your Experience" (+ any #cap-tickets link) scrolls to the ticket cards while gated
@@ -1208,8 +1591,6 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
   </script>
 
 </div>
-
-</body></html>
 <!-- ============================================================================
      CrowdView client announcement block  ·  v2  ·  2026-08-14
      Project: crowdview-client-announcements / popup-render-block-install (WS6)
@@ -1421,3 +1802,5 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
 })();
 </script>
 <!-- =================== END CrowdView announcement block =================== -->
+
+</body></html>
