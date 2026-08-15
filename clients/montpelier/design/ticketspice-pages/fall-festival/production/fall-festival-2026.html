@@ -56,6 +56,18 @@
      inclusions are exactly this add-on list, which is why Bryan calls it
      the price anchor.
 
+  🔄 UPDATE 2026-08-14 (Bryan 1:1, Mat + Bryan). Bryan: "I would rather
+     that section be all the, what's at the farm" — the add-ons grid above
+     read as a money-grab ahead of the flash sale. The marketing section
+     that used to list these paid add-ons with prices is now a pill list of
+     what's INCLUDED with General Admission (sourced from
+     montpelierfarms.com/attractions, 2026-08-14 — see
+     work/crowd7/projects/montpelier-attractions-pills/artifacts/attraction-list.md).
+     Paid add-ons are no longer shown on this page at all — they still
+     upsell natively in the TicketSpice cart, same as before. "+ fees" was
+     also added next to every displayed ticket price per the same 8/14 call.
+
+
   ⚠️ HOURS are exact, from the same live capture — NOT the vague
      "shorter hours" language of the 5/27 spec. Note Friday in October is
      EVENING ONLY (5-10pm), which the earlier build got wrong by implying
@@ -297,6 +309,8 @@
     #mf-funnel .mf-card-feature .mf-price { color: #fff !important; }
     #mf-funnel .mf-was { font-size: 1.04rem !important; color: #9BA096 !important;
         text-decoration: line-through !important; text-decoration-thickness: 2px !important; }
+    #mf-funnel .mf-fee-note { font-size: .74rem !important; font-weight: 500 !important; color: #9BA096 !important; }
+    #mf-funnel .mf-card-feature .mf-fee-note { color: rgba(255,255,255,.58) !important; }
     #mf-funnel .mf-card-feature .mf-was { color: rgba(255,255,255,.58) !important; }
     #mf-funnel .mf-save {
         display: inline-block !important; font-size: .69rem !important; font-weight: 700 !important;
@@ -353,19 +367,16 @@
 
     /* ── ADD-ONS (paid, not included) ── */
     #mf-funnel .mf-addons { background: var(--mf-cream) !important; }
-    #mf-funnel .mf-addon-grid {
-        display: grid !important; grid-template-columns: repeat(3,minmax(0,1fr)) !important;
-        gap: 14px !important; max-width: 1000px !important; margin: 0 auto !important;
+    #mf-funnel .mf-pill-wrap {
+        display: flex !important; flex-wrap: wrap !important; justify-content: center !important;
+        gap: 10px !important; max-width: 900px !important; margin: 0 auto !important;
     }
-    #mf-funnel .mf-addon {
-        display: flex !important; align-items: center !important; justify-content: space-between !important;
-        gap: 14px !important; background: #fff !important; border: 1px solid var(--mf-sand-dk) !important;
-        border-radius: 10px !important; padding: 15px 18px !important;
-    }
-    #mf-funnel .mf-addon-n { font-size: .9rem !important; font-weight: 500 !important; color: #4E524A !important; line-height: 1.4 !important; }
-    #mf-funnel .mf-addon-p {
-        font-family: 'Bitter', Georgia, serif !important; font-weight: 700 !important;
-        font-size: 1.08rem !important; color: var(--mf-red) !important; white-space: nowrap !important;
+    #mf-funnel .mf-pill {
+        display: inline-flex !important; align-items: center !important; gap: 6px !important;
+        background: #fff !important; border: 1px solid var(--mf-sand-dk) !important;
+        border-radius: 999px !important; padding: 9px 16px !important;
+        font-size: .87rem !important; font-weight: 500 !important; color: #4E524A !important;
+        white-space: nowrap !important;
     }
 
     /* ── HOURS ── */
@@ -400,7 +411,6 @@
 
     @media (max-width: 900px) {
         #mf-funnel .mf-grid, #mf-funnel .mf-months { grid-template-columns: 1fr !important; max-width: 470px !important; }
-        #mf-funnel .mf-addon-grid { grid-template-columns: repeat(2,1fr) !important; max-width: 640px !important; }
         #mf-funnel .mf-wide { grid-template-columns: 1fr !important; max-width: 470px !important; row-gap: 20px !important; }
         #mf-funnel .mf-wide-photo { margin: -30px -32px 0 !important; height: 170px !important;
             border-radius: 12px 12px 0 0 !important; }
@@ -415,8 +425,8 @@
         #mf-funnel .mf-nav { height: 96px !important; padding: 0 14px !important; }
         #mf-funnel .mf-logo { height: 76px !important; }
         #mf-funnel .mf-nav-loc { display: none !important; }
-        #mf-funnel .mf-addon-grid { grid-template-columns: 1fr !important; max-width: 400px !important; }
         #mf-funnel .mf-sec { padding-bottom: 96px !important; }
+        #mf-funnel .mf-pill { font-size: .82rem !important; padding: 8px 13px !important; white-space: normal !important; text-align: center !important; }
     }
 </style>
 
@@ -494,6 +504,7 @@
                 <span class="mf-card-sub">One day, one admission</span>
                 <div class="mf-price-row">
                     <span class="mf-price">$19.95</span>
+                    <span class="mf-fee-note">+ fees</span>
                     <span class="mf-save">Online</span>
                 </div>
                 <ul class="mf-list">
@@ -511,6 +522,7 @@
                 <span class="mf-card-sub">Admission plus the big attractions</span>
                 <div class="mf-price-row">
                     <span class="mf-price">$35.95</span>
+                    <span class="mf-fee-note">+ fees</span>
                     <span class="mf-was">$43.95</span>
                 </div>
                 <ul class="mf-list">
@@ -527,6 +539,7 @@
                 <span class="mf-card-sub">Everything, all in one ticket</span>
                 <div class="mf-price-row">
                     <span class="mf-price">$68</span>
+                    <span class="mf-fee-note">+ fees</span>
                     <span class="mf-save">All-In</span>
                 </div>
                 <ul class="mf-list">
@@ -565,18 +578,35 @@
 
     <div class="mf-sec mf-addons">
         <div class="mf-head mfr">
-            <span class="mf-eye">Add Them At Checkout</span>
-            <span class="mf-title">Make it a <em>bigger</em> day</span>
-            <p class="mf-lede">Turn a good day into a great one. Pick any of these up at checkout — or get the lot in one go with the Ultimate Pass.</p>
+            <span class="mf-eye">Included With Every Ticket</span>
+            <span class="mf-title">What's at the <em>farm</em></span>
+            <p class="mf-lede">Every General Admission includes access to all of this &mdash; no extra charge.</p>
         </div>
-        <div class="mf-addon-grid mfr d1">
-            <div class="mf-addon"><span class="mf-addon-n">🦆 Duck Races — keep your duck</span><span class="mf-addon-p">$2</span></div>
-            <div class="mf-addon"><span class="mf-addon-n">🎨 Paint-a-Pumpkin — pumpkin included</span><span class="mf-addon-p">$6</span></div>
-            <div class="mf-addon"><span class="mf-addon-n">🛝 Super Mega Slide — unlimited, 42&quot; min</span><span class="mf-addon-p">$6</span></div>
-            <div class="mf-addon"><span class="mf-addon-n">💎 Mining Mania — 6 varieties</span><span class="mf-addon-p">Prices Vary</span></div>
-            <div class="mf-addon"><span class="mf-addon-n">🎯 Paintball Gallery — 100 shots</span><span class="mf-addon-p">$10</span></div>
-            <div class="mf-addon"><span class="mf-addon-n">🎯 Paintball Gallery — 300 shots</span><span class="mf-addon-p">$25</span></div>
-            <div class="mf-addon"><span class="mf-addon-n">🧸 Build-a-Buddy — with backpack</span><span class="mf-addon-p">$21.99</span></div>
+        <div class="mf-pill-wrap mfr d1">
+            <span class="mf-pill">🌽 7-Acre Interactive Corn Maze</span>
+            <span class="mf-pill">🌽 Kids Corn Maze</span>
+            <span class="mf-pill">🛝 Giant Hill Slides</span>
+            <span class="mf-pill">🚜 Hayrides</span>
+            <span class="mf-pill">🐐 Animals</span>
+            <span class="mf-pill">🏎️ Trike Track</span>
+            <span class="mf-pill">🧒 Kids Corral Playground</span>
+            <span class="mf-pill">🌾 Corn Pit</span>
+            <span class="mf-pill">🪵 Wooden Playsets</span>
+            <span class="mf-pill">🐷 Pig Races</span>
+            <span class="mf-pill">🧩 Puzzle Mania</span>
+            <span class="mf-pill">🏀 Barnyard Basketball</span>
+            <span class="mf-pill">🎃 Pumpkin Bowling</span>
+            <span class="mf-pill">🤠 Roping Range</span>
+            <span class="mf-pill">🥅 Penalty Paddock</span>
+            <span class="mf-pill">🌾 Hay-n-Play</span>
+            <span class="mf-pill">🪢 Tug O' War</span>
+            <span class="mf-pill">🛝 Mini Hill Slide</span>
+            <span class="mf-pill">📸 Photo Ops</span>
+            <span class="mf-pill">🔥 Public Bonfire</span>
+            <span class="mf-pill">🎃 Giant Pumpkin Pad</span>
+            <span class="mf-pill">🌀 Red Barn Twister</span>
+            <span class="mf-pill">🏐 Barnyard Ball Wall</span>
+            <span class="mf-pill">🚜 Combine Slide</span>
         </div>
     </div>
 
