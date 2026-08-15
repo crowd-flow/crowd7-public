@@ -377,6 +377,18 @@
         white-space: nowrap !important;
     }
 
+    /* ── FARM PHOTO ── */
+    #fs-funnel .fs-photo { padding: 0 !important; }
+    #fs-funnel .fs-photo-wrap {
+        max-width: 1120px !important; margin: 0 auto !important;
+        border-radius: 16px !important; overflow: hidden !important;
+        box-shadow: 0 14px 40px rgba(42,42,40,.14) !important;
+    }
+    #fs-funnel .fs-photo-wrap img {
+        width: 100% !important; height: clamp(220px, 30vw, 420px) !important;
+        object-fit: cover !important; display: block !important;
+    }
+
     /* ── HOURS ── */
     #fs-funnel .fs-hours { background: var(--fs-green-dk) !important; }
     #fs-funnel .fs-hours .fs-title { color: #fff !important; }
@@ -590,6 +602,11 @@
         </div>
     </div>
 
+    <div class="fs-sec fs-photo">
+        <div class="fs-photo-wrap fsr">
+            <img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/montpelier/design/assets/photos/farm-137681.jpg" alt="Aerial view of Montpelier Farms — corn maze, hill slides &amp; barnyard" loading="lazy">
+        </div>
+    </div>
 
     <div class="fs-sec fs-hours">
         <div class="fs-head mfr">
