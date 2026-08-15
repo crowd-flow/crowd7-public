@@ -224,6 +224,15 @@
         background-image: url('https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/montpelier/design/assets/photos/hero-family-in-pumpkins.jpg') !important;
         background-size: cover !important; background-position: center 42% !important;
     }
+    #fs-funnel .fs-hero-vid {
+        position: absolute !important; inset: 0 !important; z-index: 0 !important;
+        width: 100% !important; height: 100% !important;
+        object-fit: cover !important; object-position: center 42% !important;
+        pointer-events: none !important;
+    }
+    @media (prefers-reduced-motion: reduce) {
+        #fs-funnel .fs-hero-vid { display: none !important; }
+    }
     #fs-funnel .fs-hero-scrim {
         position: absolute !important; inset: 0 !important; z-index: 1 !important;
         background: linear-gradient(to top,
@@ -429,6 +438,10 @@
     </div>
 
     <div class="fs-hero">
+        <video class="fs-hero-vid" autoplay muted loop playsinline preload="metadata" poster="https://d19t3dgo9qh6v3.cloudfront.net/montpelier/mp-hero-poster.jpg" aria-hidden="true" tabindex="-1">
+            <source src="https://d19t3dgo9qh6v3.cloudfront.net/montpelier/mp-hero-web.webm" type="video/webm">
+            <source src="https://d19t3dgo9qh6v3.cloudfront.net/montpelier/mp-hero-web.mp4" type="video/mp4">
+        </video>
         <div class="fs-hero-scrim"></div>
         <div class="fs-hero-inner">
             <span class="fs-flash-pill">⚡ Flash Sale · Aug 26–30</span>
