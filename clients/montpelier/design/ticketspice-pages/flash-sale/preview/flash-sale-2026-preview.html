@@ -180,6 +180,11 @@
     #fs-funnel .d3 { transition-delay: .27s !important; }
 
     #fs-funnel .fs-sec { padding: clamp(56px, 7.5vw, 92px) 24px !important; }
+    /* Pills section relocated ABOVE the pass cards (Bryan screencast 2026-08-15):
+       "the first thing they see is these" — the 4 GA bullets undersold the farm.
+       Compact padding so it frames the cards instead of competing with them. */
+    #fs-funnel .fs-addons-compact { padding-top: clamp(40px, 5vw, 60px) !important; padding-bottom: clamp(28px, 3.5vw, 40px) !important; }
+    #fs-funnel .fs-addons-compact .fs-lede { margin-bottom: 4px !important; }
     #fs-funnel .fs-eye {
         display: block !important; font-size: .71rem !important; font-weight: 600 !important;
         letter-spacing: .2em !important; text-transform: uppercase !important;
@@ -433,7 +438,7 @@
 
     <div class="fs-banner">
         <div class="fs-banner-inner">
-            <span>🎃 <strong>Flash Sale — 40% Off</strong></span>
+            <span>🎃 <strong>Flash Sale — 33% Off</strong></span>
             <span class="fs-dot"></span>
             <span>August 26–30 only</span>
             <span class="fs-dot"></span>
@@ -458,7 +463,7 @@
         <div class="fs-hero-inner">
             <span class="fs-flash-pill">⚡ Flash Sale · Aug 26–30</span>
             <span class="fs-hero-title">Fall Festival <em>2026</em></span>
-            <span class="fs-hero-sub">Save 40% on tickets — five days only, limited quantity. The 7-acre corn maze, pumpkin patch, hay rides, giant hill slides, barnyard animals — 35+ attractions and so much more, all season long.</span>
+            <span class="fs-hero-sub">Save 33% on tickets — five days only, limited quantity. The 7-acre corn maze, pumpkin patch, hay rides, giant hill slides, barnyard animals — 35+ attractions and so much more, all season long.</span>
         </div>
     </div>
 
@@ -493,78 +498,10 @@
         </div>
     </div>
 
-    <div class="fs-sec fs-tickets" id="tickets">
-        <div class="fs-head mfr">
-            <span class="fs-eye">Flash Sale Pricing</span>
-            <span class="fs-title">Choose your <em>pass</em></span>
-            <p class="fs-lede">Every flash sale ticket is good on any operating day of the season and no reservation is required! Ages 2 and under are always free for General Admission.</p>
-        </div>
-        <div class="fs-grid">
-
-            <div class="fs-card mfr">
-                <span class="fs-badge">Best Value</span>
-                <h3>General Admission</h3>
-                <span class="fs-card-sub">One day, one admission</span>
-                <div class="fs-price-row">
-                    <span class="fs-price">$17.95</span>
-                    <span class="fs-fee-note">+ fees</span>
-                    <span class="fs-save">40% Off</span>
-                </div>
-                <ul class="fs-list">
-                    <li><span class="fs-tick">✓</span><span>7-acre interactive corn maze</span></li>
-                    <li><span class="fs-tick">✓</span><span>Pick-your-own pumpkin patch &amp; hay rides</span></li>
-                    <li><span class="fs-tick">✓</span><span>Giant hill slides &amp; barnyard animals</span></li>
-                    <li><span class="fs-tick">✓</span><span>Ages 2 &amp; under free for General Admission</span></li>
-                </ul>
-                <span class="fs-card-note">Good for one entry on any operating day of the 2026 season. No date selection needed.</span>
-            </div>
-
-            <div class="fs-card fs-card-feature mfr d1">
-                <span class="fs-badge">Best Opportunity</span>
-                <h3>Super Pass</h3>
-                <span class="fs-card-sub">Admission plus the big attractions</span>
-                <div class="fs-price-row">
-                    <span class="fs-price">$35.95</span>
-                    <span class="fs-fee-note">+ fees</span>
-                    <span class="fs-was">$48.95</span>
-                </div>
-                <ul class="fs-list">
-                    <li><span class="fs-tick">✓</span><span>Everything in General Admission</span></li>
-                    <li><span class="fs-tick">✓</span><span>Super Mega Slide, Duck Races &amp; Paint-a-Pumpkin</span></li>
-                    <li><span class="fs-tick">✓</span><span>Mining Mania — gems or seashells</span></li>
-                </ul>
-                <span class="fs-card-note">$48.95 at the door on peak weekends. Good any operating day of the season.</span>
-            </div>
-
-            <div class="fs-card mfr d2">
-                <span class="fs-badge">Family Deal</span>
-                <h3>Family 4-Pack</h3>
-                <span class="fs-card-sub">Four general admissions, one purchase</span>
-                <div class="fs-price-row">
-                    <span class="fs-price">$69.95</span>
-                    <span class="fs-fee-note">+ fees</span>
-                    <span class="fs-save">For Four</span>
-                </div>
-                <ul class="fs-list">
-                    <li><span class="fs-tick">✓</span><span>Four general admission tickets</span></li>
-                    <li><span class="fs-tick">✓</span><span>Use them together or split across separate visits</span></li>
-                    <li><span class="fs-tick">✓</span><span>Everything General Admission includes</span></li>
-                    <li><span class="fs-tick">✓</span><span>Ages 2 &amp; under free for General Admission</span></li>
-                </ul>
-                <span class="fs-card-note">Bought in one transaction. Good any operating day of the season.</span>
-            </div>
-
-        </div>
-
-        <div class="fs-cap mfr d3">
-            <span>⏳ <strong>Limited quantity.</strong> When they're gone the flash sale closes — full-season pricing resumes August 31.</span>
-        </div>
-    </div>
-
-    <div class="fs-sec fs-addons">
+    <div class="fs-sec fs-addons fs-addons-compact">
         <div class="fs-head mfr">
             <span class="fs-eye">Included With Every Ticket</span>
-            <span class="fs-title">What's at the <em>farm</em></span>
+            <span class="fs-title">35+ attractions <em>at the farm</em></span>
             <p class="fs-lede">Every General Admission includes access to all of this &mdash; no extra charge.</p>
         </div>
         <div class="fs-pill-wrap mfr d1">
@@ -594,6 +531,77 @@
             <span class="fs-pill">🚜 Combine Slide</span>
         </div>
     </div>
+
+    <div class="fs-sec fs-tickets" id="tickets">
+        <div class="fs-head mfr">
+            <span class="fs-eye">Flash Sale Pricing</span>
+            <span class="fs-title">Choose your <em>pass</em></span>
+            <p class="fs-lede">Every flash sale ticket is good on any operating day of the season and no reservation is required! Ages 2 and under are always free for General Admission.</p>
+        </div>
+        <div class="fs-grid">
+
+            <div class="fs-card mfr">
+                <span class="fs-badge">Best Value</span>
+                <h3>General Admission</h3>
+                <span class="fs-card-sub">One day, one admission</span>
+                <div class="fs-price-row">
+                    <span class="fs-price">$17.95</span>
+                    <span class="fs-fee-note">+ fees</span>
+                    <span class="fs-save">33% Off</span>
+                </div>
+                <ul class="fs-list">
+                    <li><span class="fs-tick">✓</span><span>7-acre interactive corn maze</span></li>
+                    <li><span class="fs-tick">✓</span><span>Pick-your-own pumpkin patch &amp; hay rides</span></li>
+                    <li><span class="fs-tick">✓</span><span>Giant hill slides &amp; barnyard animals</span></li>
+                    <li><span class="fs-tick">✓</span><span>Ages 2 &amp; under free for General Admission</span></li>
+                </ul>
+                <span class="fs-card-note">Good for one entry on any operating day of the 2026 season. No date selection needed.</span>
+            </div>
+
+            <div class="fs-card fs-card-feature mfr d1">
+                <span class="fs-badge">Best Opportunity</span>
+                <h3>Super Pass</h3>
+                <span class="fs-card-sub">Admission plus the big attractions</span>
+                <div class="fs-price-row">
+                    <span class="fs-price">$35.95</span>
+                    <span class="fs-fee-note">+ fees</span>
+                    <span class="fs-was">$48.95</span>
+                </div>
+                <ul class="fs-list">
+                    <li><span class="fs-tick">✓</span><span>Everything in General Admission</span></li>
+                    <li><span class="fs-tick">🛝</span><span>Super Mega Slide</span></li>
+                    <li><span class="fs-tick">🦆</span><span>Duck Races</span></li>
+                    <li><span class="fs-tick">🎨</span><span>Paint-a-Pumpkin</span></li>
+                    <li><span class="fs-tick">💎</span><span>Mining Mania — gems or seashells</span></li>
+                </ul>
+                <span class="fs-card-note">$48.95 at the door on peak weekends. Good any operating day of the season.</span>
+            </div>
+
+            <div class="fs-card mfr d2">
+                <span class="fs-badge">Family Deal</span>
+                <h3>Family 4-Pack</h3>
+                <span class="fs-card-sub">Four general admissions, one purchase</span>
+                <div class="fs-price-row">
+                    <span class="fs-price">$69.95</span>
+                    <span class="fs-fee-note">+ fees</span>
+                    <span class="fs-save">For Four</span>
+                </div>
+                <ul class="fs-list">
+                    <li><span class="fs-tick">✓</span><span>Four general admission tickets</span></li>
+                    <li><span class="fs-tick">✓</span><span>Use them together, in one visit</span></li>
+                    <li><span class="fs-tick">✓</span><span>Everything General Admission includes</span></li>
+                    <li><span class="fs-tick">✓</span><span>Ages 2 &amp; under free for General Admission</span></li>
+                </ul>
+                <span class="fs-card-note">Bought in one transaction. Good any operating day of the season.</span>
+            </div>
+
+        </div>
+
+        <div class="fs-cap mfr d3">
+            <span>⏳ <strong>Limited quantity.</strong> When they're gone the flash sale closes — full-season pricing resumes August 31.</span>
+        </div>
+    </div>
+
 
     <div class="fs-sec fs-hours">
         <div class="fs-head mfr">
