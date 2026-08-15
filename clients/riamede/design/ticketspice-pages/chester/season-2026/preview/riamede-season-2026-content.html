@@ -297,6 +297,23 @@
     #rmf-funnel .rmf-card-green .rmf-card-note { color: rgba(251,244,230,0.58) !important; }
     #rmf-funnel .rmf-card-cream .rmf-card-note { color: rgba(43,32,19,0.5) !important; }
     #rmf-funnel .rmf-strike { text-decoration: line-through !important; opacity: 0.65 !important; }
+    /* ── GA PRICE LADDER (2026-08-14) — replaced the bulleted ladder, which read
+       as clutter: four calendar emoji, "online" x4 and "gate" x4 all repeated,
+       and three text columns fighting inside a narrow card. Now a two-column
+       table: date left, price right, struck gate price alongside. "online" is
+       dropped (implied); "gate" is explained once in the note below the list. */
+    #rmf-funnel .rmf-ladder { list-style: none !important; padding: 0 !important; margin: 0 0 auto !important; display: flex !important; flex-direction: column !important; }
+    #rmf-funnel .rmf-ladder li { display: flex !important; align-items: baseline !important; justify-content: space-between !important; gap: 12px !important; padding: 9px 0 !important; border-bottom: 1px solid rgba(251,244,230,0.16) !important; }
+    #rmf-funnel .rmf-ladder li:last-child { border-bottom: 0 !important; }
+    #rmf-funnel .rmf-ladder-when { font-size: 0.85rem !important; line-height: 1.35 !important; color: rgba(251,244,230,0.88) !important; }
+    #rmf-funnel .rmf-ladder-when em { display: block !important; font-style: normal !important; font-size: 0.75rem !important; opacity: 0.62 !important; margin-top: 1px !important; }
+    #rmf-funnel .rmf-ladder-price { white-space: nowrap !important; font-size: 0.85rem !important; text-align: right !important; }
+    #rmf-funnel .rmf-ladder-price strong { font-size: 1.02rem !important; font-weight: 700 !important; color: #FBF4E6 !important; }
+    #rmf-funnel .rmf-ladder-price .rmf-strike { font-size: 0.78rem !important; opacity: 0.5 !important; margin-left: 4px !important; }
+    @media (max-width: 380px) {
+        #rmf-funnel .rmf-ladder-when { font-size: 0.8rem !important; }
+        #rmf-funnel .rmf-ladder-price strong { font-size: 0.95rem !important; }
+    }
     #rmf-funnel .rmf-price-was { font-family: 'Fraunces', serif !important; font-size: 1.5rem !important; font-weight: 700 !important; line-height: 1 !important; }
     #rmf-funnel .rmf-card-red .rmf-price-was { color: rgba(251,244,230,0.7) !important; }
     #rmf-funnel .rmf-card-green .rmf-price-was { color: rgba(242,194,101,0.7) !important; }
@@ -512,13 +529,13 @@
                     <span class="rmf-card-badge rmf-card-badge-dark">All Season</span>
                     <span class="rmf-card-icon">🎟️</span>
                     <h3>General Admission</h3>
-                    <ul class="rmf-card-bullets">
-                        <li>📅 <strong>$8.95</strong> online &mdash; Aug 15&ndash;30 weekends <span class="rmf-strike">$12.95 gate</span></li>
-                        <li>📅 <strong>$12.50</strong> online &mdash; Sept 1&ndash;18 <span class="rmf-strike">$16.50 gate</span></li>
-                        <li>📅 <strong>$15.50</strong> online &mdash; Sept 19&ndash;Oct 25 weekends + Mon Oct 12 <span class="rmf-strike">$19.50 gate</span></li>
-                        <li>📅 <strong>$12.50</strong> online &mdash; Oct 26&ndash;Nov 1 <span class="rmf-strike">$16.50 gate</span></li>
+                    <ul class="rmf-ladder">
+                        <li><span class="rmf-ladder-when">Aug 15&ndash;30 <em>weekends</em></span><span class="rmf-ladder-price"><strong>$8.95</strong> <span class="rmf-strike">$12.95</span></span></li>
+                        <li><span class="rmf-ladder-when">Sept 1&ndash;18</span><span class="rmf-ladder-price"><strong>$12.50</strong> <span class="rmf-strike">$16.50</span></span></li>
+                        <li><span class="rmf-ladder-when">Sept 19&ndash;Oct 25 <em>weekends + Mon Oct 12</em></span><span class="rmf-ladder-price"><strong>$15.50</strong> <span class="rmf-strike">$19.50</span></span></li>
+                        <li><span class="rmf-ladder-when">Oct 26&ndash;Nov 1</span><span class="rmf-ladder-price"><strong>$12.50</strong> <span class="rmf-strike">$16.50</span></span></li>
                     </ul>
-                    <span class="rmf-card-note">Price is set by the date you visit — book online in advance to lock in the lower rate before it goes up at the gate.</span>
+                    <span class="rmf-card-note">Struck prices are the gate price. Book ahead to lock in the lower rate.</span>
                 </a>
 
                 <a href="#ticketBlock" class="rmf-card rmf-card-green rmfr d1" aria-label="Buy Season Pass tickets">
