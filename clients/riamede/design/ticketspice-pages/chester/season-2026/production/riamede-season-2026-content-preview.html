@@ -14,28 +14,27 @@
 </head>
 <body>
 <!-- ════════════════════════════════════════════════════════════════════
-     RIAMEDE FARM · CHESTER, NJ · FLASH SALE (Aug 10-14) — HYBRID-LOADER CONTENT
+     RIAMEDE FARM · CHESTER, NJ · BLOOMFEST (Aug 15-30) — HYBRID-LOADER CONTENT
      Design overlay on Ashley's existing TicketSpice cart, form 1017178
      (actions/dates/prices built by Ashley — this page does NOT rebuild the
      cart, only the look + marketing layer).
      Spec: crowd7/data/clients/riamede/ticket-types-2026.md, locked 2026-08-03.
 
-     ⚠️ FLASH-SALE-ONLY BUILD, MANUAL SWITCHOVER (Mat directive 2026-08-07).
-     The automatic Eastern-time phase engine was REMOVED — Mat drives each
-     season step by hand with Crowdly rather than letting the page self-advance.
-     This page shows the three Aug 10-14 flash tickets and nothing else.
-     Later-phase cards (Bloomfest, Fall Fest 3-tier) are built, priced and
-     parked at:
+     ⚠️ MANUAL-SWITCHOVER BUILD (Mat directive 2026-08-07). The automatic
+     Eastern-time phase engine was REMOVED — Mat drives each season step by
+     hand with Crowdly rather than letting the page self-advance. This page
+     was stepped from the Aug 10-14 flash sale to the Aug 15-30 Bloomfest
+     block on 2026-08-14 (Bryan's midnight-ET request) and now shows the two
+     Bloomfest tickets and nothing else. Fall Fest (3-tier) is built, priced
+     and parked at:
        notes/work/crowd7/projects/riamede-season-page/artifacts/later-phase-cards.ARCHIVE.html
-     Switchover dates to action manually: Aug 15 (Bloomfest), Sept 1 (Fall Fest).
+     Next switchover date to action manually: Sept 1 (Fall Fest).
 
      Sub-brand: orchard/harvest palette — NOT the Jack's Lighted Trail dark
      Halloween theme. Imagery harvested from riamedefarm.com (Wix), see
      artifacts/image-url-check.md.
      OPEN: exact live TicketSpice <h4> ticket names (placeholder-and-flag, not
-     a blocker — see Open Asks in state.md). Family Bundle carries NO value /
-     savings claim by design (Mat directive 2026-08-10, CLOSED): the struck
-     $117 cart price carries the savings; card leads with itemized inclusions.
+     a blocker — see Open Asks in state.md).
      ════════════════════════════════════════════════════════════════════ -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -245,6 +244,11 @@
         gap: 22px !important; justify-content: center !important;
         max-width: 1040px !important; margin-left: auto !important; margin-right: auto !important;
     }
+    /* Bloomfest phase block ships only 2 cards — force a 2-col grid so it
+       doesn't leave a phantom empty 3rd track on wide screens. */
+    #rmf-funnel .rmf-phase-block .rmf-grid {
+        grid-template-columns: repeat(2, minmax(0, 380px)) !important; max-width: 820px !important;
+    }
     #rmf-funnel .rmf-card {
         border-radius: 20px !important; padding: 36px 32px !important;
         position: relative !important; overflow: hidden !important;
@@ -405,9 +409,9 @@
     <!-- BANNER -->
     <div class="rmf-banner">
         <div class="rmf-banner-inner">
-            <span id="rmf-banner-text">⚡ Flash Sale — Aug 10&ndash;14 only</span>
+            <span id="rmf-banner-text">🌻 Bloomfest is here &mdash; through Aug 30</span>
             <span class="rmf-dot"></span>
-            <span>BloomFest begins Aug 15 &middot; Fall Fest Sept 5 &ndash; Nov 1</span>
+            <span>Fall Fest begins Sept 5 &ndash; Nov 1</span>
         </div>
     </div>
 
@@ -494,69 +498,47 @@
         </div>
     </div>
 
-    <!-- TICKETS — Flash Sale (Aug 10-14) -->
+    <!-- TICKETS — Bloomfest (Aug 15-30) -->
     <div class="rmf-tickets" id="tickets">
         <div class="rmf-tickets-header rmfr">
             <span class="rmf-eye">Season 2026 Tickets</span>
-            <span class="rmf-title">Get In for <em id="rmf-tickets-title-phase">the Flash Sale</em></span>
+            <span class="rmf-title">Get In for <em id="rmf-tickets-title-phase">Bloomfest</em></span>
         </div>
 
-        <!-- FLASH SALE — 3 cards, exact grid fit -->
-        <div class="rmf-flash-block">
+        <!-- PHASE 2 — BLOOMFEST (Aug 15-30): 2 cards (Bloomfest + Weekday) -->
+        <div class="rmf-phase-block" data-phase="2">
             <div class="rmf-grid">
 
-                <a href="#ticketBlock" class="rmf-card rmf-card-red rmfr" aria-label="Buy Family Four-Pack Fall Bundle tickets">
-                    <span class="rmf-card-badge rmf-card-badge-dark">Best Value</span>
-                    <span class="rmf-card-icon">🧺</span>
-                    <h3>Family Four-Pack<br>Fall Bundle</h3>
+                <a href="#ticketBlock" class="rmf-card rmf-card-red rmfr" aria-label="Buy Bloomfest Weekend Admission tickets">
+                    <span class="rmf-card-badge rmf-card-badge-dark">Weekends</span>
+                    <span class="rmf-card-icon">🌻</span>
+                    <h3>Bloomfest Weekend Admission</h3>
                     <ul class="rmf-card-bullets">
-                        <li>🎟️ 4 admissions, redeemable Sept 1 &ndash; Nov 1</li>
-                        <li>🍩 A bag of farm-made donuts</li>
-                        <li>🧺 A commemorative apple basket with 5&ndash;6 lbs of farm-fresh apples</li>
+                        <li>🌻 Flower fields, you-pick tomatoes &amp; peppers</li>
+                        <li>🍦 Concessions, donuts, cider slushies &amp; live music</li>
+                        <li>📸 A soft opening — no wagon, ponies or petting zoo yet</li>
                     </ul>
                     <div class="rmf-card-price">
-                        <span class="rmf-price-was rmf-strike">$117</span>
-                        <span class="rmf-price-num">$79.95</span>
-                        <span class="rmf-price-label">per bundle<br>4 admissions + donuts + basket</span>
+                        <span class="rmf-price-num">$8.95</span>
+                        <span class="rmf-price-label">online <span class="rmf-strike">$12.95 at the gate</span></span>
                     </div>
-                    <span class="rmf-card-fee">Plus fees</span>
-                    <span class="rmf-card-note">All 4 admissions must be redeemed on the same day, in the same group. Basket is filled with farm-fresh apples — not guaranteed you-pick. Redeemable after Aug 29 (Sept 1 &ndash; Nov 1 only).</span>
+                    <span class="rmf-card-note">Saturdays &amp; Sundays, Aug 15&ndash;30. Full Fall Fest offering starts Labor Day weekend.</span>
                 </a>
 
-                <a href="#ticketBlock" class="rmf-card rmf-card-green rmfr d1" aria-label="Buy Flash Sale Season Pass tickets">
-                    <span class="rmf-card-badge rmf-card-badge-gold">Season Pass</span>
-                    <span class="rmf-card-icon">🎫</span>
-                    <h3>Flash Sale<br>Season Pass</h3>
+                <a href="#ticketBlock" class="rmf-card rmf-card-cream rmfr d1" aria-label="Buy Weekday Admission tickets">
+                    <span class="rmf-card-badge rmf-card-green">Weekday</span>
+                    <span class="rmf-card-icon">🌳</span>
+                    <h3>Weekday Admission</h3>
                     <ul class="rmf-card-bullets">
-                        <li>🎟️ Unlimited visits, all season — Bloomfest through Fall Fest</li>
-                        <li>🛍️ 10% off every in-store purchase, all season</li>
-                        <li>👥 One single-use guest ticket included</li>
+                        <li>🍎 Walk-in orchard access, any weekday (closed Tuesdays)</li>
+                        <li>🎒 Grab a bag at the register, pick, pay by the pound</li>
+                        <li>🚫 No music, wagon or concession stand on weekdays</li>
                     </ul>
                     <div class="rmf-card-price">
-                        <span class="rmf-price-was rmf-strike">$37.70</span>
-                        <span class="rmf-price-num">$29.95</span>
-                        <span class="rmf-price-label">per pass<br>flash-sale price only</span>
+                        <span class="rmf-price-num">$5</span>
+                        <span class="rmf-price-label">per person<br>flat, all season</span>
                     </div>
-                    <span class="rmf-card-fee">Plus fees</span>
-                    <span class="rmf-card-note">Guest ticket redeems as a checkbox on your pass at the gate — no separate QR code.</span>
-                </a>
-
-                <a href="#ticketBlock" class="rmf-card rmf-card-cream rmfr d2" aria-label="Buy Flash Sale Any-Day Admission tickets">
-                    <span class="rmf-card-badge rmf-card-badge-green">Any-Day</span>
-                    <span class="rmf-card-icon">🍏</span>
-                    <h3>Flash Sale<br>Any-Day Admission</h3>
-                    <ul class="rmf-card-bullets">
-                        <li>🎟️ Valid any single operating day, all season</li>
-                        <li>💰 Redeem on a $15.50&ndash;$19.50 peak day for the best value</li>
-                        <li>📅 Pick your date at checkout or decide later</li>
-                    </ul>
-                    <div class="rmf-card-price">
-                        <span class="rmf-price-was rmf-strike">$19.50</span>
-                        <span class="rmf-price-num">$11.49</span>
-                        <span class="rmf-price-label">per admission<br>flash-sale price only</span>
-                    </div>
-                    <span class="rmf-card-fee">Plus fees</span>
-                    <span class="rmf-card-note">Buy at $11.49, use it on a day that would otherwise cost up to $19.50 at the gate.</span>
+                    <span class="rmf-card-note">This year's apple crop is limited — weekday admission helps us plan staffing, not a discount.</span>
                 </a>
 
             </div>
@@ -577,9 +559,9 @@
                 <span class="rmf-info-value">Bloomfest Aug 15<br>Fall Fest Sept 5 &ndash; Nov 1</span>
             </div>
             <div class="rmf-info-item">
-                <span class="rmf-info-icon">⚡</span>
-                <span class="rmf-info-label">Flash Sale</span>
-                <span class="rmf-info-value">Aug 10 &ndash; 14<br>before Bloomfest opens</span>
+                <span class="rmf-info-icon">🌻</span>
+                <span class="rmf-info-label">Now Open</span>
+                <span class="rmf-info-value">Bloomfest<br>Weekends, Aug 15&ndash;30</span>
             </div>
             <div class="rmf-info-item">
                 <span class="rmf-info-icon">🕘</span>
@@ -765,12 +747,12 @@
      Pattern: crowd7/data/clients/_patterns/slash-through-pricing.md
      Name-keyed + MutationObserver, immune to Action-driven reordering.
 
-     ⚠️ INERT DURING THE FLASH SALE — by design. The three flash tickets
-     ($79.95 / $29.95 / $11.49) have no gate-vs-online spread, so there is
-     nothing to strike through Aug 10-14. The map below is pre-loaded with the
-     Bloomfest + Fall Fest gate prices so it goes live the moment those ticket
-     types appear in the cart at the manual switchover — no code change needed
-     then, just confirm the names.
+     ⚠️ Flash sale ended Aug 14 — Bloomfest is live as of the 2026-08-14
+     switchover (see the ticket cards above). This map is name-keyed and
+     pre-loaded with Bloomfest + Fall Fest gate prices, so it activates
+     automatically the moment those ticket types are live in the actual
+     TicketSpice cart — no code change needed here, just confirm the exact
+     <h4> names match Ashley's cart (see Open Asks).
      ⚠️ Fall Fest gate steps 3x across the season on the SAME ticket type
      ($16.50 -> $19.50 -> $16.50). With the phase engine removed, set
      FALL_FEST_GATE by hand at each step (Sept 1, Sept 19, Oct 26).
