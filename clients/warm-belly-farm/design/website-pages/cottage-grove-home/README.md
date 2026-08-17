@@ -6,7 +6,23 @@ WordPress page holds only a thin loader; the real content lives here and updates
 
 **Page:** `https://warmbelly.farm/cottage-grove/` (the Cottage Grove location home, `post-31`)
 **Stack:** WordPress 7.0.2 multisite (`sites/2`), Avada + Avada-Child-Theme, Fusion Builder
-**Status:** built + pushed 2026-08-17 — **loader NOT yet installed on the live page** (needs Mat's go-ahead)
+**Status:** guts built + pushed 2026-08-17. **Loader install requires a TWO-PLACE split** — see below.
+
+## 🚨 This is a WP multisite — the loader cannot be pasted in one place
+
+First install attempt (2026-08-17) rendered the loader's comments and raw JS as visible text on
+the live homepage and injected nothing. Cause: WordPress multisite revokes the `unfiltered_html`
+capability from every role except Super Admin, so `kses` strips `<script>` tags (and HTML
+comments) out of page content on save. The host `<div>` survives; the script does not.
+
+Install is therefore: **host `<div>` in the Avada Code element + loader JS in Avada's
+before-`</body>` theme-options code field.** Full write-up, forensics table and the two
+paste-ready files live in the private repo at
+`crowd7/data/clients/warm-belly-farm/design/website-loaders/README.install.md`; the reusable
+lesson is `crowd7/data/clients/_patterns/wordpress-multisite-kses-script-stripping.md`.
+
+Verified headless 2026-08-17 with the split install against the live CDN URL: 32,760 bytes
+injected, 4/4 sections, all four tagged legacy containers hidden, no raw JS text, 0 console errors.
 
 ## How it works
 
