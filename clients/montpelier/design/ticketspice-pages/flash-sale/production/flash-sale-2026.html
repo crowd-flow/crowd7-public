@@ -711,7 +711,7 @@
 </script>
 
 <!-- ============================================================================
-     CrowdView client pop-up block  ·  v3  ·  2026-08-16
+     CrowdView client pop-up block  ·  v4  ·  2026-08-17
      Project: crowdview-client-announcements / page-inventory (self-identifying)
 
      WHAT IT DOES
@@ -743,30 +743,13 @@
      keep working: the endpoint still accepts ?account=&page= (see
      edge/api-live-announcement.js) and there is no rush to re-paste them.
 
-     PREVIEW SAFETY (v3) — the block does NOT render on a TicketSpice preview
-     link. A TS page publishes window.__BOOTSTRAP__.appSettings.isPreview, and
-     v3 honours it. This exists because a real client's first exploratory
-     pop-up ("Test Title" / "Test Message") went live to buyers on Jack's
-     Lighted Trail for ~4 hours on 2026-08-14. A preview URL is now a genuine
-     dry run.
-
-     THEME (optional, per-page) — fill in the :root block below with values
-     read OFF THE PAGE'S OWN CONTENT HTML (never invented). Omit any token you
-     don't want to override; it falls back to today's neutral card, so a page
-     with no theme block renders identically to before this version shipped.
-     Keep the set small:
-       --c7a-card-bg   card background
-       --c7a-ink       title text (needs strong contrast against card-bg)
-       --c7a-ink-dim   body text + close icon (still needs to read clearly)
-       --c7a-btn-bg    "Got it" button background
-       --c7a-btn-ink   "Got it" button text
-       --c7a-scrim     the full-screen backdrop behind the card
-       --c7a-radius    card corner radius
-       --c7a-font      TITLE ONLY — leave unset unless the page has a real
-                        display face; body/button always use the system stack
-     When card-bg goes dark, ink/ink-dim MUST flip to a light color — a dark
-     card with the old #3c4147 body text is unreadable. Check every themed
-     page, don't assume the palette is safe.
+     PREVIEW LINKS SHOW POP-UPS — deliberately (Mat, 2026-08-17).
+     v3 briefly suppressed rendering on TicketSpice preview URLs. That was a
+     mistake and is reverted: a pop-up is live or not according to its
+     SCHEDULE WINDOW, never according to which URL you view it from, so the
+     guard protected nothing while removing the only way to check your own
+     work before an event. Previewing a page now shows exactly what a buyer
+     sees.
 
      SAFE BY CONSTRUCTION
      · Read-only GET to a public endpoint. No credentials sent or accepted.
@@ -804,19 +787,6 @@
 
   var ENDPOINT = 'https://crowd7-team-hub.vercel.app/api/live-announcement';
 
-  // Never render on a TicketSpice PREVIEW link, so a client can preview a page
-  // and see exactly what buyers see WITHOUT their draft going live. Read
-  // defensively: __BOOTSTRAP__ is an internal Webconnex structure, so treat a
-  // parse failure as "not a preview" rather than blocking the real page.
-  function isPreview() {
-    try {
-      var b = window.__BOOTSTRAP__;
-      if (!b || !b.appSettings) return false;
-      var s = typeof b.appSettings === 'string' ? JSON.parse(b.appSettings) : b.appSettings;
-      return s && s.isPreview === true;
-    } catch (e) { return false; }
-  }
-  if (isPreview()) return;
 
   // Self-identification. `location` is the key, NOT __BOOTSTRAP__.formURL:
   // both carry the same value, but location is guaranteed by the browser
