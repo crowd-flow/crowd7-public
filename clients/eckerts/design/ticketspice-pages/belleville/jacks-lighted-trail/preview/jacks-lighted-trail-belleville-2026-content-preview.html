@@ -861,7 +861,7 @@
 </body>
 </html>
 <!-- ============================================================================
-     CrowdView client pop-up block  ·  v4  ·  2026-08-17
+     CrowdView client pop-up block  ·  v5  ·  2026-08-17
      Project: crowdview-client-announcements / page-inventory (self-identifying)
 
      WHAT IT DOES
@@ -893,7 +893,10 @@
      keep working: the endpoint still accepts ?account=&page= (see
      edge/api-live-announcement.js) and there is no rush to re-paste them.
 
-     PREVIEW LINKS SHOW POP-UPS — deliberately (Mat, 2026-08-17).
+     PREVIEW LINKS SHOW POP-UPS — deliberately (Mat, 2026-08-17). v5 is what
+     actually makes that work: the block also sends the form's NAME and HOST,
+     because a preview URL carries no reference to its published path (not
+     even in __BOOTSTRAP__.formURL, which is the preview URL as well).
      v3 briefly suppressed rendering on TicketSpice preview URLs. That was a
      mistake and is reverted: a pop-up is live or not according to its
      SCHEDULE WINDOW, never according to which URL you view it from, so the
@@ -938,12 +941,26 @@
   var ENDPOINT = 'https://crowd7-team-hub.vercel.app/api/live-announcement';
 
 
-  // Self-identification. `location` is the key, NOT __BOOTSTRAP__.formURL:
-  // both carry the same value, but location is guaranteed by the browser
-  // while __BOOTSTRAP__ can change shape without notice. Query string and
+  // ── Self-identification ────────────────────────────────────────────────
+  // Primary key is `location` (guaranteed by the browser). Query string and
   // hash are dropped — ticketing links are covered in UTM tags, and the
   // server normalizes the same way.
   var PAGE_URL = location.origin + location.pathname;
+
+  // PREVIEW LINKS need a second key. On /preview/<hash> the path is the hash,
+  // and __BOOTSTRAP__.formURL is the preview URL TOO — nothing on the page
+  // carries its published path, so URL matching cannot work there. formName
+  // is stable across published and preview renders and is the exact string
+  // CrowdView stores as page.name (same TicketSpice API field), so it is the
+  // fallback. Host scopes it so two clients' similarly-named forms can't
+  // collide. Read defensively: __BOOTSTRAP__ is internal Webconnex structure.
+  var FORM_NAME = '', TS_HOST = '';
+  try {
+    var b = window.__BOOTSTRAP__;
+    var s = b && b.appSettings;
+    if (typeof s === 'string') s = JSON.parse(s);
+    if (s) { FORM_NAME = s.formName || ''; TS_HOST = s.host || ''; }
+  } catch (e) { /* fall back to URL-only matching */ }
 
   // Small, stable string hash (djb2) — only used as a sessionStorage dedupe
   // key, never for anything security-relevant.
@@ -1041,6 +1058,8 @@
 
   function go() {
     var url = ENDPOINT + '?url=' + encodeURIComponent(PAGE_URL);
+    if (FORM_NAME) url += '&name=' + encodeURIComponent(FORM_NAME);
+    if (TS_HOST)   url += '&host=' + encodeURIComponent(TS_HOST);
     // No credentials — the endpoint is public and must stay that way for the
     // CORS wildcard to be valid.
     fetch(url, { credentials: 'omit', mode: 'cors' })
