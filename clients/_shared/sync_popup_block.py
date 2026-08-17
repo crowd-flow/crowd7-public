@@ -44,6 +44,10 @@ TEMPLATE = Path(__file__).resolve().parent / "crowdview-announcement-block.html"
 START_RE = re.compile(r"<!--\s*=+\s*\n\s*CrowdView client (?:announcement|pop-up) block", re.M)
 END_RE = re.compile(r"<!--\s*=+\s*END CrowdView (?:announcement|pop-up) block\s*=+\s*-->")
 THEME_RE = re.compile(r":root\s*\{.*?\}", re.S)
+# Legacy account/page slugs are per-page state too — preserve them across a
+# sync exactly like the theme, or a page that can only be matched by slug
+# (unpublished form, so no ts_url and no name match) silently stops resolving.
+TOKEN_RE = re.compile(r"(var\s+C7A_(?:ACCOUNT|PAGE)\s*=\s*)'([^']*)'")
 
 
 def find_block(text: str) -> tuple[int, int] | None:
@@ -73,6 +77,26 @@ def extract_theme(block: str) -> str | None:
     # At least one live (uncommented) --c7a-* declaration.
     live = re.search(r"^\s*--c7a-[\w-]+\s*:", body, re.M)
     return body if live else None
+
+
+def extract_tokens(block: str) -> dict[str, str]:
+    """This page's legacy C7A_ACCOUNT / C7A_PAGE values, if it set any."""
+    out = {}
+    for m in TOKEN_RE.finditer(block):
+        name = "C7A_ACCOUNT" if "ACCOUNT" in m.group(1) else "C7A_PAGE"
+        val = m.group(2)
+        if val and not val.startswith("__"):
+            out[name] = val
+    return out
+
+
+def apply_tokens(block: str, tokens: dict[str, str]) -> str:
+    if not tokens:
+        return block
+    def sub(m):
+        name = "C7A_ACCOUNT" if "ACCOUNT" in m.group(1) else "C7A_PAGE"
+        return f"{m.group(1)}'{tokens.get(name, m.group(2))}'"
+    return TOKEN_RE.sub(sub, block)
 
 
 def apply_theme(template_block: str, theme: str | None) -> str:
@@ -117,6 +141,7 @@ def main() -> int:
 
         current = text[span[0]:span[1]]
         new_block = apply_theme(template_block, extract_theme(current))
+        new_block = apply_tokens(new_block, extract_tokens(current))
         if new_block == current:
             print(f"  ok {rel}")
             continue

@@ -745,7 +745,7 @@
 <div id="ticketBlock"><h2>Native TicketSpice cart renders here</h2>
 <div class="c7-cart-stub">Ticket types, prices, date + time selection, the peak +$5 bump and the add-ons stay native in TicketSpice.</div></div></body></html>
 <!-- ============================================================================
-     CrowdView client pop-up block  ·  v5  ·  2026-08-17
+     CrowdView client pop-up block  ·  v6  ·  2026-08-17
      Project: crowdview-client-announcements / page-inventory (self-identifying)
 
      WHAT IT DOES
@@ -838,6 +838,15 @@
   // CrowdView stores as page.name (same TicketSpice API field), so it is the
   // fallback. Host scopes it so two clients' similarly-named forms can't
   // collide. Read defensively: __BOOTSTRAP__ is internal Webconnex structure.
+  // LEGACY FALLBACK. Some pages can be matched by neither URL nor name:
+  // Montpelier's forms, for instance, are 'open' but were never PUBLISHED, so
+  // TicketSpice returns no publishedPath and CrowdView has no ts_url to match
+  // against. Those pages still have working account/page slugs, so the sync
+  // script PRESERVES these two values (like it preserves the theme) and the
+  // block sends them as a last resort. Empty on a page that doesn't need them.
+  var C7A_ACCOUNT = 'montpelier';
+  var C7A_PAGE    = 'fall-festival-2026';
+
   var FORM_NAME = '', TS_HOST = '';
   try {
     var b = window.__BOOTSTRAP__;
@@ -882,7 +891,7 @@
       '#c7a-x{position:absolute;top:6px;right:10px;background:none;border:0;font-size:22px;',
       'line-height:1;color:var(--c7a-ink-dim,#9aa0a6);cursor:pointer;padding:4px 6px;}',
       '#c7a-x:hover{color:var(--c7a-ink,#5f666e);}',
-      '#c7a-t{font-size:18px;font-weight:650;letter-spacing:-.01em;margin:0 0 9px;',
+      '#c7a-t{font-size:27px;font-weight:650;letter-spacing:-.01em;margin:0 0 9px;',
       'overflow-wrap:anywhere;font-family:var(--c7a-font,inherit);}',
       '#c7a-m{font-size:14.5px;line-height:1.55;color:var(--c7a-ink-dim,#3c4147);margin:0 0 18px;',
       'white-space:pre-wrap;overflow-wrap:anywhere;}',
@@ -944,6 +953,10 @@
     var url = ENDPOINT + '?url=' + encodeURIComponent(PAGE_URL);
     if (FORM_NAME) url += '&name=' + encodeURIComponent(FORM_NAME);
     if (TS_HOST)   url += '&host=' + encodeURIComponent(TS_HOST);
+    if (C7A_ACCOUNT && C7A_PAGE) {
+      url += '&account=' + encodeURIComponent(C7A_ACCOUNT)
+           + '&page='    + encodeURIComponent(C7A_PAGE);
+    }
     // No credentials — the endpoint is public and must stay that way for the
     // CORS wildcard to be valid.
     fetch(url, { credentials: 'omit', mode: 'cors' })
