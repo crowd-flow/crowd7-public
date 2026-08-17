@@ -894,3 +894,59 @@
 
 </body>
 </html>
+
+<!-- ════ NATIVE TICKET-BLOCK ENHANCEMENTS (ported from the 2025 page, rewritten) ════
+     Replaces the old positional nth-child snippets. Everything below keys off the
+     ticket's <h4> NAME, per data/clients/_patterns/slash-through-pricing.md, so a
+     conditional Action reordering the cart can never land a rule on the wrong ticket.
+
+     ⚠️ NAMES ARE UNCONFIRMED — no live Harbaugh TS cart existed at build time.
+     If a name here does not match the cart character-for-character, that ticket
+     simply gets no strike price and no badge. It fails silent and safe, never wrong.
+     Confirm against a live cart dump before go-live. ════ -->
+<script>
+(function(){
+  var GATE = {
+    "Flex Admission": "$19.95",
+    "Flash Sale - Flex Admission": "$19.95",
+    "Fixed Date Admission": "$19.95"
+  };
+  var BADGE = {
+    "Flex Admission": { label: "Best Price of the Season", color: "#E8730A" },
+    "Flash Sale - Flex Admission": { label: "Best Price of the Season", color: "#E8730A" }
+  };
+  function apply(){
+    document.querySelectorAll('#ticketBlock .ticket-type').forEach(function(row){
+      var h4 = row.querySelector('h4');
+      if(!h4) return;
+      var name = h4.textContent.trim();
+      var cost = row.querySelector('.ticket-cost');
+      var g = GATE[name];
+      if(g && cost && cost.getAttribute('data-gate') !== g) cost.setAttribute('data-gate', g);
+      var b = BADGE[name];
+      if(b && !h4.querySelector('.hvf-ts-badge')){
+        var s = document.createElement('span');
+        s.className = 'hvf-ts-badge';
+        s.textContent = b.label;
+        s.style.setProperty('background-color', b.color, 'important');
+        h4.appendChild(s);
+      }
+    });
+  }
+  var tb = document.getElementById('ticketBlock') || document.body;
+  new MutationObserver(apply).observe(tb, {childList:true, subtree:true});
+  apply();
+})();
+</script>
+<style>
+  #ticketBlock .ticket-cost[data-gate]::before{
+    content: attr(data-gate) " "; text-decoration: line-through;
+    color: #6b6b6b !important; font-weight: 400 !important; margin-right: 4px !important;
+  }
+  #ticketBlock .hvf-ts-badge{
+    display: inline-block !important; margin-left: 8px !important; vertical-align: middle !important;
+    padding: 3px 9px !important; border-radius: 12px !important;
+    color: #ffffff !important; font-size: 11px !important; font-weight: 700 !important;
+    letter-spacing: .02em !important; white-space: nowrap !important;
+  }
+</style>
