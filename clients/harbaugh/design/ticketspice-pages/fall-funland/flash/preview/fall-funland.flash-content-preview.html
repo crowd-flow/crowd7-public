@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harbaugh Village · Fall Funland Flash Sale — Preview</title>
+    <!--
+        Browser-eyeball preview wrapper for fall-funland.flash-content (no extension shown
+        here on purpose — see the runbook's TS static-source-scanner note). The body below
+        mirrors the TicketSpice "Custom HTML" snippet exactly — keep these two files in sync.
+    -->
+    <style>
+        html, body { margin: 0; padding: 0; background: #fff8ec; font-family: 'Quicksand', sans-serif; }
+    </style>
+</head>
+<body>
+
+<!--
+    Harbaugh Village · Fall Funland · Flash Sale (Aug 19-23, 2026) · TicketSpice content block
+    Standalone flash-sale page, built from scratch — no prior Harbaugh page existed anywhere
+    in crowd7-public. Structural parent: Amber Brooke Farms' Any-Day GA Flash Sale (2026),
+    the closest kind-match in the fleet (farm-adjacent, flash-only, 2-card grid, one-price
+    flash-lead card). See work/crowd7/projects/harbaugh-fall-funland-flash-page/artifacts
+    /build-plan.md for the full reasoning trail.
+
+    Palette: pumpkin orange / deep harvest green / cream — NOT Amber Brooke's navy/terracotta/
+    sage. No brand guidelines exist (harbaughvillage.com blocks scraping), so this is sampled
+    loosely from a fall/pumpkin-patch mood and the client's own real event photography below.
+    Typography: Fredoka (rounded-sans display) + Quicksand (rounded-sans body) — a family-
+    amusement-center register, not Amber Brooke's transitional serif pairing.
+
+    Assets: 5 files staged 2026-08-17, all real Fall Funland event photography/art —
+    the "TS hero" asset is actually the client's own hand-drawn Fun Land jack-o-lantern
+    wordmark (not a photo), so it is used here as the nav logo mark AND as the 4th tile in
+    the gallery grid, rather than forced into a photo slot it doesn't fit.
+
+    Two ticket cards only (3-card ceiling n/a): Flex Admission $13.95 (any-day, no gate/door
+    price exists for this SKU) leads; Season Pass $34.95 flash (was $44.95) is the secondary
+    card, its compare-at price a plain <s> struck value in our own markup — no slash-through
+    JS pattern needed anywhere on this page.
+
+    No live TicketSpice URL exists yet for Harbaugh's 2026 Fall page — see the TODO comment
+    at the nav CTA below. The CTA still wires to the native cart anchor, same as every other
+    hybrid-loader page; nothing here depends on the TS URL existing.
+
+    CrowdView client-announcement block intentionally OMITTED for v1 (build-plan.md §8 item 5)
+    — no account/page slug exists yet for Harbaugh in CrowdView.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+    /* ===========================================================
+       HARBAUGH VILLAGE · FALL FUNLAND · FLASH SALE 2026
+       #hvf-funnel — pumpkin / deep harvest green / cream
+       =========================================================== */
+    #hvf-funnel {
+        --hvf-pumpkin: #e8730a;
+        --hvf-pumpkin-deep: #c25a02;
+        --hvf-pumpkin-hover: #a94e02;
+        --hvf-green: #33562f;
+        --hvf-green-deep: #24401f;
+        --hvf-green-darkest: #1a2f17;  /* top announcement bar — deliberately darker than the nav */
+        --hvf-gold: #f4a93d;
+        --hvf-cream: #fff8ec;
+        --hvf-cream-soft: #fcebd1;
+        --hvf-white: #ffffff;
+        --hvf-ink: #2c2115;
+        --hvf-ink-soft: #6b5a45;
+        --hvf-font-display: 'Fredoka', 'Trebuchet MS', sans-serif;
+        --hvf-font-body: 'Quicksand', 'Trebuchet MS', sans-serif;
+    }
+
+    #hvf-funnel {
+        width: 100vw !important;
+        position: relative !important;
+        left: 50% !important;
+        right: 50% !important;
+        margin-left: -50vw !important;
+        margin-right: -50vw !important;
+        overflow: hidden !important;
+        font-family: var(--hvf-font-body) !important;
+        background: var(--hvf-cream) !important;
+        color: var(--hvf-ink) !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    /* ── BANNER ── */
+    #hvf-funnel .hvf-banner {
+        width: 100% !important;
+        background: var(--hvf-green-darkest) !important;
+        color: white !important;
+        text-align: center !important;
+        padding: 12px 20px !important;
+        font-size: 0.95rem !important;
+        letter-spacing: 0.03em !important;
+        display: block !important;
+        box-sizing: border-box !important;
+    }
+    #hvf-funnel .hvf-banner-inner {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 10px !important;
+        flex-wrap: wrap !important;
+        color: white !important;
+    }
+    #hvf-funnel .hvf-banner-inner span,
+    #hvf-funnel .hvf-banner-inner strong { color: white !important; }
+    #hvf-funnel .hvf-dot {
+        width: 3px !important; height: 3px !important;
+        background: rgba(255,255,255,0.45) !important;
+        border-radius: 50% !important;
+        display: inline-block !important;
+        flex-shrink: 0 !important;
+    }
+    #hvf-funnel .hvf-banner-flash {
+        color: var(--hvf-gold) !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.08em !important;
+    }
+
+    /* ── NAV ── */
+    #hvf-funnel .hvf-nav {
+        width: 100% !important;
+        padding: 0 40px !important;
+        height: 92px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-end !important;
+        background: var(--hvf-green) !important;
+        position: sticky !important;
+        top: 0 !important;
+        z-index: 100 !important;
+        box-sizing: border-box !important;
+        box-shadow: 0 2px 16px rgba(51,86,47,0.3) !important;
+    }
+    #hvf-funnel .hvf-nav-right {
+        display: flex !important; align-items: center !important; gap: 16px !important;
+    }
+    #hvf-funnel .hvf-nav-loc {
+        font-size: 0.9rem !important;
+        color: #ffffff !important;
+        display: flex !important; align-items: center !important; gap: 5px !important;
+    }
+    #hvf-funnel .hvf-nav-cta {
+        background: var(--hvf-pumpkin) !important;
+        color: white !important;
+        padding: 12px 26px !important;
+        border-radius: 50px !important;
+        font-size: 1rem !important;
+        font-weight: 600 !important;
+        font-family: var(--hvf-font-display) !important;
+        text-decoration: none !important;
+        letter-spacing: 0.02em !important;
+        transition: all 0.3s ease !important;
+        white-space: nowrap !important;
+        display: inline-block !important;
+    }
+    #hvf-funnel .hvf-nav-cta:hover {
+        background: var(--hvf-pumpkin-hover) !important;
+        color: white !important;
+        text-decoration: none !important;
+        transform: translateY(-1px);
+    }
+
+    /* ── LOGO BADGE ── white rounded panel hanging off the nav, carrying the client's own
+       hand-drawn Fun Land jack-o-lantern wordmark (the "TS hero" asset — not a photo). ── */
+    #hvf-funnel .hvf-logo-wrap {
+        position: absolute !important;
+        left: 40px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        z-index: 110 !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+    #hvf-funnel .hvf-logo-badge {
+        background: #ffffff !important;
+        border-radius: 4px 4px 50% 50% / 4px 4px 60% 60% !important;
+        padding: 10px 18px 16px !important;
+        box-shadow: 0 8px 22px rgba(0,0,0,0.22) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        box-sizing: border-box !important;
+    }
+    #hvf-funnel .hvf-logo-badge img {
+        display: block !important;
+        height: 68px !important;
+        width: auto !important;
+    }
+    @media (max-width: 900px) { #hvf-funnel .hvf-logo-wrap { left: 24px !important; } }
+    @media (max-width: 600px) {
+        #hvf-funnel .hvf-logo-wrap { left: 16px !important; }
+        #hvf-funnel .hvf-logo-badge { padding: 8px 14px 12px !important; }
+        #hvf-funnel .hvf-logo-badge img { height: 48px !important; }
+    }
+
+    /* ── HERO ── */
+    #hvf-funnel .hvf-hero {
+        width: 100% !important;
+        min-height: clamp(320px, 50vw, 520px) !important;
+        position: relative !important;
+        display: flex !important;
+        align-items: flex-end !important;
+        overflow: hidden !important;
+        background-image: linear-gradient(135deg, rgba(36,64,31,0.15) 0%, rgba(51,86,47,0.05) 55%, rgba(232,115,10,0.15) 100%), url('https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/harbaugh/design/assets/social/harbaugh-social-02.jpg') !important;
+        background-size: cover !important;
+        background-position: center 38% !important;
+        background-color: var(--hvf-green) !important;
+    }
+    #hvf-funnel .hvf-hero-overlay {
+        position: absolute !important;
+        inset: 0 !important;
+        background: linear-gradient(to bottom, rgba(36,64,31,0.15) 0%, rgba(28,20,12,0.24) 45%, rgba(36,64,31,0.82) 100%) !important;
+        z-index: 1 !important;
+    }
+    #hvf-funnel .hvf-hero-content {
+        position: relative !important;
+        z-index: 2 !important;
+        padding: 0 48px 52px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    #hvf-funnel .hvf-hero-eyebrow {
+        font-size: 0.86rem !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.16em !important;
+        text-transform: uppercase !important;
+        color: rgba(255,255,255,0.92) !important;
+        margin-bottom: 10px !important;
+        display: block !important;
+    }
+    #hvf-funnel .hvf-hero-title {
+        font-family: var(--hvf-font-display) !important;
+        font-size: clamp(2.3rem, 6.6vw, 4.1rem) !important;
+        font-weight: 700 !important;
+        color: white !important;
+        line-height: 1.08 !important;
+        display: block !important;
+        text-shadow: 0 2px 20px rgba(0,0,0,0.3) !important;
+    }
+    #hvf-funnel .hvf-hero-title em {
+        font-style: normal !important;
+        color: var(--hvf-gold) !important;
+    }
+    #hvf-funnel .hvf-hero-tagline {
+        font-family: var(--hvf-font-body) !important;
+        font-weight: 500 !important;
+        font-size: clamp(1.05rem, 2.2vw, 1.3rem) !important;
+        color: #fdf6e8 !important;
+        margin-top: 14px !important;
+        display: block !important;
+        max-width: 640px !important;
+        line-height: 1.5 !important;
+    }
+
+    /* ── BENEFITS — unheaded emoji tile strip. ── */
+    #hvf-funnel .hvf-benefits {
+        width: 100% !important;
+        background: white !important;
+        padding: 36px 48px !important;
+        display: block !important;
+        box-sizing: border-box !important;
+        border-bottom: 1px solid rgba(51,86,47,0.08) !important;
+    }
+    #hvf-funnel .hvf-eye {
+        font-size: 0.84rem !important; font-weight: 700 !important;
+        letter-spacing: 0.18em !important; text-transform: uppercase !important;
+        color: var(--hvf-pumpkin) !important; margin-bottom: 8px !important; display: block !important;
+    }
+    #hvf-funnel .hvf-section-title {
+        font-family: var(--hvf-font-display) !important;
+        font-size: clamp(1.7rem, 4vw, 2.5rem) !important;
+        font-weight: 600 !important; color: var(--hvf-green-deep) !important;
+        line-height: 1.2 !important; display: block !important;
+    }
+    #hvf-funnel .hvf-section-title em { font-style: normal; color: var(--hvf-pumpkin); }
+    #hvf-funnel .hvf-benefits-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        max-width: 1040px !important;
+        margin: 0 auto !important;
+    }
+    #hvf-funnel .hvf-benefit {
+        text-align: center !important;
+        padding: 8px 20px !important;
+        position: relative !important;
+    }
+    #hvf-funnel .hvf-benefit:not(:last-child)::after {
+        content: '' !important;
+        position: absolute !important;
+        right: 0 !important; top: 15% !important; bottom: 15% !important;
+        width: 1px !important;
+        background: rgba(51,86,47,0.1) !important;
+    }
+    #hvf-funnel .hvf-benefit-icon { font-size: 1.7rem !important; margin-bottom: 8px !important; display: block !important; }
+    #hvf-funnel .hvf-benefit-title {
+        font-family: var(--hvf-font-display) !important;
+        font-size: 1rem !important; font-weight: 600 !important;
+        color: var(--hvf-ink) !important; margin-bottom: 3px !important; display: block !important;
+    }
+    #hvf-funnel .hvf-benefit-desc {
+        font-size: 0.78rem !important; color: var(--hvf-ink-soft) !important;
+        line-height: 1.4 !important; display: block !important;
+    }
+
+    /* ── GALLERY — static 4-up grid (no marquee; only 4 remaining assets). ── */
+    #hvf-funnel .hvf-gallery {
+        width: 100% !important;
+        background: var(--hvf-cream) !important;
+        padding: 56px 48px !important;
+        display: block !important;
+        box-sizing: border-box !important;
+    }
+    #hvf-funnel .hvf-gallery-header {
+        text-align: center !important;
+        margin-bottom: 32px !important;
+    }
+    #hvf-funnel .hvf-gallery-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 18px !important;
+        max-width: 1120px !important;
+        margin: 0 auto !important;
+    }
+    #hvf-funnel .hvf-gcard {
+        aspect-ratio: 1 / 1 !important;
+        border-radius: 20px !important; overflow: hidden !important;
+        position: relative !important;
+        cursor: default !important;
+        background: linear-gradient(135deg, var(--hvf-cream-soft), var(--hvf-gold)) !important;
+        box-shadow: 0 10px 26px rgba(44,33,21,0.12) !important;
+        transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    }
+    #hvf-funnel .hvf-gcard:hover {
+        transform: translateY(-4px) !important;
+        box-shadow: 0 20px 40px rgba(51,86,47,0.22) !important; z-index: 2 !important;
+    }
+    #hvf-funnel .hvf-gcard img {
+        width: 100% !important; height: 100% !important;
+        object-fit: cover !important; display: block !important;
+        position: absolute !important; inset: 0 !important;
+    }
+    /* the 4th tile carries the client's own Fun Land wordmark art, not a photo —
+       contained + padded on a cream card instead of cropped like the photo tiles */
+    #hvf-funnel .hvf-gcard-mark { background: var(--hvf-white) !important; }
+    #hvf-funnel .hvf-gcard-mark img {
+        object-fit: contain !important;
+        padding: 14px !important;
+        box-sizing: border-box !important;
+    }
+    #hvf-funnel .hvf-gcard-label {
+        position: absolute !important; bottom: 10px !important; left: 10px !important; right: 10px !important;
+        background: rgba(36,64,31,0.68) !important; backdrop-filter: blur(6px) !important;
+        color: white !important; font-size: 0.68rem !important; letter-spacing: 0.06em !important;
+        text-transform: uppercase !important; font-weight: 700 !important;
+        padding: 6px 10px !important; border-radius: 12px !important;
+        text-align: center !important;
+    }
+
+    /* ── TICKETS ── */
+    #hvf-funnel .hvf-tickets {
+        width: 100% !important;
+        background: var(--hvf-cream-soft) !important;
+        padding: 56px 48px !important;
+        display: block !important; box-sizing: border-box !important;
+    }
+    #hvf-funnel .hvf-tickets-header { text-align: center !important; margin-bottom: 32px !important; }
+    #hvf-funnel .hvf-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 24px !important;
+        max-width: 900px !important;
+        margin: 0 auto !important;
+    }
+    #hvf-funnel .hvf-card {
+        border-radius: 20px !important;
+        padding: 32px 30px !important;
+        position: relative !important;
+        box-sizing: border-box !important;
+        display: flex !important; flex-direction: column !important;
+        background: white !important;
+        transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    }
+    #hvf-funnel .hvf-card:hover { transform: translateY(-4px) !important; }
+    #hvf-funnel .hvf-card-primary { border: 2px solid var(--hvf-pumpkin) !important; }
+    #hvf-funnel .hvf-card-primary:hover { box-shadow: 0 20px 40px rgba(232,115,10,0.2) !important; }
+    #hvf-funnel .hvf-card-secondary { border: 2px solid rgba(51,86,47,0.22) !important; }
+    #hvf-funnel .hvf-card-secondary:hover { box-shadow: 0 20px 40px rgba(51,86,47,0.14) !important; }
+    #hvf-funnel .hvf-card-badge {
+        display: inline-block !important;
+        font-size: 0.74rem !important; font-weight: 700 !important;
+        letter-spacing: 0.08em !important; text-transform: uppercase !important;
+        padding: 6px 14px !important; border-radius: 20px !important;
+        margin-bottom: 14px !important; width: fit-content !important;
+        font-family: var(--hvf-font-display) !important;
+    }
+    #hvf-funnel .hvf-card-badge-pumpkin { background: var(--hvf-pumpkin) !important; color: white !important; }
+    #hvf-funnel .hvf-card-badge-green { background: var(--hvf-green) !important; color: white !important; }
+    #hvf-funnel .hvf-card-icon { font-size: 2.2rem !important; margin-bottom: 10px !important; display: block !important; }
+    #hvf-funnel .hvf-card h3 {
+        font-family: var(--hvf-font-display) !important;
+        font-size: 1.4rem !important; font-weight: 600 !important;
+        color: var(--hvf-green-deep) !important; line-height: 1.2 !important; margin-bottom: 14px !important; display: block !important;
+    }
+    #hvf-funnel .hvf-card-bullets {
+        list-style: none !important; padding: 0 !important; margin: 0 0 20px !important;
+        display: flex !important; flex-direction: column !important; gap: 8px !important;
+    }
+    #hvf-funnel .hvf-card-bullets li {
+        font-size: 0.92rem !important; line-height: 1.5 !important; color: var(--hvf-ink-soft) !important;
+        display: flex !important; align-items: flex-start !important; gap: 8px !important;
+    }
+
+    /* ── ONE-PRICE BLOCK — Card 1, Flex Admission. One number, framed as a win. ── */
+    #hvf-funnel .hvf-oneprice {
+        margin-top: auto !important; padding-top: 18px !important;
+        border-top: 1px solid rgba(51,86,47,0.12) !important;
+        display: block !important; text-align: center !important;
+    }
+    #hvf-funnel .hvf-oneprice-amt {
+        font-family: var(--hvf-font-display) !important;
+        font-size: clamp(2.6rem, 7vw, 3.4rem) !important; font-weight: 700 !important;
+        color: var(--hvf-pumpkin) !important; line-height: 1 !important; display: block !important;
+    }
+    #hvf-funnel .hvf-oneprice-unit {
+        font-size: 0.86rem !important; font-weight: 700 !important; letter-spacing: 0.04em !important;
+        color: var(--hvf-green-deep) !important; display: block !important; margin-top: 6px !important;
+        text-transform: uppercase !important;
+    }
+    #hvf-funnel .hvf-oneprice-lead {
+        font-family: var(--hvf-font-display) !important;
+        font-size: 1.02rem !important; font-weight: 600 !important; color: var(--hvf-green) !important;
+        display: block !important; margin-top: 10px !important; line-height: 1.3 !important;
+    }
+    #hvf-funnel .hvf-oneprice-proof {
+        font-size: 0.84rem !important; color: var(--hvf-ink-soft) !important;
+        display: block !important; margin-top: 6px !important; line-height: 1.55 !important;
+    }
+    #hvf-funnel .hvf-card-note {
+        font-size: 0.74rem !important; color: var(--hvf-ink-soft) !important;
+        margin-top: 10px !important; display: block !important; text-align: center !important; opacity: 0.9 !important;
+    }
+
+    /* ── COMPARE-AT PRICE — Card 2, Season Pass. Plain <s> struck value in our own markup
+       (case 1 per slash-through-pricing.md) — no #ticketBlock DOM targeting, no JS. ── */
+    #hvf-funnel .hvf-price-compare {
+        margin-top: auto !important; padding-top: 18px !important;
+        border-top: 1px solid rgba(51,86,47,0.12) !important;
+        display: block !important; text-align: center !important;
+    }
+    #hvf-funnel .hvf-price-was {
+        font-size: 1.05rem !important; color: var(--hvf-ink-soft) !important;
+        display: block !important; opacity: 0.8 !important;
+    }
+    #hvf-funnel .hvf-price-was s { text-decoration-thickness: 1.5px !important; }
+    #hvf-funnel .hvf-price-now {
+        font-family: var(--hvf-font-display) !important;
+        font-size: clamp(2.6rem, 7vw, 3.4rem) !important; font-weight: 700 !important;
+        color: var(--hvf-green) !important; line-height: 1 !important; display: block !important; margin-top: 2px !important;
+    }
+    #hvf-funnel .hvf-price-now-unit {
+        font-size: 0.86rem !important; font-weight: 700 !important; letter-spacing: 0.04em !important;
+        color: var(--hvf-green-deep) !important; display: block !important; margin-top: 6px !important;
+        text-transform: uppercase !important;
+    }
+
+    /* ── INFO ROW ── */
+    #hvf-funnel .hvf-info {
+        width: 100% !important;
+        background: var(--hvf-green) !important;
+        padding: 0 !important; display: block !important; box-sizing: border-box !important;
+    }
+    #hvf-funnel .hvf-info-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+    #hvf-funnel .hvf-info-item {
+        text-align: center !important;
+        padding: 26px 20px !important;
+        position: relative !important;
+    }
+    #hvf-funnel .hvf-info-item:not(:last-child)::after {
+        content: '' !important; position: absolute !important;
+        right: 0 !important; top: 20% !important; bottom: 20% !important;
+        width: 1px !important; background: rgba(255,255,255,0.16) !important;
+    }
+    #hvf-funnel .hvf-info-icon { font-size: 1.5rem !important; display: block !important; margin-bottom: 6px !important; }
+    #hvf-funnel .hvf-info-label {
+        font-size: 0.76rem !important; font-weight: 700 !important;
+        letter-spacing: 0.14em !important; text-transform: uppercase !important;
+        color: rgba(255,255,255,0.85) !important; display: block !important; margin-bottom: 4px !important;
+    }
+    #hvf-funnel .hvf-info-value {
+        font-family: var(--hvf-font-display) !important;
+        font-size: 1.02rem !important; font-weight: 600 !important;
+        color: white !important; display: block !important; line-height: 1.35 !important;
+    }
+
+    /* ── GOOD TO KNOW — calm closing panel, positioned after the ticket grid. ── */
+    #hvf-funnel .hvf-fine {
+        width: 100% !important;
+        background: var(--hvf-cream) !important;
+        padding: 52px 24px 72px !important;
+        box-sizing: border-box !important;
+    }
+    #hvf-funnel .hvf-fine-inner {
+        max-width: 720px !important;
+        margin: 0 auto !important;
+        background: #ffffff !important;
+        border: 1px solid rgba(51,86,47,0.16) !important;
+        border-radius: 18px !important;
+        padding: 34px 38px !important;
+        box-shadow: 0 16px 40px rgba(51,86,47,0.12) !important;
+    }
+    #hvf-funnel .hvf-fine-title {
+        font-family: var(--hvf-font-display) !important;
+        font-size: 1.4rem !important; font-weight: 600 !important;
+        color: var(--hvf-green-deep) !important; display: block !important;
+        margin-bottom: 8px !important; text-align: center !important;
+    }
+    #hvf-funnel .hvf-fine-sub {
+        font-size: 0.9rem !important; color: var(--hvf-ink-soft) !important;
+        display: block !important; text-align: center !important; margin-bottom: 22px !important;
+    }
+    #hvf-funnel .hvf-fine-table {
+        display: flex !important; flex-direction: column !important; gap: 10px !important;
+        margin: 0 0 18px !important;
+    }
+    #hvf-funnel .hvf-fine-row {
+        display: flex !important; justify-content: space-between !important; align-items: baseline !important;
+        gap: 16px !important; padding: 10px 14px !important;
+        background: var(--hvf-cream) !important; border-radius: 10px !important;
+    }
+    #hvf-funnel .hvf-fine-row-label {
+        font-family: var(--hvf-font-display) !important;
+        font-weight: 600 !important; font-size: 0.92rem !important; color: var(--hvf-green-deep) !important;
+        flex-shrink: 0 !important;
+    }
+    #hvf-funnel .hvf-fine-row-val {
+        font-size: 0.86rem !important; color: var(--hvf-ink-soft) !important; text-align: right !important;
+    }
+    #hvf-funnel .hvf-fine p {
+        font-size: 0.88rem !important; line-height: 1.65 !important;
+        color: #4a3f30 !important; margin: 0 0 12px !important; text-align: left !important;
+    }
+    #hvf-funnel .hvf-fine p:last-of-type { margin-bottom: 0 !important; }
+    #hvf-funnel .hvf-fine-contact {
+        text-align: center !important; font-size: 0.84rem !important;
+        color: var(--hvf-ink-soft) !important; margin: 20px 0 0 !important;
+        padding-top: 18px !important;
+        border-top: 1px solid rgba(51,86,47,0.14) !important;
+    }
+    @media (max-width: 600px) {
+        #hvf-funnel .hvf-fine { padding: 40px 18px 56px !important; }
+        #hvf-funnel .hvf-fine-inner { padding: 26px 22px !important; }
+        #hvf-funnel .hvf-fine-row { flex-direction: column !important; gap: 3px !important; }
+        #hvf-funnel .hvf-fine-row-val { text-align: left !important; }
+    }
+
+    /* ── REVEAL — scroll-in. ── */
+    #hvf-funnel .hvfr {
+        opacity: 0 !important; transform: translateY(28px) !important;
+        transition: opacity 0.7s cubic-bezier(.16,1,.3,1), transform 0.7s cubic-bezier(.16,1,.3,1) !important;
+    }
+    #hvf-funnel .hvfr.hvfon { opacity: 1 !important; transform: none !important; }
+    #hvf-funnel .hvfr.d1 { transition-delay: 0.1s !important; }
+    #hvf-funnel .hvfr.d2 { transition-delay: 0.2s !important; }
+    #hvf-funnel .hvfr.d3 { transition-delay: 0.3s !important; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+        #hvf-funnel .hvf-nav { padding: 0 24px !important; }
+        #hvf-funnel .hvf-benefits { padding: 32px 24px !important; }
+        #hvf-funnel .hvf-tickets { padding: 44px 24px !important; }
+        #hvf-funnel .hvf-gallery { padding: 44px 24px !important; }
+        #hvf-funnel .hvf-grid { grid-template-columns: 1fr !important; max-width: 460px !important; margin-left: auto !important; margin-right: auto !important; }
+        #hvf-funnel .hvf-gallery-grid { grid-template-columns: repeat(2, 1fr) !important; max-width: 520px !important; }
+        #hvf-funnel .hvf-info-grid { grid-template-columns: 1fr 1fr !important; }
+        #hvf-funnel .hvf-info-item:nth-child(2n)::after { display: none !important; }
+        #hvf-funnel .hvf-hero-content { padding: 0 24px 40px !important; }
+        #hvf-funnel .hvf-benefits-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 18px 0 !important; }
+        #hvf-funnel .hvf-benefit:nth-child(2n)::after { display: none !important; }
+    }
+    @media (max-width: 560px) {
+        #hvf-funnel .hvf-nav { padding: 0 16px !important; height: 76px !important; }
+        #hvf-funnel .hvf-nav-loc { display: none !important; }
+        #hvf-funnel .hvf-hero-content { padding: 0 20px 32px !important; }
+        #hvf-funnel .hvf-card { padding: 26px 22px !important; }
+        #hvf-funnel .hvf-gallery-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; }
+        #hvf-funnel .hvf-info-grid { grid-template-columns: 1fr !important; }
+        #hvf-funnel .hvf-info-item:not(:last-child)::after { display: none !important; }
+        #hvf-funnel .hvf-info-item:not(:last-child) { border-bottom: 1px solid rgba(255,255,255,0.16) !important; }
+    }
+
+    /* ── Defensive TS-chrome suppression ── */
+    .WCX-poweredBy, .WCX-footer-poweredBy, [class*="poweredBy"], [class*="powered-by"],
+    [class*="powered_by"], .ticketspice-logo, .tsr-poweredBy, .WCX-footer-flag,
+    .WCX-localeFlag, .country-flag, .locale-flag, [class*="localeFlag"],
+    img[src*="ticketspice"], img[src*="us-flag"], img[src*="us_flag"], img[src*="usa-flag"],
+    img[alt*="TicketSpice" i], img[alt*="United States" i] {
+        display: none !important; visibility: hidden !important; height: 0 !important; width: 0 !important;
+    }
+
+@media(max-width:600px){}
+
+</style>
+
+<div id="hvf-funnel">
+
+    <!-- BANNER -->
+    <div class="hvf-banner">
+        <div class="hvf-banner-inner">
+            <span class="hvf-banner-flash">🎃 5-DAY FLASH SALE 🎃</span>
+            <span class="hvf-dot"></span>
+            <span><strong>August 19 – 23</strong></span>
+            <span class="hvf-dot"></span>
+            <span>Best Price of the Whole Season</span>
+        </div>
+    </div>
+
+    <!-- NAV -->
+    <div class="hvf-nav">
+        <div class="hvf-logo-wrap"><div class="hvf-logo-badge"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/harbaugh/design/assets/ticketspice/harbaugh-ts-hero.png" alt="Harbaugh Village Fun Land"></div></div>
+        <div class="hvf-nav-right">
+            <div class="hvf-nav-loc">
+                <svg width="12" height="12" fill="none" stroke="#ffffff" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                    <circle cx="12" cy="11" r="3"/>
+                </svg>
+                Mullica Hill, NJ
+            </div>
+            <!-- TODO: TS page URL once live — CTA anchors to the native cart block below,
+                 which is correct regardless of whether the page has been created yet in
+                 TicketSpice. Missing TS access blocks only the human loader-paste step. -->
+            <a href="#ticketBlock" class="hvf-nav-cta">Buy Tickets</a>
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <div class="hvf-hero">
+        <div class="hvf-hero-overlay"></div>
+        <div class="hvf-hero-content">
+            <span class="hvf-hero-eyebrow">Fall Funland · Sept 19 – Nov 8, 2026</span>
+            <span class="hvf-hero-title">The <em>Best Price</em> Of The Season Is Here</span>
+            <span class="hvf-hero-tagline">Five days only — grab Flex Admission at its lowest price of the year, good for any day the Village is open this fall.</span>
+        </div>
+    </div>
+
+    <!-- BENEFITS -->
+    <div class="hvf-benefits">
+        <div class="hvf-benefits-grid">
+            <div class="hvf-benefit">
+                <span class="hvf-benefit-icon">🎟️</span>
+                <span class="hvf-benefit-title">Any Day You Like</span>
+                <span class="hvf-benefit-desc">No date lock-in at checkout</span>
+            </div>
+            <div class="hvf-benefit">
+                <span class="hvf-benefit-icon">🌽</span>
+                <span class="hvf-benefit-title">Corn Maze &amp; Carousel</span>
+                <span class="hvf-benefit-desc">Plus the tire play yard &amp; pedal karts</span>
+            </div>
+            <div class="hvf-benefit">
+                <span class="hvf-benefit-icon">🎪</span>
+                <span class="hvf-benefit-title">Boardwalk Games</span>
+                <span class="hvf-benefit-desc">Bank Shot, roller skating &amp; more</span>
+            </div>
+            <div class="hvf-benefit">
+                <span class="hvf-benefit-icon">🧙‍♀️</span>
+                <span class="hvf-benefit-title">Sanderson Sisters</span>
+                <span class="hvf-benefit-desc">Live every Saturday, 12–2pm</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- GALLERY -->
+    <div class="hvf-gallery">
+        <div class="hvf-gallery-header hvfr">
+            <span class="hvf-eye">Around The Village</span>
+            <span class="hvf-section-title">A season of <em>Fall Funland</em></span>
+        </div>
+        <div class="hvf-gallery-grid">
+            <div class="hvf-gcard hvfr"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/harbaugh/design/assets/social/harbaugh-social-01.jpg" alt="Kids playing in the giant tire play yard at Harbaugh Village" loading="lazy"><div class="hvf-gcard-label">Tire Play Yard</div></div>
+            <div class="hvf-gcard hvfr d1"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/harbaugh/design/assets/social/harbaugh-social-03.jpg" alt="Kids riding a pedal kart around the track at Harbaugh Village" loading="lazy"><div class="hvf-gcard-label">Pedal Kart Track</div></div>
+            <div class="hvf-gcard hvfr d2"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/harbaugh/design/assets/social/harbaugh-social-04.jpg" alt="A family riding the tubing hill at sunset at Harbaugh Village" loading="lazy"><div class="hvf-gcard-label">Tubing Hill</div></div>
+            <div class="hvf-gcard hvfr d3 hvf-gcard-mark"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/harbaugh/design/assets/ticketspice/harbaugh-ts-hero.png" alt="Fun Land at Harbaugh Village"></div>
+        </div>
+    </div>
+
+    <!-- TICKETS -->
+    <div class="hvf-tickets" id="tickets">
+        <div class="hvf-tickets-header hvfr">
+            <span class="hvf-eye">Admission</span>
+            <span class="hvf-section-title">Best <em>ticket value</em> of the year</span>
+        </div>
+        <div class="hvf-grid">
+            <div class="hvf-card hvf-card-primary hvfr">
+              <span class="hvf-card-badge hvf-card-badge-pumpkin">Best Price of the Season</span>
+              <span class="hvf-card-icon">🎃</span>
+              <h3>Flex Admission</h3>
+              <ul class="hvf-card-bullets">
+                <li>✓ Valid any operating day, Sept 19 – Nov 8</li>
+                <li>✓ No date lock-in at checkout</li>
+                <li>✓ The lowest Flex price of the whole season</li>
+              </ul>
+              <div class="hvf-oneprice">
+                <span class="hvf-oneprice-amt">$13.95</span>
+                <span class="hvf-oneprice-unit">Per Person · Online Only</span>
+                <span class="hvf-oneprice-lead">One price. Any day. Best deal all season.</span>
+                <span class="hvf-oneprice-proof">Flex jumps to <strong>$15.95</strong> the moment Early Bird starts Aug 24, then <strong>$17.95</strong> after that — this 5-day window is as low as it goes.</span>
+              </div>
+              <span class="hvf-card-note">*plus applicable taxes and fees</span>
+            </div>
+            <div class="hvf-card hvf-card-secondary hvfr d2">
+              <span class="hvf-card-badge hvf-card-badge-green">Unlimited Visits</span>
+              <span class="hvf-card-icon">🎫</span>
+              <h3>Season Pass</h3>
+              <ul class="hvf-card-bullets">
+                <li>🍂 Unlimited visits, every operating day this fall</li>
+                <li>🌽 The corn maze, carousel &amp; boardwalk games</li>
+                <li>🎢 The tire play yard, pedal karts &amp; tubing hill</li>
+                <li>🧙‍♀️ Every Sanderson Sisters show included</li>
+              </ul>
+              <div class="hvf-price-compare">
+                <span class="hvf-price-was">Regular price <s>$44.95</s></span>
+                <span class="hvf-price-now">$34.95</span>
+                <span class="hvf-price-now-unit">Flash Price · Per Person</span>
+              </div>
+              <span class="hvf-card-note">*plus applicable taxes and fees</span>
+            </div>
+          </div>
+    </div>
+
+    <!-- INFO ROW -->
+    <div class="hvf-info">
+        <div class="hvf-info-grid">
+            <div class="hvf-info-item">
+                <span class="hvf-info-icon">📍</span>
+                <span class="hvf-info-label">Location</span>
+                <span class="hvf-info-value">Harbaugh Village<br>126 Bridgeton Pike, Mullica Hill, NJ 08062</span>
+            </div>
+            <div class="hvf-info-item">
+                <span class="hvf-info-icon">📅</span>
+                <span class="hvf-info-label">Fall Funland Dates</span>
+                <span class="hvf-info-value">Sept 19 – Nov 8, 2026<br>See the full calendar below</span>
+            </div>
+            <div class="hvf-info-item">
+                <span class="hvf-info-icon">🎃</span>
+                <span class="hvf-info-label">Flash Sale</span>
+                <span class="hvf-info-value">On Sale Now<br>August 19 – 23</span>
+            </div>
+            <div class="hvf-info-item">
+                <span class="hvf-info-icon">🧙‍♀️</span>
+                <span class="hvf-info-label">Sanderson Sisters</span>
+                <span class="hvf-info-value">Every Saturday<br>12pm – 2pm</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- GOOD TO KNOW -->
+    <div class="hvf-fine">
+        <div class="hvf-fine-inner hvfr">
+            <span class="hvf-fine-title">Good To Know — Here's What Your Ticket Gets You</span>
+            <span class="hvf-fine-sub">Fall Funland runs weekends September through November. Here's the full calendar your Flex Admission or Season Pass unlocks:</span>
+            <div class="hvf-fine-table">
+                <div class="hvf-fine-row">
+                    <span class="hvf-fine-row-label">September</span>
+                    <span class="hvf-fine-row-val">19–20 &amp; 26–27 only · Sat 12–7pm · Sun 12–6pm</span>
+                </div>
+                <div class="hvf-fine-row">
+                    <span class="hvf-fine-row-label">October</span>
+                    <span class="hvf-fine-row-val">Every Sat &amp; Sun from Oct 7 · 10am–7pm</span>
+                </div>
+                <div class="hvf-fine-row">
+                    <span class="hvf-fine-row-label">Halloween — Sat Oct 31</span>
+                    <span class="hvf-fine-row-val">Short day · 10am–2pm</span>
+                </div>
+                <div class="hvf-fine-row">
+                    <span class="hvf-fine-row-label">November</span>
+                    <span class="hvf-fine-row-val">7–8, closing weekend</span>
+                </div>
+                <div class="hvf-fine-row">
+                    <span class="hvf-fine-row-label">Sanderson Sisters</span>
+                    <span class="hvf-fine-row-val">Every Saturday in the fall · 12–2pm</span>
+                </div>
+            </div>
+            <p>Buying during the flash sale locks in your ticket at the lowest price of the season — you'll pick your visit day (or days, with a Season Pass) any time the Village is open per the calendar above. No need to decide today.</p>
+            <div class="hvf-fine-contact">Questions about your visit? Reach out to the Harbaugh Village team any time.</div>
+        </div>
+    </div>
+
+</div><!-- end #hvf-funnel -->
+
+<script>
+    (function() {
+        document.querySelectorAll('#hvf-funnel a[href^="#"]').forEach(function(a) {
+            a.addEventListener('click', function(e) {
+                var target = document.querySelector(a.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    })();
+</script>
+
+<!-- Scroll-reveal — ported verbatim from the house pattern -->
+<script>
+    (function() {
+        var obs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) {
+                if (e.isIntersecting) { e.target.classList.add('hvfon'); obs.unobserve(e.target); }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('#hvf-funnel .hvfr').forEach(function(el) {
+            obs.observe(el);
+            if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('hvfon');
+        });
+    })();
+</script>
+
+<!-- ============================================================
+     HARBAUGH VILLAGE — FLOATING BUY TICKETS BUTTON
+     Paste as a SEPARATE Custom HTML block in TicketSpice (not nested
+     inside the page-header block above). Fixed to viewport bottom.
+     ============================================================ -->
+<style>
+    #hvf-float-btn {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 9999 !important;
+        padding: 12px 16px 20px !important;
+        background: linear-gradient(to top, rgba(255,248,236,0.97) 55%, transparent) !important;
+        display: flex !important;
+        justify-content: center !important;
+        transition: opacity 0.35s ease, transform 0.35s ease !important;
+    }
+    #hvf-float-btn.hvf-float-hidden {
+        opacity: 0 !important;
+        transform: translateY(24px) !important;
+        pointer-events: none !important;
+    }
+    #hvf-float-btn a {
+        display: block !important;
+        width: 100% !important;
+        max-width: 480px !important;
+        background: #e8730a !important;
+        color: #ffffff !important;
+        font-family: 'Fredoka', 'Trebuchet MS', sans-serif !important;
+        font-size: 22px !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.02em !important;
+        text-align: center !important;
+        text-decoration: none !important;
+        padding: 18px 28px !important;
+        border-radius: 50px !important;
+        box-shadow: 0 8px 32px rgba(232,115,10,0.40) !important;
+        transition: transform 0.15s, box-shadow 0.15s, background 0.2s !important;
+        border: none !important;
+        cursor: pointer !important;
+    }
+    #hvf-float-btn a:hover {
+        background: #a94e02 !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 14px 40px rgba(232,115,10,0.55) !important;
+        color: #ffffff !important;
+        text-decoration: none !important;
+    }
+</style>
+
+<div id="hvf-float-btn">
+    <a href="#ticketBlock">Buy Tickets</a>
+</div>
+
+<script>
+    (function() {
+        var floatBtn = document.getElementById('hvf-float-btn');
+        if (floatBtn) {
+            floatBtn.querySelector('a').addEventListener('click', function() {
+                floatBtn.classList.add('hvf-float-hidden');
+            });
+        }
+    })();
+</script>
+
+</body>
+</html>
