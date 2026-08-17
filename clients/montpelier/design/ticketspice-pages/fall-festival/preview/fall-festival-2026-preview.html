@@ -745,8 +745,8 @@
 <div id="ticketBlock"><h2>Native TicketSpice cart renders here</h2>
 <div class="c7-cart-stub">Ticket types, prices, date + time selection, the peak +$5 bump and the add-ons stay native in TicketSpice.</div></div></body></html>
 <!-- ============================================================================
-     CrowdView client announcement block  ·  v2  ·  2026-08-14
-     Project: crowdview-client-announcements / popup-render-block-install (WS6)
+     CrowdView client pop-up block  ·  v3  ·  2026-08-16
+     Project: crowdview-client-announcements / page-inventory (self-identifying)
 
      WHAT IT DOES
      Renders a pop-up on this TicketSpice page whenever the client has one
@@ -763,17 +763,26 @@
      crowd7-public and ships by git push, which is exactly what puts it out of
      her reach. This block is the narrow carve-out.
 
-     INSTALL — two tokens, then paste at the END of the page's content HTML:
-       C7A_ACCOUNT  the account slug in CrowdView   (e.g. 'eckerts')
-       C7A_PAGE     the PAGE slug in CrowdView      (e.g. 'belleville')
+     INSTALL — paste at the END of the page's content HTML. THAT IS ALL.
+     There are NO tokens to fill in as of v3.
 
-     ⚠️  C7A_PAGE is the `page.slug` COLUMN IN THE DATABASE, which is NOT
-     always the crowd7-public folder name. Eckert's `versailles` folder, for
-     instance, backs TWO page rows: 'versailles-ky' and
-     'versailles-sunflower-festival'. Read the slug off the page picker in the
-     client portal (or `select slug from page where account_id = …`) — do not
-     infer it from the directory you are editing. A wrong slug fails silently:
-     no banner, no error, nothing to see.
+     The block identifies itself: it sends its own address
+     (location.origin + location.pathname) and CrowdView matches that against
+     page.ts_url, which scripts/sync_ts_pages.mjs fills from the TicketSpice
+     form's own publishedPath. Nobody types a slug, so nobody can mistype one.
+
+     v1/v2 required two hand-filled tokens (C7A_ACCOUNT / C7A_PAGE) and a
+     wrong value failed SILENTLY — no banner, no error, nothing to debug.
+     That whole failure class is gone. Blocks already pasted with v1/v2 tokens
+     keep working: the endpoint still accepts ?account=&page= (see
+     edge/api-live-announcement.js) and there is no rush to re-paste them.
+
+     PREVIEW SAFETY (v3) — the block does NOT render on a TicketSpice preview
+     link. A TS page publishes window.__BOOTSTRAP__.appSettings.isPreview, and
+     v3 honours it. This exists because a real client's first exploratory
+     pop-up ("Test Title" / "Test Message") went live to buyers on Jack's
+     Lighted Trail for ~4 hours on 2026-08-14. A preview URL is now a genuine
+     dry run.
 
      THEME (optional, per-page) — fill in the :root block below with values
      read OFF THE PAGE'S OWN CONTENT HTML (never invented). Omit any token you
@@ -827,15 +836,28 @@
   if (window.__c7aInit) return;          // never double-init if pasted twice
   window.__c7aInit = true;
 
-  var C7A_ACCOUNT = 'montpelier';
-  var C7A_PAGE    = 'fall-festival-2026';
-  var ENDPOINT    = 'https://crowd7-team-hub.vercel.app/api/live-announcement';
+  var ENDPOINT = 'https://crowd7-team-hub.vercel.app/api/live-announcement';
 
-  if (C7A_ACCOUNT.indexOf('__') === 0 || C7A_PAGE.indexOf('__') === 0) {
-    // Unfilled tokens — a paste that was never configured. Do nothing rather
-    // than query for an account literally named 'montpelier'.
-    return;
+  // Never render on a TicketSpice PREVIEW link, so a client can preview a page
+  // and see exactly what buyers see WITHOUT their draft going live. Read
+  // defensively: __BOOTSTRAP__ is an internal Webconnex structure, so treat a
+  // parse failure as "not a preview" rather than blocking the real page.
+  function isPreview() {
+    try {
+      var b = window.__BOOTSTRAP__;
+      if (!b || !b.appSettings) return false;
+      var s = typeof b.appSettings === 'string' ? JSON.parse(b.appSettings) : b.appSettings;
+      return s && s.isPreview === true;
+    } catch (e) { return false; }
   }
+  if (isPreview()) return;
+
+  // Self-identification. `location` is the key, NOT __BOOTSTRAP__.formURL:
+  // both carry the same value, but location is guaranteed by the browser
+  // while __BOOTSTRAP__ can change shape without notice. Query string and
+  // hash are dropped — ticketing links are covered in UTM tags, and the
+  // server normalizes the same way.
+  var PAGE_URL = location.origin + location.pathname;
 
   // Small, stable string hash (djb2) — only used as a sessionStorage dedupe
   // key, never for anything security-relevant.
@@ -932,9 +954,7 @@
   }
 
   function go() {
-    var url = ENDPOINT
-      + '?account=' + encodeURIComponent(C7A_ACCOUNT)
-      + '&page='    + encodeURIComponent(C7A_PAGE);
+    var url = ENDPOINT + '?url=' + encodeURIComponent(PAGE_URL);
     // No credentials — the endpoint is public and must stay that way for the
     // CORS wildcard to be valid.
     fetch(url, { credentials: 'omit', mode: 'cors' })
@@ -954,4 +974,4 @@
   }
 })();
 </script>
-<!-- =================== END CrowdView announcement block =================== -->
+<!-- =================== END CrowdView pop-up block =================== -->
