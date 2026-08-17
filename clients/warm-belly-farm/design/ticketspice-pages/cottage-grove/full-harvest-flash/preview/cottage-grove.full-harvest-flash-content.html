@@ -1,0 +1,759 @@
+<!-- WARM BELLY FARM — COTTAGE GROVE · FULL HARVEST FLASH SALE 🌾 · Aug 18-22, 2026
+     Build plan: work/crowd7/projects/warm-belly-full-harvest-flash-page/artifacts/build-plan.md
+     Structural parent: Eckert's Millstadt farm-admission-2026 (2-card grid, sticky nav, full-bleed
+     hero, gallery marquee, reveal-on-scroll). Barn-red palette, day-tiered admission, and the
+     Christmas-in-July / s'mores popups are NOT carried over, per the build plan's de-clone note.
+     Scoped under #wbf-funnel (fresh id, no collision risk with any other client's funnel).
+     Single-phase flash page — no phase-engine JS, no countdown clock, static "Ends Aug 22" copy only,
+     per Mat's Riamede-precedent directive (marketing pages switch phases by a manual paste).
+     Locked pricing (7/24/26 strategy call, client on the line): Any-Day Admission $11.95 online,
+     struck against the $18 door price, capped at 1,500 tickets. Season Pass $29.95, marketed "40% off",
+     struck against the $45 season-pass price. Any-Day is deliberately NOT date-based — framed here as
+     the benefit it is, not a technical ticket note. Ticket insurance is OFF — no insurance UI below.
+     GATE map keys ("Any-Day Admission" / "Season Pass") are PLACEHOLDER ticket names pending a live
+     TicketSpice cart dump — swap once confirmed, per crowd7/data/clients/_patterns/slash-through-pricing.md.
+     Assets: crowd7-public/clients/warm-belly-farm/design/assets/fall-festival/ + /cottage-grove/ only —
+     ft-atkinson, u-pick-apples, garden-center, events and general are a different property/season and
+     are deliberately excluded per the build plan's location warning.
+     Address, hours and festival attractions below are public information (warmbelly.farm / Visit
+     Madison / Yelp) confirmed 2026-08-17; season window (Sept 12 – Nov 1, 2026) per the Crowd7 Master
+     Calendar, the dates source of truth. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+    #wbf-funnel {
+        width: 100vw !important;
+        position: relative !important;
+        left: 50% !important;
+        right: 50% !important;
+        margin-left: -50vw !important;
+        margin-right: -50vw !important;
+        overflow: hidden !important;
+        font-family: 'Open Sans', sans-serif !important;
+        background: #FBF3E4 !important;
+        color: #2B1B10 !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    /* ── BANNER ── */
+    #wbf-funnel .wbf-banner {
+        width: 100% !important;
+        background: #7A3410 !important;
+        color: white !important;
+        text-align: center !important;
+        padding: 11px 20px !important;
+        font-size: 0.8rem !important;
+        letter-spacing: 0.06em !important;
+        display: block !important;
+        box-sizing: border-box !important;
+    }
+    #wbf-funnel .wbf-banner-inner {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 10px !important;
+        flex-wrap: wrap !important;
+    }
+    #wbf-funnel .wbf-dot {
+        width: 3px !important; height: 3px !important;
+        background: rgba(255,255,255,0.4) !important;
+        border-radius: 50% !important;
+        display: inline-block !important;
+        flex-shrink: 0 !important;
+    }
+
+    /* ── NAV ── */
+    #wbf-funnel .wbf-nav {
+        width: 100% !important;
+        padding: 0 40px !important;
+        height: 64px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        background: rgba(122,52,16,0.97) !important;
+        position: sticky !important;
+        top: 0 !important;
+        z-index: 100 !important;
+        box-sizing: border-box !important;
+        box-shadow: 0 2px 16px rgba(122,52,16,0.35) !important;
+    }
+    #wbf-funnel .wbf-logo-wrap {
+        display: flex !important;
+        align-items: center !important;
+        height: 40px !important; width: 170px !important;
+        flex-shrink: 0 !important; overflow: hidden !important;
+    }
+    #wbf-funnel .wbf-logo-wrap img {
+        height: 40px !important; width: 170px !important;
+        max-width: 170px !important; max-height: 40px !important;
+        object-fit: contain !important; object-position: left center !important;
+        display: block !important;
+    }
+    #wbf-funnel .wbf-nav-right {
+        display: flex !important; align-items: center !important; gap: 16px !important;
+    }
+    #wbf-funnel .wbf-nav-loc {
+        font-size: 0.78rem !important;
+        color: rgba(255,255,255,0.65) !important;
+        display: flex !important; align-items: center !important; gap: 5px !important;
+    }
+    #wbf-funnel .wbf-nav-cta {
+        background: white !important;
+        color: #C1571C !important;
+        padding: 9px 22px !important;
+        border-radius: 50px !important;
+        font-size: 0.83rem !important;
+        font-weight: 700 !important;
+        text-decoration: none !important;
+        letter-spacing: 0.03em !important;
+        transition: all 0.3s ease !important;
+        white-space: nowrap !important;
+        display: inline-block !important;
+    }
+    #wbf-funnel .wbf-nav-cta:hover {
+        background: #FBE4C8 !important;
+        color: #C1571C !important;
+        text-decoration: none !important;
+    }
+
+    /* ── HERO ── */
+    #wbf-funnel .wbf-hero {
+        width: 100% !important;
+        min-height: clamp(320px, 55vw, 580px) !important;
+        position: relative !important;
+        display: flex !important;
+        align-items: flex-end !important;
+        overflow: hidden !important;
+        background-image: url('https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/warm-belly-farm/design/assets/fall-festival/LNHL0887.jpg') !important;
+        background-size: cover !important;
+        background-position: center 45% !important;
+    }
+    #wbf-funnel .wbf-hero-overlay {
+        position: absolute !important;
+        inset: 0 !important;
+        background: linear-gradient(to bottom, rgba(43,27,16,0.15) 0%, rgba(43,27,16,0.25) 40%, rgba(43,27,16,0.72) 100%) !important;
+        z-index: 1 !important;
+    }
+    #wbf-funnel .wbf-hero-content {
+        position: relative !important;
+        z-index: 2 !important;
+        padding: 0 48px 48px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    #wbf-funnel .wbf-hero-eyebrow {
+        font-size: 0.7rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.2em !important;
+        text-transform: uppercase !important;
+        color: #F5C77E !important;
+        margin-bottom: 10px !important;
+        display: block !important;
+        opacity: 0;
+        animation: wbfFadeUp 0.6s ease 0.2s forwards;
+    }
+    #wbf-funnel .wbf-hero-title {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: clamp(2.4rem, 7vw, 4.6rem) !important;
+        font-weight: 700 !important;
+        color: white !important;
+        line-height: 1.05 !important;
+        display: block !important;
+        text-shadow: 0 2px 20px rgba(0,0,0,0.35) !important;
+        opacity: 0;
+        animation: wbfFadeUp 0.7s ease 0.35s forwards;
+    }
+    #wbf-funnel .wbf-hero-title em { font-style: italic !important; color: #F5C77E !important; }
+    #wbf-funnel .wbf-hero-sub {
+        font-size: clamp(0.95rem, 1.6vw, 1.15rem) !important;
+        color: rgba(255,255,255,0.9) !important;
+        max-width: 580px !important;
+        line-height: 1.5 !important;
+        margin-top: 14px !important;
+        display: block !important;
+        opacity: 0;
+        animation: wbfFadeUp 0.7s ease 0.5s forwards;
+    }
+    @keyframes wbfFadeUp {
+        from { opacity: 0; transform: translateY(16px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── BENEFITS ── */
+    #wbf-funnel .wbf-benefits {
+        width: 100% !important;
+        background: white !important;
+        padding: 36px 48px !important;
+        display: block !important;
+        box-sizing: border-box !important;
+        border-bottom: 1px solid rgba(193,87,28,0.1) !important;
+    }
+    #wbf-funnel .wbf-benefits-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+    #wbf-funnel .wbf-benefit {
+        text-align: center !important;
+        padding: 8px 20px !important;
+        position: relative !important;
+    }
+    #wbf-funnel .wbf-benefit:not(:last-child)::after {
+        content: '' !important;
+        position: absolute !important;
+        right: 0 !important; top: 15% !important; bottom: 15% !important;
+        width: 1px !important;
+        background: rgba(193,87,28,0.12) !important;
+    }
+    #wbf-funnel .wbf-benefit-icon { font-size: 1.7rem !important; margin-bottom: 8px !important; display: block !important; }
+    #wbf-funnel .wbf-benefit-title {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 1rem !important; font-weight: 600 !important;
+        color: #2B1B10 !important; margin-bottom: 3px !important; display: block !important;
+    }
+    #wbf-funnel .wbf-benefit-desc {
+        font-size: 0.75rem !important; color: #8A6A50 !important;
+        line-height: 1.4 !important; display: block !important;
+    }
+
+    /* ── GALLERY ── */
+    #wbf-funnel .wbf-gallery {
+        width: 100% !important;
+        background: #FBF3E4 !important;
+        padding: 56px 0 !important;
+        overflow: hidden !important;
+        display: block !important;
+    }
+    #wbf-funnel .wbf-gallery-header {
+        text-align: center !important;
+        padding: 0 48px !important;
+        margin-bottom: 32px !important;
+    }
+    #wbf-funnel .wbf-gallery-mask {
+        width: 100% !important; overflow: hidden !important;
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%) !important;
+        mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%) !important;
+    }
+    #wbf-funnel .wbf-gallery-track {
+        display: flex !important; gap: 16px !important;
+        width: max-content !important;
+        animation: wbfMarquee 42s linear infinite !important;
+        padding: 8px 0 !important;
+    }
+    #wbf-funnel .wbf-gallery-track:hover { animation-play-state: paused !important; }
+    @keyframes wbfMarquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    #wbf-funnel .wbf-gcard {
+        width: 340px !important; height: 240px !important;
+        border-radius: 20px !important; overflow: hidden !important;
+        flex-shrink: 0 !important; position: relative !important;
+        background: linear-gradient(135deg, #F5C77E, #C1571C) !important;
+        transition: transform 0.4s ease, box-shadow 0.4s ease !important;
+    }
+    #wbf-funnel .wbf-gcard:hover {
+        transform: scale(1.03) translateY(-5px) !important;
+        box-shadow: 0 24px 50px rgba(122,52,16,0.25) !important; z-index: 2 !important;
+    }
+    #wbf-funnel .wbf-gcard img {
+        width: 100% !important; height: 100% !important;
+        object-fit: cover !important; display: block !important;
+        position: absolute !important; inset: 0 !important;
+    }
+    #wbf-funnel .wbf-gcard-label {
+        position: absolute !important; bottom: 12px !important; left: 12px !important;
+        background: rgba(43,27,16,0.62) !important; backdrop-filter: blur(8px) !important;
+        color: white !important; font-size: 0.7rem !important; letter-spacing: 0.05em !important;
+        font-weight: 700 !important; padding: 5px 12px !important; border-radius: 20px !important;
+        z-index: 2 !important;
+    }
+
+    /* ── TICKET CARDS ── */
+    #wbf-funnel .wbf-tickets {
+        width: 100% !important;
+        background: #F7E9D3 !important;
+        padding: 72px 48px !important;
+        display: block !important; box-sizing: border-box !important;
+    }
+    #wbf-funnel .wbf-tickets-header { text-align: center !important; margin-bottom: 48px !important; }
+    #wbf-funnel .wbf-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 24px !important;
+        justify-content: center !important;
+        max-width: 820px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    #wbf-funnel .wbf-card {
+        border-radius: 20px !important;
+        padding: 36px 32px !important;
+        position: relative !important;
+        overflow: hidden !important;
+        transition: transform 0.35s ease, box-shadow 0.35s ease !important;
+        display: flex !important; flex-direction: column !important;
+    }
+    #wbf-funnel .wbf-card:hover { transform: translateY(-6px) !important; }
+
+    #wbf-funnel .wbf-card-rust { background: #C1571C !important; color: white !important; }
+    #wbf-funnel .wbf-card-rust:hover { box-shadow: 0 20px 44px rgba(193,87,28,0.35) !important; }
+
+    #wbf-funnel .wbf-card-forest { background: #223B27 !important; color: white !important; }
+    #wbf-funnel .wbf-card-forest:hover { box-shadow: 0 20px 44px rgba(0,0,0,0.35) !important; }
+    #wbf-funnel .wbf-card-forest h3 { color: white !important; }
+    #wbf-funnel .wbf-card-forest .wbf-card-bullets li { color: rgba(255,255,255,0.85) !important; }
+    #wbf-funnel .wbf-card-forest .wbf-card-note { color: rgba(255,255,255,0.45) !important; }
+    #wbf-funnel .wbf-card-forest .wbf-price-num { color: #E3A63E !important; }
+
+    #wbf-funnel .wbf-card-badges {
+        display: flex !important; flex-wrap: wrap !important; gap: 8px !important;
+        margin-bottom: 14px !important;
+    }
+    #wbf-funnel .wbf-card-badge {
+        display: inline-block !important;
+        font-size: 0.62rem !important; font-weight: 700 !important;
+        letter-spacing: 0.14em !important; text-transform: uppercase !important;
+        padding: 4px 10px !important; border-radius: 20px !important;
+        width: fit-content !important;
+    }
+    #wbf-funnel .wbf-card-badge-light { background: rgba(255,255,255,0.18) !important; color: white !important; }
+    #wbf-funnel .wbf-card-badge-gold { background: #E3A63E !important; color: #402B08 !important; }
+    #wbf-funnel .wbf-card-badge-urgent { background: #FBF3E4 !important; color: #7A3410 !important; }
+
+    #wbf-funnel .wbf-card-photo {
+        margin: -36px -32px 20px !important;
+        height: 150px !important;
+        overflow: hidden !important;
+        position: relative !important;
+    }
+    #wbf-funnel .wbf-card-photo img {
+        width: 100% !important; height: 100% !important;
+        object-fit: cover !important; display: block !important;
+    }
+    #wbf-funnel .wbf-card-photo::after {
+        content: '' !important;
+        position: absolute !important; inset: 0 !important;
+        background: linear-gradient(to bottom, transparent 55%, rgba(34,59,39,0.6) 100%) !important;
+    }
+
+    #wbf-funnel .wbf-card-icon { font-size: 2.6rem !important; margin-bottom: 14px !important; display: block !important; }
+
+    #wbf-funnel .wbf-card h3 {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 1.55rem !important; font-weight: 700 !important;
+        line-height: 1.15 !important; margin-bottom: 14px !important; display: block !important;
+    }
+    #wbf-funnel .wbf-card-rust h3 { color: white !important; }
+
+    #wbf-funnel .wbf-card-bullets {
+        list-style: none !important; padding: 0 !important; margin: 0 0 auto !important;
+        display: flex !important; flex-direction: column !important; gap: 6px !important;
+    }
+    #wbf-funnel .wbf-card-bullets li {
+        font-size: 0.95rem !important; line-height: 1.55 !important;
+        display: flex !important; align-items: flex-start !important; gap: 8px !important;
+    }
+    #wbf-funnel .wbf-card-rust .wbf-card-bullets li { color: rgba(255,255,255,0.88) !important; }
+
+    /* Marketing price display on our own cards — struck gate price shown as static copy.
+       This is DECORATIVE, not the live TicketSpice cart; the JS/CSS pattern further below
+       (targeting #ticketBlock) is what handles the real native cart's struck price. */
+    #wbf-funnel .wbf-card-price {
+        margin-top: 20px !important;
+        padding-top: 14px !important;
+        border-top: 1px solid rgba(255,255,255,0.18) !important;
+    }
+    #wbf-funnel .wbf-price-from {
+        font-size: 0.68rem !important; text-transform: uppercase !important;
+        letter-spacing: 0.12em !important; opacity: 0.75 !important; display: block !important;
+        margin-bottom: 2px !important;
+    }
+    #wbf-funnel .wbf-price-num {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 2.3rem !important; font-weight: 700 !important;
+        line-height: 1 !important; display: block !important;
+        color: #FBF3E4 !important;
+    }
+    #wbf-funnel .wbf-price-label {
+        font-size: 0.78rem !important; opacity: 0.8 !important;
+        display: block !important; margin-top: 4px !important;
+    }
+
+    #wbf-funnel .wbf-card-note {
+        font-size: 0.72rem !important; font-style: italic !important;
+        margin-top: 14px !important; display: block !important; line-height: 1.5 !important;
+    }
+    #wbf-funnel .wbf-card-rust .wbf-card-note { color: rgba(255,255,255,0.6) !important; }
+
+    /* ── INFO ROW ── */
+    #wbf-funnel .wbf-info {
+        width: 100% !important;
+        background: #7A3410 !important;
+        padding: 0 !important; display: block !important; box-sizing: border-box !important;
+    }
+    #wbf-funnel .wbf-info-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+    #wbf-funnel .wbf-info-item {
+        text-align: center !important;
+        padding: 28px 20px !important;
+        position: relative !important;
+    }
+    #wbf-funnel .wbf-info-item:not(:last-child)::after {
+        content: '' !important; position: absolute !important;
+        right: 0 !important; top: 20% !important; bottom: 20% !important;
+        width: 1px !important; background: rgba(255,255,255,0.16) !important;
+    }
+    #wbf-funnel .wbf-info-icon { font-size: 1.5rem !important; display: block !important; margin-bottom: 6px !important; }
+    #wbf-funnel .wbf-info-label {
+        font-size: 0.62rem !important; font-weight: 700 !important;
+        letter-spacing: 0.16em !important; text-transform: uppercase !important;
+        color: rgba(255,255,255,0.58) !important; display: block !important; margin-bottom: 4px !important;
+    }
+    #wbf-funnel .wbf-info-value {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 0.95rem !important; font-weight: 600 !important;
+        color: white !important; display: block !important; line-height: 1.3 !important;
+    }
+    #wbf-funnel .wbf-info-note {
+        text-align: center !important; font-size: 0.78rem !important;
+        color: rgba(255,255,255,0.72) !important; margin: 0 !important;
+        padding: 0 20px 22px !important;
+    }
+
+    /* ── REVEAL ── */
+    #wbf-funnel .wbfr {
+        opacity: 0 !important; transform: translateY(28px) !important;
+        transition: opacity 0.7s cubic-bezier(.16,1,.3,1), transform 0.7s cubic-bezier(.16,1,.3,1) !important;
+    }
+    #wbf-funnel .wbfr.wbfon { opacity: 1 !important; transform: none !important; }
+    #wbf-funnel .wbfr.d1 { transition-delay: 0.1s !important; }
+    #wbf-funnel .wbfr.d2 { transition-delay: 0.2s !important; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+        #wbf-funnel .wbf-nav { padding: 0 24px !important; }
+        #wbf-funnel .wbf-hero-content { padding: 0 24px 32px !important; }
+        #wbf-funnel .wbf-benefits { padding: 32px 24px !important; }
+        #wbf-funnel .wbf-gallery-header { padding: 0 24px !important; }
+        #wbf-funnel .wbf-gcard { width: 280px !important; height: 200px !important; }
+        #wbf-funnel .wbf-tickets { padding: 56px 24px !important; }
+        #wbf-funnel .wbf-grid { grid-template-columns: 1fr !important; max-width: 420px !important; }
+        #wbf-funnel .wbf-info-grid { grid-template-columns: 1fr 1fr !important; }
+        #wbf-funnel .wbf-info-item:nth-child(2n)::after { display: none !important; }
+    }
+    @media (max-width: 560px) {
+        #wbf-funnel .wbf-nav { padding: 0 16px !important; }
+        #wbf-funnel .wbf-nav-loc { display: none !important; }
+        #wbf-funnel .wbf-hero-content { padding: 0 16px 24px !important; }
+        #wbf-funnel .wbf-benefits { padding: 24px 16px !important; }
+        #wbf-funnel .wbf-benefits-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 14px 0 !important; }
+        #wbf-funnel .wbf-benefit:nth-child(2n)::after { display: none !important; }
+        #wbf-funnel .wbf-gallery { padding: 40px 0 !important; }
+        #wbf-funnel .wbf-gallery-header { padding: 0 16px !important; margin-bottom: 24px !important; }
+        #wbf-funnel .wbf-gcard { width: 220px !important; height: 160px !important; }
+        #wbf-funnel .wbf-card-photo { height: 120px !important; }
+        #wbf-funnel .wbf-tickets { padding: 48px 16px !important; }
+        #wbf-funnel .wbf-grid { grid-template-columns: 1fr !important; }
+    }
+</style>
+
+<div id="wbf-funnel">
+
+    <!-- BANNER -->
+    <div class="wbf-banner">
+        <div class="wbf-banner-inner">
+            <span style="color: #ffffff !important;">🌾 <strong style="color: #ffffff !important;">Warm Belly Farm</strong></span>
+            <span class="wbf-dot"></span>
+            <span style="color: #ffffff !important;">Full Harvest Flash Sale · Ends Aug 22</span>
+            <span class="wbf-dot"></span>
+            <span style="color: #ffffff !important;">Cottage Grove, WI</span>
+        </div>
+    </div>
+
+    <!-- NAV -->
+    <div class="wbf-nav">
+        <div class="wbf-logo-wrap">
+            <img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/warm-belly-farm/design/assets/fall-festival/Warm-Belly-3D-2025.jpg" alt="Warm Belly Farm — Full Harvest">
+        </div>
+        <div class="wbf-nav-right">
+            <div class="wbf-nav-loc">
+                <svg width="12" height="12" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                    <circle cx="12" cy="11" r="3"/>
+                </svg>
+                Cottage Grove, WI
+            </div>
+            <a href="#ticketBlock" class="wbf-nav-cta">Get Tickets</a>
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <div class="wbf-hero">
+        <div class="wbf-hero-overlay"></div>
+        <div class="wbf-hero-content">
+            <span class="wbf-hero-eyebrow">Flash Sale · 5 Days Only</span>
+            <span class="wbf-hero-title">Full Harvest,<br><em>Flash Priced</em></span>
+            <span class="wbf-hero-sub">Five days only — August 18 through 22 — get Any-Day Admission and a Season Pass to Warm Belly Farm's Full Harvest Festival at their lowest price of the year. Corn maze, pumpkin patch, sunflower fields &amp; tractor rides, Cottage Grove, Sept 12 – Nov 1.</span>
+        </div>
+    </div>
+
+    <!-- BENEFITS -->
+    <div class="wbf-benefits">
+        <div class="wbf-benefits-grid">
+            <div class="wbf-benefit">
+                <span class="wbf-benefit-icon">🌽</span>
+                <span class="wbf-benefit-title">Corn Maze</span>
+                <span class="wbf-benefit-desc">Wind through the fields and find your way out</span>
+            </div>
+            <div class="wbf-benefit">
+                <span class="wbf-benefit-icon">🎃</span>
+                <span class="wbf-benefit-title">Pumpkin Patch</span>
+                <span class="wbf-benefit-desc">Pick your own, straight from the vine</span>
+            </div>
+            <div class="wbf-benefit">
+                <span class="wbf-benefit-icon">🌻</span>
+                <span class="wbf-benefit-title">Sunflower Fields</span>
+                <span class="wbf-benefit-desc">Golden acres, perfect for a family photo</span>
+            </div>
+            <div class="wbf-benefit">
+                <span class="wbf-benefit-icon">🚜</span>
+                <span class="wbf-benefit-title">Tractor Rides</span>
+                <span class="wbf-benefit-desc">A guided cruise around the farm</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- GALLERY -->
+    <div class="wbf-gallery">
+        <div class="wbf-gallery-header wbfr">
+            <span class="wbf-eye" style="font-size:0.7rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:#3D7A4F;margin-bottom:8px;display:block;">Straight From The Farm</span>
+            <span class="wbf-title" style="font-family:'Zilla Slab','Times New Roman',serif;font-size:clamp(1.8rem, 4.5vw, 2.6rem);font-weight:700;color:#2B1B10;line-height:1.15;display:block;">A look at <em style="font-style:italic;color:#C1571C;">Full Harvest</em></span>
+        </div>
+        <div class="wbf-gallery-mask">
+            <div class="wbf-gallery-track">
+                <div class="wbf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/warm-belly-farm/design/assets/fall-festival/LNH_6070.jpg" alt="Sunflower fields at Warm Belly Farm" loading="lazy"><div class="wbf-gcard-label">Sunflower Fields</div></div>
+                <div class="wbf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/warm-belly-farm/design/assets/fall-festival/Nalyse.p_WB-94.jpg" alt="Family day at Warm Belly Farm's Full Harvest Festival" loading="lazy"><div class="wbf-gcard-label">Family Day</div></div>
+                <div class="wbf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/warm-belly-farm/design/assets/fall-festival/Nalyse.p_WB-102.jpg" alt="Guests picking pumpkins in the patch" loading="lazy"><div class="wbf-gcard-label">Pumpkin Patch</div></div>
+                <div class="wbf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/warm-belly-farm/design/assets/fall-festival/KS259131.jpg" alt="Guests winding through the corn maze" loading="lazy"><div class="wbf-gcard-label">Corn Maze</div></div>
+                <div class="wbf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/warm-belly-farm/design/assets/fall-festival/LNH_4528.jpg" alt="Guests on a tractor-drawn ride around the farm" loading="lazy"><div class="wbf-gcard-label">Tractor Rides</div></div>
+                <div class="wbf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/warm-belly-farm/design/assets/fall-festival/Nalyse.p_WB-21.jpg" alt="Fall afternoon at the Full Harvest Festival" loading="lazy"><div class="wbf-gcard-label">Full Harvest</div></div>
+                <div class="wbf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/warm-belly-farm/design/assets/cottage-grove/IMG_6606-1.jpg" alt="The grounds at Warm Belly Farm's Cottage Grove location" loading="lazy"><div class="wbf-gcard-label">Cottage Grove</div></div>
+                <div class="wbf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/warm-belly-farm/design/assets/cottage-grove/LNH_4417.jpg" alt="Fall colors at the Cottage Grove farm" loading="lazy"><div class="wbf-gcard-label">Fall at the Farm</div></div>
+                <!-- Duplicate for seamless loop -->
+                <div class="wbf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/warm-belly-farm/design/assets/fall-festival/LNH_6070.jpg" alt="Sunflower fields at Warm Belly Farm" loading="lazy"><div class="wbf-gcard-label">Sunflower Fields</div></div>
+                <div class="wbf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/warm-belly-farm/design/assets/fall-festival/Nalyse.p_WB-94.jpg" alt="Family day at Warm Belly Farm's Full Harvest Festival" loading="lazy"><div class="wbf-gcard-label">Family Day</div></div>
+                <div class="wbf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/warm-belly-farm/design/assets/fall-festival/Nalyse.p_WB-102.jpg" alt="Guests picking pumpkins in the patch" loading="lazy"><div class="wbf-gcard-label">Pumpkin Patch</div></div>
+                <div class="wbf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/warm-belly-farm/design/assets/fall-festival/KS259131.jpg" alt="Guests winding through the corn maze" loading="lazy"><div class="wbf-gcard-label">Corn Maze</div></div>
+                <div class="wbf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/warm-belly-farm/design/assets/fall-festival/LNH_4528.jpg" alt="Guests on a tractor-drawn ride around the farm" loading="lazy"><div class="wbf-gcard-label">Tractor Rides</div></div>
+                <div class="wbf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/warm-belly-farm/design/assets/fall-festival/Nalyse.p_WB-21.jpg" alt="Fall afternoon at the Full Harvest Festival" loading="lazy"><div class="wbf-gcard-label">Full Harvest</div></div>
+                <div class="wbf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/warm-belly-farm/design/assets/cottage-grove/IMG_6606-1.jpg" alt="The grounds at Warm Belly Farm's Cottage Grove location" loading="lazy"><div class="wbf-gcard-label">Cottage Grove</div></div>
+                <div class="wbf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/warm-belly-farm/design/assets/cottage-grove/LNH_4417.jpg" alt="Fall colors at the Cottage Grove farm" loading="lazy"><div class="wbf-gcard-label">Fall at the Farm</div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TICKETS -->
+    <div class="wbf-tickets" id="tickets">
+        <div class="wbf-tickets-header wbfr">
+            <span class="wbf-eye" style="font-size:0.7rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:#3D7A4F;margin-bottom:8px;display:block;">Full Harvest Flash Sale</span>
+            <span class="wbf-title" style="font-family:'Zilla Slab','Times New Roman',serif;font-size:clamp(1.8rem, 4.5vw, 2.6rem);font-weight:700;color:#2B1B10;line-height:1.15;display:block;">Lock in your season, <em style="font-style:italic;color:#C1571C;">before prices go up</em></span>
+        </div>
+        <div class="wbf-grid">
+
+            <!-- ① ANY-DAY ADMISSION — framed as a benefit (good any day, no date to pick), not a
+                 technical note, per the build plan's Any-Day framing section. -->
+            <div class="wbf-card wbf-card-rust wbfr">
+                <div class="wbf-card-badges">
+                    <span class="wbf-card-badge wbf-card-badge-light">Any-Day Admission</span>
+                    <span class="wbf-card-badge wbf-card-badge-urgent">⏰ Ends Aug 22</span>
+                </div>
+                <span class="wbf-card-icon">🎟️</span>
+                <h3>Any-Day Admission</h3>
+                <ul class="wbf-card-bullets">
+                    <li>🗓️ Good any day the farm is open — no date to lock in</li>
+                    <li>🌽 Corn maze, pumpkin patch, sunflower fields &amp; tractor rides</li>
+                    <li>🎟️ Limited to 1,500 tickets during this flash sale</li>
+                </ul>
+                <div class="wbf-card-price">
+                    <span class="wbf-price-from">flash price</span>
+                    <span class="wbf-price-num">$11.95</span>
+                    <span class="wbf-price-label">gate price <span style="text-decoration:line-through;opacity:0.75;">$18.00</span></span>
+                </div>
+                <span class="wbf-card-note">Per person online · gate price shown struck-through · valid any day, Sept 12 – Nov 1, 2026.</span>
+            </div>
+
+            <!-- ② SEASON PASS — "40% off" is client-facing marketing framing (separate from the raw
+                 gate-vs-online math below), per the build plan. -->
+            <div class="wbf-card wbf-card-forest wbfr d1">
+                <div class="wbf-card-photo"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/warm-belly-farm/design/assets/fall-festival/Nalyse.p_WB-19-1.jpg" alt="A family returning to Warm Belly Farm through the season" loading="lazy"></div>
+                <div class="wbf-card-badges">
+                    <span class="wbf-card-badge wbf-card-badge-gold">40% Off</span>
+                    <span class="wbf-card-badge wbf-card-badge-urgent">⏰ Ends Aug 22</span>
+                </div>
+                <span class="wbf-card-icon">🌟</span>
+                <h3>Season Pass</h3>
+                <ul class="wbf-card-bullets">
+                    <li>🍂 Unlimited visits, every day Full Harvest is open, Sept 12 – Nov 1</li>
+                    <li>🌽 Every festival activity included — corn maze, pumpkin patch, sunflower fields, tractor rides</li>
+                    <li>👨‍👩‍👧‍👦 Bring the whole family back again and again, all season long</li>
+                </ul>
+                <div class="wbf-card-price">
+                    <span class="wbf-price-from">flash price</span>
+                    <span class="wbf-price-num">$29.95</span>
+                    <span class="wbf-price-label">season pass price <span style="text-decoration:line-through;opacity:0.75;">$45.00</span></span>
+                </div>
+                <span class="wbf-card-note">One pass, the whole season · Sept 12 – Nov 1, 2026 · Cottage Grove only.</span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- INFO ROW -->
+    <div class="wbf-info">
+        <div class="wbf-info-grid">
+            <div class="wbf-info-item">
+                <span class="wbf-info-icon">📍</span>
+                <span class="wbf-info-label">Location</span>
+                <span class="wbf-info-value">4311 Vilas Hope Rd<br>Cottage Grove, WI 53527</span>
+            </div>
+            <div class="wbf-info-item">
+                <span class="wbf-info-icon">🗓️</span>
+                <span class="wbf-info-label">Season</span>
+                <span class="wbf-info-value">Sept 12 – Nov 1, 2026</span>
+            </div>
+            <div class="wbf-info-item">
+                <span class="wbf-info-icon">🕘</span>
+                <span class="wbf-info-label">Hours</span>
+                <span class="wbf-info-value">Fri 4–8 PM · Sat 10 AM–8 PM<br>Sun 10 AM–6 PM</span>
+            </div>
+            <div class="wbf-info-item">
+                <span class="wbf-info-icon">📞</span>
+                <span class="wbf-info-label">Questions</span>
+                <span class="wbf-info-value">(608) 699-9901</span>
+            </div>
+        </div>
+        <p class="wbf-info-note">Flash pricing on Any-Day Admission &amp; Season Passes ends August 22 — regular pricing begins August 23.</p>
+    </div>
+
+</div><!-- end #wbf-funnel -->
+
+<script>
+    (function() {
+        var obs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) {
+                if (e.isIntersecting) { e.target.classList.add('wbfon'); obs.unobserve(e.target); }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('#wbf-funnel .wbfr').forEach(function(el) {
+            obs.observe(el);
+            if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('wbfon');
+        });
+        document.querySelectorAll('#wbf-funnel a[href^="#"]').forEach(function(a) {
+            a.addEventListener('click', function(e) {
+                e.preventDefault();
+                var t = document.querySelector(a.getAttribute('href'));
+                if (t) t.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    })();
+</script>
+
+<style>
+    #wbf-float-btn {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 9999 !important;
+        padding: 12px 16px 20px !important;
+        background: linear-gradient(to top, rgba(251,243,228,0.97) 55%, transparent) !important;
+        display: flex !important;
+        justify-content: center !important;
+        transition: opacity 0.35s ease, transform 0.35s ease !important;
+    }
+    #wbf-float-btn.wbf-float-hidden {
+        opacity: 0 !important;
+        transform: translateY(24px) !important;
+        pointer-events: none !important;
+    }
+    #wbf-float-btn a {
+        display: block !important;
+        width: 100% !important;
+        max-width: 480px !important;
+        background: #C1571C !important;
+        color: #ffffff !important;
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 20px !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.06em !important;
+        text-align: center !important;
+        text-decoration: none !important;
+        padding: 17px 24px !important;
+        border-radius: 50px !important;
+        box-shadow: 0 8px 32px rgba(193,87,28,0.40) !important;
+        transition: transform 0.15s, box-shadow 0.15s, background 0.2s !important;
+        border: none !important;
+        cursor: pointer !important;
+    }
+    #wbf-float-btn a:hover {
+        background: #9A4415 !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 14px 40px rgba(193,87,28,0.55) !important;
+        color: #ffffff !important;
+        text-decoration: none !important;
+    }
+</style>
+
+<div id="wbf-float-btn">
+    <a href="#ticketBlock">🎟 Get Tickets</a>
+</div>
+
+<script>
+    (function() {
+        var floatBtn = document.getElementById('wbf-float-btn');
+        if (floatBtn) {
+            floatBtn.querySelector('a').addEventListener('click', function() {
+                floatBtn.classList.add('wbf-float-hidden');
+            });
+        }
+    })();
+</script>
+
+<!-- ════ SLASH-THROUGH PRICING on the native ticket block ════
+     Tags each ticket row by its <h4> NAME, never nth-child — a conditional Action that
+     shows/hides a ticket shifts every positional index silently. Pattern doc:
+     crowd7/data/clients/_patterns/slash-through-pricing.md
+     GATE keys below are PLACEHOLDER names ("Any-Day Admission" / "Season Pass") matching the
+     locked pricing-call names verbatim — no live TicketSpice cart exists yet to confirm the
+     exact <h4> text against. Confirm and correct in a follow-up push once the cart is built. -->
+<style>
+    #ticketBlock h4 { font-family: 'Zilla Slab', 'Times New Roman', serif !important; color: #2B1B10 !important; }
+    #ticketBlock .ticket-cost { color: #3D7A4F !important; font-weight: 700 !important; }
+    #ticketBlock .ticket-cost[data-gate]::before {
+        content: attr(data-gate) " "; text-decoration: line-through;
+        color: #9A7A5C; font-weight: 400; margin-right: 4px;
+    }
+</style>
+<script>
+(function(){
+  var GATE = {
+    "Any-Day Admission": "$18.00",
+    "Season Pass": "$45.00"
+  };
+  function tag(){
+    document.querySelectorAll('#ticketBlock .ticket-type').forEach(function(row){
+      var h4 = row.querySelector('h4');
+      var cost = row.querySelector('.ticket-cost');
+      if(!h4 || !cost) return;
+      var g = GATE[h4.textContent.trim()];
+      if(g) cost.setAttribute('data-gate', g);
+    });
+  }
+  var tb = document.getElementById('ticketBlock') || document.body;
+  new MutationObserver(tag).observe(tb, {childList:true, subtree:true});
+  tag();
+})();
+</script>
