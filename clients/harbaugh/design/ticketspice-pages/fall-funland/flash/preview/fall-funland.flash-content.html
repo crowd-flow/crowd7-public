@@ -303,59 +303,45 @@
         text-align: center !important;
         margin-bottom: 32px !important;
     }
-    /* ── GALLERY CAROUSEL — CSS scroll-snap track. No library, no scanner tokens.
-       Native horizontal scroll (trackpad / touch / drag) with snap points; the
-       arrows just call scrollBy on the track. Vertical padding keeps the card
-       hover-lift from being clipped by overflow-x. ── */
-    #hvf-funnel .hvf-carousel { position: relative !important; max-width: 1120px !important; margin: 0 auto !important; }
-    #hvf-funnel .hvf-gallery-grid {
-        display: flex !important;
-        gap: 18px !important;
-        overflow-x: auto !important;
-        overflow-y: hidden !important;
-        scroll-snap-type: x mandatory !important;
-        scroll-behavior: smooth !important;
-        padding: 12px 2px !important;
-        margin: 0 !important;
-        scrollbar-width: none !important;
-        -ms-overflow-style: none !important;
+    /* -- GALLERY - auto-scrolling marquee, per _blocks/06-gallery.html. The track
+       holds the 6 photos TWICE; the keyframe slides it -50%, so the duplicate
+       half lands exactly where the first began and the loop is seamless. Edit
+       photos in BOTH halves or the loop jumps. -- */
+    #hvf-funnel .hvf-gallery-mask {
+        width: 100% !important; overflow: hidden !important;
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%) !important;
+        mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%) !important;
     }
-    #hvf-funnel .hvf-gallery-grid::-webkit-scrollbar { display: none !important; }
-    #hvf-funnel .hvf-gallery-grid > .hvf-gcard {
-        flex: 0 0 calc((100% - 36px) / 3) !important;
-        scroll-snap-align: start !important;
+    #hvf-funnel .hvf-gallery-track {
+        display: flex !important; gap: 16px !important;
+        width: max-content !important;
+        animation: hvfMarquee 26s linear infinite !important;
+        padding: 8px 0 !important;
     }
-    #hvf-funnel .hvf-carousel-btn {
-        position: absolute !important; top: 50% !important; transform: translateY(-50%) !important;
-        width: 44px !important; height: 44px !important; border-radius: 50% !important;
-        border: none !important; cursor: pointer !important; z-index: 3 !important;
-        background: var(--hvf-green) !important; color: #fff !important;
-        font-size: 20px !important; line-height: 1 !important; font-weight: 700 !important;
-        box-shadow: 0 6px 18px rgba(44,33,21,0.28) !important;
-        display: flex !important; align-items: center !important; justify-content: center !important;
-        transition: background 0.2s ease, transform 0.2s ease !important;
+    #hvf-funnel .hvf-gallery-track:hover { animation-play-state: paused !important; }
+    @keyframes hvfMarquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    @media (prefers-reduced-motion: reduce) {
+        #hvf-funnel .hvf-gallery-track { animation: none !important; }
     }
-    #hvf-funnel .hvf-carousel-btn:hover { background: var(--hvf-pumpkin) !important; }
-    #hvf-funnel .hvf-carousel-prev { left: -14px !important; }
-    #hvf-funnel .hvf-carousel-next { right: -14px !important; }
     #hvf-funnel .hvf-gcard {
-        aspect-ratio: 1 / 1 !important;
+        width: 380px !important; height: 260px !important;
         border-radius: 20px !important; overflow: hidden !important;
-        position: relative !important;
-        cursor: default !important;
+        flex-shrink: 0 !important; position: relative !important;
+        cursor: pointer !important;
         background: linear-gradient(135deg, var(--hvf-cream-soft), var(--hvf-gold)) !important;
-        box-shadow: 0 10px 26px rgba(44,33,21,0.12) !important;
-        transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+        transition: transform 0.4s ease, box-shadow 0.4s ease !important;
     }
     #hvf-funnel .hvf-gcard:hover {
-        transform: translateY(-4px) !important;
-        box-shadow: 0 20px 40px rgba(51,86,47,0.22) !important; z-index: 2 !important;
+        transform: scale(1.03) translateY(-5px) !important;
+        box-shadow: 0 24px 50px rgba(51,86,47,0.22) !important; z-index: 2 !important;
     }
     #hvf-funnel .hvf-gcard img {
         width: 100% !important; height: 100% !important;
         object-fit: cover !important; display: block !important;
         position: absolute !important; inset: 0 !important;
+        transition: transform 0.6s ease !important;
     }
+    #hvf-funnel .hvf-gcard:hover img { transform: scale(1.08) !important; }
     /* the 4th tile carries the client's own Fun Land wordmark art, not a photo —
        contained + padded on a cream card instead of cropped like the photo tiles */
     #hvf-funnel .hvf-gcard-mark { background: var(--hvf-white) !important; }
@@ -365,13 +351,15 @@
         box-sizing: border-box !important;
     }
     #hvf-funnel .hvf-gcard-label {
-        position: absolute !important; bottom: 10px !important; left: 10px !important; right: 10px !important;
-        background: rgba(36,64,31,0.68) !important; backdrop-filter: blur(6px) !important;
-        color: white !important; font-size: 0.68rem !important; letter-spacing: 0.06em !important;
+        position: absolute !important; bottom: 12px !important; left: 12px !important;
+        background: rgba(36,64,31,0.6) !important; backdrop-filter: blur(8px) !important;
+        color: white !important; font-size: 0.68rem !important; letter-spacing: 0.1em !important;
         text-transform: uppercase !important; font-weight: 700 !important;
-        padding: 6px 10px !important; border-radius: 12px !important;
-        text-align: center !important;
+        padding: 5px 12px !important; border-radius: 20px !important;
+        opacity: 0 !important; transform: translateY(4px) !important;
+        transition: opacity 0.3s ease, transform 0.3s ease !important; z-index: 2 !important;
     }
+    #hvf-funnel .hvf-gcard:hover .hvf-gcard-label { opacity: 1 !important; transform: none !important; }
 
     /* ── TICKETS ── */
     #hvf-funnel .hvf-tickets {
@@ -590,7 +578,7 @@
         #hvf-funnel .hvf-tickets { padding: 44px 24px !important; }
         #hvf-funnel .hvf-gallery { padding: 44px 24px !important; }
         #hvf-funnel .hvf-grid { grid-template-columns: 1fr !important; max-width: 460px !important; margin-left: auto !important; margin-right: auto !important; }
-        #hvf-funnel .hvf-gallery-grid > .hvf-gcard { flex: 0 0 calc((100% - 18px) / 2) !important; }
+        #hvf-funnel .hvf-gcard { width: 300px !important; height: 210px !important; }
         #hvf-funnel .hvf-info-grid { grid-template-columns: 1fr 1fr !important; }
         #hvf-funnel .hvf-info-item:nth-child(2n)::after { display: none !important; }
         #hvf-funnel .hvf-hero-content { padding: 0 24px 40px !important; }
@@ -602,7 +590,7 @@
         #hvf-funnel .hvf-nav-loc { display: none !important; }
         #hvf-funnel .hvf-hero-content { padding: 0 20px 32px !important; }
         #hvf-funnel .hvf-card { padding: 26px 22px !important; }
-        #hvf-funnel .hvf-gallery-grid { gap: 12px !important; } #hvf-funnel .hvf-gallery-grid > .hvf-gcard { flex: 0 0 78% !important; } #hvf-funnel .hvf-carousel-btn { display: none !important; }
+        #hvf-funnel .hvf-gcard { width: 240px !important; height: 170px !important; }
         #hvf-funnel .hvf-info-grid { grid-template-columns: 1fr !important; }
         #hvf-funnel .hvf-info-item:not(:last-child)::after { display: none !important; }
         #hvf-funnel .hvf-info-item:not(:last-child) { border-bottom: 1px solid rgba(255,255,255,0.16) !important; }
@@ -694,17 +682,23 @@
             <span class="hvf-eye">Around The Village</span>
             <span class="hvf-section-title">A season of <em>Fall Funland</em></span>
         </div>
-        <div class="hvf-carousel">
-        <button class="hvf-carousel-btn hvf-carousel-prev" data-dir="prev" aria-label="Previous photos" type="button">&#8249;</button>
-        <div class="hvf-gallery-grid">
-            <div class="hvf-gcard hvfr"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/harbaugh/design/assets/social/harbaugh-social-01.jpg" alt="Kids playing in the giant tire play yard at Harbaugh Village" loading="lazy"><div class="hvf-gcard-label">Tire Play Yard</div></div>
-            <div class="hvf-gcard hvfr d1"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/harbaugh/design/assets/social/harbaugh-social-03.jpg" alt="Kids riding a pedal kart around the track at Harbaugh Village" loading="lazy"><div class="hvf-gcard-label">Pedal Kart Track</div></div>
-            <div class="hvf-gcard hvfr d2"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/harbaugh/design/assets/social/harbaugh-social-04.jpg" alt="A family riding the tubing hill at sunset at Harbaugh Village" loading="lazy"><div class="hvf-gcard-label">Tubing Hill</div></div>
-            <div class="hvf-gcard hvfr d3"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/harbaugh/design/assets/attractions/harbaugh-corn-maze.webp" alt="Kids finding their way through the corn maze at Harbaugh Village" loading="lazy"><div class="hvf-gcard-label">Corn Maze</div></div>
-            <div class="hvf-gcard hvfr d4"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/harbaugh/design/assets/attractions/harbaugh-straw-bale-jump.webp" alt="A child leaping off the straw bale mountain at Harbaugh Village" loading="lazy"><div class="hvf-gcard-label">Straw Bale Mountain</div></div>
-            <div class="hvf-gcard hvfr d5"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/harbaugh/design/assets/attractions/harbaugh-pumpkin-photo-op.jpg" alt="A child sitting inside the giant carved pumpkin photo op at Harbaugh Village" loading="lazy"><div class="hvf-gcard-label">Giant Pumpkin Photo Op</div></div>
-        </div>
-        <button class="hvf-carousel-btn hvf-carousel-next" data-dir="next" aria-label="More photos" type="button">&#8250;</button>
+        <div class="hvf-gallery-mask">
+            <div class="hvf-gallery-track">
+                <!-- First half - 6 unique photos -->
+                <div class="hvf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/harbaugh/design/assets/social/harbaugh-social-01.jpg" alt="Kids playing in the giant tire play yard at Harbaugh Village" loading="lazy"><div class="hvf-gcard-label">Tire Play Yard</div></div>
+                <div class="hvf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/harbaugh/design/assets/social/harbaugh-social-03.jpg" alt="Kids riding a pedal kart around the track at Harbaugh Village" loading="lazy"><div class="hvf-gcard-label">Pedal Kart Track</div></div>
+                <div class="hvf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/harbaugh/design/assets/social/harbaugh-social-04.jpg" alt="A family riding the tubing hill at sunset at Harbaugh Village" loading="lazy"><div class="hvf-gcard-label">Tubing Hill</div></div>
+                <div class="hvf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/harbaugh/design/assets/attractions/harbaugh-corn-maze.webp" alt="Kids finding their way through the corn maze at Harbaugh Village" loading="lazy"><div class="hvf-gcard-label">Corn Maze</div></div>
+                <div class="hvf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/harbaugh/design/assets/attractions/harbaugh-straw-bale-jump.webp" alt="A child leaping off the straw bale mountain at Harbaugh Village" loading="lazy"><div class="hvf-gcard-label">Straw Bale Mountain</div></div>
+                <div class="hvf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/harbaugh/design/assets/attractions/harbaugh-pumpkin-photo-op.jpg" alt="A child sitting inside the giant carved pumpkin photo op at Harbaugh Village" loading="lazy"><div class="hvf-gcard-label">Giant Pumpkin Photo Op</div></div>
+                <!-- Second half - EXACT DUPLICATE of the first half, for the seamless loop -->
+                <div class="hvf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/harbaugh/design/assets/social/harbaugh-social-01.jpg" alt="Kids playing in the giant tire play yard at Harbaugh Village" loading="lazy"><div class="hvf-gcard-label">Tire Play Yard</div></div>
+                <div class="hvf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/harbaugh/design/assets/social/harbaugh-social-03.jpg" alt="Kids riding a pedal kart around the track at Harbaugh Village" loading="lazy"><div class="hvf-gcard-label">Pedal Kart Track</div></div>
+                <div class="hvf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/harbaugh/design/assets/social/harbaugh-social-04.jpg" alt="A family riding the tubing hill at sunset at Harbaugh Village" loading="lazy"><div class="hvf-gcard-label">Tubing Hill</div></div>
+                <div class="hvf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/harbaugh/design/assets/attractions/harbaugh-corn-maze.webp" alt="Kids finding their way through the corn maze at Harbaugh Village" loading="lazy"><div class="hvf-gcard-label">Corn Maze</div></div>
+                <div class="hvf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/harbaugh/design/assets/attractions/harbaugh-straw-bale-jump.webp" alt="A child leaping off the straw bale mountain at Harbaugh Village" loading="lazy"><div class="hvf-gcard-label">Straw Bale Mountain</div></div>
+                <div class="hvf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/harbaugh/design/assets/attractions/harbaugh-pumpkin-photo-op.jpg" alt="A child sitting inside the giant carved pumpkin photo op at Harbaugh Village" loading="lazy"><div class="hvf-gcard-label">Giant Pumpkin Photo Op</div></div>
+            </div>
         </div>
     </div>
 
