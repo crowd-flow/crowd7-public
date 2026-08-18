@@ -211,12 +211,21 @@
         position: relative !important; width: 100% !important;
         min-height: clamp(420px, 64vw, 660px) !important;
         display: flex !important; align-items: flex-end !important; overflow: hidden !important;
+        max-width: none !important;
         background-image: url('https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/montpelier/design/assets/photos/hero-family-in-pumpkins.jpg') !important;
         background-size: cover !important; background-position: center 42% !important;
     }
     #mf-funnel .mf-hero-vid {
         position: absolute !important; inset: 0 !important; z-index: 0 !important;
         width: 100% !important; height: 100% !important;
+        /* TicketSpice ships a global media reset (video/img { max-width:100%; height:auto })
+           which beat our height:100% and let the video render at its natural aspect ratio
+           inside the absolutely-positioned box - i.e. letterboxed, cream showing top and
+           sides. min-width/min-height cannot be undone by an auto height, so the box always
+           fills and object-fit:cover does the cropping. Reported by Bryan 2026-08-18. */
+        min-width: 100% !important; min-height: 100% !important;
+        max-width: none !important; max-height: none !important;
+        display: block !important;
         object-fit: cover !important; object-position: center 42% !important;
         pointer-events: none !important;
     }
