@@ -995,7 +995,9 @@
 <style>
     #caf-float-btn {
         position: fixed !important; bottom: 0 !important; left: 0 !important; right: 0 !important;
-        z-index: 9999 !important; padding: 12px 16px 20px !important;
+        z-index: 500 !important;  /* stay BELOW the TicketSpice Attendee
+                                    Support chat widget — their product
+                                    surface outranks our CTA */ padding: 12px 16px 20px !important;
         background: linear-gradient(to top, rgba(251,246,236,0.97) 55%, transparent) !important;
         display: flex !important; justify-content: center !important;
         transition: opacity 0.35s ease, transform 0.35s ease !important;

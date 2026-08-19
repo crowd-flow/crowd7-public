@@ -665,7 +665,9 @@
     #bm-float-btn {
         position: fixed !important;
         bottom: 0 !important; left: 0 !important; right: 0 !important;
-        z-index: 9999 !important;
+        z-index: 500 !important;  /* stay BELOW the TicketSpice Attendee
+                                    Support chat widget — their product
+                                    surface outranks our CTA */
         padding: 10px 16px calc(14px + env(safe-area-inset-bottom, 0px)) !important;
         background: linear-gradient(to top, rgba(16,8,28,0.97) 78%, rgba(16,8,28,0)) !important;
         display: flex !important;
