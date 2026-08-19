@@ -25,12 +25,16 @@
         display: flex !important;
         justify-content: center !important;
         transition: opacity 0.35s ease, transform 0.35s ease !important;
+        /* let the TicketSpice Attendee Support chat widget (and anything
+           else beneath) receive clicks through the transparent band */
+        pointer-events: none !important;
     }
     #caf-float-btn.caf-float-hidden {
         opacity: 0 !important;
         transform: translateY(24px) !important;
         pointer-events: none !important;
     }
+    #caf-float-btn.caf-float-hidden a { pointer-events: none !important; }
     #caf-float-btn a {
         display: block !important;
         width: 100% !important;
@@ -49,6 +53,7 @@
         transition: transform 0.15s, box-shadow 0.15s, background 0.2s !important;
         border: none !important;
         cursor: pointer !important;
+        pointer-events: auto !important;
     }
     #caf-float-btn a:hover {
         background: #D85F28 !important;

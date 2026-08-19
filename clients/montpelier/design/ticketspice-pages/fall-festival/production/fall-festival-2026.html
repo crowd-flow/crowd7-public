@@ -715,8 +715,12 @@
         background: linear-gradient(to top, rgba(251,247,240,.97) 55%, transparent) !important;
         display: flex !important; justify-content: center !important;
         transition: opacity .35s ease, transform .35s ease !important;
+        /* let the TicketSpice Attendee Support chat widget (and anything
+           else beneath) receive clicks through the transparent band */
+        pointer-events: none !important;
     }
     #mf-float.mf-float-hidden { opacity: 0 !important; transform: translateY(24px) !important; pointer-events: none !important; }
+    #mf-float.mf-float-hidden a { pointer-events: none !important; }
     #mf-float a {
         display: block !important; width: 100% !important; max-width: 480px !important;
         background: #B04A3A !important; color: #fff !important;
@@ -726,6 +730,7 @@
         padding: 18px 28px !important; border-radius: 8px !important;
         box-shadow: 0 8px 30px rgba(176,74,58,.42) !important;
         transition: transform .15s, box-shadow .15s, background .2s !important;
+        pointer-events: auto !important;
     }
     #mf-float a:hover { background: #8E3A2C !important; transform: translateY(-2px) !important; color: #fff !important; }
 </style>

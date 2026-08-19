@@ -664,12 +664,16 @@
         display: flex !important;
         justify-content: center !important;
         transition: opacity 0.35s ease, transform 0.35s ease !important;
+        /* let the TicketSpice Attendee Support chat widget (and anything
+           else beneath) receive clicks through the transparent band */
+        pointer-events: none !important;
     }
     #bm-float-btn.bm-float-hidden {
         opacity: 0 !important;
         transform: translateY(28px) !important;
         pointer-events: none !important;
     }
+    #bm-float-btn.bm-float-hidden a { pointer-events: none !important; }
     #bm-float-btn a {
         display: block !important;
         width: 100% !important;
@@ -689,6 +693,7 @@
         box-shadow: 0 8px 30px rgba(0,0,0,0.55) !important;
         transition: transform 0.15s, box-shadow 0.15s, background 0.2s !important;
         cursor: pointer !important;
+        pointer-events: auto !important;
     }
     #bm-float-btn a:hover,
     #bm-float-btn a:focus {
@@ -699,7 +704,9 @@
         box-shadow: 0 14px 38px rgba(0,0,0,0.65) !important;
     }
     @media (max-width: 520px) {
-        #bm-float-btn a { font-size: 17px !important; padding: 15px 22px !important; letter-spacing: 0.10em !important; }
+        #bm-float-btn a { font-size: 17px !important; padding: 15px 22px !important; letter-spacing: 0.10em !important;
+        pointer-events: auto !important;
+    }
     }
 </style>
 
