@@ -43,7 +43,7 @@ Do not build any of the following into this launch. Listed so nobody accidentall
 - **October:** Saturdays + Sundays, 10am–7pm, starting October 7
 - **Halloween (Sat Oct 31):** 10am–2pm (short day)
 - **November:** 7–8
-- **Sanderson Sisters:** every Saturday in the fall, 12pm–2pm
+- **Sanderson Sisters:** Oct 17, 24 & 31 only (last three Saturdays in October), 12pm–2pm — client correction 2026-08-19; the act is NOT booked for Sept or Nov
 
 **Does TS need its own calendar/date-picker Action to reflect these operating days?** **Likely yes, if and only if a ticket requires the buyer to pick a specific visit date at checkout.** Per Confirm-Before-Publish #2, Flex Admission reads as genuinely any-day/no-date-restriction from event-info.md's own language, so no calendar Action is modeled for it in this brief. **If that lean is wrong** — i.e., if Flex actually needs a redemption-date picker — the structural reference to build from is Eckert's day-tiered admission pattern (`ticketspice-build-brief.farm-admission-2026.md`, Millstadt): TS's native day-of-week/date Actions gate which ticket/date combinations are sellable, restricting the date-picker to valid operating days (there, Wed/Thu/Fri/Sat-Sun tiers with a closed Mon/Tue; here it would be the September-weekends-only / October-every-weekend / Halloween-short-day / November-7–8 pattern above). This is flagged as a **build step for Bryan/Michael to configure only if Confirm-Before-Publish #2 resolves toward "yes, Flex needs a visit-date picker."** Season Pass, being a season-long access product, would need the same calendar underneath it if TS enforces valid-visit-dates per product — worth deciding once for both tickets rather than twice.
 
