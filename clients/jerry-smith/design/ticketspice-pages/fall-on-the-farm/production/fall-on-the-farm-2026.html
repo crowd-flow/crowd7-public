@@ -279,14 +279,17 @@
         width: 1px !important;
         background: rgba(158,43,37,0.1) !important;
     }
+    #jsf-funnel .jsf-benefit-emoji {
+        font-size: 1.7rem !important; display: block !important; margin-bottom: 6px !important; line-height: 1 !important;
+    }
     #jsf-funnel .jsf-benefit-title {
         font-family: 'Zilla Slab', 'Times New Roman', serif !important;
-        font-size: 1.2rem !important; font-weight: 600 !important;
-        color: #2A1A0E !important; margin-bottom: 4px !important; display: block !important;
+        font-size: 1.1rem !important; font-weight: 600 !important;
+        color: #2A1A0E !important; margin-bottom: 2px !important; display: block !important;
     }
     #jsf-funnel .jsf-benefit-desc {
-        font-size: 0.92rem !important; color: #5A4128 !important;
-        line-height: 1.45 !important; display: block !important;
+        font-size: 0.88rem !important; color: #5A4128 !important;
+        line-height: 1.4 !important; display: block !important;
     }
 
     /* ── GALLERY ── */
@@ -550,6 +553,7 @@
         display: grid !important;
         grid-template-columns: repeat(3, 1fr) !important;
     }
+    #jsf-funnel .jsf-info-grid--4 { grid-template-columns: repeat(4, 1fr) !important; }
     #jsf-funnel .jsf-info-item {
         text-align: center !important;
         padding: 28px 20px !important;
@@ -600,6 +604,8 @@
         #jsf-funnel .jsf-story { padding: 44px 24px !important; }
         #jsf-funnel .jsf-info-grid { grid-template-columns: 1fr 1fr !important; }
         #jsf-funnel .jsf-info-item:nth-child(2n)::after { display: none !important; }
+        #jsf-funnel .jsf-benefits-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 16px 0 !important; }
+        #jsf-funnel .jsf-benefit:nth-child(2n)::after { display: none !important; }
         #jsf-funnel .jsf-gallery-header { padding: 0 24px !important; }
         #jsf-funnel .jsf-gcard { width: 300px !important; height: 210px !important; }
         #jsf-funnel .jsf-hero-content { padding: 0 32px 44px !important; }
@@ -614,14 +620,13 @@
            lives in the hero, the tickets section, and the floating bottom button on mobile. */
         #jsf-funnel .jsf-nav-cta { display: none !important; }
         #jsf-funnel .jsf-benefits { padding: 24px 16px !important; }
-        #jsf-funnel .jsf-benefits-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 14px 0 !important; }
-        #jsf-funnel .jsf-benefit:nth-child(2n)::after { display: none !important; }
         #jsf-funnel .jsf-tickets { padding: 48px 16px !important; }
         #jsf-funnel .jsf-story { padding: 36px 16px !important; }
         #jsf-funnel .jsf-gallery-header { padding: 0 16px !important; }
         #jsf-funnel .jsf-gcard { width: 240px !important; height: 170px !important; }
         #jsf-funnel .jsf-hero-content { padding: 0 20px 36px !important; }
-        #jsf-funnel .jsf-info-grid { grid-template-columns: 1fr !important; }
+        #jsf-funnel .jsf-info-grid,
+        #jsf-funnel .jsf-info-grid--4 { grid-template-columns: 1fr !important; }
         #jsf-funnel .jsf-info-item::after { display: none !important; }
     }
     @media (max-width: 768px) {
@@ -650,11 +655,11 @@
     <!-- BANNER -->
     <div class="jsf-banner">
         <div class="jsf-banner-inner">
-            <span class="jsf-banner-accent">★ SEASON PASS ★</span>
+            <span class="jsf-banner-accent">🍂 FALL ON THE FARM</span>
             <span class="jsf-dot"></span>
-            <span><strong>Fall on the Farm</strong></span>
+            <span>Coming Sept 12</span>
             <span class="jsf-dot"></span>
-            <span>Unlimited Visits · Sept 12 – Nov 1, 2026</span>
+            <span>Season Passes On Sale Now</span>
         </div>
     </div>
 
@@ -682,31 +687,35 @@
         <img class="jsf-hero-video" src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/jerry-smith/design/assets/pumpkin-fly-over-hero-image.jpeg" alt="Fall on the Farm — Jerry Smith Farm">
         <div class="jsf-hero-overlay"></div>
         <div class="jsf-hero-content">
-            <span class="jsf-hero-ribbon">Unlimited Fall Visits · One Pass</span>
+            <span class="jsf-hero-ribbon">Season Passes Now Available</span>
             <span class="jsf-hero-eyebrow">Jerry Smith Farm · Fall 2026</span>
             <span class="jsf-hero-title">Fall on the <em>Farm</em></span>
-            <span class="jsf-hero-tagline">— Where fall memories are made. —</span>
+            <span class="jsf-hero-tagline">— Get the pass, save your spot for the whole season. —</span>
         </div>
     </div>
 
-    <!-- BENEFITS (Season Pass inclusions) -->
+    <!-- BENEFITS (unheaded emoji tile strip — house pattern) -->
     <div class="jsf-benefits">
         <div class="jsf-benefits-grid">
             <div class="jsf-benefit">
+                <span class="jsf-benefit-emoji">♾️</span>
                 <span class="jsf-benefit-title">Unlimited Visits</span>
-                <span class="jsf-benefit-desc">Come back all fall long, every day we're open</span>
+                <span class="jsf-benefit-desc">Come back all fall long</span>
             </div>
             <div class="jsf-benefit">
+                <span class="jsf-benefit-emoji">🍺</span>
                 <span class="jsf-benefit-title">10% Off Smitty's Bar</span>
-                <span class="jsf-benefit-desc">Pass-holder savings every visit</span>
+                <span class="jsf-benefit-desc">Every visit</span>
             </div>
             <div class="jsf-benefit">
+                <span class="jsf-benefit-emoji">🛍️</span>
                 <span class="jsf-benefit-title">10% Off Country Store</span>
-                <span class="jsf-benefit-desc">Take a little of the farm home</span>
+                <span class="jsf-benefit-desc">Take the farm home</span>
             </div>
             <div class="jsf-benefit">
-                <span class="jsf-benefit-title">Best Value of the Season</span>
-                <span class="jsf-benefit-desc">One pass pays for itself in two visits</span>
+                <span class="jsf-benefit-emoji">📅</span>
+                <span class="jsf-benefit-title">Sept 12 – Nov 1</span>
+                <span class="jsf-benefit-desc">Lock in before the season starts</span>
             </div>
         </div>
     </div>
@@ -805,19 +814,23 @@
         </div>
     </div>
 
-    <!-- INFO ROW -->
+    <!-- INFO ROW (emoji-led, house pattern) -->
     <div class="jsf-info">
-        <div class="jsf-info-grid">
+        <div class="jsf-info-grid jsf-info-grid--4">
             <div class="jsf-info-item">
-                <span class="jsf-info-label">Fall Season</span>
+                <span class="jsf-info-label">📅 Fall Season</span>
                 <span class="jsf-info-value">Sept 12 – Nov 1<br>2026</span>
             </div>
             <div class="jsf-info-item">
-                <span class="jsf-info-label">Pass Includes</span>
+                <span class="jsf-info-label">🎟️ Sales Open</span>
+                <span class="jsf-info-value">Now – Nov 1<br>Season Passes</span>
+            </div>
+            <div class="jsf-info-item">
+                <span class="jsf-info-label">✨ Pass Includes</span>
                 <span class="jsf-info-value">Unlimited Visits<br><em style="font-size:0.85rem;opacity:0.85;font-style:normal;">+ 10% off Bar &amp; Country Store</em></span>
             </div>
             <div class="jsf-info-item">
-                <span class="jsf-info-label">Learn More</span>
+                <span class="jsf-info-label">📍 Learn More</span>
                 <a class="jsf-info-link" href="https://jerrysmithfarm.com" target="_blank" rel="noopener">jerrysmithfarm.com</a>
             </div>
         </div>
