@@ -18,132 +18,634 @@
 </head>
 <body>
 
+<!--
+    Jerry Smith Farm · "Fall on the Farm" 2026 · Season Pass · TicketSpice page header
+    Modeled on /data/clients/colony-acres/design/ticketspice-pages/fall-harvest-festival-2026.html
+
+    REBUILT 2026-08-20 — Flash-dressed 3-card lineup (dressed as though the Aug 26–30 Flash
+    Sale is live now, per Mat's voice directive; no traffic is pointed at this page yet so
+    there is no early-sale risk). Cards: Flash Any-Day Admission $12.95 (gate $19.95) ·
+    Family 4-Pack Bundle $59.95 · Fall Season Pass $33.95 (gate $49.95). Pricing locked at the
+    5.21.26 Fall Strategy Meeting — see data/clients/jerry-smith/events/fall-in-the-farm/event-info.md §4.
+    🚫 Weekday tickets are DELIBERATELY not exposed during Flash — do not add a 4th card.
+    GA Weekday/Weekend (3-card In Season layout) is a later phase, not built here.
+
+    ════════════════════════════════════════════════════════════════════════════════════
+    HERO + GALLERY: all images are in-repo (raw.githubusercontent.com/crowd-flow/crowd7-public/
+    .../jerry-smith/design/assets/). Hero = pumpkin-fly-over-hero-image.jpeg. NO S3/CloudFront step —
+    the hero VIDEO was swapped for a still image 2026-06-12 (Mat), which retired the AWS media blocker.
+    TS PAGE: https://jerrysmithfarm.ticketspice.com/fall-on-the-farm-2026
+    ════════════════════════════════════════════════════════════════════════════════════
+
+    Source: 5.21.26 Fall Strategy Meeting + 6.12.26 Lauren call (season-pass spec) + Bryan Slack ask.
+    BRAND PLACEHOLDERS (flag to Lauren, swap when style guide lands):
+      · Colors below are a fall/harvest palette — NOT confirmed Jerry Smith brand hex.
+      · Font stack (Zilla Slab / Oswald / Open Sans / Caveat) is our proven web stack, not the brand font.
+      · Street address + age/ticket policy not yet supplied — info row kept to season + inclusions.
+-->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
 
 <style>
+    /* ===========================================================
+       JERRY SMITH FARM · FALL ON THE FARM 2026 · #jsf-funnel
+       Palette (PLACEHOLDER — fall/harvest, swap for brand hex):
+       barn red #9E2B25 / harvest orange #E0742F / cream #FBF4E6 /
+       deep brown #2A1A0E / golden #E8B04B / season-pass green #2D7541
+       =========================================================== */
     #jsf-funnel .bold { font-weight: bold; }
+
     #jsf-funnel {
-        width: 100vw !important; position: relative !important; left: 50% !important; right: 50% !important;
-        margin-left: -50vw !important; margin-right: -50vw !important; overflow: hidden !important;
-        font-family: 'Open Sans', sans-serif !important; background: #FBF4E6 !important;
-        color: #2A1A0E !important; padding: 0 !important; box-sizing: border-box !important;
+        width: 100vw !important;
+        position: relative !important;
+        left: 50% !important;
+        right: 50% !important;
+        margin-left: -50vw !important;
+        margin-right: -50vw !important;
+        overflow: hidden !important;
+        font-family: 'Open Sans', sans-serif !important;
+        background: #FBF4E6 !important;
+        color: #2A1A0E !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
     }
+
+    /* ── BANNER ── */
     #jsf-funnel .jsf-banner {
-        width: 100% !important; background: #9E2B25 !important; color: white !important;
-        text-align: center !important; padding: 12px 20px !important; font-size: 0.95rem !important;
-        letter-spacing: 0.06em !important; display: block !important; box-sizing: border-box !important;
+        width: 100% !important;
+        background: #9E2B25 !important;
+        color: white !important;
+        text-align: center !important;
+        padding: 12px 20px !important;
+        font-size: 0.95rem !important;
+        letter-spacing: 0.06em !important;
+        display: block !important;
+        box-sizing: border-box !important;
     }
-    #jsf-funnel .jsf-banner-inner { display: flex !important; align-items: center !important; justify-content: center !important; gap: 10px !important; flex-wrap: wrap !important; color: white !important; }
-    #jsf-funnel .jsf-banner-inner span, #jsf-funnel .jsf-banner-inner strong { color: white !important; }
-    #jsf-funnel .jsf-dot { width: 3px !important; height: 3px !important; background: rgba(255,255,255,0.45) !important; border-radius: 50% !important; display: inline-block !important; flex-shrink: 0 !important; }
-    #jsf-funnel .jsf-banner-inner .jsf-banner-accent { color: #E8B04B !important; font-weight: 700 !important; letter-spacing: 0.12em !important; }
+    #jsf-funnel .jsf-banner-inner {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 10px !important;
+        flex-wrap: wrap !important;
+        color: white !important;
+    }
+    #jsf-funnel .jsf-banner-inner span,
+    #jsf-funnel .jsf-banner-inner strong { color: white !important; }
+    #jsf-funnel .jsf-dot {
+        width: 3px !important; height: 3px !important;
+        background: rgba(255,255,255,0.45) !important;
+        border-radius: 50% !important;
+        display: inline-block !important;
+        flex-shrink: 0 !important;
+    }
+    #jsf-funnel .jsf-banner-inner .jsf-banner-accent {
+        color: #E8B04B !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.12em !important;
+    }
+
+    /* ── NAV ── */
     #jsf-funnel .jsf-nav {
-        width: 100% !important; padding: 0 40px !important; height: 88px !important; display: flex !important;
-        align-items: center !important; justify-content: flex-end !important; background: rgba(158,43,37,0.97) !important;
-        position: sticky !important; top: 0 !important; z-index: 100 !important; box-sizing: border-box !important;
+        width: 100% !important;
+        padding: 0 40px !important;
+        height: 88px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-end !important;
+        background: rgba(158,43,37,0.97) !important;
+        position: sticky !important;
+        top: 0 !important;
+        z-index: 100 !important;
+        box-sizing: border-box !important;
         box-shadow: 0 2px 16px rgba(158,43,37,0.35) !important;
     }
-    /* CENTER BADGE LOGO — white panel overlapping the nav bar (poke above / dip below), mirrors jerrysmithpumpkinfarm.com */
-    #jsf-funnel .jsf-logo-wrap { position: absolute !important; left: 40px !important; top: 50% !important; transform: translateY(-50%) !important; z-index: 110 !important; display: flex !important; align-items: center !important; }
-    #jsf-funnel .jsf-logo-badge { background: #ffffff !important; border-radius: 4px 4px 50% 50% / 4px 4px 60% 60% !important; padding: 12px 26px 22px !important; box-shadow: 0 8px 22px rgba(0,0,0,0.22) !important; display: flex !important; align-items: center !important; justify-content: center !important; box-sizing: border-box !important; }
-    #jsf-funnel .jsf-logo-badge img { display: block !important; height: 86px !important; width: auto !important; }
-    #jsf-funnel .jsf-nav-right { display: flex !important; align-items: center !important; gap: 16px !important; }
-    #jsf-funnel .jsf-nav-loc { font-size: 0.92rem !important; color: rgba(255,255,255,0.85) !important; display: flex !important; align-items: center !important; gap: 5px !important; }
-    #jsf-funnel .jsf-nav-cta { background: #E0742F !important; color: white !important; padding: 12px 26px !important; border-radius: 50px !important; font-size: 1rem !important; font-weight: 700 !important; text-decoration: none !important; letter-spacing: 0.04em !important; text-transform: uppercase !important; transition: all 0.3s ease !important; white-space: nowrap !important; display: inline-block !important; }
-    #jsf-funnel .jsf-nav-cta:hover { background: #F08A3C !important; color: white !important; text-decoration: none !important; transform: translateY(-1px); }
-    #jsf-funnel .jsf-hero { width: 100% !important; min-height: clamp(360px, 60vw, 640px) !important; position: relative !important; display: flex !important; align-items: flex-end !important; overflow: hidden !important; background-color: #2A1A0E !important; }
-    #jsf-funnel .jsf-hero-video { position: absolute !important; inset: 0 !important; width: 100% !important; height: 100% !important; object-fit: cover !important; object-position: center 50% !important; z-index: 0 !important; display: block !important; }
-    #jsf-funnel .jsf-hero-overlay { position: absolute !important; inset: 0 !important; background: linear-gradient(to bottom, rgba(42,26,14,0.10) 0%, rgba(42,26,14,0.28) 45%, rgba(42,26,14,0.78) 100%) !important; z-index: 1 !important; }
-    #jsf-funnel .jsf-hero-content { position: relative !important; z-index: 2 !important; padding: 0 48px 56px !important; width: 100% !important; box-sizing: border-box !important; }
-    #jsf-funnel .jsf-hero-ribbon { display: inline-block !important; background: #E8B04B !important; color: #2A1A0E !important; font-family: 'Oswald', sans-serif !important; font-weight: 700 !important; font-size: 0.72rem !important; letter-spacing: 0.18em !important; text-transform: uppercase !important; padding: 6px 14px !important; border-radius: 4px !important; margin-bottom: 14px !important; box-shadow: 0 4px 14px rgba(0,0,0,0.18) !important; opacity: 0; animation: jsfFadeUp 0.6s ease 0.15s forwards; }
-    #jsf-funnel .jsf-hero-eyebrow { font-size: 0.88rem !important; font-weight: 700 !important; letter-spacing: 0.2em !important; text-transform: uppercase !important; color: rgba(255,255,255,0.92) !important; margin-bottom: 10px !important; display: block !important; opacity: 0; animation: jsfFadeUp 0.6s ease 0.3s forwards; }
-    #jsf-funnel .jsf-hero-title { font-family: 'Zilla Slab', 'Times New Roman', serif !important; font-size: clamp(3rem, 9vw, 5.6rem) !important; font-weight: 700 !important; color: white !important; line-height: 1.0 !important; display: block !important; text-shadow: 0 2px 24px rgba(0,0,0,0.4) !important; opacity: 0; animation: jsfFadeUp 0.7s ease 0.45s forwards; }
-    #jsf-funnel .jsf-hero-title em { font-family: 'Caveat', cursive !important; font-style: normal !important; font-weight: 700 !important; color: #E8B04B !important; font-size: 0.9em !important; letter-spacing: 0.01em !important; }
-    #jsf-funnel .jsf-hero-tagline { font-family: 'Caveat', cursive !important; font-size: clamp(1.2rem, 2.6vw, 1.8rem) !important; color: #FFE9C8 !important; margin-top: 12px !important; display: block !important; opacity: 0; animation: jsfFadeUp 0.7s ease 0.6s forwards; }
-    @keyframes jsfFadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-    #jsf-funnel .jsf-benefits { width: 100% !important; background: white !important; padding: 36px 48px !important; display: block !important; box-sizing: border-box !important; border-bottom: 1px solid rgba(158,43,37,0.08) !important; }
-    #jsf-funnel .jsf-benefits-grid { display: grid !important; grid-template-columns: repeat(4, 1fr) !important; }
-    #jsf-funnel .jsf-benefit { text-align: center !important; padding: 8px 20px !important; position: relative !important; }
-    #jsf-funnel .jsf-benefit:not(:last-child)::after { content: '' !important; position: absolute !important; right: 0 !important; top: 15% !important; bottom: 15% !important; width: 1px !important; background: rgba(158,43,37,0.1) !important; }
-    #jsf-funnel .jsf-benefit-emoji { font-size: 1.7rem !important; display: block !important; margin-bottom: 6px !important; line-height: 1 !important; }
-    #jsf-funnel .jsf-benefit-title { font-family: 'Zilla Slab', 'Times New Roman', serif !important; font-size: 1.1rem !important; font-weight: 600 !important; color: #2A1A0E !important; margin-bottom: 2px !important; display: block !important; }
-    #jsf-funnel .jsf-benefit-desc { font-size: 0.92rem !important; color: #5A4128 !important; line-height: 1.45 !important; display: block !important; }
-    #jsf-funnel .jsf-gallery { width: 100% !important; background: #FBF4E6 !important; padding: 64px 0 !important; overflow: hidden !important; display: block !important; }
-    #jsf-funnel .jsf-gallery-header { text-align: center !important; padding: 0 48px !important; margin-bottom: 40px !important; }
-    #jsf-funnel .jsf-eye { font-size: 0.85rem !important; font-weight: 600 !important; letter-spacing: 0.22em !important; text-transform: uppercase !important; color: #E0742F !important; margin-bottom: 8px !important; display: block !important; }
-    #jsf-funnel .jsf-section-title { font-family: 'Zilla Slab', 'Times New Roman', serif !important; font-size: clamp(2.1rem, 5vw, 3.2rem) !important; font-weight: 700 !important; color: #2A1A0E !important; line-height: 1.15 !important; display: block !important; }
-    #jsf-funnel .jsf-section-title em { font-family: 'Caveat', cursive !important; font-style: normal !important; font-weight: 700 !important; color: #9E2B25 !important; font-size: 1.05em !important; }
-    #jsf-funnel .jsf-gallery-mask { width: 100% !important; overflow: hidden !important; -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%) !important; mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%) !important; }
-    #jsf-funnel .jsf-gallery-track { display: flex !important; gap: 16px !important; width: max-content !important; animation: jsfMarquee 30s linear infinite !important; padding: 8px 0 !important; }
+    /* ── CENTER BADGE LOGO ── white rounded panel that overlaps the nav bar:
+       pokes above & dips below it (mirrors jerrysmithpumpkinfarm.com's notched header). */
+    /* Badge LEFT-aligned (original wordmark position, Mat 2026-06-12). Stays absolutely
+       positioned + vertically centered on the bar so it keeps the notch overlap (pokes
+       above & dips below); only the horizontal anchor moved center → left. The nav-right
+       group (location + CTA) keeps to the right via the nav's justify-content: flex-end,
+       so the absolute badge and the flex group don't fight. left tracks the nav gutter
+       at each breakpoint (40 / 24 / 16px). */
+    #jsf-funnel .jsf-logo-wrap {
+        position: absolute !important;
+        left: 40px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        z-index: 110 !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+    #jsf-funnel .jsf-logo-badge {
+        background: #ffffff !important;
+        /* Match jerrysmithpumpkinfarm.com: square top corners, deeply rounded (near-circle) bottom —
+           hangs off the bar like a banner. Slash syntax deepens the bottom vertical curve. */
+        border-radius: 4px 4px 50% 50% / 4px 4px 60% 60% !important;
+        padding: 12px 26px 22px !important;
+        box-shadow: 0 8px 22px rgba(0,0,0,0.22) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        box-sizing: border-box !important;
+    }
+    #jsf-funnel .jsf-logo-badge img {
+        display: block !important;
+        height: 86px !important;
+        width: auto !important;
+    }
+    #jsf-funnel .jsf-nav-right {
+        display: flex !important; align-items: center !important; gap: 16px !important;
+    }
+    #jsf-funnel .jsf-nav-loc {
+        font-size: 0.92rem !important;
+        color: rgba(255,255,255,0.85) !important;
+        display: flex !important; align-items: center !important; gap: 5px !important;
+    }
+    #jsf-funnel .jsf-nav-cta {
+        background: #E0742F !important;
+        color: white !important;
+        padding: 12px 26px !important;
+        border-radius: 50px !important;
+        font-size: 1rem !important;
+        font-weight: 700 !important;
+        text-decoration: none !important;
+        letter-spacing: 0.04em !important;
+        text-transform: uppercase !important;
+        transition: all 0.3s ease !important;
+        white-space: nowrap !important;
+        display: inline-block !important;
+    }
+    #jsf-funnel .jsf-nav-cta:hover {
+        background: #F08A3C !important;
+        color: white !important;
+        text-decoration: none !important;
+        transform: translateY(-1px);
+    }
+
+    /* ── HERO (VIDEO) ── */
+    #jsf-funnel .jsf-hero {
+        width: 100% !important;
+        min-height: clamp(360px, 60vw, 640px) !important;
+        position: relative !important;
+        display: flex !important;
+        align-items: flex-end !important;
+        overflow: hidden !important;
+        background-color: #2A1A0E !important;
+    }
+    #jsf-funnel .jsf-hero-video {
+        position: absolute !important;
+        inset: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: center 50% !important;
+        z-index: 0 !important;
+        display: block !important;
+    }
+    #jsf-funnel .jsf-hero-overlay {
+        position: absolute !important;
+        inset: 0 !important;
+        background: linear-gradient(to bottom, rgba(42,26,14,0.10) 0%, rgba(42,26,14,0.28) 45%, rgba(42,26,14,0.78) 100%) !important;
+        z-index: 1 !important;
+    }
+    #jsf-funnel .jsf-hero-content {
+        position: relative !important;
+        z-index: 2 !important;
+        padding: 0 48px 56px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    #jsf-funnel .jsf-hero-ribbon {
+        display: inline-block !important;
+        background: #E8B04B !important;
+        color: #2A1A0E !important;
+        font-family: 'Oswald', sans-serif !important;
+        font-weight: 700 !important;
+        font-size: 0.72rem !important;
+        letter-spacing: 0.18em !important;
+        text-transform: uppercase !important;
+        padding: 6px 14px !important;
+        border-radius: 4px !important;
+        margin-bottom: 14px !important;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.18) !important;
+        opacity: 0;
+        animation: jsfFadeUp 0.6s ease 0.15s forwards;
+    }
+    #jsf-funnel .jsf-hero-eyebrow {
+        font-size: 0.88rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.2em !important;
+        text-transform: uppercase !important;
+        color: rgba(255,255,255,0.92) !important;
+        margin-bottom: 10px !important;
+        display: block !important;
+        opacity: 0;
+        animation: jsfFadeUp 0.6s ease 0.3s forwards;
+    }
+    #jsf-funnel .jsf-hero-title {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: clamp(3rem, 9vw, 5.6rem) !important;
+        font-weight: 700 !important;
+        color: white !important;
+        line-height: 1.0 !important;
+        display: block !important;
+        text-shadow: 0 2px 24px rgba(0,0,0,0.4) !important;
+        opacity: 0;
+        animation: jsfFadeUp 0.7s ease 0.45s forwards;
+    }
+    #jsf-funnel .jsf-hero-title em {
+        font-family: 'Caveat', cursive !important;
+        font-style: normal !important;
+        font-weight: 700 !important;
+        color: #E8B04B !important;
+        font-size: 0.9em !important;
+        letter-spacing: 0.01em !important;
+    }
+    #jsf-funnel .jsf-hero-tagline {
+        font-family: 'Caveat', cursive !important;
+        font-size: clamp(1.2rem, 2.6vw, 1.8rem) !important;
+        color: #FFE9C8 !important;
+        margin-top: 12px !important;
+        display: block !important;
+        opacity: 0;
+        animation: jsfFadeUp 0.7s ease 0.6s forwards;
+    }
+    @keyframes jsfFadeUp {
+        from { opacity: 0; transform: translateY(16px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── BENEFITS (Season Pass inclusions) ── */
+    #jsf-funnel .jsf-benefits {
+        width: 100% !important;
+        background: white !important;
+        padding: 36px 48px !important;
+        display: block !important;
+        box-sizing: border-box !important;
+        border-bottom: 1px solid rgba(158,43,37,0.08) !important;
+    }
+    #jsf-funnel .jsf-benefits-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+    #jsf-funnel .jsf-benefit {
+        text-align: center !important;
+        padding: 8px 20px !important;
+        position: relative !important;
+    }
+    #jsf-funnel .jsf-benefit:not(:last-child)::after {
+        content: '' !important;
+        position: absolute !important;
+        right: 0 !important; top: 15% !important; bottom: 15% !important;
+        width: 1px !important;
+        background: rgba(158,43,37,0.1) !important;
+    }
+    #jsf-funnel .jsf-benefit-emoji {
+        font-size: 1.7rem !important; display: block !important; margin-bottom: 6px !important; line-height: 1 !important;
+    }
+    #jsf-funnel .jsf-benefit-title {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 1.1rem !important; font-weight: 600 !important;
+        color: #2A1A0E !important; margin-bottom: 2px !important; display: block !important;
+    }
+    #jsf-funnel .jsf-benefit-desc {
+        font-size: 0.88rem !important; color: #5A4128 !important;
+        line-height: 1.4 !important; display: block !important;
+    }
+
+    /* ── GALLERY ── */
+    #jsf-funnel .jsf-gallery {
+        width: 100% !important;
+        background: #FBF4E6 !important;
+        padding: 64px 0 !important;
+        overflow: hidden !important;
+        display: block !important;
+    }
+    #jsf-funnel .jsf-gallery-header {
+        text-align: center !important;
+        padding: 0 48px !important;
+        margin-bottom: 40px !important;
+    }
+    #jsf-funnel .jsf-eye {
+        font-size: 0.85rem !important; font-weight: 600 !important;
+        letter-spacing: 0.22em !important; text-transform: uppercase !important;
+        color: #E0742F !important; margin-bottom: 8px !important; display: block !important;
+    }
+    #jsf-funnel .jsf-section-title {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: clamp(2.1rem, 5vw, 3.2rem) !important;
+        font-weight: 700 !important; color: #2A1A0E !important;
+        line-height: 1.15 !important; display: block !important;
+    }
+    #jsf-funnel .jsf-section-title em {
+        font-family: 'Caveat', cursive !important;
+        font-style: normal !important;
+        font-weight: 700 !important;
+        color: #9E2B25 !important;
+        font-size: 1.05em !important;
+    }
+    #jsf-funnel .jsf-gallery-mask {
+        width: 100% !important; overflow: hidden !important;
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%) !important;
+        mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%) !important;
+    }
+    #jsf-funnel .jsf-gallery-track {
+        display: flex !important; gap: 16px !important;
+        width: max-content !important;
+        animation: jsfMarquee 30s linear infinite !important;
+        padding: 8px 0 !important;
+    }
     #jsf-funnel .jsf-gallery-track:hover { animation-play-state: paused !important; }
     @keyframes jsfMarquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-    #jsf-funnel .jsf-gcard { width: 380px !important; height: 260px !important; border-radius: 20px !important; overflow: hidden !important; flex-shrink: 0 !important; position: relative !important; cursor: pointer !important; background: linear-gradient(135deg, #F5DCAA, #E0742F) !important; display: flex !important; align-items: center !important; justify-content: center !important; font-size: 3rem !important; transition: transform 0.4s ease, box-shadow 0.4s ease !important; }
-    #jsf-funnel .jsf-gcard:hover { transform: scale(1.03) translateY(-5px) !important; box-shadow: 0 24px 50px rgba(158,43,37,0.22) !important; z-index: 2 !important; }
-    #jsf-funnel .jsf-gcard img { width: 100% !important; height: 100% !important; object-fit: cover !important; display: block !important; position: absolute !important; inset: 0 !important; transition: transform 0.6s ease !important; }
+    #jsf-funnel .jsf-gcard {
+        width: 380px !important; height: 260px !important;
+        border-radius: 20px !important; overflow: hidden !important;
+        flex-shrink: 0 !important; position: relative !important;
+        cursor: pointer !important;
+        background: linear-gradient(135deg, #F5DCAA, #E0742F) !important;
+        display: flex !important; align-items: center !important;
+        justify-content: center !important; font-size: 3rem !important;
+        transition: transform 0.4s ease, box-shadow 0.4s ease !important;
+    }
+    #jsf-funnel .jsf-gcard:hover {
+        transform: scale(1.03) translateY(-5px) !important;
+        box-shadow: 0 24px 50px rgba(158,43,37,0.22) !important; z-index: 2 !important;
+    }
+    #jsf-funnel .jsf-gcard img {
+        width: 100% !important; height: 100% !important;
+        object-fit: cover !important; display: block !important;
+        position: absolute !important; inset: 0 !important;
+        transition: transform 0.6s ease !important;
+    }
     #jsf-funnel .jsf-gcard:hover img { transform: scale(1.08) !important; }
-    #jsf-funnel .jsf-gcard-label { position: absolute !important; bottom: 12px !important; left: 12px !important; background: rgba(42,26,14,0.6) !important; backdrop-filter: blur(8px) !important; color: white !important; font-size: 0.68rem !important; letter-spacing: 0.1em !important; text-transform: uppercase !important; font-weight: 700 !important; padding: 5px 12px !important; border-radius: 20px !important; opacity: 0 !important; transform: translateY(4px) !important; transition: opacity 0.3s ease, transform 0.3s ease !important; z-index: 2 !important; }
+    #jsf-funnel .jsf-gcard-label {
+        position: absolute !important; bottom: 12px !important; left: 12px !important;
+        background: rgba(42,26,14,0.6) !important; backdrop-filter: blur(8px) !important;
+        color: white !important; font-size: 0.68rem !important; letter-spacing: 0.1em !important;
+        text-transform: uppercase !important; font-weight: 700 !important;
+        padding: 5px 12px !important; border-radius: 20px !important;
+        opacity: 0 !important; transform: translateY(4px) !important;
+        transition: opacity 0.3s ease, transform 0.3s ease !important; z-index: 2 !important;
+    }
     #jsf-funnel .jsf-gcard:hover .jsf-gcard-label { opacity: 1 !important; transform: none !important; }
-    #jsf-funnel .jsf-story { width: 100% !important; background: linear-gradient(135deg, #1F5C2E 0%, #2D7541 100%) !important; padding: 56px 48px !important; box-sizing: border-box !important; display: block !important; text-align: center !important; color: white !important; }
+
+    /* ── STORY STRIP ── */
+    #jsf-funnel .jsf-story {
+        width: 100% !important;
+        background: linear-gradient(135deg, #1F5C2E 0%, #2D7541 100%) !important;
+        padding: 56px 48px !important;
+        box-sizing: border-box !important;
+        display: block !important;
+        text-align: center !important;
+        color: white !important;
+    }
     #jsf-funnel .jsf-story-inner { max-width: 760px !important; margin: 0 auto !important; color: white !important; }
     #jsf-funnel .jsf-story-inner span, #jsf-funnel .jsf-story-inner strong { color: white !important; }
-    #jsf-funnel .jsf-story-inner .jsf-story-script { font-family: 'Caveat', cursive !important; color: #E8B04B !important; font-size: clamp(2.2rem, 5vw, 3.4rem) !important; line-height: 1 !important; display: block !important; margin-bottom: 6px !important; }
-    #jsf-funnel .jsf-story-inner .jsf-story-title { font-family: 'Zilla Slab', serif !important; font-size: clamp(1.65rem, 4vw, 2.4rem) !important; font-weight: 700 !important; margin-bottom: 14px !important; display: block !important; color: white !important; }
-    #jsf-funnel .jsf-story-inner .jsf-story-body { font-size: 1.18rem !important; line-height: 1.65 !important; color: #ffffff !important; display: block !important; }
-    #jsf-funnel .jsf-tickets { width: 100% !important; background: #F5EAD4 !important; padding: 72px 48px !important; display: block !important; box-sizing: border-box !important; }
+    #jsf-funnel .jsf-story-inner .jsf-story-script {
+        font-family: 'Caveat', cursive !important;
+        color: #E8B04B !important;
+        font-size: clamp(2.2rem, 5vw, 3.4rem) !important;
+        line-height: 1 !important;
+        display: block !important;
+        margin-bottom: 6px !important;
+    }
+    #jsf-funnel .jsf-story-inner .jsf-story-title {
+        font-family: 'Zilla Slab', serif !important;
+        font-size: clamp(1.65rem, 4vw, 2.4rem) !important;
+        font-weight: 700 !important;
+        margin-bottom: 14px !important;
+        display: block !important;
+        color: white !important;
+    }
+    #jsf-funnel .jsf-story-inner .jsf-story-body {
+        font-size: 1.18rem !important;
+        line-height: 1.65 !important;
+        color: #ffffff !important;
+        display: block !important;
+    }
+
+    /* ── TICKETS SECTION · 2-card row (season pass + event details) ── */
+    #jsf-funnel .jsf-tickets {
+        width: 100% !important;
+        background: #F5EAD4 !important;
+        padding: 72px 48px !important;
+        display: block !important; box-sizing: border-box !important;
+    }
     #jsf-funnel .jsf-tickets-header { text-align: center !important; margin-bottom: 40px !important; }
-    #jsf-funnel .jsf-grid { display: flex !important; flex-wrap: wrap !important; justify-content: center !important; align-items: stretch !important; gap: 32px !important; max-width: 1280px !important; margin-left: auto !important; margin-right: auto !important; }
-    #jsf-funnel .jsf-card { flex: 1 1 380px !important; width: 100% !important; max-width: 460px !important; border-radius: 20px !important; padding: 40px 36px !important; position: relative !important; overflow: hidden !important; transition: transform 0.35s ease, box-shadow 0.35s ease !important; display: flex !important; flex-direction: column !important; background: linear-gradient(160deg, #1F5C2E 0%, #2D7541 100%) !important; color: white !important; border: 2px solid #E8B04B !important; box-shadow: 0 20px 44px rgba(31,92,46,0.25) !important; }
-    #jsf-funnel .jsf-card:hover { transform: translateY(-6px) !important; box-shadow: 0 28px 56px rgba(31,92,46,0.38) !important; }
-    #jsf-funnel .jsf-card-badge { display: inline-block !important; font-size: 0.78rem !important; font-weight: 700 !important; letter-spacing: 0.14em !important; text-transform: uppercase !important; padding: 5px 12px !important; border-radius: 20px !important; margin-bottom: 14px !important; width: fit-content !important; background: #E8B04B !important; color: #2A1A0E !important; }
+    #jsf-funnel .jsf-countdown {
+        display: inline-flex !important; align-items: center !important; gap: 10px !important;
+        margin-top: 18px !important; background: #9E2B25 !important; color: white !important;
+        padding: 10px 22px !important; border-radius: 50px !important;
+        box-shadow: 0 8px 20px rgba(158,43,37,0.25) !important;
+    }
+    #jsf-funnel .jsf-countdown-label {
+        font-size: 0.82rem !important; font-weight: 700 !important; letter-spacing: 0.06em !important;
+        text-transform: uppercase !important; color: rgba(255,255,255,0.85) !important;
+    }
+    #jsf-funnel .jsf-countdown-value {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 1.15rem !important; font-weight: 700 !important; color: #E8B04B !important;
+    }
+    #jsf-funnel .jsf-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(0, 400px)) !important;
+        justify-content: center !important;
+        align-items: stretch !important;
+        gap: 32px !important;
+        max-width: 1280px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+    #jsf-funnel .jsf-card {
+        width: 100% !important;
+        border-radius: 20px !important;
+        padding: 40px 36px !important;
+        position: relative !important;
+        overflow: hidden !important;
+        transition: transform 0.35s ease, box-shadow 0.35s ease !important;
+        display: flex !important; flex-direction: column !important;
+        background: linear-gradient(160deg, #1F5C2E 0%, #2D7541 100%) !important;
+        color: white !important;
+        border: 2px solid #E8B04B !important;
+        box-shadow: 0 20px 44px rgba(31,92,46,0.25) !important;
+    }
+    #jsf-funnel .jsf-card:hover {
+        transform: translateY(-6px) !important;
+        box-shadow: 0 28px 56px rgba(31,92,46,0.38) !important;
+    }
+    #jsf-funnel .jsf-card-badge {
+        display: inline-block !important;
+        font-size: 0.78rem !important; font-weight: 700 !important;
+        letter-spacing: 0.14em !important; text-transform: uppercase !important;
+        padding: 5px 12px !important; border-radius: 20px !important;
+        margin-bottom: 14px !important; width: fit-content !important;
+        background: #E8B04B !important; color: #2A1A0E !important;
+    }
     #jsf-funnel .jsf-card-icon { font-size: 3rem !important; margin-bottom: 14px !important; display: block !important; }
-    #jsf-funnel .jsf-card h3 { font-family: 'Zilla Slab', 'Times New Roman', serif !important; font-size: 2rem !important; font-weight: 700 !important; line-height: 1.15 !important; margin-bottom: 16px !important; display: block !important; color: white !important; }
-    #jsf-funnel .jsf-card-bullets { list-style: none !important; padding: 0 !important; margin: 0 0 auto !important; display: flex !important; flex-direction: column !important; gap: 8px !important; }
-    #jsf-funnel .jsf-card-bullets li { font-size: 1.12rem !important; line-height: 1.55 !important; display: flex !important; align-items: flex-start !important; gap: 8px !important; color: rgba(255,255,255,0.9) !important; }
-    #jsf-funnel .jsf-card-price { display: flex !important; align-items: baseline !important; gap: 10px !important; margin-top: 24px !important; padding-top: 18px !important; border-top: 1px solid rgba(255,255,255,0.2) !important; }
-    #jsf-funnel .jsf-price-num { font-family: 'Zilla Slab', 'Times New Roman', serif !important; font-size: 3.4rem !important; font-weight: 700 !important; line-height: 1 !important; color: #E8B04B !important; }
-    #jsf-funnel .jsf-price-slash { display: flex !important; flex-direction: column !important; gap: 2px !important; justify-content: center !important; }
-    #jsf-funnel .jsf-price-online { font-size: 0.82rem !important; font-weight: 700 !important; letter-spacing: 0.1em !important; text-transform: uppercase !important; display: block !important; color: rgba(255,255,255,0.6) !important; }
-    #jsf-funnel .jsf-price-was { font-size: 1.15rem !important; font-weight: 600 !important; text-decoration: line-through !important; display: block !important; line-height: 1 !important; color: rgba(255,255,255,0.5) !important; }
-    #jsf-funnel .jsf-card-fees { font-size: 0.72rem !important; font-weight: 600 !important; letter-spacing: 0.02em !important; margin-top: 8px !important; display: block !important; line-height: 1.4 !important; color: rgba(255,255,255,0.75) !important; }
-    #jsf-funnel .jsf-card-note { font-size: 0.88rem !important; font-style: italic !important; margin-top: 10px !important; display: block !important; line-height: 1.5 !important; color: rgba(255,255,255,0.6) !important; }
-    #jsf-funnel .jsf-card--details { background: linear-gradient(160deg, #FBF4E6 0%, #F5EAD4 100%) !important; color: #2A1A0E !important; border: 2px solid #E0742F !important; box-shadow: 0 20px 44px rgba(158,43,37,0.16) !important; }
-    #jsf-funnel .jsf-card--details:hover { box-shadow: 0 28px 56px rgba(158,43,37,0.26) !important; }
-    #jsf-funnel .jsf-card--details .jsf-card-badge { background: #9E2B25 !important; color: #FBF4E6 !important; }
+    #jsf-funnel .jsf-card h3 {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 2rem !important; font-weight: 700 !important;
+        line-height: 1.15 !important; margin-bottom: 16px !important; display: block !important;
+        color: white !important;
+    }
+    #jsf-funnel .jsf-card-bullets {
+        list-style: none !important; padding: 0 !important; margin: 0 0 auto !important;
+        display: flex !important; flex-direction: column !important; gap: 8px !important;
+    }
+    #jsf-funnel .jsf-card-bullets li {
+        font-size: 1.12rem !important; line-height: 1.55 !important;
+        display: flex !important; align-items: flex-start !important; gap: 8px !important;
+        color: rgba(255,255,255,0.9) !important;
+    }
+    #jsf-funnel .jsf-card-price {
+        display: flex !important; align-items: baseline !important;
+        gap: 10px !important; margin-top: 24px !important; padding-top: 18px !important;
+        border-top: 1px solid rgba(255,255,255,0.2) !important;
+    }
+    #jsf-funnel .jsf-price-num {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 3.4rem !important; font-weight: 700 !important; line-height: 1 !important;
+        color: #E8B04B !important;
+    }
+    #jsf-funnel .jsf-price-slash {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 2px !important;
+        justify-content: center !important;
+    }
+    #jsf-funnel .jsf-price-online {
+        font-size: 0.82rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.1em !important;
+        text-transform: uppercase !important;
+        display: block !important;
+        color: rgba(255,255,255,0.6) !important;
+    }
+    #jsf-funnel .jsf-price-was {
+        font-size: 1.15rem !important;
+        font-weight: 600 !important;
+        text-decoration: line-through !important;
+        display: block !important;
+        line-height: 1 !important;
+        color: rgba(255,255,255,0.5) !important;
+    }
+    #jsf-funnel .jsf-card-fees {
+        font-size: 0.72rem !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.02em !important;
+        margin-top: 8px !important;
+        display: block !important;
+        line-height: 1.4 !important;
+        color: rgba(255,255,255,0.75) !important;
+    }
+    #jsf-funnel .jsf-card-note {
+        font-size: 0.88rem !important; font-style: italic !important;
+        margin-top: 10px !important; display: block !important; line-height: 1.5 !important;
+        color: rgba(255,255,255,0.6) !important;
+    }
+
+    /* ── EVENT DETAILS CARD (second card · cream variant) ── */
+    #jsf-funnel .jsf-card--details {
+        background: linear-gradient(160deg, #FBF4E6 0%, #F5EAD4 100%) !important;
+        color: #2A1A0E !important;
+        border: 2px solid #E0742F !important;
+        box-shadow: 0 20px 44px rgba(158,43,37,0.16) !important;
+    }
+    #jsf-funnel .jsf-card--details:hover {
+        box-shadow: 0 28px 56px rgba(158,43,37,0.26) !important;
+    }
+    #jsf-funnel .jsf-card--details .jsf-card-badge {
+        background: #9E2B25 !important; color: #FBF4E6 !important;
+    }
     #jsf-funnel .jsf-card--details h3 { color: #9E2B25 !important; }
     #jsf-funnel .jsf-card--details .jsf-card-bullets li { color: #4A3520 !important; }
-    #jsf-funnel .jsf-card-detail-row { margin-top: 24px !important; padding-top: 18px !important; border-top: 1px solid rgba(42,26,14,0.18) !important; display: flex !important; flex-direction: column !important; gap: 12px !important; }
+    #jsf-funnel .jsf-card-detail-row {
+        margin-top: 24px !important; padding-top: 18px !important;
+        border-top: 1px solid rgba(42,26,14,0.18) !important;
+        display: flex !important; flex-direction: column !important; gap: 12px !important;
+    }
     #jsf-funnel .jsf-detail { display: flex !important; flex-direction: column !important; gap: 2px !important; }
-    #jsf-funnel .jsf-detail-label { font-size: 0.72rem !important; font-weight: 700 !important; letter-spacing: 0.14em !important; text-transform: uppercase !important; color: #9E2B25 !important; display: block !important; }
-    #jsf-funnel .jsf-detail-value { font-family: 'Zilla Slab', 'Times New Roman', serif !important; font-size: 1.18rem !important; font-weight: 600 !important; color: #2A1A0E !important; display: block !important; line-height: 1.3 !important; }
-    #jsf-funnel .jsf-info { width: 100% !important; background: #1F5C2E !important; padding: 0 !important; display: block !important; box-sizing: border-box !important; }
-    #jsf-funnel .jsf-info-grid { display: grid !important; grid-template-columns: repeat(3, 1fr) !important; }
+    #jsf-funnel .jsf-detail-label {
+        font-size: 0.72rem !important; font-weight: 700 !important;
+        letter-spacing: 0.14em !important; text-transform: uppercase !important;
+        color: #9E2B25 !important; display: block !important;
+    }
+    #jsf-funnel .jsf-detail-value {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 1.18rem !important; font-weight: 600 !important;
+        color: #2A1A0E !important; display: block !important; line-height: 1.3 !important;
+    }
+
+    /* ── INFO ROW ── */
+    #jsf-funnel .jsf-info {
+        width: 100% !important;
+        background: #1F5C2E !important;
+        padding: 0 !important; display: block !important; box-sizing: border-box !important;
+    }
+    #jsf-funnel .jsf-info-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
     #jsf-funnel .jsf-info-grid--4 { grid-template-columns: repeat(4, 1fr) !important; }
-    #jsf-funnel .jsf-info-item { text-align: center !important; padding: 28px 20px !important; position: relative !important; }
-    #jsf-funnel .jsf-info-item:not(:last-child)::after { content: '' !important; position: absolute !important; right: 0 !important; top: 20% !important; bottom: 20% !important; width: 1px !important; background: rgba(255,255,255,0.15) !important; }
+    #jsf-funnel .jsf-info-item {
+        text-align: center !important;
+        padding: 28px 20px !important;
+        position: relative !important;
+    }
+    #jsf-funnel .jsf-info-item:not(:last-child)::after {
+        content: '' !important; position: absolute !important;
+        right: 0 !important; top: 20% !important; bottom: 20% !important;
+        width: 1px !important; background: rgba(255,255,255,0.15) !important;
+    }
     #jsf-funnel .jsf-info-grid span, #jsf-funnel .jsf-info-grid strong { color: white !important; }
-    #jsf-funnel .jsf-info-item .jsf-info-label { font-size: 0.78rem !important; font-weight: 700 !important; letter-spacing: 0.16em !important; text-transform: uppercase !important; color: rgba(255,255,255,0.88) !important; display: block !important; margin-bottom: 4px !important; }
-    #jsf-funnel .jsf-info-item .jsf-info-value { font-family: 'Zilla Slab', 'Times New Roman', serif !important; font-size: 1.12rem !important; font-weight: 600 !important; color: white !important; display: block !important; line-height: 1.3 !important; }
-    #jsf-funnel .jsf-info-item .jsf-info-link { font-family: 'Zilla Slab', 'Times New Roman', serif !important; font-size: 0.95rem !important; font-weight: 600 !important; color: #E8B04B !important; display: block !important; line-height: 1.3 !important; text-decoration: underline !important; }
+    #jsf-funnel .jsf-info-item .jsf-info-label {
+        font-size: 0.78rem !important; font-weight: 700 !important;
+        letter-spacing: 0.16em !important; text-transform: uppercase !important;
+        color: rgba(255,255,255,0.88) !important; display: block !important; margin-bottom: 4px !important;
+    }
+    #jsf-funnel .jsf-info-item .jsf-info-value {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 1.12rem !important; font-weight: 600 !important;
+        color: white !important; display: block !important; line-height: 1.3 !important;
+    }
+    #jsf-funnel .jsf-info-item .jsf-info-link {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 0.95rem !important; font-weight: 600 !important;
+        color: #E8B04B !important; display: block !important;
+        line-height: 1.3 !important; text-decoration: underline !important;
+    }
     #jsf-funnel .jsf-info-link:hover { color: white !important; }
-    #jsf-funnel .jsfr { opacity: 0 !important; transform: translateY(28px) !important; transition: opacity 0.7s cubic-bezier(.16,1,.3,1), transform 0.7s cubic-bezier(.16,1,.3,1) !important; }
+
+    /* ── REVEAL ── */
+    #jsf-funnel .jsfr {
+        opacity: 0 !important; transform: translateY(28px) !important;
+        transition: opacity 0.7s cubic-bezier(.16,1,.3,1), transform 0.7s cubic-bezier(.16,1,.3,1) !important;
+    }
     #jsf-funnel .jsfr.jsfon { opacity: 1 !important; transform: none !important; }
+
+    /* ── RESPONSIVE ── */
     @media (max-width: 860px) {
         #jsf-funnel .jsf-nav { padding: 0 24px !important; }
         #jsf-funnel .jsf-logo-wrap { left: 24px !important; }
         #jsf-funnel .jsf-nav-cta { padding: 14px 24px !important; }
         #jsf-funnel .jsf-benefits { padding: 32px 24px !important; }
         #jsf-funnel .jsf-tickets { padding: 56px 24px !important; }
-        #jsf-funnel .jsf-grid { flex-direction: column !important; align-items: center !important; }
-        #jsf-funnel .jsf-card { max-width: 480px !important; flex: 0 0 auto !important; overflow: visible !important; }
+        #jsf-funnel .jsf-grid { grid-template-columns: repeat(2, minmax(0, 420px)) !important; }
+        /* Grid auto-placement clips card content via overflow:hidden at narrow widths — reset to visible. */
+        #jsf-funnel .jsf-card { overflow: visible !important; }
         #jsf-funnel .jsf-story { padding: 44px 24px !important; }
-        #jsf-funnel .jsf-info-grid,
-        #jsf-funnel .jsf-info-grid--4 { grid-template-columns: 1fr 1fr !important; }
+        #jsf-funnel .jsf-info-grid { grid-template-columns: 1fr 1fr !important; }
         #jsf-funnel .jsf-info-item:nth-child(2n)::after { display: none !important; }
+        #jsf-funnel .jsf-benefits-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 16px 0 !important; }
+        #jsf-funnel .jsf-benefit:nth-child(2n)::after { display: none !important; }
         #jsf-funnel .jsf-gallery-header { padding: 0 24px !important; }
         #jsf-funnel .jsf-gcard { width: 300px !important; height: 210px !important; }
         #jsf-funnel .jsf-hero-content { padding: 0 32px 44px !important; }
+    }
+    @media (max-width: 700px) {
+        #jsf-funnel .jsf-grid { grid-template-columns: 1fr !important; }
     }
     @media (max-width: 560px) {
         #jsf-funnel .jsf-nav { padding: 0 16px !important; height: 72px !important; }
@@ -151,10 +653,10 @@
         #jsf-funnel .jsf-logo-badge { padding: 9px 18px 16px !important; border-radius: 4px 4px 50% 50% / 4px 4px 60% 60% !important; }
         #jsf-funnel .jsf-logo-badge img { height: 60px !important; }
         #jsf-funnel .jsf-nav-loc { display: none !important; }
+        /* Narrow bar: badge stays LEFT-aligned (its home position); the Get-the-Pass action
+           lives in the hero, the tickets section, and the floating bottom button on mobile. */
         #jsf-funnel .jsf-nav-cta { display: none !important; }
         #jsf-funnel .jsf-benefits { padding: 24px 16px !important; }
-        #jsf-funnel .jsf-benefits-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 14px 0 !important; }
-        #jsf-funnel .jsf-benefit:nth-child(2n)::after { display: none !important; }
         #jsf-funnel .jsf-tickets { padding: 48px 16px !important; }
         #jsf-funnel .jsf-story { padding: 36px 16px !important; }
         #jsf-funnel .jsf-gallery-header { padding: 0 16px !important; }
@@ -175,20 +677,30 @@
         #jsf-funnel .jsf-card-note { font-size: 0.95rem !important; }
         #jsf-funnel .jsf-card-fees { font-size: 0.85rem !important; }
     }
+
+    /* ── Suppress TicketSpice-rendered footer chrome (flag + TS logo) ── */
+    .WCX-poweredBy, .WCX-footer-poweredBy, [class*="poweredBy"], [class*="powered-by"],
+    [class*="powered_by"], .ticketspice-logo, .tsr-poweredBy, .WCX-footer-flag, .WCX-localeFlag,
+    .country-flag, .locale-flag, [class*="localeFlag"], img[src*="ticketspice"], img[src*="us-flag"],
+    img[src*="us_flag"], img[src*="usa-flag"], img[alt*="TicketSpice" i], img[alt*="United States" i] {
+        display: none !important; visibility: hidden !important; height: 0 !important; width: 0 !important;
+    }
 </style>
 
 <div id="jsf-funnel">
 
+    <!-- BANNER -->
     <div class="jsf-banner">
         <div class="jsf-banner-inner">
-            <span class="jsf-banner-accent">🍂 FALL ON THE FARM</span>
+            <span class="jsf-banner-accent">⚡ FLASH SALE</span>
             <span class="jsf-dot"></span>
-            <span>Coming Sept 12</span>
+            <span>Any-Day Tickets $12.95</span>
             <span class="jsf-dot"></span>
-            <span>Season Passes On Sale Now</span>
+            <span>Ends Aug 30</span>
         </div>
     </div>
 
+    <!-- NAV -->
     <div class="jsf-nav">
         <div class="jsf-logo-wrap">
             <div class="jsf-logo-badge">
@@ -203,46 +715,49 @@
                 </svg>
                 Kenosha, WI
             </div>
-            <a href="#ticketBlock" class="jsf-nav-cta">Get the Pass</a>
+            <a href="#ticketBlock" class="jsf-nav-cta">Shop Flash Sale</a>
         </div>
     </div>
 
+    <!-- HERO (IMAGE) -->
     <div class="jsf-hero">
-        <img class="jsf-hero-video" src="../../../assets/pumpkin-fly-over-hero-image.jpeg" alt="Fall on the Farm — Jerry Smith Farm">
+        <img class="jsf-hero-video" src="file:///Users/matlonginow/Desktop/crowd7-public/clients/jerry-smith/design/assets/pumpkin-fly-over-hero-image.jpeg" alt="Fall on the Farm — Jerry Smith Farm">
         <div class="jsf-hero-overlay"></div>
         <div class="jsf-hero-content">
-            <span class="jsf-hero-ribbon">Season Passes Now Available</span>
+            <span class="jsf-hero-ribbon">⚡ Flash Sale — Ends Aug 30</span>
             <span class="jsf-hero-eyebrow">Jerry Smith Farm · Fall 2026</span>
             <span class="jsf-hero-title">Fall on the <em>Farm</em></span>
-            <span class="jsf-hero-tagline">— Get the pass, save your spot for the whole season. —</span>
+            <span class="jsf-hero-tagline">— Our biggest offer of the season. Any-Day tickets from $12.95. —</span>
         </div>
     </div>
 
+    <!-- BENEFITS (unheaded emoji tile strip — house pattern) -->
     <div class="jsf-benefits">
         <div class="jsf-benefits-grid">
             <div class="jsf-benefit">
-                <span class="jsf-benefit-emoji">♾️</span>
-                <span class="jsf-benefit-title">Unlimited Visits</span>
-                <span class="jsf-benefit-desc">Come back all fall long</span>
+                <span class="jsf-benefit-emoji">⚡</span>
+                <span class="jsf-benefit-title">33% Off Any-Day</span>
+                <span class="jsf-benefit-desc">Just $12.95, ends Aug 30</span>
             </div>
             <div class="jsf-benefit">
-                <span class="jsf-benefit-emoji">🍺</span>
-                <span class="jsf-benefit-title">10% Off Smitty's Bar</span>
-                <span class="jsf-benefit-desc">Every visit</span>
+                <span class="jsf-benefit-emoji">🍪</span>
+                <span class="jsf-benefit-title">Family 4-Pack</span>
+                <span class="jsf-benefit-desc">4 admissions + 4 cookies, $59.95</span>
             </div>
             <div class="jsf-benefit">
-                <span class="jsf-benefit-emoji">🛍️</span>
-                <span class="jsf-benefit-title">10% Off Country Store</span>
-                <span class="jsf-benefit-desc">Take the farm home</span>
+                <span class="jsf-benefit-emoji">🎟️</span>
+                <span class="jsf-benefit-title">Season Pass $33.95</span>
+                <span class="jsf-benefit-desc">Our biggest markdown of the year</span>
             </div>
             <div class="jsf-benefit">
-                <span class="jsf-benefit-emoji">📅</span>
-                <span class="jsf-benefit-title">Sept 12 – Nov 1</span>
-                <span class="jsf-benefit-desc">Lock in before the season starts</span>
+                <span class="jsf-benefit-emoji">⏰</span>
+                <span class="jsf-benefit-title">Flash Ends Aug 30</span>
+                <span class="jsf-benefit-desc">Regular pricing after</span>
             </div>
         </div>
     </div>
 
+    <!-- GALLERY -->
     <div class="jsf-gallery">
         <div class="jsf-gallery-header jsfr">
             <span class="jsf-eye">A Day at Jerry Smith Farm</span>
@@ -250,13 +765,14 @@
         </div>
         <div class="jsf-gallery-mask">
             <div class="jsf-gallery-track">
-                <div class="jsf-gcard"><img src="file:///Users/matlonginow/Desktop/crowd7-public/clients/jerry-smith/design/assets/pumpkin-fly-over-hero-image.jpeg" alt="Pumpkin Patch" loading="lazy"><div class="jsf-gcard-label">Pumpkin Patch</div></div>
+                <div class="jsf-gcard"><img src="file:///Users/matlonginow/Desktop/crowd7-public/clients/jerry-smith/design/assets/row-of-pumpkins.jpeg" alt="Pumpkin Patch" loading="lazy"><div class="jsf-gcard-label">Pumpkin Patch</div></div>
                 <div class="jsf-gcard"><img src="file:///Users/matlonginow/Desktop/crowd7-public/clients/jerry-smith/design/assets/friends-ice-cream.jpg" alt="Treats &amp; Eats" loading="lazy"><div class="jsf-gcard-label">Treats &amp; Eats</div></div>
                 <div class="jsf-gcard"><img src="file:///Users/matlonginow/Desktop/crowd7-public/clients/jerry-smith/design/assets/goat.jpeg" alt="Meet the Animals" loading="lazy"><div class="jsf-gcard-label">Meet the Animals</div></div>
                 <div class="jsf-gcard"><img src="file:///Users/matlonginow/Desktop/crowd7-public/clients/jerry-smith/design/assets/father-son-smiling.jpg" alt="Family Memories" loading="lazy"><div class="jsf-gcard-label">Family Memories</div></div>
                 <div class="jsf-gcard"><img src="file:///Users/matlonginow/Desktop/crowd7-public/clients/jerry-smith/design/assets/piggies.jpeg" alt="Barnyard Friends" loading="lazy"><div class="jsf-gcard-label">Barnyard Friends</div></div>
                 <div class="jsf-gcard"><img src="file:///Users/matlonginow/Desktop/crowd7-public/clients/jerry-smith/design/assets/kids-playing.jpeg" alt="Family Fun" loading="lazy"><div class="jsf-gcard-label">Family Fun</div></div>
-                <div class="jsf-gcard"><img src="file:///Users/matlonginow/Desktop/crowd7-public/clients/jerry-smith/design/assets/pumpkin-fly-over-hero-image.jpeg" alt="Pumpkin Patch" loading="lazy"><div class="jsf-gcard-label">Pumpkin Patch</div></div>
+                <!-- Duplicate set for seamless marquee loop -->
+                <div class="jsf-gcard"><img src="file:///Users/matlonginow/Desktop/crowd7-public/clients/jerry-smith/design/assets/row-of-pumpkins.jpeg" alt="Pumpkin Patch" loading="lazy"><div class="jsf-gcard-label">Pumpkin Patch</div></div>
                 <div class="jsf-gcard"><img src="file:///Users/matlonginow/Desktop/crowd7-public/clients/jerry-smith/design/assets/friends-ice-cream.jpg" alt="Treats &amp; Eats" loading="lazy"><div class="jsf-gcard-label">Treats &amp; Eats</div></div>
                 <div class="jsf-gcard"><img src="file:///Users/matlonginow/Desktop/crowd7-public/clients/jerry-smith/design/assets/goat.jpeg" alt="Meet the Animals" loading="lazy"><div class="jsf-gcard-label">Meet the Animals</div></div>
                 <div class="jsf-gcard"><img src="file:///Users/matlonginow/Desktop/crowd7-public/clients/jerry-smith/design/assets/father-son-smiling.jpg" alt="Family Memories" loading="lazy"><div class="jsf-gcard-label">Family Memories</div></div>
@@ -266,6 +782,7 @@
         </div>
     </div>
 
+    <!-- STORY STRIP -->
     <div class="jsf-story jsfr">
         <div class="jsf-story-inner">
             <span class="jsf-story-script">This Fall</span>
@@ -279,15 +796,67 @@
         </div>
     </div>
 
+    <!-- FLASH SALE — 3-CARD GRID -->
     <div class="jsf-tickets" id="tickets">
         <div class="jsf-tickets-header jsfr">
-            <span class="jsf-eye">Season Pass</span>
-            <span class="jsf-section-title">One pass, <em>all fall long</em></span>
+            <span class="jsf-eye">Flash Sale · Aug 26–30</span>
+            <span class="jsf-section-title">Our biggest <em>offer</em> of the season</span>
+            <div class="jsf-countdown" id="jsf-countdown">
+                <span class="jsf-countdown-label">⚡ Flash Sale ends in</span>
+                <span class="jsf-countdown-value" id="jsf-countdown-value" aria-live="polite">—</span>
+            </div>
         </div>
+        <!-- 🚫 EXACTLY 3 CARDS — Any-Day / Family 4-Pack / Season Pass. Weekday tickets are
+             deliberately NOT exposed during the Flash Sale (Bryan + Lauren decision, see
+             data/clients/jerry-smith/events/fall-in-the-farm/event-info.md §4 — Lauren's handle
+             for locals asking about weekday pricing is "weekday tickets coming soon"). A 4th
+             (weekday) card here is a defect, not thoroughness — do not add one. -->
         <div class="jsf-grid">
+
             <div class="jsf-card jsfr">
-                <span class="jsf-card-badge">★ Great Value ★</span>
+                <span class="jsf-card-badge">⚡ Flash Sale · 33% Off</span>
                 <span class="jsf-card-icon">🎟</span>
+                <h3>Flash Any-Day Admission</h3>
+                <ul class="jsf-card-bullets">
+                    <li>🎃 Wander the pumpkin patch, any day of the flash</li>
+                    <li>🐐 Meet the barnyard animals</li>
+                    <li>🍩 Treats at the Food Court &amp; Smitty's Bar</li>
+                    <li>👨‍👩‍👧‍👦 One admission, our lowest single-visit price of the year</li>
+                </ul>
+                <div class="jsf-card-price">
+                    <span class="jsf-price-num">$12.95*</span>
+                    <div class="jsf-price-slash">
+                        <span class="jsf-price-online">Flash Price</span>
+                        <span class="jsf-price-was">$19.95 at gate</span>
+                    </div>
+                </div>
+                <span class="jsf-card-fees">*plus applicable taxes and fees</span>
+                <span class="jsf-card-note">Aug 26–30 only · single any-day admission</span>
+            </div>
+
+            <div class="jsf-card jsfr">
+                <span class="jsf-card-badge">🍪 They Come For The Cookies</span>
+                <span class="jsf-card-icon">🧺</span>
+                <h3>Family 4-Pack Bundle</h3>
+                <ul class="jsf-card-bullets">
+                    <li>🎟 4 admissions — any day of the Flash Sale</li>
+                    <li>🍪 4 fresh-baked cookies included</li>
+                    <li>🎃 Full farm access for the whole crew</li>
+                    <li>👨‍👩‍👧‍👦 Built for a family of four</li>
+                </ul>
+                <div class="jsf-card-price">
+                    <span class="jsf-price-num">$59.95*</span>
+                    <div class="jsf-price-slash">
+                        <span class="jsf-price-online">Flash Bundle</span>
+                    </div>
+                </div>
+                <span class="jsf-card-fees">*plus applicable taxes and fees</span>
+                <span class="jsf-card-note">Aug 26–30 only · 4 admissions + 4 cookies</span>
+            </div>
+
+            <div class="jsf-card jsfr">
+                <span class="jsf-card-badge">★ Flash Sale Price ★</span>
+                <span class="jsf-card-icon">🍂</span>
                 <h3>Fall Season Pass</h3>
                 <ul class="jsf-card-bullets">
                     <li>♾ Unlimited visits all fall — Sept 12 to Nov 1, 2026</li>
@@ -296,9 +865,9 @@
                     <li>👨‍👩‍👧‍👦 The whole season of fall fun, one price</li>
                 </ul>
                 <div class="jsf-card-price">
-                    <span class="jsf-price-num">$39.95*</span>
+                    <span class="jsf-price-num">$33.95*</span>
                     <div class="jsf-price-slash">
-                        <span class="jsf-price-online">Online Price</span>
+                        <span class="jsf-price-online">Flash Price</span>
                         <span class="jsf-price-was">$49.95 at gate</span>
                     </div>
                 </div>
@@ -306,31 +875,10 @@
                 <span class="jsf-card-note">Per person · valid the entire 2026 fall season</span>
             </div>
 
-            <div class="jsf-card jsf-card--details jsfr">
-                <span class="jsf-card-badge">Plan Your Visit</span>
-                <span class="jsf-card-icon">🍂</span>
-                <h3>A Full Season of Fall</h3>
-                <ul class="jsf-card-bullets">
-                    <li>🎃 Wander the pumpkin patch</li>
-                    <li>🐐 Meet the barnyard animals</li>
-                    <li>🍩 Treats at the Food Court &amp; Smitty's Bar</li>
-                    <li>🛍 Take a little home from the Country Store</li>
-                    <li>👨‍👩‍👧‍👦 Family fun every day we're open</li>
-                </ul>
-                <div class="jsf-card-detail-row">
-                    <div class="jsf-detail">
-                        <span class="jsf-detail-label">When</span>
-                        <span class="jsf-detail-value">Sept 12 – Nov 1, 2026</span>
-                    </div>
-                    <div class="jsf-detail">
-                        <span class="jsf-detail-label">Where</span>
-                        <span class="jsf-detail-value">Jerry Smith Farm · jerrysmithfarm.com</span>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 
+    <!-- INFO ROW (emoji-led, house pattern) -->
     <div class="jsf-info">
         <div class="jsf-info-grid jsf-info-grid--4">
             <div class="jsf-info-item">
@@ -339,7 +887,7 @@
             </div>
             <div class="jsf-info-item">
                 <span class="jsf-info-label">🎟️ Sales Open</span>
-                <span class="jsf-info-value">Now – Nov 1<br>Season Passes</span>
+                <span class="jsf-info-value">Flash Sale<br>Ends Aug 30</span>
             </div>
             <div class="jsf-info-item">
                 <span class="jsf-info-label">✨ Pass Includes</span>
@@ -352,13 +900,14 @@
         </div>
     </div>
 
-    <!-- Sentinel just above where the native TS cart renders — fallback trigger for the season-pass popup. -->
+    <!-- Sentinel just above where the native TS cart renders — fallback trigger for the season-pass popup if #ticketBlock never appears. -->
     <div id="jsf-sp-sentinel" aria-hidden="true" style="width:1px;height:1px;"></div>
 
 </div><!-- end #jsf-funnel -->
 
 <script>
     (function() {
+        // Reveal-on-scroll
         var obs = new IntersectionObserver(function(entries) {
             entries.forEach(function(e) {
                 if (e.isIntersecting) { e.target.classList.add('jsfon'); obs.unobserve(e.target); }
@@ -368,6 +917,7 @@
             obs.observe(el);
             if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('jsfon');
         });
+        // Smooth anchor scroll for internal links
         document.querySelectorAll('#jsf-funnel a[href^="#"]').forEach(function(a) {
             a.addEventListener('click', function(e) {
                 var target = document.querySelector(a.getAttribute('href'));
@@ -377,16 +927,124 @@
     })();
 </script>
 
-<!-- ░░ EYEBALL-ONLY mock of the native TicketSpice cart (#ticketBlock). NOT in the shipped content file —
-     it lets `open`-ing this wrapper exercise the season-pass popup's primary trigger (IntersectionObserver
-     on #ticketBlock). On the live page TicketSpice renders the real #ticketBlock here. ░░ -->
-<div id="ticketBlock" style="max-width:680px;margin:48px auto;padding:64px 24px;text-align:center;font-family:'Open Sans',sans-serif;color:#2A1A0E;background:#fff;border:3px dashed #9E2B25;border-radius:12px;">
-    <p style="font-family:'Zilla Slab',serif;font-size:1.25rem;margin:0;color:#9E2B25;">TicketSpice native cart renders here <code>#ticketBlock</code></p>
-    <p style="opacity:0.6;margin:8px 0 0;">Scroll-popup eyeball stand-in — not shipped in the content file.</p>
-</div>
-<div style="height:60vh;" aria-hidden="true"></div>
+<!-- ════ FLASH SALE COUNTDOWN — target Aug 30, 2026 11:59:59pm Central (America/Chicago, CDT) ════ -->
+<script>
+    (function() {
+        var wrap = document.getElementById('jsf-countdown');
+        var el = document.getElementById('jsf-countdown-value');
+        if (!wrap || !el) return;
+        var target = new Date('2026-08-30T23:59:59-05:00').getTime();
+        function tick() {
+            var diff = target - Date.now();
+            if (diff <= 0) { wrap.style.display = 'none'; return; }
+            var d = Math.floor(diff / 86400000);
+            var h = Math.floor((diff % 86400000) / 3600000);
+            var m = Math.floor((diff % 3600000) / 60000);
+            el.textContent = d + 'd ' + h + 'h ' + m + 'm';
+        }
+        tick();
+        setInterval(tick, 60000);
+    })();
+</script>
 
-<!-- ════ SEASON-PASS "THE DATE DOESN'T MATTER" SCROLL POPUP (mirrors the shipped content file) ════ -->
+<!-- ════ SLASH-THROUGH PRICING on the TicketSpice NATIVE ticket block ════
+     Pattern: data/clients/_patterns/slash-through-pricing.md (name-keyed JS + MutationObserver).
+     ✅ Ticket <h4> name CONFIRMED by Mat 2026-06-12: "Fall Season Pass" (gate $49.95, flash price $33.95).
+     ⚠️ "Flash Sale Any-Day Admission" key below is NAMED per event-info.md §4 wording, NOT yet
+     confirmed against a live TS <h4> dump (the flash ticket types may not exist in TS yet — this
+     page was built ahead of TS cart config per Mat's 2026-08-20 directive). Re-verify the exact
+     name once the ticket is live in TS, same as "Fall Season Pass" was confirmed 2026-06-12. The
+     Family 4-Pack carries no gate anchor per event-info.md, so it is not keyed here.
+     Name-keyed (NOT positional) → immune to TS Action show/hide reorders; MutationObserver re-applies
+     the gate strike on every TS re-render. The hybrid loader re-executes this <script> after injecting
+     the content (runbook v4 script-reinjection loop), so it runs live.
+     To eyeball live: pick a date in the cart so the ticket renders, confirm the gate price strikes. -->
+<script>
+(function(){
+  var GATE = {
+    "Fall Season Pass": "$49.95",              /* CONFIRMED live ticket name (Mat 2026-06-12) — exact match required */
+    "Flash Sale Any-Day Admission": "$19.95"   /* NOT yet confirmed against a live TS dump — see comment above */
+  };
+  function tag(){
+    document.querySelectorAll('#ticketBlock .ticket-type').forEach(function(row){
+      var h4 = row.querySelector('h4');
+      var cost = row.querySelector('.ticket-cost');
+      if(!h4 || !cost) return;
+      var g = GATE[h4.textContent.trim()];
+      if(g) cost.setAttribute('data-gate', g);
+    });
+  }
+  var tb = document.getElementById('ticketBlock') || document.body;
+  new MutationObserver(tag).observe(tb, {childList:true, subtree:true});
+  tag();
+})();
+</script>
+<style>
+  #ticketBlock .ticket-cost[data-gate]::before{
+    content: attr(data-gate) " "; text-decoration: line-through;
+    color:#212121; font-weight:200;
+  }
+  #ticketBlock .ticket-cost[data-gate]{ color:#2D7541 !important; }
+</style>
+
+<!-- ════ FLOATING "GET THE PASS" BUTTON (separate TS Custom HTML block) ════ -->
+<style>
+    #jsf-float-btn {
+        position: fixed !important; bottom: 0 !important; left: 0 !important; right: 0 !important;
+        z-index: 500 !important;  /* stay BELOW the TicketSpice Attendee
+                                    Support chat widget — their product
+                                    surface outranks our CTA */ padding: 12px 16px 20px !important;
+        background: linear-gradient(to top, rgba(251,244,230,0.97) 55%, transparent) !important;
+        display: flex !important; justify-content: center !important;
+        transition: opacity 0.35s ease, transform 0.35s ease !important;
+        /* let the TicketSpice Attendee Support chat widget (and anything
+           else beneath) receive clicks through the transparent band */
+        pointer-events: none !important;
+    }
+    #jsf-float-btn.jsf-float-hidden { opacity: 0 !important; transform: translateY(24px) !important; pointer-events: none !important; }
+    #jsf-float-btn.jsf-float-hidden a { pointer-events: none !important; }
+    #jsf-float-btn a {
+        display: block !important; width: 100% !important; max-width: 480px !important;
+        background: #E0742F !important; color: #ffffff !important;
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 24px !important; font-weight: 700 !important; letter-spacing: 0.06em !important;
+        text-align: center !important; text-decoration: none !important;
+        padding: 20px 28px !important; border-radius: 50px !important;
+        box-shadow: 0 8px 32px rgba(224,116,47,0.40) !important;
+        transition: transform 0.15s, box-shadow 0.15s, background 0.2s !important;
+        border: none !important; cursor: pointer !important;
+        pointer-events: auto !important;
+    }
+    #jsf-float-btn a:hover {
+        background: #C75F22 !important; transform: translateY(-2px) !important;
+        box-shadow: 0 14px 40px rgba(224,116,47,0.55) !important; color: #ffffff !important; text-decoration: none !important;
+    }
+</style>
+<div id="jsf-float-btn">
+    <a href="#ticketBlock">Shop the Flash Sale</a>
+</div>
+<script>
+    (function() {
+        var floatBtn = document.getElementById('jsf-float-btn');
+        if (floatBtn) {
+            floatBtn.querySelector('a').addEventListener('click', function() {
+                floatBtn.classList.add('jsf-float-hidden');
+            });
+        }
+    })();
+</script>
+
+<!-- ════ "THE DATE DOESN'T MATTER" SCROLL POPUP ════
+     Rewritten for the Flash Sale 2026-08-20 — was Season-Pass-only copy, now covers all 3 flash
+     cards (Any-Day + 4-Pack are valid any day of the flash window; the Pass is date-agnostic all
+     season). Fires once per session when the buyer scrolls to the native TS ticket block
+     (#ticketBlock), clearing up that picking a date doesn't change which ticket you get (TS just
+     requires a date before tickets/passes appear). Trigger: an IntersectionObserver on #ticketBlock — the TS cart renders async, so
+     a short poll waits for it — plus a sentinel fallback (#jsf-sp-sentinel at the end of OUR content)
+     so the popup still fires even if the cart never renders in our scope. Guarded by sessionStorage
+     (jsf_seasonpass_popup_seen) + an in-memory flag → shows at most once per session. Dismiss via
+     "Got it", the × close, click-outside, or Esc. The hybrid loader re-executes this script block after
+     injecting the content (runbook v4 re-injection loop), so it runs live. -->
 <style>
     #jsf-sp-overlay {
         position: fixed !important; inset: 0 !important; z-index: 100000 !important;
@@ -444,9 +1102,9 @@
 <div id="jsf-sp-overlay" role="dialog" aria-modal="true" aria-labelledby="jsf-sp-title" aria-hidden="true">
     <div class="jsf-sp-modal">
         <button type="button" class="jsf-sp-close" aria-label="Close">&times;</button>
-        <span class="jsf-sp-badge">Season Pass</span>
-        <h3 id="jsf-sp-title">Buying a Season Pass? The date doesn&rsquo;t matter.</h3>
-        <p>We&rsquo;re currently selling Season Passes, good for the entire season. TicketSpice requires you to pick a date before passes appear &mdash; so just select any available date to view and purchase your pass. Your Season Pass works all season long, no matter which date you choose.</p>
+        <span class="jsf-sp-badge">Flash Sale</span>
+        <h3 id="jsf-sp-title">Picking a date? It doesn&rsquo;t change your ticket.</h3>
+        <p>TicketSpice requires you to pick a date before tickets appear &mdash; so just select any available date to view and purchase. The Any-Day Admission and Family 4-Pack are valid any day of the Flash Sale (Aug 26&ndash;30), and the Season Pass works all season long &mdash; no matter which date you choose here.</p>
         <button type="button" class="jsf-sp-got">Got it</button>
     </div>
 </div>
@@ -490,19 +1148,137 @@
         o.observe(el);
         return o;
     }
+    // Primary: the native TS cart (#ticketBlock) renders async — poll up to ~12s for it, then observe it.
     pollTimer = setInterval(function(){
         pollCount++;
         var tb = document.getElementById('ticketBlock');
         if (tb) { io = watch(tb); clearInterval(pollTimer); pollTimer = null; }
         else if (pollCount > 40) { clearInterval(pollTimer); pollTimer = null; }
     }, 300);
+    // Fallback: a sentinel at the end of OUR content — guarantees a fire even if the cart never renders.
     var sentinel = document.getElementById('jsf-sp-sentinel');
     if (sentinel) sentinelIO = watch(sentinel);
 })();
 </script>
 
-</body>
-</html>
+<!-- ════ TICKETSPICE NATIVE-FORM STYLING (cart, calendar, ticket table, buttons, merch) ════
+     Supplied by Mat 2026-06-12. Styles the native TS checkout elements (the loader injects this
+     <style> into the live page so it cascades onto TS's own DOM). Objective syntax breakages fixed
+     so declarations actually apply: #fffff→#ffffff; added missing ';' after `background: transparent`
+     and the 2nd table's `background-color: white`; quoted multi-word font names. Otherwise verbatim. -->
+<style>
+.field-banner td { border: none; }
+
+.campaign-form:not(.legacy-form) hr.line-break {
+  border-color: #000000 !important;
+}
+
+.field-gallery {
+  background: white;
+}
+
+.field-gallery {
+  background-image: url("");
+}
+
+@media screen and (max-width: 768px) {
+  .field-image-single.field-image--fw {
+    padding: 1px 0 !important;
+  }
+}
+
+.field-image-single {
+  background: transparent;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.field-location.header-field h4 {
+  background: #FF9900;
+  color: white !important;
+}
+
+.wbx-calendar .row .day {
+  border-radius: 35px;
+  color: #ffffff;
+  cursor: default;
+  flex: 1;
+  height: 40px;
+  margin: 1px !important;
+  transition: all .2s;
+}
+
+.ticket-block .wbx-calendar .row .day.enabled { color: white; background-color: #3c8a4d; }
+
+.ticket-block .wbx-calendar .row .day.enabled.sold-out { color: white; background-color: #B93D45; }
+
+.campaign-form:not(.legacy-form) .ticket-block table.holds-tickets th,
+.ticket-block table.holds-tickets th {
+  color: #ffffff !important;
+  background: #000000 !important;
+}
+
+.campaign-form:not(.legacy-form) .ticket-block table.holds-tickets {
+  border: 3px solid black;
+  border-radius: 10px;
+  border-spacing: 0;
+  box-shadow: 0 10px 20px rgb(206, 43, 25);
+  width: 100%;
+}
+
+.campaign-form:not(.legacy-form) .ticket-block table.holds-tickets {
+  border-collapse: separate !important;
+  background-color: white;
+  border-spacing: 0;
+  box-shadow: 0 10px 20px rgb(206, 43, 25);
+  width: 100%;
+}
+
+.campaign-form:not(.legacy-form) ul.upgrades li img.product-thumbnail {
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgb(206, 43, 25);
+}
+
+.campaign-form:not(.legacy-form) .field-purchaseProtection .purchase-protection .purchase-protection-header {
+  background-color: white;
+  border: 3px solid black;
+  border-bottom: 3px solid black;
+  color: black !important;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 12px 32px;
+}
+
+.purchase-protection .purchase-protection-body {
+  background-color: white;
+  padding: 15px;
+  border: 3px solid black;
+}
+
+.campaign-form:not(.legacy-form) .btn-danger,
+.campaign-form:not(.legacy-form) .btn-primary,
+.campaign-form:not(.legacy-form) .btn:not(.btn--transparent):not(.btn--plus):not(.btn--minus):not(.btn--home):not(.btn--tooltipstered):not(.btn--blue) {
+  font-size: 15px;
+  color: white;
+  border-radius: 10px;
+  font-family: fatfrank, 'Segoe UI', 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', -apple-system, sans-serif;
+  font-weight: bold;
+  height: 44px;
+  min-height: 44px;
+  padding: 15px 20px;
+  text-transform: uppercase;
+}
+
+#ticketBlock > table > tbody:nth-child(3) > tr:nth-child(5) > td.description > div > img {
+  height: 120px;
+  margin-top: 12px;
+  width: auto;
+}
+
+#registrants > div.field-merchandise.registrant-field.field-registrant-1 {
+  display: none;
+}
+</style>
 <!-- ============================================================================
      CrowdView client announcement block  ·  v2  ·  2026-08-14
      Project: crowdview-client-announcements / popup-render-block-install (WS6)
@@ -714,3 +1490,6 @@
 })();
 </script>
 <!-- =================== END CrowdView announcement block =================== -->
+
+</body>
+</html>

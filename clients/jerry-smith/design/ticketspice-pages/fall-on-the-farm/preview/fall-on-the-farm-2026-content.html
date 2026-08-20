@@ -2,10 +2,13 @@
     Jerry Smith Farm · "Fall on the Farm" 2026 · Season Pass · TicketSpice page header
     Modeled on /data/clients/colony-acres/design/ticketspice-pages/fall-harvest-festival-2026.html
 
-    PHASE 1 (this build): Season Pass ONLY — $39.95 online / $49.95 gate anchor. Hero IMAGE + gallery.
-    Sold in-person via QR at the free summer weekends (Dog Days 6/13-14, Father's Day 6/20-21).
-    Pass is valid for the full fall season (Sept 12 – Nov 1, 2026).
-    PHASE 2 (Sept 12 launch): add GA Weekday + GA Weekend cards (3-card layout) — NOT in this file yet.
+    REBUILT 2026-08-20 — Flash-dressed 3-card lineup (dressed as though the Aug 26–30 Flash
+    Sale is live now, per Mat's voice directive; no traffic is pointed at this page yet so
+    there is no early-sale risk). Cards: Flash Any-Day Admission $12.95 (gate $19.95) ·
+    Family 4-Pack Bundle $59.95 · Fall Season Pass $33.95 (gate $49.95). Pricing locked at the
+    5.21.26 Fall Strategy Meeting — see data/clients/jerry-smith/events/fall-in-the-farm/event-info.md §4.
+    🚫 Weekday tickets are DELIBERATELY not exposed during Flash — do not add a 4th card.
+    GA Weekday/Weekend (3-card In Season layout) is a later phase, not built here.
 
     ════════════════════════════════════════════════════════════════════════════════════
     HERO + GALLERY: all images are in-repo (raw.githubusercontent.com/crowd-flow/crowd7-public/
@@ -411,9 +414,23 @@
         display: block !important; box-sizing: border-box !important;
     }
     #jsf-funnel .jsf-tickets-header { text-align: center !important; margin-bottom: 40px !important; }
+    #jsf-funnel .jsf-countdown {
+        display: inline-flex !important; align-items: center !important; gap: 10px !important;
+        margin-top: 18px !important; background: #9E2B25 !important; color: white !important;
+        padding: 10px 22px !important; border-radius: 50px !important;
+        box-shadow: 0 8px 20px rgba(158,43,37,0.25) !important;
+    }
+    #jsf-funnel .jsf-countdown-label {
+        font-size: 0.82rem !important; font-weight: 700 !important; letter-spacing: 0.06em !important;
+        text-transform: uppercase !important; color: rgba(255,255,255,0.85) !important;
+    }
+    #jsf-funnel .jsf-countdown-value {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 1.15rem !important; font-weight: 700 !important; color: #E8B04B !important;
+    }
     #jsf-funnel .jsf-grid {
-        display: flex !important;
-        flex-wrap: wrap !important;
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(0, 400px)) !important;
         justify-content: center !important;
         align-items: stretch !important;
         gap: 32px !important;
@@ -422,9 +439,7 @@
         margin-right: auto !important;
     }
     #jsf-funnel .jsf-card {
-        flex: 1 1 380px !important;
         width: 100% !important;
-        max-width: 460px !important;
         border-radius: 20px !important;
         padding: 40px 36px !important;
         position: relative !important;
@@ -597,10 +612,9 @@
         #jsf-funnel .jsf-nav-cta { padding: 14px 24px !important; }
         #jsf-funnel .jsf-benefits { padding: 32px 24px !important; }
         #jsf-funnel .jsf-tickets { padding: 56px 24px !important; }
-        #jsf-funnel .jsf-grid { flex-direction: column !important; align-items: center !important; }
-        /* In column layout the flex:1 1 380px basis becomes a HEIGHT, and overflow:hidden
-           then clips card content. Reset to content-height + no clip when stacked. */
-        #jsf-funnel .jsf-card { max-width: 480px !important; flex: 0 0 auto !important; overflow: visible !important; }
+        #jsf-funnel .jsf-grid { grid-template-columns: repeat(2, minmax(0, 420px)) !important; }
+        /* Grid auto-placement clips card content via overflow:hidden at narrow widths — reset to visible. */
+        #jsf-funnel .jsf-card { overflow: visible !important; }
         #jsf-funnel .jsf-story { padding: 44px 24px !important; }
         #jsf-funnel .jsf-info-grid { grid-template-columns: 1fr 1fr !important; }
         #jsf-funnel .jsf-info-item:nth-child(2n)::after { display: none !important; }
@@ -609,6 +623,9 @@
         #jsf-funnel .jsf-gallery-header { padding: 0 24px !important; }
         #jsf-funnel .jsf-gcard { width: 300px !important; height: 210px !important; }
         #jsf-funnel .jsf-hero-content { padding: 0 32px 44px !important; }
+    }
+    @media (max-width: 700px) {
+        #jsf-funnel .jsf-grid { grid-template-columns: 1fr !important; }
     }
     @media (max-width: 560px) {
         #jsf-funnel .jsf-nav { padding: 0 16px !important; height: 72px !important; }
@@ -655,11 +672,11 @@
     <!-- BANNER -->
     <div class="jsf-banner">
         <div class="jsf-banner-inner">
-            <span class="jsf-banner-accent">🍂 FALL ON THE FARM</span>
+            <span class="jsf-banner-accent">⚡ FLASH SALE</span>
             <span class="jsf-dot"></span>
-            <span>Coming Sept 12</span>
+            <span>Any-Day Tickets $12.95</span>
             <span class="jsf-dot"></span>
-            <span>Season Passes On Sale Now</span>
+            <span>Ends Aug 30</span>
         </div>
     </div>
 
@@ -678,7 +695,7 @@
                 </svg>
                 Kenosha, WI
             </div>
-            <a href="#ticketBlock" class="jsf-nav-cta">Get the Pass</a>
+            <a href="#ticketBlock" class="jsf-nav-cta">Shop Flash Sale</a>
         </div>
     </div>
 
@@ -687,10 +704,10 @@
         <img class="jsf-hero-video" src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/jerry-smith/design/assets/pumpkin-fly-over-hero-image.jpeg" alt="Fall on the Farm — Jerry Smith Farm">
         <div class="jsf-hero-overlay"></div>
         <div class="jsf-hero-content">
-            <span class="jsf-hero-ribbon">Season Passes Now Available</span>
+            <span class="jsf-hero-ribbon">⚡ Flash Sale — Ends Aug 30</span>
             <span class="jsf-hero-eyebrow">Jerry Smith Farm · Fall 2026</span>
             <span class="jsf-hero-title">Fall on the <em>Farm</em></span>
-            <span class="jsf-hero-tagline">— Get the pass, save your spot for the whole season. —</span>
+            <span class="jsf-hero-tagline">— Our biggest offer of the season. Any-Day tickets from $12.95. —</span>
         </div>
     </div>
 
@@ -698,24 +715,24 @@
     <div class="jsf-benefits">
         <div class="jsf-benefits-grid">
             <div class="jsf-benefit">
-                <span class="jsf-benefit-emoji">♾️</span>
-                <span class="jsf-benefit-title">Unlimited Visits</span>
-                <span class="jsf-benefit-desc">Come back all fall long</span>
+                <span class="jsf-benefit-emoji">⚡</span>
+                <span class="jsf-benefit-title">33% Off Any-Day</span>
+                <span class="jsf-benefit-desc">Just $12.95, ends Aug 30</span>
             </div>
             <div class="jsf-benefit">
-                <span class="jsf-benefit-emoji">🍺</span>
-                <span class="jsf-benefit-title">10% Off Smitty's Bar</span>
-                <span class="jsf-benefit-desc">Every visit</span>
+                <span class="jsf-benefit-emoji">🍪</span>
+                <span class="jsf-benefit-title">Family 4-Pack</span>
+                <span class="jsf-benefit-desc">4 admissions + 4 cookies, $59.95</span>
             </div>
             <div class="jsf-benefit">
-                <span class="jsf-benefit-emoji">🛍️</span>
-                <span class="jsf-benefit-title">10% Off Country Store</span>
-                <span class="jsf-benefit-desc">Take the farm home</span>
+                <span class="jsf-benefit-emoji">🎟️</span>
+                <span class="jsf-benefit-title">Season Pass $33.95</span>
+                <span class="jsf-benefit-desc">Our biggest markdown of the year</span>
             </div>
             <div class="jsf-benefit">
-                <span class="jsf-benefit-emoji">📅</span>
-                <span class="jsf-benefit-title">Sept 12 – Nov 1</span>
-                <span class="jsf-benefit-desc">Lock in before the season starts</span>
+                <span class="jsf-benefit-emoji">⏰</span>
+                <span class="jsf-benefit-title">Flash Ends Aug 30</span>
+                <span class="jsf-benefit-desc">Regular pricing after</span>
             </div>
         </div>
     </div>
@@ -759,17 +776,67 @@
         </div>
     </div>
 
-    <!-- SEASON PASS CARD -->
+    <!-- FLASH SALE — 3-CARD GRID -->
     <div class="jsf-tickets" id="tickets">
         <div class="jsf-tickets-header jsfr">
-            <span class="jsf-eye">Season Pass</span>
-            <span class="jsf-section-title">One pass, <em>all fall long</em></span>
+            <span class="jsf-eye">Flash Sale · Aug 26–30</span>
+            <span class="jsf-section-title">Our biggest <em>offer</em> of the season</span>
+            <div class="jsf-countdown" id="jsf-countdown">
+                <span class="jsf-countdown-label">⚡ Flash Sale ends in</span>
+                <span class="jsf-countdown-value" id="jsf-countdown-value" aria-live="polite">—</span>
+            </div>
         </div>
+        <!-- 🚫 EXACTLY 3 CARDS — Any-Day / Family 4-Pack / Season Pass. Weekday tickets are
+             deliberately NOT exposed during the Flash Sale (Bryan + Lauren decision, see
+             data/clients/jerry-smith/events/fall-in-the-farm/event-info.md §4 — Lauren's handle
+             for locals asking about weekday pricing is "weekday tickets coming soon"). A 4th
+             (weekday) card here is a defect, not thoroughness — do not add one. -->
         <div class="jsf-grid">
 
             <div class="jsf-card jsfr">
-                <span class="jsf-card-badge">★ Great Value ★</span>
+                <span class="jsf-card-badge">⚡ Flash Sale · 33% Off</span>
                 <span class="jsf-card-icon">🎟</span>
+                <h3>Flash Any-Day Admission</h3>
+                <ul class="jsf-card-bullets">
+                    <li>🎃 Wander the pumpkin patch, any day of the flash</li>
+                    <li>🐐 Meet the barnyard animals</li>
+                    <li>🍩 Treats at the Food Court &amp; Smitty's Bar</li>
+                    <li>👨‍👩‍👧‍👦 One admission, our lowest single-visit price of the year</li>
+                </ul>
+                <div class="jsf-card-price">
+                    <span class="jsf-price-num">$12.95*</span>
+                    <div class="jsf-price-slash">
+                        <span class="jsf-price-online">Flash Price</span>
+                        <span class="jsf-price-was">$19.95 at gate</span>
+                    </div>
+                </div>
+                <span class="jsf-card-fees">*plus applicable taxes and fees</span>
+                <span class="jsf-card-note">Aug 26–30 only · single any-day admission</span>
+            </div>
+
+            <div class="jsf-card jsfr">
+                <span class="jsf-card-badge">🍪 They Come For The Cookies</span>
+                <span class="jsf-card-icon">🧺</span>
+                <h3>Family 4-Pack Bundle</h3>
+                <ul class="jsf-card-bullets">
+                    <li>🎟 4 admissions — any day of the Flash Sale</li>
+                    <li>🍪 4 fresh-baked cookies included</li>
+                    <li>🎃 Full farm access for the whole crew</li>
+                    <li>👨‍👩‍👧‍👦 Built for a family of four</li>
+                </ul>
+                <div class="jsf-card-price">
+                    <span class="jsf-price-num">$59.95*</span>
+                    <div class="jsf-price-slash">
+                        <span class="jsf-price-online">Flash Bundle</span>
+                    </div>
+                </div>
+                <span class="jsf-card-fees">*plus applicable taxes and fees</span>
+                <span class="jsf-card-note">Aug 26–30 only · 4 admissions + 4 cookies</span>
+            </div>
+
+            <div class="jsf-card jsfr">
+                <span class="jsf-card-badge">★ Flash Sale Price ★</span>
+                <span class="jsf-card-icon">🍂</span>
                 <h3>Fall Season Pass</h3>
                 <ul class="jsf-card-bullets">
                     <li>♾ Unlimited visits all fall — Sept 12 to Nov 1, 2026</li>
@@ -778,37 +845,14 @@
                     <li>👨‍👩‍👧‍👦 The whole season of fall fun, one price</li>
                 </ul>
                 <div class="jsf-card-price">
-                    <span class="jsf-price-num">$39.95*</span>
+                    <span class="jsf-price-num">$33.95*</span>
                     <div class="jsf-price-slash">
-                        <span class="jsf-price-online">Online Price</span>
+                        <span class="jsf-price-online">Flash Price</span>
                         <span class="jsf-price-was">$49.95 at gate</span>
                     </div>
                 </div>
                 <span class="jsf-card-fees">*plus applicable taxes and fees · Food Court excluded from discount</span>
                 <span class="jsf-card-note">Per person · valid the entire 2026 fall season</span>
-            </div>
-
-            <div class="jsf-card jsf-card--details jsfr">
-                <span class="jsf-card-badge">Plan Your Visit</span>
-                <span class="jsf-card-icon">🍂</span>
-                <h3>A Full Season of Fall</h3>
-                <ul class="jsf-card-bullets">
-                    <li>🎃 Wander the pumpkin patch</li>
-                    <li>🐐 Meet the barnyard animals</li>
-                    <li>🍩 Treats at the Food Court &amp; Smitty's Bar</li>
-                    <li>🛍 Take a little home from the Country Store</li>
-                    <li>👨‍👩‍👧‍👦 Family fun every day we're open</li>
-                </ul>
-                <div class="jsf-card-detail-row">
-                    <div class="jsf-detail">
-                        <span class="jsf-detail-label">When</span>
-                        <span class="jsf-detail-value">Sept 12 – Nov 1, 2026</span>
-                    </div>
-                    <div class="jsf-detail">
-                        <span class="jsf-detail-label">Where</span>
-                        <span class="jsf-detail-value">Jerry Smith Farm · jerrysmithfarm.com</span>
-                    </div>
-                </div>
             </div>
 
         </div>
@@ -823,7 +867,7 @@
             </div>
             <div class="jsf-info-item">
                 <span class="jsf-info-label">🎟️ Sales Open</span>
-                <span class="jsf-info-value">Now – Nov 1<br>Season Passes</span>
+                <span class="jsf-info-value">Flash Sale<br>Ends Aug 30</span>
             </div>
             <div class="jsf-info-item">
                 <span class="jsf-info-label">✨ Pass Includes</span>
@@ -863,17 +907,43 @@
     })();
 </script>
 
+<!-- ════ FLASH SALE COUNTDOWN — target Aug 30, 2026 11:59:59pm Central (America/Chicago, CDT) ════ -->
+<script>
+    (function() {
+        var wrap = document.getElementById('jsf-countdown');
+        var el = document.getElementById('jsf-countdown-value');
+        if (!wrap || !el) return;
+        var target = new Date('2026-08-30T23:59:59-05:00').getTime();
+        function tick() {
+            var diff = target - Date.now();
+            if (diff <= 0) { wrap.style.display = 'none'; return; }
+            var d = Math.floor(diff / 86400000);
+            var h = Math.floor((diff % 86400000) / 3600000);
+            var m = Math.floor((diff % 3600000) / 60000);
+            el.textContent = d + 'd ' + h + 'h ' + m + 'm';
+        }
+        tick();
+        setInterval(tick, 60000);
+    })();
+</script>
+
 <!-- ════ SLASH-THROUGH PRICING on the TicketSpice NATIVE ticket block ════
      Pattern: data/clients/_patterns/slash-through-pricing.md (name-keyed JS + MutationObserver).
-     ✅ Ticket <h4> name CONFIRMED by Mat 2026-06-12: "Fall Season Pass" (online $39.95 / gate $49.95).
+     ✅ Ticket <h4> name CONFIRMED by Mat 2026-06-12: "Fall Season Pass" (gate $49.95, flash price $33.95).
+     ⚠️ "Flash Sale Any-Day Admission" key below is NAMED per event-info.md §4 wording, NOT yet
+     confirmed against a live TS <h4> dump (the flash ticket types may not exist in TS yet — this
+     page was built ahead of TS cart config per Mat's 2026-08-20 directive). Re-verify the exact
+     name once the ticket is live in TS, same as "Fall Season Pass" was confirmed 2026-06-12. The
+     Family 4-Pack carries no gate anchor per event-info.md, so it is not keyed here.
      Name-keyed (NOT positional) → immune to TS Action show/hide reorders; MutationObserver re-applies
      the gate strike on every TS re-render. The hybrid loader re-executes this <script> after injecting
      the content (runbook v4 script-reinjection loop), so it runs live.
-     To eyeball live: pick a date in the cart so the ticket renders, confirm ~~$49.95~~ $39.95 shows. -->
+     To eyeball live: pick a date in the cart so the ticket renders, confirm the gate price strikes. -->
 <script>
 (function(){
   var GATE = {
-    "Fall Season Pass": "$49.95"   /* CONFIRMED live ticket name (Mat 2026-06-12) — exact match required */
+    "Fall Season Pass": "$49.95",              /* CONFIRMED live ticket name (Mat 2026-06-12) — exact match required */
+    "Flash Sale Any-Day Admission": "$19.95"   /* NOT yet confirmed against a live TS dump — see comment above */
   };
   function tag(){
     document.querySelectorAll('#ticketBlock .ticket-type').forEach(function(row){
@@ -931,7 +1001,7 @@
     }
 </style>
 <div id="jsf-float-btn">
-    <a href="#ticketBlock">Get the Season Pass</a>
+    <a href="#ticketBlock">Shop the Flash Sale</a>
 </div>
 <script>
     (function() {
@@ -944,10 +1014,12 @@
     })();
 </script>
 
-<!-- ════ SEASON-PASS "THE DATE DOESN'T MATTER" SCROLL POPUP ════
-     Fires once per session when the buyer scrolls to the native TS ticket block (#ticketBlock),
-     clearing up that picking a date doesn't change the pass (TS just requires a date for passes
-     to appear). Trigger: an IntersectionObserver on #ticketBlock — the TS cart renders async, so
+<!-- ════ "THE DATE DOESN'T MATTER" SCROLL POPUP ════
+     Rewritten for the Flash Sale 2026-08-20 — was Season-Pass-only copy, now covers all 3 flash
+     cards (Any-Day + 4-Pack are valid any day of the flash window; the Pass is date-agnostic all
+     season). Fires once per session when the buyer scrolls to the native TS ticket block
+     (#ticketBlock), clearing up that picking a date doesn't change which ticket you get (TS just
+     requires a date before tickets/passes appear). Trigger: an IntersectionObserver on #ticketBlock — the TS cart renders async, so
      a short poll waits for it — plus a sentinel fallback (#jsf-sp-sentinel at the end of OUR content)
      so the popup still fires even if the cart never renders in our scope. Guarded by sessionStorage
      (jsf_seasonpass_popup_seen) + an in-memory flag → shows at most once per session. Dismiss via
@@ -1010,9 +1082,9 @@
 <div id="jsf-sp-overlay" role="dialog" aria-modal="true" aria-labelledby="jsf-sp-title" aria-hidden="true">
     <div class="jsf-sp-modal">
         <button type="button" class="jsf-sp-close" aria-label="Close">&times;</button>
-        <span class="jsf-sp-badge">Season Pass</span>
-        <h3 id="jsf-sp-title">Buying a Season Pass? The date doesn&rsquo;t matter.</h3>
-        <p>We&rsquo;re currently selling Season Passes, good for the entire season. TicketSpice requires you to pick a date before passes appear &mdash; so just select any available date to view and purchase your pass. Your Season Pass works all season long, no matter which date you choose.</p>
+        <span class="jsf-sp-badge">Flash Sale</span>
+        <h3 id="jsf-sp-title">Picking a date? It doesn&rsquo;t change your ticket.</h3>
+        <p>TicketSpice requires you to pick a date before tickets appear &mdash; so just select any available date to view and purchase. The Any-Day Admission and Family 4-Pack are valid any day of the Flash Sale (Aug 26&ndash;30), and the Season Pass works all season long &mdash; no matter which date you choose here.</p>
         <button type="button" class="jsf-sp-got">Got it</button>
     </div>
 </div>
