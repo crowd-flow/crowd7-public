@@ -43,6 +43,31 @@
       · Font stack (Zilla Slab / Oswald / Open Sans / Caveat) is our proven web stack, not the brand font.
       · Street address + age/ticket policy not yet supplied — info row kept to season + inclusions.
 -->
+<!--
+    Jerry Smith Farm · "Fall on the Farm" 2026 · Season Pass · TicketSpice page header
+    Modeled on /data/clients/colony-acres/design/ticketspice-pages/fall-harvest-festival-2026.html
+
+    REBUILT 2026-08-20 — Flash-dressed 3-card lineup (dressed as though the Aug 26–30 Flash
+    Sale is live now, per Mat's voice directive; no traffic is pointed at this page yet so
+    there is no early-sale risk). Cards: Flash Any-Day Admission $12.95 (gate $19.95) ·
+    Family 4-Pack Bundle $59.95 · Fall Season Pass $33.95 (gate $49.95). Pricing locked at the
+    5.21.26 Fall Strategy Meeting — see data/clients/jerry-smith/events/fall-in-the-farm/event-info.md §4.
+    🚫 Weekday tickets are DELIBERATELY not exposed during Flash — do not add a 4th card.
+    GA Weekday/Weekend (3-card In Season layout) is a later phase, not built here.
+
+    ════════════════════════════════════════════════════════════════════════════════════
+    HERO + GALLERY: all images are in-repo (raw.githubusercontent.com/crowd-flow/crowd7-public/
+    .../jerry-smith/design/assets/). Hero = pumpkin-fly-over-hero-image.jpeg. NO S3/CloudFront step —
+    the hero VIDEO was swapped for a still image 2026-06-12 (Mat), which retired the AWS media blocker.
+    TS PAGE: https://jerrysmithfarm.ticketspice.com/fall-on-the-farm-2026
+    ════════════════════════════════════════════════════════════════════════════════════
+
+    Source: 5.21.26 Fall Strategy Meeting + 6.12.26 Lauren call (season-pass spec) + Bryan Slack ask.
+    BRAND PLACEHOLDERS (flag to Lauren, swap when style guide lands):
+      · Colors below are a fall/harvest palette — NOT confirmed Jerry Smith brand hex.
+      · Font stack (Zilla Slab / Oswald / Open Sans / Caveat) is our proven web stack, not the brand font.
+      · Street address + age/ticket policy not yet supplied — info row kept to season + inclusions.
+-->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
@@ -185,6 +210,25 @@
     }
 
     /* ── HERO (VIDEO) ── */
+
+    /* ── 04 · SEASON STRIP — house block 04, thin band under the hero.
+       Colours taken from the page's own declared palette (golden #E8B04B on
+       deep brown #2A1A0E). NOT the Colony Acres green — see the note below
+       about #1F5C2E bleeding in from the donor page. ── */
+    #jsf-funnel .jsf-seasonbar {
+        width: 100% !important; background: #2A1A0E !important;
+        padding: 15px 20px !important; text-align: center !important;
+        border-top: 2px solid #E8B04B !important;
+        box-sizing: border-box !important;
+    }
+    #jsf-funnel .jsf-seasonbar,
+    #jsf-funnel .jsf-seasonbar span { color: #FBF4E6 !important; }
+    #jsf-funnel .jsf-seasonbar-t {
+        display: inline-block !important; font-size: clamp(0.95rem, 2.3vw, 1.22rem) !important;
+        font-weight: 700 !important; letter-spacing: 0.02em !important; line-height: 1.5 !important;
+    }
+    #jsf-funnel .jsf-sb-dot { opacity: 0.5 !important; padding: 0 12px !important; color: #E8B04B !important; }
+
     #jsf-funnel .jsf-hero {
         width: 100% !important;
         min-height: clamp(360px, 60vw, 640px) !important;
@@ -721,7 +765,7 @@
 
     <!-- HERO (IMAGE) -->
     <div class="jsf-hero">
-        <img class="jsf-hero-video" src="file:///Users/matlonginow/Desktop/crowd7-public/clients/jerry-smith/design/assets/pumpkin-fly-over-hero-image.jpeg" alt="Fall on the Farm — Jerry Smith Farm">
+        <img class="jsf-hero-video" src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/jerry-smith/design/assets/pumpkin-fly-over-hero-image.jpeg" alt="Fall on the Farm — Jerry Smith Farm">
         <div class="jsf-hero-overlay"></div>
         <div class="jsf-hero-content">
             <span class="jsf-hero-ribbon">⚡ Flash Sale — Ends Aug 30</span>
@@ -729,6 +773,16 @@
             <span class="jsf-hero-title">Fall on the <em>Farm</em></span>
             <span class="jsf-hero-tagline">— Our biggest offer of the season. Any-Day tickets from $12.95. —</span>
         </div>
+    </div>
+
+    <!-- 04 · SEASON STRIP — dates / location / any-day framing.
+         ⚠️ The canonical block is dates · DAYS · HOURS. Jerry Smith's operating
+         days and hours are BOTH unknown - event-info flags them "(missing,
+         surface to client)" and they are open client question #1. Rather than
+         invent two thirds of the band, this carries three facts we actually
+         hold. Swap in days + hours the moment Lauren confirms them. -->
+    <div class="jsf-seasonbar">
+        <span class="jsf-seasonbar-t">September 12 &ndash; November 1, 2026<span class="jsf-sb-dot">&middot;</span>Kenosha, WI<span class="jsf-sb-dot">&middot;</span>Any-day tickets &mdash; no date to lock in</span>
     </div>
 
     <!-- BENEFITS (unheaded emoji tile strip — house pattern) -->
@@ -765,19 +819,19 @@
         </div>
         <div class="jsf-gallery-mask">
             <div class="jsf-gallery-track">
-                <div class="jsf-gcard"><img src="file:///Users/matlonginow/Desktop/crowd7-public/clients/jerry-smith/design/assets/row-of-pumpkins.jpeg" alt="Pumpkin Patch" loading="lazy"><div class="jsf-gcard-label">Pumpkin Patch</div></div>
-                <div class="jsf-gcard"><img src="file:///Users/matlonginow/Desktop/crowd7-public/clients/jerry-smith/design/assets/friends-ice-cream.jpg" alt="Treats &amp; Eats" loading="lazy"><div class="jsf-gcard-label">Treats &amp; Eats</div></div>
-                <div class="jsf-gcard"><img src="file:///Users/matlonginow/Desktop/crowd7-public/clients/jerry-smith/design/assets/goat.jpeg" alt="Meet the Animals" loading="lazy"><div class="jsf-gcard-label">Meet the Animals</div></div>
-                <div class="jsf-gcard"><img src="file:///Users/matlonginow/Desktop/crowd7-public/clients/jerry-smith/design/assets/father-son-smiling.jpg" alt="Family Memories" loading="lazy"><div class="jsf-gcard-label">Family Memories</div></div>
-                <div class="jsf-gcard"><img src="file:///Users/matlonginow/Desktop/crowd7-public/clients/jerry-smith/design/assets/piggies.jpeg" alt="Barnyard Friends" loading="lazy"><div class="jsf-gcard-label">Barnyard Friends</div></div>
-                <div class="jsf-gcard"><img src="file:///Users/matlonginow/Desktop/crowd7-public/clients/jerry-smith/design/assets/kids-playing.jpeg" alt="Family Fun" loading="lazy"><div class="jsf-gcard-label">Family Fun</div></div>
+                <div class="jsf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/jerry-smith/design/assets/row-of-pumpkins.jpeg" alt="Pumpkin Patch" loading="lazy"><div class="jsf-gcard-label">Pumpkin Patch</div></div>
+                <div class="jsf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/jerry-smith/design/assets/friends-ice-cream.jpg" alt="Treats &amp; Eats" loading="lazy"><div class="jsf-gcard-label">Treats &amp; Eats</div></div>
+                <div class="jsf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/jerry-smith/design/assets/goat.jpeg" alt="Meet the Animals" loading="lazy"><div class="jsf-gcard-label">Meet the Animals</div></div>
+                <div class="jsf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/jerry-smith/design/assets/father-son-smiling.jpg" alt="Family Memories" loading="lazy"><div class="jsf-gcard-label">Family Memories</div></div>
+                <div class="jsf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/jerry-smith/design/assets/piggies.jpeg" alt="Barnyard Friends" loading="lazy"><div class="jsf-gcard-label">Barnyard Friends</div></div>
+                <div class="jsf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/jerry-smith/design/assets/kids-playing.jpeg" alt="Family Fun" loading="lazy"><div class="jsf-gcard-label">Family Fun</div></div>
                 <!-- Duplicate set for seamless marquee loop -->
-                <div class="jsf-gcard"><img src="file:///Users/matlonginow/Desktop/crowd7-public/clients/jerry-smith/design/assets/row-of-pumpkins.jpeg" alt="Pumpkin Patch" loading="lazy"><div class="jsf-gcard-label">Pumpkin Patch</div></div>
-                <div class="jsf-gcard"><img src="file:///Users/matlonginow/Desktop/crowd7-public/clients/jerry-smith/design/assets/friends-ice-cream.jpg" alt="Treats &amp; Eats" loading="lazy"><div class="jsf-gcard-label">Treats &amp; Eats</div></div>
-                <div class="jsf-gcard"><img src="file:///Users/matlonginow/Desktop/crowd7-public/clients/jerry-smith/design/assets/goat.jpeg" alt="Meet the Animals" loading="lazy"><div class="jsf-gcard-label">Meet the Animals</div></div>
-                <div class="jsf-gcard"><img src="file:///Users/matlonginow/Desktop/crowd7-public/clients/jerry-smith/design/assets/father-son-smiling.jpg" alt="Family Memories" loading="lazy"><div class="jsf-gcard-label">Family Memories</div></div>
-                <div class="jsf-gcard"><img src="file:///Users/matlonginow/Desktop/crowd7-public/clients/jerry-smith/design/assets/piggies.jpeg" alt="Barnyard Friends" loading="lazy"><div class="jsf-gcard-label">Barnyard Friends</div></div>
-                <div class="jsf-gcard"><img src="file:///Users/matlonginow/Desktop/crowd7-public/clients/jerry-smith/design/assets/kids-playing.jpeg" alt="Family Fun" loading="lazy"><div class="jsf-gcard-label">Family Fun</div></div>
+                <div class="jsf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/jerry-smith/design/assets/row-of-pumpkins.jpeg" alt="Pumpkin Patch" loading="lazy"><div class="jsf-gcard-label">Pumpkin Patch</div></div>
+                <div class="jsf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/jerry-smith/design/assets/friends-ice-cream.jpg" alt="Treats &amp; Eats" loading="lazy"><div class="jsf-gcard-label">Treats &amp; Eats</div></div>
+                <div class="jsf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/jerry-smith/design/assets/goat.jpeg" alt="Meet the Animals" loading="lazy"><div class="jsf-gcard-label">Meet the Animals</div></div>
+                <div class="jsf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/jerry-smith/design/assets/father-son-smiling.jpg" alt="Family Memories" loading="lazy"><div class="jsf-gcard-label">Family Memories</div></div>
+                <div class="jsf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/jerry-smith/design/assets/piggies.jpeg" alt="Barnyard Friends" loading="lazy"><div class="jsf-gcard-label">Barnyard Friends</div></div>
+                <div class="jsf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/jerry-smith/design/assets/kids-playing.jpeg" alt="Family Fun" loading="lazy"><div class="jsf-gcard-label">Family Fun</div></div>
             </div>
         </div>
     </div>

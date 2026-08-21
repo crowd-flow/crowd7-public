@@ -165,6 +165,25 @@
     }
 
     /* ── HERO (VIDEO) ── */
+
+    /* ── 04 · SEASON STRIP — house block 04, thin band under the hero.
+       Colours taken from the page's own declared palette (golden #E8B04B on
+       deep brown #2A1A0E). NOT the Colony Acres green — see the note below
+       about #1F5C2E bleeding in from the donor page. ── */
+    #jsf-funnel .jsf-seasonbar {
+        width: 100% !important; background: #2A1A0E !important;
+        padding: 15px 20px !important; text-align: center !important;
+        border-top: 2px solid #E8B04B !important;
+        box-sizing: border-box !important;
+    }
+    #jsf-funnel .jsf-seasonbar,
+    #jsf-funnel .jsf-seasonbar span { color: #FBF4E6 !important; }
+    #jsf-funnel .jsf-seasonbar-t {
+        display: inline-block !important; font-size: clamp(0.95rem, 2.3vw, 1.22rem) !important;
+        font-weight: 700 !important; letter-spacing: 0.02em !important; line-height: 1.5 !important;
+    }
+    #jsf-funnel .jsf-sb-dot { opacity: 0.5 !important; padding: 0 12px !important; color: #E8B04B !important; }
+
     #jsf-funnel .jsf-hero {
         width: 100% !important;
         min-height: clamp(360px, 60vw, 640px) !important;
@@ -709,6 +728,16 @@
             <span class="jsf-hero-title">Fall on the <em>Farm</em></span>
             <span class="jsf-hero-tagline">— Our biggest offer of the season. Any-Day tickets from $12.95. —</span>
         </div>
+    </div>
+
+    <!-- 04 · SEASON STRIP — dates / location / any-day framing.
+         ⚠️ The canonical block is dates · DAYS · HOURS. Jerry Smith's operating
+         days and hours are BOTH unknown - event-info flags them "(missing,
+         surface to client)" and they are open client question #1. Rather than
+         invent two thirds of the band, this carries three facts we actually
+         hold. Swap in days + hours the moment Lauren confirms them. -->
+    <div class="jsf-seasonbar">
+        <span class="jsf-seasonbar-t">September 12 &ndash; November 1, 2026<span class="jsf-sb-dot">&middot;</span>Kenosha, WI<span class="jsf-sb-dot">&middot;</span>Any-day tickets &mdash; no date to lock in</span>
     </div>
 
     <!-- BENEFITS (unheaded emoji tile strip — house pattern) -->
