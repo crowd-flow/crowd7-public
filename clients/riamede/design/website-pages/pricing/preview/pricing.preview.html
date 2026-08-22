@@ -23,11 +23,22 @@ check of the injected content only — no Wix header/nav/footer chrome. Truth is
          2025 numbers the live page currently shows.
      ============================================================ -->
 <div class="c7rp">
+<div class="c7rp-inner">
 <style>
 .c7rp{--paper:#F0ECDD;--frame:#A83324;--rust:#AA3418;--teal:#09554F;--cream:#FFF9EB;
   --dark:#022824;--maroon:#5D1A0E;--green:#1B9025;--ink:#2b241d;
   --display:"wf_f18781ea145c4c8b8a1e2969f","wfont_c6863c_f18781ea145c4c8b8a1e2969ff43d705","orig_chuck_noon_2","Poppins","Helvetica Neue",Arial,sans-serif;
-  font-family:'Poppins','Helvetica Neue',Arial,sans-serif;color:var(--ink);max-width:1180px;margin:0 auto;padding:0 16px 40px}
+  font-family:'Poppins','Helvetica Neue',Arial,sans-serif;color:var(--ink);
+  /* Whitewashed plank backdrop — the client's own "Artboard 3_2.png", the image
+     Wix stretches behind their original pricing section. Full-bleed: .c7rp spans
+     the injected block's full width and .c7rp-inner holds the 1180px column, so
+     the texture reaches the page edges the way theirs does.
+     100% auto + repeat (NOT cover): cover would stretch one 810px-tall image over
+     a ~3900px block and go to mush. Repeating tiles it ~5x, and because the art
+     is horizontal planks the repeat seam reads as just another plank edge. */
+  background:#F3EFE4 url("https://assets.crowd7digital.us/clients/riamede/design/assets/textures/wood-planks.jpg") top center/100% auto repeat;
+  max-width:none;margin:0;padding:0}
+.c7rp-inner{max-width:1180px;margin:0 auto;padding:26px 16px 44px}
 .c7rp,.c7rp *,.c7rp *::before,.c7rp *::after{box-sizing:border-box}
 .c7rp a{color:inherit}
 .c7rp-h2{text-align:center;font-family:var(--display);font-size:clamp(26px,3vw,36px);font-weight:400;
@@ -239,6 +250,7 @@ check of the injected content only — no Wix header/nav/footer chrome. Truth is
 <p class="c7rp-fine">Picked flowers are not included with the price of admission and require additional purchasing on the farm.</p>
 </section>
 
+</div>
 </div>
 
 </body></html>
