@@ -1,0 +1,33 @@
+{
+  "_comment": [
+    "CROWD7 — Riamede site-wide loader route table.",
+    "The v4 loader is pasted ONCE into Wix (Settings -> Custom Code, All Pages, Body-end).",
+    "It fetches THIS file on every page load and decides whether it owns the page.",
+    "",
+    "TO ADD A PAGE:",
+    "  1. Build the guts at website-pages/<slug>/{preview,production}/<slug>.html",
+    "  2. Drop an empty Embed Code block on the Wix page where the content should go,",
+    "     and hide the old elements by hand (the house pattern — display, don't replace).",
+    "  3. Add a route entry below. git push. Done — the loader is never re-pasted.",
+    "",
+    "FIELDS",
+    "  path        required. Wix page pathname, lowercase, no trailing slash. '/' = home.",
+    "  slug        required. Folder + filename under website-pages/.",
+    "  anchorHash  optional. Substring of the target Embed block's filesusr.com iframe src.",
+    "              ONLY needed when a page carries MORE THAN ONE Wix HTML embed — with a",
+    "              single embed the loader finds it unambiguously. If a page has several",
+    "              and no anchorHash is given, the loader refuses to guess and does nothing.",
+    "  enabled     optional, default true. Set false to switch a page off without deleting",
+    "              the entry — instant rollback, no Wix login needed."
+  ],
+  "client": "riamede",
+  "base": "https://assets.crowd7digital.us/clients/riamede/design/website-pages/",
+  "routes": [
+    {
+      "path": "/pricing",
+      "slug": "pricing",
+      "anchorHash": "7a47c6_db89daac9e3c9c427bb5520f2ffd1b18",
+      "enabled": true
+    }
+  ]
+}
