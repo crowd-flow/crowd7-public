@@ -33,10 +33,23 @@
      Fix: ship the SAME 562x1081 centre crop Wix does, so `100% auto` renders it
      at exactly their 2.56x. Bonus - the crop is a far smaller file than the
      full-width art at equivalent quality.
+     OPACITY IS THE OTHER HALF. Measured: the WOW-IMAGE wrapper around their
+     backdrop carries `opacity: 0.22` over the site's #FFF9EB cream. They render
+     the wood at 22%, which is WHY it reads so light - and Mat wants that,
+     because the washed-back texture is what lets text, cards and photos pop.
+     A CSS background-image cannot take opacity directly, so we stack a 78%
+     cream veil ON TOP of the wood layer: 0.78*cream + 0.22*wood is exactly the
+     same composite. Done in CSS rather than baked into the JPEG so the source
+     asset stays pure and the strength is a one-number tweak.
      repeat (NOT cover): cover would stretch one image over a ~3900px block and
      go to mush; the art is horizontal planks so a repeat seam reads as just
      another plank edge. */
-  background:#F3EFE4 url("https://assets.crowd7digital.us/clients/riamede/design/assets/textures/wood-planks.jpg") top center/100% auto repeat;
+  background-color:#FFF9EB;
+  background-image:linear-gradient(rgba(255,249,235,.78),rgba(255,249,235,.78)),
+    url("https://assets.crowd7digital.us/clients/riamede/design/assets/textures/wood-planks.jpg");
+  background-size:auto,100% auto;
+  background-position:0 0,top center;
+  background-repeat:repeat,repeat;
   max-width:none;margin:0;padding:0}
 .c7rp-inner{max-width:1180px;margin:0 auto;padding:26px 16px 44px}
 .c7rp,.c7rp *,.c7rp *::before,.c7rp *::after{box-sizing:border-box}
