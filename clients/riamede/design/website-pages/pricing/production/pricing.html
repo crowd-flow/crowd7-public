@@ -24,9 +24,18 @@
      Wix stretches behind their original pricing section. Full-bleed: .c7rp spans
      the injected block's full width and .c7rp-inner holds the 1180px column, so
      the texture reaches the page edges the way theirs does.
-     100% auto + repeat (NOT cover): cover would stretch one 810px-tall image over
-     a ~3900px block and go to mush. Repeating tiles it ~5x, and because the art
-     is horizontal planks the repeat seam reads as just another plank edge. */
+     SCALE MATTERS MORE THAN COLOUR. Measured on the live page: Wix serves a
+     562x1081 CENTRE CROP of the artwork and upscales it 2.56x to 1440x2770 - a
+     narrow slice blown way up, so the grain is large and washed out. Our first
+     pass used the full 1921px-wide art squeezed to 1440 (0.75x DOWNscale), i.e.
+     3.4x finer grain, which read as a different, greyer shade sitting right next
+     to theirs. It was never a colour mismatch - it was zoom.
+     Fix: ship the SAME 562x1081 centre crop Wix does, so `100% auto` renders it
+     at exactly their 2.56x. Bonus - the crop is a far smaller file than the
+     full-width art at equivalent quality.
+     repeat (NOT cover): cover would stretch one image over a ~3900px block and
+     go to mush; the art is horizontal planks so a repeat seam reads as just
+     another plank edge. */
   background:#F3EFE4 url("https://assets.crowd7digital.us/clients/riamede/design/assets/textures/wood-planks.jpg") top center/100% auto repeat;
   max-width:none;margin:0;padding:0}
 .c7rp-inner{max-width:1180px;margin:0 auto;padding:26px 16px 44px}
