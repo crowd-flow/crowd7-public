@@ -400,7 +400,9 @@ html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar::after { c
 
   /* 2) TICKET TIERS */
   #cap-funnel .tier-row{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch;}
-  #cap-funnel .tier{border:1px solid var(--line);border-radius:18px;background:#fff;padding:30px 26px;display:flex;flex-direction:column;position:relative;overflow:hidden;}
+  #cap-funnel .tier{border:1px solid var(--line);border-radius:18px;background:#fff;padding:0;display:flex;flex-direction:column;position:relative;overflow:hidden;}
+  #cap-funnel .tier-photo{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;}
+  #cap-funnel .tier-body{padding:24px 26px 30px;display:flex;flex-direction:column;flex:1;}
   #cap-funnel .tier.feature{border:2px solid var(--accent);}
   #cap-funnel .tier .ribbon{position:absolute;top:16px;right:-34px;transform:rotate(45deg);background:var(--accent);color:#fff;font-size:.72rem;font-weight:700;padding:5px 44px;letter-spacing:.05em;}
   #cap-funnel .tier h3{font-size:1.5rem;color:var(--red);margin:.2rem 0 .1rem;}
@@ -533,22 +535,31 @@ html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar::after { c
     <div class="sec-head"><h2>Pick your tickets</h2></div>
     <div class="tier-row">
       <div class="tier" data-buyer="ga">
+        <img class="tier-photo" src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/fairmont-princess/design/assets/photos/tier-ga-lights.jpg" alt="Kids looking up at the Christmas at the Princess light tunnel">
+        <div class="tier-body">
         <h3>General Admission</h3><div class="saletag" data-saletag="&#127876; The Traditional Experience"></div>
         <div class="price"><span class="startat">Starting at</span>$35 <small>/ person</small></div>
         <ul><li>17 Million Christmas Lights</li><li>The Village</li><li>Princess Express Train</li></ul>
         <button class="btn btn-out" onclick="capOpenStar()">Select</button>
+        </div>
       </div>
       <div class="tier feature" data-buyer="premium"><span class="ribbon">NEW</span>
+        <img class="tier-photo" src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/fairmont-princess/design/assets/photos/tier-premium-firepit.jpg" alt="Family roasting s'mores at a Premium Admission fire table">
+        <div class="tier-body">
         <h3>Premium Admission</h3><div class="saletag" data-saletag="&#10024; Best value upgrade"></div>
         <div class="price"><span class="startat">Starting at</span>$70 <small>/ person</small></div>
         <ul><li>Includes General Admission</li><li>Communal fire tables, available on a first-come basis</li><li>S&rsquo;mores &amp; Hot Cocoa Bar</li></ul>
         <button class="btn btn-solid">Select</button>
+        </div>
       </div>
       <div class="tier" data-buyer="vip">
+        <img class="tier-photo" src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/fairmont-princess/design/assets/photos/tier-vip-igloo.jpg" alt="Family enjoying drinks inside a private VIP igloo">
+        <div class="tier-body">
         <h3>VIP Experiences</h3><div class="saletag" data-saletag="&#128293; Private Igloos &amp; Fire Tables"></div>
         <div class="price">$250 <small>/ table</small></div>
         <ul><li>Includes General Admission Tickets</li><li>Includes Valet Parking ($125 Value)</li><li>Seats 4&ndash;8 guests</li><li>Premium bar service</li></ul>
         <button class="btn btn-out">Reserve</button>
+        </div>
       </div>
     </div>
   </div></section>
