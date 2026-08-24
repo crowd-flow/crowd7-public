@@ -4,9 +4,11 @@
     2026-08-23.html in work/crowd7/projects/harbaugh-fall-funland-early-bird-page/ for the
     as-shipped flash version. This is a SURGICAL edit, not a rebuild (Mat directive 2026-08-24):
     same 2-card grid, same design, same folder/filename — only stale numbers and phase wording
-    changed to match what the TS cart charges today. No Early Bird discount exists (WS0
-    resolved: Mat said go with cart prices as-is) — Flex Admission $17.95, Season Pass $49.95,
-    both cart-truth, no TS Action created. Structural parent: Amber Brooke Farms' Any-Day GA
+    changed to match the prices Bryan set. ⚠️ CARD PRICES NOW LEAD THE CART (Bryan, text via
+    Mat, 2026-08-24 PM): Flex Admission $16.95 with $17.95 struck as the compare-at, Season
+    Pass $44.95. The TS cart at time of writing still charges $17.95 / $49.95 and NO TS Action
+    exists — so these cards under-quote the live cart until Bryan repriced it in TS admin.
+    Do NOT "correct" these back to cart truth; the cart is what has to move. Structural parent: Amber Brooke Farms' Any-Day GA
     Flash Sale (2026), the closest kind-match in the fleet (farm-adjacent, 2-card grid,
     one-price lead card). See work/crowd7/projects/harbaugh-fall-funland-flash-page/artifacts
     /build-plan.md for the original build's reasoning trail.
@@ -24,8 +26,9 @@
 
     Two ticket cards only (3-card ceiling n/a, per Mat's scope constraint — do not add a third
     card for Fixed Date General Admission even though it's visible again in the native cart):
-    Flex Admission $17.95 (any-day, no gate/door price exists for this SKU) leads; Season Pass
-    $49.95 (flat, no compare-at — no discount exists for this phase) is the secondary card.
+    Flex Admission $16.95 (was $17.95, struck) leads; Season Pass $44.95 (flat, no compare-at)
+    is the secondary card. The Flex card was converted from the one-price treatment to the
+    existing hvf-price-compare component so Bryan's requested strike renders.
 
     No live TicketSpice URL exists yet for Harbaugh's 2026 Fall page — see the TODO comment
     at the nav CTA below. The CTA still wires to the native cart anchor, same as every other
@@ -723,10 +726,10 @@
                 <li>✓ No date lock-in at checkout</li>
                 <li>✓ Come whenever the mood strikes</li>
               </ul>
-              <div class="hvf-oneprice">
-                <span class="hvf-oneprice-amt">$17.95</span>
-                <span class="hvf-oneprice-unit">Per Person · Online Only</span>
-                <span class="hvf-oneprice-lead">One price. Any day.</span>
+              <div class="hvf-price-compare">
+                <span class="hvf-price-was">Regular price <s>$17.95</s></span>
+                <span class="hvf-price-now">$16.95</span>
+                <span class="hvf-price-now-unit">Per Person · Online Only</span>
               </div>
               <span class="hvf-card-note">*plus applicable taxes and fees</span>
             </div>
@@ -741,7 +744,7 @@
                 <li>🧙‍♀️ Every Sanderson Sisters show included</li>
               </ul>
               <div class="hvf-price-compare">
-                <span class="hvf-price-now">$49.95</span>
+                <span class="hvf-price-now">$44.95</span>
                 <span class="hvf-price-now-unit">Per Person</span>
               </div>
               <span class="hvf-card-note">*plus applicable taxes and fees</span>
