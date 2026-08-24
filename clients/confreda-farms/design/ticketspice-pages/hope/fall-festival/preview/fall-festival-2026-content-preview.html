@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Confreda Farms — Fall Festival 2026 (preview)</title>
+<style>
+  body { margin:0; font-family:-apple-system,system-ui,sans-serif; background:#fcf5ee; }
+  .c7-note { background:#331c1c; color:#fff; padding:10px 16px; font-size:12.5px; text-align:center; }
+  .c7-note b { color:#e5caae; }
+  #ticketBlock { max-width:820px; margin:0 auto; padding:56px 24px 140px; }
+  #ticketBlock h2 { font-family:'American Typewriter',Georgia,serif; color:#331c1c; }
+  .c7-cart-stub { border:2px dashed #ac9882; border-radius:4px; padding:34px; text-align:center; color:#726557; background:#fff; }
+</style></head><body>
+<div class="c7-note">PREVIEW WRAPPER — not the deployed file. The loader injects <b>fall-festival-2026-content.html</b> only.</div>
+<!--
+    Confreda Farms · Hope, RI · Fall Festival 2026 · TicketSpice page content
+    Built 2026-08-24 for the Wed Aug 26, 2026 on-sale launch (from-zero build — no
+    crowd7-public folder existed for this client before this session).
+
+    Source: 6.23.26 Crowd7-Confreda-Farms-Strategy-Call (John, GM) — see
+    crowd7/data/clients/confreda-farms/events/fall-festival/event-info.md for the full
+    sourced brief this build is drawn from.
+
+    Cards in this exact order per John's stated display order (do not reorder):
+    Family Four Pack $59.95 (78-dollar value, badge Save 30 percent) -> Season Pass
+    $39.95 online-only -> General Admission 15 dollars online / 17 dollars onsite.
+    Only GA carries a real gate-vs-online delta -- that is the only slash-through target.
+    No flash-specific discount was discussed on the call; the season price IS the flash
+    price per event-info section 4, so no false urgency/savings copy is used here.
+
+    OPEN ITEMS carried into the build brief, not silently resolved:
+      - Operating hours NOT confirmed for 2026. Using confredasfallfest.com's stale
+        prior-season 10am-5pm as a placeholder pending John's confirmation.
+      - Nov 1 tentative close date -- John floated it with no firm commitment.
+      - TicketSpice workspace was invited today (2026-08-24), cart not yet built --
+        the slash-through ticket name below is a best guess, re-verify once the cart
+        exists.
+
+    Brand: cream/tan/taupe/brown/rust palette + Amatic SC / American Typewriter /
+    Helvetica, pulled from the confreda-farms-clone site scrape (see event-info.md
+    section 5 for the full hex + font list).
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+    /* ===========================================================
+       CONFREDA FARMS · FALL FESTIVAL 2026 · #cff-funnel
+       Palette (from the confreda-farms-clone brand scrape):
+       cream #fcf5ee / tan #e5caae / taupe #ac9882 / brown #726557 /
+       near-black brown #331c1c (text) / rust #bc6c53 (primary CTA) /
+       deep rust #a03a18 / #6b2610 (accents)
+       Fonts: Amatic SC (display/script) / American Typewriter (headings) / Helvetica (body)
+       =========================================================== */
+    #cff-funnel .bold { font-weight: bold; }
+
+    #cff-funnel {
+        width: 100vw !important;
+        position: relative !important;
+        left: 50% !important;
+        right: 50% !important;
+        margin-left: -50vw !important;
+        margin-right: -50vw !important;
+        overflow: hidden !important;
+        font-family: Helvetica, Arial, sans-serif !important;
+        background: #fcf5ee !important;
+        color: #331c1c !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    /* ── BANNER ── */
+    #cff-funnel .cff-banner {
+        width: 100% !important;
+        background: #a03a18 !important;
+        color: white !important;
+        text-align: center !important;
+        padding: 12px 20px !important;
+        font-size: 0.95rem !important;
+        letter-spacing: 0.04em !important;
+        display: block !important;
+        box-sizing: border-box !important;
+    }
+    #cff-funnel .cff-banner-inner {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 10px !important;
+        flex-wrap: wrap !important;
+        color: white !important;
+    }
+    #cff-funnel .cff-banner-inner span,
+    #cff-funnel .cff-banner-inner strong { color: white !important; }
+    #cff-funnel .cff-dot {
+        width: 3px !important; height: 3px !important;
+        background: rgba(255,255,255,0.5) !important;
+        border-radius: 50% !important;
+        display: inline-block !important;
+        flex-shrink: 0 !important;
+    }
+    #cff-funnel .cff-banner-accent {
+        color: #e5caae !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.1em !important;
+    }
+
+    /* ── NAV ── */
+    #cff-funnel .cff-nav {
+        width: 100% !important;
+        padding: 0 40px !important;
+        height: 88px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        background: rgba(51,28,28,0.97) !important;
+        position: sticky !important;
+        top: 0 !important;
+        z-index: 100 !important;
+        box-sizing: border-box !important;
+        box-shadow: 0 2px 16px rgba(51,28,28,0.35) !important;
+    }
+    #cff-funnel .cff-logo-wrap {
+        display: flex !important;
+        align-items: center !important;
+    }
+    #cff-funnel .cff-logo-badge {
+        background: #ffffff !important;
+        border-radius: 10px !important;
+        padding: 8px 14px !important;
+        box-shadow: 0 8px 22px rgba(0,0,0,0.22) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        box-sizing: border-box !important;
+    }
+    #cff-funnel .cff-logo-badge img {
+        display: block !important;
+        height: 52px !important;
+        width: auto !important;
+    }
+    #cff-funnel .cff-nav-right {
+        display: flex !important; align-items: center !important; gap: 16px !important;
+    }
+    #cff-funnel .cff-nav-loc {
+        font-size: 0.92rem !important;
+        color: rgba(255,255,255,0.85) !important;
+        display: flex !important; align-items: center !important; gap: 5px !important;
+    }
+    #cff-funnel .cff-nav-cta {
+        background: #bc6c53 !important;
+        color: white !important;
+        padding: 12px 26px !important;
+        border-radius: 50px !important;
+        font-size: 1rem !important;
+        font-weight: 700 !important;
+        text-decoration: none !important;
+        letter-spacing: 0.04em !important;
+        text-transform: uppercase !important;
+        transition: all 0.3s ease !important;
+        white-space: nowrap !important;
+        display: inline-block !important;
+    }
+    #cff-funnel .cff-nav-cta:hover {
+        background: #a03a18 !important;
+        color: white !important;
+        text-decoration: none !important;
+        transform: translateY(-1px);
+    }
+
+    /* ── HERO ── */
+    #cff-funnel .cff-hero {
+        width: 100% !important;
+        min-height: clamp(340px, 56vw, 600px) !important;
+        position: relative !important;
+        display: flex !important;
+        align-items: flex-end !important;
+        overflow: hidden !important;
+        background-color: #331c1c !important;
+    }
+    #cff-funnel .cff-hero-img {
+        position: absolute !important;
+        inset: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: center 42% !important;
+        z-index: 0 !important;
+        display: block !important;
+    }
+    #cff-funnel .cff-hero-overlay {
+        position: absolute !important;
+        inset: 0 !important;
+        background: linear-gradient(to bottom, rgba(51,28,28,0.12) 0%, rgba(51,28,28,0.32) 45%, rgba(51,28,28,0.82) 100%) !important;
+        z-index: 1 !important;
+    }
+    #cff-funnel .cff-hero-content {
+        position: relative !important;
+        z-index: 2 !important;
+        padding: 0 48px 56px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    #cff-funnel .cff-hero-ribbon {
+        display: inline-block !important;
+        background: #e5caae !important;
+        color: #331c1c !important;
+        font-weight: 700 !important;
+        font-size: 0.72rem !important;
+        letter-spacing: 0.16em !important;
+        text-transform: uppercase !important;
+        padding: 6px 14px !important;
+        border-radius: 4px !important;
+        margin-bottom: 14px !important;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.18) !important;
+        opacity: 0;
+        animation: cffFadeUp 0.6s ease 0.15s forwards;
+    }
+    #cff-funnel .cff-hero-eyebrow {
+        font-size: 0.88rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.2em !important;
+        text-transform: uppercase !important;
+        color: rgba(255,255,255,0.92) !important;
+        margin-bottom: 10px !important;
+        display: block !important;
+        opacity: 0;
+        animation: cffFadeUp 0.6s ease 0.3s forwards;
+    }
+    #cff-funnel .cff-hero-title {
+        font-family: 'American Typewriter', Georgia, serif !important;
+        font-size: clamp(2.7rem, 8.5vw, 5rem) !important;
+        font-weight: 700 !important;
+        color: white !important;
+        line-height: 1.02 !important;
+        display: block !important;
+        text-shadow: 0 2px 24px rgba(0,0,0,0.4) !important;
+        opacity: 0;
+        animation: cffFadeUp 0.7s ease 0.45s forwards;
+    }
+    #cff-funnel .cff-hero-title em {
+        font-family: 'Amatic SC', cursive !important;
+        font-style: normal !important;
+        font-weight: 700 !important;
+        color: #e5caae !important;
+        font-size: 1.15em !important;
+        letter-spacing: 0.01em !important;
+    }
+    #cff-funnel .cff-hero-tagline {
+        font-family: 'Amatic SC', cursive !important;
+        font-size: clamp(1.3rem, 2.8vw, 1.9rem) !important;
+        color: #f3e2c9 !important;
+        margin-top: 10px !important;
+        display: block !important;
+        opacity: 0;
+        animation: cffFadeUp 0.7s ease 0.6s forwards;
+    }
+    @keyframes cffFadeUp {
+        from { opacity: 0; transform: translateY(16px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── SEASON STRIP ── */
+    #cff-funnel .cff-seasonbar {
+        width: 100% !important; background: #331c1c !important;
+        padding: 15px 20px !important; text-align: center !important;
+        border-top: 2px solid #e5caae !important;
+        box-sizing: border-box !important;
+    }
+    #cff-funnel .cff-seasonbar,
+    #cff-funnel .cff-seasonbar span { color: #fcf5ee !important; }
+    #cff-funnel .cff-seasonbar-t {
+        display: inline-block !important; font-size: clamp(0.9rem, 2.2vw, 1.15rem) !important;
+        font-weight: 700 !important; letter-spacing: 0.02em !important; line-height: 1.5 !important;
+    }
+    #cff-funnel .cff-sb-dot { opacity: 0.5 !important; padding: 0 12px !important; color: #e5caae !important; }
+
+    /* ── BENEFITS ── */
+    #cff-funnel .cff-benefits {
+        width: 100% !important;
+        background: white !important;
+        padding: 36px 48px !important;
+        display: block !important;
+        box-sizing: border-box !important;
+        border-bottom: 1px solid rgba(188,108,83,0.12) !important;
+    }
+    #cff-funnel .cff-benefits-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+    #cff-funnel .cff-benefit {
+        text-align: center !important;
+        padding: 8px 20px !important;
+        position: relative !important;
+    }
+    #cff-funnel .cff-benefit:not(:last-child)::after {
+        content: '' !important;
+        position: absolute !important;
+        right: 0 !important; top: 15% !important; bottom: 15% !important;
+        width: 1px !important;
+        background: rgba(188,108,83,0.15) !important;
+    }
+    #cff-funnel .cff-benefit-emoji {
+        font-size: 1.7rem !important; display: block !important; margin-bottom: 6px !important; line-height: 1 !important;
+    }
+    #cff-funnel .cff-benefit-title {
+        font-family: 'American Typewriter', Georgia, serif !important;
+        font-size: 1.05rem !important; font-weight: 600 !important;
+        color: #331c1c !important; margin-bottom: 2px !important; display: block !important;
+    }
+    #cff-funnel .cff-benefit-desc {
+        font-size: 0.88rem !important; color: #726557 !important;
+        line-height: 1.4 !important; display: block !important;
+    }
+
+    /* ── GALLERY (photo band, only 2 usable event photos so no marquee) ── */
+    #cff-funnel .cff-gallery {
+        width: 100% !important;
+        background: #fcf5ee !important;
+        padding: 64px 48px !important;
+        box-sizing: border-box !important;
+        display: block !important;
+    }
+    #cff-funnel .cff-gallery-header {
+        text-align: center !important;
+        margin-bottom: 36px !important;
+    }
+    #cff-funnel .cff-eye {
+        font-size: 0.85rem !important; font-weight: 600 !important;
+        letter-spacing: 0.22em !important; text-transform: uppercase !important;
+        color: #bc6c53 !important; margin-bottom: 8px !important; display: block !important;
+    }
+    #cff-funnel .cff-section-title {
+        font-family: 'American Typewriter', Georgia, serif !important;
+        font-size: clamp(2rem, 4.8vw, 3rem) !important;
+        font-weight: 700 !important; color: #331c1c !important;
+        line-height: 1.15 !important; display: block !important;
+    }
+    #cff-funnel .cff-section-title em {
+        font-family: 'Amatic SC', cursive !important;
+        font-style: normal !important;
+        font-weight: 700 !important;
+        color: #a03a18 !important;
+        font-size: 1.15em !important;
+    }
+    #cff-funnel .cff-gallery-row {
+        display: grid !important;
+        grid-template-columns: 1.15fr 1fr !important;
+        gap: 20px !important;
+        max-width: 1200px !important;
+        margin: 0 auto !important;
+    }
+    #cff-funnel .cff-gcard {
+        border-radius: 20px !important; overflow: hidden !important;
+        position: relative !important;
+        min-height: 320px !important;
+        background: linear-gradient(135deg, #e5caae, #bc6c53) !important;
+        box-shadow: 0 20px 44px rgba(51,28,28,0.16) !important;
+    }
+    #cff-funnel .cff-gcard img {
+        width: 100% !important; height: 100% !important;
+        object-fit: cover !important; display: block !important;
+        position: absolute !important; inset: 0 !important;
+    }
+    #cff-funnel .cff-gcard-label {
+        position: absolute !important; bottom: 14px !important; left: 14px !important;
+        background: rgba(51,28,28,0.65) !important; backdrop-filter: blur(8px) !important;
+        color: white !important; font-size: 0.72rem !important; letter-spacing: 0.1em !important;
+        text-transform: uppercase !important; font-weight: 700 !important;
+        padding: 6px 14px !important; border-radius: 20px !important; z-index: 2 !important;
+    }
+
+    /* ── STORY / TRUST STRIP ── */
+    #cff-funnel .cff-story {
+        width: 100% !important;
+        background: linear-gradient(135deg, #6b2610 0%, #a03a18 100%) !important;
+        padding: 56px 48px !important;
+        box-sizing: border-box !important;
+        display: block !important;
+        text-align: center !important;
+        color: white !important;
+    }
+    #cff-funnel .cff-story-inner { max-width: 780px !important; margin: 0 auto !important; color: white !important; }
+    #cff-funnel .cff-story-inner span, #cff-funnel .cff-story-inner strong { color: white !important; }
+    #cff-funnel .cff-story-inner .cff-story-script {
+        font-family: 'Amatic SC', cursive !important;
+        color: #e5caae !important;
+        font-size: clamp(2.1rem, 4.8vw, 3.2rem) !important;
+        line-height: 1 !important;
+        display: block !important;
+        margin-bottom: 6px !important;
+    }
+    #cff-funnel .cff-story-inner .cff-story-title {
+        font-family: 'American Typewriter', Georgia, serif !important;
+        font-size: clamp(1.5rem, 3.6vw, 2.1rem) !important;
+        font-weight: 700 !important;
+        margin-bottom: 14px !important;
+        display: block !important;
+        color: white !important;
+    }
+    #cff-funnel .cff-story-inner .cff-story-body {
+        font-size: 1.1rem !important;
+        line-height: 1.65 !important;
+        color: #ffffff !important;
+        display: block !important;
+        margin-bottom: 22px !important;
+    }
+    #cff-funnel .cff-badges {
+        display: flex !important; flex-wrap: wrap !important; justify-content: center !important;
+        gap: 10px !important;
+    }
+    #cff-funnel .cff-badge {
+        display: inline-block !important;
+        background: rgba(255,255,255,0.14) !important;
+        border: 1px solid rgba(255,255,255,0.35) !important;
+        color: white !important;
+        font-size: 0.78rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.06em !important;
+        text-transform: uppercase !important;
+        padding: 8px 16px !important;
+        border-radius: 30px !important;
+    }
+
+    /* ── TICKETS ── */
+    #cff-funnel .cff-tickets {
+        width: 100% !important;
+        background: #f5ead9 !important;
+        padding: 72px 48px !important;
+        display: block !important; box-sizing: border-box !important;
+    }
+    #cff-funnel .cff-tickets-header { text-align: center !important; margin-bottom: 40px !important; }
+    #cff-funnel .cff-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(0, 380px)) !important;
+        justify-content: center !important;
+        align-items: stretch !important;
+        gap: 32px !important;
+        max-width: 1280px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+    #cff-funnel .cff-card {
+        width: 100% !important;
+        border-radius: 20px !important;
+        padding: 40px 32px !important;
+        position: relative !important;
+        overflow: visible !important;
+        transition: transform 0.35s ease, box-shadow 0.35s ease !important;
+        display: flex !important; flex-direction: column !important;
+        background: white !important;
+        color: #331c1c !important;
+        border: 2px solid #e5caae !important;
+        box-shadow: 0 20px 44px rgba(51,28,28,0.1) !important;
+    }
+    #cff-funnel .cff-card:hover {
+        transform: translateY(-6px) !important;
+        box-shadow: 0 28px 56px rgba(51,28,28,0.2) !important;
+    }
+    #cff-funnel .cff-card--feature {
+        background: linear-gradient(160deg, #a03a18 0%, #bc6c53 100%) !important;
+        color: white !important;
+        border: 2px solid #e5caae !important;
+        box-shadow: 0 20px 44px rgba(160,58,24,0.28) !important;
+    }
+    #cff-funnel .cff-card--feature h3,
+    #cff-funnel .cff-card--feature .cff-card-bullets li { color: white !important; }
+    #cff-funnel .cff-card--feature .cff-card-bullets li { color: rgba(255,255,255,0.92) !important; }
+    #cff-funnel .cff-card-badge {
+        display: inline-block !important;
+        font-size: 0.76rem !important; font-weight: 700 !important;
+        letter-spacing: 0.12em !important; text-transform: uppercase !important;
+        padding: 5px 12px !important; border-radius: 20px !important;
+        margin-bottom: 14px !important; width: fit-content !important;
+        background: #a03a18 !important; color: white !important;
+    }
+    #cff-funnel .cff-card--feature .cff-card-badge {
+        background: #e5caae !important; color: #331c1c !important;
+    }
+    #cff-funnel .cff-card-icon { font-size: 2.8rem !important; margin-bottom: 14px !important; display: block !important; }
+    #cff-funnel .cff-card h3 {
+        font-family: 'American Typewriter', Georgia, serif !important;
+        font-size: 1.7rem !important; font-weight: 700 !important;
+        line-height: 1.15 !important; margin-bottom: 16px !important; display: block !important;
+        color: #331c1c !important;
+    }
+    #cff-funnel .cff-card-bullets {
+        list-style: none !important; padding: 0 !important; margin: 0 0 auto !important;
+        display: flex !important; flex-direction: column !important; gap: 8px !important;
+    }
+    #cff-funnel .cff-card-bullets li {
+        font-size: 1.02rem !important; line-height: 1.5 !important;
+        display: flex !important; align-items: flex-start !important; gap: 8px !important;
+        color: #4a3520 !important;
+    }
+    #cff-funnel .cff-card-price {
+        display: flex !important; align-items: baseline !important;
+        gap: 10px !important; margin-top: 24px !important; padding-top: 18px !important;
+        border-top: 1px solid rgba(51,28,28,0.14) !important;
+    }
+    #cff-funnel .cff-card--feature .cff-card-price { border-top: 1px solid rgba(255,255,255,0.25) !important; }
+    #cff-funnel .cff-price-num {
+        font-family: 'American Typewriter', Georgia, serif !important;
+        font-size: 2.9rem !important; font-weight: 700 !important; line-height: 1 !important;
+        color: #a03a18 !important;
+    }
+    #cff-funnel .cff-card--feature .cff-price-num { color: #e5caae !important; }
+    #cff-funnel .cff-price-slash {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 2px !important;
+        justify-content: center !important;
+    }
+    #cff-funnel .cff-price-online {
+        font-size: 0.8rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.08em !important;
+        text-transform: uppercase !important;
+        display: block !important;
+        color: #726557 !important;
+    }
+    #cff-funnel .cff-card--feature .cff-price-online { color: rgba(255,255,255,0.65) !important; }
+    #cff-funnel .cff-price-was {
+        font-size: 1.05rem !important;
+        font-weight: 600 !important;
+        text-decoration: line-through !important;
+        display: block !important;
+        line-height: 1 !important;
+        color: #ac9882 !important;
+    }
+    #cff-funnel .cff-card--feature .cff-price-was { color: rgba(255,255,255,0.55) !important; }
+    #cff-funnel .cff-card-fees {
+        font-size: 0.72rem !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.02em !important;
+        margin-top: 8px !important;
+        display: block !important;
+        line-height: 1.4 !important;
+        color: #726557 !important;
+    }
+    #cff-funnel .cff-card--feature .cff-card-fees { color: rgba(255,255,255,0.75) !important; }
+    #cff-funnel .cff-card-note {
+        font-size: 0.86rem !important; font-style: italic !important;
+        margin-top: 10px !important; display: block !important; line-height: 1.5 !important;
+        color: #ac9882 !important;
+    }
+    #cff-funnel .cff-card--feature .cff-card-note { color: rgba(255,255,255,0.65) !important; }
+
+    /* ── INFO ROW ── */
+    #cff-funnel .cff-info {
+        width: 100% !important;
+        background: #331c1c !important;
+        padding: 0 !important; display: block !important; box-sizing: border-box !important;
+    }
+    #cff-funnel .cff-info-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+    #cff-funnel .cff-info-item {
+        text-align: center !important;
+        padding: 28px 20px !important;
+        position: relative !important;
+    }
+    #cff-funnel .cff-info-item:not(:last-child)::after {
+        content: '' !important; position: absolute !important;
+        right: 0 !important; top: 20% !important; bottom: 20% !important;
+        width: 1px !important; background: rgba(255,255,255,0.15) !important;
+    }
+    #cff-funnel .cff-info-grid span, #cff-funnel .cff-info-grid strong { color: white !important; }
+    #cff-funnel .cff-info-item .cff-info-label {
+        font-size: 0.76rem !important; font-weight: 700 !important;
+        letter-spacing: 0.14em !important; text-transform: uppercase !important;
+        color: rgba(255,255,255,0.85) !important; display: block !important; margin-bottom: 4px !important;
+    }
+    #cff-funnel .cff-info-item .cff-info-value {
+        font-family: 'American Typewriter', Georgia, serif !important;
+        font-size: 1.05rem !important; font-weight: 600 !important;
+        color: white !important; display: block !important; line-height: 1.3 !important;
+    }
+    #cff-funnel .cff-info-item .cff-info-flag {
+        font-size: 0.7rem !important; font-style: italic !important; opacity: 0.65 !important;
+        display: block !important; margin-top: 3px !important; color: #e5caae !important;
+    }
+    #cff-funnel .cff-info-item .cff-info-link {
+        font-family: 'American Typewriter', Georgia, serif !important;
+        font-size: 0.92rem !important; font-weight: 600 !important;
+        color: #e5caae !important; display: block !important;
+        line-height: 1.3 !important; text-decoration: underline !important;
+    }
+    #cff-funnel .cff-info-link:hover { color: white !important; }
+
+    /* ── REVEAL ── */
+    #cff-funnel .cffr {
+        opacity: 0 !important; transform: translateY(28px) !important;
+        transition: opacity 0.7s cubic-bezier(.16,1,.3,1), transform 0.7s cubic-bezier(.16,1,.3,1) !important;
+    }
+    #cff-funnel .cffr.cffon { opacity: 1 !important; transform: none !important; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+        #cff-funnel .cff-nav { padding: 0 24px !important; }
+        #cff-funnel .cff-nav-cta { padding: 14px 24px !important; }
+        #cff-funnel .cff-benefits { padding: 32px 24px !important; }
+        #cff-funnel .cff-tickets { padding: 56px 24px !important; }
+        #cff-funnel .cff-grid { grid-template-columns: repeat(2, minmax(0, 400px)) !important; }
+        #cff-funnel .cff-story { padding: 44px 24px !important; }
+        #cff-funnel .cff-info-grid { grid-template-columns: 1fr 1fr !important; }
+        #cff-funnel .cff-info-item:nth-child(2n)::after { display: none !important; }
+        #cff-funnel .cff-benefits-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 16px 0 !important; }
+        #cff-funnel .cff-benefit:nth-child(2n)::after { display: none !important; }
+        #cff-funnel .cff-gallery { padding: 48px 24px !important; }
+        #cff-funnel .cff-gallery-row { grid-template-columns: 1fr !important; }
+        #cff-funnel .cff-gcard { min-height: 260px !important; }
+        #cff-funnel .cff-hero-content { padding: 0 32px 44px !important; }
+    }
+    @media (max-width: 700px) {
+        #cff-funnel .cff-grid { grid-template-columns: 1fr !important; }
+    }
+    @media (max-width: 560px) {
+        #cff-funnel .cff-nav { padding: 0 16px !important; height: 72px !important; }
+        #cff-funnel .cff-logo-badge { padding: 6px 10px !important; }
+        #cff-funnel .cff-logo-badge img { height: 40px !important; }
+        #cff-funnel .cff-nav-loc { display: none !important; }
+        #cff-funnel .cff-nav-cta { padding: 10px 18px !important; font-size: 0.88rem !important; }
+        #cff-funnel .cff-benefits { padding: 24px 16px !important; }
+        #cff-funnel .cff-tickets { padding: 48px 16px !important; }
+        #cff-funnel .cff-story { padding: 36px 16px !important; }
+        #cff-funnel .cff-gallery { padding: 40px 16px !important; }
+        #cff-funnel .cff-hero-content { padding: 0 20px 36px !important; }
+        #cff-funnel .cff-info-grid { grid-template-columns: 1fr !important; }
+        #cff-funnel .cff-info-item::after { display: none !important; }
+    }
+    @media (max-width: 768px) {
+        #cff-funnel .cff-card { padding: 36px 26px !important; }
+        #cff-funnel .cff-card h3 { font-size: 1.85rem !important; }
+        #cff-funnel .cff-card-bullets li { font-size: 1.08rem !important; line-height: 1.5 !important; }
+        #cff-funnel .cff-card-badge { font-size: 0.82rem !important; padding: 6px 14px !important; }
+        #cff-funnel .cff-price-num { font-size: 3.1rem !important; }
+        #cff-funnel .cff-price-was { font-size: 1.1rem !important; }
+        #cff-funnel .cff-price-online { font-size: 0.85rem !important; }
+        #cff-funnel .cff-card-note { font-size: 0.92rem !important; }
+        #cff-funnel .cff-card-fees { font-size: 0.82rem !important; }
+    }
+
+    /* ── Suppress TicketSpice-rendered footer chrome (flag + TS logo) ── */
+    .WCX-poweredBy, .WCX-footer-poweredBy, [class*="poweredBy"], [class*="powered-by"],
+    [class*="powered_by"], .ticketspice-logo, .tsr-poweredBy, .WCX-footer-flag, .WCX-localeFlag,
+    .country-flag, .locale-flag, [class*="localeFlag"], img[src*="ticketspice"], img[src*="us-flag"],
+    img[src*="us_flag"], img[src*="usa-flag"], img[alt*="TicketSpice" i], img[alt*="United States" i] {
+        display: none !important; visibility: hidden !important; height: 0 !important; width: 0 !important;
+    }
+</style>
+
+<div id="cff-funnel">
+
+    <!-- BANNER -->
+    <div class="cff-banner">
+        <div class="cff-banner-inner">
+            <span class="cff-banner-accent">🎃 FALL FESTIVAL 2026</span>
+            <span class="cff-dot"></span>
+            <span>Tickets on sale starting Wed, Aug 26</span>
+            <span class="cff-dot"></span>
+            <span>Sept 26 – Oct 31</span>
+        </div>
+    </div>
+
+    <!-- NAV -->
+    <div class="cff-nav">
+        <div class="cff-logo-wrap">
+            <div class="cff-logo-badge">
+                <img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/confreda-farms/design/assets/fall-festival/confreda-farms-logo.png" alt="Confreda Farms">
+            </div>
+        </div>
+        <div class="cff-nav-right">
+            <div class="cff-nav-loc">
+                <svg width="12" height="12" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                    <circle cx="12" cy="11" r="3"/>
+                </svg>
+                Hope, RI
+            </div>
+            <a href="#ticketBlock" class="cff-nav-cta">Get Tickets</a>
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <div class="cff-hero">
+        <img class="cff-hero-img" src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/confreda-farms/design/assets/fall-festival/hero-corn-maze-boy.jpg" alt="Fall Festival at Confreda Farms — corn maze">
+        <div class="cff-hero-overlay"></div>
+        <div class="cff-hero-content">
+            <span class="cff-hero-ribbon">🎃 Tickets On Sale Now</span>
+            <span class="cff-hero-eyebrow">Confreda Farms · Hope, Rhode Island</span>
+            <span class="cff-hero-title">Fall <em>Festival</em></span>
+            <span class="cff-hero-tagline">— Hayrides, a corn maze, and pick-your-own pumpkins on 90 years of family farmland. —</span>
+        </div>
+    </div>
+
+    <!-- SEASON STRIP -->
+    <div class="cff-seasonbar">
+        <span class="cff-seasonbar-t">Sept 26 &ndash; Oct 31, 2026<span class="cff-sb-dot">&middot;</span>Saturdays, Sundays &amp; Columbus Day (Mon, Oct 12)<span class="cff-sb-dot">&middot;</span>2150 Scituate Ave, Hope, RI</span>
+    </div>
+
+    <!-- BENEFITS -->
+    <div class="cff-benefits">
+        <div class="cff-benefits-grid">
+            <div class="cff-benefit">
+                <span class="cff-benefit-emoji">🌽</span>
+                <span class="cff-benefit-title">Corn Maze Included</span>
+                <span class="cff-benefit-desc">Folded into every GA admission</span>
+            </div>
+            <div class="cff-benefit">
+                <span class="cff-benefit-emoji">🚜</span>
+                <span class="cff-benefit-title">Hayrides &amp; Grounds</span>
+                <span class="cff-benefit-desc">Full run of the farm all day</span>
+            </div>
+            <div class="cff-benefit">
+                <span class="cff-benefit-emoji">🎃</span>
+                <span class="cff-benefit-title">Pick-Your-Own Pumpkins</span>
+                <span class="cff-benefit-desc">Priced by the pound at the patch</span>
+            </div>
+            <div class="cff-benefit">
+                <span class="cff-benefit-emoji">🍩</span>
+                <span class="cff-benefit-title">Fresh Donuts</span>
+                <span class="cff-benefit-desc">Included with Season Pass &amp; Four Pack</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- GALLERY (2-photo band — the only usable event photography we have) -->
+    <div class="cff-gallery">
+        <div class="cff-gallery-header cffr">
+            <span class="cff-eye">A Day at Confreda Farms</span>
+            <span class="cff-section-title">Ninety years of <em>fall memories</em></span>
+        </div>
+        <div class="cff-gallery-row cffr">
+            <div class="cff-gcard">
+                <img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/confreda-farms/design/assets/fall-festival/gallery-corn-husking-tractor.jpg" alt="Kids husking corn on the farm" loading="lazy">
+                <div class="cff-gcard-label">On the Farm</div>
+            </div>
+            <div class="cff-gcard">
+                <img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/confreda-farms/design/assets/fall-festival/gallery-aerial-farm-market.png" alt="Aerial view of Confreda Farms market" loading="lazy">
+                <div class="cff-gcard-label">The Farm &amp; Market</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- STORY / TRUST STRIP -->
+    <div class="cff-story cffr">
+        <div class="cff-story-inner">
+            <span class="cff-story-script">Since 1922</span>
+            <span class="cff-story-title">Three generations of the Confreda family, still growing.</span>
+            <span class="cff-story-body">
+                Confreda Farms has grown on the same Hope, Rhode Island land since 1922 — from a
+                family vegetable stand to a full working farm. Every fall, that same land opens up
+                for hayrides, a corn maze, and acres of pick-your-own pumpkins. Come spend the day
+                with us.
+            </span>
+            <div class="cff-badges">
+                <span class="cff-badge">90 Years of Excellence</span>
+                <span class="cff-badge">RI GAP Certified</span>
+                <span class="cff-badge">Bee Friendly</span>
+                <span class="cff-badge">Growing Since 1922</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- TICKETS — 3 CARDS, order locked: Family Four Pack -> Season Pass -> GA (John, 6/23 call) -->
+    <div class="cff-tickets" id="tickets">
+        <div class="cff-tickets-header cffr">
+            <span class="cff-eye">Fall Festival 2026</span>
+            <span class="cff-section-title">Pick your <em>way in</em></span>
+        </div>
+        <div class="cff-grid">
+
+            <!-- CARD 1 — Family Four Pack ($78 value, badge Save 30%, per event-info.md) -->
+            <div class="cff-card cff-card--feature cffr">
+                <span class="cff-card-badge">★ Best Value · Save 30%</span>
+                <span class="cff-card-icon">👨‍👩‍👧‍👦</span>
+                <h3>Family Four Pack</h3>
+                <ul class="cff-card-bullets">
+                    <li>🎟️ 4 admissions — grounds, hayride &amp; corn maze</li>
+                    <li>🍩 4 fresh donuts included</li>
+                    <li>🎃 2 pie pumpkins included</li>
+                    <li>👨‍👩‍👧‍👦 Built for a family of four</li>
+                </ul>
+                <div class="cff-card-price">
+                    <span class="cff-price-num">$59.95*</span>
+                    <div class="cff-price-slash">
+                        <span class="cff-price-online">Bundle Price</span>
+                        <span class="cff-price-was">$78.00 value</span>
+                    </div>
+                </div>
+                <span class="cff-card-fees">*plus applicable taxes and fees</span>
+                <span class="cff-card-note">4 admissions + 4 donuts + 2 pie pumpkins, a $78 value</span>
+            </div>
+
+            <!-- CARD 2 — Season Pass ($39.95, online-only) -->
+            <div class="cff-card cffr">
+                <span class="cff-card-badge">Online Only</span>
+                <span class="cff-card-icon">🍂</span>
+                <h3>Season Pass</h3>
+                <ul class="cff-card-bullets">
+                    <li>♾️ Unlimited visits all season — Sept 26 to Oct 31</li>
+                    <li>🌽 Grounds, hayride &amp; corn maze, every visit</li>
+                    <li>🍩 One donut + one pie pumpkin, included once</li>
+                    <li>🎟️ Sold online only</li>
+                </ul>
+                <div class="cff-card-price">
+                    <span class="cff-price-num">$39.95*</span>
+                    <div class="cff-price-slash">
+                        <span class="cff-price-online">Online Only</span>
+                    </div>
+                </div>
+                <span class="cff-card-fees">*plus applicable taxes and fees</span>
+                <span class="cff-card-note">Per person · valid the whole 2026 fall season</span>
+            </div>
+
+            <!-- CARD 3 — General Admission ($15 online / $17 onsite — the only real gate delta) -->
+            <div class="cff-card cffr">
+                <span class="cff-card-badge">Single-Day Visit</span>
+                <span class="cff-card-icon">🌽</span>
+                <h3>General Admission</h3>
+                <ul class="cff-card-bullets">
+                    <li>🚜 Hayride included</li>
+                    <li>🌽 Corn maze included</li>
+                    <li>🌾 Full farm grounds access</li>
+                    <li>🎃 Pick-your-own pumpkins priced separately, by the pound</li>
+                </ul>
+                <div class="cff-card-price">
+                    <span class="cff-price-num">$15.00*</span>
+                    <div class="cff-price-slash">
+                        <span class="cff-price-online">Online Price</span>
+                        <span class="cff-price-was">$17.00 at the gate</span>
+                    </div>
+                </div>
+                <span class="cff-card-fees">*plus applicable taxes and fees</span>
+                <span class="cff-card-note">Single-day admission · one visit</span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- INFO ROW
+         Hours are NOT confirmed for 2026 (open item — see event-info.md). The value shown is
+         confredasfallfest.com's stale prior-season number (10am-5pm, last wagon/ticket 4pm),
+         used as a placeholder pending John's confirmation, flagged inline below. -->
+    <div class="cff-info">
+        <div class="cff-info-grid">
+            <div class="cff-info-item">
+                <span class="cff-info-label">📅 Festival Dates</span>
+                <span class="cff-info-value">Sept 26 – Oct 31<br>Sat, Sun &amp; Columbus Day</span>
+            </div>
+            <div class="cff-info-item">
+                <span class="cff-info-label">🕐 Hours</span>
+                <span class="cff-info-value">10am – 5pm</span>
+                <span class="cff-info-flag">Pending 2026 confirmation</span>
+            </div>
+            <div class="cff-info-item">
+                <span class="cff-info-label">📍 Location</span>
+                <span class="cff-info-value">2150 Scituate Ave<br>Hope, RI 02831</span>
+            </div>
+            <div class="cff-info-item">
+                <span class="cff-info-label">✨ Learn More</span>
+                <a class="cff-info-link" href="https://www.confredafarms.com" target="_blank" rel="noopener">confredafarms.com</a>
+            </div>
+        </div>
+    </div>
+
+</div><!-- end #cff-funnel -->
+
+<script>
+    (function() {
+        // Reveal-on-scroll
+        var obs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) {
+                if (e.isIntersecting) { e.target.classList.add('cffon'); obs.unobserve(e.target); }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('#cff-funnel .cffr').forEach(function(el) {
+            obs.observe(el);
+            if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('cffon');
+        });
+        // Smooth anchor scroll for internal links
+        document.querySelectorAll('#cff-funnel a[href^="#"]').forEach(function(a) {
+            a.addEventListener('click', function(e) {
+                var target = document.querySelector(a.getAttribute('href'));
+                if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+            });
+        });
+    })();
+</script>
+
+<!-- ════ SLASH-THROUGH PRICING on the TicketSpice NATIVE ticket block ════
+     Pattern: crowd7/data/clients/_patterns/slash-through-pricing.md (name-keyed JS + MutationObserver).
+     GA is the ONLY ticket with a real gate-vs-online delta (John, 6/23 call: 15 online / 17 onsite).
+     Season Pass and Family Four Pack have no stated onsite/door price anywhere — do not add them here.
+     ⚠️ "General Admission" below is a BEST-GUESS ticket name — the TicketSpice workspace for this
+     event was invited today (2026-08-24) and the cart has not been built yet. Re-verify this exact
+     string against a live TS <h4> dump once the cart exists; a one-character mismatch = no strike,
+     silently. Name-keyed (NOT positional) -> immune to TS Action show/hide reorders; MutationObserver
+     re-applies the gate strike on every TS re-render. -->
+<script>
+(function(){
+  var GATE = {
+    "General Admission": "$17.00"   /* NOT yet confirmed against a live TS dump — see comment above */
+  };
+  function tag(){
+    document.querySelectorAll('#ticketBlock .ticket-type').forEach(function(row){
+      var h4 = row.querySelector('h4');
+      var cost = row.querySelector('.ticket-cost');
+      if(!h4 || !cost) return;
+      var g = GATE[h4.textContent.trim()];
+      if(g) cost.setAttribute('data-gate', g);
+    });
+  }
+  var tb = document.getElementById('ticketBlock') || document.body;
+  new MutationObserver(tag).observe(tb, {childList:true, subtree:true});
+  tag();
+})();
+</script>
+<style>
+  #ticketBlock .ticket-cost[data-gate]::before{
+    content: attr(data-gate) " "; text-decoration: line-through;
+    color:#212121; font-weight:200;
+  }
+  #ticketBlock .ticket-cost[data-gate]{ color:#a03a18 !important; }
+</style>
+
+<!-- ════ FLOATING "GET TICKETS" BUTTON (separate TS Custom HTML block, or lands inline via the loader) ════ -->
+<style>
+    #cff-float-btn {
+        position: fixed !important; bottom: 0 !important; left: 0 !important; right: 0 !important;
+        z-index: 500 !important;
+        padding: 12px 16px 20px !important;
+        background: linear-gradient(to top, rgba(252,245,238,0.97) 55%, transparent) !important;
+        display: flex !important; justify-content: center !important;
+        transition: opacity 0.35s ease, transform 0.35s ease !important;
+        pointer-events: none !important;
+    }
+    #cff-float-btn.cff-float-hidden { opacity: 0 !important; transform: translateY(24px) !important; pointer-events: none !important; }
+    #cff-float-btn.cff-float-hidden a { pointer-events: none !important; }
+    #cff-float-btn a {
+        display: block !important; width: 100% !important; max-width: 480px !important;
+        background: #bc6c53 !important; color: #ffffff !important;
+        font-family: 'American Typewriter', Georgia, serif !important;
+        font-size: 22px !important; font-weight: 700 !important; letter-spacing: 0.05em !important;
+        text-align: center !important; text-decoration: none !important;
+        padding: 18px 28px !important; border-radius: 50px !important;
+        box-shadow: 0 8px 32px rgba(188,108,83,0.40) !important;
+        transition: transform 0.15s, box-shadow 0.15s, background 0.2s !important;
+        border: none !important; cursor: pointer !important;
+        pointer-events: auto !important;
+    }
+    #cff-float-btn a:hover {
+        background: #a03a18 !important; transform: translateY(-2px) !important;
+        box-shadow: 0 14px 40px rgba(160,58,24,0.55) !important; color: #ffffff !important; text-decoration: none !important;
+    }
+</style>
+<div id="cff-float-btn">
+    <a href="#ticketBlock">Get Tickets</a>
+</div>
+<script>
+    (function() {
+        var floatBtn = document.getElementById('cff-float-btn');
+        if (floatBtn) {
+            floatBtn.querySelector('a').addEventListener('click', function() {
+                floatBtn.classList.add('cff-float-hidden');
+            });
+        }
+    })();
+</script>
+
+<div id="ticketBlock"><h2>Native TicketSpice cart renders here</h2>
+<div class="c7-cart-stub">Ticket types, prices, and date rules stay native in TicketSpice.<br>This stub exists so the page scrolls and the "Get Tickets" links resolve.</div></div></body></html>

@@ -1,0 +1,716 @@
+<!--
+  ============================================================
+  CONFREDA FARMS — SCARY ACRES 2026 — TicketSpice landing page (content block)
+  ============================================================
+  Built by Crowdly 2026-08-24. FROM-ZERO build, 2 days out from Flash Sale
+  open (Wed Aug 26, 2026). Hybrid-loader page: lives in crowd7-public,
+  fetched into the live TS page at render time by the v8 loader (see
+  crowd7/data/clients/confreda-farms/design/ticketspice-loaders/).
+
+  🚨 PRICING CONFLICT — READ BEFORE PUBLISHING (full detail in the build
+  brief alongside this file, ticketspice-build-brief.scary-acres.md):
+  the 6/23 Crowd7↔Confreda strategy call and the CURRENTLY-LIVE
+  scaryacresri.com describe two different pricing structures. This page
+  is built on the 6/23-CALL numbers (General $29.95 off-peak / $34.95
+  weekend, gate $40; Fast Pass Ultimate $74.95 online / $59 onsite; VIP
+  capped per slot, no confirmed price; NO season pass) because that's the
+  number set the rest of the Crowd7 campaign (ads, emails) is already
+  built around. The live site instead shows two NEW season passes and a
+  restructured General/VIP — NOT used here, needs Cory's yes/no before
+  Wednesday.
+
+  SOURCE: event-info.md (crowd7/data/clients/confreda-farms/events/scary-acres/),
+  drawn from 6.23.26.Crowd7ConfredaFarmsStrategyCall.transcript.md +
+  scaryacresri.com (checked 2026-08-24, brand/tone/hours reference only —
+  not scraped for individual image assets; no site-clone exists for this
+  property).
+
+  RUN DATES — genuinely unresolved (3 non-reconciling statements on the
+  same call, never resolved since). This page does NOT print specific
+  calendar dates for the season start/end — see the RUN-DATES-TBD token
+  in the info row below; replace that line once Cory confirms. Weekly
+  operating PATTERN (day-of-week + hours) IS confirmed via the live site
+  and is safe to print: Thu & Mon 7–9pm, Fri/Sat/Sun 7–10pm, gates at
+  7pm, trail opens at sundown.
+
+  VIP PRICE — no dollar figure exists anywhere in the 6/23 call or any
+  swept surface for the re-scoped, capped-per-slot VIP tier. The ONLY
+  pricing data point in hand is the live site's "$50 flat" — but that's
+  under the OLD uncapped VIP structure the call explicitly replaced, so
+  it is not used as the displayed price. VIP card ships with a "Starting
+  at $50" placeholder sourced from that live-site figure, clearly
+  asterisked as pending confirmation — do not treat it as decided.
+
+  FAST PASS ULTIMATE — the 6/23 call also floated a SECOND, contradicting
+  price pair ($49 online / $59 onsite) later in the same call. Built with
+  $74.95 online / $59 onsite (the earlier, more fully-specified
+  statement) per the evidence sweep's call. Flagged in the brief.
+
+  TICKET NAMES — the TS workspace for this event was created TODAY
+  (2026-08-24); invite received, cart not yet configured. The native
+  ticket-block slash-through script below targets a BEST-GUESS ticket
+  name ("General Admission") — confirm the exact <h4> text once the cart
+  exists and correct the GATE map key if it differs (see the pattern doc:
+  crowd7/data/clients/_patterns/slash-through-pricing.md).
+
+  IMAGERY — no photography sourced for this build (no site-clone exists
+  for scaryacresri.com — separate WordPress site, never scraped). Built
+  CSS-only: dark radial gradients + iconography standing in for hero /
+  attraction art. Flagged in the build brief as an open item — swap in
+  real photography from Cory (or licensed horror stock) before final ship.
+
+  BRAND — black / orange / deep blood-red horror palette, per event-info's
+  Style Guide Inputs (site fetched for brand direction only). Deliberately
+  DOES NOT reuse the Fall Festival cream/tan/rust farm palette being built
+  concurrently by a sibling agent — distinct sub-brand, same account, per
+  Crowdly doctrine.
+
+  ATTRACTIONS: Dark Harvest Hayrides, Haunted Burial Grounds (corn field),
+  Curse of the Bayou, The Blood Moon Chapel (new this season).
+
+  NATIVE TS CART: ticket types/prices/caps/date Actions/merch stay native
+  in TicketSpice per the hybrid-loader split — see
+  ticketspice-build-brief.scary-acres.md.
+  ============================================================
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+    #csa-funnel {
+        --sa-black: #0A0806;
+        --sa-black-2: #120D0A;
+        --sa-card: #1C1310;
+        --sa-card-2: #241812;
+        --sa-orange: #FF6A1A;
+        --sa-orange-2: #FFA24D;
+        --sa-blood: #7A0C0C;
+        --sa-blood-2: #B0121A;
+        --sa-blood-3: #E01A24;
+        --sa-cream: #EFE6D8;
+        --sa-muted: #B7A997;
+        --sa-faint: #8C7C6C;
+        --sa-hair: rgba(255,106,26,0.16);
+        --sa-hair-2: rgba(255,255,255,0.08);
+
+        width: 100vw !important;
+        position: relative !important;
+        left: 50% !important;
+        right: 50% !important;
+        margin-left: -50vw !important;
+        margin-right: -50vw !important;
+        overflow: hidden !important;
+        font-family: 'Inter', -apple-system, sans-serif !important;
+        background: var(--sa-black) !important;
+        color: var(--sa-cream) !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+    }
+    #csa-funnel * { box-sizing: border-box !important; }
+    #csa-funnel .csa-disp {
+        font-family: 'Bebas Neue', 'Arial Narrow', sans-serif !important;
+        letter-spacing: 0.03em !important;
+    }
+
+    /* ── BANNER ── */
+    #csa-funnel .csa-banner {
+        width: 100% !important;
+        background: linear-gradient(90deg, var(--sa-blood), #4A0808) !important;
+        color: var(--sa-orange-2) !important;
+        text-align: center !important;
+        padding: 11px 20px !important;
+        font-size: 0.8rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.08em !important;
+        text-transform: uppercase !important;
+        border-bottom: 1px solid var(--sa-hair) !important;
+    }
+    #csa-funnel .csa-banner-inner {
+        display: flex !important; align-items: center !important; justify-content: center !important;
+        gap: 10px !important; flex-wrap: wrap !important;
+    }
+    #csa-funnel .csa-dot {
+        width: 3px !important; height: 3px !important; background: rgba(255,162,77,0.55) !important;
+        border-radius: 50% !important; display: inline-block !important; flex-shrink: 0 !important;
+    }
+
+    /* ── NAV ── */
+    #csa-funnel .csa-nav {
+        width: 100% !important; padding: 16px 40px !important;
+        display: flex !important; align-items: center !important; justify-content: space-between !important;
+        background: rgba(10,8,6,0.94) !important;
+        position: sticky !important; top: 0 !important; z-index: 100 !important;
+        border-bottom: 1px solid var(--sa-hair) !important;
+        box-shadow: 0 2px 24px rgba(0,0,0,0.55) !important;
+    }
+    #csa-funnel .csa-logo { line-height: 1 !important; }
+    #csa-funnel .csa-logo-main {
+        font-size: 1.9rem !important; color: var(--sa-cream) !important;
+        display: block !important;
+    }
+    #csa-funnel .csa-logo-main span { color: var(--sa-orange) !important; }
+    #csa-funnel .csa-logo-sub {
+        font-size: 0.68rem !important; letter-spacing: 0.16em !important; text-transform: uppercase !important;
+        color: var(--sa-muted) !important; display: block !important; margin-top: 2px !important;
+    }
+    #csa-funnel .csa-nav-cta {
+        background: var(--sa-orange) !important; color: #201007 !important;
+        padding: 11px 26px !important; border-radius: 4px !important;
+        font-size: 0.85rem !important; font-weight: 800 !important; text-transform: uppercase !important;
+        letter-spacing: 0.04em !important; text-decoration: none !important;
+        transition: all 0.25s ease !important; white-space: nowrap !important;
+        box-shadow: 0 4px 18px rgba(255,106,26,0.35) !important;
+        display: inline-block !important;
+    }
+    #csa-funnel .csa-nav-cta:hover {
+        background: var(--sa-orange-2) !important; color: #201007 !important; text-decoration: none !important;
+        transform: translateY(-1px) !important;
+    }
+
+    /* ── HERO ── */
+    #csa-funnel .csa-hero {
+        width: 100% !important;
+        min-height: clamp(420px, 62vw, 680px) !important;
+        position: relative !important;
+        display: flex !important; align-items: center !important; justify-content: center !important;
+        overflow: hidden !important;
+        background:
+          radial-gradient(60% 55% at 50% 28%, rgba(255,106,26,0.16), rgba(255,106,26,0) 60%),
+          radial-gradient(90% 70% at 50% 105%, rgba(176,18,26,0.30), rgba(176,18,26,0) 60%),
+          radial-gradient(120% 90% at 50% 0%, #201410 0%, #0F0A08 55%, #060403 100%) !important;
+    }
+    #csa-funnel .csa-hero::before {
+        content: '' !important; position: absolute !important; inset: 0 !important;
+        background-image:
+          repeating-linear-gradient(115deg, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 46px),
+          repeating-linear-gradient(25deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 60px) !important;
+        opacity: 0.5 !important; pointer-events: none !important;
+    }
+    #csa-funnel .csa-hero-content {
+        position: relative !important; z-index: 2 !important;
+        text-align: center !important; padding: 64px 24px !important; max-width: 820px !important;
+    }
+    #csa-funnel .csa-hero-eyebrow {
+        font-size: 0.78rem !important; font-weight: 800 !important; letter-spacing: 0.22em !important;
+        text-transform: uppercase !important; color: var(--sa-orange-2) !important;
+        margin-bottom: 16px !important; display: block !important;
+        opacity: 0; animation: csaFadeUp 0.6s ease 0.15s forwards;
+    }
+    #csa-funnel .csa-hero-title {
+        font-size: clamp(3.2rem, 10vw, 6.5rem) !important; color: var(--sa-cream) !important;
+        line-height: 0.95 !important; display: block !important;
+        text-shadow: 0 0 40px rgba(255,106,26,0.25), 0 4px 24px rgba(0,0,0,0.6) !important;
+        opacity: 0; animation: csaFadeUp 0.7s ease 0.3s forwards;
+    }
+    #csa-funnel .csa-hero-title em { font-style: normal !important; color: var(--sa-blood-3) !important; }
+    #csa-funnel .csa-hero-sub {
+        font-size: 1.02rem !important; color: rgba(239,230,216,0.82) !important;
+        margin: 20px auto 0 !important; max-width: 560px !important; line-height: 1.6 !important;
+        display: block !important;
+        opacity: 0; animation: csaFadeUp 0.7s ease 0.45s forwards;
+    }
+    #csa-funnel .csa-hero-cta {
+        margin-top: 32px !important; display: inline-block !important;
+        background: var(--sa-orange) !important; color: #201007 !important;
+        padding: 16px 42px !important; border-radius: 4px !important;
+        font-size: 1.05rem !important; font-weight: 800 !important; text-transform: uppercase !important;
+        letter-spacing: 0.05em !important; text-decoration: none !important;
+        box-shadow: 0 10px 34px rgba(255,106,26,0.4) !important;
+        transition: all 0.25s ease !important;
+        opacity: 0; animation: csaFadeUp 0.7s ease 0.6s forwards;
+    }
+    #csa-funnel .csa-hero-cta:hover {
+        background: var(--sa-orange-2) !important; color: #201007 !important; text-decoration: none !important;
+        transform: translateY(-2px) !important;
+    }
+    #csa-funnel .csa-hero-flash {
+        margin-top: 14px !important; font-size: 0.8rem !important; color: rgba(255,162,77,0.85) !important;
+        letter-spacing: 0.04em !important; display: block !important;
+        opacity: 0; animation: csaFadeUp 0.7s ease 0.72s forwards;
+    }
+    @keyframes csaFadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ── BENEFITS ── */
+    #csa-funnel .csa-benefits {
+        width: 100% !important; background: var(--sa-black-2) !important;
+        padding: 34px 48px !important; border-top: 1px solid var(--sa-hair) !important;
+        border-bottom: 1px solid var(--sa-hair) !important;
+    }
+    #csa-funnel .csa-benefits-grid { display: grid !important; grid-template-columns: repeat(4, 1fr) !important; }
+    #csa-funnel .csa-benefit { text-align: center !important; padding: 8px 18px !important; position: relative !important; }
+    #csa-funnel .csa-benefit:not(:last-child)::after {
+        content: '' !important; position: absolute !important; right: 0 !important; top: 15% !important; bottom: 15% !important;
+        width: 1px !important; background: var(--sa-hair) !important;
+    }
+    #csa-funnel .csa-benefit-icon { font-size: 1.6rem !important; margin-bottom: 8px !important; display: block !important; }
+    #csa-funnel .csa-benefit-title {
+        font-size: 0.92rem !important; font-weight: 700 !important; color: var(--sa-cream) !important;
+        margin-bottom: 2px !important; display: block !important;
+    }
+    #csa-funnel .csa-benefit-desc { font-size: 0.72rem !important; color: var(--sa-muted) !important; display: block !important; }
+
+    /* ── ATTRACTIONS ── */
+    #csa-funnel .csa-attractions { width: 100% !important; background: var(--sa-black) !important; padding: 72px 48px !important; }
+    #csa-funnel .csa-section-header { text-align: center !important; margin-bottom: 44px !important; }
+    #csa-funnel .csa-eye {
+        font-size: 0.72rem !important; font-weight: 800 !important; letter-spacing: 0.24em !important;
+        text-transform: uppercase !important; color: var(--sa-orange) !important; margin-bottom: 10px !important; display: block !important;
+    }
+    #csa-funnel .csa-title {
+        font-size: clamp(2rem, 5vw, 3.2rem) !important; color: var(--sa-cream) !important;
+        line-height: 1.05 !important; display: block !important;
+    }
+    #csa-funnel .csa-title em { font-style: normal !important; color: var(--sa-blood-3) !important; }
+    #csa-funnel .csa-attr-grid {
+        display: grid !important; grid-template-columns: repeat(4, 1fr) !important; gap: 20px !important;
+        max-width: 1240px !important; margin: 0 auto !important;
+    }
+    #csa-funnel .csa-attr-card {
+        border-radius: 14px !important; overflow: hidden !important; position: relative !important;
+        border: 1px solid var(--sa-hair) !important;
+        transition: transform 0.35s ease, box-shadow 0.35s ease !important;
+    }
+    #csa-funnel .csa-attr-card:hover { transform: translateY(-6px) !important; box-shadow: 0 20px 44px rgba(0,0,0,0.5) !important; }
+    #csa-funnel .csa-attr-art {
+        height: 150px !important; display: flex !important; align-items: center !important; justify-content: center !important;
+        font-size: 2.6rem !important; position: relative !important;
+    }
+    #csa-funnel .csa-attr-art-1 { background: radial-gradient(90% 90% at 50% 30%, #5A2A0E, #1C1310 75%) !important; }
+    #csa-funnel .csa-attr-art-2 { background: radial-gradient(90% 90% at 50% 30%, #3A0E10, #1C1310 75%) !important; }
+    #csa-funnel .csa-attr-art-3 { background: radial-gradient(90% 90% at 50% 30%, #0E2A2A, #1C1310 75%) !important; }
+    #csa-funnel .csa-attr-art-4 { background: radial-gradient(90% 90% at 50% 30%, #5A0C14, #1C1310 75%) !important; }
+    #csa-funnel .csa-attr-badge {
+        position: absolute !important; top: 10px !important; right: 10px !important;
+        background: var(--sa-blood-3) !important; color: white !important;
+        font-size: 0.6rem !important; font-weight: 800 !important; letter-spacing: 0.08em !important;
+        text-transform: uppercase !important; padding: 3px 9px !important; border-radius: 20px !important;
+    }
+    #csa-funnel .csa-attr-body { background: var(--sa-card) !important; padding: 18px 18px 20px !important; }
+    #csa-funnel .csa-attr-name {
+        font-size: 1.05rem !important; font-weight: 700 !important; color: var(--sa-cream) !important;
+        display: block !important; margin-bottom: 6px !important; line-height: 1.2 !important;
+    }
+    #csa-funnel .csa-attr-desc { font-size: 0.8rem !important; color: var(--sa-muted) !important; line-height: 1.5 !important; display: block !important; }
+
+    /* ── TICKET CARDS ── */
+    #csa-funnel .csa-tickets { width: 100% !important; background: var(--sa-black-2) !important; padding: 76px 48px !important; border-top: 1px solid var(--sa-hair) !important; }
+    #csa-funnel .csa-grid {
+        display: grid !important; grid-template-columns: repeat(3, minmax(0, 380px)) !important; gap: 24px !important;
+        justify-content: center !important; max-width: 1240px !important; margin: 0 auto !important;
+    }
+    #csa-funnel .csa-card {
+        border-radius: 16px !important; padding: 34px 30px !important; position: relative !important;
+        display: flex !important; flex-direction: column !important;
+        transition: transform 0.35s ease, box-shadow 0.35s ease !important;
+    }
+    #csa-funnel .csa-card:hover { transform: translateY(-6px) !important; }
+    #csa-funnel .csa-card-general { background: linear-gradient(160deg, var(--sa-card-2), var(--sa-card)) !important; border: 1px solid var(--sa-hair) !important; }
+    #csa-funnel .csa-card-fastpass {
+        background: linear-gradient(160deg, var(--sa-blood-2), #4A0808) !important;
+        box-shadow: 0 0 0 1px rgba(255,106,26,0.18), 0 20px 44px rgba(0,0,0,0.5) !important;
+    }
+    #csa-funnel .csa-card-vip { background: linear-gradient(160deg, #241812, #17100C) !important; border: 1px solid var(--sa-hair); box-shadow: 0 0 0 1px rgba(255,106,26,0.1) !important; }
+
+    #csa-funnel .csa-card-badge {
+        display: inline-block !important; font-size: 0.62rem !important; font-weight: 800 !important;
+        letter-spacing: 0.14em !important; text-transform: uppercase !important;
+        padding: 5px 11px !important; border-radius: 20px !important; margin-bottom: 16px !important; width: fit-content !important;
+    }
+    #csa-funnel .csa-card-badge-orange { background: var(--sa-orange) !important; color: #201007 !important; }
+    #csa-funnel .csa-card-badge-light { background: rgba(255,255,255,0.14) !important; color: var(--sa-cream) !important; }
+
+    #csa-funnel .csa-card h3 { font-size: 1.65rem !important; color: var(--sa-cream) !important; line-height: 1.1 !important; margin-bottom: 14px !important; display: block !important; }
+    #csa-funnel .csa-card-bullets { list-style: none !important; padding: 0 !important; margin: 0 0 20px !important; display: flex !important; flex-direction: column !important; gap: 7px !important; }
+    #csa-funnel .csa-card-bullets li { font-size: 0.9rem !important; line-height: 1.5 !important; color: rgba(239,230,216,0.82) !important; display: flex !important; gap: 8px !important; align-items: flex-start !important; }
+    #csa-funnel .csa-card-bullets li::before { content: '✦' !important; color: var(--sa-orange-2) !important; flex-shrink: 0 !important; }
+
+    #csa-funnel .csa-tiers { margin-top: auto !important; padding-top: 16px !important; border-top: 1px solid rgba(255,255,255,0.12) !important; display: flex !important; flex-direction: column !important; gap: 0 !important; }
+    #csa-funnel .csa-tier { display: flex !important; justify-content: space-between !important; align-items: center !important; padding: 12px 0 !important; gap: 12px !important; }
+    #csa-funnel .csa-tier:not(:last-child) { border-bottom: 1px solid rgba(255,255,255,0.08) !important; }
+    #csa-funnel .csa-tier-name { font-size: 0.85rem !important; font-weight: 700 !important; color: var(--sa-cream) !important; display: block !important; }
+    #csa-funnel .csa-tier-price { text-align: right !important; flex-shrink: 0 !important; }
+    #csa-funnel .csa-tier-now { font-size: 1.5rem !important; font-weight: 700 !important; color: var(--sa-orange-2) !important; line-height: 1 !important; display: block !important; }
+    #csa-funnel .csa-tier-was { font-size: 0.78rem !important; color: rgba(239,230,216,0.4) !important; text-decoration: line-through !important; display: block !important; margin-top: 2px !important; }
+    #csa-funnel .csa-tier-was-label { font-size: 0.66rem !important; color: rgba(239,230,216,0.35) !important; display: block !important; }
+
+    #csa-funnel .csa-single-price { display: flex !important; align-items: baseline !important; gap: 8px !important; margin-top: auto !important; padding-top: 16px !important; border-top: 1px solid rgba(255,255,255,0.12) !important; }
+    #csa-funnel .csa-price-num { font-size: 2.6rem !important; font-weight: 700 !important; color: var(--sa-orange-2) !important; line-height: 1 !important; }
+    #csa-funnel .csa-price-label { font-size: 0.85rem !important; color: rgba(239,230,216,0.6) !important; line-height: 1.35 !important; }
+    #csa-funnel .csa-card-note { font-size: 0.72rem !important; font-style: italic !important; margin-top: 10px !important; display: block !important; line-height: 1.5 !important; color: rgba(239,230,216,0.5) !important; }
+    #csa-funnel .csa-card-note strong { color: rgba(255,162,77,0.85) !important; font-style: normal !important; }
+
+    /* ── INFO ROW ── */
+    #csa-funnel .csa-info { width: 100% !important; background: linear-gradient(90deg, #241610, #17100C) !important; border-top: 1px solid var(--sa-hair) !important; }
+    #csa-funnel .csa-info-grid { display: grid !important; grid-template-columns: repeat(4, 1fr) !important; }
+    #csa-funnel .csa-info-item { text-align: center !important; padding: 30px 20px !important; position: relative !important; }
+    #csa-funnel .csa-info-item:not(:last-child)::after { content: '' !important; position: absolute !important; right: 0 !important; top: 20% !important; bottom: 20% !important; width: 1px !important; background: var(--sa-hair) !important; }
+    #csa-funnel .csa-info-icon { font-size: 1.4rem !important; display: block !important; margin-bottom: 6px !important; }
+    #csa-funnel .csa-info-label { font-size: 0.62rem !important; font-weight: 800 !important; letter-spacing: 0.16em !important; text-transform: uppercase !important; color: var(--sa-orange-2) !important; display: block !important; margin-bottom: 4px !important; }
+    #csa-funnel .csa-info-value { font-size: 0.92rem !important; font-weight: 600 !important; color: var(--sa-cream) !important; display: block !important; line-height: 1.4 !important; }
+
+    /* ── FINE PRINT ── */
+    #csa-funnel .csa-fine { width: 100% !important; background: #060403 !important; color: rgba(239,230,216,0.62) !important; padding: 36px 48px !important; font-size: 0.75rem !important; line-height: 1.7 !important; }
+    #csa-funnel .csa-fine-inner { max-width: 1000px !important; margin: 0 auto !important; }
+    #csa-funnel .csa-fine strong { color: rgba(255,162,77,0.85) !important; }
+
+    /* ── REVEAL ── */
+    #csa-funnel .csar { opacity: 0 !important; transform: translateY(26px) !important; transition: opacity 0.7s cubic-bezier(.16,1,.3,1), transform 0.7s cubic-bezier(.16,1,.3,1) !important; }
+    #csa-funnel .csar.csaon { opacity: 1 !important; transform: none !important; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1050px) {
+        #csa-funnel .csa-attr-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        #csa-funnel .csa-grid { grid-template-columns: repeat(2, minmax(0, 400px)) !important; }
+    }
+    @media (max-width: 860px) {
+        #csa-funnel .csa-nav { padding: 12px 24px !important; }
+        #csa-funnel .csa-benefits { padding: 28px 24px !important; }
+        #csa-funnel .csa-attractions { padding: 52px 24px !important; }
+        #csa-funnel .csa-tickets { padding: 52px 24px !important; }
+        #csa-funnel .csa-info-grid { grid-template-columns: 1fr 1fr !important; }
+        #csa-funnel .csa-info-item:nth-child(2n)::after { display: none !important; }
+    }
+    @media (max-width: 560px) {
+        #csa-funnel .csa-benefits-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 16px 0 !important; }
+        #csa-funnel .csa-benefit:nth-child(2n)::after { display: none !important; }
+        #csa-funnel .csa-attr-grid { grid-template-columns: 1fr !important; }
+        #csa-funnel .csa-grid { grid-template-columns: 1fr !important; }
+        #csa-funnel .csa-fine { padding: 28px 16px !important; }
+    }
+</style>
+
+<!-- TicketSpice native-cart CSS (Confreda Scary Acres) — light brand recolor.
+     Kept intentionally compact: the TS workspace for this event was created
+     TODAY and no cart is configured yet, so a full text-color-override pass
+     (like Summers Farm's "CART TEXT AUTHORITY" block) hasn't been earned
+     yet — apply that pattern from campfires-2026.html only if a similar
+     dark-panel/light-island contrast problem shows up once the cart exists. -->
+<style>
+.field-banner td { border: none; }
+.field-location.header-field h4 { background: #7A0C0C; color: white !important; }
+.wbx-calendar .row .day { border-radius: 6px; color: #241812; cursor: default; flex: 1; height: 40px; margin: 1px !important; transition: all .2s; }
+.ticket-block .wbx-calendar .row .day.enabled { color: white; background-color: #7A0C0C; }
+.ticket-block .wbx-calendar .row .day.enabled.sold-out { color: white; background-color: #8C7C6C; }
+.ticket-block table.holds-tickets th { color: #FFFFFF !important; background: #241610; }
+.campaign-form:not(.legacy-form) .ticket-block table.holds-tickets { border: 2px solid #7A0C0C; border-radius: 10px; border-spacing: 0; box-shadow: 0 10px 24px rgba(0,0,0,0.35); width: 100%; }
+.campaign-form:not(.legacy-form) .btn-danger, .campaign-form:not(.legacy-form) .btn-primary, .campaign-form:not(.legacy-form) .btn:not(.btn--transparent):not(.btn--plus):not(.btn--minus):not(.btn--home):not(.btn--tooltipstered):not(.btn--blue) { font-size: 15px; color: white; background-color: #FF6A1A; border-radius: 6px; font-weight: bold; height: 44px; min-height: 44px; padding: 15px 20px; text-transform: uppercase; }
+</style>
+
+<div id="csa-funnel">
+
+    <!-- BANNER -->
+    <div class="csa-banner">
+        <div class="csa-banner-inner">
+            <span>🎃 <strong>Flash Sale — Aug 26–30</strong></span>
+            <span class="csa-dot"></span>
+            <span>Lock in your tickets before prices rise</span>
+        </div>
+    </div>
+
+    <!-- NAV -->
+    <div class="csa-nav">
+        <div class="csa-logo">
+            <span class="csa-logo-main csa-disp">SCARY <span>ACRES</span></span>
+            <span class="csa-logo-sub">Confreda Farms · Hope, RI</span>
+        </div>
+        <a href="#csa-tickets-anchor" class="csa-nav-cta">Get Tickets</a>
+    </div>
+
+    <!-- HERO -->
+    <div class="csa-hero">
+        <div class="csa-hero-content">
+            <span class="csa-hero-eyebrow">Flash Sale Now Open · Aug 26–30</span>
+            <span class="csa-hero-title csa-disp">The Region's <em>#1</em> Haunted Attraction</span>
+            <span class="csa-hero-sub">Four spine-chilling attractions across the darkest acres of Hope, Rhode Island. No recycled scares — gates open at dusk, if you dare.</span>
+            <a href="#csa-tickets-anchor" class="csa-hero-cta">Get Flash Sale Tickets</a>
+            <span class="csa-hero-flash">Prices go up the moment the flash window closes.</span>
+        </div>
+    </div>
+
+    <!-- BENEFITS -->
+    <div class="csa-benefits">
+        <div class="csa-benefits-grid">
+            <div class="csa-benefit csar">
+                <span class="csa-benefit-icon">👻</span>
+                <span class="csa-benefit-title">4 Attractions</span>
+                <span class="csa-benefit-desc">One ticket, the whole trail</span>
+            </div>
+            <div class="csa-benefit csar">
+                <span class="csa-benefit-icon">📍</span>
+                <span class="csa-benefit-title">Hope, RI</span>
+                <span class="csa-benefit-desc">Western Cranston area</span>
+            </div>
+            <div class="csa-benefit csar">
+                <span class="csa-benefit-icon">🩸</span>
+                <span class="csa-benefit-title">New This Season</span>
+                <span class="csa-benefit-desc">The Blood Moon Chapel</span>
+            </div>
+            <div class="csa-benefit csar">
+                <span class="csa-benefit-icon">⚡</span>
+                <span class="csa-benefit-title">Flash Sale Pricing</span>
+                <span class="csa-benefit-desc">Aug 26–30 only</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ATTRACTIONS -->
+    <div class="csa-attractions">
+        <div class="csa-section-header csar">
+            <span class="csa-eye">Four Reasons to Fear the Dark</span>
+            <span class="csa-title csa-disp">The <em>Attractions</em></span>
+        </div>
+        <div class="csa-attr-grid">
+            <div class="csa-attr-card csar">
+                <div class="csa-attr-art csa-attr-art-1">🌾</div>
+                <div class="csa-attr-body">
+                    <span class="csa-attr-name">Dark Harvest Hayrides</span>
+                    <span class="csa-attr-desc">A haunted wagon ride through the farm's darkest corners — nothing recycled, nothing you've seen before.</span>
+                </div>
+            </div>
+            <div class="csa-attr-card csar">
+                <div class="csa-attr-art csa-attr-art-2">⚰️</div>
+                <div class="csa-attr-body">
+                    <span class="csa-attr-name">Haunted Burial Grounds</span>
+                    <span class="csa-attr-desc">A corn-field cemetery where the ground doesn't stay still and nothing stays buried for long.</span>
+                </div>
+            </div>
+            <div class="csa-attr-card csar">
+                <div class="csa-attr-art csa-attr-art-3">🐊</div>
+                <div class="csa-attr-body">
+                    <span class="csa-attr-name">Curse of the Bayou</span>
+                    <span class="csa-attr-desc">A swamp-soaked descent into something ancient, hungry, and very much awake.</span>
+                </div>
+            </div>
+            <div class="csa-attr-card csar">
+                <div class="csa-attr-art csa-attr-art-4">
+                    🩸
+                    <span class="csa-attr-badge">New</span>
+                </div>
+                <div class="csa-attr-body">
+                    <span class="csa-attr-name">The Blood Moon Chapel</span>
+                    <span class="csa-attr-desc">New this season — a desecrated chapel under a blood-red moon. First look, first scream.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TICKETS -->
+    <a id="csa-tickets-anchor"></a>
+    <div class="csa-tickets">
+        <div class="csa-section-header csar">
+            <span class="csa-eye">Flash Sale · Aug 26–30</span>
+            <span class="csa-title csa-disp">Choose Your <em>Fate</em></span>
+        </div>
+        <div class="csa-grid">
+
+            <!-- GENERAL -->
+            <div class="csa-card csa-card-general csar">
+                <span class="csa-card-badge csa-card-badge-orange">General Admission</span>
+                <h3 class="csa-disp">General</h3>
+                <ul class="csa-card-bullets">
+                    <li>Access to all 4 haunted attractions</li>
+                    <li>Dark Harvest Hayrides included</li>
+                    <li>Best value for groups &amp; families</li>
+                </ul>
+                <div class="csa-tiers">
+                    <div class="csa-tier">
+                        <div>
+                            <span class="csa-tier-name">Off-Peak (Thu &amp; Mon)</span>
+                        </div>
+                        <div class="csa-tier-price">
+                            <span class="csa-tier-now">$29.95</span>
+                            <span class="csa-tier-was">$40.00</span>
+                            <span class="csa-tier-was-label">at the gate</span>
+                        </div>
+                    </div>
+                    <div class="csa-tier">
+                        <div>
+                            <span class="csa-tier-name">Weekend (Fri–Sun)</span>
+                        </div>
+                        <div class="csa-tier-price">
+                            <span class="csa-tier-now">$34.95</span>
+                            <span class="csa-tier-was">$40.00</span>
+                            <span class="csa-tier-was-label">at the gate</span>
+                        </div>
+                    </div>
+                </div>
+                <span class="csa-card-note">Online pricing shown above. Walk-up gate price is $40 flat, any night.</span>
+            </div>
+
+            <!-- FAST PASS ULTIMATE -->
+            <div class="csa-card csa-card-fastpass csar">
+                <span class="csa-card-badge csa-card-badge-light">Skip The Line</span>
+                <h3 class="csa-disp">Fast Pass Ultimate</h3>
+                <ul class="csa-card-bullets">
+                    <li>Front-of-line access at every attraction</li>
+                    <li>Ticket insurance included</li>
+                    <li>The <strong>only</strong> ticket sold at the gate if we sell out</li>
+                </ul>
+                <div class="csa-single-price">
+                    <span class="csa-price-num">$74.95</span>
+                    <span class="csa-price-label">online</span>
+                </div>
+                <span class="csa-card-note"><strong>Walk-up price at the gate is $59</strong> — lower than online. Buy online anyway to guarantee your spot before we sell out; Fast Pass Ultimate is the only ticket still sold at the door once we do.</span>
+            </div>
+
+            <!-- VIP -->
+            <div class="csa-card csa-card-vip csar">
+                <span class="csa-card-badge csa-card-badge-light">Limited Capacity</span>
+                <h3 class="csa-disp">VIP</h3>
+                <ul class="csa-card-bullets">
+                    <li>Premium date &amp; time-slot access</li>
+                    <li>Strictly capped per slot — once it's gone, it's gone</li>
+                    <li>The elevated way to do Scary Acres</li>
+                </ul>
+                <div class="csa-single-price">
+                    <span class="csa-price-num">$50</span>
+                    <span class="csa-price-label">starting at*</span>
+                </div>
+                <span class="csa-card-note">*Pricing pending final confirmation — check back before the flash sale ends.</span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- INFO ROW -->
+    <div class="csa-info">
+        <div class="csa-info-grid">
+            <div class="csa-info-item">
+                <span class="csa-info-icon">📅</span>
+                <span class="csa-info-label">Season</span>
+                <!-- RUN-DATES-TBD: replace the line below once Cory confirms exact 2026 season start/end dates — three contradicting statements exist, never resolved. Do not print a specific date range until confirmed. -->
+                <span class="csa-info-value">2026 dates coming soon</span>
+            </div>
+            <div class="csa-info-item">
+                <span class="csa-info-icon">🕖</span>
+                <span class="csa-info-label">Hours</span>
+                <span class="csa-info-value">Thu &amp; Mon 7–9pm<br>Fri/Sat/Sun 7–10pm</span>
+            </div>
+            <div class="csa-info-item">
+                <span class="csa-info-icon">📍</span>
+                <span class="csa-info-label">Location</span>
+                <span class="csa-info-value">2150 Scituate Ave<br>Hope, RI 02831</span>
+            </div>
+            <div class="csa-info-item">
+                <span class="csa-info-icon">🌙</span>
+                <span class="csa-info-label">Gates &amp; Trail</span>
+                <span class="csa-info-value">Gates open 7pm<br>Trail opens at sundown</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- FINE PRINT -->
+    <div class="csa-fine">
+        <div class="csa-fine-inner">
+            <strong>Good to know:</strong> No merchandise or alcohol on site this season. Fast Pass Ultimate is the only ticket type sold at the gate once online sales sell out — General Admission and VIP are online-only once we're sold out for the night.<br><br>
+            <strong>Pricing:</strong> Online prices shown above; a $40 flat walk-up rate applies at the gate for General Admission, subject to availability. All prices valid during the Flash Sale window (Aug 26–30, 2026).<br><br>
+            <strong>Season dates:</strong> Final 2026 calendar to be announced — check back for updates.
+        </div>
+    </div>
+
+</div><!-- end #csa-funnel -->
+
+<script>
+    (function() {
+        var obs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) {
+                if (e.isIntersecting) { e.target.classList.add('csaon'); obs.unobserve(e.target); }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('#csa-funnel .csar').forEach(function(el) {
+            obs.observe(el);
+            if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('csaon');
+        });
+        document.querySelectorAll('#csa-funnel a[href^="#"]').forEach(function(a) {
+            a.addEventListener('click', function(e) {
+                e.preventDefault();
+                var t = document.querySelector(a.getAttribute('href'));
+                if (t) t.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    })();
+</script>
+
+<!-- ============================================================
+     CONFREDA SCARY ACRES — FLOATING TICKETS BUTTON
+     ============================================================ -->
+<style>
+    #csa-float-btn {
+        position: fixed !important; bottom: 0 !important; left: 0 !important; right: 0 !important;
+        z-index: 500 !important;
+        padding: 12px 16px 20px !important;
+        background: linear-gradient(to top, rgba(6,4,3,0.97) 55%, transparent) !important;
+        display: flex !important; justify-content: center !important;
+        transition: opacity 0.35s ease, transform 0.35s ease !important;
+        pointer-events: none !important;
+    }
+    #csa-float-btn.csa-float-hidden { opacity: 0 !important; transform: translateY(24px) !important; pointer-events: none !important; }
+    #csa-float-btn a {
+        display: block !important; width: 100% !important; max-width: 480px !important;
+        background: #FF6A1A !important; color: #201007 !important;
+        font-family: 'Bebas Neue', 'Arial Narrow', sans-serif !important;
+        font-size: 22px !important; letter-spacing: 0.06em !important;
+        text-align: center !important; text-decoration: none !important;
+        padding: 16px 28px !important; border-radius: 6px !important;
+        box-shadow: 0 8px 32px rgba(255,106,26,0.4) !important;
+        transition: transform 0.15s, box-shadow 0.15s, background 0.2s !important;
+        border: none !important; cursor: pointer !important;
+        pointer-events: auto !important;
+    }
+    #csa-float-btn a:hover {
+        background: #FFA24D !important; transform: translateY(-2px) !important;
+        box-shadow: 0 14px 40px rgba(255,106,26,0.55) !important;
+        color: #201007 !important; text-decoration: none !important;
+    }
+</style>
+<div id="csa-float-btn">
+    <a href="#ticketBlock">Get Flash Sale Tickets</a>
+</div>
+<script>
+    (function() {
+        var fb = document.getElementById('csa-float-btn');
+        if (fb) {
+            fb.querySelector('a').addEventListener('click', function() {
+                fb.classList.add('csa-float-hidden');
+            });
+        }
+    })();
+</script>
+
+<!-- ════ SLASH-THROUGH PRICING (TS native ticket block) — General only ════
+     Per _patterns/slash-through-pricing.md: name-keyed JS + MutationObserver,
+     never nth-child. Fast Pass Ultimate is DELIBERATELY excluded — its
+     onsite price ($59) is LOWER than online ($74.95), so a strike-through
+     there would falsely claim a discount. That inversion is intentional
+     client pricing (confirmed twice on the 6/23 call), not a bug.
+
+     ⚠️ "General Admission" below is a BEST-GUESS ticket name — the TS
+     workspace was created today and has no configured cart yet. Confirm the
+     exact <h4> text once the cart exists and correct this key if it differs. -->
+<script>
+(function(){
+  var GATE = {
+    "General Admission": "$40.00"
+  };
+  function tag(){
+    document.querySelectorAll('#ticketBlock .ticket-type').forEach(function(row){
+      var h4 = row.querySelector('h4');
+      var cost = row.querySelector('.ticket-cost');
+      if(!h4 || !cost) return;
+      var g = GATE[h4.textContent.trim()];
+      if(g) cost.setAttribute('data-gate', g);
+    });
+  }
+  var tb = document.getElementById('ticketBlock') || document.body;
+  new MutationObserver(tag).observe(tb, {childList:true, subtree:true});
+  tag();
+})();
+</script>
+<style>
+  #ticketBlock .ticket-cost[data-gate]::before{
+    content: attr(data-gate) " "; text-decoration: line-through;
+    color:#8C7C6C; font-weight:400;
+  }
+  #ticketBlock .ticket-cost[data-gate]{ color:#FF6A1A !important; }
+</style>
