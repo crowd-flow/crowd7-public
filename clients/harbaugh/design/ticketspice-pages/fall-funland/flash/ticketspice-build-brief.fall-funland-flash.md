@@ -1,5 +1,42 @@
 # 🎃 TicketSpice Build Brief — Harbaugh Village Fall Funland · Flash Sale 2026
 
+## 🟡 EARLY BIRD UPDATE — 2026-08-24 (read this first, then the flash brief below for history)
+
+The flash window (Aug 19–23) closed and its price Action expired at Aug 24 00:00 with **no
+Early Bird Action configured behind it**. Per Mat's directive 2026-08-24 (WS0, resolved): **go
+with the TicketSpice cart prices and details as-is — no Early Bird Action gets created.**
+
+**Current native-cart config needed for the Early Bird window: NONE.** The cart is already at
+the correct prices for this phase:
+
+- **Flex Admission - Any Day | Online Only** — $17.95 (base price, no Action needed)
+- **Funland at Harbaugh Season Pass | Online Only** — $49.95 (base price, no Action needed)
+- **Fixed Date General Admission | Online $15.95 | Onsite $19.95** — $15.95 online (re-visible
+  now that the flash Action's hide-rule expired; no Action needed)
+
+**What changed is the content HTML only** — a surgical copy/price edit on the existing 2-card
+page (same file, same folder: `preview/fall-funland.flash-content.html` +
+`preview/fall-funland.flash-content-preview.html`), removing flash-sale copy and the
+now-nonexistent $15.95 Flex promise, updating the Season Pass compare-at removal ($44.95 was
+never the real regular price — $49.95 is, and there's no discount to compare against now), and
+re-keying the native-ticket-block GATE map to the live 2026 ticket names. **No rebuild, no new
+cards** — Mat's explicit scope constraint 2026-08-24: *"I don't want everything from the TS
+screenshots landing on the HTML design. I mainly just want what is already there updated to
+correct details."* Full edit list and reasoning:
+`work/crowd7/projects/harbaugh-fall-funland-early-bird-page/state.md`.
+
+**Live TS page confirmed:** `https://harbaughvillagellc.ticketspice.com/harbaugh-village-fall-2026`
+(the flash project's state.md had incorrectly recorded no TS URL as existing — corrected
+2026-08-24). Deploy mechanics: v8 Cloudflare-Pages-primary with a jsDelivr fallback leg — a
+`git push` to `crowd7-public` IS the deploy; no `purge.sh` needed, no `?c7rev=` pin required.
+
+**Open items carried forward** (not resolved by this update — see state.md Open Asks):
+`Additional Group Admissions` is stuck on a 2025 date range (live, broken, out of scope for this
+edit); the client's own ticket descriptions state three conflicting sets of operating hours (the
+Early Bird page omits stating hours until Michael/Bryan resolve which is correct).
+
+## Original Flash Sale build brief (2026-08-17) — history, superseded above for current status
+
 **Page:** brand-new standalone flash-sale page (Aug 19–23 window) — no prior Harbaugh TS page exists in `crowd7-public`; this is a from-scratch build.
 **Built by:** Crowdly · 2026-08-17 (WS5, urgent — flash opens 2026-08-19, two days out at time of writing)
 **Design donor / structural parent:** Amber Brooke Farms · Eustis · Any-Day GA Flash Sale 2026 (`amber-brooke-farms/design/ticketspice-pages/eustis/anyday-flash-2026/`) — see `artifacts/build-plan.md` §1 for the full parent-template reasoning.
