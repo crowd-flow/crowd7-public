@@ -90,6 +90,59 @@
 
   NATIVE TS CART: ticket types/prices/caps stay native in TicketSpice per
   the hybrid-loader split — see the build brief alongside this file.
+
+  ⚡ 2026-08-25 (Rachel, phone walkthrough w/ Mat) — ACCURACY/LIABILITY PASS.
+  Through-line: this page gets pulled up by guests arguing with front-line
+  staff on-site ("it says right here") — every wording change below is
+  defensive drafting, not styling. Anti-kid-centric steer from the owner:
+  push photo-ops/adult-appeal UP, corn-maze/pumpkin-train DOWN (both content
+  AND display order).
+   - Logo doubled (58px -> 116px desktop / 46px -> 68px mobile), nav resized
+     to fit (78px -> 132px / 64px -> 84px) — same treatment already shipped
+     on Campfires + Season Pass.
+   - Hero copy + badge-row pills rewritten off the anti-kid-centric steer:
+     corn maze / pumpkin train OUT of the highlights, photo ops / wagon
+     ride & pumpkin patch / farm fresh food IN.
+   - "29 years" (spelled-out miss from the prior numeral sweep) -> "30+".
+   - "The whole place is included / no wristband maths / no add-on
+     scramble" replaced with "something for everyone, all ages" — modelled
+     on the exact "Fun for everyone, all ages" line Rachel pointed at on
+     the Flower Festival page (flower-festival-2026.html benefits grid).
+   - Apple Blaster + the big slide are NOT included with admission — Apple
+     Blaster removed from every attractions list; "giant slide(s)" ->
+     "slides" everywhere; "one ticket, the whole farm" -> "one ticket, 45+
+     attractions"; "All Included With Admission" -> "...With WEEKEND
+     Admission" (both eyebrows) — because the always-included set is
+     narrower than "the whole farm."
+   - "4 generations on this farm" -> "4 generations of farming" — the
+     family's heritage claim, not continuous tenure on this specific
+     property (Rachel: "she didn't stay on this farm the whole time").
+   - One row converted adult-themed ("Live music, local beer & wine") —
+     Rachel's own example, replacing the old Apple-Blaster/pumpkin-train
+     row. Matches the Flower Festival page's existing "Live Music · Beer &
+     Wine · Farm Food" benefit.
+   - Attractions chip list reordered: photo ops / wagon rides / animals
+     first, corn maze / pumpkin train pushed to the end (still listed —
+     still real attractions — just no longer headlined).
+   - Mega Slide add-on: price corrected $5 -> $4.50 (matches 2026 online
+     pricing elsewhere on the page); blurb type bumped up a size, card
+     background/border swapped from white-on-cream (blended in) to a
+     sand+amber treatment so it doesn't disappear against the section.
+   - NEW "Fall Festival calendar" section added (id="sf-calendar") between
+     Attractions and Info, replacing the confusing native hours block with
+     an in-page table so nobody has to leave the ticket page (Rachel: "I
+     don't want to divert them away from the page"). Grounded from the
+     LIVE summersfarm.com/fall-festival "View Calendar" widget (fetched
+     2026-08-25, not invented) — confirms and cross-validates the existing
+     "Extended Hours Oct 12, 16 & 26" ticket-card bullet (their "School
+     Daze Craze" dates, same 3 dates). Info section's Hours tile now reads
+     "See calendar" and anchor-links down to it.
+   - ⏳ STILL OPEN, waiting on Rachel (not built): 2 replacement photos
+     (fewer kids, more couples/adults) — she's sourcing and will send.
+     Do NOT swap photos independently; wait for her picks or Mat pulling
+     specifically from her site. The "Why families make it a tradition"
+     HEADING stays as "families" — she considered "visitors" and rejected
+     it on the same call ("we still have a family farm").
   ============================================================
 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -189,16 +242,19 @@
 
     /* ── 2. NAV — deep barn red (was blue) ── */
     #sb-funnel .sb-nav {
-        width: 100% !important; padding: 0 clamp(16px, 4vw, 40px) !important; height: 78px !important;
+        width: 100% !important; padding: 0 clamp(16px, 4vw, 40px) !important; height: 132px !important;
         display: flex !important; align-items: center !important; justify-content: space-between !important;
         background: rgba(94,15,17,.97) !important; position: sticky !important; top: 0 !important;
         z-index: 100 !important; box-shadow: 0 2px 16px rgba(94,15,17,.35) !important;
     }
     /* Real Summers Farm lockup. NOTE: assets/logo.png is an AVIF file behind a
        .png extension - use summers-farm-logo-white.png, a genuine PNG with an
-       alpha channel and a white wordmark built for dark grounds. */
+       alpha channel and a white wordmark built for dark grounds.
+       Logo enlarged 2026-08-25 (Rachel) — 58px -> 116px, nav 78px -> 132px to
+       fit, same doubled-logo treatment already shipped on Campfires/Season
+       Pass. */
     #sb-funnel .sb-logo-img {
-        height: 58px !important; width: auto !important; display: block !important;
+        height: 116px !important; width: auto !important; display: block !important;
         object-fit: contain !important; flex-shrink: 0 !important;
     }
     #sb-funnel .sb-nav-right { display: flex !important; align-items: center !important; gap: 18px !important; }
@@ -405,14 +461,14 @@
     #sb-funnel .sb-addon-note { max-width: 1120px !important; margin: 22px auto 0 !important; }
     #sb-funnel .sb-addon {
         display: flex !important; align-items: center !important; justify-content: space-between !important;
-        gap: 18px !important; padding: 16px 22px !important; background: #fff !important;
-        border: 1px solid var(--sf-sand-dk) !important; border-radius: 14px !important;
+        gap: 18px !important; padding: 18px 24px !important; background: var(--sf-sand) !important;
+        border: 2px solid var(--sf-amber) !important; border-radius: 14px !important;
     }
-    #sb-funnel .sb-addon-name { font-size: .88rem !important; line-height: 1.5 !important; color: #4A5A63 !important; }
+    #sb-funnel .sb-addon-name { font-size: 1.02rem !important; line-height: 1.5 !important; color: #4A5A63 !important; }
     #sb-funnel .sb-addon-name strong { color: var(--sf-barn) !important; }
     #sb-funnel .sb-addon-price {
         font-family: 'Zilla Slab', serif !important; font-weight: 700 !important;
-        color: var(--sf-barn) !important; font-size: 1.25rem !important; white-space: nowrap !important;
+        color: var(--sf-barn) !important; font-size: 1.5rem !important; white-space: nowrap !important;
     }
     @media (max-width: 560px) {
         #sb-funnel .sb-addon { flex-direction: column !important; align-items: flex-start !important; gap: 8px !important; }
@@ -431,6 +487,39 @@
         background: rgba(255,255,255,.09) !important; border: 1px solid rgba(255,255,255,.30) !important;
         color: #fff !important; font-size: .88rem !important; font-weight: 500 !important;
         padding: 10px 19px !important; border-radius: 50px !important;
+    }
+
+    /* ── 8.5 CALENDAR — sand ground, real Fall Festival schedule (Rachel
+       2026-08-25: hours block "confusing... too many caveats," wants the
+       real calendar embedded IN-PAGE rather than sending visitors off —
+       "I don't want to divert them away from the page." Grounded from the
+       live summersfarm.com/fall-festival "View Calendar" widget, fetched
+       2026-08-25 — not invented. ── */
+    #sb-funnel .sb-calendar { background: var(--sf-sand) !important; }
+    #sb-funnel .sb-cal-table {
+        max-width: 640px !important; margin: 0 auto !important; background: #fff !important;
+        border-radius: 16px !important; overflow: hidden !important;
+        box-shadow: 0 16px 40px rgba(36,54,66,.12) !important;
+    }
+    #sb-funnel .sb-cal-row {
+        display: grid !important; grid-template-columns: 1.1fr .9fr 1.2fr !important;
+        gap: 8px !important; padding: 11px 20px !important;
+        border-bottom: 1px solid var(--sf-sand-dk) !important;
+        font-size: .9rem !important; color: #40505A !important;
+    }
+    #sb-funnel .sb-cal-row:last-child { border-bottom: none !important; }
+    #sb-funnel .sb-cal-row.sb-cal-head {
+        background: var(--sf-slate) !important; color: #fff !important;
+        font-size: .72rem !important; font-weight: 700 !important; letter-spacing: .08em !important;
+        text-transform: uppercase !important;
+    }
+    #sb-funnel .sb-cal-note {
+        max-width: 640px !important; margin: 20px auto 0 !important; text-align: center !important;
+        font-size: .88rem !important; color: #4A5A63 !important;
+    }
+    @media (max-width: 560px) {
+        #sb-funnel .sb-cal-row { grid-template-columns: 1fr 1fr !important; }
+        #sb-funnel .sb-cal-row span:first-child:not(:empty) { grid-column: 1 / -1 !important; font-weight: 600 !important; color: var(--sf-barn) !important; }
     }
 
     /* ── 9. INFO — cream, amber icons ── */
@@ -459,8 +548,8 @@
         #sb-funnel .sb-info-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 30px 18px !important; }
     }
     @media (max-width: 560px) {
-        #sb-funnel .sb-nav { padding: 0 14px !important; height: 64px !important; }
-        #sb-funnel .sb-logo-img { height: 46px !important; }
+        #sb-funnel .sb-nav { padding: 0 14px !important; height: 84px !important; }
+        #sb-funnel .sb-logo-img { height: 68px !important; }
         #sb-funnel .sb-nav-loc { display: none !important; }
         #sb-funnel .sb-banner { font-size: .72rem !important; }
         #sb-funnel .sb-sec { padding-bottom: 96px !important; }
@@ -503,7 +592,7 @@
         <div class="sb-hero-content">
             <span class="sb-hero-eyebrow">Middletown, MD · Fall Festival 2026</span>
             <span class="sb-hero-title">Fall <em>Festival</em></span>
-            <span class="sb-hero-sub">A 5-acre corn maze, the pumpkin train, wagon rides out to the patch, and 45+ activities — all on one ticket. Cider donuts, fresh lemonade, and four generations of fall memories.</span>
+            <span class="sb-hero-sub">Wagon rides, farm animals, photo ops, and a pick-your-own pumpkin patch — all part of 45+ attractions on one ticket. Cider donuts, fresh lemonade, and four generations of fall memories.</span>
         </div>
     </div>
 
@@ -513,12 +602,12 @@
             <div class="sbr">
                 <span class="sb-eye">A Middletown Fall Tradition</span>
                 <span class="sb-title">Why families make it a <em>tradition</em></span>
-                <p class="sb-lede">Twenty-nine years, four generations, and one farm that turns into the best six weeks of autumn. Families come back because the whole place is included — no wristband maths, no add-on scramble at the gate.</p>
+                <p class="sb-lede">Thirty-plus years, four generations of farming, and one farm that turns into the best six weeks of autumn. Families come back because there's something for everyone, all ages, on one ticket.</p>
                 <div class="sb-pill-row">
-                    <span class="sb-pill">🌽 5-Acre Corn Maze</span>
-                    <span class="sb-pill">🎃 Pumpkin Train &amp; Patch</span>
+                    <span class="sb-pill">📸 Photo Ops</span>
+                    <span class="sb-pill">🌾 Wagon Ride &amp; Pumpkin Patch</span>
                     <span class="sb-pill">🎪 45+ Attractions</span>
-                    <span class="sb-pill">🍩 Cider Donuts</span>
+                    <span class="sb-pill">🍽️ Farm Fresh Food</span>
                 </div>
             </div>
             <div class="sb-split-media sbr d1">
@@ -544,7 +633,7 @@
             </div>
             <div>
                 <span class="sb-stat-num">4</span>
-                <span class="sb-stat-lbl">Generations<br>On This Farm</span>
+                <span class="sb-stat-lbl">Generations<br>Of Farming</span>
             </div>
         </div>
     </div>
@@ -553,15 +642,15 @@
     <div class="sb-sec sb-included">
         <div class="sb-included-inner">
             <div class="sb-included-media sbr">
-                <img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/summers-farm/design/assets/giant-slide.jpg" alt="Racing down the giant slide at Summers Farm" loading="lazy">
+                <img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/summers-farm/design/assets/giant-slide.jpg" alt="Sliding at Summers Farm" loading="lazy">
             </div>
             <div class="sbr d1">
-                <span class="sb-eye">All Included With Admission</span>
-                <span class="sb-title">One ticket, <em>the whole farm</em></span>
+                <span class="sb-eye">All Included With Weekend Admission</span>
+                <span class="sb-title">One ticket, <em>45+ attractions</em></span>
                 <ul class="sb-inc-list">
-                    <li><span class="sb-inc-ico">🎃</span><span>Pumpkin train, Pumpkin Hut &amp; the Apple Blaster</span></li>
+                    <li><span class="sb-inc-ico">🎶</span><span>Live music, local beer &amp; wine</span></li>
                     <li><span class="sb-inc-ico">🐐</span><span>Barnyard animals, corn pits &amp; jumping pillows</span></li>
-                    <li><span class="sb-inc-ico">🪁</span><span>Flying Pigs zip line, giant slides &amp; the obstacle course</span></li>
+                    <li><span class="sb-inc-ico">🪁</span><span>Flying Pigs zip line, slides &amp; the obstacle course</span></li>
                     <li><span class="sb-inc-ico">🍩</span><span>Cider donuts, fresh-squeezed lemonade &amp; farm-fresh food</span></li>
                 </ul>
             </div>
@@ -582,7 +671,7 @@
                 <span class="sb-card-icon">🌾</span>
                 <h3>Weekday Admission</h3>
                 <ul class="sb-card-bullets">
-                    <li>🎪 All 45+ activities — corn maze, jumping pillows, giant slides</li>
+                    <li>🎪 All 45+ activities — photo ops, pumpkin patch, slides</li>
                     <li>👴 Seniors 60+ $13.95 — <strong>grandparents free on Thursdays</strong></li>
                     <li>🕚 Extended Hours Oct 12, 16 &amp; 26 — gates open 11:30am</li>
                     <li>👶 Ages 2 &amp; under free, no ticket needed</li>
@@ -635,7 +724,7 @@
                     <strong>🛝 Mega Slide</strong> — unlimited rides all day. Must be 42&quot; or taller.
                     Opens 3:30pm weekdays, 10am weekends. Add it to any ticket at checkout.
                 </span>
-                <span class="sb-addon-price">+$5</span>
+                <span class="sb-addon-price">+$4.50</span>
             </div>
         </div>
     </div>
@@ -643,19 +732,16 @@
     <!-- ── 8. ATTRACTIONS — barn-red band ── -->
     <div class="sb-sec sb-attractions">
         <div class="sb-sec-head sbr">
-            <span class="sb-eye">All Included With Admission</span>
+            <span class="sb-eye">All Included With Weekend Admission</span>
             <span class="sb-title">45+ <em>attractions</em></span>
         </div>
         <div class="sb-attr-list sbr d1">
-            <span class="sb-attr-chip">5-Acre Corn Maze</span>
-            <span class="sb-attr-chip">Pumpkin Train</span>
+            <span class="sb-attr-chip">Photo Ops</span>
             <span class="sb-attr-chip">Wagon Rides to the Patch</span>
-            <span class="sb-attr-chip">Apple Blaster</span>
-            <span class="sb-attr-chip">Pumpkin Hut</span>
-            <span class="sb-attr-chip">Hay Stacks</span>
-            <span class="sb-attr-chip">Giant Slides</span>
-            <span class="sb-attr-chip">Flying Pigs Zipline</span>
             <span class="sb-attr-chip">Barnyard Animals</span>
+            <span class="sb-attr-chip">Hay Stacks</span>
+            <span class="sb-attr-chip">Slides</span>
+            <span class="sb-attr-chip">Flying Pigs Zipline</span>
             <span class="sb-attr-chip">Corn Pits</span>
             <span class="sb-attr-chip">Jumping Pillows</span>
             <span class="sb-attr-chip">Straw Mountain</span>
@@ -663,8 +749,33 @@
             <span class="sb-attr-chip">Corn Hole</span>
             <span class="sb-attr-chip">Farmer Mini Golf</span>
             <span class="sb-attr-chip">Bubble Barn</span>
-            <span class="sb-attr-chip">Photo Ops</span>
+            <span class="sb-attr-chip">Pumpkin Hut</span>
+            <span class="sb-attr-chip">Pumpkin Train</span>
+            <span class="sb-attr-chip">5-Acre Corn Maze</span>
         </div>
+    </div>
+
+    <!-- ── 8.5 CALENDAR — real Fall Festival schedule, in-page (Rachel, no off-page diversion) ── -->
+    <div class="sb-sec sb-calendar" id="sf-calendar">
+        <div class="sb-sec-head sbr">
+            <span class="sb-eye">2026 Season · September 26 – November 1</span>
+            <span class="sb-title">Fall Festival <em>calendar</em></span>
+            <p class="sb-lede">Hours change through the season — find your visit date below.</p>
+        </div>
+        <div class="sb-cal-table sbr d1">
+            <div class="sb-cal-row sb-cal-head"><span>Dates</span><span>Days</span><span>Hours</span></div>
+            <div class="sb-cal-row"><span>Sept 26 – 28</span><span>Sat – Sun</span><span>10am – 7pm</span></div>
+            <div class="sb-cal-row"><span>Oct 1 – 4</span><span>Thursday</span><span>1pm – 7pm</span></div>
+            <div class="sb-cal-row"><span>&nbsp;</span><span>Friday</span><span>1pm – 9pm</span></div>
+            <div class="sb-cal-row"><span>&nbsp;</span><span>Saturday</span><span>10am – 9pm</span></div>
+            <div class="sb-cal-row"><span>&nbsp;</span><span>Sunday</span><span>10am – 7pm</span></div>
+            <div class="sb-cal-row"><span>Oct 7 – 31</span><span>Wed – Thu</span><span>1pm – 7pm</span></div>
+            <div class="sb-cal-row"><span>&nbsp;</span><span>Friday</span><span>1pm – 9pm</span></div>
+            <div class="sb-cal-row"><span>&nbsp;</span><span>Saturday</span><span>10am – 9pm</span></div>
+            <div class="sb-cal-row"><span>&nbsp;</span><span>Sunday</span><span>10am – 7pm</span></div>
+            <div class="sb-cal-row"><span>Nov 1</span><span>Sunday</span><span>10am – 7pm</span></div>
+        </div>
+        <p class="sb-cal-note sbr d2">🌟 School Daze Craze — Oct 12, 16 &amp; 26: gates open 11:30am, open until 9pm.</p>
     </div>
 
     <!-- ── 9. INFO ── -->
@@ -683,7 +794,7 @@
             <div class="sb-info-item">
                 <span class="sb-info-icon">🕒</span>
                 <span class="sb-info-label">Hours</span>
-                <span class="sb-info-value">Weekends all day<br>Weekdays select rides</span>
+                <span class="sb-info-value"><a href="#sf-calendar" style="color:var(--sf-barn);font-weight:600;text-decoration:underline;">See calendar</a></span>
             </div>
             <div class="sb-info-item">
                 <span class="sb-info-icon">🎟️</span>
