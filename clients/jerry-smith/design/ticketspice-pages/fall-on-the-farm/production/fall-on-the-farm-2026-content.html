@@ -958,11 +958,14 @@
 
 <!-- ════ SLASH-THROUGH PRICING on the TicketSpice NATIVE ticket block ════
      Pattern: data/clients/_patterns/slash-through-pricing.md (name-keyed JS + MutationObserver).
-     ✅ Ticket <h4> name CONFIRMED by Mat 2026-06-12: "Fall Season Pass" (gate $49.95, flash price $33.95).
-     ⚠️ "Flash Sale Any-Day Admission" key below is NAMED per event-info.md §4 wording, NOT yet
-     confirmed against a live TS <h4> dump (the flash ticket types may not exist in TS yet — this
-     page was built ahead of TS cart config per Mat's 2026-08-20 directive). Re-verify the exact
-     name once the ticket is live in TS, same as "Fall Season Pass" was confirmed 2026-06-12. The
+     ✅ ALL live ticket names CONFIRMED 2026-08-26 from the TS Edit-Tickets panel (Mat's screen capture,
+     page 1034254). The GATE keys below are copied char-for-char off that panel:
+       · "Fall Season Pass"              — Season Pass type, Online Only   (gate $49.95)
+       · "FLASH SALE - Any Day Admission" — Standard, Everywhere            (gate $19.95)
+       · "Family 4 Pack Bundle"           — Standard, Everywhere            (no gate anchor per event-info.md)
+     ⚠️ The prior key here read "Flash Sale Any-Day Admission" — title-case, hyphenated "Any-Day".
+     The live name is ALL-CAPS "FLASH SALE", a " - " separator, and unhyphenated "Any Day". Exact
+     match is required, so that key silently never fired. Fixed 2026-08-26.
      Family 4-Pack carries no gate anchor per event-info.md, so it is not keyed here.
      Name-keyed (NOT positional) → immune to TS Action show/hide reorders; MutationObserver re-applies
      the gate strike on every TS re-render. The hybrid loader re-executes this <script> after injecting
@@ -971,8 +974,8 @@
 <script>
 (function(){
   var GATE = {
-    "Fall Season Pass": "$49.95",              /* CONFIRMED live ticket name (Mat 2026-06-12) — exact match required */
-    "Flash Sale Any-Day Admission": "$19.95"   /* NOT yet confirmed against a live TS dump — see comment above */
+    "Fall Season Pass": "$49.95",               /* live TS name confirmed 2026-08-26 (Edit Tickets panel) */
+    "FLASH SALE - Any Day Admission": "$19.95"  /* live TS name confirmed 2026-08-26 (Edit Tickets panel) */
   };
   function tag(){
     document.querySelectorAll('#ticketBlock .ticket-type').forEach(function(row){
