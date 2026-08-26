@@ -327,6 +327,87 @@ body,.et_pb_column_1_2 .et_quote_content blockquote cite,.et_pb_column_1_2 .et_l
   </script>
 </div>
 <!-- ===== /CA HERO SLIDER ===== -->
+<!-- ===== CA FLASH / TICKET CTA BAND =====================================
+     Added 2026-08-26 (CrowdView request 29, change 217).
+
+     WHY THIS EXISTS: on flash-sale morning the only 2026 ticket link
+     anywhere on colonyacres.farm was a dismissible Popup Maker popup. The
+     Divi footer's BUY TICKETS still pointed at the live-and-sellable 2025
+     page, the header nav had no ticket link at all, and /buy-tickets/ was
+     empty. Those are all wp-admin fixes. THIS page carries the hybrid
+     loader, so this band is the one persistent ticket path we can ship by
+     git push. Do not remove it when the WP items land - a permanent
+     above-the-fold ticket CTA is the point.
+
+     SELF-EXPIRING BY DESIGN: the whole incident this came from was stale
+     content outliving its date. So the band swaps itself to evergreen
+     copy after the flash sale ends rather than sitting here lying. Change
+     the phase by editing CA_PHASES below and pushing - no WP, no Divi.
+     ==================================================================== -->
+<div class="ca-ctaband" id="ca-ctaband-home" hidden>
+  <div class="ca-ctaband__inner">
+    <p class="ca-ctaband__eyebrow" data-ca-eyebrow></p>
+    <p class="ca-ctaband__lead" data-ca-lead></p>
+    <a class="ca-ctaband__btn" data-ca-btn href="https://colonyacres.ticketspice.com/colony-acres-fun-yard-general-admission-2026">Buy Tickets</a>
+    <p class="ca-ctaband__fine" data-ca-fine></p>
+  </div>
+</div>
+<style>
+.ca-ctaband{background:#1F5C2E;padding:26px 18px;text-align:center}
+.ca-ctaband[hidden]{display:none}
+.ca-ctaband__inner{max-width:1080px;margin:0 auto}
+.ca-ctaband__eyebrow{margin:0 0 6px;font-family:'Open Sans',Helvetica,Arial,sans-serif;font-weight:700;
+  font-size:clamp(13px,1.3vw,15px);letter-spacing:.14em;text-transform:uppercase;color:#9BE7B4}
+.ca-ctaband__lead{margin:0 0 16px;font-family:'Open Sans',Helvetica,Arial,sans-serif;font-weight:700;
+  font-size:clamp(19px,2.3vw,27px);line-height:1.3;color:#fff}
+.ca-ctaband__btn{display:inline-block;padding:14px 40px;border-radius:999px;background:#fff;color:#1F5C2E;
+  font-family:'Open Sans',Helvetica,Arial,sans-serif;font-weight:700;font-size:clamp(15px,1.6vw,18px);
+  line-height:1;text-decoration:none;transition:background .2s,color .2s,transform .2s}
+.ca-ctaband__btn:hover,.ca-ctaband__btn:focus{background:#9BE7B4;color:#14401F;transform:translateY(-1px)}
+.ca-ctaband__btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.ca-ctaband__fine{margin:14px 0 0;font-family:'Open Sans',Helvetica,Arial,sans-serif;
+  font-size:clamp(12px,1.1vw,14px);line-height:1.5;color:rgba(255,255,255,.85)}
+@media (max-width:767px){.ca-ctaband{padding:22px 14px}.ca-ctaband__btn{display:block;padding:15px 20px}}
+</style>
+<script>
+(function () {
+  var root = document.getElementById("ca-ctaband-home");
+  if (!root || root.dataset.caInit === "1") return;   // idempotent: loader may re-inject
+  root.dataset.caInit = "1";
+
+  // Edit a phase, git push, done. `until` is the moment the phase STOPS
+  // being true, in US Central (the farm's clock). Last entry must have
+  // until:null - it is the evergreen fallback and always matches.
+  var CA_PHASES = [
+    { until: "2026-08-31T00:00:00-05:00",
+      eyebrow: "Flash Sale · Aug 26–30",
+      lead:    "Save up to 33% on 2026 Fun Yard admission — the best prices of the season.",
+      btn:     "Grab the Deal",
+      fine:    "Weekday $10.49 · Weekend $11.95 — vs $16 at the gate. Plus tax and fees. Online only. Fall on the farm opens September 19." },
+    { until: null,
+      eyebrow: "Annual Fall Festival · Sept 19 – Oct 31, 2026",
+      lead:    "Tickets are on sale now for 100 years of growing memories.",
+      btn:     "Buy Tickets",
+      fine:    "Wed–Sun, 10a–6p · North Liberty, Iowa · Free parking, always." }
+  ];
+
+  var now = new Date();
+  var phase = null;
+  for (var i = 0; i < CA_PHASES.length; i++) {
+    var p = CA_PHASES[i];
+    if (p.until === null || now < new Date(p.until)) { phase = p; break; }
+  }
+  if (!phase) phase = CA_PHASES[CA_PHASES.length - 1];   // belt and braces: never render empty
+
+  root.querySelector("[data-ca-eyebrow]").textContent = phase.eyebrow;
+  root.querySelector("[data-ca-lead]").textContent    = phase.lead;
+  root.querySelector("[data-ca-fine]").textContent    = phase.fine;
+  root.querySelector("[data-ca-btn]").textContent     = phase.btn;
+  root.hidden = false;
+})();
+</script>
+<!-- ===== /CA FLASH / TICKET CTA BAND ===== -->
+
 			
 			</div>
 				
