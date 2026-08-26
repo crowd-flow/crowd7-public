@@ -1,81 +1,81 @@
-# Colony Acres — GLOBAL chrome (header promo strip + footer nav)
+# Colony Acres — GLOBAL chrome (`ticket-btn`)
 
-Sixth and seventh Crowd7 **website-hybrid** targets on this site — but the first two that are
-**site-wide** rather than per-page. These are not pages; they are the two zones of the
-**Divi Theme Builder** header/footer that actually change, made `git push`-editable.
+The first **site-wide** hybrid zone on this site — everything else under
+`website-pages/` is a single page. What lives here is fetched by **every** page.
 
-## Why these two zones, and not the whole header/footer
+## What this is
 
-Every page on `colonyacres.farm` renders Divi Theme Builder header layout **664** and footer
-layout **666** (as of 2026-08-26 the homepage does too — see the normalization note below).
-Hybridizing those templates *wholesale* would be a mistake:
+Both the header strip and the footer showed a flat image,
+`special-nav-COMING200N2026.webp`, reading *"2026 TICKETS COMING SOON!"* — a
+**picture of a button**, not a button. Nobody could click it, and by 2026-08-26 it
+was also wrong: tickets were on sale.
 
-- The header's nav is two `et_pb_menu` modules bound to real WordPress menus. Divi's dropdown
-  and mobile-hamburger JS binds on DOM ready and **does not re-bind on injected markup**, so an
-  injected nav loses its dropdowns and its mobile menu. It would also take nav editing away from
-  Katie (Appearance → Menus), turning every nav tweak into a Crowd7 ticket.
-- The rest of the chrome (logo, background bands, social icons, divider) is static and never changes.
+`ticket-btn/` holds the real replacement — one `<a class="ca-ticket-btn">`. The
+loader swaps it in wherever that image appears, so header and footer are served by
+one file. Change the wording or the destination here and `git push`; it lands on all
+30 pages.
 
-So we hybridize only the two zones that carry copy which actually churns, both of which are plain
-Divi **Text** modules containing nothing but markup and links — no JS behavior to lose:
+## Why a selector swap and not a host `<div>`
 
-| Zone | Divi module | What it is |
+The per-page hybrids paste a host div into a Divi module. That is impossible here:
+
+- Both targets live in Divi **Theme Builder** layouts (664 header / 666 footer).
+  TB layouts **403 on the REST API and on `post.php`** — the Visual Builder is the
+  only editor, and its hover toolbars can't be driven reliably from automation.
+- The footer nav additionally carries Divi **multi-view** content — separate
+  desktop/tablet/phone copies of the same markup. A single module edit would leave
+  the other two breakpoints stale, which is exactly how this site got into trouble
+  (see below).
+
+So the loader keys off the image itself rather than a div we inject. Nothing about
+the Theme Builder templates is modified, so nothing about them can be broken, and
+the entire change reverts by clearing one text box in Theme Options.
+
+## The URL repair that ships with it
+
+While wiring this up, the footer "BUY TICKETS" link turned out to be dead on all 30
+pages, in three different ways:
+
+| Breakpoint | Linked to | Result |
 | --- | --- | --- |
-| `header-promo/` | `et_pb_text_0_tb_header` | The top strip — "2026 TICKETS COMING SOON" badge + social icons |
-| `footer-nav/` | `et_pb_text_7_tb_footer` | The whole footer link list (18 links, 3 rows) + Privacy/Terms |
+| desktop | `ticketspice.com/fun-yard-general-admission-2026` | **301 → homepage** (real slug has a `colony-acres-` prefix) |
+| tablet | `ticketspice.com/fun-yard-general-admission-2025` | **last year's page** |
+| phone | `ticketspice.com/fun-yard-general-admission-2025` | **last year's page** |
 
-## How it works — host div here, loader script in Theme Options
+The loader rewrites any ticketspice URL missing the `colony-acres-` prefix to the
+correct 2026 page. That half needs no network, so the link is fixed even if
+Cloudflare is unreachable.
 
-Unlike the per-page loaders, the script does **not** live in the module. Divi Theme Builder
-layouts are only editable through the Visual Builder, whose Text-module editor is TinyMCE and
-will mangle a `<script>`. So this uses the **split-loader** pattern already proven on Warm Belly
-Farm (`crowd7/data/clients/_patterns/wordpress-multisite-kses-script-stripping.md`):
+## Fail-safe behaviour
 
-1. **In the Divi Text module** — the host `<div id="lc-colony-footer-nav">` (or `-header-promo`)
-   wrapping the **current markup as a static fallback**. Pure HTML; TinyMCE-safe.
-2. **In Divi → Theme Options → Integration → "Add code to the &lt; body &gt;"** — one small
-   loader that fills any host it finds and returns silently when a host is absent.
+Nothing is hidden pre-emptively. If the fetch fails, the original badge image stays
+where it is — the page degrades to how it looked before, not to a hole in the header.
 
-Two consequences worth stating plainly:
+## Edit loop (autonomous — no WordPress editor)
 
-- **The static fallback is the live content.** If the fetch fails, times out, or Cloudflare is
-  down, the visitor sees the correct header/footer anyway — the loader simply never replaces it.
-  Site chrome is above the fold on every page, so it must never degrade to blank. It also means
-  no layout shift: the fallback is exactly the height of the replacement.
-- **Styling is inherited, not ported.** Because the injected markup lands *inside* the existing
-  Text module, it picks up that module's Divi design settings automatically. There is no CSS to
-  port here, unlike the per-page guts.
-
-## Edit loop (autonomous — no WordPress editor, once installed)
-
-1. Edit `<zone>/preview/<zone>.html`. Check it on any page with `?preview=1`.
-2. Promote: `cp <zone>/preview/<zone>.html <zone>/production/<zone>.html`
+1. Edit `ticket-btn/preview/ticket-btn.html`. Check it on any page with `?preview=1`.
+2. Promote: `cp ticket-btn/preview/ticket-btn.html ticket-btn/production/ticket-btn.html`
 3. `git push` — Cloudflare Pages builds atomically, live in ~30–90s, every page at once.
 
-⚠️ **Keep the static fallback in the Divi module roughly in sync** when the nav changes
-structurally (a new top-level link, a renamed section). It is the failure-mode safety net, and a
-stale fallback is only visible when something is already going wrong. Copy/word changes do not
-need it.
+The `.ca-ticket-btn` **style** is not in this file — it lives in the loader block in
+Divi Theme Options, because the fallback path needs it too. Text and destination are
+git-editable; the look is pinned there. Loader source + full notes:
+`crowd7/data/clients/colony-acres/design/website-loaders/global-chrome.divi-theme-options-body.html`
 
 ## Live URLs (Cloudflare Pages)
 
-- footer nav — production: https://assets.crowd7digital.us/clients/colony-acres/design/website-pages/_global/footer-nav/production/footer-nav.html
-- footer nav — preview: https://assets.crowd7digital.us/clients/colony-acres/design/website-pages/_global/footer-nav/preview/footer-nav.html
-- header promo — production: https://assets.crowd7digital.us/clients/colony-acres/design/website-pages/_global/header-promo/production/header-promo.html
-- header promo — preview: https://assets.crowd7digital.us/clients/colony-acres/design/website-pages/_global/header-promo/preview/header-promo.html
+- production: https://assets.crowd7digital.us/clients/colony-acres/design/website-pages/_global/ticket-btn/production/ticket-btn.html
+- preview: https://assets.crowd7digital.us/clients/colony-acres/design/website-pages/_global/ticket-btn/preview/ticket-btn.html
 
-## Context — the homepage normalization that preceded this (2026-08-26)
+## Context — the homepage normalization that made this possible (2026-08-26)
 
-Until 2026-08-26 the homepage (page id 18) did **not** use layouts 664/666. Theme Builder
-template **671** carried `exclude_from: ["homepage"]`, so the homepage hid the theme chrome with
-page-level CSS and rendered its own hand-baked copies of the header and footer as Divi sections
-inside the page. The two copies had already drifted — the homepage footer read
-"Tree-Fest / Things To Do / The Market" while every other page read
-"Winter Wonderland / Fun Yard Activities / Food / The Sweet Shop & Market".
+Until 2026-08-26 the homepage (page id 18) did **not** use layouts 664/666. Theme
+Builder template **671** carried `exclude_from: ["homepage"]`, so the homepage hid the
+theme chrome with page-level CSS and rendered hand-baked copies of the header and
+footer as Divi sections inside the page — copies that had already drifted from the
+real ones. That exclusion was removed and the baked sections disabled, so all 30
+published pages now share one header and one footer. **Without that, this file would
+fix 29 pages and silently miss the homepage.**
 
-That exclusion was removed and the baked sections disabled, so all 30 published pages now share
-one header and one footer. **That is what makes this hybridization worth doing** — before it,
-editing these files would have fixed 29 pages and silently missed the homepage.
-
-Rollback runbook for that change:
+Rollback runbook:
 `notes/work/crowd7/projects/colony-wp-hybrid-loader/artifacts/ROLLBACK-header-footer-normalize.md`
