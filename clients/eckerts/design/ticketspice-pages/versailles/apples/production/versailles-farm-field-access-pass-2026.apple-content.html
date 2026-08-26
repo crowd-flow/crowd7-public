@@ -1,11 +1,13 @@
 <!-- ════════════════════════════════════════════════════════════════════════
      ECKERT'S VERSAILLES — APPLE SEASON · Field Access (peach→apple swap)
      STAGED PRE-BUILD (2026-06-09, Crowdly). Cloned from versailles/peaches/.
-     PASTE-READY as of 2026-08-06 — both former blockers are closed: apple imagery is
-     committed to crowd7-public in-repo assets/apples/, and Mat confirmed the Apple
-     Fun Pass price/contents match the established Fun Pass formula on the 8/6 Eckert's
-     check-in ($16 online / $20 gate, apples swapped in).
-     Field-access ticket pricing is standardized (Eckert's) and final — do not touch.
+     PASTE-READY as of 2026-08-06 — apple imagery committed to crowd7-public in-repo
+     assets/apples/.
+     REPRICED 2026-08-26 (Amanda Morgan, card-edit batch) — Apple Fun Pass now $20
+     online / $25 at gate (Versailles only, was $16/$20). Field Access + Playground
+     now Tue–Thu $7 online / $12 gate, Fri–Sun $10 online / $15 gate — required for
+     anyone 2 and older. Standalone "Field Access" (17+) card retired. See
+     projects/eckerts-versailles-card-edits-aug26/state.md for the full change set.
 ════════════════════════════════════════════════════════════════════════ -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -285,7 +287,7 @@
     #sbv-funnel .sbv-tickets-header { text-align: center !important; margin-bottom: 48px !important; }
     #sbv-funnel .sbv-grid {
         display: grid !important;
-        grid-template-columns: repeat(3, minmax(0, 400px)) !important;
+        grid-template-columns: repeat(2, minmax(0, 400px)) !important;
         gap: 24px !important;
         justify-content: center !important;
         max-width: 1280px !important;
@@ -827,8 +829,9 @@
         </div>
         <div class="sbv-grid">
 
-            <!-- APPLE FUN PASS — price/contents confirmed 2026-08-06 (Mat: matches established Fun Pass
-                 formula, $16 online / $20 gate, apples swapped in). -->
+            <!-- APPLE FUN PASS — REPRICED 2026-08-26 (Amanda Morgan): $20 online / $25 at
+                 gate, Versailles only (Belleville runs its own Apple Fun Pass on a separate
+                 page and is out of scope here). -->
             <div class="sbv-card sbv-card-red sbvr">
                 <span class="sbv-card-badge sbv-badge-light">Most Popular</span>
                 <span class="sbv-card-icon">🍎</span>
@@ -840,19 +843,25 @@
                     <li>🥤 1 cup of sweet cider</li>
                 </ul>
                 <div class="sbv-card-price">
-                    <span class="sbv-price-num">$16</span>
+                    <span class="sbv-price-num">$20</span>
                     <div class="sbv-price-slash">
                         <span class="sbv-price-online">Online Price</span>
-                        <span class="sbv-price-was">$20 at gate</span>
+                        <span class="sbv-price-was">$25 at gate</span>
                     </div>
                 </div>
                 <span class="sbv-card-note">Versailles Orchard · apple season only</span>
             </div>
 
-            <!-- FIELD ACCESS — merged card, split into two halves (with-playground / field-
-                 access-only). Same product; the playground is the only variable. Keeps the
-                 grid at three cards total per crowd7/data/clients/_patterns/ticket-card-grid-
-                 three-max.md — do not split this back into two cards. -->
+            <!-- FIELD ACCESS + PLAYGROUND — the standalone "Field Access" (17+) half was
+                 RETIRED 2026-08-26 (Amanda: no live purchase path currently exists for it,
+                 only sunflower passes are sellable right now). Now a single ticket required
+                 for anyone 2 and older. New pricing brackets same date: Tue–Thu $7 online /
+                 $12 gate, Fri–Sun $10 online / $15 gate (Friday moved OUT of the weekday
+                 bracket into the weekend one — cart-side already reflects this, Amanda). The
+                 .sbv-grid column count was dropped to match (repeat(2,...) instead of
+                 repeat(3,...)) so 2 cards stay centered rather than reading as a 3-column
+                 grid with an empty slot; see crowd7/data/clients/_patterns/
+                 ticket-card-grid-three-max.md. -->
             <div class="sbv-card sbv-card-dark sbvr d1">
                 <span class="sbv-card-badge sbv-badge-green">Most Fun</span>
                 <span class="sbv-card-icon">🛝</span>
@@ -860,50 +869,32 @@
                 <ul class="sbv-card-bullets">
                     <li>🚜 Wagon ride to the orchard &amp; back</li>
                     <li>🛝 Playground access</li>
-                    <li><span>🎢 Mega Slide (Sat &amp; Sun, 10 AM–5 PM) - <span class="bold">Must be 42" tall or taller to ride</span></span></li>
-                    <li>🌱 Required for ages 2–16</li>
+                    <li>🎢 Includes: Mega Slide, Jump Pillow, Corn maze, Animals for Petting, Pedal Cars and More. <span class="bold">Must be 42" to ride mega slide.</span></li>
+                    <li>🌱 Required for anyone 2 and older</li>
                 </ul>
                 <div class="sbv-price-rows" style="border-top: 1px solid rgba(255,255,255,0.12) !important;">
                     <div class="sbv-price-row">
                         <div>
-                            <span class="sbv-price-row-label" style="color: white !important;">Tue – Fri</span>
+                            <span class="sbv-price-row-label" style="color: white !important;">Tue – Thu</span>
                             <span class="sbv-price-row-sub" style="color: rgba(255,255,255,0.5) !important;">10 AM – 5 PM</span>
                         </div>
                         <div class="sbv-price-row-slash">
-                            <span class="sbv-price-row-was">$8 gate</span>
-                            <span class="sbv-price-row-amt" style="color: #F5D080 !important;">$5</span>
+                            <span class="sbv-price-row-was">$12 gate</span>
+                            <span class="sbv-price-row-amt" style="color: #F5D080 !important;">$7</span>
                         </div>
                     </div>
                     <div class="sbv-price-row">
                         <div>
-                            <span class="sbv-price-row-label" style="color: white !important;">Sat &amp; Sun</span>
-                            <span class="sbv-price-row-sub" style="color: rgba(255,255,255,0.5) !important;">9 AM – 5 PM · Mega Slide open</span>
+                            <span class="sbv-price-row-label" style="color: white !important;">Fri – Sun</span>
+                            <span class="sbv-price-row-sub" style="color: rgba(255,255,255,0.5) !important;">Mega Slide open Sat &amp; Sun</span>
                         </div>
                         <div class="sbv-price-row-slash">
-                            <span class="sbv-price-row-was">$10 gate</span>
-                            <span class="sbv-price-row-amt" style="color: #F5D080 !important;">$7</span>
+                            <span class="sbv-price-row-was">$15 gate</span>
+                            <span class="sbv-price-row-amt" style="color: #F5D080 !important;">$10</span>
                         </div>
                     </div>
                 </div>
                 <span class="sbv-card-note">Per person · + applicable fees at checkout</span>
-            </div>
-            <div class="sbv-card sbv-card-pink sbvr d2">
-                <span class="sbv-card-badge sbv-badge-red">Field Access</span>
-                <span class="sbv-card-icon">🎟</span>
-                <h3>Field Access</h3>
-                <ul class="sbv-card-bullets">
-                    <li>🚜 Wagon ride to the orchard &amp; back</li>
-                    <li>🧺 Basket provided for picking</li>
-                    <li>🌱 Required for ages 17 &amp; older</li>
-                </ul>
-                <div class="sbv-card-price">
-                    <span class="sbv-price-num">$3</span>
-                    <div class="sbv-price-slash">
-                        <span class="sbv-price-online">Online Price</span>
-                        <span class="sbv-price-was">$5 at gate</span>
-                    </div>
-                </div>
-                <span class="sbv-card-note">Per person · ages 17 &amp; older · + applicable fees</span>
             </div>
 
             <!-- FALL BONFIRE — Versailles-only, merged into the main ticket grid as the 4th
@@ -1037,17 +1028,18 @@
 <!-- ════ SLASH-THROUGH PRICING (TS native ticket block) ════
      Pattern doc: /data/clients/_patterns/slash-through-pricing.md
      Keyed on ticket <h4> NAME (not position) so it survives Action reordering.
-     Weekday/weekend are DISTINCT tickets (Tuesday-Friday vs Saturday-Sunday), so the static
-     name->gate map works with no day-collision. Gates from the design card + native price
-     (online + fee): plain Field Access $6, Tue-Fri combo $8, Sat-Sun combo $10, Apple Pass $20.
-     Apple Fun Pass gate ($20) confirmed 2026-08-06 — matches established Fun Pass formula. -->
+     REPRICED 2026-08-26 (Amanda Morgan): the standalone 17+ "Field Access" ticket is
+     retired (dropped from this map entirely); the combo bracket names/prices moved from
+     Tuesday-Friday/Saturday-Sunday to Tuesday-Thursday/Friday-Sunday to match the cart-side
+     change (Friday moved into the weekend bracket). Verify these <h4> names against the live
+     TS cart once Amanda's ticket-type rename is visible there — see state.md open asks.
+     Apple Fun Pass gate is now $25 (was $20). -->
 <script>
 (function(){
   var GATE = {
-    "Field Access": "$6.00",                                           // online $3
-    "Playground Admission + Field Access (Tuesday-Friday)": "$8.00",   // online $5
-    "Playground Admission + Field Access (Saturday-Sunday)": "$10.00", // online $7 — FIXED 2026-08-13, was wrongly duplicating the Tue-Fri $8.00 gate value; the comment above this block always said Sat-Sun gate is $10
-    "Apple Fun Pass 🍎": "$20.00"                   // online $16 (confirmed — matches other-crop Fun Pass formula, Mat 8/6)
+    "Playground Admission + Field Access (Tuesday-Thursday)": "$12.00", // online $7
+    "Playground Admission + Field Access (Friday-Sunday)": "$15.00",    // online $10
+    "Apple Fun Pass 🍎": "$25.00"                   // online $20 (repriced 2026-08-26, Amanda — Versailles only)
   };
   function tag(){
     document.querySelectorAll('#ticketBlock .ticket-type').forEach(function(row){
