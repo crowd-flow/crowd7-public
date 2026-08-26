@@ -679,18 +679,22 @@
     }
 </style>
 
+
 <div id="caf-funnel">
 
-    <!-- BANNER -->
+
+    <!-- BANNER · Flash Sale phase (Aug 26–30) -->
     <div class="caf-banner">
         <div class="caf-banner-inner">
-            <span class="caf-banner-cent">★ EST. 1926 · 100 YEARS ★</span>
+            <span class="caf-banner-cent">★ FLASH SALE · AUG 26–30 ★</span>
             <span class="caf-dot"></span>
-            <span><strong>Annual Fall Festival</strong></span>
+            <span><strong>Best prices of the season</strong></span>
             <span class="caf-dot"></span>
-            <span>Sept 19 – Oct 31, 2026 · Wed–Sun · 10a–6p</span>
+            <span>Annual Fall Festival · Sept 19 – Oct 31, 2026</span>
         </div>
     </div>
+
+
 
     <!-- NAV -->
     <div class="caf-nav">
@@ -709,6 +713,7 @@
         </div>
     </div>
 
+
     <!-- HERO -->
     <div class="caf-hero">
         <div class="caf-hero-overlay"></div>
@@ -719,6 +724,7 @@
             <span class="caf-hero-tagline">— A Little Country, in the City. —</span>
         </div>
     </div>
+
 
     <!-- BENEFITS -->
     <!-- Katie 2026-05-28 item 4: emojis stripped from benefits row (kept only inside ticket cards). -->
@@ -742,6 +748,7 @@
             </div>
         </div>
     </div>
+
 
     <!-- GALLERY -->
     <div class="caf-gallery">
@@ -769,6 +776,7 @@
         </div>
     </div>
 
+
     <!-- CENTENNIAL STORY STRIP -->
     <div class="caf-story cafr">
         <div class="caf-story-inner">
@@ -782,80 +790,92 @@
         </div>
     </div>
 
-    <!-- TICKETS -->
+
+    <!-- TICKETS · Flash Sale phase -->
+    <!-- Bryan directive 2026-08-25: three cards only — Launch Day Bundle (hero),
+         Family 4 Pack, Admission. Season Pass deliberately omitted here; it still
+         appears further down the page. Prices are the TicketSpice flash Action
+         values (Aug 25 00:00 – Aug 31 00:00), NOT the base ticket prices. -->
     <div class="caf-tickets" id="tickets">
         <div class="caf-tickets-header cafr">
-            <span class="caf-eye">Admission</span>
-            <span class="caf-section-title">Pick your <em>day on the farm</em></span>
+            <span class="caf-eye">Flash Sale</span>
+            <span class="caf-section-title">The best prices <em>we offer all season</em></span>
         </div>
         <div class="caf-grid">
 
-            <!-- WEEKDAY ADMISSION -->
-            <!-- Katie 2026-05-28 items 5+9: activity bullets stripped (listed once above, in benefits row).
-                 Bullets now carry only what differentiates this tier. Added *plus taxes & fees footnote. -->
-            <div class="caf-card caf-card-cream cafr">
-                <span class="caf-card-badge caf-badge-orange">Weekday</span>
+            <!-- LAUNCH DAY BUNDLE — hero card.
+                 Copy written to AGE WELL (Mat 2026-08-25): inventory is capped at 100
+                 and the advancer switches on DATES, not stock, so this card keeps
+                 rendering after it sells out. No "hurry" / "get yours now" language —
+                 the cart shows sold-out on its own. -->
+            <div class="caf-card caf-card-dark cafr">
+                <span class="caf-card-badge caf-badge-light">Launch Day · 100 only</span>
+                <span class="caf-card-icon">⭐</span>
+                <h3>Launch Day Bundle</h3>
+                <ul class="caf-card-bullets">
+                    <li>🎫 One Any Day Admission</li>
+                    <li>🎃 One pumpkin to take home</li>
+                    <li>🥤 Lemonade or slushie — your choice</li>
+                    <li>🍩 A cup of donut holes</li>
+                    <li>🔒 Limited to the first 100 buyers</li>
+                </ul>
+                <div class="caf-card-price">
+                    <span class="caf-price-num">$17.95*</span>
+                    <div class="caf-price-slash">
+                        <span class="caf-price-online">Flash Sale</span>
+                        <span class="caf-price-was">$36 value</span>
+                    </div>
+                </div>
+                <span class="caf-card-fees">*plus applicable taxes and fees</span>
+                <span class="caf-card-note">Per person · ages 3 &amp; up · first 100 buyers</span>
+            </div>
+
+            <!-- FAMILY 4 PACK BUNDLE -->
+            <div class="caf-card caf-card-cream cafr d1">
+                <span class="caf-card-badge caf-badge-orange">Best for families</span>
+                <span class="caf-card-icon">🎃</span>
+                <h3>Family 4 Pack Bundle</h3>
+                <ul class="caf-card-bullets">
+                    <li>✓ Admission for four guests</li>
+                    <li>🍪 Food &amp; treats included</li>
+                    <li>🎃 Take home a pumpkin</li>
+                </ul>
+                <div class="caf-card-price">
+                    <span class="caf-price-num">$64.95*</span>
+                    <div class="caf-price-slash">
+                        <span class="caf-price-online">Flash Sale</span>
+                        <span class="caf-price-was">$107 value</span>
+                    </div>
+                </div>
+                <span class="caf-card-fees">*plus applicable taxes and fees</span>
+                <span class="caf-card-note">Covers four guests</span>
+            </div>
+
+            <!-- ADMISSION — weekday + weekend on one card per Bryan -->
+            <div class="caf-card caf-card-cream cafr d2">
+                <span class="caf-card-badge caf-badge-orange">Any day</span>
                 <span class="caf-card-icon">🌾</span>
-                <h3>Weekday Fun Yard</h3>
+                <h3>Fun Yard Admission</h3>
                 <ul class="caf-card-bullets">
                     <li>✓ Full Fun Yard access — every attraction included</li>
-                    <li>📅 Valid Wednesday through Friday</li>
+                    <li>📅 Weekday $10.49 · Weekend $11.95</li>
                     <li>🅿️ Free parking — always</li>
                 </ul>
                 <div class="caf-card-price">
-                    <span class="caf-price-num">$13*</span>
+                    <span class="caf-price-num">$10.49*</span>
                     <div class="caf-price-slash">
-                        <span class="caf-price-online">Online Price</span>
+                        <span class="caf-price-online">Weekday · Flash</span>
                         <span class="caf-price-was">$16 at gate</span>
                     </div>
                 </div>
-                <span class="caf-card-fees">*plus applicable taxes and fees</span>
+                <span class="caf-card-fees">*plus applicable taxes and fees · weekend $11.95</span>
                 <span class="caf-card-note">Per person · ages 3 &amp; up</span>
-            </div>
-
-            <!-- WEEKEND ADMISSION -->
-            <div class="caf-card caf-card-dark cafr d1">
-                <span class="caf-card-badge caf-badge-light">Most Popular</span>
-                <span class="caf-card-icon">🍂</span>
-                <h3>Weekend Fun Yard</h3>
-                <ul class="caf-card-bullets">
-                    <li>✓ Full Fun Yard access — every attraction included</li>
-                    <li>📅 Valid Saturday &amp; Sunday</li>
-                    <li>🎶 Full weekend energy — live music &amp; specials</li>
-                    <li>🅿️ Free parking — always</li>
-                </ul>
-                <div class="caf-card-price">
-                    <span class="caf-price-num">$15*</span>
-                    <div class="caf-price-slash">
-                        <span class="caf-price-online">Online Price</span>
-                        <span class="caf-price-was">$18 at gate</span>
-                    </div>
-                </div>
-                <span class="caf-card-fees">*plus applicable taxes and fees</span>
-                <span class="caf-card-note">Per person · ages 3 &amp; up</span>
-            </div>
-
-            <!-- SEASON PASS — Coming Soon for centennial year -->
-            <div class="caf-card caf-card-green cafr d2">
-                <span class="caf-card-badge caf-badge-gold">★ Centennial Year ★</span>
-                <span class="caf-card-icon">🎟</span>
-                <h3>Season Pass</h3>
-                <ul class="caf-card-bullets">
-                    <li>♾ Unlimited visits all season long</li>
-                    <li>✓ Full Fun Yard access — every day we're open</li>
-                    <li>🎁 Exclusive centennial year perks</li>
-                    <li>🅿️ Free parking — always</li>
-                </ul>
-                <div class="caf-card-price" style="border-top: 1px solid rgba(255,255,255,0.18) !important; margin-top: 20px !important; padding-top: 18px !important; flex-direction: column !important; align-items: flex-start !important; gap: 6px !important;">
-                    <span style="font-family: 'Zilla Slab', serif !important; font-size: 1.85rem !important; font-weight: 700 !important; color: #F2C66A !important; letter-spacing: 0.04em !important; display: block !important;">Coming Soon ✨</span>
-                    <span style="font-size: 0.92rem !important; color: rgba(255,255,255,0.85) !important; line-height: 1.5 !important; display: block !important;">Details &amp; pricing announced shortly — stay tuned for our centennial year.</span>
-                </div>
-                <span class="caf-card-fees">*pricing &amp; taxes/fees announced at launch</span>
-                <span class="caf-card-note">A new way to celebrate 100 years on the farm</span>
             </div>
 
         </div>
     </div>
+
+
 
     <!-- INFO ROW -->
     <!-- Katie 2026-05-28: item 4 (emoji icons stripped — main imagery), item 6 (Season cell
@@ -877,6 +897,7 @@
         </div>
 
     </div>
+
 
     <!-- ════════════════════════════════════════════════════════════
          TERMS & CONDITIONS · Mat 2026-05-28 chat directive
@@ -965,7 +986,9 @@
         </div>
     </section>
 
-</div><!-- end #caf-funnel -->
+
+</div>
+<!-- end #caf-funnel -->
 
 <script>
     (function() {
