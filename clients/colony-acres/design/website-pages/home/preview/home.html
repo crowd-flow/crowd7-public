@@ -408,7 +408,109 @@ body,.et_pb_column_1_2 .et_quote_content blockquote cite,.et_pb_column_1_2 .et_l
 </script>
 <!-- ===== /CA FLASH / TICKET CTA BAND ===== -->
 
-			
+<!-- ===== CA FLASH SALE POPUP =====================================
+     Added 2026-08-26 per project colony-flash-sale-popup. Replaces the
+     default WP Popup Maker popup with a Colony-branded modal, same
+     message + a real "Grab The Deal" CTA. STANDALONE / ONE-OFF per
+     Mat's 2026-08-26 directive: does NOT use the CrowdView page_popup
+     plumbing (no edge/api-live-popup.js call, no page_popup row, no
+     schema change, no crowdview-announcement-block.html reuse). See
+     notes/work/crowd7/projects/colony-flash-sale-popup/state.md for
+     the full rationale on why that route was rejected.
+
+     Mounts on document.body at runtime (not the loader's host div) so
+     position:fixed escapes any Divi ancestor transform/filter. Shown
+     once per session (sessionStorage) and SELF-EXPIRES: renders only
+     while now < 2026-08-31T00:00:00-05:00 (Flash Sale ends 8/30,
+     Central). After that it no-ops with no push required — remove
+     this block as cleanup, but a missed cleanup is invisible to
+     visitors. Fails safe: any JS error removes the overlay entirely
+     rather than leaving an undismissable scrim.
+     ==================================================================== -->
+<div class="ca-flashpop" id="ca-flashpop-home" hidden>
+  <div class="ca-flashpop__scrim" data-ca-flashpop-scrim></div>
+  <div class="ca-flashpop__card" role="dialog" aria-modal="true" aria-labelledby="ca-flashpop-title" tabindex="-1">
+    <button type="button" class="ca-flashpop__close" data-ca-flashpop-close aria-label="Close">&times;</button>
+    <p class="ca-flashpop__eyebrow">Flash Sale</p>
+    <h2 class="ca-flashpop__title" id="ca-flashpop-title">The Flash Sale is Live!</h2>
+    <p class="ca-flashpop__body">Save Up to 33% Off on 2026 Fun Yard general admission — online only, while the clock runs.</p>
+    <a class="ca-flashpop__cta" href="https://colonyacres.ticketspice.com/colony-acres-fun-yard-general-admission-2026" data-ca-flashpop-cta>Grab The Deal</a>
+    <p class="ca-flashpop__fine">Fall on the farm opens September 19 &middot; North Liberty, Iowa</p>
+  </div>
+</div>
+<style>
+.ca-flashpop{position:fixed;inset:0;z-index:2147483000;display:flex;align-items:center;justify-content:center;padding:16px;box-sizing:border-box}
+.ca-flashpop[hidden]{display:none}
+.ca-flashpop__scrim{position:absolute;inset:0;background:rgba(20,64,31,.72)}
+.ca-flashpop__card{position:relative;z-index:1;max-width:420px;width:100%;background:#fff;border-radius:18px;
+  padding:36px 30px 30px;text-align:center;box-sizing:border-box;box-shadow:0 20px 60px rgba(0,0,0,.35);
+  font-family:'Source Sans Pro',Helvetica,Arial,sans-serif}
+.ca-flashpop__card:focus{outline:none}
+.ca-flashpop__close{position:absolute;top:8px;right:10px;width:40px;height:40px;border:0;background:transparent;
+  color:#4E4E4E;font-size:26px;line-height:1;cursor:pointer;border-radius:50%}
+.ca-flashpop__close:hover,.ca-flashpop__close:focus{background:#f3f3f3;color:#1F5C2E}
+.ca-flashpop__close:focus-visible{outline:3px solid #1F5C2E;outline-offset:2px}
+.ca-flashpop__eyebrow{margin:0 0 6px;font-weight:700;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#ff8f1c}
+.ca-flashpop__title{margin:0 0 14px;font-family:'Ls Halsey Rough 2','Source Sans Pro',Helvetica,Arial,sans-serif;
+  font-weight:400;font-size:clamp(24px,5vw,30px);line-height:1.15;color:#1F5C2E}
+.ca-flashpop__body{margin:0 0 22px;font-size:16px;line-height:1.5;color:#4E4E4E}
+.ca-flashpop__cta{display:inline-block;padding:14px 36px;border-radius:999px;background:#009a44;color:#fff;
+  font-weight:700;font-size:17px;text-decoration:none;min-height:44px;box-sizing:border-box;line-height:16px;
+  transition:background .2s,transform .2s}
+.ca-flashpop__cta:hover,.ca-flashpop__cta:focus{background:#1F5C2E;transform:translateY(-1px)}
+.ca-flashpop__cta:focus-visible{outline:3px solid #1F5C2E;outline-offset:3px}
+.ca-flashpop__fine{margin:18px 0 0;font-size:13px;line-height:1.4;color:rgba(78,78,78,.8)}
+@media (max-width:414px){.ca-flashpop__card{padding:30px 20px 24px}}
+</style>
+<script>
+(function () {
+  try {
+    var root = document.getElementById("ca-flashpop-home");
+    if (!root || root.dataset.caInit === "1") return;   // idempotent: loader may re-inject
+    root.dataset.caInit = "1";
+
+    // Self-expiry: Flash Sale runs 2026-08-26 through 2026-08-30 (Central).
+    var EXPIRES = new Date("2026-08-31T00:00:00-05:00");
+    if (new Date() >= EXPIRES) return;
+
+    var SEEN_KEY = "ca_flashpop_seen_v1";
+    if (sessionStorage.getItem(SEEN_KEY) === "1") return;
+
+    // Mount on document.body so position:fixed escapes any Divi ancestor
+    // transform/filter that would otherwise break it.
+    document.body.appendChild(root);
+    root.hidden = false;
+
+    var card      = root.querySelector(".ca-flashpop__card");
+    var closeBtn  = root.querySelector("[data-ca-flashpop-close]");
+    var scrim     = root.querySelector("[data-ca-flashpop-scrim]");
+    var lastFocused = document.activeElement;
+
+    function close() {
+      root.hidden = true;
+      try { sessionStorage.setItem(SEEN_KEY, "1"); } catch (e) {}
+      document.removeEventListener("keydown", onKeydown);
+      if (lastFocused && typeof lastFocused.focus === "function") lastFocused.focus();
+    }
+
+    function onKeydown(e) {
+      if (e.key === "Escape" || e.keyCode === 27) close();
+    }
+
+    closeBtn.addEventListener("click", close);
+    scrim.addEventListener("click", close);
+    document.addEventListener("keydown", onKeydown);
+
+    card.focus();
+  } catch (err) {
+    var r = document.getElementById("ca-flashpop-home");
+    if (r && r.parentNode) r.parentNode.removeChild(r);
+  }
+})();
+</script>
+<!-- ===== /CA FLASH SALE POPUP ===== -->
+
+
 			</div>
 				
 				
