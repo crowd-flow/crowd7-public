@@ -287,7 +287,7 @@
     #sbv-funnel .sbv-tickets-header { text-align: center !important; margin-bottom: 48px !important; }
     #sbv-funnel .sbv-grid {
         display: grid !important;
-        grid-template-columns: repeat(2, minmax(0, 400px)) !important;
+        grid-template-columns: repeat(3, minmax(0, 400px)) !important;
         gap: 24px !important;
         justify-content: center !important;
         max-width: 1280px !important;
@@ -605,50 +605,61 @@
         display: block !important;
     }
 
-    /* ── FAMILY & FRIENDS PACKAGE (Versailles-only — banner card below the grid, same
-       shape as the Fall Bonfire banner above; see crowd7/data/clients/_patterns/
-       ticket-card-grid-three-max.md "PREFERRED — full-width banner below the grid".) ── */
+    /* ── FAMILY & FRIENDS PACKAGE (Versailles-only) ──
+       PROMOTED 2026-08-26 (Mat directive, chat) from a full-width banner below the grid
+       into the 3rd slot of the main ticket grid — the slot freed when the standalone
+       "Field Access" card was retired the same day. Rationale (Mat, verbatim): "let's
+       actually take the family and friends package and let's put that up where the other
+       one was removed. So it's still a three card style, with the bonfires card underneath
+       it. I think that would make the page just flow better."
+       So this is now a NORMAL vertical card (Apple Fun Pass / Field Access + Playground
+       shape), NOT a banner: no grid-column span, column flex, full-width image, single-
+       column bullets, CTA divided by a top border rather than a left border. The Fall
+       Bonfire card keeps the banner shape and now sits alone beneath the 3-card row —
+       still compliant with crowd7/data/clients/_patterns/ticket-card-grid-three-max.md
+       ("full-width banner below the grid"). ── */
     #sbv-funnel .sbv-family-card {
-        grid-column: 1 / -1 !important;
-        flex-direction: row !important;
-        align-items: center !important;
-        gap: 28px !important;
-        padding: 22px 26px !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 0 !important;
         width: 100% !important;
         box-sizing: border-box !important;
-        margin-top: 4px !important;
     }
     #sbv-funnel .sbv-family-img {
-        width: 240px !important;
-        flex: 0 0 240px !important;
-        aspect-ratio: 4 / 3 !important;
+        width: 100% !important;
+        flex: 0 0 auto !important;
+        aspect-ratio: 16 / 9 !important;
         object-fit: cover !important;
         border-radius: 14px !important;
         display: block !important;
-        margin-bottom: 0 !important;
+        margin-bottom: 16px !important;
     }
     #sbv-funnel .sbv-family-body { flex: 1 1 auto !important; min-width: 0 !important; }
     #sbv-funnel .sbv-family-body h3 { margin-bottom: 10px !important; }
     #sbv-funnel .sbv-family-bullets {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr !important;
-        gap: 2px 24px !important;
+        display: block !important;
         margin-bottom: 0 !important;
     }
     #sbv-funnel .sbv-family-cta {
         flex: 0 0 auto !important;
         display: flex !important;
         flex-direction: column !important;
-        align-items: flex-end !important;
-        text-align: right !important;
-        padding-left: 26px !important;
-        border-left: 1px solid rgba(176,16,48,0.12) !important;
+        align-items: flex-start !important;
+        text-align: left !important;
+        padding-left: 0 !important;
+        padding-top: 16px !important;
+        margin-top: 16px !important;
+        border-left: 0 !important;
+        border-top: 1px solid rgba(176,16,48,0.12) !important;
     }
     #sbv-funnel .sbv-family-cta .sbv-card-price { margin-bottom: 4px !important; }
     @media (max-width: 900px) {
-        #sbv-funnel .sbv-family-card { flex-direction: column !important; align-items: stretch !important; gap: 18px !important; }
+        /* 2026-08-26: the family card is now a normal vertical grid card at ALL widths
+           (promoted out of banner shape), so these former banner->stack overrides are
+           already the base state. gap forced back to 0 so it doesn't reintroduce a gap
+           the base rule deliberately removed. */
+        #sbv-funnel .sbv-family-card { flex-direction: column !important; align-items: stretch !important; gap: 0 !important; }
         #sbv-funnel .sbv-family-img { width: 100% !important; flex: 0 0 auto !important; aspect-ratio: 16 / 9 !important; }
-        #sbv-funnel .sbv-family-bullets { grid-template-columns: 1fr !important; }
         #sbv-funnel .sbv-family-cta {
             align-items: flex-start !important; text-align: left !important;
             padding-left: 0 !important; border-left: none !important;
@@ -858,10 +869,11 @@
                  for anyone 2 and older. New pricing brackets same date: Tue–Thu $7 online /
                  $12 gate, Fri–Sun $10 online / $15 gate (Friday moved OUT of the weekday
                  bracket into the weekend one — cart-side already reflects this, Amanda). The
-                 .sbv-grid column count was dropped to match (repeat(2,...) instead of
-                 repeat(3,...)) so 2 cards stay centered rather than reading as a 3-column
-                 grid with an empty slot; see crowd7/data/clients/_patterns/
-                 ticket-card-grid-three-max.md. -->
+                 SUPERSEDED SAME DAY: the grid was briefly dropped to repeat(2,...) to
+                 avoid an empty 3rd slot, then restored to repeat(3,...) when Mat promoted
+                 the Family & Friends card up into that slot -- the row is a full 3 again,
+                 with the Fall Bonfire banner beneath it. See crowd7/data/clients/
+                 _patterns/ticket-card-grid-three-max.md. -->
             <div class="sbv-card sbv-card-dark sbvr d1">
                 <span class="sbv-card-badge sbv-badge-green">Most Fun</span>
                 <span class="sbv-card-icon">🛝</span>
@@ -895,39 +907,6 @@
                     </div>
                 </div>
                 <span class="sbv-card-note">Per person · + applicable fees at checkout</span>
-            </div>
-
-            <!-- FALL BONFIRE — Versailles-only, merged into the main ticket grid as the 4th
-                 card (Mat directive 2026-08-06: the standalone section below the grid read as
-                 an orphaned card at a 3-col width; folding it into the grid as card 4 fixes the
-                 layout AND better serves Amanda's findability ask — it's one of the equal
-                 purchase options, not a bolted-on section). Bryan's constraint: keep the page
-                 apple/fall-dominant — this stays one card among four, not a bonfire-first
-                 section. Ticket details confirmed 2026-08-06 from Mat's screenshot of the live
-                 TS "Bonfire Site Rental" block — see projects/eckerts-fall-crop-switchover/state.md WS3.
-                 NOT hard-coding the live "38 remaining" inventory count as a scarcity signal —
-                 it would go stale the moment it sells. Flagged to Mat; can add later if TS
-                 exposes a live-inventory embed for this page. -->
-            <div class="sbv-bonfire-card sbv-card sbv-card-dark sbvr d2">
-                <img class="sbv-bonfire-img" src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/bonfires/bonfire-23.jpg" alt="A bonfire site with straw bale seating set up for the evening">
-                <div class="sbv-bonfire-body">
-                    <span class="sbv-card-badge sbv-badge-red">Versailles Orchard</span>
-                    <h3>Fall Bonfire Site Rental</h3>
-                    <ul class="sbv-card-bullets sbv-bonfire-bullets">
-                        <li>👥 Up to 25 guests · straw bale seating included</li>
-                        <li>🕓 Arrive as early as 4 PM · farm closes at 10 PM</li>
-                        <li>🍎 Come early for pick-your-own before the last wagon at 5 PM</li>
-                        <li>📍 First-come, first-served — specific sites can't be reserved</li>
-                        <li>🗓️ Fridays &amp; Saturdays, starting the first Friday in October</li>
-                    </ul>
-                </div>
-                <div class="sbv-bonfire-cta">
-                    <div class="sbv-card-price">
-                        <span class="sbv-price-num">$50</span>
-                        <span class="sbv-price-online">per site</span>
-                    </div>
-                    <span class="sbv-card-note">Eckert's Versailles Orchard.</span>
-                </div>
             </div>
 
             <!-- FAMILY & FRIENDS PACKAGE — Versailles-only, banner card below the grid
@@ -966,6 +945,39 @@
                         </div>
                     </div>
                     <span class="sbv-card-note">Priced at the weekend admission rate · ages 2–16 · + applicable fees</span>
+                </div>
+            </div>
+
+            <!-- FALL BONFIRE — Versailles-only, merged into the main ticket grid as the 4th
+                 card (Mat directive 2026-08-06: the standalone section below the grid read as
+                 an orphaned card at a 3-col width; folding it into the grid as card 4 fixes the
+                 layout AND better serves Amanda's findability ask — it's one of the equal
+                 purchase options, not a bolted-on section). Bryan's constraint: keep the page
+                 apple/fall-dominant — this stays one card among four, not a bonfire-first
+                 section. Ticket details confirmed 2026-08-06 from Mat's screenshot of the live
+                 TS "Bonfire Site Rental" block — see projects/eckerts-fall-crop-switchover/state.md WS3.
+                 NOT hard-coding the live "38 remaining" inventory count as a scarcity signal —
+                 it would go stale the moment it sells. Flagged to Mat; can add later if TS
+                 exposes a live-inventory embed for this page. -->
+            <div class="sbv-bonfire-card sbv-card sbv-card-dark sbvr d2">
+                <img class="sbv-bonfire-img" src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/bonfires/bonfire-23.jpg" alt="A bonfire site with straw bale seating set up for the evening">
+                <div class="sbv-bonfire-body">
+                    <span class="sbv-card-badge sbv-badge-red">Versailles Orchard</span>
+                    <h3>Fall Bonfire Site Rental</h3>
+                    <ul class="sbv-card-bullets sbv-bonfire-bullets">
+                        <li>👥 Up to 25 guests · straw bale seating included</li>
+                        <li>🕓 Arrive as early as 4 PM · farm closes at 10 PM</li>
+                        <li>🍎 Come early for pick-your-own before the last wagon at 5 PM</li>
+                        <li>📍 First-come, first-served — specific sites can't be reserved</li>
+                        <li>🗓️ Fridays &amp; Saturdays, starting the first Friday in October</li>
+                    </ul>
+                </div>
+                <div class="sbv-bonfire-cta">
+                    <div class="sbv-card-price">
+                        <span class="sbv-price-num">$50</span>
+                        <span class="sbv-price-online">per site</span>
+                    </div>
+                    <span class="sbv-card-note">Eckert's Versailles Orchard.</span>
                 </div>
             </div>
 
