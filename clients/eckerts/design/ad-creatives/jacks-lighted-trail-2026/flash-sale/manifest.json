@@ -1,0 +1,102 @@
+[
+  {
+    "id": "01-teaser",
+    "name": "Teaser — Flash Sale Starts Monday",
+    "slot": "Pre-launch · run Thu 8/27 → Sun 8/30",
+    "role": "teaser",
+    "primary": "Something's coming. 🎃 Jack's Lighted Trail's flash sale opens Monday — the lowest price of the whole season, and it only runs four days. Set your alarm.",
+    "headline": "Flash Sale Starts Monday",
+    "desc": "Aug 31 – Sept 3 · September dates",
+    "cta": "Learn More"
+  },
+  {
+    "id": "02-launch",
+    "name": "Launch Day — $10 Off, First 500",
+    "slot": "Mon 8/31 · sale opens",
+    "role": "launch",
+    "primary": "⚡ IT'S LIVE. $10 off every September night at Jack's Lighted Trail — Trail Passes drop from $22 to $12. First 500 tickets only, then the discount steps down. No code, it comes off automatically.",
+    "headline": "$10 Off — First 500 Tickets",
+    "desc": "September dates · Ends Thu 9/3",
+    "cta": "Get Tickets"
+  },
+  {
+    "id": "03-price-proof",
+    "name": "Price Proof — $22 becomes $12",
+    "slot": "Mon 8/31 – Tue 9/1 · price-led",
+    "role": "price",
+    "primary": "$22 → $12. 🎃 That's a whole night on the glowing pumpkin trail for twelve dollars. September dates, first 500 tickets, no code needed — the discount applies itself at checkout.",
+    "headline": "Trail Passes Are $12",
+    "desc": "Was $22 · September dates only",
+    "cta": "Get Tickets"
+  },
+  {
+    "id": "04-scarcity-500",
+    "name": "Scarcity — Only 500 at $10 Off",
+    "slot": "Tue 9/1 · scarcity push",
+    "role": "scarcity",
+    "primary": "Only 500 tickets get the full $10 off. 🕯️ After that the discount drops to $7 and it never comes back this season. September nights at Jack's Lighted Trail — going now.",
+    "headline": "Only 500 at $10 Off",
+    "desc": "Then the discount drops",
+    "cta": "Get Tickets"
+  },
+  {
+    "id": "05-september-only",
+    "name": "September Nights Only",
+    "slot": "Tue 9/1 – Wed 9/2 · date education",
+    "role": "dates",
+    "primary": "The flash sale only covers September nights. 🌽 Seven glowing evenings on the trail — Sept 11, 12, 18, 19, 25, 26 and 27 — at the lowest price of the season. October stays full price, so pick a September date.",
+    "headline": "September Nights Only",
+    "desc": "Sale ends Thu 9/3",
+    "cta": "Get Tickets"
+  },
+  {
+    "id": "06-family",
+    "name": "Family — A Night Out for $12 Each",
+    "slot": "Wed 9/2 · value / family angle",
+    "role": "family",
+    "primary": "A whole family night out for $12 a head. 🧡 Twinkling pumpkins, a glowing corn-stalk path, treats along the way — Jack's Lighted Trail is the fall night everybody actually agrees on, and right now it's the cheapest it'll be all season.",
+    "headline": "The Family Night Out, $12 Each",
+    "desc": "September dates · Ends Thu 9/3",
+    "cta": "Get Tickets"
+  },
+  {
+    "id": "07-low-sensory",
+    "name": "Low Sensory Night — Sept 19, On Sale",
+    "slot": "Wed 9/2 · inclusive-access segment",
+    "role": "segment",
+    "primary": "🧡 Low Sensory Night falls on Saturday, Sept 19 — inside the flash sale. Reduced sounds, gentler lighting and fewer surprises from 6:30, regular activities after. Same quieter trail, $12 a person while the sale runs.",
+    "headline": "Low Sensory Night is $12",
+    "desc": "Sat, Sept 19 · Sale ends Thu 9/3",
+    "cta": "Get Tickets"
+  },
+  {
+    "id": "08-tier-two",
+    "name": "Tier Two — $10 Off Gone, $7 Off Live",
+    "slot": "Deploy the moment tier 1 sells through",
+    "role": "tier2",
+    "primary": "The $10-off tickets are gone. 🕯️ $7 off is still live on every September night at Jack's Lighted Trail — $22 down to $15 — but only until the sale closes Thursday at midnight.",
+    "headline": "$7 Off — Still Live",
+    "desc": "$10 tier sold out · Ends Thu 9/3",
+    "cta": "Get Tickets"
+  },
+  {
+    "id": "09-24-hour",
+    "name": "24-Hour Warning",
+    "slot": "Wed 9/2 evening → Thu 9/3",
+    "role": "urgency",
+    "primary": "24 hours left. ⏳ When the clock hits midnight Thursday the flash sale closes and September nights go back to full price. Last call on the cheapest tickets of the season.",
+    "headline": "24 Hours Left",
+    "desc": "Sale closes midnight Thu 9/3",
+    "cta": "Get Tickets"
+  },
+  {
+    "id": "10-final-hours",
+    "name": "Final Hours — Ends Midnight",
+    "slot": "Thu 9/3 · last call",
+    "role": "urgency",
+    "primary": "Final hours. 🎃 The flash sale on Jack's Lighted Trail closes at midnight tonight and September nights go back to full price. If you've been waiting, this is it.",
+    "headline": "Final Hours — Ends Tonight",
+    "desc": "Midnight Thu 9/3 · September dates",
+    "cta": "Get Tickets"
+  }
+]
