@@ -1,0 +1,117 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<title>Colony Acres · Early Bird press hero · 05-girl-cheer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,600;0,700;1,600;1,700&family=Oswald:wght@400;500;600;700&family=Caveat:wght@700&display=swap" rel="stylesheet"><style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1080px; height: 1080px; overflow: hidden; background: #EDE5D4; }
+
+.ad {
+  width: 1080px; height: 1080px; position: relative; overflow: hidden;
+  background: #EDE5D4;
+  font-family: 'Oswald', sans-serif; color: #1A1612;
+}
+
+.paper, .speck { position: absolute; inset: -40px; pointer-events: none; }
+.paper { filter: url(#fibre); opacity: 0.38; }
+.speck { filter: url(#speckle); opacity: 0.22; mix-blend-mode: multiply; }
+
+.head {
+  font-family: 'Zilla Slab', Georgia, serif; font-weight: 700;
+  text-transform: uppercase; line-height: 0.82; letter-spacing: -0.022em;
+  white-space: nowrap;
+  color: #1A1612; filter: url(#erode);
+}
+.head.orange { color: #E8743C; }
+
+.script {
+  font-family: 'Caveat', cursive; font-weight: 700; color: #E8743C;
+  line-height: 0.9; filter: url(#erode-soft);
+}
+
+.plate, .echo { position: absolute; }
+.echo { opacity: 0.85; }
+
+.stamp {
+  position: absolute; width: 214px; height: 214px; border-radius: 50%;
+  border: 4px solid #E8743C; color: #E8743C;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; font-weight: 700; font-size: 27px; line-height: 1.02;
+  letter-spacing: 0.03em; text-transform: uppercase;
+  filter: url(#erode); opacity: 0.92;
+}
+.stamp small { display: block; font-weight: 500; font-size: 16px; letter-spacing: 0.14em; margin-top: 5px; }
+
+.rail {
+  position: absolute; right: 26px; top: 50%; transform: translateY(-50%) rotate(180deg);
+  writing-mode: vertical-rl; font-family: 'Zilla Slab', serif; font-style: italic;
+  font-weight: 600; font-size: 25px; letter-spacing: 0.012em; color: #1A1612;
+  max-height: 940px; opacity: 0.9;
+  /* The landscape variants bleed a plate under the rail; a paper-coloured halo
+     keeps it legible over dark ink without changing how it reads on bare stock. */
+  text-shadow: 0 0 7px #EDE5D4, 0 0 14px #EDE5D4, 0 0 3px #EDE5D4;
+}
+
+.foot {
+  position: absolute; left: 54px; right: 54px; bottom: 46px;
+  display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+}
+.tag {
+  background: #E8743C; color: #FFF6E8; padding: 11px 22px 12px;
+  font-weight: 600; font-size: 23px; letter-spacing: 0.03em;
+  filter: url(#erode-soft); white-space: nowrap;
+}
+.tag.hollow { background: transparent; color: #1A1612; box-shadow: inset 0 0 0 3px #1A1612; }
+.dot { width: 7px; height: 7px; border-radius: 50%; background: #1A1612; opacity: 0.55; flex-shrink: 0; }
+.getit {
+  font-family: 'Zilla Slab', serif; font-style: italic; font-weight: 700;
+  font-size: 27px; color: #1A1612; margin-left: auto; white-space: nowrap;
+}
+
+/* NEW — the large mark that replaces the dropped paragraph. Trimmed artwork, so
+   the height rule is the height you actually see. */
+.bigmark { position: absolute; left: 52px; top: 656px; width: 402px; filter: brightness(0); }
+.bigmark img { width: 100%; display: block; }
+</style></head><body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <filter id="fibre" x="-20%" y="-20%" width="140%" height="140%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.012 0.09" numOctaves="4" seed="11"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 0.55  0 0 0 0 0.47  0 0 0 0 0.36  0 0 0 0.5 0"/>
+  </filter>
+  <filter id="speckle" x="-20%" y="-20%" width="140%" height="140%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" seed="5"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 0.42  0 0 0 0 0.36  0 0 0 0 0.28  0 0 0 0.42 0"/>
+  </filter>
+  <filter id="erode">
+    <feTurbulence type="fractalNoise" baseFrequency="0.62" numOctaves="4" seed="3" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="5.5"
+                       xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+  <filter id="erode-soft">
+    <feTurbulence type="fractalNoise" baseFrequency="0.5" numOctaves="3" seed="9" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="3"
+                       xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+</defs></svg>
+
+<div class="ad">
+  <div class="paper"></div>
+
+  <div class="script" style="position:absolute;left:56px;top:52px;font-size:96px">Missed the flash sale?</div>
+  <div class="head" style="position:absolute;left:50px;top:150px;font-size:186px">Early</div>
+  <div class="head orange" style="position:absolute;left:50px;top:300px;font-size:186px">Bird</div>
+  <img class="echo" src="../../early-bird-2026/art/girl-cheer-echo.png" style="left:530px;top:218px;width:566px" alt="">
+  <img class="plate" src="../../early-bird-2026/art/girl-cheer.png" style="left:498px;top:200px;width:566px" alt="">
+  <div class="head" style="position:absolute;left:50px;top:452px;font-size:186px;z-index:3">Pricing</div>
+  <div class="bigmark"><img src="../../fall-harvest-festival-2026/img/logo-white-trim.png" alt="Colony Acres"></div>
+  <div class="stamp" style="right:52px;top:44px;transform:rotate(-13deg)">Early Bird<small>Pricing</small></div>
+  <div class="rail">Corn maze, barrel train, giant slide, duck races, pumpkin patch, and more!</div>
+  <div class="foot">
+    <span class="tag">Sept 4 – 18</span>
+    <span class="dot"></span>
+    <span class="tag hollow">Admission $12.95</span>
+    <span class="getit">Get Tickets!</span>
+  </div>
+
+  <div class="speck"></div>
+</div>
+</body></html>
