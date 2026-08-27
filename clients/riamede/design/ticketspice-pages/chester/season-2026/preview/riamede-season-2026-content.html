@@ -340,6 +340,55 @@
     #rmf-funnel .rmf-card-green .rmf-card-fee { color: rgba(251,244,230,0.72) !important; }
     #rmf-funnel .rmf-card-cream .rmf-card-fee { color: rgba(43,32,19,0.62) !important; }
 
+    /* ── FAMILY BUNDLE BANNER (2026-08-27 round 2, Mat directive) — promoted
+       out of the 3-card grid into a full-width banner below it, so the
+       $5 Picking Pass could take its grid slot. Geometry ported from
+       Eckert's Versailles .sbv-bonfire-card pattern (image left / details
+       middle / pricing right), re-skinned in Riamede's own rmf- tokens.
+       Lives as a 4th child INSIDE .rmf-grid with grid-column: 1 / -1, same
+       structural trick as Eckert's reference — the grid stays 3-wide. */
+    #rmf-funnel .rmf-familybundle-card {
+        grid-column: 1 / -1 !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 28px !important;
+        padding: 26px 32px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        margin-top: 4px !important;
+    }
+    #rmf-funnel .rmf-familybundle-img {
+        width: 240px !important; flex: 0 0 240px !important;
+        aspect-ratio: 4 / 3 !important; object-fit: cover !important;
+        border-radius: 14px !important; display: block !important;
+    }
+    #rmf-funnel .rmf-familybundle-body { flex: 1 1 auto !important; min-width: 0 !important; }
+    #rmf-funnel .rmf-familybundle-body h3 { margin-bottom: 12px !important; }
+    #rmf-funnel .rmf-familybundle-bullets {
+        display: grid !important; grid-template-columns: 1fr 1fr !important;
+        gap: 2px 24px !important; margin-bottom: 0 !important;
+    }
+    #rmf-funnel .rmf-familybundle-cta {
+        flex: 0 0 auto !important;
+        display: flex !important; flex-direction: column !important;
+        align-items: flex-end !important; text-align: right !important;
+        padding-left: 28px !important;
+        border-left: 1px solid rgba(242,194,101,0.3) !important;
+    }
+    #rmf-funnel .rmf-familybundle-cta .rmf-card-price { margin-top: 0 !important; padding-top: 0 !important; border-top: 0 !important; }
+    #rmf-funnel .rmf-familybundle-cta .rmf-card-note { text-align: right !important; max-width: 240px !important; }
+    @media (max-width: 900px) {
+        #rmf-funnel .rmf-familybundle-card { flex-direction: column !important; align-items: stretch !important; gap: 18px !important; }
+        #rmf-funnel .rmf-familybundle-img { width: 100% !important; flex: 0 0 auto !important; aspect-ratio: 16 / 9 !important; }
+        #rmf-funnel .rmf-familybundle-bullets { grid-template-columns: 1fr !important; }
+        #rmf-funnel .rmf-familybundle-cta {
+            align-items: flex-start !important; text-align: left !important;
+            padding-left: 0 !important; border-left: none !important;
+            border-top: 1px solid rgba(242,194,101,0.3) !important; padding-top: 14px !important;
+        }
+        #rmf-funnel .rmf-familybundle-cta .rmf-card-note { text-align: left !important; max-width: none !important; }
+    }
+
     /* Fall Fest price-tier swap — SUPERSEDED 2026-08-14 (round 2): Bryan wants
        all four price windows visible at once on one General Admission card
        (a static ladder in the card bullets), not a JS-swapped single price
@@ -570,20 +619,52 @@
                     <span class="rmf-card-note">Guest ticket redeems as a checkbox on your pass at the gate — no separate QR code.</span>
                 </a>
 
-                <a href="#ticketBlock" class="rmf-card rmf-card-cream rmfr d2" aria-label="Buy Family Bundle tickets">
-                    <span class="rmf-card-badge rmf-card-green">Family Bundle</span>
-                    <span class="rmf-card-icon">🧺</span>
-                    <h3>Family Bundle</h3>
+                <!-- $5 Picking Pass (NEW, 2026-08-27 round 2) — maps to CrowdView change 155
+                     (req 15). Name + price per Ashley's own 8/20 framing: "I love calling it a
+                     picking pass ... $5 picking pass." Flat, all season — deliberately not a
+                     ladder. Weekday-except-Tuesday per Riamede's standing Tuesday closure +
+                     Bryan's "midweek picking passes and then just our weekend admissions"
+                     framing (8/20). Deliberately silent on Labor Day/Columbus Day holiday
+                     policy — CrowdView change 163 has that unresolved with Ashley. -->
+                <a href="#ticketBlock" class="rmf-card rmf-card-cream rmfr d2" aria-label="Buy the $5 Picking Pass">
+                    <span class="rmf-card-badge rmf-card-badge-green">Midweek</span>
+                    <span class="rmf-card-icon">🌾</span>
+                    <h3>$5 Picking Pass</h3>
                     <ul class="rmf-card-bullets">
-                        <li>🎟️ 4 admissions, redeemable Sept 1 &ndash; Nov 1</li>
-                        <li>🍩 A bag of farm-made donuts</li>
-                        <li>🧺 A commemorative apple basket with 5&ndash;6 lbs of farm-fresh apples</li>
+                        <li>📅 Every weekday except Tuesday &mdash; Mon, Wed, Thu &amp; Fri</li>
+                        <li>🌻 Full access to the open picking fields</li>
+                        <li>🎟️ One flat price, all season &mdash; no ladder</li>
                     </ul>
                     <div class="rmf-card-price">
-                        <span class="rmf-price-num">$89.95</span>
-                        <span class="rmf-price-label">per bundle<br>4 admissions + donuts + basket</span>
+                        <span class="rmf-price-num">$5</span>
+                        <span class="rmf-price-label">per person<br>flat, all season</span>
                     </div>
-                    <span class="rmf-card-note">All 4 admissions must be redeemed on the same day, in the same group. Basket is filled with farm-fresh apples — not guaranteed you-pick. Redeemable after Aug 29 (Sept 1 &ndash; Nov 1 only).</span>
+                    <span class="rmf-card-note">Weekend visits use General Admission.</span>
+                </a>
+
+                <!-- Family Bundle — promoted to a full-width banner below the grid
+                     (2026-08-27 round 2, Mat directive). Content unchanged from the
+                     prior grid card; only the layout changed. Lives as a 4th grid
+                     child with grid-column: 1 / -1, same trick as Eckert's Versailles
+                     .sbv-bonfire-card (Mat's named reference). -->
+                <a href="#ticketBlock" class="rmf-familybundle-card rmf-card rmf-card-green rmfr d3" aria-label="Buy Family Bundle tickets">
+                    <img class="rmf-familybundle-img" src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/riamede/design/assets/pumpkins/family-in-pumpkin-patch.jpg" alt="A family walking together in the pumpkin patch">
+                    <div class="rmf-familybundle-body">
+                        <span class="rmf-card-badge rmf-card-badge-gold">Family Bundle</span>
+                        <h3>Family Bundle</h3>
+                        <ul class="rmf-card-bullets rmf-familybundle-bullets">
+                            <li>🎟️ 4 admissions, redeemable Sept 1 &ndash; Nov 1</li>
+                            <li>🍩 A bag of farm-made donuts</li>
+                            <li>🧺 A commemorative apple basket with 5&ndash;6 lbs of farm-fresh apples</li>
+                        </ul>
+                    </div>
+                    <div class="rmf-familybundle-cta">
+                        <div class="rmf-card-price">
+                            <span class="rmf-price-num">$89.95</span>
+                            <span class="rmf-price-label">per bundle<br>4 admissions + donuts + basket</span>
+                        </div>
+                        <span class="rmf-card-note">All 4 admissions must be redeemed on the same day, in the same group. Basket is filled with farm-fresh apples &mdash; not guaranteed you-pick. Redeemable after Aug 29 (Sept 1 &ndash; Nov 1 only).</span>
+                    </div>
                 </a>
 
             </div>
