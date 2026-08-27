@@ -1,0 +1,160 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<title>Colony Acres · Early Bird 2026 · 04-beat-the-gate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,600;0,700;1,600;1,700&family=Oswald:wght@400;500;600;700&family=Caveat:wght@700&display=swap" rel="stylesheet"><style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1080px; height: 1080px; overflow: hidden; background: #EDE5D4; }
+
+.ad {
+  width: 1080px; height: 1080px; position: relative; overflow: hidden;
+  background: #EDE5D4;
+  font-family: 'Oswald', sans-serif; color: #1A1612;
+}
+
+/* Cream stock: a fibre tint plus a finer speckle, both dialled low enough to
+   read as paper rather than as a texture effect. */
+.paper, .speck { position: absolute; inset: -40px; pointer-events: none; }
+.paper { filter: url(#fibre); opacity: 0.38; }
+.speck { filter: url(#speckle); opacity: 0.22; mix-blend-mode: multiply; }
+
+.layer { position: absolute; inset: 0; }
+
+/* ── display type ── */
+.head {
+  font-family: 'Zilla Slab', Georgia, serif; font-weight: 700;
+  text-transform: uppercase; line-height: 0.82; letter-spacing: -0.022em;
+  white-space: nowrap;   /* a wrapped display line silently collides with the next */
+  color: #1A1612; filter: url(#erode);
+}
+.head.orange { color: #E8743C; }
+.head.green  { color: #185C2E; }
+.head.cream  { color: #EDE5D4; }
+.head em { font-style: italic; }
+
+.script {
+  font-family: 'Caveat', cursive; font-weight: 700; color: #E8743C;
+  line-height: 0.9; filter: url(#erode-soft);
+}
+
+/* ── plates ── */
+.plate, .echo { position: absolute; }
+.echo { opacity: 0.85; }
+
+/* ── rubber stamp ── */
+.stamp {
+  position: absolute; width: 214px; height: 214px; border-radius: 50%;
+  border: 4px solid #E8743C; color: #E8743C;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; font-weight: 700; font-size: 27px; line-height: 1.02;
+  letter-spacing: 0.03em; text-transform: uppercase;
+  filter: url(#erode); opacity: 0.92;
+}
+.stamp.ink { border-color: #1A1612; color: #1A1612; }
+.stamp small { display: block; font-weight: 500; font-size: 16px; letter-spacing: 0.14em; margin-top: 5px; }
+
+/* ── vertical attractions rail ── */
+.rail {
+  position: absolute; right: 26px; top: 50%; transform: translateY(-50%) rotate(180deg);
+  writing-mode: vertical-rl; font-family: 'Zilla Slab', serif; font-style: italic;
+  font-weight: 600; font-size: 25px; letter-spacing: 0.012em; color: #1A1612;
+  max-height: 940px; opacity: 0.9;
+}
+.rail.cream { color: #EDE5D4; }
+
+/* ── bottom furniture ── */
+.foot {
+  position: absolute; left: 54px; right: 54px; bottom: 46px;
+  display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+}
+.tag {
+  background: #E8743C; color: #FFF6E8; padding: 11px 22px 12px;
+  font-weight: 600; font-size: 23px; letter-spacing: 0.03em;
+  filter: url(#erode-soft); white-space: nowrap;
+}
+.tag.ink { background: #1A1612; color: #EDE5D4; }
+.tag.hollow { background: transparent; color: #1A1612; box-shadow: inset 0 0 0 3px #1A1612; }
+.dot { width: 7px; height: 7px; border-radius: 50%; background: #1A1612; opacity: 0.55; flex-shrink: 0; }
+.foot img.logo { height: 74px; filter: brightness(0); }
+.foot img.logo.cream { filter: brightness(0) invert(1); }
+.getit {
+  font-family: 'Zilla Slab', serif; font-style: italic; font-weight: 700;
+  font-size: 27px; color: #1A1612; margin-left: auto; white-space: nowrap;
+}
+.getit.cream { color: #EDE5D4; }
+
+/* ── misc ── */
+.kick {
+  font-weight: 600; font-size: 22px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: #8A6A4A;
+}
+.kick.cream { color: rgba(237,229,212,0.8); }
+.body {
+  font-family: 'Zilla Slab', serif; font-weight: 600; font-size: 29px;
+  line-height: 1.34; color: #3A2E22;
+}
+.body.cream { color: rgba(237,229,212,0.94); }
+.price-lg { font-weight: 700; font-size: 132px; line-height: 0.86; color: #E8743C; filter: url(#erode); }
+.incl { list-style: none; }
+.incl li {
+  font-weight: 600; font-size: 26px; line-height: 1.85; padding-left: 34px; position: relative;
+}
+.incl li::before {
+  content: ''; position: absolute; left: 0; top: 0.62em;
+  width: 17px; height: 6px; background: #E8743C; filter: url(#erode-soft);
+}
+.strike { position: relative; opacity: 0.5; }
+.strike::after {
+  content: ''; position: absolute; left: -4%; right: -4%; top: 52%;
+  height: 5px; background: currentColor; transform: rotate(-4deg);
+}
+</style></head><body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <filter id="fibre" x="-20%" y="-20%" width="140%" height="140%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.012 0.09" numOctaves="4" seed="11"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 0.55  0 0 0 0 0.47  0 0 0 0 0.36  0 0 0 0.5 0"/>
+  </filter>
+  <filter id="speckle" x="-20%" y="-20%" width="140%" height="140%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" seed="5"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 0.42  0 0 0 0 0.36  0 0 0 0 0.28  0 0 0 0.42 0"/>
+  </filter>
+  <filter id="erode">
+    <feTurbulence type="fractalNoise" baseFrequency="0.62" numOctaves="4" seed="3" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="5.5"
+                       xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+  <filter id="erode-soft">
+    <feTurbulence type="fractalNoise" baseFrequency="0.5" numOctaves="3" seed="9" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="3"
+                       xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+</defs></svg>
+
+<div class="ad">
+  <div class="paper"></div>
+
+  <div class="head" style="position:absolute;left:50px;top:70px;font-size:200px">Beat</div>
+  <div class="head orange" style="position:absolute;left:50px;top:236px;font-size:176px">The Gate</div>
+  <img class="echo" src="../art/barrel-cab-echo.png" style="left:508px;top:426px;width:600px" alt="">
+  <img class="plate" src="../art/barrel-cab.png" style="left:472px;top:404px;width:600px" alt="">
+
+  <div class="body" style="position:absolute;left:56px;top:428px;width:390px;z-index:3">
+    Buy before the gates open and you keep the lower price — no matter which
+    day you actually visit.
+  </div>
+  <div style="position:absolute;left:56px;top:610px;z-index:3">
+    <div style="display:flex;align-items:baseline;gap:16px">
+      <span class="price-lg" style="font-size:112px">$12.95</span>
+      <span style="font-weight:600;font-size:25px;letter-spacing:.14em;text-transform:uppercase">Now</span>
+    </div>
+    <div style="margin-top:16px;font-weight:600;font-size:27px;line-height:1.5;color:#3A2E22">
+      <span class="strike">$13.80</span> weekday at the gate<br>
+      <span class="strike">$15.80</span> weekend at the gate
+    </div>
+  </div>
+  <div class="rail">Corn maze, barrel train, giant slide, duck races, pumpkin patch, and more!</div>
+  <div class="foot"><span class="tag">Through September 19</span><span class="dot"></span><span class="tag hollow">Free parking, always</span><img class="logo" src="../../fall-harvest-festival-2026/img/logo-white.png" alt="Colony Acres"><span class="getit">Get Tickets!</span></div>
+
+
+  <div class="speck"></div>
+</div>
+</body></html>
