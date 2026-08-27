@@ -1,0 +1,63 @@
+[
+  {
+    "id": "01-brand-hero",
+    "name": "Brand Hero — \"Glowing Pumpkin Experience\"",
+    "angle": "Top-of-funnel awareness. Cold audiences, St. Louis DMA. The workhorse.",
+    "copy": "Primary text: \"St. Louis's glowing pumpkin experience is back. Larger-than-life carvings and dazzling displays light up a trail through towering corn stalks — a spellbinding stroll made for all ages. 🎃  Sept 11 – Oct 30 at Eckert's Belleville Farm.\"  ·  Headline: \"Jack's Lighted Trail\" · Description: \"Trail Passes from $22\" · CTA: Get Tickets"
+  },
+  {
+    "id": "02-flash-sale",
+    "name": "Flash Sale — 4 Days Only",
+    "angle": "Urgency / conversion. Runs Aug 31 → midnight Sept 4. Retarget site visitors + last-season purchasers.",
+    "copy": "Primary text: \"⚡ FLASH SALE — 4 days only. The lowest prices of the season on Jack's Lighted Trail, and then they're gone. Sale ends midnight Thu, Sept 4. 🎃\" · Headline: \"Lowest Prices of the Season\" · Description: \"Sept dates · Ends midnight 9/4\" · CTA: Get Tickets",
+    "flag": "Discount $ amount intentionally NOT printed — see handoff note."
+  },
+  {
+    "id": "03-opening-night",
+    "name": "Opening Night — Fri, Sept 11",
+    "angle": "Launch-week urgency. Warm audiences + anyone who engaged with the flash sale but didn't buy.",
+    "copy": "Primary text: \"The lanterns go up Friday, Sept 11. 🕯️ Opening night of Jack's Lighted Trail — and opening weekend always books out first. Grab your night before your favorite date is gone.\" · Headline: \"Opening Night is Sept 11\" · Description: \"Eckert's Belleville Farm\" · CTA: Book Now"
+  },
+  {
+    "id": "04-from-22",
+    "name": "Value / Price Anchor — From $22",
+    "angle": "Mid-funnel. Price-sensitive families comparing against the Zoo / Science Center / City Museum.",
+    "copy": "Primary text: \"A whole night out for $22 a person. 🎃 Glowing pumpkin trail, corn-stalk lighted path, cider shed, photo ops — one ticket covers it all. Sept 11 – Oct 30 at Eckert's Belleville Farm.\" · Headline: \"Trail Passes from $22\" · Description: \"Online only · Pick your date\" · CTA: Get Tickets"
+  },
+  {
+    "id": "05-family-fun",
+    "name": "Family Fun — Made for All Ages",
+    "angle": "Core audience: women 25–54 planning a family night. Warm + lookalike.",
+    "copy": "Primary text: \"Made for all ages. 🧡 From twinkling pumpkins to friendly surprises, Jack's Lighted Trail is the fall night the whole family actually agrees on. Spooky-fun, never scary.\" · Headline: \"Family Fun, Fully Lit\" · Description: \"Sept 11 – Oct 30 · From $22\" · CTA: Get Tickets"
+  },
+  {
+    "id": "06-four-ways",
+    "name": "Four Ways to Play — Attraction Grid",
+    "angle": "Consideration. Answers \"what do you actually DO there?\" — the objection that kills cold traffic.",
+    "copy": "Primary text: \"One ticket, four ways to play. 🌽 A glowing path through towering corn stalks, treats worth the walk, and a hauntingly good sip at the Spook-Easy. Here's what a night at Jack's looks like.\" · Headline: \"Four Ways to Play\" · Description: \"Sept 11 – Oct 30 · From $22\" · CTA: Learn More"
+  },
+  {
+    "id": "07-tasty-treats",
+    "name": "Tasty Treats — Cider Shed & Spook-Easy",
+    "angle": "Scroll-stopper. Food creative consistently out-performs on Meta for agritainment; strong for women 25–44.",
+    "copy": "Primary text: \"Warm cider donuts. A hauntingly good sip at the Spook-Easy. 🍩 Feast on fall favorites and snack on spooky sweet treats all along Jack's Lighted Trail.\" · Headline: \"Treats Worth the Walk\" · Description: \"Sept 11 – Oct 30 · From $22\" · CTA: Get Tickets"
+  },
+  {
+    "id": "08-after-dark",
+    "name": "After Dark 21+ — Thu, Oct 22",
+    "angle": "Date-night / adults-only segment. Single-date scarcity — one night all season. Excludes parents-of-young-kids targeting.",
+    "copy": "Primary text: \"🥃 One night. Adults only. After Dark takes over Jack's Lighted Trail on Thursday, Oct 22 — the trail, the Spook-Easy, and none of the bedtimes. 21+ only, and it's the only one all season.\" · Headline: \"After Dark · 21+ Only\" · Description: \"Thu, Oct 22 · $30\" · CTA: Get Tickets"
+  },
+  {
+    "id": "09-low-sensory",
+    "name": "Low Sensory Night — Sat, Sept 19",
+    "angle": "Inclusive-access angle. High organic-share rate; strong goodwill creative for special-needs parent groups in the STL DMA.",
+    "copy": "Primary text: \"🧡 Low Sensory Night — Saturday, Sept 19. A quieter hour on the trail with reduced sounds, gentler lighting and fewer surprises, so every family gets a night at Jack's. Quiet Hour 6:30–7:30 PM, regular activities after.\" · Headline: \"Low Sensory Night\" · Description: \"Sat, Sept 19 · $22\" · CTA: Get Tickets"
+  },
+  {
+    "id": "10-costume-night",
+    "name": "Costume Night / Trails of Treats — Thu, Oct 29",
+    "angle": "Season-closer urgency. \"Trail is dark on Halloween\" is the real hook — this is the Halloween night.",
+    "copy": "Primary text: \"👻 We're dark on Halloween — so Thursday, Oct 29 IS Halloween at Jack's. Costume Night + Trails of Treats: wear the costume, walk the glowing trail, collect the candy. One of the last nights of the season.\" · Headline: \"Costume Night · Oct 29\" · Description: \"Trails of Treats · $32\" · CTA: Get Tickets"
+  }
+]
