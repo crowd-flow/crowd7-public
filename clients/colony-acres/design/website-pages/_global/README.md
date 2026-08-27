@@ -77,5 +77,14 @@ real ones. That exclusion was removed and the baked sections disabled, so all 30
 published pages now share one header and one footer. **Without that, this file would
 fix 29 pages and silently miss the homepage.**
 
-Rollback runbook:
-`notes/work/crowd7/projects/colony-wp-hybrid-loader/artifacts/ROLLBACK-header-footer-normalize.md`
+## Where the rest of this is written down
+
+- **Project state + full workstream history:**
+  `notes/work/crowd7/projects/colony-wp-hybrid-loader/state.md` — see **WS9**. Start there.
+- **Rollback runbook for every live-site change:**
+  `notes/work/crowd7/projects/colony-wp-hybrid-loader/artifacts/ROLLBACK-header-footer-normalize.md`
+- **The reusable, cross-client version of the constraints above:**
+  `crowd7/data/clients/_patterns/divi-theme-builder-hybrid-limits.md` — read before attempting a
+  hybrid loader on **any** Divi site.
+- **Loader source + full inline commentary:**
+  `crowd7/data/clients/colony-acres/design/website-loaders/global-chrome.divi-theme-options-body.html`
