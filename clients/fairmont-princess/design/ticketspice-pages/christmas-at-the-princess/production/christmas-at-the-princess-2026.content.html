@@ -416,24 +416,6 @@ html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar::after { c
      (.95rem), not the big Playfair price. Applies to tier cards + the Premium modal. */
   #cap-funnel .tier .price .startat,
   #cap-funnel .p-price .startat{display:block;font-family:'Montserrat',sans-serif;font-size:.95rem;font-weight:400;color:var(--muted);letter-spacing:.02em;margin-bottom:2px;}
-  /* --- EARLY BIRD sale treatment on the ticket-tier cards (2026-08-27) ------
-     Bryan confirmed on the 8/27 Bryan/Mat call: flat 30% off across the board —
-     GA $35 -> $24.50, Premium $70 -> $49, VIP $150 off. Mat asked directly
-     whether the VIP discount should be advertised (the cards showed none);
-     Bryan: "Yes, we're relaunching Early Bird discounts." So VIP now carries a
-     visible $150-off figure — a deliberate change from what the cards said.
-     Treatment: red "Early Bird" pill, struck-through was-price inline before an
-     accent-red sale price. VIP shows the dollars-off figure instead of a price
-     because its base table price is still unverified (the .price hide rule
-     below stays until Katie confirms). ------------------------------------ */
-  #cap-funnel .eb-flag{display:inline-block;align-self:flex-start;background:var(--red);color:#fff;font-family:'Montserrat',sans-serif;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 12px;border-radius:20px;margin:0 0 9px;}
-  #cap-funnel .price.sale .was,
-  #cap-funnel .p-price.sale .was{display:inline-block;font-family:'Montserrat',sans-serif;font-size:1.1rem;font-weight:400;color:var(--muted);text-decoration:line-through;text-decoration-thickness:1px;margin-right:9px;}
-  #cap-funnel .price.sale .now,
-  #cap-funnel .p-price.sale .now{color:var(--accent);}
-  #cap-funnel .tier .eb-off{font-family:'Playfair Display',serif;font-size:2.7rem;font-weight:700;color:var(--accent);line-height:1.1;}
-  #cap-funnel .tier .eb-off small{font-family:'Montserrat',sans-serif;font-size:.95rem;color:var(--muted);font-weight:400;}
-  #cap-funnel .tier .eb-sub{font-family:'Montserrat',sans-serif;font-size:.8rem;color:var(--muted);margin-top:3px;}
   #cap-funnel .tier ul{list-style:none;padding:0;margin:16px 0 22px;}
   #cap-funnel .tier li{padding:6px 0;border-bottom:1px dashed var(--line);font-size:.95rem;}
   #cap-funnel .tier .btn{margin-top:auto;border:0;border-radius:40px;padding:13px;font-weight:700;cursor:pointer;font-size:1rem;}
@@ -547,16 +529,7 @@ html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar::after { c
        price everywhere ($35 GA, $70 Premium), off-peak figure removed. Bryan is
        reactivating value dates for early bird separately on the cart side; the off-peak
        numbers this comment used to cite are historical, not live. Tracked:
-       work/crowd7/projects/fairmont-full-price-reset/
-       2026-08-27 (Bryan, on the Bryan/Mat call): EARLY BIRD IS LIVE — flat 30%
-       off. Cards now show GA $35 -> $24.50, Premium $70 -> $49, VIP $150 off,
-       each with a red "Early Bird" pill and a struck-through was-price. The VIP
-       discount is NEW on the creative (Bryan approved showing it when Mat asked);
-       the VIP base table price stays hidden, so VIP advertises dollars-off only.
-       ⚠️ Still full price elsewhere on this page: the calendar day-price CSS and
-       its "Standard pricing: $35 / person" footer — those track what the CART
-       actually charges, and cart-side value-date reactivation is Bryan's step.
-       Do not discount those until the cart is confirmed charging 30% off. -->
+       work/crowd7/projects/fairmont-full-price-reset/ -->
   <section id="cap-tickets"><div class="cap-wrap">
     <style>#cap-tickets .tier[data-buyer="vip"] .price{display:none !important}</style>
     <div class="sec-head"><h2>Pick your tickets</h2></div>
@@ -565,8 +538,7 @@ html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar::after { c
         <img class="tier-photo" src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/fairmont-princess/design/assets/photos/tier-ga-lights.jpg" alt="Kids looking up at the Christmas at the Princess light tunnel">
         <div class="tier-body">
         <h3>General Admission</h3><div class="saletag" data-saletag="&#127876; The Traditional Experience"></div>
-        <div class="eb-flag">&#10052; Early Bird &middot; Save 30%</div>
-        <div class="price sale"><span class="startat">Starting at</span><span class="was">$35</span><span class="now">$24.50</span> <small>/ person</small></div>
+        <div class="price"><span class="startat">Starting at</span>$35 <small>/ person</small></div>
         <ul><li>17 Million Christmas Lights</li><li>The Village</li><li>Princess Express Train</li></ul>
         <button class="btn btn-out" onclick="capOpenStar()">Select</button>
         </div>
@@ -575,8 +547,7 @@ html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar::after { c
         <img class="tier-photo" src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/fairmont-princess/design/assets/photos/tier-premium-firepit.jpg" alt="Family roasting s'mores at a Premium Admission fire table">
         <div class="tier-body">
         <h3>Premium Admission</h3><div class="saletag" data-saletag="&#10024; Best value upgrade"></div>
-        <div class="eb-flag">&#10052; Early Bird &middot; Save 30%</div>
-        <div class="price sale"><span class="startat">Starting at</span><span class="was">$70</span><span class="now">$49</span> <small>/ person</small></div>
+        <div class="price"><span class="startat">Starting at</span>$70 <small>/ person</small></div>
         <ul><li>Includes General Admission</li><li>Communal fire tables, available on a first-come basis</li><li>S&rsquo;mores &amp; Hot Cocoa Bar</li></ul>
         <button class="btn btn-solid">Select</button>
         </div>
@@ -585,10 +556,7 @@ html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar::after { c
         <img class="tier-photo" src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/fairmont-princess/design/assets/photos/tier-vip-igloo.jpg" alt="Family enjoying drinks inside a private VIP igloo">
         <div class="tier-body">
         <h3>VIP Experiences</h3><div class="saletag" data-saletag="&#128293; Private Igloos &amp; Fire Tables"></div>
-        <div class="eb-flag">&#10052; Early Bird</div>
         <div class="price">$250 <small>/ table</small></div>
-        <div class="eb-off">$150 <small>off</small></div>
-        <div class="eb-sub">Off any private igloo or fire table</div>
         <ul><li>Includes General Admission Tickets</li><li>Includes Valet Parking ($125 Value)</li><li>Seats 4&ndash;8 guests</li><li>Premium bar service</li></ul>
         <button class="btn btn-out">Reserve</button>
         </div>
@@ -614,8 +582,7 @@ html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar::after { c
   <div class="cap-ov" id="capOvPremium"><div class="cap-modal starlight"><button class="x" onclick="capCloseAll()">&times;</button>
     <div class="cap-promo-eye">Premium Admission</div>
     <h3>&#10024; Here&rsquo;s what&rsquo;s included</h3>
-    <div class="eb-flag">&#10052; Early Bird &middot; Save 30%</div>
-    <div class="p-price sale"><span class="startat">Starting at</span><span class="was">$70</span><span class="now">$49</span> <small>/ person</small></div>
+    <div class="p-price"><span class="startat">Starting at</span>$70 <small>/ person</small></div>
     <ul class="p-list">
       <li>Includes General Admission</li>
       <li>Communal fire tables, available on a first-come basis</li>
