@@ -36,7 +36,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent          # clients/
-TEMPLATE = Path(__file__).resolve().parent / "crowdview-announcement-block.html"
+TEMPLATE = Path(__file__).resolve().parent / "crowdview-popup-block.html"
 
 # The block is delimited by its own comment banner at both ends. Matching on
 # those markers (rather than on line offsets or a fuzzy search) is what makes

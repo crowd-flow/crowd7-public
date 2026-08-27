@@ -92,14 +92,22 @@
   <div class="bm-rule"></div>
 </div>
 <!-- ============================================================================
-     CrowdView client announcement block  ·  v2  ·  2026-08-14
-     Project: crowdview-client-announcements / popup-render-block-install (WS6)
+     CrowdView client pop-up block  ·  v7  ·  2026-08-27
+
+     v7 — reads `d.popup`, calls /api/live-popup. The 2026-08-19 rename
+     changed the API response envelope, but the 86 blocks installed before
+     this version were never re-synced: they read the old key, got undefined,
+     and rendered nothing for eight days across ten accounts. Nothing
+     surfaced it, because this block fails silent by design. `popup` is the
+     only name for this feature, in the schema, the API and the UI — if you
+     are adding a compatibility shim for an older one, don't.
+     Project: crowdview-client-popups-table / page-inventory (self-identifying)
 
      WHAT IT DOES
      Renders a pop-up on this TicketSpice page whenever the client has one
      scheduled in CrowdView right now. The client publishes it themselves at
-     https://crowd7-team-hub.vercel.app/client/announcements (five fields:
-     page, start, end, title, message) — Crowd7 does nothing per announcement.
+     https://crowd7-team-hub.vercel.app/client/popups (five fields:
+     page, start, end, title, message) — Crowd7 does nothing per pop-up.
 
      WHY IT EXISTS
      Eckert's check-in 2026-08-12. Amanda Morgan: "there's so many things that
@@ -110,35 +118,30 @@
      crowd7-public and ships by git push, which is exactly what puts it out of
      her reach. This block is the narrow carve-out.
 
-     INSTALL — two tokens, then paste at the END of the page's content HTML:
-       C7A_ACCOUNT  the account slug in CrowdView   (e.g. 'eckerts')
-       C7A_PAGE     the PAGE slug in CrowdView      (e.g. 'belleville')
+     INSTALL — paste at the END of the page's content HTML. THAT IS ALL.
+     There are NO tokens to fill in as of v3.
 
-     ⚠️  C7A_PAGE is the `page.slug` COLUMN IN THE DATABASE, which is NOT
-     always the crowd7-public folder name. Eckert's `versailles` folder, for
-     instance, backs TWO page rows: 'versailles-ky' and
-     'versailles-sunflower-festival'. Read the slug off the page picker in the
-     client portal (or `select slug from page where account_id = …`) — do not
-     infer it from the directory you are editing. A wrong slug fails silently:
-     no banner, no error, nothing to see.
+     The block identifies itself: it sends its own address
+     (location.origin + location.pathname) and CrowdView matches that against
+     page.ts_url, which scripts/sync_ts_pages.mjs fills from the TicketSpice
+     form's own publishedPath. Nobody types a slug, so nobody can mistype one.
 
-     THEME (optional, per-page) — fill in the :root block below with values
-     read OFF THE PAGE'S OWN CONTENT HTML (never invented). Omit any token you
-     don't want to override; it falls back to today's neutral card, so a page
-     with no theme block renders identically to before this version shipped.
-     Keep the set small:
-       --c7a-card-bg   card background
-       --c7a-ink       title text (needs strong contrast against card-bg)
-       --c7a-ink-dim   body text + close icon (still needs to read clearly)
-       --c7a-btn-bg    "Got it" button background
-       --c7a-btn-ink   "Got it" button text
-       --c7a-scrim     the full-screen backdrop behind the card
-       --c7a-radius    card corner radius
-       --c7a-font      TITLE ONLY — leave unset unless the page has a real
-                        display face; body/button always use the system stack
-     When card-bg goes dark, ink/ink-dim MUST flip to a light color — a dark
-     card with the old #3c4147 body text is unreadable. Check every themed
-     page, don't assume the palette is safe.
+     v1/v2 required two hand-filled tokens (C7A_ACCOUNT / C7A_PAGE) and a
+     wrong value failed SILENTLY — no banner, no error, nothing to debug.
+     That whole failure class is gone. Blocks already pasted with v1/v2 tokens
+     keep working: the endpoint still accepts ?account=&page= (see
+     edge/api-live-popup.js) and there is no rush to re-paste them.
+
+     PREVIEW LINKS SHOW POP-UPS — deliberately (Mat, 2026-08-17). v5 is what
+     actually makes that work: the block also sends the form's NAME and HOST,
+     because a preview URL carries no reference to its published path (not
+     even in __BOOTSTRAP__.formURL, which is the preview URL as well).
+     v3 briefly suppressed rendering on TicketSpice preview URLs. That was a
+     mistake and is reverted: a pop-up is live or not according to its
+     SCHEDULE WINDOW, never according to which URL you view it from, so the
+     guard protected nothing while removing the only way to check your own
+     work before an event. Previewing a page now shows exactly what a buyer
+     sees.
 
      SAFE BY CONSTRUCTION
      · Read-only GET to a public endpoint. No credentials sent or accepted.
@@ -146,8 +149,8 @@
        cannot inject markup or script into their own live cart page.
      · Fails silent. Network error, bad JSON, missing element → no pop-up, no
        console noise for a buyer, page otherwise untouched.
-     · Shows once per browser session PER ANNOUNCEMENT. The dedupe key is a
-       hash of the content, so a NEW or EDITED announcement re-shows to
+     · Shows once per browser session PER POP-UP. The dedupe key is a
+       hash of the content, so a NEW or EDITED pop-up re-shows to
        someone who already dismissed the previous one — which is the whole
        point when the message is "we're closing early after all."
      · Kill switch: set window.C7A_ENABLED = false before this block.
@@ -174,15 +177,38 @@
   if (window.__c7aInit) return;          // never double-init if pasted twice
   window.__c7aInit = true;
 
+  var ENDPOINT = 'https://crowd7-team-hub.vercel.app/api/live-popup';
+
+
+  // ── Self-identification ────────────────────────────────────────────────
+  // Primary key is `location` (guaranteed by the browser). Query string and
+  // hash are dropped — ticketing links are covered in UTM tags, and the
+  // server normalizes the same way.
+  var PAGE_URL = location.origin + location.pathname;
+
+  // PREVIEW LINKS need a second key. On /preview/<hash> the path is the hash,
+  // and __BOOTSTRAP__.formURL is the preview URL TOO — nothing on the page
+  // carries its published path, so URL matching cannot work there. formName
+  // is stable across published and preview renders and is the exact string
+  // CrowdView stores as page.name (same TicketSpice API field), so it is the
+  // fallback. Host scopes it so two clients' similarly-named forms can't
+  // collide. Read defensively: __BOOTSTRAP__ is internal Webconnex structure.
+  // LEGACY FALLBACK. Some pages can be matched by neither URL nor name:
+  // Montpelier's forms, for instance, are 'open' but were never PUBLISHED, so
+  // TicketSpice returns no publishedPath and CrowdView has no ts_url to match
+  // against. Those pages still have working account/page slugs, so the sync
+  // script PRESERVES these two values (like it preserves the theme) and the
+  // block sends them as a last resort. Empty on a page that doesn't need them.
   var C7A_ACCOUNT = 'modus';
   var C7A_PAGE    = 'boomont-flash-waitlist';
-  var ENDPOINT    = 'https://crowd7-team-hub.vercel.app/api/live-announcement';
 
-  if (C7A_ACCOUNT.indexOf('__') === 0 || C7A_PAGE.indexOf('__') === 0) {
-    // Unfilled tokens — a paste that was never configured. Do nothing rather
-    // than query for an account literally named 'modus'.
-    return;
-  }
+  var FORM_NAME = '', TS_HOST = '';
+  try {
+    var b = window.__BOOTSTRAP__;
+    var s = b && b.appSettings;
+    if (typeof s === 'string') s = JSON.parse(s);
+    if (s) { FORM_NAME = s.formName || ''; TS_HOST = s.host || ''; }
+  } catch (e) { /* fall back to URL-only matching */ }
 
   // Small, stable string hash (djb2) — only used as a sessionStorage dedupe
   // key, never for anything security-relevant.
@@ -279,16 +305,20 @@
   }
 
   function go() {
-    var url = ENDPOINT
-      + '?account=' + encodeURIComponent(C7A_ACCOUNT)
-      + '&page='    + encodeURIComponent(C7A_PAGE);
+    var url = ENDPOINT + '?url=' + encodeURIComponent(PAGE_URL);
+    if (FORM_NAME) url += '&name=' + encodeURIComponent(FORM_NAME);
+    if (TS_HOST)   url += '&host=' + encodeURIComponent(TS_HOST);
+    if (C7A_ACCOUNT && C7A_PAGE) {
+      url += '&account=' + encodeURIComponent(C7A_ACCOUNT)
+           + '&page='    + encodeURIComponent(C7A_PAGE);
+    }
     // No credentials — the endpoint is public and must stay that way for the
     // CORS wildcard to be valid.
     fetch(url, { credentials: 'omit', mode: 'cors' })
       .then(function (r) { return r.ok ? r.json() : null; })
       .then(function (d) {
-        if (d && d.announcement && d.announcement.title && d.announcement.message) {
-          render(d.announcement);
+        if (d && d.popup && d.popup.title && d.popup.message) {
+          render(d.popup);
         }
       })
       .catch(function () { /* fail silent — see SAFE BY CONSTRUCTION */ });
@@ -301,4 +331,4 @@
   }
 })();
 </script>
-<!-- =================== END CrowdView announcement block =================== -->
+<!-- =================== END CrowdView pop-up block =================== -->

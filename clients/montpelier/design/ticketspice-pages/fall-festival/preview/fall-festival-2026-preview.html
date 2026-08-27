@@ -783,14 +783,22 @@
 <div id="ticketBlock"><h2>Native TicketSpice cart renders here</h2>
 <div class="c7-cart-stub">Ticket types, prices, date + time selection, the peak +$5 bump and the add-ons stay native in TicketSpice.</div></div></body></html>
 <!-- ============================================================================
-     CrowdView client pop-up block  ·  v6  ·  2026-08-17
-     Project: crowdview-client-announcements / page-inventory (self-identifying)
+     CrowdView client pop-up block  ·  v7  ·  2026-08-27
+
+     v7 — reads `d.popup`, calls /api/live-popup. The 2026-08-19 rename
+     changed the API response envelope, but the 86 blocks installed before
+     this version were never re-synced: they read the old key, got undefined,
+     and rendered nothing for eight days across ten accounts. Nothing
+     surfaced it, because this block fails silent by design. `popup` is the
+     only name for this feature, in the schema, the API and the UI — if you
+     are adding a compatibility shim for an older one, don't.
+     Project: crowdview-client-popups-table / page-inventory (self-identifying)
 
      WHAT IT DOES
      Renders a pop-up on this TicketSpice page whenever the client has one
      scheduled in CrowdView right now. The client publishes it themselves at
-     https://crowd7-team-hub.vercel.app/client/announcements (five fields:
-     page, start, end, title, message) — Crowd7 does nothing per announcement.
+     https://crowd7-team-hub.vercel.app/client/popups (five fields:
+     page, start, end, title, message) — Crowd7 does nothing per pop-up.
 
      WHY IT EXISTS
      Eckert's check-in 2026-08-12. Amanda Morgan: "there's so many things that
@@ -813,7 +821,7 @@
      wrong value failed SILENTLY — no banner, no error, nothing to debug.
      That whole failure class is gone. Blocks already pasted with v1/v2 tokens
      keep working: the endpoint still accepts ?account=&page= (see
-     edge/api-live-announcement.js) and there is no rush to re-paste them.
+     edge/api-live-popup.js) and there is no rush to re-paste them.
 
      PREVIEW LINKS SHOW POP-UPS — deliberately (Mat, 2026-08-17). v5 is what
      actually makes that work: the block also sends the form's NAME and HOST,
@@ -832,8 +840,8 @@
        cannot inject markup or script into their own live cart page.
      · Fails silent. Network error, bad JSON, missing element → no pop-up, no
        console noise for a buyer, page otherwise untouched.
-     · Shows once per browser session PER ANNOUNCEMENT. The dedupe key is a
-       hash of the content, so a NEW or EDITED announcement re-shows to
+     · Shows once per browser session PER POP-UP. The dedupe key is a
+       hash of the content, so a NEW or EDITED pop-up re-shows to
        someone who already dismissed the previous one — which is the whole
        point when the message is "we're closing early after all."
      · Kill switch: set window.C7A_ENABLED = false before this block.
@@ -860,7 +868,7 @@
   if (window.__c7aInit) return;          // never double-init if pasted twice
   window.__c7aInit = true;
 
-  var ENDPOINT = 'https://crowd7-team-hub.vercel.app/api/live-announcement';
+  var ENDPOINT = 'https://crowd7-team-hub.vercel.app/api/live-popup';
 
 
   // ── Self-identification ────────────────────────────────────────────────
@@ -1000,8 +1008,8 @@
     fetch(url, { credentials: 'omit', mode: 'cors' })
       .then(function (r) { return r.ok ? r.json() : null; })
       .then(function (d) {
-        if (d && d.announcement && d.announcement.title && d.announcement.message) {
-          render(d.announcement);
+        if (d && d.popup && d.popup.title && d.popup.message) {
+          render(d.popup);
         }
       })
       .catch(function () { /* fail silent — see SAFE BY CONSTRUCTION */ });
