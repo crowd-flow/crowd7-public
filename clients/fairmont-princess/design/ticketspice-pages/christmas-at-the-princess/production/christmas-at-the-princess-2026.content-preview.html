@@ -94,7 +94,7 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
 }
 /* Legend — pseudo-element after the grid. Two color swatches inline. */
 .ticket-block .datePicker .wbx-calendar::after {
-  content: 'Early Bird pricing: $25 / person' !important;
+  content: '🟩 Value Dates $25        Standard $35' !important;
   display: block !important;
   font-family: 'Montserrat', sans-serif !important;
   font-size: 0.74rem !important;
@@ -240,7 +240,7 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
 }
 /* PRICE under day number — default $35 (standard) for all cells via ::after */
 .ticket-block .datePicker .wbx-calendar .row.week .day::after {
-  content: '$25';
+  content: '$35';
   display: block;
   font-size: 0.6rem;
   font-weight: 400;
@@ -257,7 +257,7 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
   color: #fff !important;
 }
 .ticket-block .datePicker .wbx-calendar .row.week .day.cap-value-date::after {
-  content: '$28' !important;
+  content: '$25' !important;
   color: #eafbe9 !important;
 }
 /* ── BUYER-PATH PRICING ──────────────────────────────────────────────────
@@ -267,9 +267,9 @@ body, h1, h2, h3, h4, h5, h6, span { font-family: "Josefin Sans", sans-serif; fo
    GA (default) = $35 standard, set above. Value pricing PARKED 2026-08-14 —
    the .cap-value-date rules below are inert (JS never applies the class). */
 /* Premium: standard $70. Value pricing PARKED, same as GA above. */
-html[data-buyer-path="premium"] .ticket-block .datePicker .wbx-calendar .row.week .day::after { content: '$49' !important; }
+html[data-buyer-path="premium"] .ticket-block .datePicker .wbx-calendar .row.week .day::after { content: '$70' !important; }
 html[data-buyer-path="premium"] .ticket-block .datePicker .wbx-calendar .row.week .day.cap-value-date::after { content: '$49' !important; }
-html[data-buyer-path="premium"] .ticket-block .datePicker .wbx-calendar::after { content: 'Early Bird pricing: $49 / person' !important; }
+html[data-buyer-path="premium"] .ticket-block .datePicker .wbx-calendar::after { content: '🟩 Value Dates $49        Standard $70' !important; }
 /* VIP: fire tables are per-table & dynamic — priced in the Reserve flow, not here.
    Hide the per-night number; keep green/red so discount-vs-standard nights still read. */
 html[data-buyer-path="vip"] .ticket-block .datePicker .wbx-calendar .row.week .day::after { content: '' !important; display: none !important; }
@@ -746,7 +746,7 @@ html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar::after { c
       var cal = document.querySelector('.ticket-block .datePicker .wbx-calendar');
       if(!cal) return;
       var path = (window.capGetPath && capGetPath()) || 'default';
-      var set = (path === 'vip') ? (VIP_VALUE[currentMonth(cal)] || {}) : {};
+      var set = ((path === 'vip') ? VIP_VALUE : VALUE)[currentMonth(cal)] || {};
       cal.querySelectorAll('.row.week .day').forEach(function(d){
         var m = (d.textContent || '').match(/\d+/);
         var n = m ? parseInt(m[0], 10) : 0;
@@ -1559,7 +1559,7 @@ html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar::after { c
       demo=document.createElement('div'); demo.id='capGateDemo';
       var cells='<div class="dow">Sun</div><div class="dow">Mon</div><div class="dow">Tue</div><div class="dow">Wed</div><div class="dow">Thu</div><div class="dow">Fri</div><div class="dow">Sat</div>';
       cells+='<button class="empty" disabled></button><button class="empty" disabled></button>'; /* Dec 1 2026 = Tuesday */
-      for(var d=1;d<=31;d++){ var col=(d+1)%7; var val=(col>=1&&col<=4); cells+='<button data-day="'+d+'"'+(val?' class="val"':'')+'>'+d+'<span class="p">'+(val?'$25':'$49')+'</span></button>'; }
+      for(var d=1;d<=31;d++){ var col=(d+1)%7; var val=(col>=1&&col<=4); cells+='<button data-day="'+d+'"'+(val?' class="val"':'')+'>'+d+'<span class="p">'+(val?'$25':'$35')+'</span></button>'; }
       demo.innerHTML='<div class="cap-gate-cal"><h4>Pick Your Visit Date</h4><p class="sub">December 2026 &middot; green nights save $5</p><div class="cap-gate-grid">'+cells+'</div></div>';
       document.body.appendChild(demo);
       demo.addEventListener('click',function(e){ var b=e.target.closest('button[data-day]'); if(b){demo.classList.remove('on');reveal();return;} if(e.target===demo){demo.classList.remove('on');} });
