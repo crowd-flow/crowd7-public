@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amber Brooke Farms &middot; 6th Annual Fall Festival 2026 &mdash; Preview</title>
+    <!--
+        Browser-eyeball preview wrapper for amber-brooke.fall-festival-content.html.
+        The body below mirrors the TicketSpice "Custom HTML" snippet exactly —
+        keep these two files in sync.
+    -->
+    <style>
+        html, body { margin: 0; padding: 0; background: #fff; font-family: 'Lora', serif; }
+    </style>
+</head>
+<body>
+<!--
+    Amber Brooke Farms · Eustis · 6th Annual Fall Festival 2026 (IN SEASON)
+    TicketSpice content block.
+
+    This is the MAIN in-season ticketing page — the counterpart to the Any-Day
+    Flash Sale page that ran Jul 31 – Aug 4. Built from that page as the donor:
+    same #abf-funnel brand system, same loader v8 posture, same house patterns
+    (benefits tile strip, gallery marquee, enriched info row, scroll-reveal,
+    floating buy-bar, CrowdView pop-up block).
+
+    Source data: work/crowd7/projects/amber-brooke-campaign-brief/artifacts/source-sweep.md
+                 CrowdView Postgres — accounts id 22, event id 4 (Fall Festival),
+                 price_book 9 (GA non-peak/peak, online + gate)
+    Palette: sampled live from amberbrookefarms.com (navy / terracotta / sage / wheat / cream).
+
+    MESSAGING — the opposite call from the flash page, and deliberately so.
+    The flash page could not lead on price: Any-Day GA was $19.95, identical to
+    the non-peak online price, so there was no discount to claim and the page
+    led on flexibility instead. THIS page has a real, defensible discount —
+    the $3 online/gate gap on BOTH tiers (Bryan's won ask; the gate went up $1
+    to open it). So this page leads on "buy online and save $3" and the
+    family-of-four math ($12) actually computes here, unlike on the flash page.
+
+    PEAK PRICING IS A DATE TIER, NOT A SEPARATE TICKET. Regular days $19.95
+    online / $22.95 gate; Halloween Weekends (Oct 24, 25, 31, Nov 1) $21.95 /
+    $24.95, with hours extended to 9 AM–6 PM. The cart must price by selected
+    date — see the build brief.
+
+    NOT PUBLISHED: the Season Pass card is fully built but commented out in the
+    ticket grid. Amanda is rebuilding the pass structure and the prices from the
+    7/28 call were never published or re-confirmed. Do not uncomment without
+    Amanda/Caleb signing off.
+
+    NOT ON THIS PAGE: the garbled "68 per two-hour window" peak capacity figure
+    from the transcript — still unverified, still correctly omitted.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+<style>
+    /* ===========================================================
+       AMBER BROOKE FARMS · EUSTIS · 6TH ANNUAL FALL FESTIVAL 2026 (IN SEASON)
+       #abf-funnel — sampled live from amberbrookefarms.com
+       =========================================================== */
+    #abf-funnel {
+        --abf-navy: #36578c;
+        --abf-navy-deep: #2a4570;
+        --abf-navy-darkest: #1b2c4a;  /* top announcement bar — deliberately much darker than the nav */
+        --abf-dusty-blue: #7d98c0;
+        --abf-mid-blue: #647a9a;
+        --abf-terracotta: #c66a2b;
+        --abf-terracotta-hover: #ad5a22;
+        --abf-sage: #5c7f71;
+        --abf-sage-hover: #4c6b5f;
+        --abf-wheat: #debc8c;
+        --abf-cream: #f7f5e7;
+        --abf-blush-cream: #f8f1e7;
+        --abf-floral-white: #fffaf0;
+        --abf-white: #ffffff;
+        --abf-ink: #222222;
+        --abf-ink-soft: #505050;
+        --abf-font-display: 'Playfair Display', 'Times New Roman', serif;
+        --abf-font-body: 'Lora', 'Georgia', serif;
+    }
+
+    #abf-funnel {
+        width: 100vw !important;
+        position: relative !important;
+        left: 50% !important;
+        right: 50% !important;
+        margin-left: -50vw !important;
+        margin-right: -50vw !important;
+        overflow: hidden !important;
+        font-family: var(--abf-font-body) !important;
+        background: var(--abf-cream) !important;
+        color: var(--abf-ink) !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    /* ── BANNER ── */
+    #abf-funnel .abf-banner {
+        width: 100% !important;
+        background: var(--abf-navy-darkest) !important;
+        color: white !important;
+        text-align: center !important;
+        padding: 12px 20px !important;
+        font-size: 0.95rem !important;
+        letter-spacing: 0.05em !important;
+        display: block !important;
+        box-sizing: border-box !important;
+    }
+    #abf-funnel .abf-banner-inner {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 10px !important;
+        flex-wrap: wrap !important;
+        color: white !important;
+    }
+    #abf-funnel .abf-banner-inner span,
+    #abf-funnel .abf-banner-inner strong { color: white !important; }
+    #abf-funnel .abf-dot {
+        width: 3px !important; height: 3px !important;
+        background: rgba(255,255,255,0.45) !important;
+        border-radius: 50% !important;
+        display: inline-block !important;
+        flex-shrink: 0 !important;
+    }
+    #abf-funnel .abf-banner-flash {
+        color: var(--abf-wheat) !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.1em !important;
+    }
+
+    /* ── NAV ── */
+    #abf-funnel .abf-nav {
+        width: 100% !important;
+        padding: 0 40px !important;
+        height: 92px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-end !important;
+        background: var(--abf-navy) !important;
+        position: sticky !important;
+        top: 0 !important;
+        z-index: 100 !important;
+        box-sizing: border-box !important;
+        box-shadow: 0 2px 16px rgba(54,87,140,0.3) !important;
+    }
+    #abf-funnel .abf-nav-right {
+        display: flex !important; align-items: center !important; gap: 16px !important;
+    }
+    #abf-funnel .abf-nav-loc {
+        font-size: 0.9rem !important;
+        color: #ffffff !important;
+        display: flex !important; align-items: center !important; gap: 5px !important;
+    }
+    #abf-funnel .abf-nav-cta {
+        background: var(--abf-terracotta) !important;
+        color: white !important;
+        padding: 12px 26px !important;
+        border-radius: 50px !important;
+        font-size: 1rem !important;
+        font-weight: 600 !important;
+        text-decoration: none !important;
+        letter-spacing: 0.02em !important;
+        transition: all 0.3s ease !important;
+        white-space: nowrap !important;
+        display: inline-block !important;
+    }
+    #abf-funnel .abf-nav-cta:hover {
+        background: var(--abf-terracotta-hover) !important;
+        color: white !important;
+        text-decoration: none !important;
+        transform: translateY(-1px);
+    }
+
+    /* ── HERO ── */
+    #abf-funnel .abf-hero {
+        width: 100% !important;
+        min-height: clamp(320px, 50vw, 520px) !important;
+        position: relative !important;
+        display: flex !important;
+        align-items: flex-end !important;
+        overflow: hidden !important;
+        background-image: linear-gradient(135deg, rgba(42,69,112,0.15) 0%, rgba(54,87,140,0.05) 55%, rgba(92,127,113,0.15) 100%), url('https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/ts-hero-3438.jpg') !important;
+        background-size: cover !important;
+        background-position: center 42% !important;
+        background-color: var(--abf-navy) !important;
+    }
+    #abf-funnel .abf-hero-overlay {
+        position: absolute !important;
+        inset: 0 !important;
+        background: linear-gradient(to bottom, rgba(42,69,112,0.15) 0%, rgba(34,34,34,0.22) 45%, rgba(42,69,112,0.78) 100%) !important;
+        z-index: 1 !important;
+    }
+    #abf-funnel .abf-hero-content {
+        position: relative !important;
+        z-index: 2 !important;
+        padding: 0 48px 52px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    #abf-funnel .abf-hero-eyebrow {
+        font-size: 0.86rem !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.18em !important;
+        text-transform: uppercase !important;
+        color: rgba(255,255,255,0.92) !important;
+        margin-bottom: 10px !important;
+        display: block !important;
+    }
+    #abf-funnel .abf-hero-title {
+        font-family: var(--abf-font-display) !important;
+        font-size: clamp(2.4rem, 7vw, 4.4rem) !important;
+        font-weight: 700 !important;
+        color: white !important;
+        line-height: 1.08 !important;
+        display: block !important;
+        text-shadow: 0 2px 20px rgba(0,0,0,0.3) !important;
+    }
+    #abf-funnel .abf-hero-title em {
+        font-style: italic !important;
+        color: var(--abf-wheat) !important;
+    }
+    #abf-funnel .abf-hero-tagline {
+        font-family: var(--abf-font-body) !important;
+        font-style: italic !important;
+        font-size: clamp(1.05rem, 2.2vw, 1.3rem) !important;
+        color: #fdf6e8 !important;
+        margin-top: 14px !important;
+        display: block !important;
+        max-width: 640px !important;
+        line-height: 1.5 !important;
+    }
+
+    /* ── BLACKOUT NOTICE — demoted from full-bleed band to an inline notice inside the ticket
+       area (Finding 2, WS7). Amanda's requirement is about the ticket + confirmation email
+       (TS cart, in the build brief), not a landing-page billboard. Content + navy/wheat
+       palette unchanged — only placement and prominence. ── */
+
+    /* ── BENEFITS — unheaded emoji tile strip (house pattern, Finding 1). No eyebrow, no
+       section title, no ✓-sentence copy — emoji + 2–4 word label + one short line. ── */
+    #abf-funnel .abf-benefits {
+        width: 100% !important;
+        background: white !important;
+        padding: 36px 48px !important;
+        display: block !important;
+        box-sizing: border-box !important;
+        border-bottom: 1px solid rgba(54,87,140,0.08) !important;
+    }
+    #abf-funnel .abf-eye {
+        font-size: 0.84rem !important; font-weight: 600 !important;
+        letter-spacing: 0.2em !important; text-transform: uppercase !important;
+        color: var(--abf-terracotta) !important; margin-bottom: 8px !important; display: block !important;
+    }
+    #abf-funnel .abf-section-title {
+        font-family: var(--abf-font-display) !important;
+        font-size: clamp(1.8rem, 4.2vw, 2.6rem) !important;
+        font-weight: 700 !important; color: var(--abf-navy) !important;
+        line-height: 1.2 !important; display: block !important;
+    }
+    #abf-funnel .abf-section-title em { font-style: italic; color: var(--abf-sage); }
+    #abf-funnel .abf-benefits-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        max-width: 1000px !important;
+        margin: 0 auto !important;
+    }
+    #abf-funnel .abf-benefit {
+        text-align: center !important;
+        padding: 8px 20px !important;
+        position: relative !important;
+    }
+    #abf-funnel .abf-benefit:not(:last-child)::after {
+        content: '' !important;
+        position: absolute !important;
+        right: 0 !important; top: 15% !important; bottom: 15% !important;
+        width: 1px !important;
+        background: rgba(54,87,140,0.1) !important;
+    }
+    #abf-funnel .abf-benefit-icon { font-size: 1.7rem !important; margin-bottom: 8px !important; display: block !important; }
+    #abf-funnel .abf-benefit-title {
+        font-family: var(--abf-font-display) !important;
+        font-size: 1rem !important; font-weight: 600 !important;
+        color: var(--abf-ink) !important; margin-bottom: 3px !important; display: block !important;
+    }
+    #abf-funnel .abf-benefit-desc {
+        font-size: 0.78rem !important; color: var(--abf-ink-soft) !important;
+        line-height: 1.4 !important; display: block !important; font-style: italic !important;
+    }
+
+    /* ── GALLERY ── */
+    #abf-funnel .abf-gallery {
+        width: 100% !important;
+        background: var(--abf-cream) !important;
+        padding: 56px 0 !important;
+        overflow: hidden !important;
+        display: block !important;
+    }
+    #abf-funnel .abf-gallery-header {
+        text-align: center !important;
+        padding: 0 48px !important;
+        margin-bottom: 32px !important;
+    }
+    #abf-funnel .abf-gallery-mask {
+        width: 100% !important; overflow: hidden !important;
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%) !important;
+        mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%) !important;
+    }
+    #abf-funnel .abf-gallery-track {
+        display: flex !important; gap: 16px !important;
+        width: max-content !important;
+        animation: abfMarquee 42s linear infinite !important;
+        padding: 8px 0 !important;
+    }
+    #abf-funnel .abf-gallery-track:hover { animation-play-state: paused !important; }
+    @keyframes abfMarquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    #abf-funnel .abf-gcard {
+        width: 340px !important; height: 240px !important;
+        border-radius: 20px !important; overflow: hidden !important;
+        flex-shrink: 0 !important; position: relative !important;
+        cursor: pointer !important;
+        background: linear-gradient(135deg, var(--abf-wheat), var(--abf-dusty-blue)) !important;
+        transition: transform 0.4s ease, box-shadow 0.4s ease !important;
+    }
+    #abf-funnel .abf-gcard:hover {
+        transform: scale(1.03) translateY(-5px) !important;
+        box-shadow: 0 24px 50px rgba(54,87,140,0.25) !important; z-index: 2 !important;
+    }
+    #abf-funnel .abf-gcard img {
+        width: 100% !important; height: 100% !important;
+        object-fit: cover !important; display: block !important;
+        position: absolute !important; inset: 0 !important;
+        transition: transform 0.6s ease !important;
+    }
+    #abf-funnel .abf-gcard:hover img { transform: scale(1.08) !important; }
+    #abf-funnel .abf-gcard-label {
+        position: absolute !important; bottom: 12px !important; left: 12px !important;
+        background: rgba(42,69,112,0.62) !important; backdrop-filter: blur(8px) !important;
+        color: white !important; font-size: 0.68rem !important; letter-spacing: 0.1em !important;
+        text-transform: uppercase !important; font-weight: 700 !important;
+        padding: 5px 12px !important; border-radius: 20px !important;
+        opacity: 0 !important; transform: translateY(4px) !important;
+        transition: opacity 0.3s ease, transform 0.3s ease !important; z-index: 2 !important;
+    }
+    #abf-funnel .abf-gcard:hover .abf-gcard-label { opacity: 1 !important; transform: none !important; }
+
+    /* ── TICKETS — grid of badged cards (Finding 3, WS7). Ported the house `-grid` → badged
+       `-card` → price-row stack; two products per Mat's 2026-07-30 directive. ── */
+    #abf-funnel .abf-tickets {
+        width: 100% !important;
+        background: var(--abf-blush-cream) !important;
+        padding: 56px 48px !important;
+        display: block !important; box-sizing: border-box !important;
+    }
+    #abf-funnel .abf-tickets-header { text-align: center !important; margin-bottom: 32px !important; }
+    #abf-funnel .abf-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 24px !important;
+        max-width: 900px !important;
+        margin: 0 auto !important;
+    }
+    #abf-funnel .abf-card {
+        border-radius: 20px !important;
+        padding: 32px 30px !important;
+        position: relative !important;
+        box-sizing: border-box !important;
+        display: flex !important; flex-direction: column !important;
+        transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    }
+    #abf-funnel .abf-card:hover { transform: translateY(-4px) !important; }
+    #abf-funnel .abf-card-primary {
+        background: white !important;
+        border: 2px solid var(--abf-sage) !important;
+    }
+    #abf-funnel .abf-card-primary:hover { box-shadow: 0 20px 40px rgba(92,127,113,0.2) !important; }
+    #abf-funnel .abf-card-secondary {
+        background: white !important;
+        border: 2px solid rgba(54,87,140,0.18) !important;
+    }
+    #abf-funnel .abf-card-secondary:hover { box-shadow: 0 20px 40px rgba(54,87,140,0.12) !important; }
+    #abf-funnel .abf-card-badge {
+        display: inline-block !important;
+        font-size: 0.74rem !important; font-weight: 700 !important;
+        letter-spacing: 0.1em !important; text-transform: uppercase !important;
+        padding: 6px 14px !important; border-radius: 20px !important;
+        margin-bottom: 14px !important; width: fit-content !important;
+    }
+    #abf-funnel .abf-card-badge-sage { background: var(--abf-sage) !important; color: white !important; }
+    #abf-funnel .abf-card-badge-navy { background: var(--abf-navy) !important; color: white !important; }
+    #abf-funnel .abf-card-icon { font-size: 2.2rem !important; margin-bottom: 10px !important; display: block !important; }
+    #abf-funnel .abf-card h3 {
+        font-family: var(--abf-font-display) !important;
+        font-size: 1.45rem !important; font-weight: 700 !important;
+        color: var(--abf-navy) !important; line-height: 1.2 !important; margin-bottom: 14px !important; display: block !important;
+    }
+    #abf-funnel .abf-card-bullets {
+        list-style: none !important; padding: 0 !important; margin: 0 0 20px !important;
+        display: flex !important; flex-direction: column !important; gap: 8px !important;
+    }
+    #abf-funnel .abf-card-bullets li {
+        font-size: 0.92rem !important; line-height: 1.5 !important; color: var(--abf-ink-soft) !important;
+        display: flex !important; align-items: flex-start !important; gap: 8px !important;
+    }
+    /* flat single price (Card 1 — Any-Day GA) */
+    #abf-funnel .abf-card-price {
+        margin-top: auto !important;
+        padding-top: 16px !important;
+        border-top: 1px solid rgba(54,87,140,0.1) !important;
+    }
+    #abf-funnel .abf-price-num {
+        font-family: var(--abf-font-display) !important;
+        font-size: 2.4rem !important; font-weight: 700 !important;
+        color: var(--abf-terracotta) !important; line-height: 1 !important; display: block !important;
+    }
+    #abf-funnel .abf-price-label {
+        font-size: 0.82rem !important; color: var(--abf-ink-soft) !important; margin-top: 4px !important; display: block !important;
+    }
+    /* online/gate price rows (Card 1 — Any-Day General Admission) */
+    #abf-funnel .abf-price-rows {
+        margin-top: auto !important;
+        padding-top: 16px !important;
+        border-top: 1px solid rgba(54,87,140,0.1) !important;
+        display: flex !important; flex-direction: column !important;
+    }
+    #abf-funnel .abf-price-row {
+        display: flex !important; justify-content: space-between !important; align-items: center !important;
+        padding: 10px 0 !important; gap: 12px !important;
+    }
+    #abf-funnel .abf-price-row:not(:last-child) { border-bottom: 1px solid rgba(54,87,140,0.08) !important; }
+    #abf-funnel .abf-price-row-name {
+        font-family: var(--abf-font-display) !important;
+        font-size: 0.95rem !important; font-weight: 700 !important;
+        color: var(--abf-navy) !important; display: block !important; line-height: 1.2 !important;
+    }
+    #abf-funnel .abf-price-row-desc {
+        font-size: 0.76rem !important; color: var(--abf-ink-soft) !important; display: block !important; margin-top: 2px !important;
+    }
+    #abf-funnel .abf-price-row-vals { text-align: right !important; flex-shrink: 0 !important; }
+    #abf-funnel .abf-price-row-online {
+        font-family: var(--abf-font-display) !important;
+        font-size: 1.5rem !important; font-weight: 700 !important;
+        color: var(--abf-terracotta) !important; line-height: 1 !important; display: block !important;
+    }
+    #abf-funnel .abf-price-row-gate {
+        font-size: 0.76rem !important; color: var(--abf-ink-soft) !important; display: block !important; margin-top: 2px !important;
+    }
+
+    /* ── ONE-PRICE BLOCK (2026-07-31, promoted to production) ──────────────────────────
+       Replaces the old two-row peak/non-peak table. Mat's insight: the Any-Day
+       GA's value is that it BYPASSES peak pricing entirely, so a side-by-side
+       grid buried the pitch (and on regular days showed no discount at all).
+       One number, then the peak-day comparison as PROOF rather than as a menu. */
+    #abf-funnel .abf-oneprice {
+        margin-top: auto !important; padding-top: 18px !important;
+        border-top: 1px solid rgba(54,87,140,0.1) !important;
+        display: block !important; text-align: center !important;
+    }
+    #abf-funnel .abf-oneprice-amt {
+        font-family: var(--abf-font-display) !important;
+        font-size: clamp(2.6rem, 7vw, 3.4rem) !important; font-weight: 700 !important;
+        color: var(--abf-terracotta) !important; line-height: 1 !important; display: block !important;
+    }
+    #abf-funnel .abf-oneprice-unit {
+        font-size: 0.86rem !important; font-weight: 600 !important; letter-spacing: 0.04em !important;
+        color: var(--abf-navy) !important; display: block !important; margin-top: 6px !important;
+        text-transform: uppercase !important;
+    }
+    #abf-funnel .abf-oneprice-lead {
+        font-family: var(--abf-font-display) !important;
+        font-size: 1.02rem !important; font-weight: 700 !important; color: var(--abf-sage) !important;
+        display: block !important; margin-top: 10px !important; line-height: 1.3 !important;
+    }
+    #abf-funnel .abf-oneprice-proof {
+        font-size: 0.84rem !important; color: var(--abf-ink-soft) !important;
+        display: block !important; margin-top: 6px !important; line-height: 1.55 !important;
+    }
+    #abf-funnel .abf-oneprice-proof s {
+        color: var(--abf-ink-soft) !important; opacity: 0.75 !important; text-decoration-thickness: 1px !important;
+    }
+    #abf-funnel .abf-card-note {
+        font-size: 0.74rem !important; color: var(--abf-ink-soft) !important;
+        margin-top: 10px !important; display: block !important; text-align: center !important; opacity: 0.85 !important;
+    }
+
+    /* ── INFO ROW — enriched (Finding 4): emoji leads, 4 rows, multi-line values ── */
+    #abf-funnel .abf-info {
+        width: 100% !important;
+        background: var(--abf-navy) !important;
+        padding: 0 !important; display: block !important; box-sizing: border-box !important;
+    }
+    #abf-funnel .abf-info-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+    #abf-funnel .abf-info-item {
+        text-align: center !important;
+        padding: 26px 20px !important;
+        position: relative !important;
+    }
+    #abf-funnel .abf-info-item:not(:last-child)::after {
+        content: '' !important; position: absolute !important;
+        right: 0 !important; top: 20% !important; bottom: 20% !important;
+        width: 1px !important; background: rgba(255,255,255,0.15) !important;
+    }
+    #abf-funnel .abf-info-icon { font-size: 1.5rem !important; display: block !important; margin-bottom: 6px !important; }
+    #abf-funnel .abf-info-label {
+        font-size: 0.76rem !important; font-weight: 700 !important;
+        letter-spacing: 0.15em !important; text-transform: uppercase !important;
+        color: rgba(255,255,255,0.85) !important; display: block !important; margin-bottom: 4px !important;
+    }
+    #abf-funnel .abf-info-value {
+        font-family: var(--abf-font-display) !important;
+        font-size: 1.05rem !important; font-weight: 600 !important;
+        color: white !important; display: block !important; line-height: 1.35 !important;
+    }
+
+
+    /* ── SEASON CALENDAR STRIP (in-season page only) ─────────────────────────
+       The flash page never needed this: the Any-Day ticket was date-agnostic
+       by design. An in-season GA is date-bound, so "which days are we even
+       open" becomes a first-class question and belongs above the ticket table. */
+    #abf-funnel .abf-cal {
+        width: 100% !important;
+        background: var(--abf-cream) !important;
+        padding: 56px 48px !important;
+        display: block !important; box-sizing: border-box !important;
+    }
+    #abf-funnel .abf-cal-header { text-align: center !important; margin-bottom: 32px !important; }
+    #abf-funnel .abf-cal-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        gap: 20px !important;
+        max-width: 900px !important;
+        margin: 0 auto !important;
+    }
+    #abf-funnel .abf-cal-card {
+        background: var(--abf-white) !important;
+        border: 2px solid rgba(125,152,192,0.35) !important;
+        border-radius: 18px !important;
+        padding: 26px 24px !important;
+        text-align: center !important;
+        box-sizing: border-box !important;
+        transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    }
+    #abf-funnel .abf-cal-card:hover {
+        transform: translateY(-4px) !important;
+        box-shadow: 0 18px 36px rgba(54,87,140,0.12) !important;
+    }
+    #abf-funnel .abf-cal-month {
+        font-family: var(--abf-font-display) !important;
+        font-size: 1.6rem !important; font-weight: 700 !important;
+        color: var(--abf-navy) !important; display: block !important; line-height: 1.1 !important;
+    }
+    #abf-funnel .abf-cal-range {
+        font-size: 0.78rem !important; font-weight: 700 !important;
+        letter-spacing: 0.12em !important; text-transform: uppercase !important;
+        color: var(--abf-sage) !important; display: block !important; margin-top: 6px !important;
+    }
+    #abf-funnel .abf-cal-days {
+        font-size: 0.95rem !important; color: var(--abf-ink) !important;
+        display: block !important; margin-top: 14px !important; line-height: 1.5 !important;
+    }
+    #abf-funnel .abf-cal-hours {
+        font-size: 0.86rem !important; color: var(--abf-ink-soft) !important;
+        display: block !important; margin-top: 10px !important; line-height: 1.5 !important;
+        padding-top: 10px !important;
+        border-top: 1px solid rgba(54,87,140,0.1) !important;
+    }
+    /* peak callout — navy on wheat, the same "information, not a CTA" treatment the
+       flash page used for blackout dates. Terracotta means BUY on this brand. */
+    #abf-funnel .abf-cal-peak {
+        max-width: 900px !important;
+        margin: 22px auto 0 !important;
+        background: var(--abf-wheat) !important;
+        border: 1px solid rgba(54,87,140,0.28) !important;
+        border-radius: 14px !important;
+        padding: 18px 22px !important;
+        text-align: center !important;
+        box-sizing: border-box !important;
+    }
+    #abf-funnel .abf-cal-peak-title {
+        font-family: var(--abf-font-display) !important;
+        font-size: 1.05rem !important; font-weight: 700 !important;
+        color: var(--abf-navy) !important; display: block !important; margin-bottom: 6px !important;
+    }
+    #abf-funnel .abf-cal-peak-body {
+        font-size: 0.9rem !important; color: var(--abf-navy) !important;
+        display: block !important; line-height: 1.55 !important;
+    }
+
+    /* ── SAVE NOTE — the $3 online/gate proof, inside the GA card ─────────────
+       Sage-tinted (secondary/value), never terracotta. */
+    #abf-funnel .abf-savenote {
+        margin-top: 14px !important;
+        padding: 14px 16px !important;
+        border-radius: 12px !important;
+        background: rgba(92,127,113,0.08) !important;
+        border: 1px solid rgba(92,127,113,0.24) !important;
+    }
+    #abf-funnel .abf-savenote-title {
+        display: block !important; font-weight: 700 !important;
+        color: var(--abf-sage) !important; font-size: 0.95rem !important; margin-bottom: 4px !important;
+        font-family: var(--abf-font-display) !important;
+    }
+    #abf-funnel .abf-savenote-body {
+        display: block !important; color: var(--abf-ink-soft) !important;
+        font-size: 0.88rem !important; line-height: 1.55 !important;
+    }
+    #abf-funnel .abf-price-row-gate s {
+        opacity: 0.75 !important; text-decoration-thickness: 1px !important;
+    }
+
+    /* 3-up ticket grid — only needed if the Season Pass card is uncommented. */
+    #abf-funnel .abf-grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; max-width: 1180px !important; }
+
+    @media (max-width: 900px) {
+        #abf-funnel .abf-cal { padding: 44px 24px !important; }
+        #abf-funnel .abf-cal-grid { grid-template-columns: 1fr !important; max-width: 460px !important; }
+        #abf-funnel .abf-grid-3 { grid-template-columns: 1fr !important; max-width: 460px !important; }
+    }
+
+    /* ── REVEAL — scroll-in, ported verbatim from the house pattern (Finding 5) ── */
+    #abf-funnel .abfr {
+        opacity: 0 !important; transform: translateY(28px) !important;
+        transition: opacity 0.7s cubic-bezier(.16,1,.3,1), transform 0.7s cubic-bezier(.16,1,.3,1) !important;
+    }
+    #abf-funnel .abfr.abfon { opacity: 1 !important; transform: none !important; }
+    #abf-funnel .abfr.d1 { transition-delay: 0.1s !important; }
+    #abf-funnel .abfr.d2 { transition-delay: 0.2s !important; }
+    #abf-funnel .abfr.d3 { transition-delay: 0.3s !important; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+        #abf-funnel .abf-nav { padding: 0 24px !important; }
+        #abf-funnel .abf-benefits { padding: 32px 24px !important; }
+        #abf-funnel .abf-tickets { padding: 44px 24px !important; }
+        #abf-funnel .abf-grid { grid-template-columns: 1fr !important; max-width: 460px !important; margin-left: auto !important; margin-right: auto !important; }
+        #abf-funnel .abf-info-grid { grid-template-columns: 1fr 1fr !important; }
+        #abf-funnel .abf-info-item:nth-child(2n)::after { display: none !important; }
+        #abf-funnel .abf-hero-content { padding: 0 24px 40px !important; }
+        #abf-funnel .abf-gallery-header { padding: 0 24px !important; }
+        #abf-funnel .abf-gcard { width: 280px !important; height: 196px !important; }
+    }
+    @media (max-width: 560px) {
+        #abf-funnel .abf-nav { padding: 0 16px !important; height: 76px !important; }
+        #abf-funnel .abf-nav-loc { display: none !important; }
+        #abf-funnel .abf-hero-content { padding: 0 20px 32px !important; }
+        #abf-funnel .abf-benefits-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 14px 0 !important; }
+        #abf-funnel .abf-benefit:nth-child(2n)::after { display: none !important; }
+        #abf-funnel .abf-card { padding: 26px 22px !important; }
+        #abf-funnel .abf-gallery-header { padding: 0 16px !important; }
+        #abf-funnel .abf-gcard { width: 230px !important; height: 160px !important; }
+        #abf-funnel .abf-info-grid { grid-template-columns: 1fr !important; }
+        #abf-funnel .abf-info-item:not(:last-child)::after { display: none !important; }
+        #abf-funnel .abf-info-item:not(:last-child) { border-bottom: 1px solid rgba(255,255,255,0.15) !important; }
+    }
+
+    /* ── Defensive TS-chrome suppression ── */
+    .WCX-poweredBy, .WCX-footer-poweredBy, [class*="poweredBy"], [class*="powered-by"],
+    [class*="powered_by"], .ticketspice-logo, .tsr-poweredBy, .WCX-footer-flag,
+    .WCX-localeFlag, .country-flag, .locale-flag, [class*="localeFlag"],
+    img[src*="ticketspice"], img[src*="us-flag"], img[src*="us_flag"], img[src*="usa-flag"],
+    img[alt*="TicketSpice" i], img[alt*="United States" i] {
+        display: none !important; visibility: hidden !important; height: 0 !important; width: 0 !important;
+    }
+
+@media(max-width:600px){}
+
+    /* ── LOGO BADGE ── white rounded panel that hangs off the nav bar like a banner.
+       Ported from the Jerry Smith Farm pattern (jsf-logo-badge): square top corners,
+       deeply rounded bottom. Lets the solid-navy brand logo sit on the navy nav
+       without being filtered white. Slash syntax deepens the bottom vertical curve. */
+    #abf-funnel .abf-logo-wrap {
+        position: absolute !important;
+        left: 40px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        z-index: 110 !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+    #abf-funnel .abf-logo-badge {
+        background: #ffffff !important;
+        border-radius: 4px 4px 50% 50% / 4px 4px 60% 60% !important;
+        padding: 12px 24px 22px !important;
+        box-shadow: 0 8px 22px rgba(0,0,0,0.22) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        box-sizing: border-box !important;
+    }
+    #abf-funnel .abf-logo-badge img {
+        display: block !important;
+        height: 72px !important;
+        width: auto !important;
+    }
+    @media (max-width: 900px) { #abf-funnel .abf-logo-wrap { left: 24px !important; } }
+    @media (max-width: 600px) {
+        #abf-funnel .abf-logo-wrap { left: 16px !important; }
+        #abf-funnel .abf-logo-badge { padding: 9px 16px 16px !important; }
+        #abf-funnel .abf-logo-badge img { height: 52px !important; }
+    }
+
+    /* ── GOOD TO KNOW ── calm closing panel, ported from the Summers Farm `sb-fine`
+       pattern. Replaces the tan "warning" callout that used to sit above the ticket
+       cards: same information, stated as guidance rather than an alarm, and placed
+       after the offer instead of in front of it. */
+    #abf-funnel .abf-fine {
+        width: 100% !important;
+        background: var(--abf-blush) !important;
+        padding: 52px 24px 72px !important;
+        box-sizing: border-box !important;
+    }
+    #abf-funnel .abf-fine-inner {
+        max-width: 680px !important;
+        margin: 0 auto !important;
+        background: #ffffff !important;
+        border: 1px solid rgba(54,87,140,0.16) !important;
+        border-radius: 18px !important;
+        padding: 34px 38px !important;
+        box-shadow: 0 16px 40px rgba(54,87,140,0.14) !important;
+        text-align: center !important;
+    }
+    #abf-funnel .abf-fine-title {
+        font-family: 'Playfair Display', 'Times New Roman', serif !important;
+        font-size: 1.5rem !important; font-weight: 700 !important;
+        color: var(--abf-navy) !important; display: block !important;
+        margin-bottom: 16px !important;
+    }
+    #abf-funnel .abf-fine p {
+        font-size: 0.92rem !important; line-height: 1.7 !important;
+        color: #4a5b70 !important; margin: 0 0 14px !important; text-align: left !important;
+    }
+    #abf-funnel .abf-fine p:last-of-type { margin-bottom: 0 !important; }
+    #abf-funnel .abf-fine-contact {
+        text-align: center !important; font-size: 0.84rem !important;
+        color: #6b7c8f !important; margin: 20px 0 0 !important;
+        padding-top: 18px !important;
+        border-top: 1px solid rgba(54,87,140,0.14) !important;
+    }
+    @media (max-width: 600px) {
+        #abf-funnel .abf-fine { padding: 40px 18px 56px !important; }
+        #abf-funnel .abf-fine-inner { padding: 26px 22px !important; }
+    }
+</style>
+
+<div id="abf-funnel">
+
+    <!-- BANNER -->
+    <div class="abf-banner">
+        <div class="abf-banner-inner">
+            <span class="abf-banner-flash">🍂 6TH ANNUAL FALL FESTIVAL 🍂</span>
+            <span class="abf-dot"></span>
+            <span><strong>September 19 &ndash; November 22, 2026</strong></span>
+            <span class="abf-dot"></span>
+            <span>Save $3 When You Buy Online</span>
+        </div>
+    </div>
+
+    <!-- NAV -->
+    <div class="abf-nav">
+        <div class="abf-logo-wrap"><div class="abf-logo-badge"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/brand/abf-logo-primary-blue.png" alt="Amber Brooke Farms"></div></div>
+        <div class="abf-nav-right">
+            <div class="abf-nav-loc">
+                <svg width="12" height="12" fill="none" stroke="#ffffff" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                    <circle cx="12" cy="11" r="3"/>
+                </svg>
+                Eustis, FL
+            </div>
+            <a href="#ticketBlock" class="abf-nav-cta">Buy Tickets</a>
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <div class="abf-hero">
+        <div class="abf-hero-overlay"></div>
+        <div class="abf-hero-content">
+            <span class="abf-hero-eyebrow">6th Annual Fall Festival &middot; Eustis, Florida</span>
+            <span class="abf-hero-title">Fall on the Farm, <em>All Season Long</em></span>
+            <span class="abf-hero-tagline">Ten weekends of mazes, tractor rides, flower fields and farm animals &mdash; from the first Saturday of the season straight through to Thanksgiving week.</span>
+        </div>
+    </div>
+
+    <!-- BENEFITS — unheaded emoji tile strip (house pattern) -->
+    <div class="abf-benefits">
+        <div class="abf-benefits-grid">
+            <div class="abf-benefit">
+                <span class="abf-benefit-icon">💸</span>
+                <span class="abf-benefit-title">Save $3 Online</span>
+                <span class="abf-benefit-desc">Every day beats the gate price</span>
+            </div>
+            <div class="abf-benefit">
+                <span class="abf-benefit-icon">🍂</span>
+                <span class="abf-benefit-title">Ten Weeks of Fall</span>
+                <span class="abf-benefit-desc">Sept 19 &ndash; Nov 22, 2026</span>
+            </div>
+            <div class="abf-benefit">
+                <span class="abf-benefit-icon">🎢</span>
+                <span class="abf-benefit-title">All-Day Farm Fun</span>
+                <span class="abf-benefit-desc">One ticket, the whole farm</span>
+            </div>
+            <div class="abf-benefit">
+                <span class="abf-benefit-icon">👶</span>
+                <span class="abf-benefit-title">Ages 2 &amp; Under Free</span>
+                <span class="abf-benefit-desc">No ticket needed for little ones</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- GALLERY -->
+    <div class="abf-gallery">
+        <div class="abf-gallery-header abfr">
+            <span class="abf-eye">Around the Farm</span>
+            <span class="abf-section-title">A season of <em>fall fun</em></span>
+        </div>
+        <div class="abf-gallery-mask">
+            <div class="abf-gallery-track">
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/pumpkin-eater.jpg" alt="A giant pumpkin-eater photo prop at Amber Brooke Farms" loading="lazy"><div class="abf-gcard-label">Pumpkin Fun</div></div>
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/jumping-pillows-pads.jpg" alt="Kids on the jumping pillows at Amber Brooke Farms" loading="lazy"><div class="abf-gcard-label">Jumping Pillows</div></div>
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/slide-hill.jpg" alt="Kids on the giant slide hill at Amber Brooke Farms" loading="lazy"><div class="abf-gcard-label">Slide Hill</div></div>
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/spider-web.jpg" alt="Kids climbing the spider web at Amber Brooke Farms" loading="lazy"><div class="abf-gcard-label">Spider Web Climb</div></div>
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/gemstone-mining.jpg" alt="Kids gemstone mining at Amber Brooke Farms" loading="lazy"><div class="abf-gcard-label">Gemstone Mining</div></div>
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/duck-race.jpg" alt="The duck race attraction at Amber Brooke Farms" loading="lazy"><div class="abf-gcard-label">Duck Races</div></div>
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/cornhole.jpg" alt="Cornhole games at Amber Brooke Farms" loading="lazy"><div class="abf-gcard-label">Cornhole</div></div>
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/platform-playgrounds.jpg" alt="Platform playground at Amber Brooke Farms" loading="lazy"><div class="abf-gcard-label">Playgrounds</div></div>
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/tire-sand-pit-with-diggers-eustis.jpg" alt="Tire sand pit with diggers at Amber Brooke Farms Eustis" loading="lazy"><div class="abf-gcard-label">Tire Sand Pit</div></div>
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/stage.jpg" alt="Live entertainment stage at Amber Brooke Farms" loading="lazy"><div class="abf-gcard-label">Live Entertainment</div></div>
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/sunflowers.jpg" alt="Sunflower fields at Amber Brooke Farms" loading="lazy"><div class="abf-gcard-label">Sunflower Fields</div></div>
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/zinnias.jpg" alt="Zinnia fields at Amber Brooke Farms" loading="lazy"><div class="abf-gcard-label">Zinnia Fields</div></div>
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/Train-Ride-8-scaled.jpg" alt="Train ride at Amber Brooke Farms" loading="lazy"><div class="abf-gcard-label">Train Ride</div></div>
+                <!-- Duplicate set for seamless marquee loop -->
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/pumpkin-eater.jpg" alt="A giant pumpkin-eater photo prop at Amber Brooke Farms" loading="lazy"><div class="abf-gcard-label">Pumpkin Fun</div></div>
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/jumping-pillows-pads.jpg" alt="Kids on the jumping pillows at Amber Brooke Farms" loading="lazy"><div class="abf-gcard-label">Jumping Pillows</div></div>
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/slide-hill.jpg" alt="Kids on the giant slide hill at Amber Brooke Farms" loading="lazy"><div class="abf-gcard-label">Slide Hill</div></div>
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/spider-web.jpg" alt="Kids climbing the spider web at Amber Brooke Farms" loading="lazy"><div class="abf-gcard-label">Spider Web Climb</div></div>
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/gemstone-mining.jpg" alt="Kids gemstone mining at Amber Brooke Farms" loading="lazy"><div class="abf-gcard-label">Gemstone Mining</div></div>
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/duck-race.jpg" alt="The duck race attraction at Amber Brooke Farms" loading="lazy"><div class="abf-gcard-label">Duck Races</div></div>
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/cornhole.jpg" alt="Cornhole games at Amber Brooke Farms" loading="lazy"><div class="abf-gcard-label">Cornhole</div></div>
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/platform-playgrounds.jpg" alt="Platform playground at Amber Brooke Farms" loading="lazy"><div class="abf-gcard-label">Playgrounds</div></div>
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/tire-sand-pit-with-diggers-eustis.jpg" alt="Tire sand pit with diggers at Amber Brooke Farms Eustis" loading="lazy"><div class="abf-gcard-label">Tire Sand Pit</div></div>
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/stage.jpg" alt="Live entertainment stage at Amber Brooke Farms" loading="lazy"><div class="abf-gcard-label">Live Entertainment</div></div>
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/sunflowers.jpg" alt="Sunflower fields at Amber Brooke Farms" loading="lazy"><div class="abf-gcard-label">Sunflower Fields</div></div>
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/zinnias.jpg" alt="Zinnia fields at Amber Brooke Farms" loading="lazy"><div class="abf-gcard-label">Zinnia Fields</div></div>
+                <div class="abf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/amber-brooke-farms/design/assets/fall-festival/Train-Ride-8-scaled.jpg" alt="Train ride at Amber Brooke Farms" loading="lazy"><div class="abf-gcard-label">Train Ride</div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- WHEN WE'RE OPEN — season calendar strip (new for the in-season page; the flash
+         page never needed it because that ticket was date-agnostic) -->
+    <div class="abf-cal" id="calendar">
+        <div class="abf-cal-header abfr">
+            <span class="abf-eye">Plan Your Visit</span>
+            <span class="abf-section-title">When we&rsquo;re <em>open</em></span>
+        </div>
+        <div class="abf-cal-grid">
+            <div class="abf-cal-card abfr">
+                <span class="abf-cal-month">September</span>
+                <span class="abf-cal-range">Opens Sat, Sept 19</span>
+                <span class="abf-cal-days">Saturdays &amp; Sundays</span>
+                <span class="abf-cal-hours">10 AM &ndash; 6 PM</span>
+            </div>
+            <div class="abf-cal-card abfr d1">
+                <span class="abf-cal-month">October</span>
+                <span class="abf-cal-range">Our biggest month</span>
+                <span class="abf-cal-days">Fridays, Saturdays &amp; Sundays<br>plus Columbus Day, Mon Oct 12</span>
+                <span class="abf-cal-hours">Fri &amp; Mon &middot; 10 AM &ndash; 5 PM<br>Sat &amp; Sun &middot; 10 AM &ndash; 6 PM</span>
+            </div>
+            <div class="abf-cal-card abfr d2">
+                <span class="abf-cal-month">November</span>
+                <span class="abf-cal-range">Closes Sun, Nov 22</span>
+                <span class="abf-cal-days">Saturdays &amp; Sundays</span>
+                <span class="abf-cal-hours">10 AM &ndash; 6 PM</span>
+            </div>
+        </div>
+        <div class="abf-cal-peak abfr d3">
+            <span class="abf-cal-peak-title">🎃 Halloween Weekends &middot; October 24, 25, 31 &amp; November 1</span>
+            <span class="abf-cal-peak-body">Our four busiest days of the year. We open an hour early &mdash; <strong>9 AM &ndash; 6 PM</strong> &mdash; to give everyone more room to roam. These four dates are priced as peak days; see the ticket table below.</span>
+        </div>
+    </div>
+
+    <!-- TICKETS -->
+    <div class="abf-tickets" id="tickets">
+        <div class="abf-tickets-header abfr">
+            <span class="abf-eye">Admission</span>
+            <span class="abf-section-title">Buy online and <em>save $3</em></span>
+        </div>
+        <div class="abf-grid">
+            <div class="abf-card abf-card-primary abfr">
+              <span class="abf-card-badge abf-card-badge-sage">Buy Online &amp; Save</span>
+              <span class="abf-card-icon">🎟️</span>
+              <h3>General Admission</h3>
+              <ul class="abf-card-bullets">
+                <li>✓ Good for the date you choose at checkout</li>
+                <li>✓ Ages 3 and up &mdash; 2 &amp; under always free</li>
+                <li>✓ Every attraction on the farm included</li>
+              </ul>
+              <div class="abf-price-rows">
+                <div class="abf-price-row">
+                  <div>
+                    <span class="abf-price-row-name">Regular Days</span>
+                    <span class="abf-price-row-desc">Sept &amp; Nov weekends &middot; Oct Fri&ndash;Sun &amp; Columbus Day</span>
+                  </div>
+                  <div class="abf-price-row-vals">
+                    <span class="abf-price-row-online">$19.95</span>
+                    <span class="abf-price-row-gate"><s>$22.95</s> at the gate</span>
+                  </div>
+                </div>
+                <div class="abf-price-row">
+                  <div>
+                    <span class="abf-price-row-name">Halloween Weekends</span>
+                    <span class="abf-price-row-desc">Oct 24, 25, 31 &amp; Nov 1 &middot; extended 9 AM&ndash;6 PM</span>
+                  </div>
+                  <div class="abf-price-row-vals">
+                    <span class="abf-price-row-online">$21.95</span>
+                    <span class="abf-price-row-gate"><s>$24.95</s> at the gate</span>
+                  </div>
+                </div>
+              </div>
+              <span class="abf-card-note">*plus applicable taxes and fees</span>
+              <div class="abf-savenote">
+                <span class="abf-savenote-title">Every ticket is $3 less online</span>
+                <span class="abf-savenote-body">Buy before you come and you save <strong>$3 a person</strong>, every single day of the season &mdash; <strong>$12 for a family of four</strong>. Tickets are also faster at the gate when you already have them on your phone.</span>
+              </div>
+            </div>
+            <div class="abf-card abf-card-secondary abfr d2">
+              <span class="abf-card-badge abf-card-badge-navy">Included</span>
+              <span class="abf-card-icon">🍂</span>
+              <h3>What Your Admission Gets You</h3>
+              <ul class="abf-card-bullets">
+                <li>🌾 The SunnHemp maze</li>
+                <li>🚜 Tractor rides around the farm</li>
+                <li>🐐 Farm animals to meet</li>
+                <li>🛝 Playgrounds, jumping pillows &amp; slide hill</li>
+                <li>💎 Gemstone mining, duck races &amp; the tire sand pit</li>
+                <li>🌻 Flower fields &amp; fall photo ops</li>
+                <li>🎵 Live entertainment on the stage</li>
+              </ul>
+              <span class="abf-card-note">Ages 2 &amp; under are always free.</span>
+            </div>
+          </div>
+
+        <!-- ============================================================================
+             SEASON PASS CARD — BUILT, DELIBERATELY NOT PUBLISHED.
+             Amanda is rebuilding the season-pass structure from scratch (the old
+             multi-tier passes were "really complicated"). The prices below are the
+             new shape she described in the 7/28 strategy call, but they were NOT
+             published at that time and have NOT been confirmed since.
+             DO NOT UNCOMMENT until Amanda/Caleb confirm the pass structure is final.
+             Uncommenting is the only work required — the card is complete and the
+             .abf-grid switches to 3-up automatically at >900px via abf-grid-3.
+             ============================================================================
+            <div class="abf-card abf-card-secondary abfr d3">
+              <span class="abf-card-badge abf-card-badge-navy">Best Value</span>
+              <span class="abf-card-icon">🎫</span>
+              <h3>Season Pass</h3>
+              <ul class="abf-card-bullets">
+                <li>✓ Unlimited visits all season</li>
+                <li>✓ Free entry to every festival</li>
+                <li>✓ Free U-pick</li>
+                <li>✓ Farm Fun Pass included ($13 value)</li>
+                <li>✓ 10% off everything on the farm</li>
+                <li>✓ One free guest per year</li>
+              </ul>
+              <div class="abf-price-rows">
+                <div class="abf-price-row">
+                  <div><span class="abf-price-row-name">Child (3&ndash;13)</span></div>
+                  <div class="abf-price-row-vals"><span class="abf-price-row-online">$79.95</span></div>
+                </div>
+                <div class="abf-price-row">
+                  <div><span class="abf-price-row-name">Adult</span></div>
+                  <div class="abf-price-row-vals"><span class="abf-price-row-online">$69.95</span></div>
+                </div>
+                <div class="abf-price-row">
+                  <div><span class="abf-price-row-name">Family 4-Pack</span><span class="abf-price-row-desc">Additional child $39.95</span></div>
+                  <div class="abf-price-row-vals"><span class="abf-price-row-online">$199.95</span></div>
+                </div>
+              </div>
+              <span class="abf-card-note">Ages 2 &amp; under are always free.</span>
+            </div>
+        -->
+    </div>
+
+    <!-- INFO ROW -->
+    <div class="abf-info">
+        <div class="abf-info-grid">
+            <div class="abf-info-item">
+                <span class="abf-info-icon">📍</span>
+                <span class="abf-info-label">Location</span>
+                <span class="abf-info-value">Amber Brooke Farms &mdash; Eustis<br>36111 County Rd 44A, Eustis, FL 32736</span>
+            </div>
+            <div class="abf-info-item">
+                <span class="abf-info-icon">📅</span>
+                <span class="abf-info-label">Festival Dates</span>
+                <span class="abf-info-value">Sept 19 &ndash; Nov 22, 2026<br>6th Annual Fall Festival</span>
+            </div>
+            <div class="abf-info-item">
+                <span class="abf-info-icon">🕘</span>
+                <span class="abf-info-label">Festival Hours</span>
+                <span class="abf-info-value">Fri &amp; Mon Oct 12 &middot; 10 AM&ndash;5 PM<br>Sat &amp; Sun &middot; 10 AM&ndash;6 PM</span>
+            </div>
+            <div class="abf-info-item">
+                <span class="abf-info-icon">💸</span>
+                <span class="abf-info-label">Online Savings</span>
+                <span class="abf-info-value">$3 off every ticket<br>vs. the gate price</span>
+            </div>
+        </div>
+    </div>
+
+</div><!-- end #abf-funnel -->
+
+<script>
+    (function() {
+        document.querySelectorAll('#abf-funnel a[href^="#"]').forEach(function(a) {
+            a.addEventListener('click', function(e) {
+                var target = document.querySelector(a.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    })();
+</script>
+
+<!-- Scroll-reveal — ported verbatim from the house pattern (Finding 5, WS7) -->
+<script>
+    (function() {
+        var obs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) {
+                if (e.isIntersecting) { e.target.classList.add('abfon'); obs.unobserve(e.target); }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('#abf-funnel .abfr').forEach(function(el) {
+            obs.observe(el);
+            if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('abfon');
+        });
+    })();
+</script>
+
+<!-- ============================================================
+     AMBER BROOKE FARMS — FLOATING BUY TICKETS BUTTON
+     Paste as a SEPARATE Custom HTML block in TicketSpice (not nested
+     inside the page-header HTML above). Fixed to viewport bottom.
+     ============================================================ -->
+<style>
+    #abf-float-btn {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 500 !important;  /* stay BELOW the TicketSpice Attendee
+                                    Support chat widget — their product
+                                    surface outranks our CTA */
+        padding: 12px 16px 20px !important;
+        background: linear-gradient(to top, rgba(247,245,231,0.97) 55%, transparent) !important;
+        display: flex !important;
+        justify-content: center !important;
+        transition: opacity 0.35s ease, transform 0.35s ease !important;
+        /* let the TicketSpice Attendee Support chat widget (and anything
+           else beneath) receive clicks through the transparent band */
+        pointer-events: none !important;
+    }
+    #abf-float-btn.abf-float-hidden {
+        opacity: 0 !important;
+        transform: translateY(24px) !important;
+        pointer-events: none !important;
+    }
+    #abf-float-btn.abf-float-hidden a { pointer-events: none !important; }
+    #abf-float-btn a {
+        display: block !important;
+        width: 100% !important;
+        max-width: 480px !important;
+        background: #c66a2b !important;
+        color: #ffffff !important;
+        font-family: 'Playfair Display', 'Times New Roman', serif !important;
+        font-size: 22px !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.03em !important;
+        text-align: center !important;
+        text-decoration: none !important;
+        padding: 18px 28px !important;
+        border-radius: 50px !important;
+        box-shadow: 0 8px 32px rgba(198,106,43,0.40) !important;
+        transition: transform 0.15s, box-shadow 0.15s, background 0.2s !important;
+        border: none !important;
+        cursor: pointer !important;
+        pointer-events: auto !important;
+    }
+    #abf-float-btn a:hover {
+        background: #ad5a22 !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 14px 40px rgba(198,106,43,0.55) !important;
+        color: #ffffff !important;
+        text-decoration: none !important;
+    }
+</style>
+
+<div id="abf-float-btn">
+    <a href="#ticketBlock">Buy Tickets</a>
+</div>
+
+<script>
+    (function() {
+        var floatBtn = document.getElementById('abf-float-btn');
+        if (floatBtn) {
+            floatBtn.querySelector('a').addEventListener('click', function() {
+                floatBtn.classList.add('abf-float-hidden');
+            });
+        }
+    })();
+</script>
+<!-- ============================================================================
+     CrowdView client pop-up block  ·  v7  ·  2026-08-27
+
+     v7 — reads `d.popup`, calls /api/live-popup. The 2026-08-19 rename
+     changed the API response envelope, but the 86 blocks installed before
+     this version were never re-synced: they read the old key, got undefined,
+     and rendered nothing for eight days across ten accounts. Nothing
+     surfaced it, because this block fails silent by design. `popup` is the
+     only name for this feature, in the schema, the API and the UI — if you
+     are adding a compatibility shim for an older one, don't.
+     Project: crowdview-client-popups-table / page-inventory (self-identifying)
+
+     WHAT IT DOES
+     Renders a pop-up on this TicketSpice page whenever the client has one
+     scheduled in CrowdView right now. The client publishes it themselves at
+     https://crowd7-team-hub.vercel.app/client/popups (five fields:
+     page, start, end, title, message) — Crowd7 does nothing per pop-up.
+
+     WHY IT EXISTS
+     Eckert's check-in 2026-08-12. Amanda Morgan: "there's so many things that
+     I cannot change myself and I am not used to relying on somebody... I am a
+     doer." Her cases are same-day and operational — a 107-degree Saturday
+     means closing at 2 PM — and she works Central while Crowd7 is Pacific, so
+     "ask Crowd7 and wait" is structurally too slow. Page content lives in
+     crowd7-public and ships by git push, which is exactly what puts it out of
+     her reach. This block is the narrow carve-out.
+
+     INSTALL — paste at the END of the page's content HTML. THAT IS ALL.
+     There are NO tokens to fill in as of v3.
+
+     The block identifies itself: it sends its own address
+     (location.origin + location.pathname) and CrowdView matches that against
+     page.ts_url, which scripts/sync_ts_pages.mjs fills from the TicketSpice
+     form's own publishedPath. Nobody types a slug, so nobody can mistype one.
+
+     v1/v2 required two hand-filled tokens (C7A_ACCOUNT / C7A_PAGE) and a
+     wrong value failed SILENTLY — no banner, no error, nothing to debug.
+     That whole failure class is gone. Blocks already pasted with v1/v2 tokens
+     keep working: the endpoint still accepts ?account=&page= (see
+     edge/api-live-popup.js) and there is no rush to re-paste them.
+
+     PREVIEW LINKS SHOW POP-UPS — deliberately (Mat, 2026-08-17). v5 is what
+     actually makes that work: the block also sends the form's NAME and HOST,
+     because a preview URL carries no reference to its published path (not
+     even in __BOOTSTRAP__.formURL, which is the preview URL as well).
+     v3 briefly suppressed rendering on TicketSpice preview URLs. That was a
+     mistake and is reverted: a pop-up is live or not according to its
+     SCHEDULE WINDOW, never according to which URL you view it from, so the
+     guard protected nothing while removing the only way to check your own
+     work before an event. Previewing a page now shows exactly what a buyer
+     sees.
+
+     SAFE BY CONSTRUCTION
+     · Read-only GET to a public endpoint. No credentials sent or accepted.
+     · Every field is injected via textContent, never innerHTML — a client
+       cannot inject markup or script into their own live cart page.
+     · Fails silent. Network error, bad JSON, missing element → no pop-up, no
+       console noise for a buyer, page otherwise untouched.
+     · Shows once per browser session PER POP-UP. The dedupe key is a
+       hash of the content, so a NEW or EDITED pop-up re-shows to
+       someone who already dismissed the previous one — which is the whole
+       point when the message is "we're closing early after all."
+     · Kill switch: set window.C7A_ENABLED = false before this block.
+============================================================================ -->
+<style>
+/* OPTIONAL per-page theme — fill from the page's own palette, or delete this
+   block entirely for the default neutral card. See THEME note above. */
+:root {
+  --c7a-card-bg: #f7f5e7;
+  --c7a-ink: #1b2c4a;
+  --c7a-ink-dim: #505050;
+  --c7a-btn-bg: #c66a2b;
+  --c7a-btn-ink: #ffffff;
+  --c7a-scrim: rgba(27,44,74,.55);
+  --c7a-radius: 16px;
+  --c7a-font: 'Playfair Display','Times New Roman',serif;
+}
+</style>
+<div id="c7a-root" hidden></div>
+<script>
+(function () {
+  'use strict';
+  if (window.C7A_ENABLED === false) return;
+  if (window.__c7aInit) return;          // never double-init if pasted twice
+  window.__c7aInit = true;
+
+  var ENDPOINT = 'https://crowd7-team-hub.vercel.app/api/live-popup';
+
+
+  // ── Self-identification ────────────────────────────────────────────────
+  // Primary key is `location` (guaranteed by the browser). Query string and
+  // hash are dropped — ticketing links are covered in UTM tags, and the
+  // server normalizes the same way.
+  var PAGE_URL = location.origin + location.pathname;
+
+  // PREVIEW LINKS need a second key. On /preview/<hash> the path is the hash,
+  // and __BOOTSTRAP__.formURL is the preview URL TOO — nothing on the page
+  // carries its published path, so URL matching cannot work there. formName
+  // is stable across published and preview renders and is the exact string
+  // CrowdView stores as page.name (same TicketSpice API field), so it is the
+  // fallback. Host scopes it so two clients' similarly-named forms can't
+  // collide. Read defensively: __BOOTSTRAP__ is internal Webconnex structure.
+  // LEGACY FALLBACK. Some pages can be matched by neither URL nor name:
+  // Montpelier's forms, for instance, are 'open' but were never PUBLISHED, so
+  // TicketSpice returns no publishedPath and CrowdView has no ts_url to match
+  // against. Those pages still have working account/page slugs, so the sync
+  // script PRESERVES these two values (like it preserves the theme) and the
+  // block sends them as a last resort. Empty on a page that doesn't need them.
+  var C7A_ACCOUNT = 'amber-brooke-farms';
+  var C7A_PAGE    = 'eustis-fall-festival-2026';
+
+  var FORM_NAME = '', TS_HOST = '';
+  try {
+    var b = window.__BOOTSTRAP__;
+    var s = b && b.appSettings;
+    if (typeof s === 'string') s = JSON.parse(s);
+    if (s) { FORM_NAME = s.formName || ''; TS_HOST = s.host || ''; }
+  } catch (e) { /* fall back to URL-only matching */ }
+
+  // Small, stable string hash (djb2) — only used as a sessionStorage dedupe
+  // key, never for anything security-relevant.
+  function hash(s) {
+    var h = 5381, i = s.length;
+    while (i) h = (h * 33) ^ s.charCodeAt(--i);
+    return (h >>> 0).toString(36);
+  }
+
+  function seen(key) {
+    try { return sessionStorage.getItem('c7a_' + key) === '1'; } catch (e) { return false; }
+  }
+  function markSeen(key) {
+    try { sessionStorage.setItem('c7a_' + key, '1'); } catch (e) { /* private mode */ }
+  }
+
+  function render(a) {
+    var key = hash(a.title + ' ' + a.message);
+    if (seen(key)) return;
+
+    var style = document.createElement('style');
+    style.textContent = [
+      '#c7a-ov{position:fixed;inset:0;z-index:2147483000;display:flex;align-items:center;',
+      'justify-content:center;padding:20px;background:var(--c7a-scrim,rgba(12,14,17,.55));',
+      '-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);',
+      'opacity:0;transition:opacity .18s ease;}',
+      '#c7a-ov.c7a-in{opacity:1;}',
+      '#c7a-card{position:relative;background:var(--c7a-card-bg,#fff);color:var(--c7a-ink,#1a1d21);',
+      'border-radius:var(--c7a-radius,12px);',
+      'padding:24px 26px 20px;max-width:400px;width:100%;text-align:center;',
+      'box-shadow:0 14px 44px rgba(0,0,0,.3);',
+      'font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;',
+      'transform:translateY(8px) scale(.98);transition:transform .18s ease;}',
+      '#c7a-ov.c7a-in #c7a-card{transform:none;}',
+      '#c7a-x{position:absolute;top:6px;right:10px;background:none;border:0;font-size:22px;',
+      'line-height:1;color:var(--c7a-ink-dim,#9aa0a6);cursor:pointer;padding:4px 6px;}',
+      '#c7a-x:hover{color:var(--c7a-ink,#5f666e);}',
+      '#c7a-t{font-size:27px;font-weight:650;letter-spacing:-.01em;margin:0 0 9px;',
+      'overflow-wrap:anywhere;font-family:var(--c7a-font,inherit);}',
+      '#c7a-m{font-size:14.5px;line-height:1.55;color:var(--c7a-ink-dim,#3c4147);margin:0 0 18px;',
+      'white-space:pre-wrap;overflow-wrap:anywhere;}',
+      '#c7a-ok{background:var(--c7a-btn-bg,#1a1d21);color:var(--c7a-btn-ink,#fff);border:0;',
+      'border-radius:8px;padding:10px 24px;',
+      'font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;}',
+      '#c7a-ok:hover{filter:brightness(1.15);}',
+      '@media (prefers-reduced-motion:reduce){#c7a-ov,#c7a-card{transition:none;}}'
+    ].join('');
+
+    var ov = document.createElement('div');
+    ov.id = 'c7a-ov';
+    ov.setAttribute('role', 'dialog');
+    ov.setAttribute('aria-modal', 'true');
+    ov.setAttribute('aria-labelledby', 'c7a-t');
+
+    var card = document.createElement('div');
+    card.id = 'c7a-card';
+
+    var x = document.createElement('button');
+    x.id = 'c7a-x'; x.type = 'button';
+    x.setAttribute('aria-label', 'Close');
+    x.textContent = '×';
+
+    var h = document.createElement('h2');
+    h.id = 'c7a-t';
+    h.textContent = a.title;               // textContent, never innerHTML
+
+    var p = document.createElement('p');
+    p.id = 'c7a-m';
+    p.textContent = a.message;             // textContent, never innerHTML
+
+    var ok = document.createElement('button');
+    ok.id = 'c7a-ok'; ok.type = 'button';
+    ok.textContent = 'Got it';
+
+    card.appendChild(x); card.appendChild(h); card.appendChild(p); card.appendChild(ok);
+    ov.appendChild(card);
+    document.head.appendChild(style);
+    document.body.appendChild(ov);
+    requestAnimationFrame(function () { ov.classList.add('c7a-in'); });
+
+    function close() {
+      markSeen(key);
+      ov.classList.remove('c7a-in');
+      setTimeout(function () { if (ov.parentNode) ov.parentNode.removeChild(ov); }, 200);
+      document.removeEventListener('keydown', onKey);
+    }
+    function onKey(e) { if (e.key === 'Escape' || e.key === 'Esc') close(); }
+
+    x.addEventListener('click', close);
+    ok.addEventListener('click', close);
+    ov.addEventListener('click', function (e) { if (e.target === ov) close(); });
+    document.addEventListener('keydown', onKey);
+    ok.focus();
+  }
+
+  function go() {
+    var url = ENDPOINT + '?url=' + encodeURIComponent(PAGE_URL);
+    if (FORM_NAME) url += '&name=' + encodeURIComponent(FORM_NAME);
+    if (TS_HOST)   url += '&host=' + encodeURIComponent(TS_HOST);
+    if (C7A_ACCOUNT && C7A_PAGE) {
+      url += '&account=' + encodeURIComponent(C7A_ACCOUNT)
+           + '&page='    + encodeURIComponent(C7A_PAGE);
+    }
+    // No credentials — the endpoint is public and must stay that way for the
+    // CORS wildcard to be valid.
+    fetch(url, { credentials: 'omit', mode: 'cors' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (d) {
+        if (d && d.popup && d.popup.title && d.popup.message) {
+          render(d.popup);
+        }
+      })
+      .catch(function () { /* fail silent — see SAFE BY CONSTRUCTION */ });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', go);
+  } else {
+    go();
+  }
+})();
+</script>
+<!-- =================== END CrowdView pop-up block =================== -->
+
+</body>
+</html>
