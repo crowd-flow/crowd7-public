@@ -4,12 +4,18 @@ Colony Acres · Early Bird 2026 · Maze offer board — 5 copy iterations
 
 Mat picked Concept B board 05 ("One Hundred Falls") and asked for the layout
 held exactly — big type up top, the middle of the frame left open so the maze
-reads, one line and a pill at the foot — with the copy rewritten from a brand
+reads, one line and a call to action at the foot — with the copy rewritten from a brand
 beat into an OFFER, in Early Bird language that pushes the sale.
 
 So these five differ in copy only. Same photograph, same crop, same veil, same
 type sizes, same centred stack. That makes them a clean copy test: whatever wins
 is the message winning, not the picture.
+
+Mat's later edits, applied here: the CTA is set as a smaller sibling of the
+headline rather than a pill, and the top and bottom blocks are pushed further
+apart so more of the maze shows through. Those are template-level, so they land
+on all five — a copy test stops being a copy test the moment one board's layout
+drifts from the rest.
 
 The five angles, all drawn from the strategy call's Early Bird logic — the sale
 sits between the flash sale closing and the gates opening, and it is explicitly
@@ -73,13 +79,14 @@ html, body { width: 1080px; height: 1080px; overflow: hidden; }
 }
 .say.light { color: rgba(251,246,236,0.92); }
 
-.pill {
-  position: absolute; background: #1B5333; color: #FBF6EC;
-  padding: 20px 44px; border-radius: 999px;
-  font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 26px;
-  letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap;
+/* The call to action is set as a smaller sibling of the headline rather than a
+   button — same face, same treatment, peach so it echoes the second title line. */
+.cta {
+  position: absolute; left: 0; right: 0; text-align: center;
+  font-family: 'Zilla Slab', Georgia, serif; font-weight: 700;
+  text-transform: uppercase; letter-spacing: -0.012em; line-height: 0.9;
+  font-size: 62px; color: #F6B98E;
 }
-.pill.cream  { background: #FBF6EC; color: #1B5333; }
 """
 
 VEIL = ("linear-gradient(180deg,rgba(20,45,26,0.72) 0%,rgba(20,45,26,0.12) 40%,"
@@ -90,8 +97,8 @@ VEIL = ("linear-gradient(180deg,rgba(20,45,26,0.72) 0%,rgba(20,45,26,0.12) 40%,"
 # never need a size change — the whole point is that the layout stays put.
 ITERATIONS = [
     ("01-save-before-we-open", "Early Bird · Sept 4 – 18",
-     "Save before", "we open",
-     "Admission $12.95 through Sept 18 — $15.80 at the gate."),
+     "Save big before", "we open",
+     "Don’t miss Early Bird pricing — Admission $12.95 through Sept 18."),
 
     ("02-last-call", "Early Bird ends Sept 18",
      "Last call", "before the gate",
@@ -118,15 +125,15 @@ for slug, eyebrow, line_a, line_b, say in ITERATIONS:
 <div class="ad">
   <div class="full"><img src="{IMG}/colony-100-years-maze.jpg" style="object-position:50% 46%" alt=""></div>
   <div class="veil" style="background:{VEIL}"></div>
-  <div class="eyebrow light" style="position:absolute;left:0;right:0;top:88px;text-align:center">{eyebrow}</div>
-  <div class="lock" style="left:0;right:0;top:132px;text-align:center">
+  <div class="eyebrow light" style="position:absolute;left:0;right:0;top:68px;text-align:center">{eyebrow}</div>
+  <div class="lock" style="left:0;right:0;top:112px;text-align:center">
     <span class="a" style="font-size:96px;color:#FBF6EC">{line_a}</span>
     <span class="b" style="font-size:96px;color:#F6B98E">{line_b}</span>
   </div>
-  <div class="say light" style="position:absolute;left:0;right:0;bottom:210px;text-align:center;font-size:29px">
+  <div class="say light" style="position:absolute;left:0;right:0;bottom:180px;text-align:center;font-size:29px">
     {say}
   </div>
-  <div class="pill cream" style="left:50%;transform:translateX(-50%);bottom:106px">Get Tickets</div>
+  <div class="cta" style="bottom:76px">Get Tickets</div>
 </div></body></html>""")
 
 print(f"built {len(ITERATIONS)} iterations → {OUT}")

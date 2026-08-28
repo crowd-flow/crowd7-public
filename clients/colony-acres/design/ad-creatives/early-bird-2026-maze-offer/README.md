@@ -15,11 +15,27 @@ So these five differ in **copy only**. Same photograph, same crop, same veil, sa
 sizes, same centred stack, same CTA. That makes it a clean copy test: whatever wins is the
 message winning, not the picture.
 
+## Mat's edits (2026-08-28)
+
+Applied after review of board 01:
+
+- Board 01's foot line lost "— $15.80 at the gate" and gained a
+  "Don't miss Early Bird pricing —" opener.
+- Board 01's headline became **Save Big Before / We Open**.
+- **The CTA is no longer a pill.** It is set as a smaller sibling of the headline —
+  same face, same treatment, peach so it echoes the second title line.
+- The top block moved up and the bottom block moved down, opening the middle of the
+  frame so more of the maze reads.
+
+The last two are template-level and therefore land on **all five**. A copy test stops
+being a copy test the moment one board's layout drifts from the rest — so the layout
+edits propagate even though only board 01's words changed.
+
 ## The five angles
 
 | # | File | Headline | Angle |
 |---|---|---|---|
-| 01 | `01-save-before-we-open` | Save before / we open | The plain saving against the gate |
+| 01 | `01-save-before-we-open` | Save big before / we open | The plain saving, with the deadline named |
 | 02 | `02-last-call` | Last call / before the gate | Last discount before opening day |
 | 03 | `03-bundle-is-back` | The bundle / is back | The Launch Day inclusions, reopened |
 | 04 | `04-one-pass-all-fall` | One pass, / all fall | The season-pass sustain play |
