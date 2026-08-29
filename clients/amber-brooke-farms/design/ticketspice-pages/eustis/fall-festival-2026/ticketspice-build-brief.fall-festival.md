@@ -84,9 +84,13 @@ Paste the v8 loader snippet (`code-snippets/ts-hybrid-loader-runbook.md` § "The
 - `u4` → `'ticketspice-pages/eustis/fall-festival-2026/'`
 - `f`  → `'amber-brooke.fall-festival-content'`
 
-Then paste the floating "Buy Tickets" button block (bottom of the content HTML) as a **separate** Custom HTML block on the same page.
+**Do NOT paste the floating "Buy Tickets" button separately.** It lives inside the content HTML and is injected by the loader — verified in a browser harness (`position: fixed`, renders correctly). The flash-sale brief's instruction to paste it as a second block is a leftover from an earlier architecture; following it here would produce two floating buttons.
 
 The CrowdView pop-up block is already retargeted (`C7A_PAGE = 'eustis-fall-festival-2026'`) — no edit needed.
+
+**Loader snippet (instantiated, ready to paste):** `crowd7/data/clients/amber-brooke-farms/design/ticketspice-loaders/eustis.fall-festival-2026.ts-loader-snippet.v8.html` — private repo, per the loader-is-IP rule. Pre-paste assertion `grep -c '\.html\|innerHTML\|fetch'` returns **0**.
+
+**End-to-end verified 2026-08-28** in a local browser harness that simulates the TS Raw HTML block: loader fetched from Cloudflare Pages (`[c7-loader] loaded from Cloudflare Pages, folder=production/`), injected cleanly, exactly one `#c7-hybrid-content`, no scanner `appendChild` SyntaxError, all four injected scripts re-executed (confirmed by the CrowdView pop-up API call firing with the right `account`/`page` params), scroll-reveal fires on real scroll, floating buy-bar renders fixed. Content asserted live: Value $19.95 / Peak $21.95, the nine peak dates, three calendar cards, four add-ons, four FAQ items.
 
 **Verify the RIGHT surface:** `assets.crowd7digital.us/clients/amber-brooke-farms/design/ticketspice-pages/eustis/fall-festival-2026/preview/amber-brooke.fall-festival-content.html` **and** the live TS page render. Checking the local file or `raw.githubusercontent.com` verifies the source, not the page.
 
