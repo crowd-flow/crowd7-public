@@ -1,11 +1,39 @@
 # 🍂 TicketSpice Build Brief — Amber Brooke Farms (Eustis) · 6th Annual Fall Festival 2026 (In Season)
 
 **Page:** the **main in-season ticketing page** — the counterpart to the Any-Day Flash Sale page that ran Jul 31 – Aug 4.
-**Built by:** Crowdly · 2026-08-28
+**Built by:** Crowdly · 2026-08-28 · **revised 2026-08-28 against the LIVE cart**
 **Design donor:** the client's **own** flash-sale page (`../anyday-flash-2026/`) — same `#abf-funnel` brand system, same loader v8 posture, same house patterns (benefits tile strip, gallery marquee, enriched info row, scroll-reveal, floating buy-bar, CrowdView pop-up block v7).
-**Content source:** `work/crowd7/projects/amber-brooke-campaign-brief/artifacts/source-sweep.md` + `.../brand-palette.md` + **CrowdView Postgres** (`accounts` id 22 · `event` id 4 Fall Festival · `event_phase` · `price_book` 9).
+**Content source:** the **live TicketSpice page's own `window.__BOOTSTRAP__` form definition** (saved export, 2026-08-28), which supersedes our internal record wherever the two disagree — and they disagree in five material ways, listed below. Secondary: `work/crowd7/projects/amber-brooke-campaign-brief/artifacts/source-sweep.md`, `.../brand-palette.md`, CrowdView Postgres (`accounts` 22 · `event` 4 · `price_book` 9).
+
+**Live page:** `https://amberbrookefarms.ticketspice.com/2026-eus-fall-festival` — no Crowd7 loader on it today; it runs a hand-coded `header.rawHtml2` block (~5.2 KB).
 
 Everything on this page is sourced. Nothing is invented. Gaps are called out as gaps.
+
+## 🚨 What the live cart corrected — read this before touching pricing copy
+
+The saved page was parsed field by field. Five things our internal record had wrong:
+
+**1. Peak pricing covers NINE dates, not four.** The GA level carries `priceModifiers: [{modifier: "2", when: trigger 3a50f504}]`, and that trigger fires on **Oct 10, 11, 12, 17, 18, 24, 25, 31 and Nov 1**. So $19.95 → **$21.95** online and $22.95 → **$24.95** at the gate on all nine. Our source sweep, the CrowdView `price_book`, and this page's own first draft all had peak as the four Halloween dates only — which **understated the price on Oct 10, 11, 12, 17 and 18**. A guest reading "regular $19.95" and picking Oct 17 would have been charged $21.95 at checkout. **Fixed; the page now follows the cart.**
+
+**2. Peak pricing and extended hours are DIFFERENT date sets.** A separate trigger (`de1d231c`) fires on only **Oct 24, 25, 31, Nov 1** and opens the extra 9 AM / 11 AM / 1 PM / 3 PM arrival windows. Nine dates cost more; four dates open early. Our record conflated them into one "peak" concept. The page now states them separately.
+
+**3. Gemstone mining is a PAID ADD-ON, not included.** The cart carries a `merchandise` block — Gemstone Mining pay-dirt bags ($8 / $12 / $15 / $25 / $50), Paint Ball Range ($10 / $25 / $45), Flower Mason Jar, Pumpkin Eater. The first draft of this page listed gemstone mining under "what your admission gets you," which would have manufactured gate arguments. **Removed from "included"; add-ons now have their own section, deliberately styled as paid extras (dashed border) so nothing reads as included when it isn't.** "What's included" now uses the client's own published list.
+
+**4. Timed entry exists and was missing from our record entirely.** Guests choose an arrival window; regular days offer 10 AM / 12 PM / 2 PM, peak days add 9 / 11 / 1 / 3. Arrive within 2 hours of your slot, no more than 10 minutes early, last entry 45 minutes before close. **Now on the page.**
+
+**5. "2 and Under" is a real free ticket type**, not "no ticket needed" — guests add a $0 ticket at checkout. Copy corrected.
+
+**Bonus — the capacity mystery is solved.** The garbled *"68 per two-hour window"* is moot: the cart carries real numbers. Base **2,000 per arrival window**, with per-window limits (9 AM 1,900 · 11 AM 1,500 · 12 PM 1,500 · 1 PM 1,900 · 3 PM 1,500) and ~5,500 remaining per day. Still not published — capacity is an ops number, not a marketing one — but we no longer have an unknown here.
+
+## ⚠️ TWO LIVE CONFIG PROBLEMS FOUND IN THEIR CART — worth raising with Amanda
+
+**A. The date-picker sells 33 days; their own date guide lists 26.** The cart's `dateRange` is `dow` Fri/Sat/Sun/**Mon** across Sept 19 – Nov 22, with only five Mondays excluded (Sep 21, Sep 28, Oct 5, Oct 19, Oct 26). That leaves **seven bookable dates the client's own on-page "Value Dates" list does not mention**: **Sept 25 (Fri), Nov 2 (Mon), Nov 6 (Fri), Nov 9 (Mon), Nov 13 (Fri), Nov 16 (Mon), Nov 20 (Fri)**.
+
+**The November Mondays (Nov 2, 9, 16) look like a straight config oversight** — every September and October Monday was explicitly excluded and the November ones were not. If the farm is closed those days, guests can buy tickets for them right now.
+
+**This page deliberately publishes the client's list (26 dates), not the cart's (33).** Rationale: listing fewer dates than the cart sells is today's status quo and costs nothing; listing dates the farm may be closed on would strand real guests. **This needs Amanda's answer before the page goes live** — either the cart gets the missing exclusions, or the page gets the extra dates.
+
+**B. A `10OFF` tracking-code discount is live** (trigger `7c50be64`). Not referenced on the page. Confirm it's intentional and still wanted.
 
 ## 🔀 The one big difference from the flash page: this page CAN lead on price
 
@@ -19,13 +47,14 @@ The flash page deliberately did **not** lead on price. Any-Day GA was $19.95 —
 
 | Tier | Dates | Online | Gate |
 |---|---|---|---|
-| **Regular Days** | Sept 19 – Nov 22, excluding the four below | **$19.95** | $22.95 |
-| **Halloween Weekends** | **Oct 24, 25, 31 & Nov 1** | **$21.95** | $24.95 |
+| **Value Dates** | Sept 19, 20, 26, 27 · Oct 2, 3, 4, 9, 16, 23, 30 · Nov 7, 8, 14, 15, 21, 22 | **$19.95** | $22.95 |
+| **Peak Dates** | **Oct 10, 11, 12, 17, 18, 24, 25, 31 & Nov 1** (nine dates) | **$21.95** | $24.95 |
+| **2 and Under** | any date | **$0.00** | — |
 
-- **Operating days:** September Sat + Sun · October Fri/Sat/Sun **plus Columbus Day (Mon Oct 12)** · November Sat + Sun. The date-picker must offer only these days.
-- **Hours:** Fri & Columbus Day 10 AM–5 PM · Sat & Sun 10 AM–6 PM · **the four Halloween Weekend days 9 AM–6 PM** (open an hour early for capacity).
-- **Ages 2 & under free** — no ticket needed.
-- **Cart requirement:** the four peak dates must resolve to $21.95, every other valid date to $19.95, automatically on date selection. Do not model these as two separate purchasable ticket types the guest picks between — that invites the wrong-date-wrong-price mismatch at the gate.
+- **Hours:** weekdays 10 AM–5 PM · weekends 10 AM–6 PM · **Oct 24, 25, 31 & Nov 1 → 9 AM–6 PM**.
+- **Timed entry:** regular days 10 AM / 12 PM / 2 PM; the four extended days add 9 / 11 / 1 / 3. Arrive within 2 hours of your slot, ≤10 min early, last entry 45 min before close.
+- **All of the above is ALREADY CONFIGURED and live.** The `+$2` peak modifier, the date-picker, the arrival windows and the free 2-and-under level are all in the cart today. **No cart work is required for this page** — that's the difference from the flash-sale build, where the cart had to be built from scratch. The only outstanding cart question is item **A** above (the seven unlisted bookable dates).
+- **Paid add-ons in the cart:** Gemstone Mining ($8/$12/$15/$25/$50) · Paint Ball Range ($10/$25/$45) · Flower Mason Jar · Pumpkin Eater. Shown on the page as add-ons, never as included.
 
 ## ⚠️ CONFIRM-BEFORE-PUBLISH
 
@@ -74,12 +103,12 @@ Both are mirrored into `production/` — promote by overwriting `production/` fr
 - [ ] Season Pass decision — publish (uncomment + add `abf-grid-3`) or leave out
 - [ ] Confirm Eustis-only, or scope a Williston page
 - [ ] Confirm the on-sale date vs. the 9/14 In Season phase in CrowdView
-- [ ] Configure the GA ticket to price by selected date: $19.95 regular / $21.95 on Oct 24, 25, 31 & Nov 1
-- [ ] Restrict the date-picker to actual operating days (Sept Sat/Sun · Oct Fri–Sun + Mon Oct 12 · Nov Sat/Sun)
-- [ ] Confirm the extended 9 AM–6 PM hours print on Halloween-Weekend tickets + confirmation emails
+- [x] ~~Configure peak pricing / date-picker / arrival windows~~ — **already live in the cart**, verified field by field
+- [ ] **Resolve item A** — the seven bookable dates the client's date guide doesn't list (Sept 25 · Nov 2, 6, 9, 13, 16, 20)
+- [ ] Confirm the `10OFF` tracking-code discount is intentional
 - [ ] Mat's/Bryan's eyes on the preview
 - [ ] Promote `preview/` → `production/`, push — no purge needed (born-on-Cloudflare)
-- [ ] Get the live TS page URL, paste the v8 loader + floating-button blocks
+- [ ] **Remove the existing `header.rawHtml2` block**, then paste the v8 loader + floating-button blocks into `2026-eus-fall-festival`
 - [ ] Verify against `assets.crowd7digital.us` AND the live TS render
 - [ ] Add to the `TS-CDN-MIGRATION.md` ledger as **born-on-Cloudflare**
 
@@ -87,4 +116,6 @@ Both are mirrored into `production/` — promote by overwriting `production/` fr
 
 1. **Season Pass** — is the new structure final? This is the single biggest unlocked item on the page, and it's Bryan's stated lever for the 18–20% → 30–50% repeat-rate goal.
 2. **Williston** — one festival or two?
-3. **Live TicketSpice page URL** for the loader paste. Until that lands this is a design artifact, not a live page.
+3. ~~Live TicketSpice page URL~~ — **RESOLVED.** `https://amberbrookefarms.ticketspice.com/2026-eus-fall-festival`.
+4. **The seven unlisted bookable dates (item A above)** — cart exclusions, or publish them? Blocks go-live.
+5. **Replacing vs. keeping their existing hero.** The live page runs a hand-coded 5.2 KB `header.rawHtml2` block (its own hero, marquee, what's-included, FAQ, and a value/peak date table with a `setInterval` calendar-colouring script). This page **supersedes all of it** — pasting the loader without removing that block would double every section. Their existing block is saved at `artifacts/existing-page-header-rawhtml2.html` for reference before it's replaced.

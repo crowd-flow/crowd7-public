@@ -1,0 +1,126 @@
+<div id="fall-top"></div>
+
+<section class="fall-hero">
+  <div class="fall-hero-inner">
+    <p class="fall-kicker">6th Annual</p>
+    <h1>Fall Festival</h1>
+
+    <p class="fall-subtitle">
+      Pumpkins, Farm Fun, Photo Ops, Fall Treats, Petting Zoo, Live Music, and a full day of family memories at Amber Brooke Farms.
+    </p>
+
+    <div class="fall-save-badge">Save $3 per ticket when you buy online!</div>
+
+    <a href="#ticketBlock" class="fall-main-btn">Buy Tickets Now</a>
+
+    <p class="fall-fast-note">Memories Waiting to Be Made • Best Price Online • Limited Fall Dates</p>
+  </div>
+</section>
+
+<section class="fall-marquee-full">
+  <div class="fall-marquee-track">
+    <div class="fall-marquee-item"><img src="https://amberbrookefarms.com/wp-content/uploads/elementor/thumbs/Website-4-ri3dijj314tgr66xq7enp0w3geiax6wd90tlcqmfts.png" alt=""></div>
+    <div class="fall-marquee-item"><img src="https://amberbrookefarms.com/wp-content/uploads/elementor/thumbs/Website-2-rhlvmw1hk1k5ehucm1362na3jlwvgx4payospe1ew0.png" alt=""></div>
+    <div class="fall-marquee-item"><img src="https://amberbrookefarms.com/wp-content/uploads/13.png" alt=""></div>
+    <div class="fall-marquee-item"><img src="https://amberbrookefarms.com/wp-content/uploads/4-6.png" alt=""></div>
+    <div class="fall-marquee-item"><img src="https://cdn.uploads.webconnex.com/130306/1-30-24%20amber%20brooke%20farms3438.jpg" alt=""></div>
+    <div class="fall-marquee-item"><img src="https://cdn.uploads.webconnex.com/130306/1-30-24%20amber%20brooke%20farms3271.jpg" alt=""></div>
+    <div class="fall-marquee-item"><img src="https://cdn.uploads.webconnex.com/130306/thumbnail_image5.jpg" alt=""></div>
+    <div class="fall-marquee-item"><img src="https://cdn.uploads.webconnex.com/130306/ticket%20spice%20ticket%20logo.png" alt=""></div>
+    <div class="fall-marquee-item"><img src="https://cdn.uploads.webconnex.com/130306/abf12330-137.jpg" alt=""></div>
+    <div class="fall-marquee-item"><img src="https://cdn.uploads.webconnex.com/130306/abf12511-186.jpg" alt=""></div>
+  </div>
+</section>
+
+<section class="fall-section">
+  <div class="fall-grid">
+    <div class="fall-card">
+      <h2>What’s Included</h2>
+
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="font-family:Georgia, serif; color:#333333; line-height:1.8;">
+        <tr><td>🎃 Pumpkin Barn</td></tr>
+        <tr><td>🐐 Exotic &amp; Farm Animal Petting Zoo</td></tr>
+        <tr><td>🚜 Tractor Rides</td></tr>
+        <tr><td>🌻 Beautiful Flower Fields</td></tr>
+        <tr><td>🏰 18+ Children Activities</td></tr>
+        <tr><td>🎶 Live Music Weekends &amp; Happy Hour</td></tr>
+        <tr><td>🌾 SunnHemp Maze</td></tr>
+        <tr><td>📸 Fall-Themed Photo Ops</td></tr>
+      </table>
+
+      <p>✨ Plus delicious food, drinks, and fall treats available for purchase!</p>
+    </div>
+
+    <div class="fall-card">
+      <h2>FAQs</h2>
+      <p>💳 Cashless venue – Cards only.</p>
+      <p>🐶 No pets allowed. Service animals welcome.</p>
+      <p>🥤 No outside food, drinks, or coolers.</p>
+      <p>🚭 No smoking or vaping anywhere on the farm.</p>
+      <p>📍 Location: 36111 N CR 44A, Eustis Florida</p>
+      <p>⏰ 10am-5pm Select Weekdays, 10am-6pm Weekends, Special Hours October 24, 25, 31 &amp; November 1 9am-6pm.</p>
+    </div>
+
+    <div class="fall-card">
+      <h2>Timed Ticketing</h2>
+      <p>Choose your arrival time when purchasing tickets. Please arrive within 2 hours of your selected time slot and no more than 10 minutes before your scheduled entry.</p>
+      <p>🌻🎃 Once you're here, you're welcome to stay and enjoy the farm until closing! Please note that last entry is 45 minutes before closing.</p>
+    </div>
+  </div>
+</section>
+
+<div class="abf-date-guide">
+  <h2>Choose Your Fall Festival Date</h2>
+  <p class="abf-date-guide-note">
+    Value dates are the best-priced days to visit. Peak dates are our busiest days and may sell out faster.
+  </p>
+
+  <div class="abf-date-table">
+    <div class="abf-date-row abf-value-row">
+      <div class="abf-date-label">Value Dates</div>
+      <div class="abf-date-list">
+        Sept. 19, 20, 26, 27<br>
+        Oct. 2, 3, 4, 9, 16, 23, 30<br>
+        Nov. 7, 8, 14, 15, 21, 22
+      </div>
+    </div>
+
+    <div class="abf-date-row abf-peak-row">
+      <div class="abf-date-label">Peak Dates</div>
+      <div class="abf-date-list">
+        Oct. 10, 11, 12, 17, 18, 24, 25, 31<br>
+        Nov. 1
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function colorFallCalendarDays() {
+  const peakDates = {
+    "October": [10, 11, 12, 17, 18, 24, 25, 31],
+    "November": [1]
+  };
+
+  document.querySelectorAll(".wbx-calendar").forEach(function(calendar) {
+    const text = calendar.innerText;
+    let month = "";
+
+    if (text.includes("October")) month = "October";
+    if (text.includes("November")) month = "November";
+
+    if (!month) return;
+
+    calendar.querySelectorAll(".day.enabled").forEach(function(day) {
+      const dayNumber = parseInt(day.innerText.trim(), 10);
+      day.classList.remove("abf-peak-day");
+
+      if (peakDates[month] && peakDates[month].includes(dayNumber)) {
+        day.classList.add("abf-peak-day");
+      }
+    });
+  });
+}
+
+setInterval(colorFallCalendarDays, 400);
+</script>

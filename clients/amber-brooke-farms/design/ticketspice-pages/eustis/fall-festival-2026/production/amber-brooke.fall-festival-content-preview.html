@@ -37,18 +37,38 @@
     to open it). So this page leads on "buy online and save $3" and the
     family-of-four math ($12) actually computes here, unlike on the flash page.
 
-    PEAK PRICING IS A DATE TIER, NOT A SEPARATE TICKET. Regular days $19.95
-    online / $22.95 gate; Halloween Weekends (Oct 24, 25, 31, Nov 1) $21.95 /
-    $24.95, with hours extended to 9 AM–6 PM. The cart must price by selected
-    date — see the build brief.
+    PEAK PRICING IS A DATE TIER, NOT A SEPARATE TICKET — and it is ALREADY
+    LIVE in the cart. Verified 2026-08-28 against the saved live page
+    (amberbrookefarms.ticketspice.com/2026-eus-fall-festival): the GA level
+    carries priceModifiers [{modifier:"2", when: trigger 3a50f504}], and that
+    trigger fires on NINE dates — Oct 10, 11, 12, 17, 18, 24, 25, 31 and Nov 1.
+    So peak is $19.95+$2 = $21.95 online and $22.95+$2 = $24.95 at the gate.
+
+    ⚠️ PEAK PRICING (9 dates) AND EXTENDED HOURS (4 dates) ARE DIFFERENT SETS.
+    A separate trigger (de1d231c) fires on only Oct 24, 25, 31 and Nov 1 and
+    opens the extra 9/11/1/3 arrival windows. Our internal record had conflated
+    the two and treated peak as those four dates only — that understated the
+    price on Oct 10, 11, 12, 17 and 18. This page follows the CART.
 
     NOT PUBLISHED: the Season Pass card is fully built but commented out in the
     ticket grid. Amanda is rebuilding the pass structure and the prices from the
     7/28 call were never published or re-confirmed. Do not uncomment without
     Amanda/Caleb signing off.
 
-    NOT ON THIS PAGE: the garbled "68 per two-hour window" peak capacity figure
-    from the transcript — still unverified, still correctly omitted.
+    WHAT'S INCLUDED comes from the client's own on-page list, not ours.
+    Gemstone mining is NOT included — it is a paid add-on ($8–$50 pay-dirt
+    bags) and appears in its own add-ons section. An earlier draft of this page
+    had it in the included list; that would have manufactured gate arguments.
+
+    TIMED ENTRY is real on this page and was missing from our record entirely:
+    guests choose an arrival window, must arrive within 2 hours of it and no
+    more than 10 minutes early, and last entry is 45 minutes before close.
+
+    NOT ON THIS PAGE: the garbled "68 per two-hour window" capacity figure. The
+    live cart actually carries real numbers — base 2,000 per arrival window with
+    per-window limits (9 AM 1,900 · 11 AM 1,500 · 12 PM 1,500 · 1 PM 1,900 ·
+    3 PM 1,500) and ~5,500 remaining per day — so the garbled figure is moot.
+    Still not published; capacity is an ops number, not a marketing one.
 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -611,6 +631,80 @@
         opacity: 0.75 !important; text-decoration-thickness: 1px !important;
     }
 
+
+    /* ── ADD-ONS (paid extras) ───────────────────────────────────────────────
+       Visually distinct from the "included" card on purpose: these cost money,
+       and the #1 way to create a gate argument is to let a paid extra read as
+       included. Gemstone mining in particular WAS in an earlier draft of the
+       included list — it is a paid add-on in the live cart. */
+    #abf-funnel .abf-addons {
+        width: 100% !important; background: var(--abf-cream) !important;
+        padding: 56px 48px !important; display: block !important; box-sizing: border-box !important;
+    }
+    #abf-funnel .abf-addons-header { text-align: center !important; margin-bottom: 32px !important; }
+    #abf-funnel .abf-addon-grid {
+        display: grid !important; grid-template-columns: repeat(4, minmax(0,1fr)) !important;
+        gap: 18px !important; max-width: 1080px !important; margin: 0 auto !important;
+    }
+    #abf-funnel .abf-addon {
+        background: var(--abf-white) !important;
+        border: 1px dashed rgba(198,106,43,0.45) !important;
+        border-radius: 16px !important; padding: 22px 18px !important;
+        text-align: center !important; box-sizing: border-box !important;
+    }
+    #abf-funnel .abf-addon-icon { font-size: 1.9rem !important; display: block !important; margin-bottom: 8px !important; }
+    #abf-funnel .abf-addon-name {
+        font-family: var(--abf-font-display) !important; font-size: 1.1rem !important;
+        font-weight: 700 !important; color: var(--abf-navy) !important; display: block !important;
+    }
+    #abf-funnel .abf-addon-price {
+        font-size: 0.84rem !important; color: var(--abf-ink-soft) !important;
+        display: block !important; margin-top: 8px !important; line-height: 1.6 !important;
+    }
+    #abf-funnel .abf-addon-note {
+        display: block !important; text-align: center !important; margin-top: 20px !important;
+        font-size: 0.82rem !important; color: var(--abf-ink-soft) !important; opacity: 0.9 !important;
+    }
+
+    /* ── GOOD TO KNOW ── */
+    #abf-funnel .abf-faq {
+        width: 100% !important; background: var(--abf-blush-cream) !important;
+        padding: 48px !important; display: block !important; box-sizing: border-box !important;
+    }
+    #abf-funnel .abf-faq-header { text-align: center !important; margin-bottom: 26px !important; }
+    #abf-funnel .abf-faq-grid {
+        display: grid !important; grid-template-columns: repeat(4, minmax(0,1fr)) !important;
+        gap: 14px !important; max-width: 1080px !important; margin: 0 auto !important;
+    }
+    #abf-funnel .abf-faq-item {
+        background: var(--abf-white) !important; border: 1px solid rgba(54,87,140,0.14) !important;
+        border-radius: 12px !important; padding: 16px 18px !important;
+        font-size: 0.9rem !important; color: var(--abf-ink) !important; line-height: 1.5 !important;
+        box-sizing: border-box !important;
+    }
+    #abf-funnel .abf-faq-item strong { color: var(--abf-navy) !important; }
+
+    /* timed-entry notice — sage, sibling of the peak callout but a different meaning */
+    #abf-funnel .abf-cal-timed {
+        max-width: 900px !important; margin: 14px auto 0 !important;
+        background: rgba(92,127,113,0.10) !important;
+        border: 1px solid rgba(92,127,113,0.30) !important;
+        border-radius: 14px !important; padding: 18px 22px !important;
+        text-align: center !important; box-sizing: border-box !important;
+    }
+    #abf-funnel .abf-cal-timed .abf-cal-peak-title,
+    #abf-funnel .abf-cal-timed .abf-cal-peak-body { color: var(--abf-navy) !important; }
+
+    @media (max-width: 900px) {
+        #abf-funnel .abf-addons, #abf-funnel .abf-faq { padding: 44px 24px !important; }
+        #abf-funnel .abf-addon-grid { grid-template-columns: repeat(2, minmax(0,1fr)) !important; }
+        #abf-funnel .abf-faq-grid { grid-template-columns: repeat(2, minmax(0,1fr)) !important; }
+    }
+    @media (max-width: 600px) {
+        #abf-funnel .abf-addon-grid { grid-template-columns: 1fr !important; max-width: 420px !important; margin-left:auto !important; margin-right:auto !important; }
+        #abf-funnel .abf-faq-grid { grid-template-columns: 1fr !important; max-width: 420px !important; margin-left:auto !important; margin-right:auto !important; }
+    }
+
     /* 3-up ticket grid — only needed if the Season Pass card is uncommented. */
     #abf-funnel .abf-grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; max-width: 1180px !important; }
 
@@ -797,14 +891,14 @@
                 <span class="abf-benefit-desc">Sept 19 &ndash; Nov 22, 2026</span>
             </div>
             <div class="abf-benefit">
-                <span class="abf-benefit-icon">🎢</span>
-                <span class="abf-benefit-title">All-Day Farm Fun</span>
-                <span class="abf-benefit-desc">One ticket, the whole farm</span>
+                <span class="abf-benefit-icon">🕙</span>
+                <span class="abf-benefit-title">Pick Your Arrival Time</span>
+                <span class="abf-benefit-desc">Stay till closing once you&rsquo;re in</span>
             </div>
             <div class="abf-benefit">
                 <span class="abf-benefit-icon">👶</span>
                 <span class="abf-benefit-title">Ages 2 &amp; Under Free</span>
-                <span class="abf-benefit-desc">No ticket needed for little ones</span>
+                <span class="abf-benefit-desc">Free &ldquo;2 and Under&rdquo; ticket at checkout</span>
             </div>
         </div>
     </div>
@@ -859,25 +953,29 @@
             <div class="abf-cal-card abfr">
                 <span class="abf-cal-month">September</span>
                 <span class="abf-cal-range">Opens Sat, Sept 19</span>
-                <span class="abf-cal-days">Saturdays &amp; Sundays</span>
+                <span class="abf-cal-days">19, 20, 26, 27</span>
                 <span class="abf-cal-hours">10 AM &ndash; 6 PM</span>
             </div>
             <div class="abf-cal-card abfr d1">
                 <span class="abf-cal-month">October</span>
                 <span class="abf-cal-range">Our biggest month</span>
-                <span class="abf-cal-days">Fridays, Saturdays &amp; Sundays<br>plus Columbus Day, Mon Oct 12</span>
-                <span class="abf-cal-hours">Fri &amp; Mon &middot; 10 AM &ndash; 5 PM<br>Sat &amp; Sun &middot; 10 AM &ndash; 6 PM</span>
+                <span class="abf-cal-days">2, 3, 4, 9, 16, 23, 30<br><strong>Peak:</strong> 10, 11, 12, 17, 18, 24, 25, 31</span>
+                <span class="abf-cal-hours">Weekdays &middot; 10 AM &ndash; 5 PM<br>Weekends &middot; 10 AM &ndash; 6 PM</span>
             </div>
             <div class="abf-cal-card abfr d2">
                 <span class="abf-cal-month">November</span>
                 <span class="abf-cal-range">Closes Sun, Nov 22</span>
-                <span class="abf-cal-days">Saturdays &amp; Sundays</span>
+                <span class="abf-cal-days"><strong>Peak:</strong> 1<br>7, 8, 14, 15, 21, 22</span>
                 <span class="abf-cal-hours">10 AM &ndash; 6 PM</span>
             </div>
         </div>
         <div class="abf-cal-peak abfr d3">
-            <span class="abf-cal-peak-title">🎃 Halloween Weekends &middot; October 24, 25, 31 &amp; November 1</span>
-            <span class="abf-cal-peak-body">Our four busiest days of the year. We open an hour early &mdash; <strong>9 AM &ndash; 6 PM</strong> &mdash; to give everyone more room to roam. These four dates are priced as peak days; see the ticket table below.</span>
+            <span class="abf-cal-peak-title">🎃 Special Hours &middot; October 24, 25, 31 &amp; November 1</span>
+            <span class="abf-cal-peak-body">Our four busiest days of the year. We open an hour early &mdash; <strong>9 AM &ndash; 6 PM</strong> &mdash; to give everyone more room to roam. <strong>Peak pricing</strong> applies on a wider set of dates than these four; see the ticket table below.</span>
+        </div>
+        <div class="abf-cal-timed abfr d3">
+            <span class="abf-cal-peak-title">🕙 Timed entry &mdash; choose your arrival window</span>
+            <span class="abf-cal-peak-body">Pick an arrival time at checkout. Please arrive within <strong>2 hours</strong> of your slot and no more than 10 minutes early. Once you&rsquo;re here you&rsquo;re welcome to stay until closing &mdash; last entry is 45 minutes before we close.</span>
         </div>
     </div>
 
@@ -894,14 +992,14 @@
               <h3>General Admission</h3>
               <ul class="abf-card-bullets">
                 <li>✓ Good for the date you choose at checkout</li>
-                <li>✓ Ages 3 and up &mdash; 2 &amp; under always free</li>
+                <li>✓ Ages 3 and up &mdash; 2 &amp; under ride free on their own ticket</li>
                 <li>✓ Every attraction on the farm included</li>
               </ul>
               <div class="abf-price-rows">
                 <div class="abf-price-row">
                   <div>
-                    <span class="abf-price-row-name">Regular Days</span>
-                    <span class="abf-price-row-desc">Sept &amp; Nov weekends &middot; Oct Fri&ndash;Sun &amp; Columbus Day</span>
+                    <span class="abf-price-row-name">Value Dates</span>
+                    <span class="abf-price-row-desc">Sept 19, 20, 26, 27 &middot; Oct 2, 3, 4, 9, 16, 23, 30 &middot; Nov 7, 8, 14, 15, 21, 22</span>
                   </div>
                   <div class="abf-price-row-vals">
                     <span class="abf-price-row-online">$19.95</span>
@@ -910,8 +1008,8 @@
                 </div>
                 <div class="abf-price-row">
                   <div>
-                    <span class="abf-price-row-name">Halloween Weekends</span>
-                    <span class="abf-price-row-desc">Oct 24, 25, 31 &amp; Nov 1 &middot; extended 9 AM&ndash;6 PM</span>
+                    <span class="abf-price-row-name">Peak Dates</span>
+                    <span class="abf-price-row-desc">Oct 10, 11, 12, 17, 18, 24, 25, 31 &amp; Nov 1 &middot; our busiest days, and they sell out first</span>
                   </div>
                   <div class="abf-price-row-vals">
                     <span class="abf-price-row-online">$21.95</span>
@@ -930,15 +1028,16 @@
               <span class="abf-card-icon">🍂</span>
               <h3>What Your Admission Gets You</h3>
               <ul class="abf-card-bullets">
-                <li>🌾 The SunnHemp maze</li>
-                <li>🚜 Tractor rides around the farm</li>
-                <li>🐐 Farm animals to meet</li>
-                <li>🛝 Playgrounds, jumping pillows &amp; slide hill</li>
-                <li>💎 Gemstone mining, duck races &amp; the tire sand pit</li>
-                <li>🌻 Flower fields &amp; fall photo ops</li>
-                <li>🎵 Live entertainment on the stage</li>
+                <li>🎃 Pumpkin Barn</li>
+                <li>🐐 Exotic &amp; farm animal petting zoo</li>
+                <li>🚜 Tractor rides</li>
+                <li>🌻 Beautiful flower fields</li>
+                <li>🏰 18+ children&rsquo;s activities</li>
+                <li>🎶 Live music weekends &amp; happy hour</li>
+                <li>🌾 SunnHemp maze</li>
+                <li>📸 Fall-themed photo ops</li>
               </ul>
-              <span class="abf-card-note">Ages 2 &amp; under are always free.</span>
+              <span class="abf-card-note">Plus food, drinks &amp; fall treats available for purchase. Ages 2 &amp; under are free &mdash; add a free &ldquo;2 and Under&rdquo; ticket at checkout.</span>
             </div>
           </div>
 
@@ -983,6 +1082,53 @@
         -->
     </div>
 
+
+    <!-- ADD-ONS — these are PAID extras in the cart, deliberately shown apart from
+         "what your admission gets you" so nothing reads as included when it isn't. -->
+    <div class="abf-addons">
+        <div class="abf-addons-header abfr">
+            <span class="abf-eye">Optional Extras</span>
+            <span class="abf-section-title">Make a day of it &mdash; <em>add-ons</em></span>
+        </div>
+        <div class="abf-addon-grid">
+            <div class="abf-addon abfr">
+                <span class="abf-addon-icon">💎</span>
+                <span class="abf-addon-name">Gemstone Mining</span>
+                <span class="abf-addon-price">Pay Dirt 3 lb $8 &middot; Lucky Strike 5 lb $12<br>Fossil Dig $15 &middot; Mother Load 10 lb $25<br>Mega Strike 20 lb $50</span>
+            </div>
+            <div class="abf-addon abfr d1">
+                <span class="abf-addon-icon">🎯</span>
+                <span class="abf-addon-name">Paint Ball Range</span>
+                <span class="abf-addon-price">100 balls $10<br>300 balls $25 &mdash; most popular<br>500 balls $45</span>
+            </div>
+            <div class="abf-addon abfr d2">
+                <span class="abf-addon-icon">🌻</span>
+                <span class="abf-addon-name">Flower Mason Jar</span>
+                <span class="abf-addon-price">Pick your own jar of blooms</span>
+            </div>
+            <div class="abf-addon abfr d3">
+                <span class="abf-addon-icon">🎃</span>
+                <span class="abf-addon-name">Pumpkin Eater</span>
+                <span class="abf-addon-price">A farm favourite photo stop</span>
+            </div>
+        </div>
+        <span class="abf-addon-note">Add-ons are optional and priced separately &mdash; add them to your order at checkout.</span>
+    </div>
+
+    <!-- GOOD TO KNOW — the client's own FAQ rules, verbatim in substance -->
+    <div class="abf-faq">
+        <div class="abf-faq-header abfr">
+            <span class="abf-eye">Before You Come</span>
+            <span class="abf-section-title">Good to <em>know</em></span>
+        </div>
+        <div class="abf-faq-grid">
+            <div class="abf-faq-item abfr">💳 <strong>Cashless venue</strong> &mdash; cards only</div>
+            <div class="abf-faq-item abfr d1">🐶 <strong>No pets</strong> &mdash; service animals welcome</div>
+            <div class="abf-faq-item abfr d2">🥤 <strong>No outside food</strong>, drinks or coolers</div>
+            <div class="abf-faq-item abfr d3">🚭 <strong>No smoking or vaping</strong> anywhere on the farm</div>
+        </div>
+    </div>
+
     <!-- INFO ROW -->
     <div class="abf-info">
         <div class="abf-info-grid">
@@ -999,7 +1145,7 @@
             <div class="abf-info-item">
                 <span class="abf-info-icon">🕘</span>
                 <span class="abf-info-label">Festival Hours</span>
-                <span class="abf-info-value">Fri &amp; Mon Oct 12 &middot; 10 AM&ndash;5 PM<br>Sat &amp; Sun &middot; 10 AM&ndash;6 PM</span>
+                <span class="abf-info-value">Weekdays 10 AM&ndash;5 PM &middot; Weekends 10 AM&ndash;6 PM<br>Oct 24, 25, 31 &amp; Nov 1 &middot; 9 AM&ndash;6 PM</span>
             </div>
             <div class="abf-info-item">
                 <span class="abf-info-icon">💸</span>
