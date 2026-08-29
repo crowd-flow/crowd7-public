@@ -70,15 +70,19 @@ The flash page deliberately did **not** lead on price. Any-Day GA was $19.95 —
 
 An earlier draft put a two-row Value/Peak table on the GA card. Mat's call: naming "Peak Dates" on the card makes the **higher** number a headline, and a guest reading a price table on the card then meeting a different number in the date-picker is friction for no gain.
 
-**What the card does now:** `FROM` · **$19.95** (large) · one line — *"Value and standard rates apply depending on the date. **Select your date below** to see pricing."* — then the $3-online-vs-gate note. The cart already prices per selected date, so the date-picker is the honest, self-updating place for per-date pricing.
+**What the card does now:** `FROM` · **$19.95** (large) with **~~$22.95~~ at the gate** struck beside it · one line — *"Value and standard rates apply depending on the date. **Select your date below** to see pricing."* The cart already prices per selected date, so the date-picker is the honest, self-updating place for per-date pricing.
+
+The struck gate price replaced a sage "Every ticket is $3 less online" note that sat under the price (Mat, 2026-08-28). It makes the same point in two words instead of two sentences, and makes it **at** the price rather than below it. The section heading dropped to **"Buy online and save"** — the number is now visible in the price block, so repeating it in the headline was redundant. The banner ("Save $3 When You Buy Online") and the benefits tile ("Save $3 Online") still carry the figure; both are accurate on every date, since the $3 gap holds on both tiers.
 
 **"Peak" is renamed "standard" in guest-facing copy.** Cheaper days are the *value* rate rather than busy days carrying a *surcharge* — same numbers, better framing. The word "Peak" still appears where it earns its place: labelling the specific dates in the visit-planning section, matching the client's own published date guide, with the rate stated in words ("Dates marked **Peak** above run our standard rate; every other date is a value rate").
 
 **The `.abf-price-rows` component stays in the stylesheet** — still correct, just not what this page leads with. Restoring the two-tier table is uncommenting-level work if anyone wants it back.
 
-## 🧭 One visit-planning section, not two (Mat, 2026-08-28)
+## 🧭 One visit-planning section, and it sits LAST (Mat, 2026-08-28)
 
 "When we're open" and "Good to know" were separate bands. They answer one question — *what do I need to know before I come?* — so they are now one section: three month cards → special-hours callout → timed-entry callout → a "Before you come" divider → the four farm rules. Nothing was cut.
+
+**Section order is tickets → add-ons → plan-your-visit:** buy first, upsell second, logistics last. The visit-planning band is **blush-cream**, not cream, because it now follows the cream add-ons band and two identical fields in a row read as one section.
 
 ## 🎨 Design notes
 

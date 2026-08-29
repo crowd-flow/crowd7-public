@@ -55,6 +55,10 @@
     7/28 call were never published or re-confirmed. Do not uncomment without
     Amanda/Caleb signing off.
 
+    SECTION ORDER (Mat, 2026-08-28): tickets -> add-ons -> plan-your-visit.
+    Buy first, upsell second, logistics last. The visit-planning band is
+    blush-cream so it does not merge into the cream add-ons band above it.
+
     THE GA CARD LEADS ON "FROM $19.95", NOT A TWO-TIER TABLE (Mat, 2026-08-28).
     Naming "Peak Dates" on the card made the higher number the headline. The cart's
     date-picker already prices per date, so the card states the floor and hands off
@@ -548,7 +552,9 @@
        open" becomes a first-class question and belongs above the ticket table. */
     #abf-funnel .abf-cal {
         width: 100% !important;
-        background: var(--abf-cream) !important;
+        /* blush-cream, not cream: this section now sits directly under the add-ons
+           band (cream), and two identical fields in a row read as one section. */
+        background: var(--abf-blush-cream) !important;
         padding: 56px 48px !important;
         display: block !important; box-sizing: border-box !important;
     }
@@ -615,23 +621,25 @@
         display: block !important; line-height: 1.55 !important;
     }
 
-    /* ── SAVE NOTE — the $3 online/gate proof, inside the GA card ─────────────
-       Sage-tinted (secondary/value), never terracotta. */
-    #abf-funnel .abf-savenote {
-        margin-top: 14px !important;
-        padding: 14px 16px !important;
-        border-radius: 12px !important;
-        background: rgba(92,127,113,0.08) !important;
-        border: 1px solid rgba(92,127,113,0.24) !important;
+    /* ── The gate price sits BESIDE the From price (Mat, 2026-08-28) ───────────
+       Replaces the sage "Every ticket is $3 less online" note that used to sit
+       under the price. The struck gate number makes the same point in two words
+       instead of two sentences, and it makes it AT the price rather than below it. */
+    #abf-funnel .abf-oneprice-row {
+        display: flex !important; align-items: center !important;
+        justify-content: center !important; gap: 14px !important;
     }
-    #abf-funnel .abf-savenote-title {
-        display: block !important; font-weight: 700 !important;
-        color: var(--abf-sage) !important; font-size: 0.95rem !important; margin-bottom: 4px !important;
+    #abf-funnel .abf-oneprice-gate {
+        font-size: 0.86rem !important; color: var(--abf-ink-soft) !important;
+        line-height: 1.35 !important; text-align: left !important;
+        padding-left: 14px !important;
+        border-left: 1px solid rgba(54,87,140,0.16) !important;
+    }
+    #abf-funnel .abf-oneprice-gate s {
         font-family: var(--abf-font-display) !important;
-    }
-    #abf-funnel .abf-savenote-body {
-        display: block !important; color: var(--abf-ink-soft) !important;
-        font-size: 0.88rem !important; line-height: 1.55 !important;
+        font-size: 1.15rem !important; font-weight: 700 !important;
+        color: var(--abf-ink-soft) !important;
+        opacity: 0.8 !important; text-decoration-thickness: 1px !important;
     }
     #abf-funnel .abf-price-row-gate s {
         opacity: 0.75 !important; text-decoration-thickness: 1px !important;
@@ -974,58 +982,11 @@
         </div>
     </div>
 
-    <!-- WHEN WE'RE OPEN — season calendar strip (new for the in-season page; the flash
-         page never needed it because that ticket was date-agnostic) -->
-    <div class="abf-cal" id="calendar">
-        <div class="abf-cal-header abfr">
-            <span class="abf-eye">Plan Your Visit</span>
-            <span class="abf-section-title">When we&rsquo;re <em>open</em></span>
-        </div>
-        <div class="abf-cal-grid">
-            <div class="abf-cal-card abfr">
-                <span class="abf-cal-month">September</span>
-                <span class="abf-cal-range">Opens Sat, Sept 19</span>
-                <span class="abf-cal-days">19, 20, 26, 27</span>
-                <span class="abf-cal-hours">10 AM &ndash; 6 PM</span>
-            </div>
-            <div class="abf-cal-card abfr d1">
-                <span class="abf-cal-month">October</span>
-                <span class="abf-cal-range">Our biggest month</span>
-                <span class="abf-cal-days">2, 3, 4, 9, 16, 23, 30<br><strong>Peak:</strong> 10, 11, 12, 17, 18, 24, 25, 31</span>
-                <span class="abf-cal-hours">Weekdays &middot; 10 AM &ndash; 5 PM<br>Weekends &middot; 10 AM &ndash; 6 PM</span>
-            </div>
-            <div class="abf-cal-card abfr d2">
-                <span class="abf-cal-month">November</span>
-                <span class="abf-cal-range">Closes Sun, Nov 22</span>
-                <span class="abf-cal-days"><strong>Peak:</strong> 1<br>7, 8, 14, 15, 21, 22</span>
-                <span class="abf-cal-hours">10 AM &ndash; 6 PM</span>
-            </div>
-        </div>
-        <div class="abf-cal-peak abfr d3">
-            <span class="abf-cal-peak-title">🎃 Special Hours &middot; October 24, 25, 31 &amp; November 1</span>
-            <span class="abf-cal-peak-body">Our four busiest days of the year. We open an hour early &mdash; <strong>9 AM &ndash; 6 PM</strong> &mdash; to give everyone more room to roam. Dates marked <strong>Peak</strong> above run our standard rate; every other date is a value rate.</span>
-        </div>
-        <div class="abf-cal-timed abfr d3">
-            <span class="abf-cal-peak-title">🕙 Timed entry &mdash; choose your arrival window</span>
-            <span class="abf-cal-peak-body">Pick an arrival time at checkout. Please arrive within <strong>2 hours</strong> of your slot and no more than 10 minutes early. Once you&rsquo;re here you&rsquo;re welcome to stay until closing &mdash; last entry is 45 minutes before we close.</span>
-        </div>
-
-        <div class="abf-cal-sub abfr">
-            <span class="abf-cal-sub-title">Before you come</span>
-        </div>
-        <div class="abf-faq-grid">
-            <div class="abf-faq-item abfr">💳 <strong>Cashless venue</strong> &mdash; cards only</div>
-            <div class="abf-faq-item abfr d1">🐶 <strong>No pets</strong> &mdash; service animals welcome</div>
-            <div class="abf-faq-item abfr d2">🥤 <strong>No outside food</strong>, drinks or coolers</div>
-            <div class="abf-faq-item abfr d3">🚭 <strong>No smoking or vaping</strong> anywhere on the farm</div>
-        </div>
-    </div>
-
     <!-- TICKETS -->
     <div class="abf-tickets" id="tickets">
         <div class="abf-tickets-header abfr">
             <span class="abf-eye">Admission</span>
-            <span class="abf-section-title">Buy online and <em>save $3</em></span>
+            <span class="abf-section-title">Buy online and <em>save</em></span>
         </div>
         <div class="abf-grid">
             <div class="abf-card abf-card-primary abfr">
@@ -1039,14 +1000,13 @@
               </ul>
               <div class="abf-oneprice">
                 <span class="abf-oneprice-from">From</span>
-                <span class="abf-oneprice-amt">$19.95</span>
+                <div class="abf-oneprice-row">
+                  <span class="abf-oneprice-amt">$19.95</span>
+                  <span class="abf-oneprice-gate"><s>$22.95</s><br>at the gate</span>
+                </div>
                 <span class="abf-oneprice-proof">Value and standard rates apply depending on the date. <strong>Select your date below</strong> to see pricing.</span>
               </div>
               <span class="abf-card-note">*plus applicable taxes and fees</span>
-              <div class="abf-savenote">
-                <span class="abf-savenote-title">Every ticket is $3 less online</span>
-                <span class="abf-savenote-body">Whatever date you pick, buying ahead saves <strong>$3 a person</strong> &mdash; <strong>$12 for a family of four</strong> &mdash; and gets you through the gate faster.</span>
-              </div>
             </div>
             <div class="abf-card abf-card-secondary abfr d2">
               <span class="abf-card-badge abf-card-badge-navy">Included</span>
@@ -1138,6 +1098,53 @@
             </div>
         </div>
         <span class="abf-addon-note">Add-ons are optional and priced separately &mdash; add them to your order at checkout.</span>
+    </div>
+
+    <!-- WHEN WE'RE OPEN — season calendar strip (new for the in-season page; the flash
+         page never needed it because that ticket was date-agnostic) -->
+    <div class="abf-cal" id="calendar">
+        <div class="abf-cal-header abfr">
+            <span class="abf-eye">Plan Your Visit</span>
+            <span class="abf-section-title">When we&rsquo;re <em>open</em></span>
+        </div>
+        <div class="abf-cal-grid">
+            <div class="abf-cal-card abfr">
+                <span class="abf-cal-month">September</span>
+                <span class="abf-cal-range">Opens Sat, Sept 19</span>
+                <span class="abf-cal-days">19, 20, 26, 27</span>
+                <span class="abf-cal-hours">10 AM &ndash; 6 PM</span>
+            </div>
+            <div class="abf-cal-card abfr d1">
+                <span class="abf-cal-month">October</span>
+                <span class="abf-cal-range">Our biggest month</span>
+                <span class="abf-cal-days">2, 3, 4, 9, 16, 23, 30<br><strong>Peak:</strong> 10, 11, 12, 17, 18, 24, 25, 31</span>
+                <span class="abf-cal-hours">Weekdays &middot; 10 AM &ndash; 5 PM<br>Weekends &middot; 10 AM &ndash; 6 PM</span>
+            </div>
+            <div class="abf-cal-card abfr d2">
+                <span class="abf-cal-month">November</span>
+                <span class="abf-cal-range">Closes Sun, Nov 22</span>
+                <span class="abf-cal-days"><strong>Peak:</strong> 1<br>7, 8, 14, 15, 21, 22</span>
+                <span class="abf-cal-hours">10 AM &ndash; 6 PM</span>
+            </div>
+        </div>
+        <div class="abf-cal-peak abfr d3">
+            <span class="abf-cal-peak-title">🎃 Special Hours &middot; October 24, 25, 31 &amp; November 1</span>
+            <span class="abf-cal-peak-body">Our four busiest days of the year. We open an hour early &mdash; <strong>9 AM &ndash; 6 PM</strong> &mdash; to give everyone more room to roam. Dates marked <strong>Peak</strong> above run our standard rate; every other date is a value rate.</span>
+        </div>
+        <div class="abf-cal-timed abfr d3">
+            <span class="abf-cal-peak-title">🕙 Timed entry &mdash; choose your arrival window</span>
+            <span class="abf-cal-peak-body">Pick an arrival time at checkout. Please arrive within <strong>2 hours</strong> of your slot and no more than 10 minutes early. Once you&rsquo;re here you&rsquo;re welcome to stay until closing &mdash; last entry is 45 minutes before we close.</span>
+        </div>
+
+        <div class="abf-cal-sub abfr">
+            <span class="abf-cal-sub-title">Before you come</span>
+        </div>
+        <div class="abf-faq-grid">
+            <div class="abf-faq-item abfr">💳 <strong>Cashless venue</strong> &mdash; cards only</div>
+            <div class="abf-faq-item abfr d1">🐶 <strong>No pets</strong> &mdash; service animals welcome</div>
+            <div class="abf-faq-item abfr d2">🥤 <strong>No outside food</strong>, drinks or coolers</div>
+            <div class="abf-faq-item abfr d3">🚭 <strong>No smoking or vaping</strong> anywhere on the farm</div>
+        </div>
     </div>
 
     <!-- INFO ROW -->
