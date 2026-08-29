@@ -47,9 +47,11 @@ The flash page deliberately did **not** lead on price. Any-Day GA was $19.95 —
 
 | Tier | Dates | Online | Gate |
 |---|---|---|---|
-| **Value Dates** | Sept 19, 20, 26, 27 · Oct 2, 3, 4, 9, 16, 23, 30 · Nov 7, 8, 14, 15, 21, 22 | **$19.95** | $22.95 |
-| **Peak Dates** | **Oct 10, 11, 12, 17, 18, 24, 25, 31 & Nov 1** (nine dates) | **$21.95** | $24.95 |
+| **Value rate** | Sept 19, 20, 26, 27 · Oct 2, 3, 4, 9, 16, 23, 30 · Nov 7, 8, 14, 15, 21, 22 | **$19.95** | $22.95 |
+| **Standard rate** (cart "peak") | **Oct 10, 11, 12, 17, 18, 24, 25, 31 & Nov 1** (nine dates) | **$21.95** | $24.95 |
 | **2 and Under** | any date | **$0.00** | — |
+
+**The GA card does NOT show this table** — see the pricing-presentation note below. The table is the underlying truth; the page states the floor and defers to the date-picker.
 
 - **Hours:** weekdays 10 AM–5 PM · weekends 10 AM–6 PM · **Oct 24, 25, 31 & Nov 1 → 9 AM–6 PM**.
 - **Timed entry:** regular days 10 AM / 12 PM / 2 PM; the four extended days add 9 / 11 / 1 / 3. Arrive within 2 hours of your slot, ≤10 min early, last entry 45 min before close.
@@ -63,6 +65,20 @@ The flash page deliberately did **not** lead on price. Any-Day GA was $19.95 —
 3. **On-sale date not set.** CrowdView's `event_phase` has In Season starting **2026-09-14**, five days before the festival opens (9/19). The page does not print an on-sale date anywhere, so nothing is wrong today — but if this is meant to go live earlier than 9/14, say so.
 4. **Peak-day capacity still NOT on this page.** The garbled *"68 per two-hour window"* figure remains unverified and is correctly omitted, same as on the flash page.
 5. **Early Bird / End of Season phases do not exist.** Bryan paused that strategy work on 8/12 (*"we put on pause strategy for dates and timelines for early bird and end season"*). This page covers In Season only. If an early-bird tier lands, it's a third row in the price table, not a new page.
+
+## 💵 Pricing presentation — the card leads on "From $19.95" (Mat, 2026-08-28)
+
+An earlier draft put a two-row Value/Peak table on the GA card. Mat's call: naming "Peak Dates" on the card makes the **higher** number a headline, and a guest reading a price table on the card then meeting a different number in the date-picker is friction for no gain.
+
+**What the card does now:** `FROM` · **$19.95** (large) · one line — *"Value and standard rates apply depending on the date. **Select your date below** to see pricing."* — then the $3-online-vs-gate note. The cart already prices per selected date, so the date-picker is the honest, self-updating place for per-date pricing.
+
+**"Peak" is renamed "standard" in guest-facing copy.** Cheaper days are the *value* rate rather than busy days carrying a *surcharge* — same numbers, better framing. The word "Peak" still appears where it earns its place: labelling the specific dates in the visit-planning section, matching the client's own published date guide, with the rate stated in words ("Dates marked **Peak** above run our standard rate; every other date is a value rate").
+
+**The `.abf-price-rows` component stays in the stylesheet** — still correct, just not what this page leads with. Restoring the two-tier table is uncommenting-level work if anyone wants it back.
+
+## 🧭 One visit-planning section, not two (Mat, 2026-08-28)
+
+"When we're open" and "Good to know" were separate bands. They answer one question — *what do I need to know before I come?* — so they are now one section: three month cards → special-hours callout → timed-entry callout → a "Before you come" divider → the four farm rules. Nothing was cut.
 
 ## 🎨 Design notes
 
