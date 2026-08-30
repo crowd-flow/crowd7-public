@@ -593,31 +593,74 @@
     #caf-funnel .cafr.d1 { transition-delay: 0.1s !important; }
     #caf-funnel .cafr.d2 { transition-delay: 0.2s !important; }
 
-    /* ── Solo row: a fourth card centred under the three ──
-       Two classes so it beats the plain `#caf-funnel .caf-grid` rule inside the
-       responsive media queries below on specificity, not source order — those
-       reset the column count and would otherwise stretch this back to 2/3-up. */
-    #caf-funnel .caf-grid.caf-grid-solo {
-        grid-template-columns: minmax(0, 400px) !important;
-        margin-top: 24px !important;
+    /* ── FOURTH CARD AS A FULL-WIDTH BANNER ──
+       Per crowd7/data/clients/_patterns/ticket-card-grid-three-max.md: the ticket
+       grid holds THREE cards, never four. A fourth offer becomes a wide, skinny
+       card spanning all three columns underneath — it stays INSIDE .caf-grid and
+       spans it, so the grid is still a three-card grid. A fourth grid child, or a
+       second grid holding one card, renders as an orphan and reads as a mistake.
+       Shape ported from the shipped Versailles apples implementation
+       (.sbv-bonfire-card): image left, details centre, price rail right. */
+    #caf-funnel .caf-banner-card {
+        grid-column: 1 / -1 !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 28px !important;
+        padding: 22px 26px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        margin-top: 4px !important;
+    }
+    #caf-funnel .caf-banner-img {
+        width: 240px !important;
+        flex: 0 0 240px !important;
+        aspect-ratio: 4 / 3 !important;
+        object-fit: cover !important;
+        /* The source is a wide barn-and-mums frame; at 4:3 the default centre crop
+           fills the bottom third with lawn. */
+        object-position: center 34% !important;
+        border-radius: 14px !important;
+        display: block !important;
+    }
+    #caf-funnel .caf-banner-body { flex: 1 1 auto !important; min-width: 0 !important; }
+    #caf-funnel .caf-banner-body h3 { margin-bottom: 10px !important; }
+    #caf-funnel .caf-banner-bullets {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 2px 24px !important;
+        margin: 0 !important;
+    }
+    #caf-funnel .caf-banner-cta {
+        flex: 0 0 auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-end !important;
+        text-align: right !important;
+        padding-left: 26px !important;
+        border-left: 1px solid rgba(42,26,14,0.14) !important;
+    }
+    #caf-funnel .caf-banner-cta .caf-card-price { margin-top: 0 !important; padding-top: 0 !important; }
+    @media (max-width: 900px) {
+        #caf-funnel .caf-banner-card { flex-direction: column !important; align-items: stretch !important; gap: 18px !important; }
+        #caf-funnel .caf-banner-img { width: 100% !important; flex: 0 0 auto !important; aspect-ratio: 16 / 9 !important; }
+        #caf-funnel .caf-banner-bullets { grid-template-columns: 1fr !important; }
+        #caf-funnel .caf-banner-cta {
+            align-items: flex-start !important; text-align: left !important;
+            padding-left: 0 !important; border-left: none !important;
+            border-top: 1px solid rgba(42,26,14,0.14) !important; padding-top: 14px !important;
+        }
     }
 
     /* ── Sold out ──
-       Deliberately still readable, not hidden: the Launch Day Bundle is the
-       offer the flash ads point at, so arriving buyers need to SEE it went
-       rather than wonder if they misremembered it. Desaturated and struck
-       through, with the live cards left at full strength above it. */
-    #caf-funnel .caf-card-sold {
-        opacity: 0.78 !important;
-        filter: saturate(0.5) !important;
-    }
+       Still readable, not hidden: the Launch Day Bundle is the offer the live
+       flash ads name, so a buyer arriving for it should SEE that it went. */
+    #caf-funnel .caf-card-sold { opacity: 0.82 !important; filter: saturate(0.5) !important; }
     #caf-funnel .caf-card-sold .caf-price-num {
         text-decoration: line-through !important;
         text-decoration-thickness: 3px !important;
     }
     #caf-funnel .caf-badge-sold {
-        background: #8A6A4A !important;
-        color: #FBF6EC !important;
+        background: #8A6A4A !important; color: #FBF6EC !important;
         letter-spacing: 0.16em !important;
     }
 
@@ -900,36 +943,40 @@
                 <span class="caf-card-note">Per person · ages 3 &amp; up</span>
             </div>
 
-        </div>
 
-        <!-- LAUNCH DAY BUNDLE — sold out, kept visible as a fourth card.
-             The 300-cap sold through, so it moved out of slot 1 (Mat, 2026-08-30).
-             Left on the page rather than deleted because the live flash ads and
-             emails point at this offer by name; a buyer who arrives for it should
-             find it clearly gone, not silently missing. Copy still AGES WELL —
-             the advancer switches on DATES, not stock, so nothing here needs to
-             change again when the phase flips. -->
-        <div class="caf-grid caf-grid-solo">
-            <div class="caf-card caf-card-cream caf-card-sold cafr">
-                <span class="caf-card-badge caf-badge-sold">Sold Out</span>
-                <span class="caf-card-icon">⭐</span>
-                <h3>Launch Day Bundle</h3>
-                <ul class="caf-card-bullets">
-                    <li>🎫 One Any Day Admission</li>
-                    <li>🎃 One pumpkin to take home</li>
-                    <li>🥤 Lemonade or slushie — your choice</li>
-                    <li>🍩 A cup of donut holes</li>
-                </ul>
-                <div class="caf-card-price">
-                    <span class="caf-price-num">$17.95*</span>
-                    <div class="caf-price-slash">
-                        <span class="caf-price-online">Sold Out</span>
-                        <span class="caf-price-was">$36 value</span>
-                    </div>
+            <!-- LAUNCH DAY BUNDLE — sold out, kept on the page as the fourth offer.
+                 The 300-cap sold through, so it moved out of slot 1 (Mat, 2026-08-30)
+                 and the Season Pass took its place. Built as a full-width banner
+                 spanning the grid, NOT a fourth grid cell — see
+                 crowd7/data/clients/_patterns/ticket-card-grid-three-max.md; a solo
+                 fourth card renders as an orphan. Kept visible rather than deleted
+                 because the live flash ads and emails name this offer by name: a
+                 buyer who arrives for it should find it clearly gone, not silently
+                 missing. Copy AGES WELL — the advancer switches on DATES, not stock. -->
+            <div class="caf-card caf-card-cream caf-card-sold caf-banner-card cafr d2">
+                <img class="caf-banner-img" src="https://cdn.uploads.webconnex.com/84892/img_2970.jpg" alt="A young guest getting a slushie at Colony Acres">
+                <div class="caf-banner-body">
+                    <span class="caf-card-badge caf-badge-sold">Sold Out</span>
+                    <h3>Launch Day Bundle</h3>
+                    <ul class="caf-card-bullets caf-banner-bullets">
+                        <li>🎫 One Any Day Admission</li>
+                        <li>🎃 One pumpkin to take home</li>
+                        <li>🥤 Lemonade or slushie — your choice</li>
+                        <li>🍩 A cup of donut holes</li>
+                    </ul>
                 </div>
-                <span class="caf-card-fees">*plus applicable taxes and fees</span>
-                <span class="caf-card-note">This one's gone — the tickets above are still on sale</span>
+                <div class="caf-banner-cta">
+                    <div class="caf-card-price">
+                        <span class="caf-price-num">$17.95*</span>
+                        <div class="caf-price-slash">
+                            <span class="caf-price-online">Sold Out</span>
+                            <span class="caf-price-was">$36 value</span>
+                        </div>
+                    </div>
+                    <span class="caf-card-note">This one's gone — the tickets above are still on sale</span>
+                </div>
             </div>
+
         </div>
     </div>
 
