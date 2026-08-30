@@ -33,12 +33,14 @@
   📋 IN-SEASON PRICING (5/27 event-info; flash pricing lives on the
      sibling page):
        General Admission ... $19.95 online   (peak weekends $24.95)
-       Super Pass .......... $35.95 online   (peak $43.95 · door $43.95,
+       Super Pass .......... $38.95 online   (peak $43.95 · door $43.95,
                                               peak door $48.95)
        Ultimate Pass ....... $68 online  ⚠️ UNCONFIRMED — see below
        Season Pass ......... $65.95
        Family 4-Pack Super Admission Bundle $159.95 — OCTOBER DATES ONLY
-     PEAK WEEKENDS = Oct 17-18 and Oct 23-24, +$5 on every type.
+     PEAK WEEKENDS = THREE weekends — Oct 17-18, Oct 24-25, Oct 31-Nov 1.
+     +$5 on every single-day type. (Adrienne, 8/20: "We have three
+     weekends, 17th and 18th and the two weekends after that are peak.")
 
   🚩 ULTIMATE PRICE IS NOT CONFIRMED. The 5/27 event-info records it as a
      RANGE ("~$68-$73.95"), which is not a price. Adrianne then asked on
@@ -126,6 +128,141 @@
      says $24.95 on peak weekends; almost certainly online-vs-door, but
      unconfirmed — see the row's open_question in CrowdView).
 
+  ✅ 2026-08-30 — EARLY BIRD FRAMING + flash-sale parity, PREVIEW ONLY.
+     CrowdView changes 292 (parity), 177 (build Early Bird into this page) and
+     293 (Early Bird language). Driver — Bryan, 8/28 call: "Montpelier's landing
+     page for Early Birds... an updated landing page, matching, NOT the pricing,
+     but matching the cards and all the stuff that we changed on the flash sale
+     page." And the written client commitment (Slack → Adrianne, 8/25): flash
+     sale ends 8/30 11:59pm ET, Early Bird goes live on this date-based page 8/31.
+
+     PARITY (292) — the two things the flash-sale page had and this one did not:
+       · pills section now leads with the attraction count ("30+ attractions at
+         the farm" instead of "What's at the farm")
+       · .mf-addons-compact padding so the pills frame the cards instead of
+         competing with them (it sits above the cards on both pages now)
+     Everything else was already at parity as of 2026-08-24 — the 8/14 punch
+     list, the hayride/animals fix, per-bullet emoji, gems-or-seashells, the
+     section reorder and the 30+ count all landed on both pages already.
+
+     EARLY BIRD (177 / 293) — framing only, NO price touched:
+       · banner, hero pill, hero copy, season strip and the tickets-section
+         eyebrow + lede all now say Early Bird, running THROUGH SEPTEMBER 4
+       · deliberately does NOT lead with a percentage. Adrienne, 8/20: "maybe we
+         don't say, you know, percentage in this and that. We just say early bird
+         sale, and then 1795 instead of 1795, but you have to pick your date and
+         time." Bryan agreed. So the page sells the deal, not the number.
+       · Sept 4 end date reconciles both sources: Adrienne 8/20 ("we take that
+         down on September 4th... full price starting on the 5th") and Bryan 8/28
+         ("until the week before the season technically starts" — season opens
+         9/12).
+
+     🔴 2026-08-30 — TWO STALE FACTS CORRECTED, caught by cross-checking this
+        page against CrowdView's Montpelier price book (price_book 7), which was
+        already right on both:
+
+        1. PEAK WEEKENDS ARE THREE, NOT TWO. This page had carried "Oct 17-18
+           and Oct 23-24" — wrong count, and Oct 23 is a Friday. Adrienne, 8/20:
+           "We have three weekends, 17th and 18th and the two weekends after
+           that are peak." Correct set: Oct 17-18, Oct 24-25, Oct 31-Nov 1. The
+           price book already flagged the old pair as a corrected prior value;
+           the page never got the fix, and earlier today it got propagated into
+           three new card notes. All customer-facing strings now say three.
+
+        2. SUPER PASS STANDARD ONLINE IS $38.95, NOT $35.95. Adrienne, 8/20:
+           "we'll go to 38 95, which will be our online cheapest day." The
+           header block above claimed $35.95 was the regular online price, which
+           is what made Early Bird look like a zero discount this morning. It is
+           not — Early Bird Super $35.95 is a genuine $3 off $38.95. The card's
+           struck price moved from $43.95 (the gate rate) to $38.95 (the rate it
+           is actually discounted from), and the card now carries the "Early
+           Bird" tag it was deliberately denied earlier on the bad premise.
+
+        Also: Ultimate's struck price $68 -> $68.95, the price book's standard
+        online figure.
+
+     ✅ 2026-08-30 (Mat) — "FROM" label + varies-by-date note on the two
+        starting-price cards. GA and Super Pass now carry a small uppercase
+        "From" above the figure (the Jack's Lighted Trail treatment, rendered
+        as a block label the way Amber Brooke's fall-festival page does it) and
+        a proof line under the price row, ported from that same page's
+        .abf-oneprice-proof: "Standard and peak-weekend rates apply depending
+        on the date. Select your date below to see pricing."
+
+        ⚠️ WORDING DELIBERATELY NOT "value dates". Amber Brooke runs a
+        value/standard split; Montpelier does not — it runs standard dates plus
+        a +$5 peak-weekend bump (three weekends, see above). Copying "value" across
+        would invent a rate tier this farm doesn't sell, so the note uses
+        Montpelier's own vocabulary while keeping Amber Brooke's shape and its
+        "select your date below" call to action.
+
+        Ultimate Pass deliberately did NOT get the treatment: Bryan's list gives
+        it as a flat $58.95, and only GA and Super Pass as a "starting price".
+        Its existing card note already states the +$5 peak rule. One-line change
+        if that reading is wrong.
+
+        "Starting price." dropped from the GA and Super card notes — the "From"
+        label now says it, and saying it twice on one card reads like a warning.
+
+     ✅ 2026-08-30 (Mat) — hero pill REMOVED and the bird emoji dropped from the
+        Early Bird wording. The hero now goes straight into the "Fall Festival
+        2026" title with no eyebrow above it; the top banner still reads
+        "Early Bird Sale — on now", just without the bird. The .mf-season-pill
+        CSS is kept in place, unused, so the eyebrow can come back cheaply.
+
+     ✅ 2026-08-30 (later) — EARLY BIRD PRICES NOW SHIPPED. Bryan sent the
+        confirmed list, which resolves change 178's open question:
+          General Admission  $18.95 starting price   (was $19.95)
+          Super Pass         $35.95 starting price   (unchanged — see below)
+          Ultimate Pass      $58.95                  (was $68)
+          Season Pass        $65.95 — no additional Early Bird discount
+          Family 4-Pack      still offered, NOT discounted for Early Bird
+          Peak dates         +$5 when the customer selects a peak weekend
+        Applied to the GA and Ultimate cards (price + struck was-price +
+        "Early Bird" tag). Season Pass untouched — it is genuinely not
+        discounted, so a struck price there would be a lie. Family 4-Pack has
+        no card on this page (October-only, surfaces natively in the cart on
+        qualifying dates), so "still offered, not discounted" needs no display.
+
+        ⚠️ SUPER PASS HAS NO EARLY BIRD DISCOUNT. Bryan's $35.95 is exactly
+        this page's existing regular online price, so its card price does not
+        move. That may well be deliberate, but it is worth Bryan seeing that
+        the Super Pass reads as a sale price while being the everyday price.
+
+        CARD NOTES CORRECTED FOR THE EARLY BIRD REGIME. The old notes quoted
+        regular-season peak figures ("$24.95 on peak weekends", "Peak online is
+        $43.95") which are wrong once the base price drops — GA peak under
+        Early Bird is $23.95, not $24.95. Rather than compute new peak numbers
+        per card, all three now state the rule the way Bryan stated it
+        ("peak weekends add $5"), which is true under both regimes and cannot
+        go stale at the Sept 5 switch back to season pricing. Door prices are
+        left as-is; a door price is a door price either way.
+
+        CORRECTION TO THE EARLIER NOTE BELOW: it hypothesised that the real
+        Early Bird benefit might be NO peak surcharge. That was wrong —
+        Bryan confirms the $5 peak bump still applies during Early Bird.
+
+     🚫 SUPERSEDED (kept for the record) — the pre-confirmation caution:
+        CrowdView change 178 was NOT done, and
+        should not be shipped off the current transcript. Two problems with the
+        numbers as recorded:
+          1. Ultimate "$58.95" appears NOWHERE in the 8/20 transcript. $68 × 0.8
+             is $54.40, so it is not a 20% derivation either. Unsourced.
+          2. Super Pass "$35.95" is ALREADY this page's regular online price, so
+             showing it as the Early Bird price is a zero discount.
+        What the transcript actually supports: GA $18.95 (Adrienne: "early bird
+        is not 20% off, it's a dollar online"), Season Pass NOT discounted, and
+        Weekday Play Day NOT discounted. It also suggests the real Early Bird
+        benefit may be NO $5 peak surcharge whatever date you pick ("we will not
+        be $5 more if they select another day") rather than a headline discount.
+        CONFIRM WITH BRYAN/ADRIENNE BEFORE SHIPPING PRICES. This account already
+        has a live display-vs-charge gap ($33.95 shown / $35.95 charged on the
+        flash-sale Super Pass, open since 8/24) — do not open a second one.
+
+     PREVIEW ONLY. production/ untouched: the flash sale is still live until
+     11:59pm ET tonight, and this page must not flip to Early Bird until 8/31.
+     Promotion is a straight copy of both preview files into production/.
+
   ✅ 2026-08-23 — attraction count corrected 35+ → 30+ (Adrienne said
      "30" twice, unprompted, on the 8/20 call — newer client comms win
      over the 8/14 email; matches their own homepage + the live TS cart's
@@ -179,6 +316,13 @@
     #mf-funnel .d3 { transition-delay: .27s !important; }
 
     #mf-funnel .mf-sec { padding: clamp(56px, 7.5vw, 92px) 24px !important; }
+    /* Pills section sits ABOVE the pass cards (Bryan screencast 2026-08-15 on the
+       flash-sale sibling; moved here 2026-08-24 per Adrienne's 8/20 call, "I like
+       it on the top. So they see that first."). Compact padding so it frames the
+       cards instead of competing with them — ported from the flash-sale page
+       2026-08-30, CrowdView change 292. */
+    #mf-funnel .mf-addons-compact { padding-top: clamp(40px, 5vw, 60px) !important; padding-bottom: clamp(28px, 3.5vw, 40px) !important; }
+    #mf-funnel .mf-addons-compact .mf-lede { margin-bottom: 4px !important; }
     #mf-funnel .mf-eye {
         display: block !important; font-size: .71rem !important; font-weight: 600 !important;
         letter-spacing: .2em !important; text-transform: uppercase !important;
@@ -263,6 +407,8 @@
         max-width: 1120px !important; margin: 0 auto !important;
         padding: 0 24px clamp(40px,5.5vw,68px) !important;
     }
+    /* Hero pill REMOVED from the markup 2026-08-30 (Mat). Rule kept, unused,
+       so the eyebrow can be restored without rebuilding it. */
     #mf-funnel .mf-season-pill {
         display: inline-block !important; background: var(--mf-red) !important; color: #fff !important;
         font-size: .73rem !important; font-weight: 700 !important; letter-spacing: .13em !important;
@@ -340,6 +486,21 @@
     #mf-funnel .mf-card-feature h3 { color: #fff !important; }
     #mf-funnel .mf-card-sub { display: block !important; font-size: .83rem !important; color: #7C8078 !important; margin-bottom: 20px !important; }
     #mf-funnel .mf-card-feature .mf-card-sub { color: rgba(255,255,255,.72) !important; }
+    /* "From" label above the price (Mat 2026-08-30, the Jack's Lighted Trail
+       treatment) and the varies-by-date line under it (the Amber Brooke
+       fall-festival .abf-oneprice-proof pattern). Only the two tickets Bryan
+       gave as a "starting price" carry these. */
+    #mf-funnel .mf-from {
+        display: block !important; font-size: .78rem !important; font-weight: 700 !important;
+        letter-spacing: .16em !important; text-transform: uppercase !important;
+        color: var(--mf-red) !important; opacity: .8 !important; margin-bottom: 3px !important;
+    }
+    #mf-funnel .mf-card-feature .mf-from { color: var(--mf-gold) !important; opacity: 1 !important; }
+    #mf-funnel .mf-price-proof {
+        display: block !important; font-size: .82rem !important; line-height: 1.55 !important;
+        color: #6C7167 !important; margin-top: 7px !important;
+    }
+    #mf-funnel .mf-card-feature .mf-price-proof { color: rgba(255,255,255,.72) !important; }
     #mf-funnel .mf-price-row { display: flex !important; align-items: baseline !important; gap: 11px !important; flex-wrap: wrap !important; }
     #mf-funnel .mf-price {
         font-family: 'Bitter', Georgia, serif !important; font-size: 2.45rem !important;
@@ -473,9 +634,9 @@
 
     <div class="mf-banner">
         <div class="mf-banner-inner">
-            <span>🎃 <strong>Fall Festival 2026</strong></span>
+            <span><strong>Early Bird Sale — on now</strong></span>
             <span class="mf-dot"></span>
-            <span>September 12 – November 8</span>
+            <span>Through September 4</span>
             <span class="mf-dot"></span>
             <span>Upper Marlboro, MD</span>
         </div>
@@ -496,15 +657,14 @@
         </video>
         <div class="mf-hero-scrim"></div>
         <div class="mf-hero-inner">
-            <span class="mf-season-pill">🍂 Season · Sept 12 – Nov 8</span>
             <span class="mf-hero-title">Fall Festival <em>2026</em></span>
-            <span class="mf-hero-sub">A 7-acre interactive corn maze, pick-your-own pumpkins, giant hill slides, hay rides, barnyard animals — 30+ attractions and so much more — a whole park built for a family day out. Choose your date and time, and come spend the day with us.</span>
+            <span class="mf-hero-sub">Early Bird pricing is on now through September 4 &mdash; book your date before season pricing starts. A 7-acre interactive corn maze, pick-your-own pumpkins, giant hill slides, hay rides, barnyard animals &mdash; 30+ attractions and so much more, a whole park built for a family day out.</span>
         </div>
     </div>
 
     <!-- 04 · SEASON STRIP (house block 04) -->
     <div class="mf-seasonbar">
-        <span class="mf-seasonbar-t">September 12 – November 8, 2026<span class="mf-sb-dot">·</span>Weekends + October weekdays<span class="mf-sb-dot">·</span>Last admission 1 hour before close</span>
+        <span class="mf-seasonbar-t">Early Bird: book by September 4<span class="mf-sb-dot">·</span>Visit September 12 – November 8, 2026<span class="mf-sb-dot">·</span>Weekends + October weekdays</span>
     </div>
 
     <!-- 05 · BENEFITS — 4 highlights (house block 05) -->
@@ -533,10 +693,10 @@
         </div>
     </div>
 
-    <div class="mf-sec mf-addons">
+    <div class="mf-sec mf-addons mf-addons-compact">
         <div class="mf-head mfr">
             <span class="mf-eye">Included With Every Ticket</span>
-            <span class="mf-title">What's at the <em>farm</em></span>
+            <span class="mf-title">30+ attractions <em>at the farm</em></span>
             <p class="mf-lede">Every General Admission includes access to all of this &mdash; no extra charge.</p>
         </div>
         <div class="mf-pill-wrap mfr d1">
@@ -569,9 +729,9 @@
 
     <div class="mf-sec mf-tickets" id="tickets">
         <div class="mf-head mfr">
-            <span class="mf-eye">Season Pricing</span>
+            <span class="mf-eye">Early Bird Pricing</span>
             <span class="mf-title">Choose your <em>pass</em></span>
-            <p class="mf-lede">Every ticket is date-and-time specific. Ages 2 and under are always free for General Admission.</p>
+            <p class="mf-lede">Early Bird runs through September 4. Every ticket is date-and-time specific &mdash; pick your date and arrival time at checkout. Ages 2 and under are always free for General Admission.</p>
         </div>
         <div class="mf-grid">
 
@@ -579,11 +739,14 @@
                 <span class="mf-badge">Best Value</span>
                 <h3>General Admission</h3>
                 <span class="mf-card-sub">One day, one admission</span>
+                <span class="mf-from">From</span>
                 <div class="mf-price-row">
-                    <span class="mf-price">$19.95</span>
+                    <span class="mf-price">$18.95</span>
                     <span class="mf-fee-note">+ fees</span>
-                    <span class="mf-save">Online</span>
+                    <span class="mf-was">$19.95</span>
+                    <span class="mf-save">Early Bird</span>
                 </div>
+                <span class="mf-price-proof">Standard and peak-weekend rates apply depending on the date. <strong>Select your date below</strong> to see pricing.</span>
                 <ul class="mf-list">
                     <li><span class="mf-tick">🌽</span><span>7-acre interactive corn maze</span></li>
                     <li><span class="mf-tick">🎃</span><span>Pick-your-own pumpkin patch &amp; hay rides</span></li>
@@ -591,18 +754,21 @@
                     <li><span class="mf-tick">✨</span><span>30+ attractions and so much more</span></li>
                     <li><span class="mf-tick">👶</span><span>Ages 2 &amp; under free for General Admission</span></li>
                 </ul>
-                <span class="mf-card-note">$24.95 on peak weekends (Oct 17–18 and Oct 23–24). Choose your date and arrival time at checkout.</span>
+                <span class="mf-card-note">Peak weekends (Oct 17–18, Oct 24–25 and Oct 31–Nov 1) add $5.</span>
             </div>
 
             <div class="mf-card mf-card-feature mfr d1">
                 <span class="mf-badge">Best Opportunity</span>
                 <h3>Super Pass</h3>
                 <span class="mf-card-sub">Admission plus the big attractions</span>
+                <span class="mf-from">From</span>
                 <div class="mf-price-row">
                     <span class="mf-price">$35.95</span>
                     <span class="mf-fee-note">+ fees</span>
-                    <span class="mf-was">$43.95</span>
+                    <span class="mf-was">$38.95</span>
+                    <span class="mf-save">Early Bird</span>
                 </div>
+                <span class="mf-price-proof">Standard and peak-weekend rates apply depending on the date. <strong>Select your date below</strong> to see pricing.</span>
                 <ul class="mf-list">
                     <li><span class="mf-tick">🎟️</span><span>Everything in General Admission</span></li>
                     <li><span class="mf-tick">🛝</span><span>Super Mega Slide</span></li>
@@ -610,7 +776,7 @@
                     <li><span class="mf-tick">🎨</span><span>Paint-a-Pumpkin</span></li>
                     <li><span class="mf-tick">💎</span><span>Mining Mania — gems or seashells</span></li>
                 </ul>
-                <span class="mf-card-note">$43.95 at the door, $48.95 on peak weekends. Peak online is $43.95. Choose your date and time at checkout.</span>
+                <span class="mf-card-note">Peak weekends (Oct 17–18, Oct 24–25 and Oct 31–Nov 1) add $5. $43.95 at the door.</span>
             </div>
 
             <div class="mf-card mfr d2">
@@ -618,9 +784,10 @@
                 <h3>Ultimate Pass</h3>
                 <span class="mf-card-sub">Everything, all in one ticket</span>
                 <div class="mf-price-row">
-                    <span class="mf-price">$68</span>
+                    <span class="mf-price">$58.95</span>
                     <span class="mf-fee-note">+ fees</span>
-                    <span class="mf-save">All-In</span>
+                    <span class="mf-was">$68.95</span>
+                    <span class="mf-save">Early Bird</span>
                 </div>
                 <ul class="mf-list">
                     <li><span class="mf-tick">🎟️</span><span>Everything in General Admission</span></li>
@@ -631,7 +798,7 @@
                     <li><span class="mf-tick">🎯</span><span>100 shots of paintball</span></li>
                     <li><span class="mf-tick">🧸</span><span>Build-a-Buddy</span></li>
                 </ul>
-                <span class="mf-card-note">Every add-on below, bundled. Peak weekends add $5. Choose your date and arrival time at checkout.</span>
+                <span class="mf-card-note">Every add-on below, bundled. Peak weekends (Oct 17–18, Oct 24–25 and Oct 31–Nov 1) add $5. Choose your date and arrival time at checkout.</span>
             </div>
 
         </div>
@@ -656,7 +823,7 @@
             </div>
         </div>
 
-        <p class="mf-note">🍁 Peak weekends — October 17–18 and 23–24 — add $5 to every single-day ticket type.</p>
+        <p class="mf-note">🍁 Peak weekends — October 17–18, October 24–25 and October 31–November 1 — add $5 to every single-day ticket type.</p>
     </div>
 
     <div class="mf-sec mf-hours">
