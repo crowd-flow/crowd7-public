@@ -56,6 +56,27 @@
      In Season and is a separate state, not built here — see state.md Open
      Asks.
 
+     ⚠️ 2026-08-30 (Mat directive, preview only) — Ashley's requested changes
+     off the 8/27 check-in call + her 8/28 Slack note, tracked as CrowdView
+     changes 247-256 + 273 on page 29 (chester-season-2026):
+       247 wagon RIDES + ponies wording in the banner
+       248 $5 Picking Pass icon: wheat -> apple (it's an apple farm)
+       249 Season Pass icon: ticket stub read as a concert/train ticket -> leaf
+       251 dropped "Sept 1-4" from the Now Open tile ("now open, in season")
+       252 actual times printed wherever the page says "hours" (9:00-5:30)
+       253 removed the leftover "apples aren't ready during Bloom Fest" line
+       254 "farm animals" / "live music" / "see the full weekend schedule" now
+           link to riamedefarm.com/fall-festival — Ashley put the weekend
+           animal graphics + music there herself on 8/28 ("I dropped these onto
+           the Fall Festival page where I already have the music, for now"),
+           which answers the open placement question on that change
+       256 ponies/animals credited as visiting partners, Sat & Sun only
+       273 the one remaining visible "BloomFest" -> "Bloom Fest" (253 removed
+           the other one, which was the exact spot Ashley flagged)
+     NOT built here: the Labor Day four-pack ($44.95) and $32.50 season pass
+     (CrowdView 250/257/258) — those are Labor Day FLASH SALE offers for
+     9/5-9/7, a separate page state, per Mat.
+
      Sub-brand: orchard/harvest palette — NOT the Jack's Lighted Trail dark
      Halloween theme. Imagery harvested from riamedefarm.com (Wix), see
      artifacts/image-url-check.md.
@@ -453,6 +474,13 @@
     }
     #rmf-funnel .rmf-fine-inner p:last-of-type { margin-bottom: 0 !important; }
     #rmf-funnel .rmf-fine-inner strong { color: #B3241D !important; }
+    /* 2026-08-30: the fine-print block now carries real outbound links
+       (weekend schedule -> riamedefarm.com/fall-festival, CrowdView 254).
+       Browser-default blue/purple reads as broken on this cream panel. */
+    #rmf-funnel .rmf-fine-inner a,
+    #rmf-funnel .rmf-fine-inner a:visited { color: #B3241D !important; font-weight: 600 !important;
+        text-decoration: underline !important; text-underline-offset: 2px !important; }
+    #rmf-funnel .rmf-fine-inner a:hover { color: #8E1C16 !important; }
     #rmf-funnel .rmf-fine-center p { text-align: center !important; }
     #rmf-funnel .rmf-hours { padding-top: 0 !important; }
     #rmf-funnel .rmf-fine-kids {
@@ -504,7 +532,7 @@
         <div class="rmf-banner-inner">
             <span id="rmf-banner-text">🍂 In Season now &mdash; through Nov 1</span>
             <span class="rmf-dot"></span>
-            <span>Wagons &amp; ponies start Labor Day weekend</span>
+            <span>Wagon rides &amp; ponies start Labor Day weekend</span>
         </div>
     </div>
 
@@ -565,7 +593,7 @@
     <div class="rmf-feature">
         <span class="rmf-eye rmfr">Fifty Years Growing</span>
         <span class="rmf-title rmfr">Come for the Blooms, <em>Stay for the Harvest</em></span>
-        <p class="rmf-feature-copy rmfr d1">Riamede's Fall Festival steps up as the season progresses. Starting with BloomFest's cut-your-own flower fields and the soft-opening of our concessions in August, the season grows into our full Fall Festival experience with wagon rides, pick-your-own produce and flowers, weekend entertainment, and full concessions by Labor Day. Same farm, same ticket, more happening every week you visit!</p>
+        <p class="rmf-feature-copy rmfr d1">Riamede's Fall Festival steps up as the season progresses. Starting with Bloom Fest's cut-your-own flower fields and the soft-opening of our concessions in August, the season grows into our full Fall Festival experience with wagon rides, pick-your-own produce and flowers, weekend entertainment, and full concessions by Labor Day. Same farm, same ticket, more happening every week you visit!</p>
     </div>
 
     <!-- GALLERY -->
@@ -620,7 +648,7 @@
 
                 <a href="#ticketBlock" class="rmf-card rmf-card-green rmfr d1" aria-label="Buy Season Pass tickets">
                     <span class="rmf-card-badge rmf-card-badge-gold">Season Pass</span>
-                    <span class="rmf-card-icon">🎫</span>
+                    <span class="rmf-card-icon">🍁</span>
                     <h3>Season Pass</h3>
                     <ul class="rmf-card-bullets">
                         <li>🎟️ Unlimited visits through Fall Fest, Sept 1 &ndash; Nov 1</li>
@@ -643,7 +671,7 @@
                      policy — CrowdView change 163 has that unresolved with Ashley. -->
                 <a href="#ticketBlock" class="rmf-card rmf-card-cream rmfr d2" aria-label="Buy the $5 Picking Pass">
                     <span class="rmf-card-badge rmf-card-badge-green">Midweek</span>
-                    <span class="rmf-card-icon">🌾</span>
+                    <span class="rmf-card-icon">🍎</span>
                     <h3>$5 Picking Pass</h3>
                     <ul class="rmf-card-bullets">
                         <li>📅 Every weekday except Tuesday &mdash; Mon, Wed, Thu &amp; Fri</li>
@@ -702,12 +730,12 @@
             <div class="rmf-info-item">
                 <span class="rmf-info-icon">🍂</span>
                 <span class="rmf-info-label">Now Open</span>
-                <span class="rmf-info-value">In Season<br>Sept 1&ndash;4</span>
+                <span class="rmf-info-value">In Season</span>
             </div>
             <div class="rmf-info-item">
                 <span class="rmf-info-icon">🕘</span>
                 <span class="rmf-info-label">Hours</span>
-                <span class="rmf-info-value">Wed &ndash; Mon<br><span style="font-size:0.72rem !important; font-weight:400 !important; color:rgba(251,244,230,0.75) !important;">Closed Tuesdays</span><br><a href="#rmf-season-hours" style="font-size:0.72rem !important; font-weight:600 !important; color:rgba(251,244,230,0.92) !important; text-decoration:underline !important;">See 2026 season hours</a></span>
+                <span class="rmf-info-value">9:00 AM &ndash; 5:30 PM<br><span style="font-size:0.72rem !important; font-weight:400 !important; color:rgba(251,244,230,0.75) !important;">Wed &ndash; Mon &middot; Closed Tuesdays</span><br><a href="#rmf-season-hours" style="font-size:0.72rem !important; font-weight:600 !important; color:rgba(251,244,230,0.92) !important; text-decoration:underline !important;">See 2026 season hours</a></span>
             </div>
         </div>
     </div>
@@ -718,9 +746,10 @@
             <span class="rmf-fine-title">Important Things to Know</span>
             <p class="rmf-fine-kids">🍎 Kids ages 2 and under are free and don't require a ticket!</p>
             <p><strong>Produce &amp; flowers:</strong> All produce and flowers are priced separately from admission &mdash; your ticket covers entry to the open picking fields. Please bring a reusable bag to pick into; if you don't have one, we have free paper picking bags at the gate and even stronger cloth bags available for purchase.</p>
-            <p><strong>Weekends vs. weekdays:</strong> The hay wagon, apple slingshot, Orchard Grill, Sweet Shed, animals, and live music run on <strong>weekends only</strong>. The apple slingshot carries a small additional fee, is <strong>cash-only</strong>, and opens in mid-September.</p>
-            <p><strong>Hours:</strong> We're open <strong>Wednesday through Monday &mdash; closed Tuesdays</strong>. Last entry for picking is 4:00 PM. <a href="#rmf-season-hours">See full 2026 season hours</a>.</p>
-            <p><strong>Your Family Bundle basket:</strong> The commemorative basket is filled with farm-fresh apples and is <strong>redeemable for Fall Fest, September 1 through November 1</strong>. Apples aren't ready during Bloomfest's opening weekends. Due to a devastating spring frost event, we cannot guarantee that your basket of apples will be from our trees throughout the entire fall, but we have a good number of apples on the trees projected across the whole season and are hoping that they make it into your basket! If not, we'll be supplying from partner Eco-Certified farms nearby.</p>
+            <p><strong>Weekends vs. weekdays:</strong> The hay wagon, apple slingshot, Orchard Grill, Sweet Shed, <a href="https://www.riamedefarm.com/fall-festival" target="_blank" rel="noopener">farm animals</a>, and <a href="https://www.riamedefarm.com/fall-festival" target="_blank" rel="noopener">live music</a> run on <strong>weekends only</strong> &mdash; and the line-up changes every weekend. <a href="https://www.riamedefarm.com/fall-festival" target="_blank" rel="noopener">See the full weekend schedule</a> for who&rsquo;s playing and which animals are visiting. The apple slingshot carries a small additional fee, is <strong>cash-only</strong>, and opens in mid-September.</p>
+            <p><strong>Pony rides &amp; farm animals:</strong> Wagon rides and pony rides start <strong>Labor Day weekend</strong>. The ponies and farm animals visit <strong>Saturdays and Sundays only</strong>, in partnership with our visiting animal partners &mdash; they&rsquo;re guests on the farm for the weekend, not Riamede&rsquo;s own animals.</p>
+            <p><strong>Hours:</strong> We're open <strong>9:00 AM &ndash; 5:30 PM, Wednesday through Monday &mdash; closed Tuesdays</strong> (November: 9:00 AM &ndash; 4:30 PM). Last entry for picking is 4:00 PM. <a href="#rmf-season-hours">See full 2026 season hours</a>.</p>
+            <p><strong>Your Family Bundle basket:</strong> The commemorative basket is filled with farm-fresh apples and is <strong>redeemable for Fall Fest, September 1 through November 1</strong>. Due to a devastating spring frost event, we cannot guarantee that your basket of apples will be from our trees throughout the entire fall, but we have a good number of apples on the trees projected across the whole season and are hoping that they make it into your basket! If not, we'll be supplying from partner Eco-Certified farms nearby.</p>
             <p><strong>Pets:</strong> We do not allow pets or emotional support animals on the farm grounds.</p>
             <p><strong>Tickets:</strong> All ticket sales are final and non-refundable &mdash; but you <strong>can</strong> create an account and change the date of your tickets yourself, any time.</p>
         </div>
