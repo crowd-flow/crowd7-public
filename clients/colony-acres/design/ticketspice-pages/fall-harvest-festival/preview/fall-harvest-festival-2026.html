@@ -4,13 +4,28 @@
     Drop into a TicketSpice "Custom HTML" content block on the FunYard Admission 26 page,
     above the existing ticket-selector bones.
 
-    PHASE: EARLY BIRD (Aug 31 – Sept 13) — PREVIEW ONLY, 2026-08-30.
-    Window and every "after" price verified against CrowdView (event 14) 2026-08-30.
-    The production/ copy of this file is still the Flash Sale phase and is untouched;
-    diff the two to see exactly what a phase flip changes (it is the banner and the
-    ticket-card block, nothing else). Do not publish before Sept 4 — see the banner
-    comment. Pricing in the ticket block is proposed, not client-approved; the open
-    questions are listed there.
+    PHASE: EARLY BIRD (Aug 31 – Sept 13) — LIVE, promoted from preview 2026-08-30
+    on Mat's go ("Flash sale ends Aug 30th, Early Bird begins tomorrow").
+
+    Every price here is now backed by CrowdView (event 14). The early_bird rows
+    were written to the DB the same day —
+    crowdview/db/proposed/2026-08-30-colony-acres-early-bird-pricing.sql — from
+    Bryan's rule on the 8/7/26 Katie check-in: flash is 33% off, "early bird
+    pricing is going to be a 15% off." Applied to base: admission $11.05 / $12.75,
+    season pass $38.25, family bundle $76.50.
+
+    ⚠️ PASTING THIS FILE DOES NOT CHANGE WHAT THE CART CHARGES. TicketSpice Actions
+    still have to be set for the Aug 31 – Sept 13 window, or the page advertises
+    $11.05 while the cart rings up the $13.00 base.
+
+    ⚠️ ROUNDING IS STILL OPEN. These are the exact 15% figures. Colony prices on
+    .95/.40 endings everywhere else, and both closest analogs (Jerry Smith,
+    Montpelier) use .95 for early_bird. If Bryan wants $10.95 / $12.95 / $37.95 /
+    $76.95 it is one UPDATE per row plus a copy pass here.
+
+    The superseded Flash Sale version of this file is in git history — diff back to
+    it to see exactly what a phase flip changes (the banner and the ticket-card
+    block, nothing else).
 
     Source data: 5.13.26 Bryan call + colonyacres TicketSpice preview (5.13.26 screencap).
     Assets: webconnex CDN /84892/ + colonyacres.farm /wp-content/uploads/.
