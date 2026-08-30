@@ -593,6 +593,34 @@
     #caf-funnel .cafr.d1 { transition-delay: 0.1s !important; }
     #caf-funnel .cafr.d2 { transition-delay: 0.2s !important; }
 
+    /* ── Solo row: a fourth card centred under the three ──
+       Two classes so it beats the plain `#caf-funnel .caf-grid` rule inside the
+       responsive media queries below on specificity, not source order — those
+       reset the column count and would otherwise stretch this back to 2/3-up. */
+    #caf-funnel .caf-grid.caf-grid-solo {
+        grid-template-columns: minmax(0, 400px) !important;
+        margin-top: 24px !important;
+    }
+
+    /* ── Sold out ──
+       Deliberately still readable, not hidden: the Launch Day Bundle is the
+       offer the flash ads point at, so arriving buyers need to SEE it went
+       rather than wonder if they misremembered it. Desaturated and struck
+       through, with the live cards left at full strength above it. */
+    #caf-funnel .caf-card-sold {
+        opacity: 0.78 !important;
+        filter: saturate(0.5) !important;
+    }
+    #caf-funnel .caf-card-sold .caf-price-num {
+        text-decoration: line-through !important;
+        text-decoration-thickness: 3px !important;
+    }
+    #caf-funnel .caf-badge-sold {
+        background: #8A6A4A !important;
+        color: #FBF6EC !important;
+        letter-spacing: 0.16em !important;
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 1000px) {
         #caf-funnel .caf-grid { grid-template-columns: repeat(2, minmax(0, 420px)) !important; }
@@ -803,31 +831,31 @@
         </div>
         <div class="caf-grid">
 
-            <!-- LAUNCH DAY BUNDLE — hero card.
-                 Copy written to AGE WELL (Mat 2026-08-25): inventory is capped at 100
-                 and the advancer switches on DATES, not stock, so this card keeps
-                 rendering after it sells out. No "hurry" / "get yours now" language —
-                 the cart shows sold-out on its own. -->
+            <!-- SEASON PASS — promoted into slot 1 on Mat's call 2026-08-30,
+                 replacing the Launch Day Bundle once that sold out. Prices are
+                 the CrowdView values for event 14: flash $31.95 against a $45.00
+                 base. ($45.00 is the deliberate current price, not drift — Bryan
+                 confirmed on the 8/7/26 Katie check-in that the older $39.95 /
+                 $35 figures are superseded.) -->
             <div class="caf-card caf-card-dark cafr">
-                <span class="caf-card-badge caf-badge-light">Launch Day · 100 only</span>
-                <span class="caf-card-icon">⭐</span>
-                <h3>Launch Day Bundle</h3>
+                <span class="caf-card-badge caf-badge-light">Best value · unlimited</span>
+                <span class="caf-card-icon">🍂</span>
+                <h3>Season Pass</h3>
                 <ul class="caf-card-bullets">
-                    <li>🎫 One Any Day Admission</li>
-                    <li>🎃 One pumpkin to take home</li>
-                    <li>🥤 Lemonade or slushie — your choice</li>
-                    <li>🍩 A cup of donut holes</li>
-                    <li>🔒 Limited to the first 100 buyers</li>
+                    <li>♾️ Unlimited visits all season long</li>
+                    <li>📅 Good every operating day, Sept 19 – Oct 31</li>
+                    <li>🎟️ One pass, the whole centennial season</li>
+                    <li>🅿️ Free parking — always</li>
                 </ul>
                 <div class="caf-card-price">
-                    <span class="caf-price-num">$17.95*</span>
+                    <span class="caf-price-num">$31.95*</span>
                     <div class="caf-price-slash">
                         <span class="caf-price-online">Flash Sale</span>
-                        <span class="caf-price-was">$36 value</span>
+                        <span class="caf-price-was">$45.00 regular</span>
                     </div>
                 </div>
                 <span class="caf-card-fees">*plus applicable taxes and fees</span>
-                <span class="caf-card-note">Per person · ages 3 &amp; up · first 100 buyers</span>
+                <span class="caf-card-note">Per person · ages 3 &amp; up</span>
             </div>
 
             <!-- FAMILY 4 PACK BUNDLE -->
@@ -872,6 +900,36 @@
                 <span class="caf-card-note">Per person · ages 3 &amp; up</span>
             </div>
 
+        </div>
+
+        <!-- LAUNCH DAY BUNDLE — sold out, kept visible as a fourth card.
+             The 300-cap sold through, so it moved out of slot 1 (Mat, 2026-08-30).
+             Left on the page rather than deleted because the live flash ads and
+             emails point at this offer by name; a buyer who arrives for it should
+             find it clearly gone, not silently missing. Copy still AGES WELL —
+             the advancer switches on DATES, not stock, so nothing here needs to
+             change again when the phase flips. -->
+        <div class="caf-grid caf-grid-solo">
+            <div class="caf-card caf-card-cream caf-card-sold cafr">
+                <span class="caf-card-badge caf-badge-sold">Sold Out</span>
+                <span class="caf-card-icon">⭐</span>
+                <h3>Launch Day Bundle</h3>
+                <ul class="caf-card-bullets">
+                    <li>🎫 One Any Day Admission</li>
+                    <li>🎃 One pumpkin to take home</li>
+                    <li>🥤 Lemonade or slushie — your choice</li>
+                    <li>🍩 A cup of donut holes</li>
+                </ul>
+                <div class="caf-card-price">
+                    <span class="caf-price-num">$17.95*</span>
+                    <div class="caf-price-slash">
+                        <span class="caf-price-online">Sold Out</span>
+                        <span class="caf-price-was">$36 value</span>
+                    </div>
+                </div>
+                <span class="caf-card-fees">*plus applicable taxes and fees</span>
+                <span class="caf-card-note">This one's gone — the tickets above are still on sale</span>
+            </div>
         </div>
     </div>
 
