@@ -126,6 +126,55 @@
      says $24.95 on peak weekends; almost certainly online-vs-door, but
      unconfirmed — see the row's open_question in CrowdView).
 
+  ✅ 2026-08-30 — EARLY BIRD FRAMING + flash-sale parity, PREVIEW ONLY.
+     CrowdView changes 292 (parity), 177 (build Early Bird into this page) and
+     293 (Early Bird language). Driver — Bryan, 8/28 call: "Montpelier's landing
+     page for Early Birds... an updated landing page, matching, NOT the pricing,
+     but matching the cards and all the stuff that we changed on the flash sale
+     page." And the written client commitment (Slack → Adrianne, 8/25): flash
+     sale ends 8/30 11:59pm ET, Early Bird goes live on this date-based page 8/31.
+
+     PARITY (292) — the two things the flash-sale page had and this one did not:
+       · pills section now leads with the attraction count ("30+ attractions at
+         the farm" instead of "What's at the farm")
+       · .mf-addons-compact padding so the pills frame the cards instead of
+         competing with them (it sits above the cards on both pages now)
+     Everything else was already at parity as of 2026-08-24 — the 8/14 punch
+     list, the hayride/animals fix, per-bullet emoji, gems-or-seashells, the
+     section reorder and the 30+ count all landed on both pages already.
+
+     EARLY BIRD (177 / 293) — framing only, NO price touched:
+       · banner, hero pill, hero copy, season strip and the tickets-section
+         eyebrow + lede all now say Early Bird, running THROUGH SEPTEMBER 4
+       · deliberately does NOT lead with a percentage. Adrienne, 8/20: "maybe we
+         don't say, you know, percentage in this and that. We just say early bird
+         sale, and then 1795 instead of 1795, but you have to pick your date and
+         time." Bryan agreed. So the page sells the deal, not the number.
+       · Sept 4 end date reconciles both sources: Adrienne 8/20 ("we take that
+         down on September 4th... full price starting on the 5th") and Bryan 8/28
+         ("until the week before the season technically starts" — season opens
+         9/12).
+
+     🚫 PRICES DELIBERATELY NOT CHANGED — CrowdView change 178 is NOT done, and
+        should not be shipped off the current transcript. Two problems with the
+        numbers as recorded:
+          1. Ultimate "$58.95" appears NOWHERE in the 8/20 transcript. $68 × 0.8
+             is $54.40, so it is not a 20% derivation either. Unsourced.
+          2. Super Pass "$35.95" is ALREADY this page's regular online price, so
+             showing it as the Early Bird price is a zero discount.
+        What the transcript actually supports: GA $18.95 (Adrienne: "early bird
+        is not 20% off, it's a dollar online"), Season Pass NOT discounted, and
+        Weekday Play Day NOT discounted. It also suggests the real Early Bird
+        benefit may be NO $5 peak surcharge whatever date you pick ("we will not
+        be $5 more if they select another day") rather than a headline discount.
+        CONFIRM WITH BRYAN/ADRIENNE BEFORE SHIPPING PRICES. This account already
+        has a live display-vs-charge gap ($33.95 shown / $35.95 charged on the
+        flash-sale Super Pass, open since 8/24) — do not open a second one.
+
+     PREVIEW ONLY. production/ untouched: the flash sale is still live until
+     11:59pm ET tonight, and this page must not flip to Early Bird until 8/31.
+     Promotion is a straight copy of both preview files into production/.
+
   ✅ 2026-08-23 — attraction count corrected 35+ → 30+ (Adrienne said
      "30" twice, unprompted, on the 8/20 call — newer client comms win
      over the 8/14 email; matches their own homepage + the live TS cart's
@@ -179,6 +228,13 @@
     #mf-funnel .d3 { transition-delay: .27s !important; }
 
     #mf-funnel .mf-sec { padding: clamp(56px, 7.5vw, 92px) 24px !important; }
+    /* Pills section sits ABOVE the pass cards (Bryan screencast 2026-08-15 on the
+       flash-sale sibling; moved here 2026-08-24 per Adrienne's 8/20 call, "I like
+       it on the top. So they see that first."). Compact padding so it frames the
+       cards instead of competing with them — ported from the flash-sale page
+       2026-08-30, CrowdView change 292. */
+    #mf-funnel .mf-addons-compact { padding-top: clamp(40px, 5vw, 60px) !important; padding-bottom: clamp(28px, 3.5vw, 40px) !important; }
+    #mf-funnel .mf-addons-compact .mf-lede { margin-bottom: 4px !important; }
     #mf-funnel .mf-eye {
         display: block !important; font-size: .71rem !important; font-weight: 600 !important;
         letter-spacing: .2em !important; text-transform: uppercase !important;
@@ -473,9 +529,9 @@
 
     <div class="mf-banner">
         <div class="mf-banner-inner">
-            <span>🎃 <strong>Fall Festival 2026</strong></span>
+            <span>🐦 <strong>Early Bird Sale — on now</strong></span>
             <span class="mf-dot"></span>
-            <span>September 12 – November 8</span>
+            <span>Through September 4</span>
             <span class="mf-dot"></span>
             <span>Upper Marlboro, MD</span>
         </div>
@@ -496,15 +552,15 @@
         </video>
         <div class="mf-hero-scrim"></div>
         <div class="mf-hero-inner">
-            <span class="mf-season-pill">🍂 Season · Sept 12 – Nov 8</span>
+            <span class="mf-season-pill">🐦 Early Bird · Through Sept 4</span>
             <span class="mf-hero-title">Fall Festival <em>2026</em></span>
-            <span class="mf-hero-sub">A 7-acre interactive corn maze, pick-your-own pumpkins, giant hill slides, hay rides, barnyard animals — 30+ attractions and so much more — a whole park built for a family day out. Choose your date and time, and come spend the day with us.</span>
+            <span class="mf-hero-sub">Early Bird pricing is on now through September 4 &mdash; book your date before season pricing starts. A 7-acre interactive corn maze, pick-your-own pumpkins, giant hill slides, hay rides, barnyard animals &mdash; 30+ attractions and so much more, a whole park built for a family day out.</span>
         </div>
     </div>
 
     <!-- 04 · SEASON STRIP (house block 04) -->
     <div class="mf-seasonbar">
-        <span class="mf-seasonbar-t">September 12 – November 8, 2026<span class="mf-sb-dot">·</span>Weekends + October weekdays<span class="mf-sb-dot">·</span>Last admission 1 hour before close</span>
+        <span class="mf-seasonbar-t">Early Bird: book by September 4<span class="mf-sb-dot">·</span>Visit September 12 – November 8, 2026<span class="mf-sb-dot">·</span>Weekends + October weekdays</span>
     </div>
 
     <!-- 05 · BENEFITS — 4 highlights (house block 05) -->
@@ -533,10 +589,10 @@
         </div>
     </div>
 
-    <div class="mf-sec mf-addons">
+    <div class="mf-sec mf-addons mf-addons-compact">
         <div class="mf-head mfr">
             <span class="mf-eye">Included With Every Ticket</span>
-            <span class="mf-title">What's at the <em>farm</em></span>
+            <span class="mf-title">30+ attractions <em>at the farm</em></span>
             <p class="mf-lede">Every General Admission includes access to all of this &mdash; no extra charge.</p>
         </div>
         <div class="mf-pill-wrap mfr d1">
@@ -569,9 +625,9 @@
 
     <div class="mf-sec mf-tickets" id="tickets">
         <div class="mf-head mfr">
-            <span class="mf-eye">Season Pricing</span>
+            <span class="mf-eye">Early Bird Pricing</span>
             <span class="mf-title">Choose your <em>pass</em></span>
-            <p class="mf-lede">Every ticket is date-and-time specific. Ages 2 and under are always free for General Admission.</p>
+            <p class="mf-lede">Early Bird runs through September 4. Every ticket is date-and-time specific &mdash; pick your date and arrival time at checkout. Ages 2 and under are always free for General Admission.</p>
         </div>
         <div class="mf-grid">
 
