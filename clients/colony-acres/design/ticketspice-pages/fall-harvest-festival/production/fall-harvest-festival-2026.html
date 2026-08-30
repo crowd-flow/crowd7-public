@@ -4,29 +4,6 @@
     Drop into a TicketSpice "Custom HTML" content block on the FunYard Admission 26 page,
     above the existing ticket-selector bones.
 
-    PHASE: EARLY BIRD (Aug 31 – Sept 13) — LIVE, promoted from preview 2026-08-30
-    on Mat's go ("Flash sale ends Aug 30th, Early Bird begins tomorrow").
-
-    Every price here is now backed by CrowdView (event 14). The early_bird rows
-    were written to the DB the same day —
-    crowdview/db/proposed/2026-08-30-colony-acres-early-bird-pricing.sql — from
-    Bryan's rule on the 8/7/26 Katie check-in: flash is 33% off, "early bird
-    pricing is going to be a 15% off." Applied to base: admission $11.05 / $12.75,
-    season pass $38.25, family bundle $76.50.
-
-    ⚠️ PASTING THIS FILE DOES NOT CHANGE WHAT THE CART CHARGES. TicketSpice Actions
-    still have to be set for the Aug 31 – Sept 13 window, or the page advertises
-    $11.05 while the cart rings up the $13.00 base.
-
-    ⚠️ ROUNDING IS STILL OPEN. These are the exact 15% figures. Colony prices on
-    .95/.40 endings everywhere else, and both closest analogs (Jerry Smith,
-    Montpelier) use .95 for early_bird. If Bryan wants $10.95 / $12.95 / $37.95 /
-    $76.95 it is one UPDATE per row plus a copy pass here.
-
-    The superseded Flash Sale version of this file is in git history — diff back to
-    it to see exactly what a phase flip changes (the banner and the ticket-card
-    block, nothing else).
-
     Source data: 5.13.26 Bryan call + colonyacres TicketSpice preview (5.13.26 screencap).
     Assets: webconnex CDN /84892/ + colonyacres.farm /wp-content/uploads/.
     Centennial framing per Bryan ("highlight 100 years of farming"). Season Pass = "Coming Soon"
@@ -706,26 +683,17 @@
 <div id="caf-funnel">
 
 
-    <!-- BANNER · Early Bird phase — window from CrowdView event_phase, event 14:
-         Lead Up Aug 21–25 · Flash Sale Aug 26–30 · EARLY BIRD AUG 31 – SEPT 13 ·
-         In Season Sept 14 – Oct 31.
-         There is NO gap: Early Bird opens the day after flash closes. An earlier
-         draft of this file said "Sept 4–18" — that was derived from the strategy
-         call, and the DB overrules it.
-         NOTE the In Season boundary: prices step up SEPT 14, five days BEFORE the
-         gates open Sept 19. So the deadline is the price change, not opening day —
-         do not write "before we open" copy against this window.
-         Deliberately does NOT say "best prices": Bryan protects the flash sale as
-         the season's low ("I don't want to relaunch flash sale pricing"). -->
+    <!-- BANNER · Flash Sale phase (Aug 26–30) -->
     <div class="caf-banner">
         <div class="caf-banner-inner">
-            <span class="caf-banner-cent">★ EARLY BIRD · AUG 31 – SEPT 13 ★</span>
+            <span class="caf-banner-cent">★ FLASH SALE · AUG 26–30 ★</span>
             <span class="caf-dot"></span>
-            <span><strong>Save before prices go up</strong></span>
+            <span><strong>Best prices of the season</strong></span>
             <span class="caf-dot"></span>
             <span>Annual Fall Festival · Sept 19 – Oct 31, 2026</span>
         </div>
     </div>
+
 
 
     <!-- NAV -->
@@ -823,146 +791,85 @@
     </div>
 
 
-    <!-- TICKETS · Early Bird phase (Aug 31 – Sept 13) -->
-    <!-- ⚠️ EVERY NAME AND EVERY "AFTER" NUMBER BELOW NOW COMES FROM CROWDVIEW,
-         not from the strategy transcript. Colony Acres = accounts row, event 14,
-         `ticket` + `price` tables. Verified 2026-08-30. The DB's own authority
-         order (db/proposed/2026-08-25-colony-acres-pricing-correction.sql) is:
-         the Katie-built TicketSpice page 1014668 first — it is what the cart
-         actually charges — then the 5/21 strategy call, then Katie's 8/14
-         corrections.
-
-         WHAT THE DB HOLDS FOR THIS EVENT:
-           Admission              base wd $13.00 / we $15.00 · gate wd $16.00 / we $18.00
-                                  flash wd $10.40 / we $11.95
-           Season Pass (Unlimited) base $45.00 · flash $31.95
-           Food & Fun Family Bundle base $90.00 · flash NOT DECIDED
-           Launch Day Special     flash $17.95, cap 300 — FLASH SALE ONLY
-
-         ⚠️ THE DB HAS NO early_bird ROWS FOR COLONY, BUT THE RULE WAS DECIDED ON A
-         CALL. Bryan to Katie, 8/7/26 check-in [10:04], verbatim: "what we're
-         running with you guys is basically just a flat 33% off of those for the
-         flash sale, and then EARLY BIRD PRICING IS GOING TO BE A 15% OFF. So once
-         again, flash sale is the biggest discount. Then people who still want to
-         get in early have the early bird pricing."
-         (notes/work/crowd7/meetings/2026/8.7.26.Crowd7ColonyAcresCheckIn.transcript.md)
-
-         The prices below are that 15% applied to the DB's base rate:
-           Admission weekday  $13.00 -> $11.05
-           Admission weekend  $15.00 -> $12.75
-           Season Pass        $45.00 -> $38.25
-           Family Bundle      $90.00 -> $76.50
-         Ladder holds: flash 10.40 < EB 11.05 < base 13.00 < gate 16.00.
-
-         ⚠️ TWO THINGS TO CONFIRM ON THE 15%:
-         (a) ANCHOR. Bryan said "15% off" without naming what off. It cannot be off
-             the gate — 15% off $16.00 is $13.60, ABOVE the $13.00 base — so base is
-             the only arithmetically sane reading. Worth one sentence of confirmation.
-             (For reference the flash "33%" IS measured off gate: $18.00 -> $11.95 is
-             33.6% off gate but only 20% off base.)
-         (b) ROUNDING. Exact 15% gives $11.05 / $12.75 / $38.25 / $76.50, which do not
-             match Colony's .95/.40 price endings anywhere else. If Bryan wants them
-             rounded ($10.95 / $12.95 / $37.95 / $76.95) that is his call, not mine.
-         Either way these still need writing into the DB as early_bird rows before
-         this publishes — four sibling accounts have them and Colony does not.
-
-         ⚠️ LAUNCH DAY SPECIAL IS NOT HERE ON PURPOSE. The DB marks it "Flash Sale
-         only." Reopening a Labor-Day version was Bryan's idea on the 5/21 call
-         ("we do a labor day special with the same inclusions we did for 17") but it
-         was never priced, never given a cap, and never built in TicketSpice. It
-         needs a decision, a price row and a TS build — not a card.
-
-         ⚠️ THE FAMILY BUNDLE ON THE FLASH PAGE LOOKS WRONG. production/ currently
-         shows "Family 4 Pack Bundle · $64.95 · $107 value". The DB has no such
-         ticket: it is "Food & Fun Family Bundle", base $90.00, ~$110 of value, and
-         its flash treatment is explicitly undecided with a recommendation to HOLD
-         at $90.00 because cutting it lands near $18/head and undercuts the $17.95
-         Launch Day Special. $64.95 is Jerry Smith's early-bird 4-pack number.
-         Worth checking what the live TicketSpice page is actually charging.
-
-         Copy is written to AGE WELL (Mat 2026-08-25): the advancer switches on
-         DATES, not stock. -->
+    <!-- TICKETS · Flash Sale phase -->
+    <!-- Bryan directive 2026-08-25: three cards only — Launch Day Bundle (hero),
+         Family 4 Pack, Admission. Season Pass deliberately omitted here; it still
+         appears further down the page. Prices are the TicketSpice flash Action
+         values (Aug 25 00:00 – Aug 31 00:00), NOT the base ticket prices. -->
     <div class="caf-tickets" id="tickets">
         <div class="caf-tickets-header cafr">
-            <span class="caf-eye">Early Bird</span>
-            <span class="caf-section-title">Save now, <em>before prices go up</em></span>
+            <span class="caf-eye">Flash Sale</span>
+            <span class="caf-section-title">The best prices <em>we offer all season</em></span>
         </div>
         <div class="caf-grid">
 
-            <!-- ADMISSION — tiers are Wed–Fri / Sat–Sun per the Katie-built TS page
-                 (resolved by Mat 2026-08-25). "After" prices are the DB's base rate,
-                 which takes over Sept 14. -->
+            <!-- LAUNCH DAY BUNDLE — hero card.
+                 Copy written to AGE WELL (Mat 2026-08-25): inventory is capped at 100
+                 and the advancer switches on DATES, not stock, so this card keeps
+                 rendering after it sells out. No "hurry" / "get yours now" language —
+                 the cart shows sold-out on its own. -->
             <div class="caf-card caf-card-dark cafr">
-                <span class="caf-card-badge caf-badge-light">Through Sept 13</span>
-                <span class="caf-card-icon">🌾</span>
-                <h3>Fun Yard Admission</h3>
+                <span class="caf-card-badge caf-badge-light">Launch Day · 100 only</span>
+                <span class="caf-card-icon">⭐</span>
+                <h3>Launch Day Bundle</h3>
                 <ul class="caf-card-bullets">
-                    <li>✓ Full Fun Yard access — every attraction included</li>
-                    <li>📅 Weekday $11.05 · Weekend $12.75</li>
-                    <li>👶 Children 2 &amp; under always free</li>
-                    <li>🅿️ Free parking — always</li>
+                    <li>🎫 One Any Day Admission</li>
+                    <li>🎃 One pumpkin to take home</li>
+                    <li>🥤 Lemonade or slushie — your choice</li>
+                    <li>🍩 A cup of donut holes</li>
+                    <li>🔒 Limited to the first 100 buyers</li>
                 </ul>
                 <div class="caf-card-price">
-                    <span class="caf-price-num">$11.05*</span>
+                    <span class="caf-price-num">$17.95*</span>
                     <div class="caf-price-slash">
-                        <span class="caf-price-online">Early Bird</span>
-                        <span class="caf-price-was">$16 at gate</span>
-                    </div>
-                </div>
-                <span class="caf-card-fees">*plus applicable taxes and fees · weekend $12.75</span>
-                <span class="caf-card-note">Per person · ages 3 &amp; up</span>
-            </div>
-
-            <!-- SEASON PASS — DB name is "Season Pass (Unlimited)". Regular shown as
-                 $45.00 because that is what the cart charges; the DB carries an open
-                 note that the 5/21 call locked $39.95 and asks whether $45.00 is a
-                 deliberate increase or drift. Resolve before publishing. -->
-            <div class="caf-card caf-card-cream cafr d1">
-                <span class="caf-card-badge caf-badge-orange">Unlimited visits</span>
-                <span class="caf-card-icon">🍂</span>
-                <h3>Season Pass</h3>
-                <ul class="caf-card-bullets">
-                    <li>✓ Unlimited visits all season long</li>
-                    <li>📅 Good every operating day, Sept 19 – Oct 31</li>
-                    <li>🅿️ Free parking — always</li>
-                </ul>
-                <div class="caf-card-price">
-                    <span class="caf-price-num">$38.25*</span>
-                    <div class="caf-price-slash">
-                        <span class="caf-price-online">Early Bird</span>
-                        <span class="caf-price-was">$45.00 regular</span>
+                        <span class="caf-price-online">Flash Sale</span>
+                        <span class="caf-price-was">$36 value</span>
                     </div>
                 </div>
                 <span class="caf-card-fees">*plus applicable taxes and fees</span>
-                <span class="caf-card-note">Per person · ages 3 &amp; up</span>
+                <span class="caf-card-note">Per person · ages 3 &amp; up · first 100 buyers</span>
             </div>
 
-            <!-- FOOD &amp; FUN FAMILY BUNDLE — name, inclusions and $90.00 base all
-                 straight from the DB; Early Bird price is the 15% rule applied.
-                 NOTE the DB carries a recommendation to HOLD this one at $90.00
-                 through the flash sale, on the grounds that discounting it lands
-                 near $18/head and undercuts the $17.95 Launch Day Special. At 15%
-                 off it is $19.13/head, which clears that bar — but if Bryan wants
-                 the bundle excluded from Early Bird entirely, delete this card's
-                 slash block and show $90.00 flat. -->
-            <div class="caf-card caf-card-cream cafr d2">
+            <!-- FAMILY 4 PACK BUNDLE -->
+            <div class="caf-card caf-card-cream cafr d1">
                 <span class="caf-card-badge caf-badge-orange">Best for families</span>
                 <span class="caf-card-icon">🎃</span>
-                <h3>Food &amp; Fun Family Bundle</h3>
+                <h3>Family 4 Pack Bundle</h3>
                 <ul class="caf-card-bullets">
                     <li>✓ Admission for four guests</li>
-                    <li>🎃 A pumpkin to take home</li>
-                    <li>🍿 Kettle corn, donuts &amp; drinks</li>
+                    <li>🍪 Food &amp; treats included</li>
+                    <li>🎃 Take home a pumpkin</li>
                 </ul>
                 <div class="caf-card-price">
-                    <span class="caf-price-num">$76.50*</span>
+                    <span class="caf-price-num">$64.95*</span>
                     <div class="caf-price-slash">
-                        <span class="caf-price-online">Early Bird</span>
-                        <span class="caf-price-was">$90.00 regular</span>
+                        <span class="caf-price-online">Flash Sale</span>
+                        <span class="caf-price-was">$107 value</span>
                     </div>
                 </div>
                 <span class="caf-card-fees">*plus applicable taxes and fees</span>
                 <span class="caf-card-note">Covers four guests</span>
+            </div>
+
+            <!-- ADMISSION — weekday + weekend on one card per Bryan -->
+            <div class="caf-card caf-card-cream cafr d2">
+                <span class="caf-card-badge caf-badge-orange">Any day</span>
+                <span class="caf-card-icon">🌾</span>
+                <h3>Fun Yard Admission</h3>
+                <ul class="caf-card-bullets">
+                    <li>✓ Full Fun Yard access — every attraction included</li>
+                    <li>📅 Weekday $10.49 · Weekend $11.95</li>
+                    <li>🅿️ Free parking — always</li>
+                </ul>
+                <div class="caf-card-price">
+                    <span class="caf-price-num">$10.49*</span>
+                    <div class="caf-price-slash">
+                        <span class="caf-price-online">Weekday · Flash</span>
+                        <span class="caf-price-was">$16 at gate</span>
+                    </div>
+                </div>
+                <span class="caf-card-fees">*plus applicable taxes and fees · weekend $11.95</span>
+                <span class="caf-card-note">Per person · ages 3 &amp; up</span>
             </div>
 
         </div>
