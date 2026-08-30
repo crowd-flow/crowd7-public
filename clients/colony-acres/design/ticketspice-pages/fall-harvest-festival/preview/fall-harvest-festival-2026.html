@@ -824,13 +824,32 @@
            Food & Fun Family Bundle base $90.00 · flash NOT DECIDED
            Launch Day Special     flash $17.95, cap 300 — FLASH SALE ONLY
 
-         ⚠️ THERE ARE NO early_bird PRICE ROWS FOR COLONY ACRES. The window exists;
-         the prices do not. Four sibling accounts (Fairmont, Harbaugh, Jerry Smith,
-         Montpelier) do have early_bird rows, so this is a genuine gap, not a
-         modelling quirk. The Early Bird figures below are CROWD7 PROPOSALS placed
-         on the house ladder — flash_sale < early_bird < base < gate — which is
-         exactly how Jerry Smith, the closest analog, is priced. They must be
-         approved by Katie AND written into the DB before this publishes.
+         ⚠️ THE DB HAS NO early_bird ROWS FOR COLONY, BUT THE RULE WAS DECIDED ON A
+         CALL. Bryan to Katie, 8/7/26 check-in [10:04], verbatim: "what we're
+         running with you guys is basically just a flat 33% off of those for the
+         flash sale, and then EARLY BIRD PRICING IS GOING TO BE A 15% OFF. So once
+         again, flash sale is the biggest discount. Then people who still want to
+         get in early have the early bird pricing."
+         (notes/work/crowd7/meetings/2026/8.7.26.Crowd7ColonyAcresCheckIn.transcript.md)
+
+         The prices below are that 15% applied to the DB's base rate:
+           Admission weekday  $13.00 -> $11.05
+           Admission weekend  $15.00 -> $12.75
+           Season Pass        $45.00 -> $38.25
+           Family Bundle      $90.00 -> $76.50
+         Ladder holds: flash 10.40 < EB 11.05 < base 13.00 < gate 16.00.
+
+         ⚠️ TWO THINGS TO CONFIRM ON THE 15%:
+         (a) ANCHOR. Bryan said "15% off" without naming what off. It cannot be off
+             the gate — 15% off $16.00 is $13.60, ABOVE the $13.00 base — so base is
+             the only arithmetically sane reading. Worth one sentence of confirmation.
+             (For reference the flash "33%" IS measured off gate: $18.00 -> $11.95 is
+             33.6% off gate but only 20% off base.)
+         (b) ROUNDING. Exact 15% gives $11.05 / $12.75 / $38.25 / $76.50, which do not
+             match Colony's .95/.40 price endings anywhere else. If Bryan wants them
+             rounded ($10.95 / $12.95 / $37.95 / $76.95) that is his call, not mine.
+         Either way these still need writing into the DB as early_bird rows before
+         this publishes — four sibling accounts have them and Colony does not.
 
          ⚠️ LAUNCH DAY SPECIAL IS NOT HERE ON PURPOSE. The DB marks it "Flash Sale
          only." Reopening a Labor-Day version was Bryan's idea on the 5/21 call
@@ -864,18 +883,18 @@
                 <h3>Fun Yard Admission</h3>
                 <ul class="caf-card-bullets">
                     <li>✓ Full Fun Yard access — every attraction included</li>
-                    <li>📅 Weekday $11.95 · Weekend $13.95</li>
+                    <li>📅 Weekday $11.05 · Weekend $12.75</li>
                     <li>👶 Children 2 &amp; under always free</li>
                     <li>🅿️ Free parking — always</li>
                 </ul>
                 <div class="caf-card-price">
-                    <span class="caf-price-num">$11.95*</span>
+                    <span class="caf-price-num">$11.05*</span>
                     <div class="caf-price-slash">
                         <span class="caf-price-online">Early Bird</span>
                         <span class="caf-price-was">$16 at gate</span>
                     </div>
                 </div>
-                <span class="caf-card-fees">*plus applicable taxes and fees · weekend $13.95</span>
+                <span class="caf-card-fees">*plus applicable taxes and fees · weekend $12.75</span>
                 <span class="caf-card-note">Per person · ages 3 &amp; up</span>
             </div>
 
@@ -893,7 +912,7 @@
                     <li>🅿️ Free parking — always</li>
                 </ul>
                 <div class="caf-card-price">
-                    <span class="caf-price-num">$38.95*</span>
+                    <span class="caf-price-num">$38.25*</span>
                     <div class="caf-price-slash">
                         <span class="caf-price-online">Early Bird</span>
                         <span class="caf-price-was">$45.00 regular</span>
@@ -903,11 +922,14 @@
                 <span class="caf-card-note">Per person · ages 3 &amp; up</span>
             </div>
 
-            <!-- FOOD &amp; FUN FAMILY BUNDLE — name, price and inclusions all straight
-                 from the DB. Shown at its base $90.00 with no Early Bird cut, which
-                 is the DB's own recommendation (holding it protects the per-head
-                 comparison against the $17.95 bundle). If Katie wants it discounted,
-                 that is a price row, not a copy edit. -->
+            <!-- FOOD &amp; FUN FAMILY BUNDLE — name, inclusions and $90.00 base all
+                 straight from the DB; Early Bird price is the 15% rule applied.
+                 NOTE the DB carries a recommendation to HOLD this one at $90.00
+                 through the flash sale, on the grounds that discounting it lands
+                 near $18/head and undercuts the $17.95 Launch Day Special. At 15%
+                 off it is $19.13/head, which clears that bar — but if Bryan wants
+                 the bundle excluded from Early Bird entirely, delete this card's
+                 slash block and show $90.00 flat. -->
             <div class="caf-card caf-card-cream cafr d2">
                 <span class="caf-card-badge caf-badge-orange">Best for families</span>
                 <span class="caf-card-icon">🎃</span>
@@ -918,10 +940,10 @@
                     <li>🍿 Kettle corn, donuts &amp; drinks</li>
                 </ul>
                 <div class="caf-card-price">
-                    <span class="caf-price-num">$90.00*</span>
+                    <span class="caf-price-num">$76.50*</span>
                     <div class="caf-price-slash">
-                        <span class="caf-price-online">Bundle</span>
-                        <span class="caf-price-was">$110 value</span>
+                        <span class="caf-price-online">Early Bird</span>
+                        <span class="caf-price-was">$90.00 regular</span>
                     </div>
                 </div>
                 <span class="caf-card-fees">*plus applicable taxes and fees</span>
