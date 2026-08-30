@@ -167,6 +167,29 @@
          ("until the week before the season technically starts" — season opens
          9/12).
 
+     ✅ 2026-08-30 (Mat) — "FROM" label + varies-by-date note on the two
+        starting-price cards. GA and Super Pass now carry a small uppercase
+        "From" above the figure (the Jack's Lighted Trail treatment, rendered
+        as a block label the way Amber Brooke's fall-festival page does it) and
+        a proof line under the price row, ported from that same page's
+        .abf-oneprice-proof: "Standard and peak-weekend rates apply depending
+        on the date. Select your date below to see pricing."
+
+        ⚠️ WORDING DELIBERATELY NOT "value dates". Amber Brooke runs a
+        value/standard split; Montpelier does not — it runs standard dates plus
+        a +$5 peak-weekend bump (Oct 17-18, Oct 23-24). Copying "value" across
+        would invent a rate tier this farm doesn't sell, so the note uses
+        Montpelier's own vocabulary while keeping Amber Brooke's shape and its
+        "select your date below" call to action.
+
+        Ultimate Pass deliberately did NOT get the treatment: Bryan's list gives
+        it as a flat $58.95, and only GA and Super Pass as a "starting price".
+        Its existing card note already states the +$5 peak rule. One-line change
+        if that reading is wrong.
+
+        "Starting price." dropped from the GA and Super card notes — the "From"
+        label now says it, and saying it twice on one card reads like a warning.
+
      ✅ 2026-08-30 (Mat) — hero pill REMOVED and the bird emoji dropped from the
         Early Bird wording. The hero now goes straight into the "Fall Festival
         2026" title with no eyebrow above it; the top banner still reads
@@ -449,6 +472,21 @@
     #mf-funnel .mf-card-feature h3 { color: #fff !important; }
     #mf-funnel .mf-card-sub { display: block !important; font-size: .83rem !important; color: #7C8078 !important; margin-bottom: 20px !important; }
     #mf-funnel .mf-card-feature .mf-card-sub { color: rgba(255,255,255,.72) !important; }
+    /* "From" label above the price (Mat 2026-08-30, the Jack's Lighted Trail
+       treatment) and the varies-by-date line under it (the Amber Brooke
+       fall-festival .abf-oneprice-proof pattern). Only the two tickets Bryan
+       gave as a "starting price" carry these. */
+    #mf-funnel .mf-from {
+        display: block !important; font-size: .78rem !important; font-weight: 700 !important;
+        letter-spacing: .16em !important; text-transform: uppercase !important;
+        color: var(--mf-red) !important; opacity: .8 !important; margin-bottom: 3px !important;
+    }
+    #mf-funnel .mf-card-feature .mf-from { color: var(--mf-gold) !important; opacity: 1 !important; }
+    #mf-funnel .mf-price-proof {
+        display: block !important; font-size: .82rem !important; line-height: 1.55 !important;
+        color: #6C7167 !important; margin-top: 7px !important;
+    }
+    #mf-funnel .mf-card-feature .mf-price-proof { color: rgba(255,255,255,.72) !important; }
     #mf-funnel .mf-price-row { display: flex !important; align-items: baseline !important; gap: 11px !important; flex-wrap: wrap !important; }
     #mf-funnel .mf-price {
         font-family: 'Bitter', Georgia, serif !important; font-size: 2.45rem !important;
@@ -687,12 +725,14 @@
                 <span class="mf-badge">Best Value</span>
                 <h3>General Admission</h3>
                 <span class="mf-card-sub">One day, one admission</span>
+                <span class="mf-from">From</span>
                 <div class="mf-price-row">
                     <span class="mf-price">$18.95</span>
                     <span class="mf-fee-note">+ fees</span>
                     <span class="mf-was">$19.95</span>
                     <span class="mf-save">Early Bird</span>
                 </div>
+                <span class="mf-price-proof">Standard and peak-weekend rates apply depending on the date. <strong>Select your date below</strong> to see pricing.</span>
                 <ul class="mf-list">
                     <li><span class="mf-tick">🌽</span><span>7-acre interactive corn maze</span></li>
                     <li><span class="mf-tick">🎃</span><span>Pick-your-own pumpkin patch &amp; hay rides</span></li>
@@ -700,18 +740,20 @@
                     <li><span class="mf-tick">✨</span><span>30+ attractions and so much more</span></li>
                     <li><span class="mf-tick">👶</span><span>Ages 2 &amp; under free for General Admission</span></li>
                 </ul>
-                <span class="mf-card-note">Starting price. Peak weekends (Oct 17–18 and Oct 23–24) add $5. Choose your date and arrival time at checkout.</span>
+                <span class="mf-card-note">Peak weekends (Oct 17–18 and Oct 23–24) add $5.</span>
             </div>
 
             <div class="mf-card mf-card-feature mfr d1">
                 <span class="mf-badge">Best Opportunity</span>
                 <h3>Super Pass</h3>
                 <span class="mf-card-sub">Admission plus the big attractions</span>
+                <span class="mf-from">From</span>
                 <div class="mf-price-row">
                     <span class="mf-price">$35.95</span>
                     <span class="mf-fee-note">+ fees</span>
                     <span class="mf-was">$43.95</span>
                 </div>
+                <span class="mf-price-proof">Standard and peak-weekend rates apply depending on the date. <strong>Select your date below</strong> to see pricing.</span>
                 <ul class="mf-list">
                     <li><span class="mf-tick">🎟️</span><span>Everything in General Admission</span></li>
                     <li><span class="mf-tick">🛝</span><span>Super Mega Slide</span></li>
@@ -719,7 +761,7 @@
                     <li><span class="mf-tick">🎨</span><span>Paint-a-Pumpkin</span></li>
                     <li><span class="mf-tick">💎</span><span>Mining Mania — gems or seashells</span></li>
                 </ul>
-                <span class="mf-card-note">Starting price. Peak weekends (Oct 17–18 and Oct 23–24) add $5. $43.95 at the door. Choose your date and time at checkout.</span>
+                <span class="mf-card-note">Peak weekends (Oct 17–18 and Oct 23–24) add $5. $43.95 at the door.</span>
             </div>
 
             <div class="mf-card mfr d2">
