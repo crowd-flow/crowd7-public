@@ -155,6 +155,12 @@
          ("until the week before the season technically starts" — season opens
          9/12).
 
+     ✅ 2026-08-30 (Mat) — hero pill REMOVED and the bird emoji dropped from the
+        Early Bird wording. The hero now goes straight into the "Fall Festival
+        2026" title with no eyebrow above it; the top banner still reads
+        "Early Bird Sale — on now", just without the bird. The .mf-season-pill
+        CSS is kept in place, unused, so the eyebrow can come back cheaply.
+
      ✅ 2026-08-30 (later) — EARLY BIRD PRICES NOW SHIPPED. Bryan sent the
         confirmed list, which resolves change 178's open question:
           General Admission  $18.95 starting price   (was $19.95)
@@ -352,6 +358,8 @@
         max-width: 1120px !important; margin: 0 auto !important;
         padding: 0 24px clamp(40px,5.5vw,68px) !important;
     }
+    /* Hero pill REMOVED from the markup 2026-08-30 (Mat). Rule kept, unused,
+       so the eyebrow can be restored without rebuilding it. */
     #mf-funnel .mf-season-pill {
         display: inline-block !important; background: var(--mf-red) !important; color: #fff !important;
         font-size: .73rem !important; font-weight: 700 !important; letter-spacing: .13em !important;
@@ -562,7 +570,7 @@
 
     <div class="mf-banner">
         <div class="mf-banner-inner">
-            <span>🐦 <strong>Early Bird Sale — on now</strong></span>
+            <span><strong>Early Bird Sale — on now</strong></span>
             <span class="mf-dot"></span>
             <span>Through September 4</span>
             <span class="mf-dot"></span>
@@ -585,7 +593,6 @@
         </video>
         <div class="mf-hero-scrim"></div>
         <div class="mf-hero-inner">
-            <span class="mf-season-pill">🐦 Early Bird · Through Sept 4</span>
             <span class="mf-hero-title">Fall Festival <em>2026</em></span>
             <span class="mf-hero-sub">Early Bird pricing is on now through September 4 &mdash; book your date before season pricing starts. A 7-acre interactive corn maze, pick-your-own pumpkins, giant hill slides, hay rides, barnyard animals &mdash; 30+ attractions and so much more, a whole park built for a family day out.</span>
         </div>
