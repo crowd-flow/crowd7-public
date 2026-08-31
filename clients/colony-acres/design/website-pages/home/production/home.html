@@ -341,8 +341,16 @@ body,.et_pb_column_1_2 .et_quote_content blockquote cite,.et_pb_column_1_2 .et_l
 
      SELF-EXPIRING BY DESIGN: the whole incident this came from was stale
      content outliving its date. So the band swaps itself to evergreen
-     copy after the flash sale ends rather than sitting here lying. Change
-     the phase by editing CA_PHASES below and pushing - no WP, no Divi.
+     copy when the current phase ends rather than sitting here lying.
+     Change the phase by editing CA_PHASES below and pushing - no WP, no
+     Divi.
+
+     PHASE AS OF 2026-08-31: Early Bird. The `until` is deliberately set
+     to Sept 7, matching the TicketSpice Action that actually discounts
+     the cart (Date Is Between Aug 31 12:01 AM and Sep 07 12:00 AM), NOT
+     the Sept 13 end in CrowdView `event_phase` or the email campaign.
+     The site must never advertise a discount the cart will not honour.
+     If the TS Action is extended to Sept 14, move this `until` to match.
      ==================================================================== -->
 <div class="ca-ctaband" id="ca-ctaband-home" hidden>
   <div class="ca-ctaband__inner">
@@ -379,11 +387,11 @@ body,.et_pb_column_1_2 .et_quote_content blockquote cite,.et_pb_column_1_2 .et_l
   // being true, in US Central (the farm's clock). Last entry must have
   // until:null - it is the evergreen fallback and always matches.
   var CA_PHASES = [
-    { until: "2026-08-31T00:00:00-05:00",
-      eyebrow: "Flash Sale · Aug 26–30",
-      lead:    "Save up to 33% on 2026 Fun Yard admission — the best prices of the season.",
-      btn:     "Grab the Deal",
-      fine:    "Weekday $10.49 · Weekend $11.95 — vs $16 at the gate. Plus tax and fees. Online only. Fall on the farm opens September 19." },
+    { until: "2026-09-07T00:00:00-05:00",
+      eyebrow: "Early Bird Pricing · On Now",
+      lead:    "Save 15% on 2026 Fun Yard tickets — the last savings before our 100th season opens.",
+      btn:     "Get Early Bird Pricing",
+      fine:    "Online only · Fall on the farm opens September 19 · Wed–Sun, 10a–6p · North Liberty, Iowa" },
     { until: null,
       eyebrow: "Annual Fall Festival · Sept 19 – Oct 31, 2026",
       lead:    "Tickets are on sale now for 100 years of growing memories.",
@@ -408,72 +416,86 @@ body,.et_pb_column_1_2 .et_quote_content blockquote cite,.et_pb_column_1_2 .et_l
 </script>
 <!-- ===== /CA FLASH / TICKET CTA BAND ===== -->
 
-<!-- ===== CA FLASH SALE POPUP =====================================
-     Added 2026-08-26 per project colony-flash-sale-popup. Replaces the
-     default WP Popup Maker popup with a Colony-branded modal, same
-     message + a real "Grab The Deal" CTA. STANDALONE / ONE-OFF per
-     Mat's 2026-08-26 directive: does NOT use the CrowdView page_popup
+<!-- ===== CA EARLY BIRD POPUP =====================================
+     2026-08-31: replaces the Flash Sale popup (2026-08-26), which
+     self-expired at midnight Central when the Flash Sale ended. Same
+     mechanics, Early Bird copy. STANDALONE / ONE-OFF per Mat's
+     2026-08-26 directive: does NOT use the CrowdView page_popup
      plumbing (no edge/api-live-popup.js call, no page_popup row, no
      schema change, no crowdview-popup-block.html reuse). See
      notes/work/crowd7/projects/colony-flash-sale-popup/state.md for
      the full rationale on why that route was rejected.
 
+     NO PRICES IN THE COPY, DELIBERATELY (Mat, 2026-08-30). Early Bird
+     spans four products at 15% off, the Season Pass figure is still
+     contested ($38.25 in CrowdView + the email campaign vs $38.95 in
+     the live TicketSpice Action), and Bryan has not ruled on .95
+     endings. A percentage is true under every one of those outcomes;
+     a dollar figure would need re-pushing the moment he decides.
+     The emails strike the REGULAR price, never the gate, so 15% is the
+     number that keeps web and email telling the same story - do not
+     "improve" this to a bigger gate-anchored percentage.
+
      Mounts on document.body at runtime (not the loader's host div) so
      position:fixed escapes any Divi ancestor transform/filter. Shown
      once per session (sessionStorage) and SELF-EXPIRES: renders only
-     while now < 2026-08-31T00:00:00-05:00 (Flash Sale ends 8/30,
-     Central). After that it no-ops with no push required — remove
-     this block as cleanup, but a missed cleanup is invisible to
-     visitors. Fails safe: any JS error removes the overlay entirely
-     rather than leaving an undismissable scrim.
+     while now < 2026-09-07T00:00:00-05:00, which matches the
+     TicketSpice Action that actually discounts the cart, NOT the Sept
+     13 end in CrowdView `event_phase`. If that Action is extended to
+     Sept 14, move EXPIRES here and the band's `until` together.
+     Fails safe: any JS error removes the overlay entirely rather than
+     leaving an undismissable scrim.
      ==================================================================== -->
-<div class="ca-flashpop" id="ca-flashpop-home" hidden>
-  <div class="ca-flashpop__scrim" data-ca-flashpop-scrim></div>
-  <div class="ca-flashpop__card" role="dialog" aria-modal="true" aria-labelledby="ca-flashpop-title" tabindex="-1">
-    <button type="button" class="ca-flashpop__close" data-ca-flashpop-close aria-label="Close">&times;</button>
-    <p class="ca-flashpop__eyebrow">Flash Sale</p>
-    <h2 class="ca-flashpop__title" id="ca-flashpop-title">The Flash Sale is Live!</h2>
-    <p class="ca-flashpop__body">Save Up to 33% Off on 2026 Fun Yard general admission — online only, while the clock runs.</p>
-    <a class="ca-flashpop__cta" href="https://colonyacres.ticketspice.com/colony-acres-fun-yard-general-admission-2026" data-ca-flashpop-cta>Grab The Deal</a>
-    <p class="ca-flashpop__fine">Fall on the farm opens September 19 &middot; North Liberty, Iowa</p>
+<div class="ca-ebpop" id="ca-ebpop-home" hidden>
+  <div class="ca-ebpop__scrim" data-ca-ebpop-scrim></div>
+  <div class="ca-ebpop__card" role="dialog" aria-modal="true" aria-labelledby="ca-ebpop-title" tabindex="-1">
+    <button type="button" class="ca-ebpop__close" data-ca-ebpop-close aria-label="Close">&times;</button>
+    <p class="ca-ebpop__eyebrow">Early Bird</p>
+    <h2 class="ca-ebpop__title" id="ca-ebpop-title">Early Bird Pricing Is Live</h2>
+    <p class="ca-ebpop__body">Save 15% on admission, season passes, and family bundles &mdash; online only, before the season starts.</p>
+    <a class="ca-ebpop__cta" href="https://colonyacres.ticketspice.com/colony-acres-fun-yard-general-admission-2026" data-ca-ebpop-cta>Grab The Deal</a>
+    <p class="ca-ebpop__fine">Fall on the farm opens September 19 &middot; North Liberty, Iowa</p>
   </div>
 </div>
 <style>
-.ca-flashpop{position:fixed;inset:0;z-index:2147483000;display:flex;align-items:center;justify-content:center;padding:16px;box-sizing:border-box}
-.ca-flashpop[hidden]{display:none}
-.ca-flashpop__scrim{position:absolute;inset:0;background:rgba(20,64,31,.72)}
-.ca-flashpop__card{position:relative;z-index:1;max-width:420px;width:100%;background:#fff;border-radius:18px;
+.ca-ebpop{position:fixed;inset:0;z-index:2147483000;display:flex;align-items:center;justify-content:center;padding:16px;box-sizing:border-box}
+.ca-ebpop[hidden]{display:none}
+.ca-ebpop__scrim{position:absolute;inset:0;background:rgba(20,64,31,.72)}
+.ca-ebpop__card{position:relative;z-index:1;max-width:420px;width:100%;background:#fff;border-radius:18px;
   padding:36px 30px 30px;text-align:center;box-sizing:border-box;box-shadow:0 20px 60px rgba(0,0,0,.35);
   font-family:'Source Sans Pro',Helvetica,Arial,sans-serif}
-.ca-flashpop__card:focus{outline:none}
-.ca-flashpop__close{position:absolute;top:8px;right:10px;width:40px;height:40px;border:0;background:transparent;
+.ca-ebpop__card:focus{outline:none}
+.ca-ebpop__close{position:absolute;top:8px;right:10px;width:40px;height:40px;border:0;background:transparent;
   color:#4E4E4E;font-size:26px;line-height:1;cursor:pointer;border-radius:50%}
-.ca-flashpop__close:hover,.ca-flashpop__close:focus{background:#f3f3f3;color:#1F5C2E}
-.ca-flashpop__close:focus-visible{outline:3px solid #1F5C2E;outline-offset:2px}
-.ca-flashpop__eyebrow{margin:0 0 6px;font-weight:700;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#ff8f1c}
-.ca-flashpop__title{margin:0 0 14px;font-family:'Ls Halsey Rough 2','Source Sans Pro',Helvetica,Arial,sans-serif;
+.ca-ebpop__close:hover,.ca-ebpop__close:focus{background:#f3f3f3;color:#1F5C2E}
+.ca-ebpop__close:focus-visible{outline:3px solid #1F5C2E;outline-offset:2px}
+.ca-ebpop__eyebrow{margin:0 0 6px;font-weight:700;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#ff8f1c}
+.ca-ebpop__title{margin:0 0 14px;font-family:'Ls Halsey Rough 2','Source Sans Pro',Helvetica,Arial,sans-serif;
   font-weight:400;font-size:clamp(24px,5vw,30px);line-height:1.15;color:#1F5C2E}
-.ca-flashpop__body{margin:0 0 22px;font-size:16px;line-height:1.5;color:#4E4E4E}
-.ca-flashpop__cta{display:inline-block;padding:14px 36px;border-radius:999px;background:#009a44;color:#fff;
+.ca-ebpop__body{margin:0 0 22px;font-size:16px;line-height:1.5;color:#4E4E4E}
+.ca-ebpop__cta{display:inline-block;padding:14px 36px;border-radius:999px;background:#009a44;color:#fff;
   font-weight:700;font-size:17px;text-decoration:none;min-height:44px;box-sizing:border-box;line-height:16px;
   transition:background .2s,transform .2s}
-.ca-flashpop__cta:hover,.ca-flashpop__cta:focus{background:#1F5C2E;transform:translateY(-1px)}
-.ca-flashpop__cta:focus-visible{outline:3px solid #1F5C2E;outline-offset:3px}
-.ca-flashpop__fine{margin:18px 0 0;font-size:13px;line-height:1.4;color:rgba(78,78,78,.8)}
-@media (max-width:414px){.ca-flashpop__card{padding:30px 20px 24px}}
+.ca-ebpop__cta:hover,.ca-ebpop__cta:focus{background:#1F5C2E;transform:translateY(-1px)}
+.ca-ebpop__cta:focus-visible{outline:3px solid #1F5C2E;outline-offset:3px}
+.ca-ebpop__fine{margin:18px 0 0;font-size:13px;line-height:1.4;color:rgba(78,78,78,.8)}
+@media (max-width:414px){.ca-ebpop__card{padding:30px 20px 24px}}
 </style>
 <script>
 (function () {
   try {
-    var root = document.getElementById("ca-flashpop-home");
+    var root = document.getElementById("ca-ebpop-home");
     if (!root || root.dataset.caInit === "1") return;   // idempotent: loader may re-inject
     root.dataset.caInit = "1";
 
-    // Self-expiry: Flash Sale runs 2026-08-26 through 2026-08-30 (Central).
-    var EXPIRES = new Date("2026-08-31T00:00:00-05:00");
+    // Self-expiry: matches the live TicketSpice Early Bird Action
+    // (Aug 31 12:01 AM - Sep 07 12:00 AM Central), not event_phase.
+    var EXPIRES = new Date("2026-09-07T00:00:00-05:00");
     if (new Date() >= EXPIRES) return;
 
-    var SEEN_KEY = "ca_flashpop_seen_v1";
+    // New key, not the flash popup's: a visitor who dismissed the Flash
+    // Sale popup in this same session must still be shown Early Bird.
+    var SEEN_KEY = "ca_ebpop_seen_v1";
     if (sessionStorage.getItem(SEEN_KEY) === "1") return;
 
     // Mount on document.body so position:fixed escapes any Divi ancestor
@@ -481,9 +503,9 @@ body,.et_pb_column_1_2 .et_quote_content blockquote cite,.et_pb_column_1_2 .et_l
     document.body.appendChild(root);
     root.hidden = false;
 
-    var card      = root.querySelector(".ca-flashpop__card");
-    var closeBtn  = root.querySelector("[data-ca-flashpop-close]");
-    var scrim     = root.querySelector("[data-ca-flashpop-scrim]");
+    var card      = root.querySelector(".ca-ebpop__card");
+    var closeBtn  = root.querySelector("[data-ca-ebpop-close]");
+    var scrim     = root.querySelector("[data-ca-ebpop-scrim]");
     var lastFocused = document.activeElement;
 
     function close() {
@@ -503,12 +525,12 @@ body,.et_pb_column_1_2 .et_quote_content blockquote cite,.et_pb_column_1_2 .et_l
 
     card.focus();
   } catch (err) {
-    var r = document.getElementById("ca-flashpop-home");
+    var r = document.getElementById("ca-ebpop-home");
     if (r && r.parentNode) r.parentNode.removeChild(r);
   }
 })();
 </script>
-<!-- ===== /CA FLASH SALE POPUP ===== -->
+<!-- ===== /CA EARLY BIRD POPUP ===== -->
 
 
 			</div>
