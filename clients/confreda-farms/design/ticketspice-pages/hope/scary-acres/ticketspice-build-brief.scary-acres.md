@@ -53,6 +53,17 @@ Eight assets pulled from the client's own live site, optimised, and committed to
 | 2 | **VIP** | **$50 flat** | **No date logic.** Valid any day, any time slot. |
 | 3 | **Fast Pass Ultimate** | ❌ **Do not configure yet** | Price unconfirmed — see Open Items #1. |
 
+### How the page displays this
+
+The landing page shows General Admission as **"from $30"** with a *per person / varies by night*
+label — the house from-price treatment, matching **Jack's Lighted Trail Belleville** ("from $22").
+The two-tier detail is **not** hidden behind that: the $30/$35 split is stated on the card's first
+bullet and again in the footnote under the ticket grid. A "from" price that conceals the higher
+rate is a bait-and-switch; a "from" price with the rates one line below is a hook.
+
+**This is a display choice only — it changes nothing in the cart.** TicketSpice still needs both
+rates behind a date-based Action.
+
 **Operating nights (confirmed, live site):** Fri/Sat/Sun **7–10pm**; Thu & Mon **7–9pm**. Closed
 Tue & Wed. Gates open 7pm; trail opens at sundown. Safe to configure.
 
