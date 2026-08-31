@@ -2,13 +2,25 @@
     Jerry Smith Farm · "Fall on the Farm" 2026 · Season Pass · TicketSpice page header
     Modeled on /data/clients/colony-acres/design/ticketspice-pages/fall-harvest-festival-2026.html
 
-    REBUILT 2026-08-20 — Flash-dressed 3-card lineup (dressed as though the Aug 26–30 Flash
-    Sale is live now, per Mat's voice directive; no traffic is pointed at this page yet so
-    there is no early-sale risk). Cards: Flash Any-Day Admission $12.95 (gate $19.95) ·
-    Family 4-Pack Bundle $59.95 · Fall Season Pass $33.95 (gate $49.95). Pricing locked at the
-    5.21.26 Fall Strategy Meeting — see data/clients/jerry-smith/events/fall-in-the-farm/event-info.md §4.
-    🚫 Weekday tickets are DELIBERATELY not exposed during Flash — do not add a 4th card.
-    GA Weekday/Weekend (3-card In Season layout) is a later phase, not built here.
+    PHASE FLIP 2026-08-30 — Flash Sale → EARLY BIRD (runs Aug 31 – Sept 7).
+    Cards: General Admission $14.49 (gate $19.95) · Family 4-Pack Bundle $64.95 ·
+    Fall Season Pass $36.95 (gate $49.95).
+
+    ⚠️ PRICES HERE MIRROR THE LIVE TS CART, not the 8/27 meeting record. TS page 1034254
+    builds General Admission at $14.49 and the Aug-31 Action sets 14.49. event-info.md and
+    CrowdView both said $14.95; Mat ruled 2026-08-30 that TS is correct and the 8/27 figure
+    is stale. CrowdView price row 200 corrected to 1449 the same day. Do not "fix" the .49
+    back to .95 — it is the only .49 ending in the structure, and that is deliberate.
+
+    💵 The 4-Pack advertises $64.95 but the cart charges $64.92 — the TS ticket is priced
+    PER ADMISSION ($16.23) with Selection 4,8,12, and 64.95/4 does not divide evenly. The
+    Flash phase had the identical 3¢ gap ($14.98 x 4 = $59.92 vs $59.95 advertised). Three
+    cents in the customer's favour; left as-is for consistency with the prior phase.
+
+    🚫 Weekday tickets are NOT exposed. Unchanged from Flash, and now also a hard cart
+    constraint: TS has exactly ONE admission ticket with no weekday/weekend split, so the
+    $10.95 Early Bird weekday price has nothing behind it. Exposing it needs a new TS
+    ticket level + Action FIRST. Do not add a 4th card before that exists.
 
     ════════════════════════════════════════════════════════════════════════════════════
     HERO + GALLERY: all images are in-repo (raw.githubusercontent.com/crowd-flow/crowd7-public/
@@ -691,11 +703,11 @@
     <!-- BANNER -->
     <div class="jsf-banner">
         <div class="jsf-banner-inner">
-            <span class="jsf-banner-accent">⚡ FLASH SALE</span>
+            <span class="jsf-banner-accent">🍂 EARLY BIRD</span>
             <span class="jsf-dot"></span>
-            <span>Any-Day Tickets $12.95</span>
+            <span>General Admission $14.49</span>
             <span class="jsf-dot"></span>
-            <span>Ends Aug 30</span>
+            <span>Ends Sept 7</span>
         </div>
     </div>
 
@@ -714,7 +726,7 @@
                 </svg>
                 Kenosha, WI
             </div>
-            <a href="#ticketBlock" class="jsf-nav-cta">Shop Flash Sale</a>
+            <a href="#ticketBlock" class="jsf-nav-cta">Shop Early Bird</a>
         </div>
     </div>
 
@@ -723,10 +735,10 @@
         <img class="jsf-hero-video" src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/jerry-smith/design/assets/pumpkin-fly-over-hero-image.jpeg" alt="Fall on the Farm — Jerry Smith Farm">
         <div class="jsf-hero-overlay"></div>
         <div class="jsf-hero-content">
-            <span class="jsf-hero-ribbon">⚡ Flash Sale — Ends Aug 30</span>
+            <span class="jsf-hero-ribbon">🍂 Early Bird — Ends Sept 7</span>
             <span class="jsf-hero-eyebrow">Jerry Smith Farm · Fall 2026</span>
             <span class="jsf-hero-title">Fall on the <em>Farm</em></span>
-            <span class="jsf-hero-tagline">— Our biggest offer of the season. Any-Day tickets from $12.95. —</span>
+            <span class="jsf-hero-tagline">— Best pricing before the gates open. General Admission $14.49. —</span>
         </div>
     </div>
 
@@ -744,23 +756,23 @@
     <div class="jsf-benefits">
         <div class="jsf-benefits-grid">
             <div class="jsf-benefit">
-                <span class="jsf-benefit-emoji">⚡</span>
-                <span class="jsf-benefit-title">33% Off Any-Day</span>
-                <span class="jsf-benefit-desc">Just $12.95, ends Aug 30</span>
+                <span class="jsf-benefit-emoji">🍂</span>
+                <span class="jsf-benefit-title">Early Bird Price</span>
+                <span class="jsf-benefit-desc">Just $14.49, ends Sept 7</span>
             </div>
             <div class="jsf-benefit">
                 <span class="jsf-benefit-emoji">🍪</span>
                 <span class="jsf-benefit-title">Family 4-Pack</span>
-                <span class="jsf-benefit-desc">4 admissions + 4 cookies, $59.95</span>
+                <span class="jsf-benefit-desc">4 admissions + 4 cookies, $64.95</span>
             </div>
             <div class="jsf-benefit">
                 <span class="jsf-benefit-emoji">🎟️</span>
-                <span class="jsf-benefit-title">Season Pass $33.95</span>
-                <span class="jsf-benefit-desc">Our biggest markdown of the year</span>
+                <span class="jsf-benefit-title">Season Pass $36.95</span>
+                <span class="jsf-benefit-desc">Unlimited visits, Sept 12 – Nov 1</span>
             </div>
             <div class="jsf-benefit">
                 <span class="jsf-benefit-emoji">⏰</span>
-                <span class="jsf-benefit-title">Flash Ends Aug 30</span>
+                <span class="jsf-benefit-title">Early Bird Ends Sept 7</span>
                 <span class="jsf-benefit-desc">Regular pricing after</span>
             </div>
         </div>
@@ -805,42 +817,46 @@
         </div>
     </div>
 
-    <!-- FLASH SALE — 3-CARD GRID -->
+    <!-- EARLY BIRD — 3-CARD GRID -->
     <div class="jsf-tickets" id="tickets">
         <div class="jsf-tickets-header jsfr">
-            <span class="jsf-eye">Flash Sale · Aug 26–30</span>
-            <span class="jsf-section-title">Our biggest <em>offer</em> of the season</span>
+            <span class="jsf-eye">Early Bird · Aug 31–Sept 7</span>
+            <span class="jsf-section-title">Best price before the <em>gates</em> open</span>
             <div class="jsf-countdown" id="jsf-countdown">
-                <span class="jsf-countdown-label">⚡ Flash Sale ends in</span>
+                <span class="jsf-countdown-label">🍂 Early Bird ends in</span>
                 <span class="jsf-countdown-value" id="jsf-countdown-value" aria-live="polite">—</span>
             </div>
         </div>
-        <!-- 🚫 EXACTLY 3 CARDS — Any-Day / Family 4-Pack / Season Pass. Weekday tickets are
-             deliberately NOT exposed during the Flash Sale (Bryan + Lauren decision, see
-             data/clients/jerry-smith/events/fall-in-the-farm/event-info.md §4 — Lauren's handle
-             for locals asking about weekday pricing is "weekday tickets coming soon"). A 4th
-             (weekday) card here is a defect, not thoroughness — do not add one. -->
+        <!-- 🚫 EXACTLY 3 CARDS — General Admission / Family 4-Pack / Season Pass. Weekday
+             tickets stay unexposed in Early Bird, for TWO independent reasons now:
+             (1) the original Bryan + Lauren decision (event-info.md §4 — Lauren's handle for
+                 locals asking about weekday pricing is "weekday tickets coming soon"), and
+             (2) as of the 2026-08-30 TS audit there is no weekday ticket in the cart at all —
+                 ONE "General Admission" level, one price, no weekday/weekend split. A weekday
+                 card would advertise a $10.95 price nothing can actually sell.
+             A 4th (weekday) card here is a defect, not thoroughness — do not add one until a
+             weekday ticket level + Action exist in TS. -->
         <div class="jsf-grid">
 
             <div class="jsf-card jsfr">
-                <span class="jsf-card-badge">⚡ Flash Sale · 33% Off</span>
+                <span class="jsf-card-badge">🍂 Early Bird · 27% Off</span>
                 <span class="jsf-card-icon">🎟</span>
-                <h3>Flash Any-Day Admission</h3>
+                <h3>General Admission</h3>
                 <ul class="jsf-card-bullets">
                     <li>🎃 Wander the pumpkin patch — valid any day of the season (Sept 12&ndash;Nov 1)</li>
                     <li>🐐 Meet the barnyard animals</li>
                     <li>🍩 Treats at the Food Court &amp; Smitty's Bar</li>
-                    <li>👨‍👩‍👧‍👦 One admission, our lowest single-visit price of the year</li>
+                    <li>👨‍👩‍👧‍👦 One admission, valid any day of the season</li>
                 </ul>
                 <div class="jsf-card-price">
-                    <span class="jsf-price-num">$12.95*</span>
+                    <span class="jsf-price-num">$14.49*</span>
                     <div class="jsf-price-slash">
-                        <span class="jsf-price-online">Flash Price</span>
+                        <span class="jsf-price-online">Early Bird Price</span>
                         <span class="jsf-price-was">$19.95 at gate</span>
                     </div>
                 </div>
                 <span class="jsf-card-fees">*plus applicable taxes and fees</span>
-                <span class="jsf-card-note">On sale Aug 26&ndash;30 · single any-day admission</span>
+                <span class="jsf-card-note">On sale through Sept 7 · single any-day admission</span>
             </div>
 
             <div class="jsf-card jsfr">
@@ -854,17 +870,17 @@
                     <li>👨‍👩‍👧‍👦 Built for a family of four</li>
                 </ul>
                 <div class="jsf-card-price">
-                    <span class="jsf-price-num">$59.95*</span>
+                    <span class="jsf-price-num">$64.95*</span>
                     <div class="jsf-price-slash">
-                        <span class="jsf-price-online">Flash Bundle</span>
+                        <span class="jsf-price-online">Early Bird Bundle</span>
                     </div>
                 </div>
                 <span class="jsf-card-fees">*plus applicable taxes and fees</span>
-                <span class="jsf-card-note">On sale Aug 26&ndash;30 · 4 admissions + 4 cookies</span>
+                <span class="jsf-card-note">On sale through Sept 7 · 4 admissions + 4 cookies</span>
             </div>
 
             <div class="jsf-card jsfr">
-                <span class="jsf-card-badge">★ Flash Sale Price ★</span>
+                <span class="jsf-card-badge">★ Early Bird Price ★</span>
                 <span class="jsf-card-icon">🍂</span>
                 <h3>Fall Season Pass</h3>
                 <ul class="jsf-card-bullets">
@@ -874,9 +890,9 @@
                     <li>👨‍👩‍👧‍👦 The whole season of fall fun, one price</li>
                 </ul>
                 <div class="jsf-card-price">
-                    <span class="jsf-price-num">$33.95*</span>
+                    <span class="jsf-price-num">$36.95*</span>
                     <div class="jsf-price-slash">
-                        <span class="jsf-price-online">Flash Price</span>
+                        <span class="jsf-price-online">Early Bird Price</span>
                         <span class="jsf-price-was">$49.95 at gate</span>
                     </div>
                 </div>
@@ -896,7 +912,7 @@
             </div>
             <div class="jsf-info-item">
                 <span class="jsf-info-label">🎟️ Sales Open</span>
-                <span class="jsf-info-value">Flash Sale<br>Ends Aug 30</span>
+                <span class="jsf-info-value">Early Bird<br>Ends Sept 7</span>
             </div>
             <div class="jsf-info-item">
                 <span class="jsf-info-label">✨ Pass Includes</span>
@@ -936,13 +952,18 @@
     })();
 </script>
 
-<!-- ════ FLASH SALE COUNTDOWN — target Aug 30, 2026 11:59:59pm Central (America/Chicago, CDT) ════ -->
+<!-- ════ EARLY BIRD COUNTDOWN — target Sept 7, 2026 11:59:59pm Central (America/Chicago, CDT) ════
+     Matches CrowdView event_phase 'Early Bird' (Aug 31 – Sept 7) — Labor Day is Mon Sept 7.
+     ⚠️ NOTE: no TS Action currently ENDS Early Bird. The Aug-31 Action sets these prices and
+     nothing raises them afterwards, so the cart will keep charging Early Bird into the season
+     until an In-Season Action is built. This countdown promises a deadline TS does not yet
+     enforce — build that Action before Sept 8 or the urgency here is theatre. ════ -->
 <script>
     (function() {
         var wrap = document.getElementById('jsf-countdown');
         var el = document.getElementById('jsf-countdown-value');
         if (!wrap || !el) return;
-        var target = new Date('2026-08-30T23:59:59-05:00').getTime();
+        var target = new Date('2026-09-07T23:59:59-05:00').getTime();
         function tick() {
             var diff = target - Date.now();
             if (diff <= 0) { wrap.style.display = 'none'; return; }
@@ -961,11 +982,15 @@
      ✅ ALL live ticket names CONFIRMED 2026-08-26 from the TS Edit-Tickets panel (Mat's screen capture,
      page 1034254). The GATE keys below are copied char-for-char off that panel:
        · "Fall Season Pass"              — Season Pass type, Online Only   (gate $49.95)
-       · "FLASH SALE - Any Day Admission" — Standard, Everywhere            (gate $19.95)
+       · "General Admission"              — Standard, Everywhere            (gate $19.95)
        · "Family 4 Pack Bundle"           — Standard, Everywhere            (no gate anchor per event-info.md)
-     ⚠️ The prior key here read "Flash Sale Any-Day Admission" — title-case, hyphenated "Any-Day".
-     The live name is ALL-CAPS "FLASH SALE", a " - " separator, and unhyphenated "Any Day". Exact
-     match is required, so that key silently never fired. Fixed 2026-08-26.
+     ⚠️ RE-KEYED 2026-08-30 for the Early Bird flip. The key was "FLASH SALE - Any Day Admission";
+     the Aug-31 Action HIDES that ticket and SHOWS "General Admission" instead, so the old key would
+     have matched nothing and the $19.95 gate strike would have silently stopped rendering. This is
+     the second time this exact trap has been hit (see the 2026-08-26 fix below) — the GATE keys are
+     char-exact live TS ticket names, so ANY phase flip that swaps a ticket must re-key this map.
+     Prior fix, 2026-08-26: the key read "Flash Sale Any-Day Admission" — title-case, hyphenated
+     "Any-Day" — where the live name was ALL-CAPS with a " - " separator and unhyphenated "Any Day".
      Family 4-Pack carries no gate anchor per event-info.md, so it is not keyed here.
      Name-keyed (NOT positional) → immune to TS Action show/hide reorders; MutationObserver re-applies
      the gate strike on every TS re-render. The hybrid loader re-executes this <script> after injecting
@@ -975,7 +1000,7 @@
 (function(){
   var GATE = {
     "Fall Season Pass": "$49.95",               /* live TS name confirmed 2026-08-26 (Edit Tickets panel) */
-    "FLASH SALE - Any Day Admission": "$19.95"  /* live TS name confirmed 2026-08-26 (Edit Tickets panel) */
+    "General Admission": "$19.95"               /* live TS name confirmed 2026-08-30 (Edit Tickets panel) */
   };
   function tag(){
     document.querySelectorAll('#ticketBlock .ticket-type').forEach(function(row){
@@ -1033,7 +1058,7 @@
     }
 </style>
 <div id="jsf-float-btn">
-    <a href="#ticketBlock">Shop the Flash Sale</a>
+    <a href="#ticketBlock">Shop Early Bird</a>
 </div>
 <script>
     (function() {
@@ -1114,9 +1139,9 @@
 <div id="jsf-sp-overlay" role="dialog" aria-modal="true" aria-labelledby="jsf-sp-title" aria-hidden="true">
     <div class="jsf-sp-modal">
         <button type="button" class="jsf-sp-close" aria-label="Close">&times;</button>
-        <span class="jsf-sp-badge">Flash Sale</span>
+        <span class="jsf-sp-badge">Early Bird</span>
         <h3 id="jsf-sp-title">Picking a date? It doesn&rsquo;t change your ticket.</h3>
-        <p>TicketSpice requires you to pick a date before tickets appear &mdash; so just select any available date to view and purchase. The Any-Day Admission and Family 4-Pack are valid any day of the 2026 season (Sept 12&ndash;Nov 1), and the Season Pass works all season long &mdash; no matter which date you choose here.</p>
+        <p>TicketSpice requires you to pick a date before tickets appear &mdash; so just select any available date to view and purchase. General Admission and the Family 4-Pack are valid any day of the 2026 season (Sept 12&ndash;Nov 1), and the Season Pass works all season long &mdash; no matter which date you choose here.</p>
         <button type="button" class="jsf-sp-got">Got it</button>
     </div>
 </div>
