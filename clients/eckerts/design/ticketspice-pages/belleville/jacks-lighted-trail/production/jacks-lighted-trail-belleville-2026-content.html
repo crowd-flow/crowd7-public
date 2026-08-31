@@ -294,6 +294,55 @@
     #jlt-funnel .jlt-card-badge-light { background: rgba(255,255,255,0.14) !important; color: #ffe730 !important; }
     #jlt-funnel .jlt-card-badge-alert { background: #ed1c24 !important; color: #fff !important; }
 
+    /* ── SOLD-OUT CARD TREATMENT (Bryan request 2026-08-31) ──
+       Colour overlay + diagonal banner across a whole marketing card. Add
+       `jlt-card-soldout` to the card's class list to turn it on; remove that one
+       class to turn it back off. `.jlt-card` already sets overflow:hidden, which
+       is what clips the diagonal band to the card's rounded corners. */
+    #jlt-funnel .jlt-card-soldout:hover { transform: none !important; box-shadow: none !important; }
+    #jlt-funnel .jlt-card-soldout::before {
+        content: "" !important; position: absolute !important;
+        top: 0 !important; right: 0 !important; bottom: 0 !important; left: 0 !important;
+        background: linear-gradient(160deg, rgba(18,6,6,0.62), rgba(62,10,10,0.74)) !important;
+        z-index: 2 !important; pointer-events: none !important;
+    }
+    #jlt-funnel .jlt-card-soldout::after {
+        content: "Sold Out" !important;
+        position: absolute !important; z-index: 3 !important; pointer-events: none !important;
+        left: -16% !important; width: 132% !important; top: 50% !important;
+        transform: translateY(-50%) rotate(-11deg) !important;
+        background: #ed1c24 !important; color: #ffffff !important;
+        text-align: center !important; text-transform: uppercase !important;
+        font-family: 'Baloo 2', -apple-system, sans-serif !important;
+        font-size: 1.85rem !important; font-weight: 800 !important; letter-spacing: 0.18em !important;
+        padding: 12px 0 !important; line-height: 1.15 !important;
+        border-top: 2px solid rgba(255,255,255,0.32) !important;
+        border-bottom: 2px solid rgba(255,255,255,0.32) !important;
+        box-shadow: 0 12px 28px rgba(0,0,0,0.45) !important;
+    }
+    /* the card's identity (badge + title) and its note have to clear the overlay
+       and flip to light text, or the dim swallows them. Selectors are doubled up
+       (.jlt-card.jlt-card-soldout) to outrank the later .jlt-card-fire colour rules. */
+    #jlt-funnel .jlt-card.jlt-card-soldout .jlt-card-badge,
+    #jlt-funnel .jlt-card.jlt-card-soldout h3,
+    #jlt-funnel .jlt-card.jlt-card-soldout .jlt-card-note {
+        position: relative !important; z-index: 4 !important;
+    }
+    #jlt-funnel .jlt-card.jlt-card-soldout .jlt-card-badge {
+        background: rgba(255,255,255,0.16) !important; color: #ffffff !important;
+    }
+    #jlt-funnel .jlt-card.jlt-card-soldout h3 { color: #ffffff !important; }
+    #jlt-funnel .jlt-card.jlt-card-soldout .jlt-card-note {
+        color: rgba(255,255,255,0.92) !important; font-weight: 700 !important; font-style: normal !important;
+    }
+
+    /* tag row — lets a card carry more than one badge at the top */
+    #jlt-funnel .jlt-card-tags {
+        display: flex !important; flex-wrap: wrap !important; gap: 6px !important;
+        margin-bottom: 14px !important; align-items: center !important;
+    }
+    #jlt-funnel .jlt-card-tags .jlt-card-badge { margin-bottom: 0 !important; }
+
     #jlt-funnel .jlt-card-icon { font-size: 2.6rem !important; margin-bottom: 14px !important; display: block !important; }
     #jlt-funnel .jlt-card h3 {
         font-family: 'Baloo 2', sans-serif !important;
@@ -412,6 +461,7 @@
         #jlt-funnel .jlt-map { padding: 56px 24px !important; }
     }
     @media (max-width: 560px) {
+        #jlt-funnel .jlt-card-soldout::after { font-size: 1.4rem !important; letter-spacing: 0.14em !important; padding: 10px 0 !important; }
         #jlt-funnel .jlt-nav { padding: 0 16px !important; }
         #jlt-funnel .jlt-logo-wrap { width: 130px !important; height: 36px !important; }
         #jlt-funnel .jlt-logo-wrap img { width: 130px !important; height: 36px !important; max-width: 130px !important; max-height: 36px !important; }
@@ -540,7 +590,7 @@
         <div class="jlt-grid">
 
             <!-- LAUNCH DAY STEAL -->
-            <a href="#ticketBlock" class="jlt-card jlt-card-fire jltr" aria-label="Buy Launch Day Steal tickets">
+            <a href="#ticketBlock" class="jlt-card jlt-card-fire jlt-card-soldout jltr" aria-label="Launch Day Steal — sold out">
                 <span class="jlt-card-badge jlt-card-badge-dark">Launch Day Steal</span>
                 <span class="jlt-card-icon">⚡</span>
                 <h3>Launch Day Steal</h3>
@@ -554,12 +604,15 @@
                     <span class="jlt-price-label">per person<br>varies by date</span>
                 </div>
                 <!-- PRICED 2026-08-27: $22 standard less Amanda's confirmed $10 off (Slack 8/27 09:10). RESOLVED 2026-08-27 12:06: the Sep 26 Peak date ($27) also gets this discount (-> $17), per Amanda ("let's allow the flash sale pricing to be used on 9/26"); see footnote below the grid. Trail Pass is online-only, so there is deliberately no struck gate price. -->
-                <span class="jlt-card-note">Sells out fast — once gone, steps down to the $7-off tier below.</span>
+                <span class="jlt-card-note">Sold out — the $7-off September Savings tier below is now live.</span>
             </a>
 
             <!-- TIER 2 — $7 OFF -->
             <a href="#ticketBlock" class="jlt-card jlt-card-purple jltr d1" aria-label="Buy September Savings tickets">
-                <span class="jlt-card-badge jlt-card-badge-light">$7 Off · September</span>
+                <span class="jlt-card-tags">
+                    <span class="jlt-card-badge jlt-card-badge-light">$7 Off · September</span>
+                    <span class="jlt-card-badge jlt-card-badge-alert">Limited quantity at this price</span>
+                </span>
                 <span class="jlt-card-icon">🎃</span>
                 <h3>September Savings</h3>
                 <ul class="jlt-card-bullets">
@@ -572,7 +625,7 @@
                     <span class="jlt-price-label">per person<br>varies by date</span>
                 </div>
                 <!-- PRICED 2026-08-27: $22 standard less the confirmed $7 tier-2 discount. RESOLVED 2026-08-27 12:06: Sep 26 Peak ($27) also qualifies once Tier 1 sells out (-> $20); see footnote below the grid. -->
-                <span class="jlt-card-note">Active once Launch Day Steal sells out, through the rest of the flash window.</span>
+                <span class="jlt-card-note">Live now that Launch Day Steal is gone — good through the rest of the flash window.</span>
             </a>
 
             <!-- OCTOBER / STANDARD -->
