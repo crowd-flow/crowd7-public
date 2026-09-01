@@ -1,0 +1,764 @@
+<!--
+  ============================================================
+  CONFREDA FARMS — SCARY ACRES 2026 — TicketSpice landing page (content block)
+  ============================================================
+  REBUILT by Crowdly 2026-08-31, superseding the 2026-08-24 from-zero build.
+  Hybrid-loader page: lives in crowd7-public, fetched into the live TS page at
+  render time by the v8 loader (crowd7/data/clients/confreda-farms/design/
+  ticketspice-loaders/hope.scary-acres-2026.ts-loader-snippet.v8.html).
+
+  ── WHAT CHANGED vs. the 8/24 build, and why ────────────────
+
+  1. PRICING IS NOW CONFIRMED — the 8/24 "pricing conflict" is RESOLVED.
+     Corey Confreda answered Bryan IN WRITING on 2026-08-25 (text thread,
+     captured in work/crowd7/projects/confreda-ticketspice-pages/artifacts/
+     pricing-synopsis-20260826.md). He did not accept Bryan's proposal — he
+     returned a DIFFERENT STRUCTURE, which happens to match what is already
+     live on scaryacresri.com (consistent with his stated intent on 8/24 to
+     "revert back to the pricing that we did last year"):
+        General Admission  $30  Sun / Mon / Thu
+                           $35  Fri / Sat          (date-tiered)
+        VIP                $50  flat, any day, any time slot
+     The 6/23-call numbers this page previously carried ($29.95 / $34.95
+     General, VIP capped-per-slot with no price) are SUPERSEDED. Bryan
+     proposed flat GA + date-based VIP; Corey returned the exact inverse.
+
+  2. RUN DATES ARE NOW CONFIRMED — the 8/24 "genuinely unresolved" flag is
+     CLEARED. Mat spoke to Corey on 2026-08-24 and posted the answer in Slack
+     #confreda-farm-scary-acres the same day: "Scary Acres is Sept 18th -
+     Nov 7th for dates of the event." Opening day moved 11 Sept -> 18 Sept.
+     CrowdView event id 18 agrees (starts_on 2026-09-18, ends_on 2026-11-07).
+     This page now prints those dates.
+
+  3. SLASH-THROUGH PRICING REMOVED — deliberately, not by omission.
+     The 8/24 build struck a $40 "at the gate" price on General, sourced from
+     the 6/23 call. Under the confirmed 2026 structure there is NO at-the-door
+     General price to strike: scaryacresri.com states plainly "Tickets will
+     NOT be available at the door." Printing a struck $40 would advertise a
+     saving against a price the guest cannot actually pay. The name-keyed
+     GATE map + MutationObserver block is therefore GONE from this file. If a
+     real gate price is ever confirmed, restore it from
+     crowd7/data/clients/_patterns/slash-through-pricing.md — do not
+     reconstruct it from the 6/23 numbers.
+
+  4. REAL PHOTOGRAPHY — the 8/24 build shipped CSS-only (emoji + gradients)
+     because no site clone existed for this property. Eight production assets
+     have now been pulled directly from the client's own live site
+     (scaryacresri.com/wp-content/uploads/2025/07-08/), optimised, and
+     committed to clients/confreda-farms/design/assets/scary-acres/. Served
+     from the Cloudflare Pages CDN (assets.crowd7digital.us) — same origin as
+     this file, so nothing new to purge and no third-party hotlinking off the
+     client's WordPress host.
+
+  ── WHAT IS STILL OPEN (flagged, never invented) ────────────
+
+  A. FAST PASS ULTIMATE IS NOT DISPLAYED. Corey did not reject $74.95 — he
+     asked a question back: "how do others sell the ultimate?" i.e. he wants
+     competitive justification. The tier is therefore UNCONFIRMED, and an
+     unconfirmed price does not go on a public page. The card is written and
+     COMMENTED OUT in the tickets grid below, ready to uncomment the moment
+     Corey signs off — search this file for FASTPASS-PENDING. The grid is
+     built to reflow cleanly at either 2 or 3 cards.
+
+  B. FLASH-SALE / EARLY-BIRD PROMO PRICING DOES NOT EXIST YET. Everything
+     above is BASE pricing. Aiden posted the exact missing-numbers list in
+     Slack #confreda-farm-scary-acres on 2026-08-20 and it still has zero
+     replies. This page therefore makes NO discount claim anywhere — no
+     "save $X", no struck promo price, no countdown to a price rise. The
+     banner sells the confirmed opening night instead. Do not add a discount
+     claim until real numbers land; see PHASE-BANNER below for the one-line
+     swap when they do.
+
+  C. SEASON PASSES ARE NOT DISPLAYED. The live 2025 site sells a GA Season
+     Pass ($99.99) and a VIP Season Pass ($149.99), both badged NEW. The 6/23
+     call explicitly KILLED season passes for 2026 (under 12 sold last year,
+     VIP+GA combined). Corey's 8/25 text did not mention them either way. Two
+     defensible readings, no confirmation — so they stay off the page.
+
+  D. ATTRACTION COUNT: the client's own site is internally inconsistent — the
+     homepage header says "Featuring 3 Terrifying Haunted Attractions" while
+     the same page announces The Blood Moon Chapel as a fourth. The
+     /attractions page lists only three. This page shows all four documented
+     attractions but deliberately PRINTS NO COUNT anywhere, so it cannot be
+     wrong either way. Confirm with Corey before any ad creative states a
+     number. Blood Moon Chapel is NOT labelled "new" — it was new for 2025.
+
+  E. SMS SKIP-LINE UPGRADE ($15/person, CrowdView ticket id 43) is an in-cart
+     upsell, not a landing-page card. Not shown here by design.
+
+  F. CROWDVIEW PRICE ROWS ARE STALE. The `price` table for event 18 still
+     holds the superseded 6/23 numbers (2995 / 3495 offpeak/weekend, Fast Pass
+     7495). Corey's confirmed 8/25 numbers have not been written to the DB.
+     Flagged for Mat — a DB write needs his sign-off per crowdview/CLAUDE.md.
+
+  ── SOURCES (every displayed fact traces to one of these) ────
+   * Corey Confreda -> Bryan Japhet text thread, 2026-08-25 (pricing) via
+     artifacts/pricing-synopsis-20260826.md
+   * Mat Longinow, Slack #confreda-farm-scary-acres, 2026-08-24 (season dates)
+   * 8.24.26.Bryan Confreda Pricing And Scary Acres Call.transcript.md
+     (opening day 11 Sept -> 18 Sept)
+   * scaryacresri.com — live, re-fetched 2026-08-31: attraction names and
+     descriptions, operating hours, at-the-door policy, FAQ/park rules,
+     ticket-insurance rain-date rule, brand palette, and all photography
+   * CrowdView Postgres event id 18 (dates, phases, ticket types)
+
+  ── BUILD NOTES ─────────────────────────────────────────────
+   * Native TS cart (ticket types, prices, date-based Actions, caps) stays
+     native in TicketSpice per the hybrid-loader split — see
+     ticketspice-build-brief.scary-acres.md alongside this file.
+   * GA needs a DATE-BASED ACTION in the cart: $30 Sun/Mon/Thu, $35 Fri/Sat.
+     VIP is flat $50 and needs no date logic. This inverted the 8/24 spec.
+   * TS page is not published yet (Mat, Slack 2026-08-31). Builder link is on
+     account 203563, page 1057849. The paste is blocked; the build is not.
+   * Brand is the haunt sub-brand — black / orange / blood-red. It must NOT
+     reuse the Fall Festival cream-and-rust farm palette on the same account.
+  ============================================================
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+    #csa-funnel {
+        --sa-black: #08060A;
+        --sa-black-2: #0F0B10;
+        --sa-card: #171016;
+        --sa-card-2: #1F1520;
+        --sa-orange: #FF6A1A;
+        --sa-orange-2: #FFA24D;
+        --sa-blood: #7A0C0C;
+        --sa-blood-2: #B0121A;
+        --sa-blood-3: #E01A24;
+        --sa-cream: #F1E9DC;
+        --sa-muted: #B9AB9C;
+        --sa-faint: #8A7C70;
+        --sa-hair: rgba(255,106,26,0.18);
+        --sa-hair-2: rgba(255,255,255,0.07);
+
+        width: 100vw !important;
+        position: relative !important;
+        left: 50% !important;
+        right: 50% !important;
+        margin-left: -50vw !important;
+        margin-right: -50vw !important;
+        overflow: hidden !important;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+        background: var(--sa-black) !important;
+        color: var(--sa-cream) !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+        line-height: 1.5 !important;
+    }
+    #csa-funnel * { box-sizing: border-box !important; }
+    #csa-funnel img { max-width: 100% !important; display: block !important; }
+    #csa-funnel .csa-disp {
+        font-family: 'Bebas Neue', 'Arial Narrow', sans-serif !important;
+        letter-spacing: 0.03em !important;
+        font-weight: 400 !important;
+    }
+
+    /* ── reveal-on-scroll ── */
+    #csa-funnel .csar { opacity: 0 !important; transform: translateY(20px) !important; transition: opacity .6s ease, transform .6s ease !important; }
+    #csa-funnel .csar.csa-in { opacity: 1 !important; transform: none !important; }
+
+    /* ── BANNER ── */
+    #csa-funnel .csa-banner {
+        width: 100% !important;
+        background: linear-gradient(90deg, var(--sa-blood), #45060A 55%, var(--sa-blood)) !important;
+        border-bottom: 1px solid rgba(255,106,26,0.28) !important;
+        padding: 11px 20px !important;
+        text-align: center !important;
+    }
+    #csa-funnel .csa-banner-inner {
+        display: flex !important; align-items: center !important; justify-content: center !important;
+        flex-wrap: wrap !important; gap: 10px !important;
+        font-size: 13.5px !important; letter-spacing: 0.04em !important;
+        color: var(--sa-orange-2) !important; text-transform: uppercase !important;
+        font-weight: 600 !important;
+    }
+    #csa-funnel .csa-banner-inner strong { color: #FFF !important; font-weight: 800 !important; }
+    #csa-funnel .csa-dot { width: 4px !important; height: 4px !important; border-radius: 50% !important; background: var(--sa-orange) !important; opacity: .7 !important; }
+
+    /* ── NAV ── */
+    #csa-funnel .csa-nav {
+        display: flex !important; align-items: center !important; justify-content: space-between !important;
+        gap: 16px !important; padding: 16px 24px !important;
+        max-width: 1180px !important; margin: 0 auto !important;
+    }
+    #csa-funnel .csa-nav-logo { height: 62px !important; width: auto !important; filter: drop-shadow(0 3px 10px rgba(0,0,0,.85)) !important; }
+    #csa-funnel .csa-nav-right { display: flex !important; align-items: center !important; gap: 18px !important; }
+    #csa-funnel .csa-nav-meta { display: none !important; font-size: 12px !important; color: var(--sa-faint) !important; letter-spacing: .06em !important; text-transform: uppercase !important; }
+    #csa-funnel .csa-nav-cta {
+        display: inline-block !important; background: var(--sa-orange) !important; color: #1B0C04 !important;
+        font-family: 'Bebas Neue','Arial Narrow',sans-serif !important; font-size: 18px !important;
+        letter-spacing: .06em !important; padding: 9px 20px !important; border-radius: 5px !important;
+        text-decoration: none !important; white-space: nowrap !important;
+        transition: background .2s, transform .15s !important;
+    }
+    #csa-funnel .csa-nav-cta:hover { background: var(--sa-orange-2) !important; color: #1B0C04 !important; text-decoration: none !important; transform: translateY(-1px) !important; }
+
+    /* ── HERO ── */
+    #csa-funnel .csa-hero {
+        position: relative !important;
+        min-height: 560px !important;
+        display: flex !important; align-items: center !important; justify-content: center !important;
+        text-align: center !important;
+        padding: 84px 24px 92px !important;
+        overflow: hidden !important;
+    }
+    #csa-funnel .csa-hero-bg {
+        position: absolute !important; inset: 0 !important;
+        background-image: url('https://assets.crowd7digital.us/clients/confreda-farms/design/assets/scary-acres/hero-burial-ground.jpg') !important;
+        background-size: cover !important; background-position: 34% 40% !important;
+        transform: scale(1.06) !important;
+        filter: saturate(1.15) brightness(1.22) !important;
+    }
+    #csa-funnel .csa-hero-scrim {
+        position: absolute !important; inset: 0 !important;
+        background:
+            radial-gradient(ellipse at 50% 46%, rgba(8,6,10,0.06) 0%, rgba(8,6,10,0.46) 62%, rgba(8,6,10,0.86) 100%),
+            linear-gradient(180deg, rgba(8,6,10,0.60) 0%, rgba(8,6,10,0.10) 36%, rgba(8,6,10,0.88) 100%) !important;
+    }
+    #csa-funnel .csa-hero-content { position: relative !important; z-index: 2 !important; max-width: 780px !important; display: flex !important; flex-direction: column !important; align-items: center !important; }
+    #csa-funnel .csa-hero-logo { height: 120px !important; width: auto !important; margin: 0 auto 22px !important; filter: drop-shadow(0 8px 28px rgba(0,0,0,.75)) !important; }
+    #csa-funnel .csa-hero-eyebrow {
+        display: inline-block !important; font-size: 12.5px !important; letter-spacing: .18em !important;
+        text-transform: uppercase !important; color: var(--sa-orange-2) !important; font-weight: 700 !important;
+        border: 1px solid rgba(255,106,26,0.4) !important; border-radius: 999px !important;
+        padding: 7px 18px !important; margin-bottom: 20px !important;
+        background: rgba(122,12,12,0.6) !important;
+    }
+    #csa-funnel .csa-hero-title {
+        display: block !important; font-size: 68px !important; line-height: .95 !important;
+        color: #FFF !important; margin: 0 0 18px !important;
+        text-shadow: 0 2px 6px rgba(0,0,0,.95), 0 6px 34px rgba(0,0,0,.9) !important;
+    }
+    #csa-funnel .csa-hero-title em { font-style: normal !important; color: var(--sa-orange) !important; }
+    #csa-funnel .csa-hero-sub {
+        display: block !important; font-size: 17px !important; line-height: 1.6 !important;
+        color: #E4D9CC !important; max-width: 640px !important; margin: 0 auto 30px !important;
+        text-shadow: 0 2px 5px rgba(0,0,0,.95), 0 4px 20px rgba(0,0,0,.9) !important;
+    }
+    #csa-funnel .csa-hero-cta {
+        display: inline-block !important; background: var(--sa-orange) !important; color: #1B0C04 !important;
+        font-family: 'Bebas Neue','Arial Narrow',sans-serif !important; font-size: 26px !important;
+        letter-spacing: .06em !important; padding: 16px 46px !important; border-radius: 6px !important;
+        text-decoration: none !important; box-shadow: 0 10px 40px rgba(255,106,26,.38) !important;
+        transition: background .2s, transform .15s, box-shadow .2s !important;
+    }
+    #csa-funnel .csa-hero-cta:hover { background: var(--sa-orange-2) !important; color: #1B0C04 !important; text-decoration: none !important; transform: translateY(-2px) !important; box-shadow: 0 16px 48px rgba(255,106,26,.5) !important; }
+    #csa-funnel .csa-hero-note { display: block !important; margin-top: 16px !important; font-size: 13px !important; color: var(--sa-muted) !important; letter-spacing: .03em !important; text-shadow: 0 2px 10px rgba(0,0,0,.9) !important; }
+
+    /* ── FACT STRIP ── */
+    #csa-funnel .csa-facts { background: var(--sa-black-2) !important; border-top: 1px solid var(--sa-hair-2) !important; border-bottom: 1px solid var(--sa-hair-2) !important; padding: 26px 24px !important; }
+    #csa-funnel .csa-facts-grid { max-width: 1080px !important; margin: 0 auto !important; display: grid !important; grid-template-columns: repeat(4, 1fr) !important; gap: 18px !important; }
+    #csa-funnel .csa-fact { text-align: center !important; display: flex !important; flex-direction: column !important; gap: 5px !important; }
+    #csa-funnel .csa-fact-k { font-size: 11px !important; letter-spacing: .16em !important; text-transform: uppercase !important; color: var(--sa-faint) !important; font-weight: 700 !important; }
+    #csa-funnel .csa-fact-v { font-family: 'Bebas Neue','Arial Narrow',sans-serif !important; font-size: 25px !important; color: var(--sa-orange) !important; letter-spacing: .03em !important; line-height: 1.1 !important; }
+    #csa-funnel .csa-fact-s { font-size: 12.5px !important; color: var(--sa-muted) !important; }
+
+    /* ── SECTION HEADER ── */
+    #csa-funnel .csa-sec { padding: 76px 24px !important; }
+    #csa-funnel .csa-sec-head { max-width: 1080px !important; margin: 0 auto 44px !important; text-align: center !important; }
+    #csa-funnel .csa-eye { display: block !important; font-size: 12px !important; letter-spacing: .2em !important; text-transform: uppercase !important; color: var(--sa-blood-3) !important; font-weight: 700 !important; margin-bottom: 12px !important; }
+    #csa-funnel .csa-title { display: block !important; font-size: 50px !important; line-height: 1 !important; color: #FFF !important; }
+    #csa-funnel .csa-title em { font-style: normal !important; color: var(--sa-orange) !important; }
+    #csa-funnel .csa-sec-sub { display: block !important; margin: 14px auto 0 !important; max-width: 620px !important; font-size: 15.5px !important; color: var(--sa-muted) !important; line-height: 1.6 !important; }
+
+    /* ── ATTRACTIONS ── */
+    #csa-funnel .csa-attractions { background: linear-gradient(180deg, var(--sa-black) 0%, #0C0810 100%) !important; }
+    #csa-funnel .csa-attr-grid { max-width: 1080px !important; margin: 0 auto !important; display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: 22px !important; }
+    #csa-funnel .csa-attr-card {
+        position: relative !important; border-radius: 12px !important; overflow: hidden !important;
+        border: 1px solid var(--sa-hair) !important; background: var(--sa-card) !important;
+        min-height: 340px !important; display: flex !important; flex-direction: column !important;
+        justify-content: flex-end !important;
+        transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease !important;
+    }
+    #csa-funnel .csa-attr-card:hover { transform: translateY(-4px) !important; border-color: rgba(255,106,26,.45) !important; box-shadow: 0 18px 50px rgba(0,0,0,.6) !important; }
+    #csa-funnel .csa-attr-img { position: absolute !important; inset: 0 !important; width: 100% !important; height: 100% !important; object-fit: cover !important; }
+    #csa-funnel .csa-attr-scrim { position: absolute !important; inset: 0 !important; background: linear-gradient(180deg, rgba(8,6,10,0.15) 0%, rgba(8,6,10,0.72) 52%, rgba(8,6,10,0.97) 100%) !important; }
+    #csa-funnel .csa-attr-body { position: relative !important; z-index: 2 !important; padding: 26px 26px 28px !important; }
+    #csa-funnel .csa-attr-name { display: block !important; font-family: 'Bebas Neue','Arial Narrow',sans-serif !important; font-size: 30px !important; color: #FFF !important; letter-spacing: .04em !important; margin-bottom: 9px !important; line-height: 1.05 !important; }
+    #csa-funnel .csa-attr-desc { display: block !important; font-size: 14.5px !important; line-height: 1.62 !important; color: #D8CCC0 !important; }
+
+    /* ── TICKETS ── */
+    #csa-funnel .csa-tickets { background: linear-gradient(180deg, #0C0810 0%, var(--sa-black) 100%) !important; }
+    #csa-funnel .csa-grid { max-width: 900px !important; margin: 0 auto !important; display: grid !important; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important; gap: 22px !important; align-items: stretch !important; }
+    #csa-funnel .csa-card {
+        position: relative !important; background: linear-gradient(180deg, var(--sa-card-2) 0%, var(--sa-card) 100%) !important;
+        border: 1px solid var(--sa-hair) !important; border-radius: 12px !important;
+        padding: 30px 26px 28px !important; display: flex !important; flex-direction: column !important;
+        transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease !important;
+    }
+    #csa-funnel .csa-card:hover { transform: translateY(-4px) !important; box-shadow: 0 18px 50px rgba(0,0,0,.6) !important; }
+    #csa-funnel .csa-card-featured { border-color: rgba(255,106,26,.55) !important; box-shadow: 0 0 0 1px rgba(255,106,26,.18), 0 14px 44px rgba(0,0,0,.55) !important; }
+    #csa-funnel .csa-card-badge {
+        position: absolute !important; top: -11px !important; left: 26px !important;
+        font-size: 10.5px !important; letter-spacing: .16em !important; text-transform: uppercase !important;
+        font-weight: 800 !important; padding: 5px 13px !important; border-radius: 999px !important;
+    }
+    #csa-funnel .csa-badge-orange { background: var(--sa-orange) !important; color: #1B0C04 !important; }
+    #csa-funnel .csa-badge-blood { background: var(--sa-blood-2) !important; color: #FFE9E9 !important; }
+    #csa-funnel .csa-card h3 { font-family: 'Bebas Neue','Arial Narrow',sans-serif !important; font-size: 36px !important; color: #FFF !important; margin: 6px 0 6px !important; letter-spacing: .04em !important; line-height: 1 !important; font-weight: 400 !important; }
+    #csa-funnel .csa-card-kicker { display: block !important; font-size: 13px !important; color: var(--sa-muted) !important; margin-bottom: 18px !important; }
+    /* .csa-tier* rules removed 2026-08-31 — both ticket cards now use the
+       .csa-single from-price block, so nothing referenced them. */
+    #csa-funnel .csa-single { display: flex !important; align-items: baseline !important; flex-wrap: wrap !important; gap: 4px 12px !important; margin-bottom: 18px !important; padding: 6px 0 !important; }
+    #csa-funnel .csa-price-num { font-family: 'Bebas Neue','Arial Narrow',sans-serif !important; font-size: 56px !important; color: var(--sa-orange) !important; line-height: .92 !important; letter-spacing: .01em !important; white-space: nowrap !important; }
+    #csa-funnel .csa-price-label { font-size: 12.5px !important; color: var(--sa-muted) !important; letter-spacing: .04em !important; line-height: 1.4 !important; }
+    #csa-funnel .csa-bullets { list-style: none !important; padding: 0 !important; margin: 0 0 20px !important; display: flex !important; flex-direction: column !important; gap: 10px !important; }
+    #csa-funnel .csa-bullets li { position: relative !important; padding-left: 24px !important; font-size: 14px !important; line-height: 1.5 !important; color: #D8CCC0 !important; }
+    #csa-funnel .csa-bullets li strong { color: var(--sa-orange-2) !important; font-weight: 700 !important; }
+    #csa-funnel .csa-bullets li::before { content: "" !important; position: absolute !important; left: 4px !important; top: 7px !important; width: 7px !important; height: 7px !important; border-radius: 50% !important; background: var(--sa-blood-3) !important; box-shadow: 0 0 10px rgba(224,26,36,.7) !important; }
+    #csa-funnel .csa-card-note { display: block !important; margin-top: auto !important; padding-top: 14px !important; border-top: 1px solid var(--sa-hair-2) !important; font-size: 12.5px !important; line-height: 1.55 !important; color: var(--sa-faint) !important; }
+    #csa-funnel .csa-tickets-foot { max-width: 900px !important; margin: 26px auto 0 !important; text-align: center !important; font-size: 13.5px !important; color: var(--sa-muted) !important; line-height: 1.6 !important; }
+    #csa-funnel .csa-tickets-foot strong { color: var(--sa-orange-2) !important; }
+
+    /* ── GALLERY ── */
+    #csa-funnel .csa-gallery { background: var(--sa-black) !important; padding-bottom: 20px !important; }
+    #csa-funnel .csa-gal-grid { max-width: 1080px !important; margin: 0 auto !important; display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 14px !important; }
+    #csa-funnel .csa-gal-item { position: relative !important; border-radius: 10px !important; overflow: hidden !important; border: 1px solid var(--sa-hair-2) !important; aspect-ratio: 3 / 2 !important; }
+    #csa-funnel .csa-gal-item img { width: 100% !important; height: 100% !important; object-fit: cover !important; transition: transform .5s ease !important; }
+    #csa-funnel .csa-gal-item:hover img { transform: scale(1.06) !important; }
+
+    /* ── INFO ── */
+    #csa-funnel .csa-info { background: var(--sa-black-2) !important; border-top: 1px solid var(--sa-hair-2) !important; padding: 56px 24px !important; }
+    #csa-funnel .csa-info-grid { max-width: 1080px !important; margin: 0 auto !important; display: grid !important; grid-template-columns: repeat(4, 1fr) !important; gap: 22px !important; }
+    #csa-funnel .csa-info-item { text-align: center !important; display: flex !important; flex-direction: column !important; gap: 7px !important; }
+    #csa-funnel .csa-info-icon { font-size: 26px !important; line-height: 1 !important; }
+    #csa-funnel .csa-info-label { font-size: 11px !important; letter-spacing: .16em !important; text-transform: uppercase !important; color: var(--sa-faint) !important; font-weight: 700 !important; }
+    #csa-funnel .csa-info-value { font-size: 14.5px !important; color: var(--sa-cream) !important; line-height: 1.55 !important; }
+
+    /* ── KNOW BEFORE YOU GO ── */
+    #csa-funnel .csa-rules { background: var(--sa-black) !important; }
+    #csa-funnel .csa-rules-grid { max-width: 1000px !important; margin: 0 auto !important; display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: 14px 28px !important; }
+    #csa-funnel .csa-rule { position: relative !important; padding: 14px 16px 14px 44px !important; background: rgba(255,255,255,.02) !important; border: 1px solid var(--sa-hair-2) !important; border-radius: 8px !important; font-size: 14px !important; line-height: 1.55 !important; color: #D8CCC0 !important; }
+    #csa-funnel .csa-rule strong { color: var(--sa-cream) !important; }
+    #csa-funnel .csa-rule-ic { position: absolute !important; left: 14px !important; top: 13px !important; font-size: 17px !important; line-height: 1.2 !important; }
+
+    /* ── FINE PRINT ── */
+    #csa-funnel .csa-fine { background: var(--sa-black-2) !important; border-top: 1px solid var(--sa-hair-2) !important; padding: 34px 24px 46px !important; }
+    #csa-funnel .csa-fine-inner { max-width: 860px !important; margin: 0 auto !important; text-align: center !important; font-size: 12.5px !important; line-height: 1.75 !important; color: var(--sa-faint) !important; }
+    #csa-funnel .csa-fine-inner strong { color: var(--sa-muted) !important; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+        #csa-funnel .csa-attr-grid { grid-template-columns: 1fr !important; }
+        #csa-funnel .csa-facts-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 22px !important; }
+        #csa-funnel .csa-info-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        #csa-funnel .csa-gal-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        #csa-funnel .csa-rules-grid { grid-template-columns: 1fr !important; }
+        #csa-funnel .csa-hero-title { font-size: 50px !important; }
+        #csa-funnel .csa-title { font-size: 40px !important; }
+        #csa-funnel .csa-sec { padding: 58px 20px !important; }
+    }
+    @media (max-width: 560px) {
+        #csa-funnel .csa-hero { min-height: 480px !important; padding: 60px 20px 70px !important; }
+        #csa-funnel .csa-hero-title { font-size: 40px !important; }
+        #csa-funnel .csa-hero-logo { height: 88px !important; }
+        #csa-funnel .csa-hero-sub { font-size: 15.5px !important; }
+        #csa-funnel .csa-hero-cta { font-size: 22px !important; padding: 14px 32px !important; }
+        #csa-funnel .csa-gal-grid { grid-template-columns: 1fr !important; }
+        #csa-funnel .csa-nav-logo { height: 46px !important; }
+        #csa-funnel .csa-title { font-size: 34px !important; }
+        #csa-funnel .csa-price-num { font-size: 46px !important; }
+    }
+    @media (min-width: 901px) { #csa-funnel .csa-nav-meta { display: block !important; } }
+    @media (prefers-reduced-motion: reduce) {
+        #csa-funnel .csar { opacity: 1 !important; transform: none !important; transition: none !important; }
+    }
+</style>
+<div id="csa-funnel">
+
+    <!-- ════ PHASE-BANNER ════
+         No discount claim is made here on purpose: flash-sale / early-bird
+         promo numbers do not exist yet (see note B in the header block).
+         When real promo numbers land, this is the ONE line to swap. ════ -->
+    <div class="csa-banner">
+        <div class="csa-banner-inner">
+            <span>🩸 <strong>Opening Night Friday, September 18</strong></span>
+            <span class="csa-dot"></span>
+            <span>Tickets on sale now — online only</span>
+        </div>
+    </div>
+
+    <!-- NAV -->
+    <div class="csa-nav">
+        <img class="csa-nav-logo" src="https://assets.crowd7digital.us/clients/confreda-farms/design/assets/scary-acres/scary-acres-logo.png" alt="Scary Acres RI — Haunted Attractions">
+        <div class="csa-nav-right">
+            <span class="csa-nav-meta">Confreda Farms · Hope, RI</span>
+            <a href="#csa-tickets-anchor" class="csa-nav-cta">Get Tickets</a>
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <div class="csa-hero">
+        <div class="csa-hero-bg"></div>
+        <div class="csa-hero-scrim"></div>
+        <div class="csa-hero-content">
+            <span class="csa-hero-eyebrow">Sept 18 – Nov 7, 2026</span>
+            <span class="csa-hero-title csa-disp">Rhode Island's <em>#1</em><br>Haunted Attraction</span>
+            <span class="csa-hero-sub">Four cursed acres of hayrides, cornfields and swamp on a working Rhode Island farm. We don't recycle scares — every season is rebuilt from the ground up. Gates open at 7pm. The trail opens at sundown.</span>
+            <a href="#csa-tickets-anchor" class="csa-hero-cta">Get Your Tickets</a>
+            <span class="csa-hero-note">Tickets are <strong>not</strong> sold at the door — buy online to guarantee your night.</span>
+        </div>
+    </div>
+
+    <!-- FACT STRIP -->
+    <div class="csa-facts">
+        <div class="csa-facts-grid">
+            <div class="csa-fact csar">
+                <span class="csa-fact-k">Season</span>
+                <span class="csa-fact-v csa-disp">Sept 18 – Nov 7</span>
+                <span class="csa-fact-s">2026</span>
+            </div>
+            <div class="csa-fact csar">
+                <span class="csa-fact-k">Nights</span>
+                <span class="csa-fact-v csa-disp">Thu – Mon</span>
+                <span class="csa-fact-s">Closed Tue &amp; Wed</span>
+            </div>
+            <div class="csa-fact csar">
+                <span class="csa-fact-k">Gates</span>
+                <span class="csa-fact-v csa-disp">7:00 PM</span>
+                <span class="csa-fact-s">Trail opens at sundown</span>
+            </div>
+            <div class="csa-fact csar">
+                <span class="csa-fact-k">Where</span>
+                <span class="csa-fact-v csa-disp">Hope, RI</span>
+                <span class="csa-fact-s">2150 Scituate Avenue</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ATTRACTIONS
+         Four documented attractions. NO COUNT is printed anywhere on this
+         page on purpose — the client's own site says "3" in one place and
+         announces a fourth in another. See note D in the header block. -->
+    <div class="csa-sec csa-attractions">
+        <div class="csa-sec-head csar">
+            <span class="csa-eye">Enter If You Dare</span>
+            <span class="csa-title csa-disp">The <em>Attractions</em></span>
+            <span class="csa-sec-sub">Reinvented. Reinvested. Relentless. New sets, new monsters, and experiences built to push the limits of your fear.</span>
+        </div>
+        <div class="csa-attr-grid">
+
+            <div class="csa-attr-card csar">
+                <img class="csa-attr-img" src="https://assets.crowd7digital.us/clients/confreda-farms/design/assets/scary-acres/attraction-dark-harvest-hayride.jpg" alt="A masked figure with a chainsaw in the Dark Harvest Hayride" loading="lazy">
+                <div class="csa-attr-scrim"></div>
+                <div class="csa-attr-body">
+                    <span class="csa-attr-name">The Dark Harvest Hayride</span>
+                    <span class="csa-attr-desc">Climb aboard for Rhode Island's most terrifying haunted hayride, deep into cursed farmland where the harvest is not crops — but souls. Vengeful scarecrows, restless farmers, shrieking chainsaws and fields alive with things that should never grow.</span>
+                </div>
+            </div>
+
+            <div class="csa-attr-card csar">
+                <img class="csa-attr-img" src="https://assets.crowd7digital.us/clients/confreda-farms/design/assets/scary-acres/attraction-burial-ground.jpg" alt="A skeletal figure rising from a casket in The Burial Ground" loading="lazy">
+                <div class="csa-attr-scrim"></div>
+                <div class="csa-attr-body">
+                    <span class="csa-attr-name">The Burial Ground Corn Field</span>
+                    <span class="csa-attr-desc">Step off the path into cursed rows of corn where the dead don't rest quietly. Legend says this land was once a graveyard — and when the corn grew over it, the restless souls rose with it. Nowhere to run. Only forward.</span>
+                </div>
+            </div>
+
+            <div class="csa-attr-card csar">
+                <img class="csa-attr-img" src="https://assets.crowd7digital.us/clients/confreda-farms/design/assets/scary-acres/attraction-curse-of-the-bayou.jpg" alt="A gas-masked figure among toxic barrels in The Curse of the Bayou" loading="lazy">
+                <div class="csa-attr-scrim"></div>
+                <div class="csa-attr-body">
+                    <span class="csa-attr-name">The Curse of the Bayou</span>
+                    <span class="csa-attr-desc">Into the swamp where the fog never lifts and the whispers never stop. A dark ritual woke what sleeps in these wetlands. Beware the voodoo priestess who guards this haunted ground — her curse ensures no soul leaves unscathed.</span>
+                </div>
+            </div>
+
+            <div class="csa-attr-card csar">
+                <img class="csa-attr-img" src="https://assets.crowd7digital.us/clients/confreda-farms/design/assets/scary-acres/attraction-blood-moon-chapel.jpg" alt="A skeletal figure in the doorway of The Blood Moon Chapel" loading="lazy">
+                <div class="csa-attr-scrim"></div>
+                <div class="csa-attr-body">
+                    <span class="csa-attr-name">The Blood Moon Chapel</span>
+                    <span class="csa-attr-desc">More than a haunted house — a cathedral of fear. Step inside and you're surrounded by unsettling chants, flickering candlelight, and the tortured souls of a congregation that should have stayed buried.</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- TICKETS -->
+    <a id="csa-tickets-anchor"></a>
+    <div class="csa-sec csa-tickets">
+        <div class="csa-sec-head csar">
+            <span class="csa-eye">Online Only · Not Sold At The Door</span>
+            <span class="csa-title csa-disp">Choose Your <em>Fate</em></span>
+            <span class="csa-sec-sub">One ticket gets you every attraction on the trail. Pick your night below — then complete your purchase in the ticket form.</span>
+        </div>
+        <div class="csa-grid">
+
+            <!-- GENERAL ADMISSION — $30 Sun/Mon/Thu, $35 Fri/Sat.
+                 Corey Confreda, in writing, 2026-08-25. Needs a DATE-BASED
+                 ACTION in the native TS cart to switch by day-of-week.
+
+                 PRICE DISPLAY: "from $30" per the house from-price treatment
+                 (reference: Jack's Lighted Trail Belleville, which shows
+                 "from $22" + a "per person / varies by date" label). The
+                 two-tier breakdown is NOT dropped — it moves into the first
+                 bullet and the footnote under the grid, so the $35 Fri/Sat
+                 rate is still stated plainly on the page. A "from" price
+                 that hides the higher rate is a bait-and-switch; a "from"
+                 price with the ladder one line below is a hook. -->
+            <div class="csa-card csa-card-featured csar">
+                <span class="csa-card-badge csa-badge-orange">Most Popular</span>
+                <h3 class="csa-disp">General Admission</h3>
+                <span class="csa-card-kicker">The full trail — every haunted attraction, one ticket.</span>
+                <div class="csa-single">
+                    <span class="csa-price-num csa-disp">from $30</span>
+                    <span class="csa-price-label">per person<br>varies by night</span>
+                </div>
+                <ul class="csa-bullets">
+                    <li><strong>$30</strong> Sun · Mon · Thu &nbsp;·&nbsp; <strong>$35</strong> Fri · Sat</li>
+                    <li>Admission to every haunted attraction on the trail</li>
+                    <li>The Dark Harvest Hayride included</li>
+                    <li>Best value for groups and families</li>
+                </ul>
+                <span class="csa-card-note">Priced by the night you choose. Not suitable for infants, toddlers or small children.</span>
+            </div>
+
+            <!-- VIP — $50 flat, every night. Corey Confreda, in writing,
+                 2026-08-25: "$50 no matter the day." This REPLACED the
+                 date-based/capped-per-slot VIP in the 8/24 build. No date
+                 logic needed in the cart. -->
+            <div class="csa-card csar">
+                <span class="csa-card-badge csa-badge-blood">Skip The Line</span>
+                <h3 class="csa-disp">VIP</h3>
+                <span class="csa-card-kicker">Same haunt. None of the waiting.</span>
+                <div class="csa-single">
+                    <span class="csa-price-num csa-disp">$50</span>
+                    <span class="csa-price-label">per person<br>any night, any time slot</span>
+                </div>
+                <ul class="csa-bullets">
+                    <li>Dedicated VIP line at every attraction</li>
+                    <li>Valid any night we're open — no date restrictions</li>
+                    <li>The fastest way through on a sold-out Saturday</li>
+                </ul>
+                <span class="csa-card-note">VIP upgrades are also available at the door, subject to availability.</span>
+            </div>
+
+            <!-- ════ FASTPASS-PENDING ════════════════════════════════════
+                 Fast Pass Ultimate is NOT displayed. Corey did not reject
+                 $74.95 — he asked for competitive justification ("how do
+                 others sell the ultimate?"), so the price is unconfirmed and
+                 does not belong on a public page. The card below is complete
+                 and ready: delete this comment's opening and closing markers
+                 to publish it the moment Corey signs off, and confirm the
+                 price in the same edit. The grid reflows to 3 cards on its own.
+
+            <div class="csa-card csar">
+                <span class="csa-card-badge csa-badge-blood">Front Of The Line</span>
+                <h3 class="csa-disp">Fast Pass Ultimate</h3>
+                <span class="csa-card-kicker">The no-compromises way to do Scary Acres.</span>
+                <div class="csa-single">
+                    <span class="csa-price-num csa-disp">$74.95</span>
+                    <span class="csa-price-label">any night, any time</span>
+                </div>
+                <ul class="csa-bullets">
+                    <li>Front-of-line access at every attraction</li>
+                    <li>Ticket insurance included</li>
+                    <li>Valid any night, any time slot we're open</li>
+                </ul>
+                <span class="csa-card-note">Limited availability each night.</span>
+            </div>
+
+                 ════ END FASTPASS-PENDING ════════════════════════════════ -->
+
+        </div>
+        <div class="csa-tickets-foot">
+            <strong>General Admission is $30 on Sunday, Monday and Thursday, and $35 on Friday and Saturday.</strong> VIP is $50 any night.<br>
+            Buy online to guarantee your spot — tickets are not available at the door, and peak Friday and Saturday nights sell out.
+        </div>
+    </div>
+
+    <!-- GALLERY -->
+    <div class="csa-sec csa-gallery">
+        <div class="csa-sec-head csar">
+            <span class="csa-eye">What's Waiting For You</span>
+            <span class="csa-title csa-disp">Out There In The <em>Dark</em></span>
+        </div>
+        <div class="csa-gal-grid">
+            <div class="csa-gal-item csar"><img src="https://assets.crowd7digital.us/clients/confreda-farms/design/assets/scary-acres/gallery-chainsaw.jpg" alt="A masked chainsaw figure at Scary Acres RI" loading="lazy"></div>
+            <div class="csa-gal-item csar"><img src="https://assets.crowd7digital.us/clients/confreda-farms/design/assets/scary-acres/gallery-maze-clown.jpg" alt="A clown lurking in the corn maze at Scary Acres RI" loading="lazy"></div>
+            <div class="csa-gal-item csar"><img src="https://assets.crowd7digital.us/clients/confreda-farms/design/assets/scary-acres/hero-burial-ground.jpg" alt="A figure clawing through a fence in the burial ground" loading="lazy"></div>
+        </div>
+    </div>
+
+    <!-- INFO ROW -->
+    <div class="csa-info">
+        <div class="csa-info-grid">
+            <div class="csa-info-item">
+                <span class="csa-info-icon">📅</span>
+                <span class="csa-info-label">Season</span>
+                <span class="csa-info-value">Sept 18 – Nov 7, 2026</span>
+            </div>
+            <div class="csa-info-item">
+                <span class="csa-info-icon">🕖</span>
+                <span class="csa-info-label">Hours</span>
+                <span class="csa-info-value">Fri · Sat · Sun 7–10pm<br>Thu &amp; Mon 7–9pm</span>
+            </div>
+            <div class="csa-info-item">
+                <span class="csa-info-icon">📍</span>
+                <span class="csa-info-label">Location</span>
+                <span class="csa-info-value">2150 Scituate Ave<br>Hope (W. Cranston), RI 02831</span>
+            </div>
+            <div class="csa-info-item">
+                <span class="csa-info-icon">🌙</span>
+                <span class="csa-info-label">Gates &amp; Trail</span>
+                <span class="csa-info-value">Gates open 7pm<br>Trail opens at sundown</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- KNOW BEFORE YOU GO — every line below is taken from the client's own
+         published FAQ / park rules at scaryacresri.com/faq (re-read 2026-08-31). -->
+    <div class="csa-sec csa-rules">
+        <div class="csa-sec-head csar">
+            <span class="csa-eye">Park Rules</span>
+            <span class="csa-title csa-disp">Know Before <em>You Go</em></span>
+        </div>
+        <div class="csa-rules-grid">
+            <div class="csa-rule csar"><span class="csa-rule-ic">🎟️</span><strong>Online only.</strong> Tickets are not sold at the door. VIP upgrades are available on site, subject to availability.</div>
+            <div class="csa-rule csar"><span class="csa-rule-ic">🌧️</span><strong>Ticket insurance.</strong> With insurance we can refund your ticket in the event of a rain date. Without it, you'll need to reschedule.</div>
+            <div class="csa-rule csar"><span class="csa-rule-ic">👶</span><strong>Age.</strong> Children under 2 are not permitted. This is not an experience for infants, toddlers or small children.</div>
+            <div class="csa-rule csar"><span class="csa-rule-ic">👜</span><strong>Clear bags only.</strong> No backpacks or pocketbooks. Leave metal and sharp objects in your vehicle; weapons of any kind are prohibited.</div>
+            <div class="csa-rule csar"><span class="csa-rule-ic">👟</span><strong>Dress for a working farm.</strong> Wear proper clothing and closed footwear. No costumes. Guests must be able to walk the trail unaided.</div>
+            <div class="csa-rule csar"><span class="csa-rule-ic">⚠️</span><strong>Effects warning.</strong> This event uses strobe lighting, fog machines and special effects. No flash photography. No pets.</div>
+        </div>
+    </div>
+
+    <!-- FINE PRINT -->
+    <div class="csa-fine">
+        <div class="csa-fine-inner">
+            <strong>Scary Acres Rhode Island</strong> · 2150 Scituate Avenue, Hope (Western Cranston), RI 02831 · at Confreda Greenhouses &amp; Farms<br>
+            All sales are final — no refunds; enter at your own risk. No alcohol, drugs, tobacco or outside food and drink on the property.<br>
+            Scary Acres reserves the right to refuse admission to anyone for any reason. Your ticket is a revocable licence.<br>
+            Attractions, hours and dates are subject to change.
+        </div>
+    </div>
+
+</div>
+
+<!-- FLOATING CTA -->
+<style>
+    #csa-float-btn {
+        position: fixed !important; left: 0 !important; right: 0 !important; bottom: 0 !important;
+        z-index: 9998 !important; display: flex !important; justify-content: center !important;
+        padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px)) !important;
+        background: linear-gradient(180deg, rgba(8,6,10,0) 0%, rgba(8,6,10,0.9) 45%) !important;
+        pointer-events: none !important;
+        transition: opacity .3s ease, transform .3s ease !important;
+    }
+    #csa-float-btn.csa-float-hidden { opacity: 0 !important; transform: translateY(24px) !important; pointer-events: none !important; }
+    #csa-float-btn a {
+        display: block !important; width: 100% !important; max-width: 480px !important;
+        background: #FF6A1A !important; color: #1B0C04 !important;
+        font-family: 'Bebas Neue', 'Arial Narrow', sans-serif !important;
+        font-size: 22px !important; letter-spacing: 0.06em !important;
+        text-align: center !important; text-decoration: none !important;
+        padding: 16px 28px !important; border-radius: 6px !important;
+        box-shadow: 0 8px 32px rgba(255,106,26,0.4) !important;
+        transition: transform 0.15s, box-shadow 0.15s, background 0.2s !important;
+        border: none !important; cursor: pointer !important;
+        pointer-events: auto !important;
+    }
+    #csa-float-btn a:hover {
+        background: #FFA24D !important; transform: translateY(-2px) !important;
+        box-shadow: 0 14px 40px rgba(255,106,26,0.55) !important;
+        color: #1B0C04 !important; text-decoration: none !important;
+    }
+</style>
+<div id="csa-float-btn" class="csa-float-hidden">
+    <a href="#ticketBlock">Get Your Tickets</a>
+</div>
+
+<script>
+(function(){
+    var els = [].slice.call(document.querySelectorAll('#csa-funnel .csar'));
+
+    function show(el){ el.classList.add('csa-in'); }
+    function showAll(){ els.forEach(show); }
+
+    /* Reveal-on-scroll. THE SAFETY NET BELOW IS NOT OPTIONAL: every .csar
+       element starts at opacity 0, so anything that never gets 'csa-in' is
+       invisible content on a live client page. IntersectionObserver can fail
+       to fire in embedded/iframed contexts and when a visitor deep-links
+       straight to #ticketBlock past the middle of the page. The timeout
+       guarantees the page is fully legible either way. */
+    if (!('IntersectionObserver' in window)) {
+        showAll();
+    } else {
+        var io = new IntersectionObserver(function(entries){
+            entries.forEach(function(e){
+                if (e.isIntersecting) { show(e.target); io.unobserve(e.target); }
+            });
+        }, { rootMargin: '0px 0px -6% 0px', threshold: 0.05 });
+        els.forEach(function(el){
+            io.observe(el);
+            /* already on screen at load — reveal without waiting for a scroll */
+            if (el.getBoundingClientRect().top < window.innerHeight) show(el);
+        });
+        setTimeout(showAll, 2500);
+    }
+
+    /* smooth-scroll for in-page anchors */
+    [].slice.call(document.querySelectorAll('#csa-funnel a[href^="#"]')).forEach(function(a){
+        a.addEventListener('click', function(ev){
+            var t = document.querySelector(a.getAttribute('href'));
+            if (t) { ev.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+        });
+    });
+
+    /* Floating CTA. It is a scroll affordance, not a second button competing
+       with the hero CTA — so it stays hidden until the hero has scrolled by,
+       and hides again once the native ticket block is actually on screen. */
+    var fb = document.getElementById('csa-float-btn');
+    if (fb) {
+        var hero = document.querySelector('#csa-funnel .csa-hero');
+        var cartVisible = false;
+
+        function sync(){
+            var pastHero = hero ? (hero.getBoundingClientRect().bottom < 40) : (window.pageYOffset > 400);
+            var armed = pastHero && !cartVisible;
+            fb.classList.toggle('csa-float-armed', armed);
+            fb.classList.toggle('csa-float-hidden', !armed);
+        }
+
+        fb.querySelector('a').addEventListener('click', function(){
+            fb.classList.add('csa-float-hidden');
+            fb.classList.remove('csa-float-armed');
+        });
+
+        var tb = document.getElementById('ticketBlock');
+        if (tb && 'IntersectionObserver' in window) {
+            new IntersectionObserver(function(entries){
+                entries.forEach(function(e){ cartVisible = e.isIntersecting; });
+                sync();
+            }, { threshold: 0.01 }).observe(tb);
+        }
+
+        window.addEventListener('scroll', sync, { passive: true });
+        window.addEventListener('resize', sync, { passive: true });
+        sync();
+    }
+})();
+</script>
+
+<!-- ════ SLASH-THROUGH PRICING — DELIBERATELY ABSENT ════
+     The 8/24 build carried a name-keyed GATE map striking $40 "at the gate"
+     on General Admission, sourced from the 6/23 strategy call. It has been
+     REMOVED, not lost: under the confirmed 2026 structure there is no
+     at-the-door General price to strike — scaryacresri.com states "Tickets
+     will NOT be available at the door." A struck $40 would advertise a saving
+     against a price no guest can pay.
+
+     Do NOT reinstate it from the 6/23 numbers. If a real gate price is ever
+     confirmed by Corey, rebuild the block from the canonical pattern at
+     crowd7/data/clients/_patterns/slash-through-pricing.md and key it to the
+     live cart's exact <h4> ticket name (still unverified — the TS cart on
+     account 203563 / page 1057849 is not configured yet).
+     ════════════════════════════════════════════════════ -->
