@@ -107,6 +107,26 @@
    * Native TS cart (ticket types, prices, date-based Actions, caps) stays
      native in TicketSpice per the hybrid-loader split — see
      ticketspice-build-brief.scary-acres.md alongside this file.
+   * ⚠️ PRICING CORRECTION 2026-09-02 -- THE "FLAT $23.95" OVERRIDE BELOW WAS
+     WRONG AND WENT LIVE. Read this before the note under it.
+     The 9/01 override applied Bryan's text literally as a FLAT GA price. It
+     shipped as "$23.95 per person, any night -- same price every night we're
+     open" while the published cart charged $28.95 on Fri/Sat. Card and cart
+     contradicted each other on the same screen. Mat caught it 9/02.
+     Three surfaces agree GA is DATE-BASED, not flat:
+       - scaryacresri.com: "Starting From $23.95 Flash Sale", in-season
+         "Sun/Mon/Thurs $29.95 / Weekend Fri/Sat $34.95"
+       - Bryan's launch email, 35,965 recipients, 9/02 00:00 ET: "From $23.95
+         ... Date-based. Pick your night."
+       - the published cart: $34.95 base, -$5 Sun/Mon/Thu, -$6 flash
+     Resolution: the CART was left alone (it was correct) and the PAGE was
+     corrected to "from" with the ladder printed. Also in this pass: Fast Pass
+     Ultimate un-gated at $44.95 (now confirmed on all three surfaces), the
+     false "Ticket insurance included" bullet dropped, VIP's false "no date
+     restrictions" bullet dropped, flash framing + end date added throughout.
+     LESSON FOR THE NEXT READER: a one-line price instruction relayed second-
+     hand is not a spec. Reconcile it against the client's own site and the
+     cart BEFORE it goes on a public page -- all three were readable that day.
    * PRICING OVERRIDE 2026-09-01 -- THE CARDS NO LONGER SHOW COREY'S 8/25
      NUMBERS. Bryan Japhet, via Mat, 2026-09-01: "I need the discount to be as
      follows 23.95 for general admission and starting at 34.95 for VIP."
@@ -322,7 +342,11 @@
     #csa-funnel .csa-single { display: flex !important; align-items: baseline !important; flex-wrap: wrap !important; gap: 4px 12px !important; margin-bottom: 18px !important; padding: 6px 0 !important; }
     #csa-funnel .csa-price-num { font-family: 'Bebas Neue','Arial Narrow',sans-serif !important; font-size: 56px !important; color: var(--sa-orange) !important; line-height: .92 !important; letter-spacing: .01em !important; white-space: nowrap !important; }
     #csa-funnel .csa-price-label { font-size: 12.5px !important; color: var(--sa-muted) !important; letter-spacing: .04em !important; line-height: 1.4 !important; }
-    #csa-funnel .csa-price-pre { flex: 0 0 100% !important; font-size: 12.5px !important; letter-spacing: .08em !important; text-transform: uppercase !important; color: var(--sa-muted) !important; line-height: 1.2 !important; margin-bottom: -2px !important; }
+    #csa-funnel .csa-price-pre { flex: 0 0 100% !important; font-size: 12.5px !important; letter-spacing: .08em !important; text-transform: uppercase !important; color: var(--sa-orange-2) !important; font-weight: 700 !important; line-height: 1.2 !important; margin-bottom: -2px !important; }
+    /* Struck regular price. Added 2026-09-01 with the from-price correction —
+       a "from" price with no reference point reads as the full price, which is
+       how the flat-$23.95 version of this page ended up contradicting the cart. */
+    #csa-funnel .csa-was { color: var(--sa-faint) !important; text-decoration: line-through !important; }
     #csa-funnel .csa-bullets { list-style: none !important; padding: 0 !important; margin: 0 0 20px !important; display: flex !important; flex-direction: column !important; gap: 10px !important; }
     #csa-funnel .csa-bullets li { position: relative !important; padding-left: 24px !important; font-size: 14px !important; line-height: 1.5 !important; color: #D8CCC0 !important; }
     #csa-funnel .csa-bullets li strong { color: var(--sa-orange-2) !important; font-weight: 700 !important; }
@@ -393,9 +417,11 @@
          When real promo numbers land, this is the ONE line to swap. ════ -->
     <div class="csa-banner">
         <div class="csa-banner-inner">
-            <span>🩸 <strong>Opening Night Friday, September 18</strong></span>
+            <span>🩸 <strong>Flash Sale — ends Labor Day, Monday Sept 7</strong></span>
             <span class="csa-dot"></span>
-            <span>Tickets on sale now — online only</span>
+            <span>Opening night Friday, September 18</span>
+            <span class="csa-dot"></span>
+            <span>Online only</span>
         </div>
     </div>
 
@@ -508,31 +534,44 @@
         </div>
         <div class="csa-grid">
 
-            <!-- GENERAL ADMISSION — $23.95 FLAT (Bryan via Mat, 2026-09-01).
-                 The $30/$35 date split below is HISTORY, not the live spec —
-                 see PRICING OVERRIDE in the header. Historical note follows.
-                 [superseded] $30 Sun/Mon/Thu, $35 Fri/Sat.
-                 Corey Confreda, in writing, 2026-08-25. Needs a DATE-BASED
-                 ACTION in the native TS cart to switch by day-of-week.
+            <!-- GENERAL ADMISSION — FLASH SALE, FROM $23.95, DATE-BASED.
+                 CORRECTED 2026-09-01 (late). The previous revision of this card
+                 claimed a FLAT $23.95 "same price every night we're open". That
+                 was wrong and it was live while the cart charged $28.95 on
+                 Fri/Sat — the contradiction was visible on one screen, card and
+                 cart together. Mat caught it.
 
-                 PRICE DISPLAY: "from $30" per the house from-price treatment
-                 (reference: Jack's Lighted Trail Belleville, which shows
-                 "from $22" + a "per person / varies by date" label). The
-                 two-tier breakdown is NOT dropped — it moves into the first
-                 bullet and the footnote under the grid, so the $35 Fri/Sat
-                 rate is still stated plainly on the page. A "from" price
-                 that hides the higher rate is a bait-and-switch; a "from"
-                 price with the ladder one line below is a hook. -->
+                 The flat reading came from Bryan's text ("23.95 for general
+                 admission"). THREE surfaces say otherwise and they all agree:
+                   * scaryacresri.com  — "Starting From $23.95 Flash Sale",
+                     with "Sun/Mon/Thurs $29.95 · Weekend Fri/Sat $34.95 in-season"
+                   * Bryan's own launch email to 35,965 recipients, 2026-09-02
+                     00:00 ET — "From $23.95 ... Date-based. Pick your night."
+                   * the native TS cart as published 2026-09-02 — base $34.95,
+                     less $5 Sun/Mon/Thu, less $6 flash.
+                 So the card now says FROM, and prints the ladder.
+
+                 LIVE MATH (verified against the published cart):
+                   Sun / Mon / Thu   $34.95 - $5 - $6 = $23.95
+                   Fri / Sat         $34.95 - $6      = $28.95
+                 Struck reg. $29.95 is the Sun/Mon/Thu in-season price, which is
+                 the same reference scaryacresri.com strikes against.
+
+                 ⚠️ SEPT 8: the flash Action expires "Before September 08 2026
+                 12:00 AM". On expiry GA returns to $29.95 / $34.95 and this card
+                 becomes wrong in the customer's favour. It must be re-cut then —
+                 see the FLASH-EXPIRY note under the grid. -->
             <div class="csa-card csa-card-featured csar">
                 <span class="csa-card-badge csa-badge-orange">Most Popular</span>
                 <h3 class="csa-disp">General Admission</h3>
                 <span class="csa-card-kicker">The full trail — every haunted attraction, one ticket.</span>
                 <div class="csa-single">
+                    <span class="csa-price-pre">Flash Sale — from</span>
                     <span class="csa-price-num csa-disp">$23.95</span>
-                    <span class="csa-price-label">per person<br>any night</span>
+                    <span class="csa-price-label">per person · price varies by night<br><span class="csa-was">reg. $29.95</span></span>
                 </div>
                 <ul class="csa-bullets">
-                    <li><strong>$23.95</strong> per person &mdash; same price every night we’re open</li>
+                    <li><strong>$23.95</strong> Sun, Mon &amp; Thu &nbsp;&middot;&nbsp; <strong>$28.95</strong> Fri &amp; Sat</li>
                     <li>Admission to every haunted attraction on the trail</li>
                     <li>The Dark Harvest Hayride included</li>
                     <li>Best value for groups and families</li>
@@ -540,61 +579,95 @@
                 <span class="csa-card-note">Not suitable for infants, toddlers or small children.</span>
             </div>
 
-            <!-- VIP — "Starting at $34.95" (Bryan via Mat, 2026-09-01). No
-                 second VIP price exists yet to justify "starting at"; flagged
-                 to Mat. The $50 below is HISTORY. Historical note follows.
-                 [superseded] $50 flat, every night. Corey Confreda, in writing,
-                 2026-08-25: "$50 no matter the day." This REPLACED the
-                 date-based/capped-per-slot VIP in the 8/24 build. No date
-                 logic needed in the cart. -->
+            <!-- VIP — FLASH SALE, FROM $34.95. Verified live in the published
+                 cart 2026-09-02: base $49.95 less the $15 flash discount = a
+                 flat $34.95 for the duration of the sale. "From" is kept rather
+                 than a bare price because it is the wording scaryacresri.com
+                 uses ("Starting From $34.95 Flash Sale") and Bryan's email
+                 repeats — three surfaces, one phrasing.
+
+                 "no date restrictions" REMOVED: VIP has date selection ENABLED
+                 in the cart (Sept 18 - Nov 7, Sun/Mon/Thu/Fri/Sat, with blackout
+                 dates). The buyer does pick a night. What is unrestricted is the
+                 PRICE, not the date, and the old bullet said the opposite.
+
+                 ⚠️ SEPT 8: scaryacresri.com prices VIP in-season at $49.95
+                 Sun/Mon/Thu and $59.95 Fri/Sat — DATE-BASED. The cart has no
+                 day-of-week rule for VIP, so from Sept 8 it will charge a flat
+                 $49.95 and undercharge $10 on every Fri/Sat. Raised with Mat
+                 2026-09-02; needs a cart Action before the flash expires. -->
             <div class="csa-card csar">
                 <span class="csa-card-badge csa-badge-blood">Skip The Line</span>
                 <h3 class="csa-disp">VIP</h3>
                 <span class="csa-card-kicker">Same haunt. None of the waiting.</span>
                 <div class="csa-single">
-                    <span class="csa-price-pre">Starting at</span>
+                    <span class="csa-price-pre">Flash Sale — from</span>
                     <span class="csa-price-num csa-disp">$34.95</span>
-                    <span class="csa-price-label">per person<br>any night, any time slot</span>
+                    <span class="csa-price-label">per person · any night we're open<br><span class="csa-was">reg. $49.95</span></span>
                 </div>
                 <ul class="csa-bullets">
                     <li>Dedicated VIP line at every attraction</li>
-                    <li>Valid any night we're open — no date restrictions</li>
+                    <li>Same price every night — pick your date at checkout</li>
                     <li>The fastest way through on a sold-out Saturday</li>
                 </ul>
                 <span class="csa-card-note">VIP upgrades are also available at the door, subject to availability.</span>
             </div>
 
-            <!-- ════ FASTPASS-PENDING ════════════════════════════════════
-                 Fast Pass Ultimate is NOT displayed. Corey did not reject
-                 $74.95 — he asked for competitive justification ("how do
-                 others sell the ultimate?"), so the price is unconfirmed and
-                 does not belong on a public page. The card below is complete
-                 and ready: delete this comment's opening and closing markers
-                 to publish it the moment Corey signs off, and confirm the
-                 price in the same edit. The grid reflows to 3 cards on its own.
+            <!-- FAST PASS ULTIMATE — FASTPASS-PENDING GATE CLOSED 2026-09-02.
+                 This card was withheld because $74.95 was unconfirmed (Corey
+                 asked "how do others sell the ultimate?" rather than agreeing).
+                 That is now moot: the tier is LIVE and priced on three
+                 independent surfaces, all agreeing —
+                   * published TS cart: base $74.95 less the $30 flash discount
+                     = $44.95 (verified live 2026-09-02)
+                   * scaryacresri.com: "Starting From $44.95 ... Any Day $74.95"
+                   * Bryan's launch email: "$44.95 / $74.95 regular"
+                 Displaying it is now the conservative choice: the cart sells it
+                 either way, and hiding it while the email promotes it sent
+                 buyers looking for a tier the page didn't acknowledge.
 
+                 "Ticket insurance included" DROPPED — nothing supports it. The
+                 cart sells insurance as a separate $5.18 line item and the TS
+                 ticket description makes no such claim. Bullets below are the
+                 cart's own copy.
+
+                 ⚠️ SEPT 8: reverts to $74.95 when the flash Action expires. -->
             <div class="csa-card csar">
                 <span class="csa-card-badge csa-badge-blood">Front Of The Line</span>
                 <h3 class="csa-disp">Fast Pass Ultimate</h3>
                 <span class="csa-card-kicker">The no-compromises way to do Scary Acres.</span>
                 <div class="csa-single">
-                    <span class="csa-price-num csa-disp">$74.95</span>
-                    <span class="csa-price-label">any night, any time</span>
+                    <span class="csa-price-pre">Flash Sale</span>
+                    <span class="csa-price-num csa-disp">$44.95</span>
+                    <span class="csa-price-label">per person · any day, any time slot<br><span class="csa-was">reg. $74.95</span></span>
                 </div>
                 <ul class="csa-bullets">
+                    <li>Any day, any time of the season — no date to lock in</li>
+                    <li>Premium expedited entry — the shortest wait we sell</li>
                     <li>Front-of-line access at every attraction</li>
-                    <li>Ticket insurance included</li>
-                    <li>Valid any night, any time slot we're open</li>
                 </ul>
-                <span class="csa-card-note">Limited availability each night.</span>
+                <span class="csa-card-note">Maximum flexibility, zero planning.</span>
             </div>
 
-                 ════ END FASTPASS-PENDING ════════════════════════════════ -->
-
         </div>
+        <!-- ⚠️ FLASH-EXPIRY — READ BEFORE SEPT 8 ═══════════════════════════
+             Every price in this section is FLASH pricing. The cart Action that
+             produces it is gated "Date Is Before September 08 2026 12:00 AM",
+             so at 12:00am Tue Sept 8 the cart reverts to:
+                 GA   $29.95 Sun/Mon/Thu · $34.95 Fri/Sat
+                 VIP  $49.95  (see the VIP card note — should be date-based)
+                 Fast Pass Ultimate  $74.95
+             and the hidden season passes ($99.99 GA / $149.99 VIP) reappear.
+             Nothing re-cuts this page automatically. On Sept 8 it will still be
+             advertising sale prices the cart no longer honours — wrong in the
+             CUSTOMER's favour, which is the expensive direction.
+             Swap the three .csa-price-pre labels, drop the .csa-was spans, and
+             update the banner + this footnote in the same pass. ═══════════ -->
         <div class="csa-tickets-foot">
-            <strong>General Admission is $23.95 per person, any night.</strong> VIP starts at $34.95.<br>
-            Buy online to guarantee your spot — tickets are not available at the door, and peak Friday and Saturday nights sell out.
+            <strong>Flash Sale pricing ends Labor Day, Monday September 7.</strong>
+            General Admission from $23.95 ($23.95 Sun, Mon &amp; Thu · $28.95 Fri &amp; Sat).
+            VIP from $34.95, any night. Fast Pass Ultimate $44.95, any day, any time.<br>
+            Buy online to guarantee your spot — General Admission is not sold at the door, and peak Friday and Saturday nights sell out. VIP upgrades are available on site, subject to availability.
         </div>
     </div>
 
