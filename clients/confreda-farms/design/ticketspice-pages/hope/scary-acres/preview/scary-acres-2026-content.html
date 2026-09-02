@@ -19,6 +19,7 @@
         General Admission  $30  Sun / Mon / Thu
                            $35  Fri / Sat          (date-tiered)
         VIP                $50  flat, any day, any time slot
+     ** SUPERSEDED ON THE PAGE 2026-09-01 -- see PRICING OVERRIDE below. **
      The 6/23-call numbers this page previously carried ($29.95 / $34.95
      General, VIP capped-per-slot with no price) are SUPERSEDED. Bryan
      proposed flat GA + date-based VIP; Corey returned the exact inverse.
@@ -106,8 +107,22 @@
    * Native TS cart (ticket types, prices, date-based Actions, caps) stays
      native in TicketSpice per the hybrid-loader split — see
      ticketspice-build-brief.scary-acres.md alongside this file.
-   * GA needs a DATE-BASED ACTION in the cart: $30 Sun/Mon/Thu, $35 Fri/Sat.
-     VIP is flat $50 and needs no date logic. This inverted the 8/24 spec.
+   * PRICING OVERRIDE 2026-09-01 -- THE CARDS NO LONGER SHOW COREY'S 8/25
+     NUMBERS. Bryan Japhet, via Mat, 2026-09-01: "I need the discount to be as
+     follows 23.95 for general admission and starting at 34.95 for VIP."
+     Applied literally: GA is a FLAT $23.95 (the $30/$35 Sun-Thu/Fri-Sat split
+     is gone from the cards and the footnote), VIP reads "Starting at $34.95".
+     Bryan called these "the discount", so they are understood as sale prices.
+     TWO THINGS A LATER READER MUST KNOW: (a) this reverts to Bryan's original
+     flat-GA structure, which Corey Confreda overruled IN WRITING on 8/25, so
+     the client's last written word and the live page now disagree -- if Corey
+     queries it, this comment is the trail; (b) no struck-through original is
+     shown, because nobody specified one, and "Starting at" has no second VIP
+     price behind it yet. Raised both with Mat 2026-09-01; he directed the
+     numbers be applied as given.
+   * THE CART MUST MATCH. If the native TS cart still charges $30/$35 GA and
+     $50 VIP, this page now under-quotes and every buyer sees a price jump at
+     checkout. Confirm the cart Action before the page goes public.
    * TS page is not published yet (Mat, Slack 2026-08-31). Builder link is on
      account 203563, page 1057849. The paste is blocked; the build is not.
    * Brand is the haunt sub-brand — black / orange / blood-red. It must NOT
@@ -307,6 +322,7 @@
     #csa-funnel .csa-single { display: flex !important; align-items: baseline !important; flex-wrap: wrap !important; gap: 4px 12px !important; margin-bottom: 18px !important; padding: 6px 0 !important; }
     #csa-funnel .csa-price-num { font-family: 'Bebas Neue','Arial Narrow',sans-serif !important; font-size: 56px !important; color: var(--sa-orange) !important; line-height: .92 !important; letter-spacing: .01em !important; white-space: nowrap !important; }
     #csa-funnel .csa-price-label { font-size: 12.5px !important; color: var(--sa-muted) !important; letter-spacing: .04em !important; line-height: 1.4 !important; }
+    #csa-funnel .csa-price-pre { flex: 0 0 100% !important; font-size: 12.5px !important; letter-spacing: .08em !important; text-transform: uppercase !important; color: var(--sa-muted) !important; line-height: 1.2 !important; margin-bottom: -2px !important; }
     #csa-funnel .csa-bullets { list-style: none !important; padding: 0 !important; margin: 0 0 20px !important; display: flex !important; flex-direction: column !important; gap: 10px !important; }
     #csa-funnel .csa-bullets li { position: relative !important; padding-left: 24px !important; font-size: 14px !important; line-height: 1.5 !important; color: #D8CCC0 !important; }
     #csa-funnel .csa-bullets li strong { color: var(--sa-orange-2) !important; font-weight: 700 !important; }
@@ -492,7 +508,10 @@
         </div>
         <div class="csa-grid">
 
-            <!-- GENERAL ADMISSION — $30 Sun/Mon/Thu, $35 Fri/Sat.
+            <!-- GENERAL ADMISSION — $23.95 FLAT (Bryan via Mat, 2026-09-01).
+                 The $30/$35 date split below is HISTORY, not the live spec —
+                 see PRICING OVERRIDE in the header. Historical note follows.
+                 [superseded] $30 Sun/Mon/Thu, $35 Fri/Sat.
                  Corey Confreda, in writing, 2026-08-25. Needs a DATE-BASED
                  ACTION in the native TS cart to switch by day-of-week.
 
@@ -509,19 +528,22 @@
                 <h3 class="csa-disp">General Admission</h3>
                 <span class="csa-card-kicker">The full trail — every haunted attraction, one ticket.</span>
                 <div class="csa-single">
-                    <span class="csa-price-num csa-disp">from $30</span>
-                    <span class="csa-price-label">per person<br>varies by night</span>
+                    <span class="csa-price-num csa-disp">$23.95</span>
+                    <span class="csa-price-label">per person<br>any night</span>
                 </div>
                 <ul class="csa-bullets">
-                    <li><strong>$30</strong> Sun · Mon · Thu &nbsp;·&nbsp; <strong>$35</strong> Fri · Sat</li>
+                    <li><strong>$23.95</strong> per person &mdash; same price every night we’re open</li>
                     <li>Admission to every haunted attraction on the trail</li>
                     <li>The Dark Harvest Hayride included</li>
                     <li>Best value for groups and families</li>
                 </ul>
-                <span class="csa-card-note">Priced by the night you choose. Not suitable for infants, toddlers or small children.</span>
+                <span class="csa-card-note">Not suitable for infants, toddlers or small children.</span>
             </div>
 
-            <!-- VIP — $50 flat, every night. Corey Confreda, in writing,
+            <!-- VIP — "Starting at $34.95" (Bryan via Mat, 2026-09-01). No
+                 second VIP price exists yet to justify "starting at"; flagged
+                 to Mat. The $50 below is HISTORY. Historical note follows.
+                 [superseded] $50 flat, every night. Corey Confreda, in writing,
                  2026-08-25: "$50 no matter the day." This REPLACED the
                  date-based/capped-per-slot VIP in the 8/24 build. No date
                  logic needed in the cart. -->
@@ -530,7 +552,8 @@
                 <h3 class="csa-disp">VIP</h3>
                 <span class="csa-card-kicker">Same haunt. None of the waiting.</span>
                 <div class="csa-single">
-                    <span class="csa-price-num csa-disp">$50</span>
+                    <span class="csa-price-pre">Starting at</span>
+                    <span class="csa-price-num csa-disp">$34.95</span>
                     <span class="csa-price-label">per person<br>any night, any time slot</span>
                 </div>
                 <ul class="csa-bullets">
@@ -570,7 +593,7 @@
 
         </div>
         <div class="csa-tickets-foot">
-            <strong>General Admission is $30 on Sunday, Monday and Thursday, and $35 on Friday and Saturday.</strong> VIP is $50 any night.<br>
+            <strong>General Admission is $23.95 per person, any night.</strong> VIP starts at $34.95.<br>
             Buy online to guarantee your spot — tickets are not available at the door, and peak Friday and Saturday nights sell out.
         </div>
     </div>
