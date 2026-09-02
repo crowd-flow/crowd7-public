@@ -10,7 +10,7 @@ This brief covers the **native TicketSpice cart** (ticket types, prices, caps, d
 
 ## ⚠️ CONFIRM-BEFORE-PUBLISH (flagged — not invented)
 
-1. **Family Fun Bundle price** — Amanda flagged the day-varying-admission-price problem (Wed/Thu $3/$6 vs Fri $12/$17 vs Sat/Sun $17/$22 online/gate) and has no single bundle number yet. Still open as of her 7/16 correction list. **Omitted from v1** — do not add a bundle ticket type until Mat/Amanda land on a price (or an explicit rule for which day-tier it discounts off of). She also asked directly (06:34): *"Once we have the bundles firmed up, will we add a card for those?"* — reply owed.
+1. **Family Fun Bundle price — RESOLVED 2026-07-29, still not built.** Amanda (external Slack, 7/29 10:56): *"We talked about that these would be the Weekend price x 4 - with a 25% discount"* — pricing rule applies to both Versailles and Millstadt. Applied to Millstadt's Weekend Admission (Sat/Sun) tier: **online $17 × 4 = $68 → −25% = $51.00**; **gate $22 × 4 = $88 → −25% = $66.00**. Bryan built the equivalent native "Friends and Family Bundle" ticket type for Versailles 8/12–8/13 (confirmed in #crowd7-and-eckerts-farm: *"Friends and Family Bundle for Versailles (card) is updated with start date, Ticket Type is active with actions"*) — **Millstadt's twin was never built**: no matching commit in this repo, no Slack confirmation, and the "excluded" fine-print (see content HTML) is still live as of the 8/27 file. Native TS ticket type still needs configuring — mirror the Versailles card exactly (name, start-date/Actions), priced per the numbers above. Amanda's direct question (7/16, 06:34: *"Once we have the bundles firmed up, will we add a card for those?"*) can now be answered yes.
 2. **Apple Cannon price — RESOLVED 2026-07-16.** Amanda's "Millstadt page" email: *"Only one price this year. $5 for 10 apples."* The old $3/5-shot tier is retired — configure as a single $5/10-apples add-on, Sat & Sun only, 9am–6pm.
 3. **S'mores kit price — near-final, confirm before pricing the TS item.** Amanda hedged "I think the smores kits will be $15 each" — treat as $15 unless she corrects it, but get an explicit yes before the item goes live priced.
 4. **Live buyer-facing TS page URL — STILL THE CRITICAL PATH.** Only the preview/edit URL is in hand. Confirm the actual public `millstadt...` TicketSpice URL before the loader paste — until it's pasted, **production is unreachable by customers** regardless of everything else below being ready.
@@ -144,14 +144,14 @@ After that one paste, all future edits ship via `git push` to `crowd7-public` �
 - [ ] Build the **s'mores kit pop-up Action** (fires on bonfire site selection, Fri/Sat nights) — $15, confirm price first
 - [ ] Confirm Pony Rides + Parakeet Encounter are **NOT** configured as TS ticket types/add-ons (onsite-only per Amanda)
 - [ ] Add name-keyed slash-through JS/CSS once real ticket `<h4>` names are confirmed from a live TS dump
-- [ ] Family Fun Bundle — leave OUT of v1 until Mat/Amanda price it (confirm-item #1)
+- [ ] Family Fun Bundle — price resolved ($51 online / $66 gate, Weekend tier ×4 −25%, confirm-item #1) — configure as native TS ticket type mirroring Versailles' "Friends and Family Bundle" card; still not built as of 2026-09-02
 - [ ] S'mores kit $15 price — get explicit confirm before pricing the TS item (confirm-item #3)
 - [ ] Haunted hayride slot-capacity question resolved (confirm-item #5)
 - [ ] Promote `preview/` → `production/` + purge jsDelivr once Mat approves the preview
 
 ## 🗒 Open Items (for Mat / Amanda / Bryan)
 
-1. **Family Fun Bundle price** — day-varying admission price means no single bundle number exists yet. Amanda also asked directly whether a card will be added once it's priced — reply owed.
+1. **Family Fun Bundle price — RESOLVED, needs Bryan to build.** $51 online / $66 gate (Weekend Sat/Sun tier ×4 −25%, per Amanda's 7/29 rule). Native ticket type not yet configured — Versailles' equivalent card shipped 8/12–8/13, Millstadt's did not. No reply-to-Amanda blocker remains; this is now a build task, not a pricing question.
 2. **Bonfire site-number picker implementation** — Bryan's TS-cart call; see "Site-number selection" section above.
 3. **S'mores kit $15 price** — Amanda hedged "I think" — confirm exact price.
 4. **Live buyer-facing Millstadt 2026 TS page URL** — only the preview/edit URL is in hand. **Critical path** — without it, production is unreachable by customers regardless of everything else being ready.
