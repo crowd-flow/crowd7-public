@@ -68,7 +68,7 @@
   #cff-funnel .cff-banner {
     width: 100% !important;
     background: var(--cff-ink) !important;
-    color: #F5EDE1 !important;
+    color: #FFFFFF !important;
     text-align: center !important;
     padding: 11px 20px !important;
     font-size: 0.8rem !important;
@@ -79,8 +79,19 @@
   #cff-funnel .cff-banner-inner {
     display: flex !important; align-items: center !important;
     justify-content: center !important; gap: 12px !important; flex-wrap: wrap !important;
+    color: #FFFFFF !important;
   }
-  #cff-funnel .cff-banner strong { font-weight: 600 !important; }
+  /* Force pure white on every descendant so TicketSpice's own page CSS can't
+     bleed a link/text colour into the top bar. The dot is a background, not
+     text, so it keeps the accent. */
+  #cff-funnel .cff-banner,
+  #cff-funnel .cff-banner *,
+  #cff-funnel .cff-banner a,
+  #cff-funnel .cff-banner a:link,
+  #cff-funnel .cff-banner a:visited,
+  #cff-funnel .cff-banner a:hover,
+  #cff-funnel .cff-banner a:active { color: #FFFFFF !important; }
+  #cff-funnel .cff-banner strong { font-weight: 600 !important; color: #FFFFFF !important; }
   #cff-funnel .cff-dot {
     width: 4px !important; height: 4px !important;
     background: var(--cff-accent) !important;
