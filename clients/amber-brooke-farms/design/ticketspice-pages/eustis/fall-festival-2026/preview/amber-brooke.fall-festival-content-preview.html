@@ -11,7 +11,32 @@
     -->
     <style>
         html, body { margin: 0; padding: 0; background: #fff; font-family: 'Lora', serif; }
-    </style>
+    
+    /* ── LABOR DAY SALE CALLOUT (added 2026-09-03) ────────────────────────
+       Palette + terms both sourced from the three Labor Day Sale emails in
+       the CrowdView asset-review portal (assets 111/112/113, review 36).
+       Amber Gold panel with Dark Chocolate text is the emails' own rule:
+       "Dark Chocolate #3E1F0A — button text, text on gold panels".        */
+    #abf-funnel .abf-hero-sale {
+        display: inline-flex !important; flex-direction: column !important; gap: 4px !important;
+        margin-top: 20px !important; padding: 12px 22px !important; border-radius: 10px !important;
+        background: #d99a2b !important; border: 1px solid #b8801f !important;
+        text-align: left !important; max-width: 620px !important;
+    }
+    #abf-funnel .abf-hero-sale-main {
+        font-size: 1rem !important; line-height: 1.35 !important; font-weight: 600 !important;
+        color: #3e1f0a !important; display: block !important;
+    }
+    #abf-funnel .abf-hero-sale-sub {
+        font-size: 0.78rem !important; line-height: 1.35 !important; font-weight: 500 !important;
+        color: #5c3410 !important; display: block !important;
+    }
+    @media (max-width: 600px) {
+        #abf-funnel .abf-hero-sale { padding: 10px 16px !important; }
+        #abf-funnel .abf-hero-sale-main { font-size: 0.9rem !important; }
+        #abf-funnel .abf-hero-sale-sub { font-size: 0.72rem !important; }
+    }
+</style>
 </head>
 <body>
 <!--
@@ -90,22 +115,22 @@
        #abf-funnel — sampled live from amberbrookefarms.com
        =========================================================== */
     #abf-funnel {
-        --abf-navy: #36578c;
-        --abf-navy-deep: #2a4570;
-        --abf-navy-darkest: #1b2c4a;  /* top announcement bar — deliberately much darker than the nav */
-        --abf-dusty-blue: #7d98c0;
-        --abf-mid-blue: #647a9a;
-        --abf-terracotta: #c66a2b;
-        --abf-terracotta-hover: #ad5a22;
-        --abf-sage: #5c7f71;
-        --abf-sage-hover: #4c6b5f;
-        --abf-wheat: #debc8c;
-        --abf-cream: #f7f5e7;
-        --abf-blush-cream: #f8f1e7;
-        --abf-floral-white: #fffaf0;
+        --abf-navy: #8a4517;
+        --abf-navy-deep: #6e350f;
+        --abf-navy-darkest: #2b1608;  /* top announcement bar — deliberately much darker than the nav */
+        --abf-dusty-blue: #d9b87a;
+        --abf-mid-blue: #96551f;
+        --abf-terracotta: #9e2b23;
+        --abf-terracotta-hover: #7f221b;
+        --abf-sage: #3f6b34;
+        --abf-sage-hover: #2f5528;
+        --abf-wheat: #d9b87a;
+        --abf-cream: #f7ebd6;
+        --abf-blush-cream: #efe0c4;
+        --abf-floral-white: #fffbf2;
         --abf-white: #ffffff;
-        --abf-ink: #222222;
-        --abf-ink-soft: #505050;
+        --abf-ink: #3e1f0a;
+        --abf-ink-soft: #7a5c42;
         --abf-font-display: 'Playfair Display', 'Times New Roman', serif;
         --abf-font-body: 'Lora', 'Georgia', serif;
     }
@@ -884,11 +909,11 @@
     <!-- BANNER -->
     <div class="abf-banner">
         <div class="abf-banner-inner">
-            <span class="abf-banner-flash">🍂 6TH ANNUAL FALL FESTIVAL 🍂</span>
+            <span class="abf-banner-flash">⏳ LABOR DAY SALE &mdash; SEPT. 4&ndash;7 ONLY</span>
             <span class="abf-dot"></span>
-            <span><strong>September 19 &ndash; November 22, 2026</strong></span>
+            <span><strong>20% off Non-Peak weekends &middot; 10% off Peak</strong></span>
             <span class="abf-dot"></span>
-            <span>Save $3 When You Buy Online</span>
+            <span>Fall Festival Sept. 19 &ndash; Nov. 22</span>
         </div>
     </div>
 
@@ -914,6 +939,10 @@
             <span class="abf-hero-eyebrow">6th Annual Fall Festival &middot; Eustis, Florida</span>
             <span class="abf-hero-title">Fall on the Farm, <em>All Season Long</em></span>
             <span class="abf-hero-tagline">Ten weekends of mazes, tractor rides, flower fields and farm animals &mdash; from the first Saturday of the season straight through to Thanksgiving week.</span>
+            <div class="abf-hero-sale">
+                <span class="abf-hero-sale-main">🍂 <strong>Labor Day Sale</strong> &mdash; <strong>20% off</strong> Non-Peak weekends &middot; <strong>10% off</strong> Peak</span>
+                <span class="abf-hero-sale-sub">Sept. 4&ndash;7 only &middot; online only &middot; discount applied automatically at checkout</span>
+            </div>
         </div>
     </div>
 
@@ -1237,7 +1266,7 @@
         display: block !important;
         width: 100% !important;
         max-width: 480px !important;
-        background: #c66a2b !important;
+        background: #9e2b23 !important;
         color: #ffffff !important;
         font-family: 'Playfair Display', 'Times New Roman', serif !important;
         font-size: 22px !important;
@@ -1254,7 +1283,7 @@
         pointer-events: auto !important;
     }
     #abf-float-btn a:hover {
-        background: #ad5a22 !important;
+        background: #7f221b !important;
         transform: translateY(-2px) !important;
         box-shadow: 0 14px 40px rgba(198,106,43,0.55) !important;
         color: #ffffff !important;
@@ -1344,12 +1373,12 @@
 /* OPTIONAL per-page theme — fill from the page's own palette, or delete this
    block entirely for the default neutral card. See THEME note above. */
 :root {
-  --c7a-card-bg: #f7f5e7;
-  --c7a-ink: #1b2c4a;
-  --c7a-ink-dim: #505050;
-  --c7a-btn-bg: #c66a2b;
+  --c7a-card-bg: #fffbf2;
+  --c7a-ink: #3e1f0a;
+  --c7a-ink-dim: #7a5c42;
+  --c7a-btn-bg: #8a4517;
   --c7a-btn-ink: #ffffff;
-  --c7a-scrim: rgba(27,44,74,.55);
+  --c7a-scrim: rgba(43,22,8,.55);
   --c7a-radius: 16px;
   --c7a-font: 'Playfair Display','Times New Roman',serif;
 }
