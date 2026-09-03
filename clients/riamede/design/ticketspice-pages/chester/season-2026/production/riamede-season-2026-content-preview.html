@@ -14,7 +14,7 @@
 </head>
 <body>
 <!-- ════════════════════════════════════════════════════════════════════
-     RIAMEDE FARM · CHESTER, NJ · BLOOMFEST (Aug 15-30) — HYBRID-LOADER CONTENT
+     RIAMEDE FARM · CHESTER, NJ · IN SEASON (Sept 1+) — HYBRID-LOADER CONTENT
      Design overlay on Ashley's existing TicketSpice cart, form 1017178
      (actions/dates/prices built by Ashley — this page does NOT rebuild the
      cart, only the look + marketing layer).
@@ -38,6 +38,44 @@
      Next switchover: none currently scheduled — General Admission's ladder
      already carries all four Aug 15-Nov 1 price windows, so no card-level
      step is needed at Sept 1/19/26 unless Bryan changes the plan again.
+
+     ⚠️ 2026-08-27 (Mat directive, preview only, project
+     riamede-next-phase-page-preview): Bloomfest ends 8/30, In Season starts
+     9/1 — the underlying General Admission ladder built 8/14 already carries
+     the Sept 1-18 In Season price window ($12.50/$16.50), so per the
+     "one continuous ladder, no hard phase cut" doctrine above, NO ticket-card
+     rebuild was needed. This step is a COPY/FRAMING refresh only: banner,
+     tickets-header phase word, gallery label, and the two "Season"/"Now Open"
+     info-row tiles were moved off "Bloomfest" language; the now-expired
+     Aug 15-30 Bloomfest weekend ladder row was dropped (Ashley's standing
+     rule: an expired ticket window must not linger next to current pricing).
+     Built straight into preview/ only — production/ untouched, per the
+     project's hard constraint. Sept 1-4 is pre-Labor-Day: wagons/ponies are
+     NOT yet available (they start 9/5-9/7 per the build brief), so nothing
+     here promises them early. The Labor Day Flash Sale (9/5-9/7) interrupts
+     In Season and is a separate state, not built here — see state.md Open
+     Asks.
+
+     ⚠️ 2026-08-30 (Mat directive, preview only) — Ashley's requested changes
+     off the 8/27 check-in call + her 8/28 Slack note, tracked as CrowdView
+     changes 247-256 + 273 on page 29 (chester-season-2026):
+       247 wagon RIDES + ponies wording in the banner
+       248 $5 Picking Pass icon: wheat -> apple (it's an apple farm)
+       249 Season Pass icon: ticket stub read as a concert/train ticket -> leaf
+       251 dropped "Sept 1-4" from the Now Open tile ("now open, in season")
+       252 actual times printed wherever the page says "hours" (9:00-5:30)
+       253 removed the leftover "apples aren't ready during Bloom Fest" line
+       254 "farm animals" / "live music" / "see the full weekend schedule" now
+           link to riamedefarm.com/fall-festival — Ashley put the weekend
+           animal graphics + music there herself on 8/28 ("I dropped these onto
+           the Fall Festival page where I already have the music, for now"),
+           which answers the open placement question on that change
+       256 ponies/animals credited as visiting partners, Sat & Sun only
+       273 the one remaining visible "BloomFest" -> "Bloom Fest" (253 removed
+           the other one, which was the exact spot Ashley flagged)
+     NOT built here: the Labor Day four-pack ($44.95) and $32.50 season pass
+     (CrowdView 250/257/258) — those are Labor Day FLASH SALE offers for
+     9/5-9/7, a separate page state, per Mat.
 
      Sub-brand: orchard/harvest palette — NOT the Jack's Lighted Trail dark
      Halloween theme. Imagery harvested from riamedefarm.com (Wix), see
@@ -338,6 +376,55 @@
     #rmf-funnel .rmf-card-green .rmf-card-fee { color: rgba(251,244,230,0.72) !important; }
     #rmf-funnel .rmf-card-cream .rmf-card-fee { color: rgba(43,32,19,0.62) !important; }
 
+    /* ── FAMILY BUNDLE BANNER (2026-08-27 round 2, Mat directive) — promoted
+       out of the 3-card grid into a full-width banner below it, so the
+       $5 Picking Pass could take its grid slot. Geometry ported from
+       Eckert's Versailles .sbv-bonfire-card pattern (image left / details
+       middle / pricing right), re-skinned in Riamede's own rmf- tokens.
+       Lives as a 4th child INSIDE .rmf-grid with grid-column: 1 / -1, same
+       structural trick as Eckert's reference — the grid stays 3-wide. */
+    #rmf-funnel .rmf-familybundle-card {
+        grid-column: 1 / -1 !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 28px !important;
+        padding: 26px 32px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        margin-top: 4px !important;
+    }
+    #rmf-funnel .rmf-familybundle-img {
+        width: 240px !important; flex: 0 0 240px !important;
+        aspect-ratio: 4 / 3 !important; object-fit: cover !important;
+        border-radius: 14px !important; display: block !important;
+    }
+    #rmf-funnel .rmf-familybundle-body { flex: 1 1 auto !important; min-width: 0 !important; }
+    #rmf-funnel .rmf-familybundle-body h3 { margin-bottom: 12px !important; }
+    #rmf-funnel .rmf-familybundle-bullets {
+        display: grid !important; grid-template-columns: 1fr 1fr !important;
+        gap: 2px 24px !important; margin-bottom: 0 !important;
+    }
+    #rmf-funnel .rmf-familybundle-cta {
+        flex: 0 0 auto !important;
+        display: flex !important; flex-direction: column !important;
+        align-items: flex-end !important; text-align: right !important;
+        padding-left: 28px !important;
+        border-left: 1px solid rgba(242,194,101,0.3) !important;
+    }
+    #rmf-funnel .rmf-familybundle-cta .rmf-card-price { margin-top: 0 !important; padding-top: 0 !important; border-top: 0 !important; }
+    #rmf-funnel .rmf-familybundle-cta .rmf-card-note { text-align: right !important; max-width: 240px !important; }
+    @media (max-width: 900px) {
+        #rmf-funnel .rmf-familybundle-card { flex-direction: column !important; align-items: stretch !important; gap: 18px !important; }
+        #rmf-funnel .rmf-familybundle-img { width: 100% !important; flex: 0 0 auto !important; aspect-ratio: 16 / 9 !important; }
+        #rmf-funnel .rmf-familybundle-bullets { grid-template-columns: 1fr !important; }
+        #rmf-funnel .rmf-familybundle-cta {
+            align-items: flex-start !important; text-align: left !important;
+            padding-left: 0 !important; border-left: none !important;
+            border-top: 1px solid rgba(242,194,101,0.3) !important; padding-top: 14px !important;
+        }
+        #rmf-funnel .rmf-familybundle-cta .rmf-card-note { text-align: left !important; max-width: none !important; }
+    }
+
     /* Fall Fest price-tier swap — SUPERSEDED 2026-08-14 (round 2): Bryan wants
        all four price windows visible at once on one General Admission card
        (a static ladder in the card bullets), not a JS-swapped single price
@@ -387,6 +474,13 @@
     }
     #rmf-funnel .rmf-fine-inner p:last-of-type { margin-bottom: 0 !important; }
     #rmf-funnel .rmf-fine-inner strong { color: #B3241D !important; }
+    /* 2026-08-30: the fine-print block now carries real outbound links
+       (weekend schedule -> riamedefarm.com/fall-festival, CrowdView 254).
+       Browser-default blue/purple reads as broken on this cream panel. */
+    #rmf-funnel .rmf-fine-inner a,
+    #rmf-funnel .rmf-fine-inner a:visited { color: #B3241D !important; font-weight: 600 !important;
+        text-decoration: underline !important; text-underline-offset: 2px !important; }
+    #rmf-funnel .rmf-fine-inner a:hover { color: #8E1C16 !important; }
     #rmf-funnel .rmf-fine-center p { text-align: center !important; }
     #rmf-funnel .rmf-hours { padding-top: 0 !important; }
     #rmf-funnel .rmf-fine-kids {
@@ -436,9 +530,9 @@
     <!-- BANNER -->
     <div class="rmf-banner">
         <div class="rmf-banner-inner">
-            <span id="rmf-banner-text">🌻 Bloomfest is here &mdash; through Aug 30</span>
+            <span id="rmf-banner-text">🍂 In Season now &mdash; through Nov 1</span>
             <span class="rmf-dot"></span>
-            <span>Fall Fest begins Sept 5 &ndash; Nov 1</span>
+            <span>Wagon rides &amp; ponies start Labor Day weekend</span>
         </div>
     </div>
 
@@ -480,7 +574,7 @@
             <div class="rmf-benefit">
                 <span class="rmf-benefit-icon">🌻</span>
                 <span class="rmf-benefit-title">Flower Fields</span>
-                <span class="rmf-benefit-desc">Sunflowers, zinnias &amp; snapdragons — Bloomfest's signature photo op</span>
+                <span class="rmf-benefit-desc">Sunflowers, zinnias &amp; snapdragons across the fields</span>
             </div>
             <div class="rmf-benefit">
                 <span class="rmf-benefit-icon">🚜</span>
@@ -499,7 +593,7 @@
     <div class="rmf-feature">
         <span class="rmf-eye rmfr">Fifty Years Growing</span>
         <span class="rmf-title rmfr">Come for the Blooms, <em>Stay for the Harvest</em></span>
-        <p class="rmf-feature-copy rmfr d1">Riamede's Fall Festival steps up as the season progresses. Starting with BloomFest's cut-your-own flower fields and the soft-opening of our concessions in August, the season grows into our full Fall Festival experience with wagon rides, pick-your-own produce and flowers, weekend entertainment, and full concessions by Labor Day. Same farm, same ticket, more happening every week you visit!</p>
+        <p class="rmf-feature-copy rmfr d1">Riamede's Fall Festival steps up as the season progresses. Starting with Bloom Fest's cut-your-own flower fields and the soft-opening of our concessions in August, the season grows into our full Fall Festival experience with wagon rides, pick-your-own produce and flowers, weekend entertainment, and full concessions by Labor Day. Same farm, same ticket, more happening every week you visit!</p>
     </div>
 
     <!-- GALLERY -->
@@ -507,7 +601,7 @@
         <div class="rmf-gallery-mask">
             <div class="rmf-gallery-track">
                 <div class="rmf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/riamede/design/assets/fall-fest/hayride-wagon-orchard.jpg" alt="Hay wagon ride through the orchard" loading="lazy"><div class="rmf-gcard-label">Wagon Rides</div></div>
-                <div class="rmf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/riamede/design/assets/bloomfest/sunflower-field-wide.jpg" alt="Sunflower field in bloom" loading="lazy"><div class="rmf-gcard-label">Bloomfest Flowers</div></div>
+                <div class="rmf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/riamede/design/assets/bloomfest/sunflower-field-wide.jpg" alt="Sunflower field in bloom" loading="lazy"><div class="rmf-gcard-label">Flower Fields</div></div>
                 <div class="rmf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/riamede/design/assets/orchard/orchard-walk-with-wagon.jpg" alt="Walking the you-pick apple orchard rows" loading="lazy"><div class="rmf-gcard-label">The Orchard</div></div>
                 <div class="rmf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/riamede/design/assets/pumpkins/pumpkin-patch-field.jpg" alt="Pumpkin patch field" loading="lazy"><div class="rmf-gcard-label">Pumpkin Patch</div></div>
                 <div class="rmf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/riamede/design/assets/orchard/apple-macro-branch.jpg" alt="Apple ripening on the branch" loading="lazy"><div class="rmf-gcard-label">Pick Your Own</div></div>
@@ -515,7 +609,7 @@
                 <div class="rmf-gcard rmf-gcard--music"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/riamede/design/assets/bloomfest/live-music-duo.jpg" alt="Live music at the farm" loading="lazy"><div class="rmf-gcard-label">Live Music</div></div>
                 <!-- Duplicate for seamless loop -->
                 <div class="rmf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/riamede/design/assets/fall-fest/hayride-wagon-orchard.jpg" alt="" aria-hidden="true" loading="lazy"><div class="rmf-gcard-label">Wagon Rides</div></div>
-                <div class="rmf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/riamede/design/assets/bloomfest/sunflower-field-wide.jpg" alt="" aria-hidden="true" loading="lazy"><div class="rmf-gcard-label">Bloomfest Flowers</div></div>
+                <div class="rmf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/riamede/design/assets/bloomfest/sunflower-field-wide.jpg" alt="" aria-hidden="true" loading="lazy"><div class="rmf-gcard-label">Flower Fields</div></div>
                 <div class="rmf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/riamede/design/assets/orchard/orchard-walk-with-wagon.jpg" alt="" aria-hidden="true" loading="lazy"><div class="rmf-gcard-label">The Orchard</div></div>
                 <div class="rmf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/riamede/design/assets/pumpkins/pumpkin-patch-field.jpg" alt="" aria-hidden="true" loading="lazy"><div class="rmf-gcard-label">Pumpkin Patch</div></div>
                 <div class="rmf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/riamede/design/assets/orchard/apple-macro-branch.jpg" alt="" aria-hidden="true" loading="lazy"><div class="rmf-gcard-label">Pick Your Own</div></div>
@@ -529,7 +623,7 @@
     <div class="rmf-tickets" id="tickets">
         <div class="rmf-tickets-header rmfr">
             <span class="rmf-eye">Season 2026 Tickets</span>
-            <span class="rmf-title">Get In for <em id="rmf-tickets-title-phase">Bloomfest</em></span>
+            <span class="rmf-title">Get In for <em id="rmf-tickets-title-phase">Fall Fest</em></span>
         </div>
 
         <!-- 3-CARD LADDER (Bryan video round 2, 2026-08-14 ~21:10 PT): General
@@ -545,7 +639,6 @@
                     <span class="rmf-card-icon">🎟️</span>
                     <h3>General Admission</h3>
                     <ul class="rmf-ladder">
-                        <li><span class="rmf-ladder-when">Aug 15&ndash;30 <em>weekends</em></span><span class="rmf-ladder-price"><strong>$8.95</strong> <span class="rmf-strike">$12.95</span></span></li>
                         <li><span class="rmf-ladder-when">Sept 1&ndash;18</span><span class="rmf-ladder-price"><strong>$12.50</strong> <span class="rmf-strike">$16.50</span></span></li>
                         <li><span class="rmf-ladder-when">Sept 19&ndash;Oct 25 <em>weekends + Mon Oct 12</em></span><span class="rmf-ladder-price"><strong>$15.50</strong> <span class="rmf-strike">$19.50</span></span></li>
                         <li><span class="rmf-ladder-when">Oct 26&ndash;Nov 1</span><span class="rmf-ladder-price"><strong>$12.50</strong> <span class="rmf-strike">$16.50</span></span></li>
@@ -555,10 +648,10 @@
 
                 <a href="#ticketBlock" class="rmf-card rmf-card-green rmfr d1" aria-label="Buy Season Pass tickets">
                     <span class="rmf-card-badge rmf-card-badge-gold">Season Pass</span>
-                    <span class="rmf-card-icon">🎫</span>
+                    <span class="rmf-card-icon">🍁</span>
                     <h3>Season Pass</h3>
                     <ul class="rmf-card-bullets">
-                        <li>🎟️ Unlimited visits, all season — Bloomfest through Fall Fest</li>
+                        <li>🎟️ Unlimited visits through Fall Fest, Sept 1 &ndash; Nov 1</li>
                         <li>🛍️ 10% off every in-store purchase, all season</li>
                         <li>👥 One single-use guest ticket included</li>
                     </ul>
@@ -569,20 +662,52 @@
                     <span class="rmf-card-note">Guest ticket redeems as a checkbox on your pass at the gate — no separate QR code.</span>
                 </a>
 
-                <a href="#ticketBlock" class="rmf-card rmf-card-cream rmfr d2" aria-label="Buy Family Bundle tickets">
-                    <span class="rmf-card-badge rmf-card-green">Family Bundle</span>
-                    <span class="rmf-card-icon">🧺</span>
-                    <h3>Family Bundle</h3>
+                <!-- $5 Picking Pass (NEW, 2026-08-27 round 2) — maps to CrowdView change 155
+                     (req 15). Name + price per Ashley's own 8/20 framing: "I love calling it a
+                     picking pass ... $5 picking pass." Flat, all season — deliberately not a
+                     ladder. Weekday-except-Tuesday per Riamede's standing Tuesday closure +
+                     Bryan's "midweek picking passes and then just our weekend admissions"
+                     framing (8/20). Deliberately silent on Labor Day/Columbus Day holiday
+                     policy — CrowdView change 163 has that unresolved with Ashley. -->
+                <a href="#ticketBlock" class="rmf-card rmf-card-cream rmfr d2" aria-label="Buy the $5 Picking Pass">
+                    <span class="rmf-card-badge rmf-card-badge-green">Midweek</span>
+                    <span class="rmf-card-icon">🍎</span>
+                    <h3>$5 Picking Pass</h3>
                     <ul class="rmf-card-bullets">
-                        <li>🎟️ 4 admissions, redeemable Sept 1 &ndash; Nov 1</li>
-                        <li>🍩 A bag of farm-made donuts</li>
-                        <li>🧺 A commemorative apple basket with 5&ndash;6 lbs of farm-fresh apples</li>
+                        <li>📅 Every weekday except Tuesday &mdash; Mon, Wed, Thu &amp; Fri</li>
+                        <li>🌻 Full access to the open picking fields</li>
+                        <li>🎟️ One flat price, all season &mdash; no ladder</li>
                     </ul>
                     <div class="rmf-card-price">
-                        <span class="rmf-price-num">$89.95</span>
-                        <span class="rmf-price-label">per bundle<br>4 admissions + donuts + basket</span>
+                        <span class="rmf-price-num">$5</span>
+                        <span class="rmf-price-label">per person<br>flat, all season</span>
                     </div>
-                    <span class="rmf-card-note">All 4 admissions must be redeemed on the same day, in the same group. Basket is filled with farm-fresh apples — not guaranteed you-pick. Redeemable after Aug 29 (Sept 1 &ndash; Nov 1 only).</span>
+                    <span class="rmf-card-note">Weekend visits use General Admission.</span>
+                </a>
+
+                <!-- Family Bundle — promoted to a full-width banner below the grid
+                     (2026-08-27 round 2, Mat directive). Content unchanged from the
+                     prior grid card; only the layout changed. Lives as a 4th grid
+                     child with grid-column: 1 / -1, same trick as Eckert's Versailles
+                     .sbv-bonfire-card (Mat's named reference). -->
+                <a href="#ticketBlock" class="rmf-familybundle-card rmf-card rmf-card-green rmfr d3" aria-label="Buy Family Bundle tickets">
+                    <img class="rmf-familybundle-img" src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/riamede/design/assets/pumpkins/family-in-pumpkin-patch.jpg" alt="A family walking together in the pumpkin patch">
+                    <div class="rmf-familybundle-body">
+                        <span class="rmf-card-badge rmf-card-badge-gold">Family Bundle</span>
+                        <h3>Family Bundle</h3>
+                        <ul class="rmf-card-bullets rmf-familybundle-bullets">
+                            <li>🎟️ 4 admissions, redeemable Sept 1 &ndash; Nov 1</li>
+                            <li>🍩 A bag of farm-made donuts</li>
+                            <li>🧺 A commemorative apple basket with 5&ndash;6 lbs of farm-fresh apples</li>
+                        </ul>
+                    </div>
+                    <div class="rmf-familybundle-cta">
+                        <div class="rmf-card-price">
+                            <span class="rmf-price-num">$89.95</span>
+                            <span class="rmf-price-label">per bundle<br>4 admissions + donuts + basket</span>
+                        </div>
+                        <span class="rmf-card-note">All 4 admissions must be redeemed on the same day, in the same group. Basket is filled with farm-fresh apples &mdash; not guaranteed you-pick. Redeemable after Aug 29 (Sept 1 &ndash; Nov 1 only).</span>
+                    </div>
                 </a>
 
             </div>
@@ -600,17 +725,17 @@
             <div class="rmf-info-item">
                 <span class="rmf-info-icon">📅</span>
                 <span class="rmf-info-label">Season</span>
-                <span class="rmf-info-value">Bloomfest Aug 15<br>Fall Fest Sept 5 &ndash; Nov 1</span>
+                <span class="rmf-info-value">Fall Fest<br>Sept 1 &ndash; Nov 1</span>
             </div>
             <div class="rmf-info-item">
-                <span class="rmf-info-icon">🌻</span>
+                <span class="rmf-info-icon">🍂</span>
                 <span class="rmf-info-label">Now Open</span>
-                <span class="rmf-info-value">Bloomfest<br>Weekends, Aug 15&ndash;30</span>
+                <span class="rmf-info-value">In Season</span>
             </div>
             <div class="rmf-info-item">
                 <span class="rmf-info-icon">🕘</span>
                 <span class="rmf-info-label">Hours</span>
-                <span class="rmf-info-value">Wed &ndash; Mon<br><span style="font-size:0.72rem !important; font-weight:400 !important; color:rgba(251,244,230,0.75) !important;">Closed Tuesdays</span><br><a href="#rmf-season-hours" style="font-size:0.72rem !important; font-weight:600 !important; color:rgba(251,244,230,0.92) !important; text-decoration:underline !important;">See 2026 season hours</a></span>
+                <span class="rmf-info-value">9:00 AM &ndash; 5:30 PM<br><span style="font-size:0.72rem !important; font-weight:400 !important; color:rgba(251,244,230,0.75) !important;">Wed &ndash; Mon &middot; Closed Tuesdays</span><br><a href="#rmf-season-hours" style="font-size:0.72rem !important; font-weight:600 !important; color:rgba(251,244,230,0.92) !important; text-decoration:underline !important;">See 2026 season hours</a></span>
             </div>
         </div>
     </div>
@@ -621,9 +746,10 @@
             <span class="rmf-fine-title">Important Things to Know</span>
             <p class="rmf-fine-kids">🍎 Kids ages 2 and under are free and don't require a ticket!</p>
             <p><strong>Produce &amp; flowers:</strong> All produce and flowers are priced separately from admission &mdash; your ticket covers entry to the open picking fields. Please bring a reusable bag to pick into; if you don't have one, we have free paper picking bags at the gate and even stronger cloth bags available for purchase.</p>
-            <p><strong>Weekends vs. weekdays:</strong> The hay wagon, apple slingshot, Orchard Grill, Sweet Shed, animals, and live music run on <strong>weekends only</strong>. The apple slingshot carries a small additional fee, is <strong>cash-only</strong>, and opens in mid-September.</p>
-            <p><strong>Hours:</strong> We're open <strong>Wednesday through Monday &mdash; closed Tuesdays</strong>. Last entry for picking is 4:00 PM. <a href="#rmf-season-hours">See full 2026 season hours</a>.</p>
-            <p><strong>Your Family Bundle basket:</strong> The commemorative basket is filled with farm-fresh apples and is <strong>redeemable for Fall Fest, September 1 through November 1</strong>. Apples aren't ready during Bloomfest's opening weekends. Due to a devastating spring frost event, we cannot guarantee that your basket of apples will be from our trees throughout the entire fall, but we have a good number of apples on the trees projected across the whole season and are hoping that they make it into your basket! If not, we'll be supplying from partner Eco-Certified farms nearby.</p>
+            <p><strong>Weekends vs. weekdays:</strong> The hay wagon, apple slingshot, Orchard Grill, Sweet Shed, <a href="https://www.riamedefarm.com/fall-festival" target="_blank" rel="noopener">farm animals</a>, and <a href="https://www.riamedefarm.com/fall-festival" target="_blank" rel="noopener">live music</a> run on <strong>weekends only</strong> &mdash; and the line-up changes every weekend. <a href="https://www.riamedefarm.com/fall-festival" target="_blank" rel="noopener">See the full weekend schedule</a> for who&rsquo;s playing and which animals are visiting. The apple slingshot carries a small additional fee, is <strong>cash-only</strong>, and opens in mid-September.</p>
+            <p><strong>Pony rides &amp; farm animals:</strong> Wagon rides and pony rides start <strong>Labor Day weekend</strong>. The ponies and farm animals visit <strong>Saturdays and Sundays only</strong>, in partnership with our visiting animal partners &mdash; they&rsquo;re guests on the farm for the weekend, not Riamede&rsquo;s own animals.</p>
+            <p><strong>Hours:</strong> We're open <strong>9:00 AM &ndash; 5:30 PM, Wednesday through Monday &mdash; closed Tuesdays</strong> (November: 9:00 AM &ndash; 4:30 PM). Last entry for picking is 4:00 PM. <a href="#rmf-season-hours">See full 2026 season hours</a>.</p>
+            <p><strong>Your Family Bundle basket:</strong> The commemorative basket is filled with farm-fresh apples and is <strong>redeemable for Fall Fest, September 1 through November 1</strong>. Due to a devastating spring frost event, we cannot guarantee that your basket of apples will be from our trees throughout the entire fall, but we have a good number of apples on the trees projected across the whole season and are hoping that they make it into your basket! If not, we'll be supplying from partner Eco-Certified farms nearby.</p>
             <p><strong>Pets:</strong> We do not allow pets or emotional support animals on the farm grounds.</p>
             <p><strong>Tickets:</strong> All ticket sales are final and non-refundable &mdash; but you <strong>can</strong> create an account and change the date of your tickets yourself, any time.</p>
         </div>
@@ -800,9 +926,10 @@
      Pattern: crowd7/data/clients/_patterns/slash-through-pricing.md
      Name-keyed + MutationObserver, immune to Action-driven reordering.
 
-     ⚠️ Flash sale ended Aug 14 — Bloomfest is live as of the 2026-08-14
-     switchover (see the ticket cards above). This map is name-keyed and
-     pre-loaded with Bloomfest + Fall Fest gate prices, so it activates
+     ⚠️ Flash sale ended Aug 14 — In Season (Sept 1 window) is what this
+     preview build represents as of 2026-08-27 (see the ticket cards above).
+     This map is name-keyed and pre-loaded with the Fall Fest gate price, so
+     it activates
      automatically the moment those ticket types are live in the actual
      TicketSpice cart — no code change needed here, just confirm the exact
      <h4> names match Ashley's cart (see Open Asks).
