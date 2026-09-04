@@ -77,6 +77,24 @@
      (CrowdView 250/257/258) — those are Labor Day FLASH SALE offers for
      9/5-9/7, a separate page state, per Mat.
 
+     ⚠️ 2026-09-04 (Mat directive) — LABOR DAY SALE on the
+     middle card. Season Pass gets a diagonal "Labor Day Sale" corner ribbon
+     and drops $37.50 -> $31.95 (regular price kept alongside, struck). Card
+     order in the 3-up grid is General Admission / Season Pass / $5 Picking
+     Pass, so "middle card" = Season Pass. This is the first piece of the
+     9/5-9/7 Labor Day flash-sale state the 8/27 + 8/30 notes above deferred
+     ("a separate page state, not built here"); the four-pack ($44.95) and the
+     $32.50 season pass floated in CrowdView 250/257/258 are NOT built — Mat
+     named $31.95, which supersedes the $32.50 in those tickets.
+     ⛔ CART DEPENDENCY: this page is a marketing layer over Ashley's cart and
+     does NOT set prices. Verified 2026-09-04 via the Webconnex tickets API
+     (form 1017178): the live Season Pass level is still $37.50 (last sold
+     8/29; the $29.95 rows are the expired Aug 10-14 flash sale). The ticket
+     level must be dropped to $31.95 in TicketSpice, or the card advertises
+     $31.95 and the cart charges $37.50. Mat promoted to production same day
+     with that change still OUTSTANDING at promote time — flagged to him in
+     chat; he owns the Ashley-side cart edit.
+
      Sub-brand: orchard/harvest palette — NOT the Jack's Lighted Trail dark
      Halloween theme. Imagery harvested from riamedefarm.com (Wix), see
      artifacts/image-url-check.md.
@@ -317,6 +335,30 @@
     #rmf-funnel .rmf-card-badge-dark { background: rgba(0,0,0,0.18) !important; color: #FBF4E6 !important; }
     #rmf-funnel .rmf-card-badge-gold { background: rgba(242,194,101,0.22) !important; color: #F2C265 !important; }
     #rmf-funnel .rmf-card-badge-green { background: rgba(47,74,44,0.1) !important; color: #2F4A2C !important; }
+
+    /* ── CORNER RIBBON (2026-09-04, Mat directive) — diagonal promo flag across
+       a card's top-right corner. Rides on .rmf-card's existing
+       position:relative + overflow:hidden, so it clips to the 20px radius with
+       no extra wrapper. pointer-events:none keeps the whole card clickable
+       through it. Red-on-green against .rmf-card-green for sale urgency;
+       palette tokens are the card-red gradient, unchanged. */
+    #rmf-funnel .rmf-card-ribbon {
+        position: absolute !important;
+        top: 40px !important; right: -54px !important;
+        width: 200px !important;
+        transform: rotate(45deg) !important;
+        background: linear-gradient(90deg, #C0342B, #8F1B15) !important;
+        color: #FBF4E6 !important;
+        text-align: center !important;
+        font-family: 'Nunito', -apple-system, sans-serif !important;
+        font-size: 0.65rem !important; font-weight: 800 !important;
+        letter-spacing: 0.12em !important; text-transform: uppercase !important;
+        line-height: 1.2 !important;
+        padding: 7px 0 !important;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.28) !important;
+        z-index: 3 !important;
+        pointer-events: none !important;
+    }
 
     #rmf-funnel .rmf-card-icon { font-size: 2.4rem !important; margin-bottom: 14px !important; display: block !important; }
     #rmf-funnel .rmf-card h3 {
@@ -646,7 +688,8 @@
                     <span class="rmf-card-note">Struck prices are the gate price. Book ahead to lock in the lower rate.</span>
                 </a>
 
-                <a href="#ticketBlock" class="rmf-card rmf-card-green rmfr d1" aria-label="Buy Season Pass tickets">
+                <a href="#ticketBlock" class="rmf-card rmf-card-green rmfr d1" aria-label="Buy Season Pass tickets — Labor Day Sale">
+                    <span class="rmf-card-ribbon">Labor Day Sale</span>
                     <span class="rmf-card-badge rmf-card-badge-gold">Season Pass</span>
                     <span class="rmf-card-icon">🍁</span>
                     <h3>Season Pass</h3>
@@ -656,8 +699,9 @@
                         <li>👥 One single-use guest ticket included</li>
                     </ul>
                     <div class="rmf-card-price">
-                        <span class="rmf-price-num">$37.50</span>
-                        <span class="rmf-price-label">per pass<br>flat, all season</span>
+                        <span class="rmf-price-num">$31.95</span>
+                        <span class="rmf-price-was rmf-strike">$37.50</span>
+                        <span class="rmf-price-label">per pass<br>Labor Day Sale price</span>
                     </div>
                     <span class="rmf-card-note">Guest ticket redeems as a checkbox on your pass at the gate — no separate QR code.</span>
                 </a>
@@ -981,9 +1025,6 @@
   }
   #ticketBlock .ticket-cost[data-gate]{ color:#2F4A2C !important; }
 </style>
-
-</body>
-</html>
 <!-- ============================================================================
      CrowdView client pop-up block  ·  v7  ·  2026-08-27
 
@@ -1225,3 +1266,7 @@
 })();
 </script>
 <!-- =================== END CrowdView pop-up block =================== -->
+
+
+</body>
+</html>
