@@ -508,20 +508,57 @@ html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar::after { c
 
   <!-- HERO (video bg) with transparent nav floating over it -->
   <header class="cap-hero">
-    <video class="cap-hero-vid cap-hero-vid--desktop" autoplay loop muted playsinline preload="metadata" poster="https://cdn.uploads.webconnex.com/49430/christmas%20quest%20crystal%20bubble%20tag%20wand.jpg">
-      <source src="https://symphony.cdn.tambourine.com/christmas-at-the-princess/media/fairmontscottsdaleprincess-christmasattheprincess-homepage-header-video-6a58e6678fbd8.mp4" type="video/mp4">
-    </video>
-    <video class="cap-hero-vid cap-hero-vid--mobile" autoplay loop muted playsinline preload="metadata" poster="https://d19t3dgo9qh6v3.cloudfront.net/fairmont-cap/FairmontScottsdalePrincess-Christmasattheprincess-Homepage-Header-Mobile-Video-poster.jpg">
-      <source src="https://d19t3dgo9qh6v3.cloudfront.net/fairmont-cap/FairmontScottsdalePrincess-Christmasattheprincess-Homepage-Header-Mobile-Video-web.webm" type="video/webm">
-      <source src="https://d19t3dgo9qh6v3.cloudfront.net/fairmont-cap/FairmontScottsdalePrincess-Christmasattheprincess-Homepage-Header-Mobile-Video-web.mp4" type="video/mp4">
-    </video>
+    <!-- HERO VIDEO — built in JS, deliberately not static markup.
+         TicketSpice's Raw HTML sanitiser STRIPS video and source tags from inline
+         blocks (verified on Montpelier 2026-09-04: the element never reaches the
+         DOM, React leaves empty comment markers where it was). Under the old hybrid
+         loader the content was injected at runtime so TS never parsed it; inlined
+         for the PCI migration, it does not survive. Scripts DO survive, so both the
+         desktop and mobile heroes are constructed here. Classes are preserved so the
+         existing cap-hero-vid--desktop / --mobile media-query switch still governs
+         which one shows. -->
+    <script>
+    (function () {
+        var hero = document.querySelector('#cap-funnel .cap-hero');
+        if (!hero || hero.querySelector('video')) return;
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        var defs = [
+            { cls: 'cap-hero-vid cap-hero-vid--desktop',
+              poster: 'https://cdn.uploads.webconnex.com/49430/christmas%20quest%20crystal%20bubble%20tag%20wand.jpg',
+              src: [['https://symphony.cdn.tambourine.com/christmas-at-the-princess/media/fairmontscottsdaleprincess-christmasattheprincess-homepage-header-video-6a58e6678fbd8.mp4', 'video/mp4']] },
+            { cls: 'cap-hero-vid cap-hero-vid--mobile',
+              poster: 'https://d19t3dgo9qh6v3.cloudfront.net/fairmont-cap/FairmontScottsdalePrincess-Christmasattheprincess-Homepage-Header-Mobile-Video-poster.jpg',
+              src: [['https://d19t3dgo9qh6v3.cloudfront.net/fairmont-cap/FairmontScottsdalePrincess-Christmasattheprincess-Homepage-Header-Mobile-Video-web.webm', 'video/webm'],
+                    ['https://d19t3dgo9qh6v3.cloudfront.net/fairmont-cap/FairmontScottsdalePrincess-Christmasattheprincess-Homepage-Header-Mobile-Video-web.mp4', 'video/mp4']] }
+        ];
+        var anchor = hero.firstChild;
+        defs.forEach(function (d) {
+            var v = document.createElement('video');
+            v.className = d.cls;
+            ['autoplay', 'loop', 'muted', 'playsinline'].forEach(function (a) { v.setAttribute(a, ''); });
+            v.setAttribute('preload', 'metadata');
+            v.setAttribute('aria-hidden', 'true');
+            v.setAttribute('tabindex', '-1');
+            v.muted = true;
+            v.poster = d.poster;
+            d.src.forEach(function (s) {
+                var el = document.createElement('source');
+                el.src = s[0]; el.type = s[1];
+                v.appendChild(el);
+            });
+            hero.insertBefore(v, anchor);
+            var p = v.play();
+            if (p && p.catch) p.catch(function () {});
+        });
+    })();
+    </script>
     <div class="cap-hero-overlay"></div>
     <nav class="cap-nav"><div class="cap-wrap">
-      <a href="https://christmasattheprincess.com" target="_blank"><img class="cap-logo" src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/fairmont-princess/design/assets/logos/christmast-at-the-princess-logo.svg" alt="Christmas at the Princess"></a>
+      <a href="https://christmasattheprincess.com" target="_blank"><img class="cap-logo" src="https://assets.crowd7digital.us/clients/fairmont-princess/design/assets/logos/christmast-at-the-princess-logo.svg" alt="Christmas at the Princess"></a>
       <a href="#cap-tickets" class="cap-nav-cta">Book Your Experience</a>
     </div></nav>
     <div class="cap-hero-content">
-      <img class="cap-hero-title" src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/fairmont-princess/design/assets/branding/FSP26-17-Years-of-Tradition-White.svg" alt="17 Years of Tradition" style="width:100%;max-width:760px;height:auto;display:block;margin:0 auto;">
+      <img class="cap-hero-title" src="https://assets.crowd7digital.us/clients/fairmont-princess/design/assets/branding/FSP26-17-Years-of-Tradition-White.svg" alt="17 Years of Tradition" style="width:100%;max-width:760px;height:auto;display:block;margin:0 auto;">
       <p class="sub">Arizona's most magical holiday tradition returns &mdash; ice skating, seventeen-million twinkling lights, s'mores, and an all-new exclusive lounge experience.</p>
       <div class="connector"></div>
     </div>
@@ -563,7 +600,7 @@ html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar::after { c
     <div class="sec-head"><h2>Pick your tickets</h2></div>
     <div class="tier-row">
       <div class="tier" data-buyer="ga">
-        <img class="tier-photo" src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/fairmont-princess/design/assets/photos/tier-ga-lights.jpg" alt="Kids looking up at the Christmas at the Princess light tunnel">
+        <img class="tier-photo" src="https://assets.crowd7digital.us/clients/fairmont-princess/design/assets/photos/tier-ga-lights.jpg" alt="Kids looking up at the Christmas at the Princess light tunnel">
         <div class="tier-body">
         <h3>General Admission</h3><div class="saletag" data-saletag="&#127876; The Traditional Experience"></div>
         <div class="eb-flag">&#10052; Early Bird &middot; Save 30%</div>
@@ -573,7 +610,7 @@ html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar::after { c
         </div>
       </div>
       <div class="tier feature" data-buyer="premium"><span class="ribbon">NEW</span>
-        <img class="tier-photo" src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/fairmont-princess/design/assets/photos/tier-premium-firepit.jpg" alt="Family roasting s'mores at a Premium Admission fire table">
+        <img class="tier-photo" src="https://assets.crowd7digital.us/clients/fairmont-princess/design/assets/photos/tier-premium-firepit.jpg" alt="Family roasting s'mores at a Premium Admission fire table">
         <div class="tier-body">
         <h3>Premium Admission</h3><div class="saletag" data-saletag="&#10024; Best value upgrade"></div>
         <div class="eb-flag">&#10052; Early Bird &middot; Save 30%</div>
@@ -583,7 +620,7 @@ html[data-buyer-path="santa"] .ticket-block .datePicker .wbx-calendar::after { c
         </div>
       </div>
       <div class="tier" data-buyer="vip">
-        <img class="tier-photo" src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/fairmont-princess/design/assets/photos/tier-vip-igloo.jpg" alt="Family enjoying drinks inside a private VIP igloo">
+        <img class="tier-photo" src="https://assets.crowd7digital.us/clients/fairmont-princess/design/assets/photos/tier-vip-igloo.jpg" alt="Family enjoying drinks inside a private VIP igloo">
         <div class="tier-body">
         <h3>VIP Experiences</h3><div class="saletag" data-saletag="&#128293; Private Igloos &amp; Fire Tables"></div>
         <div class="eb-flag">&#10052; Early Bird</div>
