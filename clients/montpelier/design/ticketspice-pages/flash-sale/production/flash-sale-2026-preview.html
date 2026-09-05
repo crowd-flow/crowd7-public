@@ -485,10 +485,41 @@
     </div>
 
     <div class="fs-hero">
-        <video class="fs-hero-vid" autoplay muted loop playsinline preload="metadata" poster="https://d19t3dgo9qh6v3.cloudfront.net/montpelier/mp-hero-poster.jpg" aria-hidden="true" tabindex="-1">
-            <source src="https://d19t3dgo9qh6v3.cloudfront.net/montpelier/mp-hero-web.webm" type="video/webm">
-            <source src="https://d19t3dgo9qh6v3.cloudfront.net/montpelier/mp-hero-web.mp4" type="video/mp4">
-        </video>
+        <!-- HERO VIDEO — built in JS, deliberately not static markup.
+             TicketSpice's Raw HTML sanitiser STRIPS video and source tags from
+             inline blocks (verified 2026-09-04: the element never reaches the DOM,
+             React leaves empty comment markers where it was). Under the old hybrid
+             loader the content was injected at runtime so TS never parsed it and the
+             tag survived; inlined for the PCI migration, it does not. Scripts DO
+             survive, so the element is constructed here instead. The CSS background
+             image on .fs-hero remains the fallback for reduced-motion and failure. -->
+        <script>
+        (function () {
+            var hero = document.querySelector('#fs-funnel .fs-hero');
+            if (!hero || hero.querySelector('video')) return;
+            if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            var v = document.createElement('video');
+            v.className = 'fs-hero-vid';
+            v.setAttribute('autoplay', '');
+            v.setAttribute('muted', '');
+            v.setAttribute('loop', '');
+            v.setAttribute('playsinline', '');
+            v.setAttribute('preload', 'metadata');
+            v.setAttribute('aria-hidden', 'true');
+            v.setAttribute('tabindex', '-1');
+            v.muted = true;
+            v.poster = 'https://d19t3dgo9qh6v3.cloudfront.net/montpelier/mp-hero-poster.jpg';
+            [['https://d19t3dgo9qh6v3.cloudfront.net/montpelier/mp-hero-web.webm', 'video/webm'],
+             ['https://d19t3dgo9qh6v3.cloudfront.net/montpelier/mp-hero-web.mp4', 'video/mp4']].forEach(function (s) {
+                var el = document.createElement('source');
+                el.src = s[0]; el.type = s[1];
+                v.appendChild(el);
+            });
+            hero.insertBefore(v, hero.firstChild);
+            var p = v.play();
+            if (p && p.catch) p.catch(function () {});
+        })();
+        </script>
         <div class="fs-hero-scrim"></div>
         <div class="fs-hero-inner">
             <span class="fs-flash-pill">⚡ Flash Sale · Aug 26–30</span>
