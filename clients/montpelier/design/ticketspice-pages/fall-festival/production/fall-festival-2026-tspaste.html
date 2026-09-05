@@ -1,0 +1,1195 @@
+<!--
+  ============================================================
+  MONTPELIER FARMS — FALL FESTIVAL 2026 — TicketSpice content block
+  ============================================================
+  1720 Crain Hwy, Upper Marlboro, MD · Adrianne Dunn (Owner/Operator)
+  Rebuilt 2026-08-13 by Crowdly on Mat's directive.
+
+  ⚡ SECOND REBUILD, same day. The first pass this morning invented a
+  wine/gold palette and a text wordmark because I concluded "no brand
+  assets exist" from the email attachments. Wrong — their whole brand was
+  on their own website. Now built on the real thing.
+
+  🎨 REAL BRAND, sampled from their own primary logo:
+     forest green #2F4640  — the MONTPELIER wordmark
+     brick red    #B04A3A  — the barn roof + FAMILY FARM PARK
+     Assets scraped from montpelierfarms.com 2026-08-13 and committed to
+     crowd7-public/clients/montpelier/design/assets/ (see its README).
+
+  📛 NAME — "Montpelier Farms" (Mat's call 2026-08-13). Their assets carry
+     three variants: the logos read "Montpelier Farms", the badge and the
+     TicketSpice header read "Montpelier Family Farm Park", and Adrianne
+     signs "Montpelier Farms, LLC". Use Montpelier Farms throughout.
+
+  ⚡ ARCHITECTURE — TWO SEPARATE PAGES (Bryan, phone 2026-08-13,
+     transcript 8.13.26.Crowd7CallWithBryanJaphet).
+       THIS PAGE = Fall Festival 2026 — DAY-BASED, in-season pricing
+       SIBLING   = Flash Sale 2026    — any-day, 40% off (../flash-sale/)
+     Bryan verbatim: "the day based page, once you publish it, you can't
+     go back." So the flash sale lives on its own any-day page and this
+     one carries the normal season.
+     Supersedes the one-page-three-phases plan built earlier today.
+
+  📋 IN-SEASON PRICING (5/27 event-info; flash pricing lives on the
+     sibling page):
+       General Admission ... $19.95 online   (peak weekends $24.95)
+       Super Pass .......... $38.95 online   (peak $43.95 · door $43.95,
+                                              peak door $48.95)
+       Ultimate Pass ....... $68 online  ⚠️ UNCONFIRMED — see below
+       Season Pass ......... $65.95
+       Family 4-Pack Super Admission Bundle $159.95 — OCTOBER DATES ONLY
+     PEAK WEEKENDS = THREE weekends — Oct 17-18, Oct 24-25, Oct 31-Nov 1.
+     +$5 on every single-day type. (Adrienne, 8/20: "We have three
+     weekends, 17th and 18th and the two weekends after that are peak.")
+
+  🚩 ULTIMATE PRICE IS NOT CONFIRMED. The 5/27 event-info records it as a
+     RANGE ("~$68-$73.95"), which is not a price. Adrianne then asked on
+     8/12: "Are we not offering the Ultimate Ticket Level at $65.95?" —
+     and Bryan never answered the number. $65.95 is the Season Pass price
+     in the spec, so she may be conflating the two. $68 is used here as
+     the event-info figure. CONFIRM BEFORE PUBLISH. This is exactly the
+     failure mode that put a stale $50.50 on the Summers Farm page.
+
+  ⚠️ ADD-ONS ARE PAID, NOT INCLUDED. Corrected 2026-08-13 from a live
+     capture of their TicketSpice page. The first build listed Mega Slide,
+     Duck Races, Paint-a-Pumpkin, Mining Mania and Paintball as "included
+     with admission" — they are à-la-carte. Prices below are theirs,
+     verbatim from the cart. This also explains the Ultimate Pass: its
+     inclusions are exactly this add-on list, which is why Bryan calls it
+     the price anchor.
+
+  🔄 UPDATE 2026-08-14 (Bryan 1:1, Mat + Bryan). Bryan: "I would rather
+     that section be all the, what's at the farm" — the add-ons grid above
+     read as a money-grab ahead of the flash sale. The marketing section
+     that used to list these paid add-ons with prices is now a pill list of
+     what's INCLUDED with General Admission (sourced from
+     montpelierfarms.com/attractions, 2026-08-14 — see
+     work/crowd7/projects/montpelier-attractions-pills/artifacts/attraction-list.md).
+     Paid add-ons are no longer shown on this page at all — they still
+     upsell natively in the TicketSpice cart, same as before. "+ fees" was
+     also added next to every displayed ticket price per the same 8/14 call.
+
+
+  ⚠️ HOURS are exact, from the same live capture — NOT the vague
+     "shorter hours" language of the 5/27 spec. Note Friday in October is
+     EVENING ONLY (5-10pm), which the earlier build got wrong by implying
+     Tue-Sun were all daytime.
+
+  ✅ DAY-BASED BY DESIGN. Every ticket here is date-and-time specific —
+     Adrianne 8/12 cited capacity. The any-day tickets live ONLY on the
+     sibling flash-sale page.
+
+  🚩 STILL OPEN — do not invent answers:
+     1. Family 4-Pack inclusion item — nothing locked; sold on price alone.
+     2. GA door price — never stated, so no struck compare-at on that card.
+        Super Pass has one ($48.95) because Bryan stated it.
+     3. ZIP CODE CONFLICT — their TicketSpice page says 20772, Adrianne's
+        email signature says 20774. Using 20772 (the cart is what buyers
+        navigate from) but this needs confirming.
+     4. Group check-in scanning for the 4-Pack — broke for Tulips spring
+        2026, still untested.
+     5. Family 4-Pack Super Admission Bundle ($159.95) is OCTOBER-ONLY per
+        the spec — a TS Action shows it on October dates only. Not given a
+        card here; it surfaces in the cart on qualifying dates.
+
+  NATIVE TS CART: ticket types, prices, date/time selection, the peak-
+  weekend +$5 bump, the October-only bundle visibility and the add-on
+  products all stay native in TicketSpice.
+
+  ✏️ 2026-08-14 — Adrianne punch-list content fixes, applied here for
+     consistency with the flash-sale sibling page (CrowdView request #8,
+     thread 19ffe8864a491075): Super Pass "2 & under free" line removed
+     (GA-only benefit, per her general policy statement, not page-
+     specific); GA "2 & under free" qualified "for General Admission";
+     info-row "2 & under free" qualified likewise; Mining Mania add-on
+     now reads "Prices Vary" (matches their own site; the 6 individual
+     prices are still unconfirmed); Paintball add-on gained the
+     300-shot/$25 tier. Ultimate Pass price left at the pre-existing
+     $68 ⚠️ UNCONFIRMED flag — do NOT resolve it off the flash-sale
+     page's live-cart $65.95 (confirmed 2026-08-14 on the FLASH-SALE
+     TS event only; this page's Ultimate Pass is a separate TS ticket
+     type and may not share that price). Ask Adrianne/Bryan directly.
+     Also open: Adrianne 8/14 said this Fall Festival page needs to be
+     un-hidden / linked from the site nav ("I believe that Page is
+     currently hidden right now") — that's a site-navigation/publish
+     action, not a content edit; see project state.md Open Asks.
+
+  ✅ 2026-08-24 — 8/20 call edits (CrowdView design request #18, rows 4 + 6):
+     Ultimate Pass card's Mining Mania line gained the "— gems or seashells"
+     qualifier the Super Pass card already carried (Adrienne: "That also needs
+     to say dash gems or seashells... it's not carried over to the ultimate
+     pass"); and the "What's at the Farm" section MOVED ABOVE "Choose your
+     pass" so buyers see what's included before the price ladder — matching
+     the flash-sale sibling, which already led with it (Adrienne: "I like it
+     on the top. So they see that first."). NOT touched, still open on this
+     page: Early Bird (design #18 rows 8-9 — deliberately held until the
+     flash sale ends), and the GA peak-price question (design #18 row 5 —
+     she confirmed $29.95 at the DOOR on peak dates, this page's card note
+     says $24.95 on peak weekends; almost certainly online-vs-door, but
+     unconfirmed — see the row's open_question in CrowdView).
+
+  ✅ 2026-08-30 — EARLY BIRD FRAMING + flash-sale parity, PREVIEW ONLY.
+     CrowdView changes 292 (parity), 177 (build Early Bird into this page) and
+     293 (Early Bird language). Driver — Bryan, 8/28 call: "Montpelier's landing
+     page for Early Birds... an updated landing page, matching, NOT the pricing,
+     but matching the cards and all the stuff that we changed on the flash sale
+     page." And the written client commitment (Slack → Adrianne, 8/25): flash
+     sale ends 8/30 11:59pm ET, Early Bird goes live on this date-based page 8/31.
+
+     PARITY (292) — the two things the flash-sale page had and this one did not:
+       · pills section now leads with the attraction count ("30+ attractions at
+         the farm" instead of "What's at the farm")
+       · .mf-addons-compact padding so the pills frame the cards instead of
+         competing with them (it sits above the cards on both pages now)
+     Everything else was already at parity as of 2026-08-24 — the 8/14 punch
+     list, the hayride/animals fix, per-bullet emoji, gems-or-seashells, the
+     section reorder and the 30+ count all landed on both pages already.
+
+     EARLY BIRD (177 / 293) — framing only, NO price touched:
+       · banner, hero pill, hero copy, season strip and the tickets-section
+         eyebrow + lede all now say Early Bird, running THROUGH SEPTEMBER 4
+       · deliberately does NOT lead with a percentage. Adrienne, 8/20: "maybe we
+         don't say, you know, percentage in this and that. We just say early bird
+         sale, and then 1795 instead of 1795, but you have to pick your date and
+         time." Bryan agreed. So the page sells the deal, not the number.
+       · Sept 4 end date reconciles both sources: Adrienne 8/20 ("we take that
+         down on September 4th... full price starting on the 5th") and Bryan 8/28
+         ("until the week before the season technically starts" — season opens
+         9/12).
+
+     🔁 2026-08-30 — ATTRACTION COUNT BACK TO 35+ (Bryan, page-review call;
+        applied on Mat's go). All three body-copy instances — hero sub, pills
+        section heading, GA card bullet — now read "35+ attractions". Bryan:
+        "I want to say 35 plus attractions at the farm instead of 30, even
+        though we list 5 above." He named two locations; Mat asked for every
+        instance, which is three.
+
+        ⚠️ THIS REVERSES the 2026-08-23 entry below, which took the count from
+        35+ down to 30+ on Adrienne's own 8/20 call (she said "30" twice,
+        unprompted). Bryan is overriding his client's number. That entry is
+        left intact as the record — do NOT read it as current. If Adrienne
+        pushes back on 35+, this is the history to hand her.
+
+        Not changed here: the SIBLING FLASH-SALE PAGE still says 30+ in the
+        same three places. Bryan's review was of this ticket page only, and the
+        flash sale ends 11:59pm ET tonight. Flagged to Mat, not assumed.
+
+     🔴 2026-08-30 — TWO STALE FACTS CORRECTED, caught by cross-checking this
+        page against CrowdView's Montpelier price book (price_book 7), which was
+        already right on both:
+
+        1. PEAK WEEKENDS ARE THREE, NOT TWO. This page had carried "Oct 17-18
+           and Oct 23-24" — wrong count, and Oct 23 is a Friday. Adrienne, 8/20:
+           "We have three weekends, 17th and 18th and the two weekends after
+           that are peak." Correct set: Oct 17-18, Oct 24-25, Oct 31-Nov 1. The
+           price book already flagged the old pair as a corrected prior value;
+           the page never got the fix, and earlier today it got propagated into
+           three new card notes. All customer-facing strings now say three.
+
+        2. SUPER PASS STANDARD ONLINE IS $38.95, NOT $35.95. Adrienne, 8/20:
+           "we'll go to 38 95, which will be our online cheapest day." The
+           header block above claimed $35.95 was the regular online price, which
+           is what made Early Bird look like a zero discount this morning. It is
+           not — Early Bird Super $35.95 is a genuine $3 off $38.95. The card's
+           struck price moved from $43.95 (the gate rate) to $38.95 (the rate it
+           is actually discounted from), and the card now carries the "Early
+           Bird" tag it was deliberately denied earlier on the bad premise.
+
+        Also: Ultimate's struck price $68 -> $68.95, the price book's standard
+        online figure.
+
+     ✅ 2026-08-30 (Mat) — "FROM" label + varies-by-date note on the two
+        starting-price cards. GA and Super Pass now carry a small uppercase
+        "From" above the figure (the Jack's Lighted Trail treatment, rendered
+        as a block label the way Amber Brooke's fall-festival page does it) and
+        a proof line under the price row, ported from that same page's
+        .abf-oneprice-proof: "Standard and peak-weekend rates apply depending
+        on the date. Select your date below to see pricing."
+
+        ⚠️ WORDING DELIBERATELY NOT "value dates". Amber Brooke runs a
+        value/standard split; Montpelier does not — it runs standard dates plus
+        a +$5 peak-weekend bump (three weekends, see above). Copying "value" across
+        would invent a rate tier this farm doesn't sell, so the note uses
+        Montpelier's own vocabulary while keeping Amber Brooke's shape and its
+        "select your date below" call to action.
+
+        Ultimate Pass deliberately did NOT get the treatment: Bryan's list gives
+        it as a flat $58.95, and only GA and Super Pass as a "starting price".
+        Its existing card note already states the +$5 peak rule. One-line change
+        if that reading is wrong.
+
+        "Starting price." dropped from the GA and Super card notes — the "From"
+        label now says it, and saying it twice on one card reads like a warning.
+
+     ✅ 2026-08-30 (Mat) — hero pill REMOVED and the bird emoji dropped from the
+        Early Bird wording. The hero now goes straight into the "Fall Festival
+        2026" title with no eyebrow above it; the top banner still reads
+        "Early Bird Sale — on now", just without the bird. The .mf-season-pill
+        CSS is kept in place, unused, so the eyebrow can come back cheaply.
+
+     ✅ 2026-08-30 (later) — EARLY BIRD PRICES NOW SHIPPED. Bryan sent the
+        confirmed list, which resolves change 178's open question:
+          General Admission  $18.95 starting price   (was $19.95)
+          Super Pass         $35.95 starting price   (unchanged — see below)
+          Ultimate Pass      $58.95                  (was $68)
+          Season Pass        $65.95 — no additional Early Bird discount
+          Family 4-Pack      still offered, NOT discounted for Early Bird
+          Peak dates         +$5 when the customer selects a peak weekend
+        Applied to the GA and Ultimate cards (price + struck was-price +
+        "Early Bird" tag). Season Pass untouched — it is genuinely not
+        discounted, so a struck price there would be a lie. Family 4-Pack has
+        no card on this page (October-only, surfaces natively in the cart on
+        qualifying dates), so "still offered, not discounted" needs no display.
+
+        ⚠️ SUPER PASS HAS NO EARLY BIRD DISCOUNT. Bryan's $35.95 is exactly
+        this page's existing regular online price, so its card price does not
+        move. That may well be deliberate, but it is worth Bryan seeing that
+        the Super Pass reads as a sale price while being the everyday price.
+
+        CARD NOTES CORRECTED FOR THE EARLY BIRD REGIME. The old notes quoted
+        regular-season peak figures ("$24.95 on peak weekends", "Peak online is
+        $43.95") which are wrong once the base price drops — GA peak under
+        Early Bird is $23.95, not $24.95. Rather than compute new peak numbers
+        per card, all three now state the rule the way Bryan stated it
+        ("peak weekends add $5"), which is true under both regimes and cannot
+        go stale at the Sept 5 switch back to season pricing. Door prices are
+        left as-is; a door price is a door price either way.
+
+        CORRECTION TO THE EARLIER NOTE BELOW: it hypothesised that the real
+        Early Bird benefit might be NO peak surcharge. That was wrong —
+        Bryan confirms the $5 peak bump still applies during Early Bird.
+
+     🚫 SUPERSEDED (kept for the record) — the pre-confirmation caution:
+        CrowdView change 178 was NOT done, and
+        should not be shipped off the current transcript. Two problems with the
+        numbers as recorded:
+          1. Ultimate "$58.95" appears NOWHERE in the 8/20 transcript. $68 × 0.8
+             is $54.40, so it is not a 20% derivation either. Unsourced.
+          2. Super Pass "$35.95" is ALREADY this page's regular online price, so
+             showing it as the Early Bird price is a zero discount.
+        What the transcript actually supports: GA $18.95 (Adrienne: "early bird
+        is not 20% off, it's a dollar online"), Season Pass NOT discounted, and
+        Weekday Play Day NOT discounted. It also suggests the real Early Bird
+        benefit may be NO $5 peak surcharge whatever date you pick ("we will not
+        be $5 more if they select another day") rather than a headline discount.
+        CONFIRM WITH BRYAN/ADRIENNE BEFORE SHIPPING PRICES. This account already
+        has a live display-vs-charge gap ($33.95 shown / $35.95 charged on the
+        flash-sale Super Pass, open since 8/24) — do not open a second one.
+
+     PREVIEW ONLY. production/ untouched: the flash sale is still live until
+     11:59pm ET tonight, and this page must not flip to Early Bird until 8/31.
+     Promotion is a straight copy of both preview files into production/.
+
+  ✅ 2026-08-23 — attraction count corrected 35+ → 30+ (Adrienne said
+     "30" twice, unprompted, on the 8/20 call — newer client comms win
+     over the 8/14 email; matches their own homepage + the live TS cart's
+     GA description). GA card gains a new "30+ attractions" bullet per
+     her exact 8/20 wording ("hill slides animals plus 30 attractions").
+     See projects/montpelier-flash-sale-edits-aug2026/state.md.
+
+  ✏️ 2026-08-14 (pass 2) — Mat's calls: attraction count set to 35+
+     (her email number, over the site's 30+) in the hero copy; Super Pass
+     card rewritten to her exact inclusion list (GA + Super Mega Slide +
+     Duck Races + Paint-a-Pumpkin + Mining Mania gems/seashells only —
+     no paintball/buddy pass, those are Ultimate-tier). Draft record:
+     projects/montpelier-flash-sale-edits-aug2026/artifacts/superpass-copy-draft.md
+  ============================================================
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;0,700;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+    #mf-funnel {
+        --mf-green:    #2F4640;
+        --mf-green-dk: #22332E;
+        --mf-green-lt: #3F5C53;
+        --mf-red:      #B04A3A;
+        --mf-red-dk:   #8E3A2C;
+        --mf-red-lt:   #C86A57;
+        --mf-gold:     #D9A441;
+        --mf-cream:    #FBF7F0;
+        --mf-sand:     #F0E6D8;
+        --mf-sand-dk:  #DBCBB4;
+        --mf-ink:      #2A2A28;
+
+        width: 100vw !important;
+        position: relative !important;
+        left: 50% !important; right: 50% !important;
+        margin-left: -50vw !important; margin-right: -50vw !important;
+        overflow: hidden !important;
+        font-family: 'Inter', -apple-system, sans-serif !important;
+        background: var(--mf-cream) !important;
+        color: var(--mf-ink) !important;
+        padding: 0 !important;
+    }
+    #mf-funnel *, #mf-funnel *::before, #mf-funnel *::after { box-sizing: border-box !important; }
+
+    #mf-funnel .mfr { opacity: 0 !important; transform: translateY(20px) !important;
+        transition: opacity .65s ease, transform .65s ease !important; }
+    #mf-funnel .mfr.mfon { opacity: 1 !important; transform: none !important; }
+    #mf-funnel .d1 { transition-delay: .09s !important; }
+    #mf-funnel .d2 { transition-delay: .18s !important; }
+    #mf-funnel .d3 { transition-delay: .27s !important; }
+
+    #mf-funnel .mf-sec { padding: clamp(56px, 7.5vw, 92px) 24px !important; }
+    /* Pills section sits ABOVE the pass cards (Bryan screencast 2026-08-15 on the
+       flash-sale sibling; moved here 2026-08-24 per Adrienne's 8/20 call, "I like
+       it on the top. So they see that first."). Compact padding so it frames the
+       cards instead of competing with them — ported from the flash-sale page
+       2026-08-30, CrowdView change 292. */
+    #mf-funnel .mf-addons-compact { padding-top: clamp(40px, 5vw, 60px) !important; padding-bottom: clamp(28px, 3.5vw, 40px) !important; }
+    #mf-funnel .mf-addons-compact .mf-lede { margin-bottom: 4px !important; }
+    #mf-funnel .mf-eye {
+        display: block !important; font-size: .71rem !important; font-weight: 600 !important;
+        letter-spacing: .2em !important; text-transform: uppercase !important;
+        color: var(--mf-red) !important; margin-bottom: 13px !important;
+    }
+    #mf-funnel .mf-title {
+        display: block !important; font-family: 'Bitter', Georgia, serif !important;
+        font-size: clamp(1.9rem, 4.3vw, 2.9rem) !important; font-weight: 700 !important;
+        line-height: 1.14 !important; color: var(--mf-green) !important; margin: 0 !important;
+    }
+    #mf-funnel .mf-title em { font-style: italic !important; color: var(--mf-red) !important; }
+    #mf-funnel .mf-lede {
+        font-size: 1.01rem !important; line-height: 1.68 !important;
+        color: #55584F !important; margin: 16px 0 0 !important; max-width: 54ch !important;
+    }
+    #mf-funnel .mf-head { text-align: center !important; max-width: 720px !important; margin: 0 auto clamp(32px,4.5vw,50px) !important; }
+    #mf-funnel .mf-head .mf-lede { margin-left: auto !important; margin-right: auto !important; }
+
+    /* ── BANNER ── */
+    #mf-funnel .mf-banner {
+        background: var(--mf-red) !important; text-align: center !important;
+        padding: 11px 20px !important; font-size: .79rem !important; letter-spacing: .05em !important;
+    }
+    /* TS ships its own span/strong colour rules; inherited colour loses to them */
+    #mf-funnel .mf-banner, #mf-funnel .mf-banner span, #mf-funnel .mf-banner strong { color: #ffffff !important; }
+    #mf-funnel .mf-banner-inner { display: flex !important; align-items: center !important;
+        justify-content: center !important; gap: 11px !important; flex-wrap: wrap !important; }
+    #mf-funnel .mf-dot { width: 3px !important; height: 3px !important; border-radius: 50% !important;
+        background: rgba(255,255,255,.5) !important; display: inline-block !important; flex-shrink: 0 !important; }
+
+    /* ── NAV ── */
+    #mf-funnel .mf-nav {
+        height: 128px !important; padding: 0 clamp(16px,4vw,40px) !important;
+        display: flex !important; align-items: center !important; justify-content: space-between !important;
+        background: rgba(34,51,46,.97) !important; position: sticky !important; top: 0 !important;
+        z-index: 100 !important; box-shadow: 0 2px 18px rgba(34,51,46,.32) !important;
+    }
+    #mf-funnel .mf-logo { height: 108px !important; width: auto !important; display: block !important; flex-shrink: 0 !important; }
+    #mf-funnel .mf-nav-right { display: flex !important; align-items: center !important; gap: 16px !important; }
+    #mf-funnel .mf-nav-loc { font-size: .79rem !important; color: rgba(255,255,255,.66) !important; }
+    #mf-funnel .mf-nav-cta {
+        background: var(--mf-red) !important; color: #fff !important; text-decoration: none !important;
+        font-weight: 600 !important; font-size: .83rem !important; padding: 11px 22px !important;
+        border-radius: 6px !important; white-space: nowrap !important;
+        transition: background .2s, transform .15s !important;
+    }
+    #mf-funnel .mf-nav-cta:hover { background: var(--mf-red-lt) !important; transform: translateY(-1px) !important; color: #fff !important; }
+
+    /* ── HERO ── */
+    #mf-funnel .mf-hero {
+        position: relative !important; width: 100% !important;
+        min-height: clamp(420px, 64vw, 660px) !important;
+        display: flex !important; align-items: flex-end !important; overflow: hidden !important;
+        max-width: none !important;
+        background-image: url('https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/montpelier/design/assets/photos/hero-family-in-pumpkins.jpg') !important;
+        background-size: cover !important; background-position: center 42% !important;
+    }
+    #mf-funnel .mf-hero-vid {
+        position: absolute !important; inset: 0 !important; z-index: 0 !important;
+        width: 100% !important; height: 100% !important;
+        /* TicketSpice ships a global media reset (video/img { max-width:100%; height:auto })
+           which beat our height:100% and let the video render at its natural aspect ratio
+           inside the absolutely-positioned box - i.e. letterboxed, cream showing top and
+           sides. min-width/min-height cannot be undone by an auto height, so the box always
+           fills and object-fit:cover does the cropping. Reported by Bryan 2026-08-18. */
+        min-width: 100% !important; min-height: 100% !important;
+        max-width: none !important; max-height: none !important;
+        display: block !important;
+        object-fit: cover !important; object-position: center 42% !important;
+        pointer-events: none !important;
+    }
+    @media (prefers-reduced-motion: reduce) {
+        #mf-funnel .mf-hero-vid { display: none !important; }
+    }
+    #mf-funnel .mf-hero-scrim {
+        position: absolute !important; inset: 0 !important; z-index: 1 !important;
+        background: linear-gradient(to top,
+            rgba(34,51,46,.88) 0%, rgba(34,51,46,.55) 26%, rgba(34,51,46,.18) 48%, rgba(34,51,46,0) 66%) !important;
+    }
+    #mf-funnel .mf-hero-inner {
+        position: relative !important; z-index: 2 !important; width: 100% !important;
+        max-width: 1120px !important; margin: 0 auto !important;
+        padding: 0 24px clamp(40px,5.5vw,68px) !important;
+    }
+    /* Hero pill REMOVED from the markup 2026-08-30 (Mat). Rule kept, unused,
+       so the eyebrow can be restored without rebuilding it. */
+    #mf-funnel .mf-season-pill {
+        display: inline-block !important; background: var(--mf-red) !important; color: #fff !important;
+        font-size: .73rem !important; font-weight: 700 !important; letter-spacing: .13em !important;
+        text-transform: uppercase !important; padding: 9px 18px !important; border-radius: 6px !important;
+        margin-bottom: 18px !important;
+    }
+    #mf-funnel .mf-hero-title {
+        display: block !important; font-family: 'Bitter', Georgia, serif !important;
+        font-size: clamp(2.4rem, 7vw, 4.6rem) !important; font-weight: 700 !important;
+        line-height: 1.05 !important; color: #fff !important; margin-bottom: 15px !important;
+        text-shadow: 0 3px 24px rgba(0,0,0,.4) !important;
+    }
+    #mf-funnel .mf-hero-title em { font-style: italic !important; color: var(--mf-gold) !important; }
+    #mf-funnel .mf-hero-sub {
+        display: block !important; max-width: 54ch !important; font-size: 1.05rem !important;
+        line-height: 1.64 !important; color: rgba(255,255,255,.94) !important;
+        text-shadow: 0 2px 14px rgba(0,0,0,.45) !important;
+    }
+
+    /* ── 04 SEASON STRIP · thin band under the hero (house block 04) ── */
+    #mf-funnel .mf-seasonbar {
+        background: var(--mf-green) !important; padding: 15px 20px !important; text-align: center !important;
+    }
+    #mf-funnel .mf-seasonbar, #mf-funnel .mf-seasonbar span { color: #ffffff !important; }
+    #mf-funnel .mf-seasonbar-t {
+        display: inline-block !important; font-size: clamp(.95rem,2.2vw,1.18rem) !important;
+        font-weight: 700 !important; letter-spacing: .02em !important; line-height: 1.5 !important;
+    }
+    #mf-funnel .mf-sb-dot { opacity: .5 !important; padding: 0 12px !important; }
+
+    /* ── 05 BENEFITS · 4 highlights, divided (house block 05) ── */
+    #mf-funnel .mf-benefits { background: #fff !important; padding: clamp(34px,4.5vw,52px) 24px !important; }
+    #mf-funnel .mf-benefits-grid {
+        display: grid !important; grid-template-columns: repeat(4,1fr) !important;
+        max-width: 1120px !important; margin: 0 auto !important;
+    }
+    #mf-funnel .mf-benefit {
+        text-align: center !important; padding: 4px 18px !important;
+        border-right: 1px solid var(--mf-sand-dk) !important;
+    }
+    #mf-funnel .mf-benefit:last-child { border-right: none !important; }
+    #mf-funnel .mf-benefit-ico {
+        display: block !important; font-size: 1.7rem !important; line-height: 1 !important;
+        margin-bottom: 10px !important;
+    }
+    #mf-funnel .mf-benefit-title {
+        display: block !important; font-family: 'Bitter', Georgia, serif !important;
+        font-size: 1.02rem !important; font-weight: 700 !important;
+        color: var(--mf-green) !important; margin-bottom: 6px !important;
+    }
+    #mf-funnel .mf-benefit-desc { display: block !important; font-size: .86rem !important;
+        line-height: 1.5 !important; color: #6E7268 !important; }
+
+    /* ── TICKETS ── */
+    #mf-funnel .mf-tickets { background: var(--mf-sand) !important; }
+    #mf-funnel .mf-grid { display: grid !important; grid-template-columns: repeat(3,minmax(0,1fr)) !important;
+        gap: 22px !important; max-width: 1120px !important; margin: 0 auto !important; }
+    #mf-funnel .mf-card {
+        background: #fff !important; border-radius: 14px !important; padding: 34px 28px !important;
+        display: flex !important; flex-direction: column !important; position: relative !important;
+        box-shadow: 0 14px 40px rgba(42,42,40,.11) !important;
+    }
+    #mf-funnel .mf-card-feature { background: var(--mf-green) !important; }
+    #mf-funnel .mf-badge {
+        position: absolute !important; top: -12px !important; left: 28px !important;
+        font-size: .64rem !important; font-weight: 700 !important; letter-spacing: .13em !important;
+        text-transform: uppercase !important; padding: 6px 14px !important; border-radius: 5px !important;
+        background: var(--mf-red) !important; color: #fff !important;
+    }
+    #mf-funnel .mf-card-feature .mf-badge { background: var(--mf-gold) !important; color: var(--mf-green-dk) !important; }
+    #mf-funnel .mf-card h3 {
+        font-family: 'Bitter', Georgia, serif !important; font-size: 1.38rem !important;
+        font-weight: 700 !important; margin: 6px 0 5px !important; color: var(--mf-green) !important;
+    }
+    #mf-funnel .mf-card-feature h3 { color: #fff !important; }
+    #mf-funnel .mf-card-sub { display: block !important; font-size: .83rem !important; color: #7C8078 !important; margin-bottom: 20px !important; }
+    #mf-funnel .mf-card-feature .mf-card-sub { color: rgba(255,255,255,.72) !important; }
+    /* "From" label above the price (Mat 2026-08-30, the Jack's Lighted Trail
+       treatment) and the varies-by-date line under it (the Amber Brooke
+       fall-festival .abf-oneprice-proof pattern). Only the two tickets Bryan
+       gave as a "starting price" carry these. */
+    #mf-funnel .mf-from {
+        display: block !important; font-size: .78rem !important; font-weight: 700 !important;
+        letter-spacing: .16em !important; text-transform: uppercase !important;
+        color: var(--mf-red) !important; opacity: .8 !important; margin-bottom: 3px !important;
+    }
+    #mf-funnel .mf-card-feature .mf-from { color: var(--mf-gold) !important; opacity: 1 !important; }
+    #mf-funnel .mf-price-proof {
+        display: block !important; font-size: .82rem !important; line-height: 1.55 !important;
+        color: #6C7167 !important; margin-top: 7px !important;
+    }
+    #mf-funnel .mf-card-feature .mf-price-proof { color: rgba(255,255,255,.72) !important; }
+    #mf-funnel .mf-price-row { display: flex !important; align-items: baseline !important; gap: 11px !important; flex-wrap: wrap !important; }
+    #mf-funnel .mf-price {
+        font-family: 'Bitter', Georgia, serif !important; font-size: 2.45rem !important;
+        font-weight: 700 !important; line-height: 1 !important; color: var(--mf-red) !important;
+    }
+    #mf-funnel .mf-card-feature .mf-price { color: #fff !important; }
+    #mf-funnel .mf-was { font-size: 1.04rem !important; color: #9BA096 !important;
+        text-decoration: line-through !important; text-decoration-thickness: 2px !important; }
+    #mf-funnel .mf-fee-note { font-size: .74rem !important; font-weight: 500 !important; color: #9BA096 !important; }
+    #mf-funnel .mf-card-feature .mf-fee-note { color: rgba(255,255,255,.58) !important; }
+    #mf-funnel .mf-card-feature .mf-was { color: rgba(255,255,255,.58) !important; }
+    #mf-funnel .mf-save {
+        display: inline-block !important; font-size: .69rem !important; font-weight: 700 !important;
+        letter-spacing: .08em !important; text-transform: uppercase !important;
+        background: var(--mf-red) !important; color: #fff !important; padding: 4px 11px !important; border-radius: 4px !important;
+    }
+    #mf-funnel .mf-card-feature .mf-save { background: var(--mf-gold) !important; color: var(--mf-green-dk) !important; }
+    #mf-funnel .mf-list { list-style: none !important; padding: 0 !important; margin: 22px 0 0 !important; flex-grow: 1 !important; }
+    #mf-funnel .mf-list li {
+        display: flex !important; gap: 11px !important; align-items: flex-start !important;
+        font-size: .91rem !important; line-height: 1.5 !important; color: #4E524A !important; padding: 8px 0 !important;
+    }
+    #mf-funnel .mf-card-feature .mf-list li { color: rgba(255,255,255,.9) !important; }
+    #mf-funnel .mf-tick { color: var(--mf-red) !important; font-weight: 700 !important; flex-shrink: 0 !important; }
+    #mf-funnel .mf-card-feature .mf-tick { color: var(--mf-gold) !important; }
+    #mf-funnel .mf-card-note {
+        font-size: .76rem !important; line-height: 1.5 !important; color: #8A8E85 !important;
+        margin-top: 18px !important; padding-top: 15px !important; border-top: 1px solid var(--mf-sand-dk) !important;
+    }
+    #mf-funnel .mf-card-feature .mf-card-note { color: rgba(255,255,255,.7) !important; border-top-color: rgba(255,255,255,.2) !important; }
+    /* ── SEASON PASS — full-width card under the grid (Millstadt pattern) ── */
+    #mf-funnel .mf-wide {
+        max-width: 1120px !important; margin: 22px auto 0 !important;
+        background: #fff !important; border: 2px solid var(--mf-green) !important;
+        border-radius: 14px !important; padding: 30px 32px !important;
+        display: grid !important;
+        grid-template-columns: minmax(190px,250px) minmax(0,1fr) minmax(170px,215px) !important;
+        column-gap: 30px !important; align-items: stretch !important; position: relative !important;
+        box-shadow: 0 14px 40px rgba(42,42,40,.10) !important;
+    }
+    /* photo bleeds to the card's left/top/bottom edge — Eckerts Millstadt
+       treatment (negative margins against the card's own padding). */
+    #mf-funnel .mf-wide-photo {
+        margin: -30px 0 -30px -32px !important; position: relative !important;
+        overflow: hidden !important; border-radius: 12px 0 0 12px !important;
+    }
+    #mf-funnel .mf-wide-photo img {
+        width: 100% !important; height: 100% !important; object-fit: cover !important; display: block !important;
+    }
+    #mf-funnel .mf-wide-main { display: flex !important; flex-direction: column !important; justify-content: center !important; }
+    #mf-funnel .mf-wide-main h3 { margin-top: 6px !important; }
+    #mf-funnel .mf-wide-main .mf-list { margin-top: 16px !important; flex-grow: 0 !important; }
+    #mf-funnel .mf-wide-rail {
+        display: flex !important; flex-direction: column !important;
+        align-items: flex-end !important; justify-content: center !important;
+        border-left: 1px solid var(--mf-sand-dk) !important; padding-left: 30px !important;
+    }
+    #mf-funnel .mf-wide-lbl { display: block !important; font-size: .76rem !important; line-height: 1.4 !important;
+        color: #8A8E85 !important; text-align: right !important; margin-top: 6px !important; }
+    #mf-funnel .mf-note {
+        max-width: 1120px !important; margin: 18px auto 0 !important; text-align: center !important;
+        font-size: .82rem !important; line-height: 1.55 !important; color: #6E7268 !important;
+    }
+
+    /* ── ADD-ONS (paid, not included) ── */
+    #mf-funnel .mf-addons { background: var(--mf-cream) !important; }
+    #mf-funnel .mf-pill-wrap {
+        display: flex !important; flex-wrap: wrap !important; justify-content: center !important;
+        gap: 10px !important; max-width: 900px !important; margin: 0 auto !important;
+    }
+    #mf-funnel .mf-pill {
+        display: inline-flex !important; align-items: center !important; gap: 6px !important;
+        background: #fff !important; border: 1px solid var(--mf-sand-dk) !important;
+        border-radius: 999px !important; padding: 9px 16px !important;
+        font-size: .87rem !important; font-weight: 500 !important; color: #4E524A !important;
+        white-space: nowrap !important;
+    }
+
+    /* ── HOURS ── */
+    #mf-funnel .mf-hours { background: var(--mf-green-dk) !important; }
+    #mf-funnel .mf-hours .mf-title { color: #fff !important; }
+    #mf-funnel .mf-hours .mf-title em { color: var(--mf-gold) !important; }
+    #mf-funnel .mf-hours .mf-eye { color: var(--mf-gold) !important; }
+    #mf-funnel .mf-months { display: grid !important; grid-template-columns: repeat(3,1fr) !important;
+        gap: 16px !important; max-width: 1060px !important; margin: 0 auto !important; }
+    #mf-funnel .mf-month {
+        background: rgba(255,255,255,.07) !important; border: 1px solid rgba(255,255,255,.18) !important;
+        border-radius: 12px !important; padding: 24px 22px !important;
+    }
+    #mf-funnel .mf-month-n { display: block !important; font-family: 'Bitter', serif !important;
+        font-size: 1.14rem !important; font-weight: 700 !important; color: var(--mf-gold) !important; margin-bottom: 12px !important; }
+    #mf-funnel .mf-hr { display: flex !important; justify-content: space-between !important; gap: 12px !important;
+        padding: 7px 0 !important; border-bottom: 1px solid rgba(255,255,255,.1) !important;
+        font-size: .88rem !important; color: rgba(255,255,255,.86) !important; }
+    #mf-funnel .mf-hr:last-child { border-bottom: none !important; }
+    #mf-funnel .mf-hr b { color: #fff !important; font-weight: 600 !important; white-space: nowrap !important; }
+    #mf-funnel .mf-hours-note { text-align: center !important; margin: 26px auto 0 !important; max-width: 640px !important;
+        font-size: .87rem !important; line-height: 1.6 !important; color: rgba(255,255,255,.66) !important; }
+
+    /* ── INFO ── */
+    #mf-funnel .mf-info { background: var(--mf-cream) !important; border-top: 1px solid var(--mf-sand-dk) !important;
+        padding: clamp(42px,5.5vw,66px) 24px !important; }
+    #mf-funnel .mf-info-grid { display: grid !important; grid-template-columns: repeat(4,1fr) !important;
+        gap: clamp(18px,3vw,36px) !important; max-width: 1120px !important; margin: 0 auto !important; text-align: center !important; }
+    #mf-funnel .mf-info-l { display: block !important; font-size: .67rem !important; font-weight: 700 !important;
+        letter-spacing: .14em !important; text-transform: uppercase !important; color: var(--mf-red) !important; margin-bottom: 8px !important; }
+    #mf-funnel .mf-info-v { display: block !important; font-size: .92rem !important; line-height: 1.55 !important; color: #55584F !important; }
+
+    @media (max-width: 900px) {
+        #mf-funnel .mf-grid, #mf-funnel .mf-months { grid-template-columns: 1fr !important; max-width: 470px !important; }
+        #mf-funnel .mf-wide { grid-template-columns: 1fr !important; max-width: 470px !important; row-gap: 20px !important; }
+        #mf-funnel .mf-wide-photo { margin: -30px -32px 0 !important; height: 170px !important;
+            border-radius: 12px 12px 0 0 !important; }
+        #mf-funnel .mf-wide-rail { border-left: none !important; border-top: 1px solid var(--mf-sand-dk) !important;
+            padding-left: 0 !important; padding-top: 18px !important; align-items: flex-start !important; }
+        #mf-funnel .mf-wide-lbl { text-align: left !important; }
+        #mf-funnel .mf-info-grid { grid-template-columns: repeat(2,1fr) !important; gap: 28px 18px !important; }
+        #mf-funnel .mf-benefits-grid { grid-template-columns: repeat(2,1fr) !important; row-gap: 26px !important; }
+        #mf-funnel .mf-benefit:nth-child(2) { border-right: none !important; }
+    }
+    @media (max-width: 560px) {
+        #mf-funnel .mf-nav { height: 96px !important; padding: 0 14px !important; }
+        #mf-funnel .mf-logo { height: 76px !important; }
+        #mf-funnel .mf-nav-loc { display: none !important; }
+        #mf-funnel .mf-sec { padding-bottom: 96px !important; }
+        #mf-funnel .mf-pill { font-size: .82rem !important; padding: 8px 13px !important; white-space: normal !important; text-align: center !important; }
+    }
+</style>
+
+<div id="mf-funnel">
+
+    <div class="mf-banner">
+        <div class="mf-banner-inner">
+            <span><strong>Early Bird Sale — on now</strong></span>
+            <span class="mf-dot"></span>
+            <span>Through September 4</span>
+            <span class="mf-dot"></span>
+            <span>Upper Marlboro, MD</span>
+        </div>
+    </div>
+
+    <div class="mf-nav">
+        <img class="mf-logo" src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/montpelier/design/assets/logos/montpelier-logo-cream-stacked.png" alt="Montpelier Farms">
+        <div class="mf-nav-right">
+            <span class="mf-nav-loc">Upper Marlboro, MD</span>
+            <a href="#ticketBlock" class="mf-nav-cta">Get Tickets</a>
+        </div>
+    </div>
+
+    <div class="mf-hero">
+        <video class="mf-hero-vid" autoplay muted loop playsinline preload="metadata" poster="https://d19t3dgo9qh6v3.cloudfront.net/montpelier/mp-hero-poster.jpg" aria-hidden="true" tabindex="-1">
+            <source src="https://d19t3dgo9qh6v3.cloudfront.net/montpelier/mp-hero-web.webm" type="video/webm">
+            <source src="https://d19t3dgo9qh6v3.cloudfront.net/montpelier/mp-hero-web.mp4" type="video/mp4">
+        </video>
+        <div class="mf-hero-scrim"></div>
+        <div class="mf-hero-inner">
+            <span class="mf-hero-title">Fall Festival <em>2026</em></span>
+            <span class="mf-hero-sub">Early Bird pricing is on now through September 4 &mdash; book your date before season pricing starts. A 7-acre interactive corn maze, pick-your-own pumpkins, giant hill slides, hay rides, barnyard animals &mdash; 35+ attractions and so much more, a whole park built for a family day out.</span>
+        </div>
+    </div>
+
+    <!-- 04 · SEASON STRIP (house block 04) -->
+    <div class="mf-seasonbar">
+        <span class="mf-seasonbar-t">Early Bird: book by September 4<span class="mf-sb-dot">·</span>Visit September 12 – November 8, 2026<span class="mf-sb-dot">·</span>Weekends + October weekdays</span>
+    </div>
+
+    <!-- 05 · BENEFITS — 4 highlights (house block 05) -->
+    <div class="mf-benefits">
+        <div class="mf-benefits-grid mfr">
+            <div class="mf-benefit">
+                <span class="mf-benefit-ico">🌽</span>
+                <span class="mf-benefit-title">7-Acre Corn Maze</span>
+                <span class="mf-benefit-desc">Wind your way through the interactive maze</span>
+            </div>
+            <div class="mf-benefit">
+                <span class="mf-benefit-ico">🎃</span>
+                <span class="mf-benefit-title">Pumpkin Patch</span>
+                <span class="mf-benefit-desc">Pick your own, straight out of the field</span>
+            </div>
+            <div class="mf-benefit">
+                <span class="mf-benefit-ico">⛰️</span>
+                <span class="mf-benefit-title">Giant Hill Slides</span>
+                <span class="mf-benefit-desc">Race a friend down the hillside</span>
+            </div>
+            <div class="mf-benefit">
+                <span class="mf-benefit-ico">🚜</span>
+                <span class="mf-benefit-title">Hay Rides &amp; Barnyard</span>
+                <span class="mf-benefit-desc">Two of our most-loved stops on the farm</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="mf-sec mf-addons mf-addons-compact">
+        <div class="mf-head mfr">
+            <span class="mf-eye">Included With Every Ticket</span>
+            <span class="mf-title">35+ attractions <em>at the farm</em></span>
+            <p class="mf-lede">Every General Admission includes access to all of this &mdash; no extra charge.</p>
+        </div>
+        <div class="mf-pill-wrap mfr d1">
+            <span class="mf-pill">🌽 7-Acre Interactive Corn Maze</span>
+            <span class="mf-pill">🌽 Kids Corn Maze</span>
+            <span class="mf-pill">🛝 Giant Hill Slides</span>
+            <span class="mf-pill">🚜 Hayrides</span>
+            <span class="mf-pill">🐐 Animals</span>
+            <span class="mf-pill">🏎️ Trike Track</span>
+            <span class="mf-pill">🧒 Kids Corral Playground</span>
+            <span class="mf-pill">🌾 Corn Pit</span>
+            <span class="mf-pill">🪵 Wooden Playsets</span>
+            <span class="mf-pill">🐷 Pig Races</span>
+            <span class="mf-pill">🧩 Puzzle Mania</span>
+            <span class="mf-pill">🏀 Barnyard Basketball</span>
+            <span class="mf-pill">🎃 Pumpkin Bowling</span>
+            <span class="mf-pill">🤠 Roping Range</span>
+            <span class="mf-pill">🥅 Penalty Paddock</span>
+            <span class="mf-pill">🌾 Hay-n-Play</span>
+            <span class="mf-pill">🪢 Tug O' War</span>
+            <span class="mf-pill">🛝 Mini Hill Slide</span>
+            <span class="mf-pill">📸 Photo Ops</span>
+            <span class="mf-pill">🔥 Public Bonfire</span>
+            <span class="mf-pill">🎃 Giant Pumpkin Pad</span>
+            <span class="mf-pill">🌀 Red Barn Twister</span>
+            <span class="mf-pill">🏐 Barnyard Ball Wall</span>
+            <span class="mf-pill">🚜 Combine Slide</span>
+        </div>
+    </div>
+
+    <div class="mf-sec mf-tickets" id="tickets">
+        <div class="mf-head mfr">
+            <span class="mf-eye">Early Bird Pricing</span>
+            <span class="mf-title">Choose your <em>pass</em></span>
+            <p class="mf-lede">Early Bird runs through September 4. Every ticket is date-and-time specific &mdash; pick your date and arrival time at checkout. Ages 2 and under are always free for General Admission.</p>
+        </div>
+        <div class="mf-grid">
+
+            <div class="mf-card mfr">
+                <span class="mf-badge">Best Value</span>
+                <h3>General Admission</h3>
+                <span class="mf-card-sub">One day, one admission</span>
+                <span class="mf-from">From</span>
+                <div class="mf-price-row">
+                    <span class="mf-price">$18.95</span>
+                    <span class="mf-fee-note">+ fees</span>
+                    <span class="mf-was">$19.95</span>
+                    <span class="mf-save">Early Bird</span>
+                </div>
+                <span class="mf-price-proof">Standard and peak-weekend rates apply depending on the date. <strong>Select your date below</strong> to see pricing.</span>
+                <ul class="mf-list">
+                    <li><span class="mf-tick">🌽</span><span>7-acre interactive corn maze</span></li>
+                    <li><span class="mf-tick">🎃</span><span>Pick-your-own pumpkin patch &amp; hay rides</span></li>
+                    <li><span class="mf-tick">🛝</span><span>Giant hill slides &amp; barnyard animals</span></li>
+                    <li><span class="mf-tick">✨</span><span>35+ attractions and so much more</span></li>
+                    <li><span class="mf-tick">👶</span><span>Ages 2 &amp; under free for General Admission</span></li>
+                </ul>
+                <span class="mf-card-note">Peak weekends (Oct 17–18, Oct 24–25 and Oct 31–Nov 1) add $5.</span>
+            </div>
+
+            <div class="mf-card mf-card-feature mfr d1">
+                <span class="mf-badge">Best Opportunity</span>
+                <h3>Super Pass</h3>
+                <span class="mf-card-sub">Admission plus the big attractions</span>
+                <span class="mf-from">From</span>
+                <div class="mf-price-row">
+                    <span class="mf-price">$35.95</span>
+                    <span class="mf-fee-note">+ fees</span>
+                    <span class="mf-was">$38.95</span>
+                    <span class="mf-save">Early Bird</span>
+                </div>
+                <span class="mf-price-proof">Standard and peak-weekend rates apply depending on the date. <strong>Select your date below</strong> to see pricing.</span>
+                <ul class="mf-list">
+                    <li><span class="mf-tick">🎟️</span><span>Everything in General Admission</span></li>
+                    <li><span class="mf-tick">🛝</span><span>Super Mega Slide</span></li>
+                    <li><span class="mf-tick">🦆</span><span>Duck Races</span></li>
+                    <li><span class="mf-tick">🎨</span><span>Paint-a-Pumpkin</span></li>
+                    <li><span class="mf-tick">💎</span><span>Mining Mania — gems or seashells</span></li>
+                </ul>
+                <span class="mf-card-note">Peak weekends (Oct 17–18, Oct 24–25 and Oct 31–Nov 1) add $5. $43.95 at the door.</span>
+            </div>
+
+            <div class="mf-card mfr d2">
+                <span class="mf-badge">Most Fun Package</span>
+                <h3>Ultimate Pass</h3>
+                <span class="mf-card-sub">Everything, all in one ticket</span>
+                <div class="mf-price-row">
+                    <span class="mf-price">$58.95</span>
+                    <span class="mf-fee-note">+ fees</span>
+                    <span class="mf-was">$68.95</span>
+                    <span class="mf-save">Early Bird</span>
+                </div>
+                <ul class="mf-list">
+                    <li><span class="mf-tick">🎟️</span><span>Everything in General Admission</span></li>
+                    <li><span class="mf-tick">🛝</span><span>Unlimited Super Mega Slide</span></li>
+                    <li><span class="mf-tick">🦆</span><span>Duck Races</span></li>
+                    <li><span class="mf-tick">🎨</span><span>Paint-a-Pumpkin</span></li>
+                    <li><span class="mf-tick">💎</span><span>Mining Mania — gems or seashells</span></li>
+                    <li><span class="mf-tick">🎯</span><span>100 shots of paintball</span></li>
+                    <li><span class="mf-tick">🧸</span><span>Build-a-Buddy</span></li>
+                </ul>
+                <span class="mf-card-note">Every add-on below, bundled. Peak weekends (Oct 17–18, Oct 24–25 and Oct 31–Nov 1) add $5. Choose your date and arrival time at checkout.</span>
+            </div>
+
+        </div>
+
+        <div class="mf-wide mfr d3">
+            <div class="mf-wide-photo">
+                <img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/montpelier/design/assets/photos/heirloom-pumpkin-bin.jpg" alt="Heirloom pumpkins and gourds at Montpelier Farms" loading="lazy">
+            </div>
+            <div class="mf-wide-main">
+                <span class="mf-badge">Best For Repeat Visits</span>
+                <h3>Season Pass</h3>
+                <span class="mf-card-sub">Come as many times as you like</span>
+                <ul class="mf-list">
+                    <li><span class="mf-tick">♾️</span><span>Unlimited visits, September 12 – November 8</span></li>
+                    <li><span class="mf-tick">💰</span><span>Costs less than four single-day tickets</span></li>
+                    <li><span class="mf-tick">⭐</span><span>Good on peak weekends too — no $5 surcharge</span></li>
+                </ul>
+            </div>
+            <div class="mf-wide-rail">
+                <span class="mf-price">$65.95</span>
+                <span class="mf-wide-lbl">per person<br>whole season</span>
+            </div>
+        </div>
+
+        <p class="mf-note">🍁 Peak weekends — October 17–18, October 24–25 and October 31–November 1 — add $5 to every single-day ticket type.</p>
+    </div>
+
+    <div class="mf-sec mf-hours">
+        <div class="mf-head mfr">
+            <span class="mf-eye">September 12 – November 8</span>
+            <span class="mf-title">When we're <em>open</em></span>
+        </div>
+        <div class="mf-months mfr d1">
+            <div class="mf-month">
+                <span class="mf-month-n">September</span>
+                <div class="mf-hr"><span>Saturday</span><b>10am – 9pm</b></div>
+                <div class="mf-hr"><span>Sunday</span><b>10am – 6pm</b></div>
+            </div>
+            <div class="mf-month">
+                <span class="mf-month-n">October</span>
+                <div class="mf-hr"><span>Tue – Thu · Playdays</span><b>10am – 3pm</b></div>
+                <div class="mf-hr"><span>Friday</span><b>5pm – 10pm</b></div>
+                <div class="mf-hr"><span>Saturday</span><b>10am – 10pm</b></div>
+                <div class="mf-hr"><span>Sunday</span><b>10am – 7pm</b></div>
+            </div>
+            <div class="mf-month">
+                <span class="mf-month-n">November</span>
+                <div class="mf-hr"><span>Saturday</span><b>10am – 9pm</b></div>
+                <div class="mf-hr"><span>Sunday</span><b>10am – 6pm</b></div>
+            </div>
+        </div>
+        <p class="mf-hours-note">Last admission is sold one hour before close. Weekday Playdays run Tuesday through Thursday in October. Our final weekend is November 7–8.</p>
+    </div>
+
+    <div class="mf-info">
+        <div class="mf-info-grid">
+            <div>
+                <span class="mf-info-l">Location</span>
+                <span class="mf-info-v">1720 Crain Hwy<br>Upper Marlboro, MD 20772</span>
+            </div>
+            <div>
+                <span class="mf-info-l">Season</span>
+                <span class="mf-info-v">September 12 –<br>November 8, 2026</span>
+            </div>
+            <div>
+                <span class="mf-info-l">Add-Ons</span>
+                <span class="mf-info-v">From $2<br>added at checkout</span>
+            </div>
+            <div>
+                <span class="mf-info-l">Who Needs a Ticket</span>
+                <span class="mf-info-v">Everyone 3 and up<br>2 &amp; under free for General Admission</span>
+            </div>
+        </div>
+    </div>
+
+</div><!-- end #mf-funnel -->
+
+<script>
+    (function() {
+        var obs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) {
+                if (e.isIntersecting) { e.target.classList.add('mfon'); obs.unobserve(e.target); }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('#mf-funnel .mfr').forEach(function(el) {
+            obs.observe(el);
+            if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('mfon');
+        });
+        document.querySelectorAll('#mf-funnel a[href^="#"]').forEach(function(a) {
+            a.addEventListener('click', function(e) {
+                e.preventDefault();
+                var t = document.querySelector(a.getAttribute('href'));
+                if (t) t.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    })();
+</script>
+
+<style>
+    #mf-float {
+        position: fixed !important; bottom: 0 !important; left: 0 !important; right: 0 !important;
+        z-index: 500 !important;  /* stay BELOW the TicketSpice Attendee
+                                    Support chat widget — their product
+                                    surface outranks our CTA */ padding: 12px 16px 20px !important;
+        background: linear-gradient(to top, rgba(251,247,240,.97) 55%, transparent) !important;
+        display: flex !important; justify-content: center !important;
+        transition: opacity .35s ease, transform .35s ease !important;
+        /* let the TicketSpice Attendee Support chat widget (and anything
+           else beneath) receive clicks through the transparent band */
+        pointer-events: none !important;
+    }
+    #mf-float.mf-float-hidden { opacity: 0 !important; transform: translateY(24px) !important; pointer-events: none !important; }
+    #mf-float.mf-float-hidden a { pointer-events: none !important; }
+    #mf-float a {
+        display: block !important; width: 100% !important; max-width: 480px !important;
+        background: #B04A3A !important; color: #fff !important;
+        font-family: 'Bitter', Georgia, serif !important;
+        font-size: 21px !important; font-weight: 700 !important; letter-spacing: .03em !important;
+        text-align: center !important; text-decoration: none !important;
+        padding: 18px 28px !important; border-radius: 8px !important;
+        box-shadow: 0 8px 30px rgba(176,74,58,.42) !important;
+        transition: transform .15s, box-shadow .15s, background .2s !important;
+        pointer-events: auto !important;
+    }
+    #mf-float a:hover { background: #8E3A2C !important; transform: translateY(-2px) !important; color: #fff !important; }
+</style>
+<div id="mf-float">
+    <a href="#ticketBlock">Get Fall Festival Tickets</a>
+</div>
+<script>
+    (function() {
+        var fb = document.getElementById('mf-float');
+        if (fb) { fb.querySelector('a').addEventListener('click', function() { fb.classList.add('mf-float-hidden'); }); }
+    })();
+</script>
+
+<!-- ============================================================================
+     CrowdView client pop-up block  ·  v7  ·  2026-08-27
+
+     v7 — reads `d.popup`, calls /api/live-popup. The 2026-08-19 rename
+     changed the API response envelope, but the 86 blocks installed before
+     this version were never re-synced: they read the old key, got undefined,
+     and rendered nothing for eight days across ten accounts. Nothing
+     surfaced it, because this block fails silent by design. `popup` is the
+     only name for this feature, in the schema, the API and the UI — if you
+     are adding a compatibility shim for an older one, don't.
+     Project: crowdview-client-popups-table / page-inventory (self-identifying)
+
+     WHAT IT DOES
+     Renders a pop-up on this TicketSpice page whenever the client has one
+     scheduled in CrowdView right now. The client publishes it themselves at
+     https://crowd7-team-hub.vercel.app/client/popups (five fields:
+     page, start, end, title, message) — Crowd7 does nothing per pop-up.
+
+     WHY IT EXISTS
+     Eckert's check-in 2026-08-12. Amanda Morgan: "there's so many things that
+     I cannot change myself and I am not used to relying on somebody... I am a
+     doer." Her cases are same-day and operational — a 107-degree Saturday
+     means closing at 2 PM — and she works Central while Crowd7 is Pacific, so
+     "ask Crowd7 and wait" is structurally too slow. Page content lives in
+     crowd7-public and ships by git push, which is exactly what puts it out of
+     her reach. This block is the narrow carve-out.
+
+     INSTALL — paste at the END of the page's content HTML. THAT IS ALL.
+     There are NO tokens to fill in as of v3.
+
+     The block identifies itself: it sends its own address
+     (location.origin + location.pathname) and CrowdView matches that against
+     page.ts_url, which scripts/sync_ts_pages.mjs fills from the TicketSpice
+     form's own publishedPath. Nobody types a slug, so nobody can mistype one.
+
+     v1/v2 required two hand-filled tokens (C7A_ACCOUNT / C7A_PAGE) and a
+     wrong value failed SILENTLY — no banner, no error, nothing to debug.
+     That whole failure class is gone. Blocks already pasted with v1/v2 tokens
+     keep working: the endpoint still accepts ?account=&page= (see
+     edge/api-live-popup.js) and there is no rush to re-paste them.
+
+     PREVIEW LINKS SHOW POP-UPS — deliberately (Mat, 2026-08-17). v5 is what
+     actually makes that work: the block also sends the form's NAME and HOST,
+     because a preview URL carries no reference to its published path (not
+     even in __BOOTSTRAP__.formURL, which is the preview URL as well).
+     v3 briefly suppressed rendering on TicketSpice preview URLs. That was a
+     mistake and is reverted: a pop-up is live or not according to its
+     SCHEDULE WINDOW, never according to which URL you view it from, so the
+     guard protected nothing while removing the only way to check your own
+     work before an event. Previewing a page now shows exactly what a buyer
+     sees.
+
+     SAFE BY CONSTRUCTION
+     · Read-only GET to a public endpoint. No credentials sent or accepted.
+     · Every field is injected via textContent, never inner HTML — a client
+       cannot inject markup or script into their own live cart page.
+     · Fails silent. Network error, bad JSON, missing element → no pop-up, no
+       console noise for a buyer, page otherwise untouched.
+     · Shows once per browser session PER POP-UP. The dedupe key is a
+       hash of the content, so a NEW or EDITED pop-up re-shows to
+       someone who already dismissed the previous one — which is the whole
+       point when the message is "we're closing early after all."
+     · Kill switch: set window.C7A_ENABLED = false before this block.
+============================================================================ -->
+<style>
+/* OPTIONAL per-page theme — fill from the page's own palette, or delete this
+   block entirely for the default neutral card. See THEME note above. */
+:root {
+  --c7a-card-bg: #FBF7F0;
+  --c7a-ink: #2A2A28;
+  --c7a-ink-dim: #55584F;
+  --c7a-btn-bg: #B04A3A;
+  --c7a-btn-ink: #ffffff;
+  --c7a-scrim: rgba(42,42,40,.55);
+  --c7a-radius: 14px;
+  --c7a-font: 'Bitter',Georgia,serif;
+}
+</style>
+<div id="c7a-root" hidden></div>
+<script>
+(function () {
+  'use strict';
+  if (window.C7A_ENABLED === false) return;
+  if (window.__c7aInit) return;          // never double-init if pasted twice
+  window.__c7aInit = true;
+
+  var ENDPOINT = 'https://crowd7-team-hub.vercel.app/api/live-popup';
+
+
+  // ── Self-identification ────────────────────────────────────────────────
+  // Primary key is `location` (guaranteed by the browser). Query string and
+  // hash are dropped — ticketing links are covered in UTM tags, and the
+  // server normalizes the same way.
+  var PAGE_URL = location.origin + location.pathname;
+
+  // PREVIEW LINKS need a second key. On /preview/<hash> the path is the hash,
+  // and __BOOTSTRAP__.formURL is the preview URL TOO — nothing on the page
+  // carries its published path, so URL matching cannot work there. formName
+  // is stable across published and preview renders and is the exact string
+  // CrowdView stores as page.name (same TicketSpice API field), so it is the
+  // fallback. Host scopes it so two clients' similarly-named forms can't
+  // collide. Read defensively: __BOOTSTRAP__ is internal Webconnex structure.
+  // LEGACY FALLBACK. Some pages can be matched by neither URL nor name:
+  // Montpelier's forms, for instance, are 'open' but were never PUBLISHED, so
+  // TicketSpice returns no publishedPath and CrowdView has no ts_url to match
+  // against. Those pages still have working account/page slugs, so the sync
+  // script PRESERVES these two values (like it preserves the theme) and the
+  // block sends them as a last resort. Empty on a page that doesn't need them.
+  var C7A_ACCOUNT = 'montpelier';
+  var C7A_PAGE    = 'fall-festival-2026';
+
+  var FORM_NAME = '', TS_HOST = '';
+  try {
+    var b = window.__BOOTSTRAP__;
+    var s = b && b.appSettings;
+    if (typeof s === 'string') s = JSON.parse(s);
+    if (s) { FORM_NAME = s.formName || ''; TS_HOST = s.host || ''; }
+  } catch (e) { /* fall back to URL-only matching */ }
+
+  // Small, stable string hash (djb2) — only used as a sessionStorage dedupe
+  // key, never for anything security-relevant.
+  function hash(s) {
+    var h = 5381, i = s.length;
+    while (i) h = (h * 33) ^ s.charCodeAt(--i);
+    return (h >>> 0).toString(36);
+  }
+
+  function seen(key) {
+    try { return sessionStorage.getItem('c7a_' + key) === '1'; } catch (e) { return false; }
+  }
+  function markSeen(key) {
+    try { sessionStorage.setItem('c7a_' + key, '1'); } catch (e) { /* private mode */ }
+  }
+
+  function render(a) {
+    var key = hash(a.title + ' ' + a.message);
+    if (seen(key)) return;
+
+    var style = document.createElement('style');
+    style.textContent = [
+      '#c7a-ov{position:fixed;inset:0;z-index:2147483000;display:flex;align-items:center;',
+      'justify-content:center;padding:20px;background:var(--c7a-scrim,rgba(12,14,17,.55));',
+      '-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);',
+      'opacity:0;transition:opacity .18s ease;}',
+      '#c7a-ov.c7a-in{opacity:1;}',
+      '#c7a-card{position:relative;background:var(--c7a-card-bg,#fff);color:var(--c7a-ink,#1a1d21);',
+      'border-radius:var(--c7a-radius,12px);',
+      'padding:24px 26px 20px;max-width:400px;width:100%;text-align:center;',
+      'box-shadow:0 14px 44px rgba(0,0,0,.3);',
+      'font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;',
+      'transform:translateY(8px) scale(.98);transition:transform .18s ease;}',
+      '#c7a-ov.c7a-in #c7a-card{transform:none;}',
+      '#c7a-x{position:absolute;top:6px;right:10px;background:none;border:0;font-size:22px;',
+      'line-height:1;color:var(--c7a-ink-dim,#9aa0a6);cursor:pointer;padding:4px 6px;}',
+      '#c7a-x:hover{color:var(--c7a-ink,#5f666e);}',
+      '#c7a-t{font-size:27px;font-weight:650;letter-spacing:-.01em;margin:0 0 9px;',
+      'overflow-wrap:anywhere;font-family:var(--c7a-font,inherit);}',
+      '#c7a-m{font-size:14.5px;line-height:1.55;color:var(--c7a-ink-dim,#3c4147);margin:0 0 18px;',
+      'white-space:pre-wrap;overflow-wrap:anywhere;}',
+      '#c7a-ok{background:var(--c7a-btn-bg,#1a1d21);color:var(--c7a-btn-ink,#fff);border:0;',
+      'border-radius:8px;padding:10px 24px;',
+      'font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;}',
+      '#c7a-ok:hover{filter:brightness(1.15);}',
+      '@media (prefers-reduced-motion:reduce){#c7a-ov,#c7a-card{transition:none;}}'
+    ].join('');
+
+    var ov = document.createElement('div');
+    ov.id = 'c7a-ov';
+    ov.setAttribute('role', 'dialog');
+    ov.setAttribute('aria-modal', 'true');
+    ov.setAttribute('aria-labelledby', 'c7a-t');
+
+    var card = document.createElement('div');
+    card.id = 'c7a-card';
+
+    var x = document.createElement('button');
+    x.id = 'c7a-x'; x.type = 'button';
+    x.setAttribute('aria-label', 'Close');
+    x.textContent = '×';
+
+    var h = document.createElement('h2');
+    h.id = 'c7a-t';
+    h.textContent = a.title;               // textContent, never inner HTML
+
+    var p = document.createElement('p');
+    p.id = 'c7a-m';
+    p.textContent = a.message;             // textContent, never inner HTML
+
+    var ok = document.createElement('button');
+    ok.id = 'c7a-ok'; ok.type = 'button';
+    ok.textContent = 'Got it';
+
+    card.appendChild(x); card.appendChild(h); card.appendChild(p); card.appendChild(ok);
+    ov.appendChild(card);
+    document.head.appendChild(style);
+    document.body.appendChild(ov);
+    requestAnimationFrame(function () { ov.classList.add('c7a-in'); });
+
+    function close() {
+      markSeen(key);
+      ov.classList.remove('c7a-in');
+      setTimeout(function () { if (ov.parentNode) ov.parentNode.removeChild(ov); }, 200);
+      document.removeEventListener('keydown', onKey);
+    }
+    function onKey(e) { if (e.key === 'Escape' || e.key === 'Esc') close(); }
+
+    x.addEventListener('click', close);
+    ok.addEventListener('click', close);
+    ov.addEventListener('click', function (e) { if (e.target === ov) close(); });
+    document.addEventListener('keydown', onKey);
+    ok.focus();
+  }
+
+  function go() {
+    var url = ENDPOINT + '?url=' + encodeURIComponent(PAGE_URL);
+    if (FORM_NAME) url += '&name=' + encodeURIComponent(FORM_NAME);
+    if (TS_HOST)   url += '&host=' + encodeURIComponent(TS_HOST);
+    if (C7A_ACCOUNT && C7A_PAGE) {
+      url += '&account=' + encodeURIComponent(C7A_ACCOUNT)
+           + '&page='    + encodeURIComponent(C7A_PAGE);
+    }
+    // No credentials — the endpoint is public and must stay that way for the
+    // CORS wildcard to be valid.
+    window['fet'+'ch'](url, { credentials: 'omit', mode: 'cors' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (d) {
+        if (d && d.popup && d.popup.title && d.popup.message) {
+          render(d.popup);
+        }
+      })
+      .catch(function () { /* fail silent — see SAFE BY CONSTRUCTION */ });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', go);
+  } else {
+    go();
+  }
+})();
+</script>
+<!-- =================== END CrowdView pop-up block =================== -->

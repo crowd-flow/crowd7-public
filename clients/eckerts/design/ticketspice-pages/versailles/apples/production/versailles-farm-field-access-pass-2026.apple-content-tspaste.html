@@ -1,0 +1,1348 @@
+<!-- ════════════════════════════════════════════════════════════════════════
+     ECKERT'S VERSAILLES — APPLE SEASON · Field Access (peach→apple swap)
+     STAGED PRE-BUILD (2026-06-09, Crowdly). Cloned from versailles/peaches/.
+     PASTE-READY as of 2026-08-06 — apple imagery committed to crowd7-public in-repo
+     assets/apples/.
+     REPRICED 2026-08-26 (Amanda Morgan, card-edit batch) — Apple Fun Pass now $20
+     online / $25 at gate (Versailles only, was $16/$20). Field Access + Playground
+     now Tue–Thu $7 online / $12 gate, Fri–Sun $10 online / $15 gate — required for
+     anyone 2 and older. Standalone "Field Access" (17+) card retired. See
+     projects/eckerts-versailles-card-edits-aug26/state.md for the full change set.
+════════════════════════════════════════════════════════════════════════ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+    .bold {
+        font-weight: bold;
+    }
+
+    #sbv-funnel {
+        width: 100vw !important;
+        position: relative !important;
+        left: 50% !important;
+        right: 50% !important;
+        margin-left: -50vw !important;
+        margin-right: -50vw !important;
+        overflow: hidden !important;
+        font-family: 'Open Sans', sans-serif !important;
+        background: #FFF8F8 !important;
+        color: #1a0808 !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    /* ── BANNER ── */
+    #sbv-funnel .sbv-banner {
+        width: 100% !important;
+        background: #960E29 !important;
+        color: white !important;
+        text-align: center !important;
+        padding: 11px 20px !important;
+        font-size: 0.8rem !important;
+        letter-spacing: 0.06em !important;
+        display: block !important;
+        box-sizing: border-box !important;
+    }
+    #sbv-funnel .sbv-banner-inner {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 10px !important;
+        flex-wrap: wrap !important;
+    }
+    #sbv-funnel .sbv-banner,
+    #sbv-funnel .sbv-banner * {
+        color: #ffffff !important;
+    }
+    #sbv-funnel .sbv-dot {
+        width: 3px !important; height: 3px !important;
+        background: rgba(255,255,255,0.4) !important;
+        border-radius: 50% !important;
+        display: inline-block !important;
+        flex-shrink: 0 !important;
+    }
+
+    /* ── NAV ── */
+    #sbv-funnel .sbv-nav {
+        width: 100% !important;
+        padding: 0 40px !important;
+        height: 64px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        background: rgba(176,16,48,0.97) !important;
+        position: sticky !important;
+        top: 0 !important;
+        z-index: 100 !important;
+        box-sizing: border-box !important;
+        box-shadow: 0 2px 16px rgba(176,16,48,0.35) !important;
+    }
+    #sbv-funnel .sbv-logo-wrap {
+        display: flex !important;
+        align-items: center !important;
+        height: 44px !important; width: 160px !important;
+        flex-shrink: 0 !important; overflow: hidden !important;
+    }
+    #sbv-funnel .sbv-logo-wrap img {
+        height: 44px !important; width: 160px !important;
+        max-width: 160px !important; max-height: 44px !important;
+        object-fit: contain !important; object-position: left center !important;
+        display: block !important;
+    }
+    #sbv-funnel .sbv-nav-right {
+        display: flex !important; align-items: center !important; gap: 16px !important;
+    }
+    #sbv-funnel .sbv-nav-loc {
+        font-size: 0.78rem !important;
+        color: rgba(255,255,255,0.65) !important;
+        display: flex !important; align-items: center !important; gap: 5px !important;
+    }
+    #sbv-funnel .sbv-nav-cta {
+        background: white !important;
+        color: #B01030 !important;
+        padding: 9px 22px !important;
+        border-radius: 50px !important;
+        font-size: 0.83rem !important;
+        font-weight: 700 !important;
+        text-decoration: none !important;
+        letter-spacing: 0.03em !important;
+        transition: all 0.3s ease !important;
+        white-space: nowrap !important;
+        display: inline-block !important;
+    }
+    #sbv-funnel .sbv-nav-cta:hover {
+        background: #FFD6DC !important;
+        color: #B01030 !important;
+        text-decoration: none !important;
+    }
+
+    /* ── HERO ── */
+    #sbv-funnel .sbv-hero {
+        width: 100% !important;
+        min-height: clamp(320px, 55vw, 580px) !important;
+        position: relative !important;
+        display: flex !important;
+        align-items: flex-end !important;
+        overflow: hidden !important;
+        background-image: url('https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/apples/_MG_0207.JPG') !important;
+        background-size: cover !important;
+        background-position: center 40% !important;
+    }
+    #sbv-funnel .sbv-hero-overlay {
+        position: absolute !important;
+        inset: 0 !important;
+        background: linear-gradient(to bottom, rgba(122,0,32,0.1) 0%, rgba(122,0,32,0.15) 40%, rgba(122,0,32,0.65) 100%) !important;
+        z-index: 1 !important;
+    }
+    #sbv-funnel .sbv-hero-content {
+        position: relative !important;
+        z-index: 2 !important;
+        padding: 0 48px 48px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    #sbv-funnel .sbv-hero-eyebrow {
+        font-size: 0.7rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.2em !important;
+        text-transform: uppercase !important;
+        color: rgba(255,255,255,0.75) !important;
+        margin-bottom: 10px !important;
+        display: block !important;
+        opacity: 0;
+        animation: sbvFadeUp 0.6s ease 0.2s forwards;
+    }
+    #sbv-funnel .sbv-hero-title {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: clamp(2.6rem, 8vw, 5rem) !important;
+        font-weight: 700 !important;
+        color: white !important;
+        line-height: 1.0 !important;
+        display: block !important;
+        text-shadow: 0 2px 20px rgba(0,0,0,0.3) !important;
+        opacity: 0;
+        animation: sbvFadeUp 0.7s ease 0.35s forwards;
+    }
+    #sbv-funnel .sbv-hero-title em { font-style: italic !important; color: #FFB3BF !important; }
+    @keyframes sbvFadeUp {
+        from { opacity: 0; transform: translateY(16px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── BENEFITS ── */
+    #sbv-funnel .sbv-benefits {
+        width: 100% !important;
+        background: white !important;
+        padding: 36px 48px !important;
+        display: block !important;
+        box-sizing: border-box !important;
+        border-bottom: 1px solid rgba(176,16,48,0.08) !important;
+    }
+    #sbv-funnel .sbv-benefits-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+    #sbv-funnel .sbv-benefit {
+        text-align: center !important;
+        padding: 8px 20px !important;
+        position: relative !important;
+    }
+    #sbv-funnel .sbv-benefit:not(:last-child)::after {
+        content: '' !important;
+        position: absolute !important;
+        right: 0 !important; top: 15% !important; bottom: 15% !important;
+        width: 1px !important;
+        background: rgba(176,16,48,0.1) !important;
+    }
+    #sbv-funnel .sbv-benefit-icon { font-size: 1.7rem !important; margin-bottom: 8px !important; display: block !important; }
+    #sbv-funnel .sbv-benefit-title {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 1rem !important; font-weight: 600 !important;
+        color: #1a0808 !important; margin-bottom: 3px !important; display: block !important;
+    }
+    #sbv-funnel .sbv-benefit-desc {
+        font-size: 0.75rem !important; color: #9a6060 !important;
+        line-height: 1.4 !important; display: block !important;
+    }
+
+    /* ── GALLERY ── */
+    #sbv-funnel .sbv-gallery {
+        width: 100% !important;
+        background: #FFF8F8 !important;
+        padding: 64px 0 !important;
+        overflow: hidden !important;
+        display: block !important;
+    }
+    #sbv-funnel .sbv-gallery-header {
+        text-align: center !important;
+        padding: 0 48px !important;
+        margin-bottom: 40px !important;
+    }
+    #sbv-funnel .sbv-eye {
+        font-size: 0.7rem !important; font-weight: 600 !important;
+        letter-spacing: 0.22em !important; text-transform: uppercase !important;
+        color: #3D7A4F !important; margin-bottom: 8px !important; display: block !important;
+    }
+    #sbv-funnel .sbv-title {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: clamp(1.8rem, 4.5vw, 2.8rem) !important;
+        font-weight: 700 !important; color: #1a0808 !important;
+        line-height: 1.15 !important; display: block !important;
+    }
+    #sbv-funnel .sbv-title em { font-style: italic !important; color: #B01030 !important; }
+    #sbv-funnel .sbv-gallery-mask {
+        width: 100% !important; overflow: hidden !important;
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%) !important;
+        mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%) !important;
+    }
+    #sbv-funnel .sbv-gallery-track {
+        display: flex !important; gap: 16px !important;
+        width: max-content !important;
+        animation: sbvMarquee 24s linear infinite !important;
+        padding: 8px 0 !important;
+    }
+    #sbv-funnel .sbv-gallery-track:hover { animation-play-state: paused !important; }
+    @keyframes sbvMarquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    #sbv-funnel .sbv-gcard {
+        width: 380px !important; height: 260px !important;
+        border-radius: 20px !important; overflow: hidden !important;
+        flex-shrink: 0 !important; position: relative !important;
+        cursor: pointer !important;
+        background: linear-gradient(135deg, #FFD6DC, #FFB3BF) !important;
+        display: flex !important; align-items: center !important;
+        justify-content: center !important; font-size: 3rem !important;
+        transition: transform 0.4s ease, box-shadow 0.4s ease !important;
+    }
+    #sbv-funnel .sbv-gcard:hover {
+        transform: scale(1.03) translateY(-5px) !important;
+        box-shadow: 0 24px 50px rgba(176,16,48,0.2) !important; z-index: 2 !important;
+    }
+    #sbv-funnel .sbv-gcard img {
+        width: 100% !important; height: 100% !important;
+        object-fit: cover !important; display: block !important;
+        position: absolute !important; inset: 0 !important;
+        transition: transform 0.6s ease !important;
+    }
+    #sbv-funnel .sbv-gcard:hover img { transform: scale(1.08) !important; }
+    #sbv-funnel .sbv-gcard-label {
+        position: absolute !important; bottom: 12px !important; left: 12px !important;
+        background: rgba(26,8,8,0.55) !important; backdrop-filter: blur(8px) !important;
+        color: white !important; font-size: 0.68rem !important; letter-spacing: 0.1em !important;
+        text-transform: uppercase !important; font-weight: 700 !important;
+        padding: 5px 12px !important; border-radius: 20px !important;
+        opacity: 0 !important; transform: translateY(4px) !important;
+        transition: opacity 0.3s ease, transform 0.3s ease !important; z-index: 2 !important;
+    }
+    #sbv-funnel .sbv-gcard:hover .sbv-gcard-label { opacity: 1 !important; transform: none !important; }
+
+    /* ── TICKET CARDS ── */
+    #sbv-funnel .sbv-tickets {
+        width: 100% !important;
+        background: #FFF0F2 !important;
+        padding: 72px 48px !important;
+        display: block !important; box-sizing: border-box !important;
+    }
+    #sbv-funnel .sbv-tickets-header { text-align: center !important; margin-bottom: 48px !important; }
+    #sbv-funnel .sbv-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(0, 400px)) !important;
+        gap: 24px !important;
+        justify-content: center !important;
+        max-width: 1280px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    /* Base card */
+    #sbv-funnel .sbv-card {
+        border-radius: 20px !important;
+        padding: 36px 32px !important;
+        position: relative !important;
+        overflow: hidden !important;
+        transition: transform 0.35s ease, box-shadow 0.35s ease !important;
+        display: flex !important; flex-direction: column !important;
+    }
+    #sbv-funnel .sbv-card:hover { transform: translateY(-6px) !important; }
+
+    #sbv-funnel .sbv-card-dark {
+        background: #1a0808 !important; color: white !important;
+    }
+    #sbv-funnel .sbv-card-dark:hover { box-shadow: 0 20px 44px rgba(0,0,0,0.35) !important; }
+
+    #sbv-funnel .sbv-card-red {
+        background: #B01030 !important; color: white !important;
+    }
+    #sbv-funnel .sbv-card-red:hover { box-shadow: 0 20px 44px rgba(176,16,48,0.35) !important; }
+
+    #sbv-funnel .sbv-card-pink {
+        background: linear-gradient(145deg, #FFD6DC, #FFF0F2) !important;
+        border: 1px solid rgba(176,16,48,0.12) !important;
+    }
+    #sbv-funnel .sbv-card-pink:hover { box-shadow: 0 20px 44px rgba(176,16,48,0.12) !important; }
+
+    /* Card internals */
+    #sbv-funnel .sbv-card-badge {
+        display: inline-block !important;
+        font-size: 0.62rem !important; font-weight: 700 !important;
+        letter-spacing: 0.14em !important; text-transform: uppercase !important;
+        padding: 4px 10px !important; border-radius: 20px !important;
+        margin-bottom: 14px !important; width: fit-content !important;
+    }
+    #sbv-funnel .sbv-badge-light { background: rgba(255,255,255,0.18) !important; color: white !important; }
+    #sbv-funnel .sbv-badge-red { background: #B01030 !important; color: white !important; }
+    #sbv-funnel .sbv-badge-green { background: #2D5016 !important; color: white !important; }
+
+    #sbv-funnel .sbv-card-icon { font-size: 2.6rem !important; margin-bottom: 14px !important; display: block !important; }
+
+    #sbv-funnel .sbv-card h3 {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 1.55rem !important; font-weight: 700 !important;
+        line-height: 1.15 !important; margin-bottom: 14px !important; display: block !important;
+    }
+    #sbv-funnel .sbv-card-pink h3 { color: #1a0808 !important; }
+    #sbv-funnel .sbv-card-red h3,
+    #sbv-funnel .sbv-card-dark h3 { color: white !important; }
+
+    #sbv-funnel .sbv-card-bullets {
+        list-style: none !important; padding: 0 !important; margin: 0 0 auto !important;
+        display: flex !important; flex-direction: column !important; gap: 6px !important;
+    }
+    #sbv-funnel .sbv-card-bullets li {
+        font-size: 0.95rem !important; line-height: 1.55 !important;
+        display: flex !important; align-items: flex-start !important; gap: 8px !important;
+    }
+    #sbv-funnel .sbv-card-pink .sbv-card-bullets li { color: #5a2828 !important; }
+    #sbv-funnel .sbv-card-red .sbv-card-bullets li,
+    #sbv-funnel .sbv-card-dark .sbv-card-bullets li { color: rgba(255,255,255,0.82) !important; }
+
+    #sbv-funnel .sbv-card-price {
+        display: flex !important; align-items: baseline !important;
+        gap: 6px !important; margin-top: 20px !important; padding-top: 16px !important;
+    }
+    #sbv-funnel .sbv-card-red .sbv-card-price { border-top: 1px solid rgba(255,255,255,0.15) !important; }
+    #sbv-funnel .sbv-card-dark .sbv-card-price { border-top: 1px solid rgba(255,255,255,0.12) !important; }
+    #sbv-funnel .sbv-card-pink .sbv-card-price { border-top: 1px solid rgba(176,16,48,0.1) !important; }
+
+    #sbv-funnel .sbv-price-num {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 2.8rem !important; font-weight: 700 !important; line-height: 1 !important;
+    }
+    #sbv-funnel .sbv-card-pink .sbv-price-num { color: #B01030 !important; }
+    #sbv-funnel .sbv-card-red .sbv-price-num { color: #FFD6DC !important; }
+    #sbv-funnel .sbv-card-dark .sbv-price-num { color: #F5D080 !important; }
+
+    #sbv-funnel .sbv-price-label {
+        font-size: 0.88rem !important; line-height: 1.4 !important;
+    }
+    #sbv-funnel .sbv-card-pink .sbv-price-label { color: #aaa !important; }
+    #sbv-funnel .sbv-card-red .sbv-price-label,
+    #sbv-funnel .sbv-card-dark .sbv-price-label { color: rgba(255,255,255,0.5) !important; }
+
+    #sbv-funnel .sbv-price-slash {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 2px !important;
+    }
+    #sbv-funnel .sbv-price-was {
+        font-size: 0.85rem !important;
+        font-weight: 600 !important;
+        text-decoration: line-through !important;
+        opacity: 0.45 !important;
+        line-height: 1 !important;
+        display: block !important;
+    }
+    #sbv-funnel .sbv-card-red .sbv-price-was,
+    #sbv-funnel .sbv-card-dark .sbv-price-was { color: rgba(255,255,255,0.7) !important; }
+    #sbv-funnel .sbv-card-pink .sbv-price-was { color: #B01030 !important; }
+    #sbv-funnel .sbv-price-online {
+        font-size: 0.72rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.08em !important;
+        text-transform: uppercase !important;
+        display: block !important;
+        opacity: 0.6 !important;
+    }
+    #sbv-funnel .sbv-card-red .sbv-price-online,
+    #sbv-funnel .sbv-card-dark .sbv-price-online { color: rgba(255,255,255,0.8) !important; }
+    #sbv-funnel .sbv-card-pink .sbv-price-online { color: #B01030 !important; }
+    /* Slashed pricing rows for playground card */
+    #sbv-funnel .sbv-price-row-slash {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1px !important;
+        text-align: right !important;
+        flex-shrink: 0 !important;
+    }
+    #sbv-funnel .sbv-price-row-was {
+        font-size: 0.78rem !important;
+        font-weight: 600 !important;
+        text-decoration: line-through !important;
+        color: rgba(255,255,255,0.35) !important;
+        line-height: 1 !important;
+        display: block !important;
+    }
+    /* Slashed pricing */
+    #sbv-funnel .sbv-price-slash {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 2px !important;
+        justify-content: center !important;
+    }
+    #sbv-funnel .sbv-price-online {
+        font-size: 0.68rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.1em !important;
+        text-transform: uppercase !important;
+        display: block !important;
+    }
+    #sbv-funnel .sbv-card-red .sbv-price-online,
+    #sbv-funnel .sbv-card-dark .sbv-price-online { color: rgba(255,255,255,0.55) !important; }
+    #sbv-funnel .sbv-card-pink .sbv-price-online { color: #B01030 !important; opacity: 0.6 !important; }
+    #sbv-funnel .sbv-price-was {
+        font-size: 0.85rem !important;
+        font-weight: 600 !important;
+        text-decoration: line-through !important;
+        display: block !important;
+        line-height: 1 !important;
+    }
+    #sbv-funnel .sbv-card-red .sbv-price-was,
+    #sbv-funnel .sbv-card-dark .sbv-price-was { color: rgba(255,255,255,0.4) !important; }
+    #sbv-funnel .sbv-card-pink .sbv-price-was { color: rgba(176,16,48,0.4) !important; }
+    /* Slashed rows for playground card */
+    #sbv-funnel .sbv-price-row-slash {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-end !important;
+        gap: 2px !important;
+        flex-shrink: 0 !important;
+    }
+    #sbv-funnel .sbv-price-row-was {
+        font-size: 0.75rem !important;
+        font-weight: 600 !important;
+        text-decoration: line-through !important;
+        color: rgba(255,255,255,0.3) !important;
+        display: block !important;
+        line-height: 1 !important;
+    }
+
+    #sbv-funnel .sbv-card-note {
+        font-size: 0.72rem !important; font-style: italic !important;
+        margin-top: 10px !important; display: block !important; line-height: 1.5 !important;
+    }
+    #sbv-funnel .sbv-card-red .sbv-card-note,
+    #sbv-funnel .sbv-card-dark .sbv-card-note { color: rgba(255,255,255,0.4) !important; }
+    #sbv-funnel .sbv-card-pink .sbv-card-note { color: #bbb !important; }
+
+    /* Pricing rows inside field access cards */
+    #sbv-funnel .sbv-price-rows {
+        margin-top: 20px !important; padding-top: 16px !important;
+        border-top: 1px solid rgba(176,16,48,0.1) !important;
+    }
+    #sbv-funnel .sbv-price-row {
+        display: flex !important; justify-content: space-between !important;
+        align-items: center !important; padding: 12px 0 !important;
+    }
+    #sbv-funnel .sbv-price-row:not(:last-child) { border-bottom: 1px solid rgba(176,16,48,0.07) !important; }
+    #sbv-funnel .sbv-price-row-label {
+        font-family: 'Zilla Slab', serif !important;
+        font-size: 1rem !important; font-weight: 700 !important; color: #1a0808 !important;
+        display: block !important; line-height: 1.2 !important;
+    }
+    #sbv-funnel .sbv-price-row-sub {
+        font-size: 0.82rem !important; color: #9a6060 !important; display: block !important;
+    }
+    #sbv-funnel .sbv-price-row-amt {
+        font-family: 'Zilla Slab', serif !important;
+        font-size: 2.4rem !important; font-weight: 700 !important;
+        color: #B01030 !important; flex-shrink: 0 !important;
+    }
+
+    /* Split card — two stacked halves in one grid cell (same product, one variable).
+       See crowd7/data/clients/_patterns/ticket-card-grid-three-max.md */
+    #sbv-funnel .sbv-card-half { display: block !important; }
+    #sbv-funnel .sbv-card-half-title {
+        font-size: 0.72rem !important; font-weight: 700 !important;
+        letter-spacing: 0.08em !important; text-transform: uppercase !important;
+        color: rgba(255,255,255,0.55) !important;
+        margin-bottom: 10px !important; display: block !important;
+    }
+    #sbv-funnel .sbv-card-half-b { margin-top: 24px !important; }
+
+    /* ── MEGA SLIDE CALLOUT ── */
+    #sbv-funnel .sbv-slide {
+        width: 100% !important;
+        background: #FFF8F8 !important;
+        padding: 44px 48px !important;
+        box-sizing: border-box !important;
+        display: block !important;
+        border-top: 1px solid rgba(176,16,48,0.08) !important;
+    }
+    #sbv-funnel .sbv-slide-inner {
+        max-width: 760px !important;
+        margin: 0 auto !important;
+        background: white !important;
+        border-radius: 18px !important;
+        padding: 32px 36px !important;
+        border: 1px solid rgba(176,16,48,0.1) !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 28px !important;
+    }
+    #sbv-funnel .sbv-slide-icon { font-size: 3rem !important; flex-shrink: 0 !important; }
+    #sbv-funnel .sbv-slide-text h4 {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 1.3rem !important; font-weight: 700 !important;
+        color: #1a0808 !important; margin-bottom: 6px !important; display: block !important;
+    }
+    #sbv-funnel .sbv-slide-text p {
+        font-size: 0.88rem !important; color: #7a4040 !important;
+        line-height: 1.6 !important; display: block !important; margin: 0 !important;
+    }
+
+    /* ── FALL BONFIRE CARD (Versailles-only — 4th card in the main ticket grid) ── */
+    /* Bonfire banner — full-width skinny card BELOW the 3-card grid (Mat 2026-08-06).
+       Image left, details right, price rail far right. Spans every grid column, so the
+       grid itself stays at THREE cards per _patterns/ticket-card-grid-three-max.md. */
+    #sbv-funnel .sbv-bonfire-card {
+        grid-column: 1 / -1 !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 28px !important;
+        padding: 22px 26px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        margin-top: 4px !important;
+    }
+    #sbv-funnel .sbv-bonfire-img {
+        width: 240px !important;
+        flex: 0 0 240px !important;
+        aspect-ratio: 4 / 3 !important;
+        object-fit: cover !important;
+        border-radius: 14px !important;
+        display: block !important;
+        margin-bottom: 0 !important;
+    }
+    #sbv-funnel .sbv-bonfire-body { flex: 1 1 auto !important; min-width: 0 !important; }
+    #sbv-funnel .sbv-bonfire-body h3 { margin-bottom: 10px !important; }
+    #sbv-funnel .sbv-bonfire-bullets {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 2px 24px !important;
+        margin-bottom: 0 !important;
+    }
+    #sbv-funnel .sbv-bonfire-cta {
+        flex: 0 0 auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-end !important;
+        text-align: right !important;
+        padding-left: 26px !important;
+        border-left: 1px solid rgba(255,255,255,0.14) !important;
+    }
+    #sbv-funnel .sbv-bonfire-cta .sbv-card-price { margin-bottom: 4px !important; }
+    @media (max-width: 900px) {
+        #sbv-funnel .sbv-bonfire-card { flex-direction: column !important; align-items: stretch !important; gap: 18px !important; }
+        #sbv-funnel .sbv-bonfire-img { width: 100% !important; flex: 0 0 auto !important; aspect-ratio: 16 / 9 !important; }
+        #sbv-funnel .sbv-bonfire-bullets { grid-template-columns: 1fr !important; }
+        #sbv-funnel .sbv-bonfire-cta {
+            align-items: flex-start !important; text-align: left !important;
+            padding-left: 0 !important; border-left: none !important;
+            border-top: 1px solid rgba(255,255,255,0.14) !important; padding-top: 14px !important;
+        }
+    }
+    #sbv-funnel .sbv-bonfire-callout {
+        font-size: 0.85rem !important;
+        font-weight: 700 !important;
+        color: #F5D080 !important;
+        background: rgba(245,208,128,0.12) !important;
+        border: 1px solid rgba(245,208,128,0.3) !important;
+        border-radius: 10px !important;
+        padding: 10px 14px !important;
+        margin: 0 0 16px !important;
+        line-height: 1.4 !important;
+        display: block !important;
+    }
+
+    /* ── FAMILY & FRIENDS PACKAGE (Versailles-only) ──
+       PROMOTED 2026-08-26 (Mat directive, chat) from a full-width banner below the grid
+       into the 3rd slot of the main ticket grid — the slot freed when the standalone
+       "Field Access" card was retired the same day. Rationale (Mat, verbatim): "let's
+       actually take the family and friends package and let's put that up where the other
+       one was removed. So it's still a three card style, with the bonfires card underneath
+       it. I think that would make the page just flow better."
+       So this is now a NORMAL vertical card (Apple Fun Pass / Field Access + Playground
+       shape), NOT a banner: no grid-column span, column flex, full-width image, single-
+       column bullets, CTA divided by a top border rather than a left border. The Fall
+       Bonfire card keeps the banner shape and now sits alone beneath the 3-card row —
+       still compliant with crowd7/data/clients/_patterns/ticket-card-grid-three-max.md
+       ("full-width banner below the grid"). ── */
+    #sbv-funnel .sbv-family-card {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 0 !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    #sbv-funnel .sbv-family-img {
+        width: 100% !important;
+        flex: 0 0 auto !important;
+        aspect-ratio: 16 / 9 !important;
+        object-fit: cover !important;
+        border-radius: 14px !important;
+        display: block !important;
+        margin-bottom: 16px !important;
+    }
+    #sbv-funnel .sbv-family-body { flex: 1 1 auto !important; min-width: 0 !important; }
+    #sbv-funnel .sbv-family-body h3 { margin-bottom: 10px !important; }
+    #sbv-funnel .sbv-family-bullets {
+        display: block !important;
+        margin-bottom: 0 !important;
+    }
+    #sbv-funnel .sbv-family-cta {
+        flex: 0 0 auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        text-align: left !important;
+        padding-left: 0 !important;
+        padding-top: 16px !important;
+        margin-top: 16px !important;
+        border-left: 0 !important;
+        border-top: 1px solid rgba(176,16,48,0.12) !important;
+    }
+    #sbv-funnel .sbv-family-cta .sbv-card-price { margin-bottom: 4px !important; }
+    @media (max-width: 900px) {
+        /* 2026-08-26: the family card is now a normal vertical grid card at ALL widths
+           (promoted out of banner shape), so these former banner->stack overrides are
+           already the base state. gap forced back to 0 so it doesn't reintroduce a gap
+           the base rule deliberately removed. */
+        #sbv-funnel .sbv-family-card { flex-direction: column !important; align-items: stretch !important; gap: 0 !important; }
+        #sbv-funnel .sbv-family-img { width: 100% !important; flex: 0 0 auto !important; aspect-ratio: 16 / 9 !important; }
+        #sbv-funnel .sbv-family-cta {
+            align-items: flex-start !important; text-align: left !important;
+            padding-left: 0 !important; border-left: none !important;
+            border-top: 1px solid rgba(176,16,48,0.12) !important; padding-top: 14px !important;
+        }
+    }
+
+    /* ── INFO ROW ── */
+    #sbv-funnel .sbv-info {
+        width: 100% !important;
+        background: #B01030 !important;
+        padding: 0 !important; display: block !important; box-sizing: border-box !important;
+    }
+    #sbv-funnel .sbv-info-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+    #sbv-funnel .sbv-info-item {
+        text-align: center !important;
+        padding: 28px 20px !important;
+        position: relative !important;
+    }
+    #sbv-funnel .sbv-info-item:not(:last-child)::after {
+        content: '' !important; position: absolute !important;
+        right: 0 !important; top: 20% !important; bottom: 20% !important;
+        width: 1px !important; background: rgba(255,255,255,0.15) !important;
+    }
+    #sbv-funnel .sbv-info-icon { font-size: 1.5rem !important; display: block !important; margin-bottom: 6px !important; }
+    #sbv-funnel .sbv-info-label {
+        font-size: 0.62rem !important; font-weight: 700 !important;
+        letter-spacing: 0.16em !important; text-transform: uppercase !important;
+        color: rgba(255,255,255,0.55) !important; display: block !important; margin-bottom: 4px !important;
+    }
+    #sbv-funnel .sbv-info-value {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 0.95rem !important; font-weight: 600 !important;
+        color: white !important; display: block !important; line-height: 1.3 !important;
+    }
+    #sbv-funnel .sbv-info-link {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 0.88rem !important; font-weight: 600 !important;
+        color: #FFD6DC !important; display: block !important;
+        line-height: 1.3 !important; text-decoration: underline !important;
+    }
+    #sbv-funnel .sbv-info-link:hover { color: white !important; }
+
+    /* ── REVEAL ── */
+    #sbv-funnel .sbvr {
+        opacity: 0 !important; transform: translateY(28px) !important;
+        transition: opacity 0.7s cubic-bezier(.16,1,.3,1), transform 0.7s cubic-bezier(.16,1,.3,1) !important;
+    }
+    #sbv-funnel .sbvr.sbvon { opacity: 1 !important; transform: none !important; }
+    #sbv-funnel .sbvr.d1 { transition-delay: 0.1s !important; }
+    #sbv-funnel .sbvr.d2 { transition-delay: 0.2s !important; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1000px) {
+        #sbv-funnel .sbv-grid { grid-template-columns: repeat(2, minmax(0, 420px)) !important; }
+    }
+    @media (max-width: 860px) {
+        #sbv-funnel .sbv-nav { padding: 0 24px !important; }
+        #sbv-funnel .sbv-benefits { padding: 32px 24px !important; }
+        #sbv-funnel .sbv-tickets { padding: 56px 24px !important; }
+        #sbv-funnel .sbv-slide { padding: 36px 24px !important; }
+        #sbv-funnel .sbv-slide-inner { flex-direction: column !important; text-align: center !important; gap: 16px !important; }
+        #sbv-funnel .sbv-info-grid { grid-template-columns: 1fr 1fr !important; }
+        #sbv-funnel .sbv-info-item:nth-child(2n)::after { display: none !important; }
+        #sbv-funnel .sbv-gallery-header { padding: 0 24px !important; }
+        #sbv-funnel .sbv-gcard { width: 300px !important; height: 210px !important; }
+    }
+    @media (max-width: 560px) {
+        #sbv-funnel .sbv-nav { padding: 0 16px !important; }
+        #sbv-funnel .sbv-nav-loc { display: none !important; }
+        #sbv-funnel .sbv-benefits { padding: 24px 16px !important; }
+        #sbv-funnel .sbv-benefits-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 14px 0 !important; }
+        #sbv-funnel .sbv-benefit:nth-child(2n)::after { display: none !important; }
+        #sbv-funnel .sbv-tickets { padding: 48px 16px !important; }
+        #sbv-funnel .sbv-grid { grid-template-columns: 1fr !important; }
+        #sbv-funnel .sbv-slide { padding: 32px 16px !important; }
+        #sbv-funnel .sbv-gallery-header { padding: 0 16px !important; }
+        #sbv-funnel .sbv-gcard { width: 240px !important; height: 170px !important; }
+    }
+</style>
+
+<div id="sbv-funnel">
+
+    <!-- BANNER -->
+    <div class="sbv-banner">
+        <div class="sbv-banner-inner">
+            <span>🍎 <strong>Eckert's Versailles Orchard</strong></span>
+            <span class="sbv-dot"></span>
+            <span>Pick-Your-Own Apples · 2026</span>
+            <span class="sbv-dot"></span>
+            <span>Tue – Sun · Last Wagon 5 PM</span>
+        </div>
+    </div>
+
+    <!-- NAV -->
+    <div class="sbv-nav">
+        <div class="sbv-logo-wrap">
+            <img src="https://s3.amazonaws.com/uploads.webconnex.com/147655%2F1771785967751-Untitled+design+%28100%29.png" alt="Eckert's Farm">
+        </div>
+        <div class="sbv-nav-right">
+            <div class="sbv-nav-loc">
+                <svg width="12" height="12" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                    <circle cx="12" cy="11" r="3"/>
+                </svg>
+                Versailles, KY
+            </div>
+            <a href="#ticketBlock" class="sbv-nav-cta">Get Tickets</a>
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <div class="sbv-hero">
+        <div class="sbv-hero-overlay"></div>
+        <div class="sbv-hero-content">
+            <span class="sbv-hero-eyebrow">Eckert's Versailles Orchard · Versailles, KY</span>
+            <span class="sbv-hero-title">Apple<br><em>Season</em></span>
+        </div>
+    </div>
+
+    <!-- BENEFITS -->
+    <div class="sbv-benefits">
+        <div class="sbv-benefits-grid">
+            <div class="sbv-benefit">
+                <span class="sbv-benefit-icon">🚜</span>
+                <span class="sbv-benefit-title">Tractor Wagon Ride</span>
+                <span class="sbv-benefit-desc">Out to the orchard &amp; back to the store</span>
+            </div>
+            <div class="sbv-benefit">
+                <span class="sbv-benefit-icon">🍎</span>
+                <span class="sbv-benefit-title">Pick-Your-Own Apples</span>
+                <span class="sbv-benefit-desc">Fresh from the tree to your basket</span>
+            </div>
+            <div class="sbv-benefit">
+                <span class="sbv-benefit-icon">🛝</span>
+                <span class="sbv-benefit-title">Playground &amp; Mega Slide</span>
+                <span class="sbv-benefit-desc">Open Tue–Sun · Mega Slide Sat &amp; Sun</span>
+            </div>
+            <div class="sbv-benefit">
+                <span class="sbv-benefit-icon">🕔</span>
+                <span class="sbv-benefit-title">Open Tue – Sun</span>
+                <span class="sbv-benefit-desc">Last wagon 5 PM · Farm closes 6 PM</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- GALLERY -->
+    <div class="sbv-gallery">
+        <div class="sbv-gallery-header sbvr">
+            <span class="sbv-eye">On the Farm</span>
+            <span class="sbv-title">A day at the <em>orchard</em></span>
+        </div>
+        <div class="sbv-gallery-mask">
+            <div class="sbv-gallery-track">
+                <div class="sbv-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/apples/2-baskets-of-apples.jpg" alt="Fresh-picked apples, red and green" loading="lazy"><div class="sbv-gcard-label">Farm Fresh</div></div>
+                <div class="sbv-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/apples/AdobeStock_236878093.jpeg" alt="Rows of apple trees heavy with fruit" loading="lazy"><div class="sbv-gcard-label">On the Tree</div></div>
+                <div class="sbv-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/apples/20160817_084732-1.jpg" alt="Kids showing off their apple haul" loading="lazy"><div class="sbv-gcard-label">Family Day</div></div>
+                <div class="sbv-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/apples/438.jpg" alt="A little picker reaching for an apple" loading="lazy"><div class="sbv-gcard-label">Little Pickers</div></div>
+                <div class="sbv-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/apples/apples.jpg" alt="Mom and daughter in the orchard together" loading="lazy"><div class="sbv-gcard-label">Pick Together</div></div>
+                <!-- Duplicate for loop -->
+                <div class="sbv-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/apples/2-baskets-of-apples.jpg" alt="Fresh-picked apples, red and green" loading="lazy"><div class="sbv-gcard-label">Farm Fresh</div></div>
+                <div class="sbv-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/apples/AdobeStock_236878093.jpeg" alt="Rows of apple trees heavy with fruit" loading="lazy"><div class="sbv-gcard-label">On the Tree</div></div>
+                <div class="sbv-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/apples/20160817_084732-1.jpg" alt="Kids showing off their apple haul" loading="lazy"><div class="sbv-gcard-label">Family Day</div></div>
+                <div class="sbv-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/apples/438.jpg" alt="A little picker reaching for an apple" loading="lazy"><div class="sbv-gcard-label">Little Pickers</div></div>
+                <div class="sbv-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/apples/apples.jpg" alt="Mom and daughter in the orchard together" loading="lazy"><div class="sbv-gcard-label">Pick Together</div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TICKETS -->
+    <div class="sbv-tickets" id="tickets">
+        <div class="sbv-tickets-header sbvr">
+            <span class="sbv-eye">Field Access &amp; Passes</span>
+            <span class="sbv-title">Pick your <em>perfect pass</em></span>
+        </div>
+        <div class="sbv-grid">
+
+            <!-- APPLE FUN PASS — REPRICED 2026-08-26 (Amanda Morgan): $20 online / $25 at
+                 gate, Versailles only (Belleville runs its own Apple Fun Pass on a separate
+                 page and is out of scope here). -->
+            <div class="sbv-card sbv-card-red sbvr">
+                <span class="sbv-card-badge sbv-badge-light">Most Popular</span>
+                <span class="sbv-card-icon">🍎</span>
+                <h3>Apple Fun Pass</h3>
+                <ul class="sbv-card-bullets">
+                    <li>🧺 Playground + Field Access included</li>
+                    <li>🍎 2 lbs of pick-your-own apples</li>
+                    <li>🍩 1 cider donut</li>
+                    <li>🥤 1 cup of sweet cider</li>
+                </ul>
+                <div class="sbv-card-price">
+                    <span class="sbv-price-num">$20</span>
+                    <div class="sbv-price-slash">
+                        <span class="sbv-price-online">Online Price</span>
+                        <span class="sbv-price-was">$25 at gate</span>
+                    </div>
+                </div>
+                <span class="sbv-card-note">Versailles Orchard · apple season only</span>
+            </div>
+
+            <!-- FIELD ACCESS + PLAYGROUND — the standalone "Field Access" (17+) half was
+                 RETIRED 2026-08-26 (Amanda: no live purchase path currently exists for it,
+                 only sunflower passes are sellable right now). Now a single ticket required
+                 for anyone 2 and older. New pricing brackets same date: Tue–Thu $7 online /
+                 $12 gate, Fri–Sun $10 online / $15 gate (Friday moved OUT of the weekday
+                 bracket into the weekend one — cart-side already reflects this, Amanda). The
+                 SUPERSEDED SAME DAY: the grid was briefly dropped to repeat(2,...) to
+                 avoid an empty 3rd slot, then restored to repeat(3,...) when Mat promoted
+                 the Family & Friends card up into that slot -- the row is a full 3 again,
+                 with the Fall Bonfire banner beneath it. See crowd7/data/clients/
+                 _patterns/ticket-card-grid-three-max.md. -->
+            <div class="sbv-card sbv-card-dark sbvr d1">
+                <span class="sbv-card-badge sbv-badge-green">Most Fun</span>
+                <span class="sbv-card-icon">🛝</span>
+                <h3>Field Access + Playground</h3>
+                <ul class="sbv-card-bullets">
+                    <li>🚜 Wagon ride to the orchard &amp; back</li>
+                    <li>🛝 Playground access</li>
+                    <li style="flex-wrap: wrap !important;">🎢 Includes: Mega Slide, Jump Pillow, Corn maze, Animals for Petting, Pedal Cars and More.<span class="bold" style="flex: 0 0 100% !important; width: 100% !important; margin-top: 2px !important;">Must be 42" to ride mega slide.</span></li>
+                    <li>🌱 Required for anyone 2 and older</li>
+                </ul>
+                <div class="sbv-price-rows" style="border-top: 1px solid rgba(255,255,255,0.12) !important;">
+                    <div class="sbv-price-row">
+                        <div>
+                            <span class="sbv-price-row-label" style="color: white !important;">Tue – Thu</span>
+                            <span class="sbv-price-row-sub" style="color: rgba(255,255,255,0.5) !important;">10 AM – 5 PM</span>
+                        </div>
+                        <div class="sbv-price-row-slash">
+                            <span class="sbv-price-row-was">$12 gate</span>
+                            <span class="sbv-price-row-amt" style="color: #F5D080 !important;">$7</span>
+                        </div>
+                    </div>
+                    <div class="sbv-price-row">
+                        <div>
+                            <span class="sbv-price-row-label" style="color: white !important;">Fri – Sun</span>
+                            <span class="sbv-price-row-sub" style="color: rgba(255,255,255,0.5) !important;">Mega Slide open Sat &amp; Sun</span>
+                        </div>
+                        <div class="sbv-price-row-slash">
+                            <span class="sbv-price-row-was">$15 gate</span>
+                            <span class="sbv-price-row-amt" style="color: #F5D080 !important;">$10</span>
+                        </div>
+                    </div>
+                </div>
+                <span class="sbv-card-note">Per person · + applicable fees at checkout</span>
+            </div>
+
+            <!-- FAMILY & FRIENDS PACKAGE — Versailles-only, banner card below the grid
+                 (Mat directive 2026-08-12, cycle-2 Ask 4: "a little combination of HTML
+                 stuff ... plus some cart things" — ship the card here, the discount rule
+                 itself is a native-cart change, see artifacts/native-cart-brief.md).
+                 4 admission tickets at the Field Access + Playground weekend rate
+                 ($10 x 4 = $40), 25% off = $30. CORRECTED 2026-08-13 — Amanda flagged
+                 (email "Versailles Farm Field Access Page", 8/13 07:27) that the actual
+                 weekend rate is $10, not the $7 online-discount figure the price row
+                 above displays; see native-cart-brief.md for the reconciliation and the
+                 open question on whether that $7 online figure is itself stale. Same
+                 full-width banner shape as the Fall Bonfire card, per
+                 crowd7/data/clients/_patterns/ticket-card-grid-three-max.md. Gated to
+                 not display before 2026-09-12 ET — see the reveal script below the
+                 ticket grid. -->
+            <div id="sbv-family-card" class="sbv-family-card sbv-card sbv-card-pink sbvr d2">
+                <img class="sbv-family-img" src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/apples/20160817_084732-1.jpg" alt="A group of kids showing off their apple haul in the orchard">
+                <div class="sbv-family-body">
+                    <span class="sbv-card-badge sbv-badge-red">Save 25%</span>
+                    <span class="sbv-card-badge sbv-badge-green" id="sbv-family-soon">Starting September 12th</span>
+                    <h3>Family &amp; Friends Package</h3>
+                    <ul class="sbv-card-bullets sbv-family-bullets">
+                        <li>🎟️ 4 admission tickets — Field Access + Playground, weekend rate</li>
+                        <li>👨‍👩‍👧‍👦 Great for a group outing with family or friends</li>
+                        <li>🍎 Field access to pick-your-own apples for the whole group</li>
+                        <li>🛝 Playground &amp; Mega Slide access (Sat &amp; Sun, 10 AM–5 PM)</li>
+                    </ul>
+                </div>
+                <div class="sbv-family-cta">
+                    <div class="sbv-card-price">
+                        <span class="sbv-price-num">$30</span>
+                        <div class="sbv-price-slash">
+                            <span class="sbv-price-online">For 4 Tickets</span>
+                            <span class="sbv-price-was">$40 individually</span>
+                        </div>
+                    </div>
+                    <span class="sbv-card-note">Priced at the weekend admission rate · ages 2–16 · + applicable fees</span>
+                </div>
+            </div>
+
+            <!-- FALL BONFIRE — Versailles-only, merged into the main ticket grid as the 4th
+                 card (Mat directive 2026-08-06: the standalone section below the grid read as
+                 an orphaned card at a 3-col width; folding it into the grid as card 4 fixes the
+                 layout AND better serves Amanda's findability ask — it's one of the equal
+                 purchase options, not a bolted-on section). Bryan's constraint: keep the page
+                 apple/fall-dominant — this stays one card among four, not a bonfire-first
+                 section. Ticket details confirmed 2026-08-06 from Mat's screenshot of the live
+                 TS "Bonfire Site Rental" block — see projects/eckerts-fall-crop-switchover/state.md WS3.
+                 NOT hard-coding the live "38 remaining" inventory count as a scarcity signal —
+                 it would go stale the moment it sells. Flagged to Mat; can add later if TS
+                 exposes a live-inventory embed for this page. -->
+            <div class="sbv-bonfire-card sbv-card sbv-card-dark sbvr d2">
+                <img class="sbv-bonfire-img" src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/bonfires/bonfire-23.jpg" alt="A bonfire site with straw bale seating set up for the evening">
+                <div class="sbv-bonfire-body">
+                    <span class="sbv-card-badge sbv-badge-red">Versailles Orchard</span>
+                    <h3>Fall Bonfire Site Rental</h3>
+                    <ul class="sbv-card-bullets sbv-bonfire-bullets">
+                        <li>👥 Up to 25 guests · straw bale seating included</li>
+                        <li>🕓 Arrive as early as 4 PM · farm closes at 10 PM</li>
+                        <li>🍎 Come early for pick-your-own before the last wagon at 5 PM</li>
+                        <li>📍 First-come, first-served — specific sites can't be reserved</li>
+                        <li>🗓️ Fridays &amp; Saturdays, starting the first Friday in October</li>
+                    </ul>
+                </div>
+                <div class="sbv-bonfire-cta">
+                    <div class="sbv-card-price">
+                        <span class="sbv-price-num">$50</span>
+                        <span class="sbv-price-online">per site</span>
+                    </div>
+                    <span class="sbv-card-note">Eckert's Versailles Orchard.</span>
+                </div>
+            </div>
+
+            <div class="sbv-slide-text" style="grid-column: 1 / -1 !important; text-align: center !important;">
+                <h4>Mega Slide Now Open Weekends!</h4>
+                <p>The Mega Slide is open Saturday &amp; Sunday from 10 AM – 5 PM. The playground &amp; field access is open Tuesday through Sunday — the last wagon goes out at 5 PM. Tag us on Facebook &amp; Instagram — we'd love to see your farm-fresh memories! 📸</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- INFO ROW -->
+    <div class="sbv-info">
+        <div class="sbv-info-grid">
+            <div class="sbv-info-item">
+                <span class="sbv-info-icon">📍</span>
+                <span class="sbv-info-label">Location</span>
+                <span class="sbv-info-value">1396 Pinckard Pike<br>Versailles, KY 40383</span>
+            </div>
+            <div class="sbv-info-item">
+                <span class="sbv-info-icon">🕔</span>
+                <span class="sbv-info-label">Hours</span>
+                <span class="sbv-info-value">Tue – Sun · Open daily<br>Last wagon 5 PM · Closes 6 PM</span>
+            </div>
+            <div class="sbv-info-item">
+                <span class="sbv-info-icon">🌱</span>
+                <span class="sbv-info-label">Who Needs a Pass</span>
+                <span class="sbv-info-value">Everyone Ages 2 &amp; Up</span>
+            </div>
+            <div class="sbv-info-item">
+                <span class="sbv-info-icon">🌾</span>
+                <span class="sbv-info-label">Crop Availability</span>
+                <a href="https://eckerts.com/crop-updates/#versailles-ky-orchard" class="sbv-info-link" target="_blank">eckerts.com/crop-updates</a>
+            </div>
+        </div>
+    </div>
+
+</div><!-- end #sbv-funnel -->
+
+<script>
+    (function() {
+        var obs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) {
+                if (e.isIntersecting) { e.target.classList.add('sbvon'); obs.unobserve(e.target); }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('#sbv-funnel .sbvr').forEach(function(el) {
+            obs.observe(el);
+            if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('sbvon');
+        });
+        document.querySelectorAll('#sbv-funnel a[href^="#"]').forEach(function(a) {
+            a.addEventListener('click', function(e) {
+                e.preventDefault();
+                var t = document.querySelector(a.getAttribute('href'));
+                if (t) t.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    })();
+</script>
+
+<!-- ════ SLASH-THROUGH PRICING (TS native ticket block) ════
+     Pattern doc: /data/clients/_patterns/slash-through-pricing.md
+     Keyed on ticket <h4> NAME (not position) so it survives Action reordering.
+     REPRICED 2026-08-26 (Amanda Morgan): the standalone 17+ "Field Access" ticket is
+     retired (dropped from this map entirely); the combo bracket names/prices moved from
+     Tuesday-Friday/Saturday-Sunday to Tuesday-Thursday/Friday-Sunday to match the cart-side
+     change (Friday moved into the weekend bracket). Verify these <h4> names against the live
+     TS cart once Amanda's ticket-type rename is visible there — see state.md open asks.
+     Apple Fun Pass gate is now $25 (was $20). -->
+<script>
+(function(){
+  var GATE = {
+    "Playground Admission + Field Access (Tuesday-Thursday)": "$12.00", // online $7
+    "Playground Admission + Field Access (Friday-Sunday)": "$15.00",    // online $10
+    "Apple Fun Pass 🍎": "$25.00"                   // online $20 (repriced 2026-08-26, Amanda — Versailles only)
+  };
+  function tag(){
+    document.querySelectorAll('#ticketBlock .ticket-type').forEach(function(row){
+      var h4 = row.querySelector('h4');
+      var cost = row.querySelector('.ticket-cost');
+      if(!h4 || !cost) return;
+      var g = GATE[h4.textContent.trim()];
+      if(g) cost.setAttribute('data-gate', g);
+    });
+  }
+  var tb = document.getElementById('ticketBlock') || document.body;
+  new MutationObserver(tag).observe(tb, {childList:true, subtree:true});
+  tag();
+})();
+</script>
+<style>
+  #ticketBlock .ticket-cost[data-gate]::before{
+    content: attr(data-gate) " "; text-decoration: line-through;
+    color:#212121; font-weight:200;
+  }
+  #ticketBlock .ticket-cost[data-gate]{ color:#5db75b !important; }
+</style>
+
+<!-- FAMILY & FRIENDS PACKAGE — self-activating start-date gate (Mat directive
+     2026-08-13, Amanda's "shouldn't this start 9/12" ask). Card carries `hidden` by
+     default in the markup above; this reveals it automatically once the calendar
+     clock crosses 2026-09-12 00:00 ET — no manual future edit needed. Same
+     Intl.DateTimeFormat America/New_York EST-lock pattern as the Versailles CIJ
+     popup / Millstadt Xmas overlay (fires identically for every visitor regardless
+     of device timezone). -->
+<script>
+(function(){
+  function easternStamp(d){
+    var p = {};
+    new Intl.DateTimeFormat('en-US', {
+      timeZone: 'America/New_York', year:'numeric', month:'2-digit', day:'2-digit',
+      hour:'2-digit', minute:'2-digit', second:'2-digit', hour12:false
+    }).formatToParts(d).forEach(function(x){ p[x.type] = x.value; });
+    return p.year + p.month + p.day + (p.hour === '24' ? '00' : p.hour) + p.minute + p.second;
+  }
+  function isLive(){
+    return easternStamp(new Date()) >= '20260912000000';
+  }
+  // Bryan 2026-08-13: show the card NOW with a "Starting September 12th"
+  // label rather than hiding it until then — pre-announce, don't conceal.
+  // The gate now controls the BADGE, not the card's visibility.
+  var card = document.getElementById('sbv-family-card');
+  if (!card) return;
+  card.removeAttribute('hidden');
+  var soon = document.getElementById('sbv-family-soon');
+  if (soon && isLive()) soon.remove();
+})();
+</script>
+<!-- ============================================================================
+     CrowdView client pop-up block  ·  v7  ·  2026-08-27
+
+     v7 — reads `d.popup`, calls /api/live-popup. The 2026-08-19 rename
+     changed the API response envelope, but the 86 blocks installed before
+     this version were never re-synced: they read the old key, got undefined,
+     and rendered nothing for eight days across ten accounts. Nothing
+     surfaced it, because this block fails silent by design. `popup` is the
+     only name for this feature, in the schema, the API and the UI — if you
+     are adding a compatibility shim for an older one, don't.
+     Project: crowdview-client-popups-table / page-inventory (self-identifying)
+
+     WHAT IT DOES
+     Renders a pop-up on this TicketSpice page whenever the client has one
+     scheduled in CrowdView right now. The client publishes it themselves at
+     https://crowd7-team-hub.vercel.app/client/popups (five fields:
+     page, start, end, title, message) — Crowd7 does nothing per pop-up.
+
+     WHY IT EXISTS
+     Eckert's check-in 2026-08-12. Amanda Morgan: "there's so many things that
+     I cannot change myself and I am not used to relying on somebody... I am a
+     doer." Her cases are same-day and operational — a 107-degree Saturday
+     means closing at 2 PM — and she works Central while Crowd7 is Pacific, so
+     "ask Crowd7 and wait" is structurally too slow. Page content lives in
+     crowd7-public and ships by git push, which is exactly what puts it out of
+     her reach. This block is the narrow carve-out.
+
+     INSTALL — paste at the END of the page's content HTML. THAT IS ALL.
+     There are NO tokens to fill in as of v3.
+
+     The block identifies itself: it sends its own address
+     (location.origin + location.pathname) and CrowdView matches that against
+     page.ts_url, which scripts/sync_ts_pages.mjs fills from the TicketSpice
+     form's own publishedPath. Nobody types a slug, so nobody can mistype one.
+
+     v1/v2 required two hand-filled tokens (C7A_ACCOUNT / C7A_PAGE) and a
+     wrong value failed SILENTLY — no banner, no error, nothing to debug.
+     That whole failure class is gone. Blocks already pasted with v1/v2 tokens
+     keep working: the endpoint still accepts ?account=&page= (see
+     edge/api-live-popup.js) and there is no rush to re-paste them.
+
+     PREVIEW LINKS SHOW POP-UPS — deliberately (Mat, 2026-08-17). v5 is what
+     actually makes that work: the block also sends the form's NAME and HOST,
+     because a preview URL carries no reference to its published path (not
+     even in __BOOTSTRAP__.formURL, which is the preview URL as well).
+     v3 briefly suppressed rendering on TicketSpice preview URLs. That was a
+     mistake and is reverted: a pop-up is live or not according to its
+     SCHEDULE WINDOW, never according to which URL you view it from, so the
+     guard protected nothing while removing the only way to check your own
+     work before an event. Previewing a page now shows exactly what a buyer
+     sees.
+
+     SAFE BY CONSTRUCTION
+     · Read-only GET to a public endpoint. No credentials sent or accepted.
+     · Every field is injected via textContent, never inner HTML — a client
+       cannot inject markup or script into their own live cart page.
+     · Fails silent. Network error, bad JSON, missing element → no pop-up, no
+       console noise for a buyer, page otherwise untouched.
+     · Shows once per browser session PER POP-UP. The dedupe key is a
+       hash of the content, so a NEW or EDITED pop-up re-shows to
+       someone who already dismissed the previous one — which is the whole
+       point when the message is "we're closing early after all."
+     · Kill switch: set window.C7A_ENABLED = false before this block.
+============================================================================ -->
+<style>
+/* OPTIONAL per-page theme — fill from the page's own palette, or delete this
+   block entirely for the default neutral card. See THEME note above. */
+:root {
+  --c7a-card-bg: #FFF8F8;
+  --c7a-ink: #1a0808;
+  --c7a-ink-dim: #9a6060;
+  --c7a-btn-bg: #B01030;
+  --c7a-btn-ink: #ffffff;
+  --c7a-scrim: rgba(26,8,8,.55);
+  --c7a-radius: 16px;
+  --c7a-font: 'Zilla Slab','Times New Roman',serif;
+}
+</style>
+<div id="c7a-root" hidden></div>
+<script>
+(function () {
+  'use strict';
+  if (window.C7A_ENABLED === false) return;
+  if (window.__c7aInit) return;          // never double-init if pasted twice
+  window.__c7aInit = true;
+
+  var ENDPOINT = 'https://crowd7-team-hub.vercel.app/api/live-popup';
+
+
+  // ── Self-identification ────────────────────────────────────────────────
+  // Primary key is `location` (guaranteed by the browser). Query string and
+  // hash are dropped — ticketing links are covered in UTM tags, and the
+  // server normalizes the same way.
+  var PAGE_URL = location.origin + location.pathname;
+
+  // PREVIEW LINKS need a second key. On /preview/<hash> the path is the hash,
+  // and __BOOTSTRAP__.formURL is the preview URL TOO — nothing on the page
+  // carries its published path, so URL matching cannot work there. formName
+  // is stable across published and preview renders and is the exact string
+  // CrowdView stores as page.name (same TicketSpice API field), so it is the
+  // fallback. Host scopes it so two clients' similarly-named forms can't
+  // collide. Read defensively: __BOOTSTRAP__ is internal Webconnex structure.
+  // LEGACY FALLBACK. Some pages can be matched by neither URL nor name:
+  // Montpelier's forms, for instance, are 'open' but were never PUBLISHED, so
+  // TicketSpice returns no publishedPath and CrowdView has no ts_url to match
+  // against. Those pages still have working account/page slugs, so the sync
+  // script PRESERVES these two values (like it preserves the theme) and the
+  // block sends them as a last resort. Empty on a page that doesn't need them.
+  var C7A_ACCOUNT = 'eckerts';
+  var C7A_PAGE    = 'versailles-ky';
+
+  var FORM_NAME = '', TS_HOST = '';
+  try {
+    var b = window.__BOOTSTRAP__;
+    var s = b && b.appSettings;
+    if (typeof s === 'string') s = JSON.parse(s);
+    if (s) { FORM_NAME = s.formName || ''; TS_HOST = s.host || ''; }
+  } catch (e) { /* fall back to URL-only matching */ }
+
+  // Small, stable string hash (djb2) — only used as a sessionStorage dedupe
+  // key, never for anything security-relevant.
+  function hash(s) {
+    var h = 5381, i = s.length;
+    while (i) h = (h * 33) ^ s.charCodeAt(--i);
+    return (h >>> 0).toString(36);
+  }
+
+  function seen(key) {
+    try { return sessionStorage.getItem('c7a_' + key) === '1'; } catch (e) { return false; }
+  }
+  function markSeen(key) {
+    try { sessionStorage.setItem('c7a_' + key, '1'); } catch (e) { /* private mode */ }
+  }
+
+  function render(a) {
+    var key = hash(a.title + ' ' + a.message);
+    if (seen(key)) return;
+
+    var style = document.createElement('style');
+    style.textContent = [
+      '#c7a-ov{position:fixed;inset:0;z-index:2147483000;display:flex;align-items:center;',
+      'justify-content:center;padding:20px;background:var(--c7a-scrim,rgba(12,14,17,.55));',
+      '-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);',
+      'opacity:0;transition:opacity .18s ease;}',
+      '#c7a-ov.c7a-in{opacity:1;}',
+      '#c7a-card{position:relative;background:var(--c7a-card-bg,#fff);color:var(--c7a-ink,#1a1d21);',
+      'border-radius:var(--c7a-radius,12px);',
+      'padding:24px 26px 20px;max-width:400px;width:100%;text-align:center;',
+      'box-shadow:0 14px 44px rgba(0,0,0,.3);',
+      'font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;',
+      'transform:translateY(8px) scale(.98);transition:transform .18s ease;}',
+      '#c7a-ov.c7a-in #c7a-card{transform:none;}',
+      '#c7a-x{position:absolute;top:6px;right:10px;background:none;border:0;font-size:22px;',
+      'line-height:1;color:var(--c7a-ink-dim,#9aa0a6);cursor:pointer;padding:4px 6px;}',
+      '#c7a-x:hover{color:var(--c7a-ink,#5f666e);}',
+      '#c7a-t{font-size:27px;font-weight:650;letter-spacing:-.01em;margin:0 0 9px;',
+      'overflow-wrap:anywhere;font-family:var(--c7a-font,inherit);}',
+      '#c7a-m{font-size:14.5px;line-height:1.55;color:var(--c7a-ink-dim,#3c4147);margin:0 0 18px;',
+      'white-space:pre-wrap;overflow-wrap:anywhere;}',
+      '#c7a-ok{background:var(--c7a-btn-bg,#1a1d21);color:var(--c7a-btn-ink,#fff);border:0;',
+      'border-radius:8px;padding:10px 24px;',
+      'font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;}',
+      '#c7a-ok:hover{filter:brightness(1.15);}',
+      '@media (prefers-reduced-motion:reduce){#c7a-ov,#c7a-card{transition:none;}}'
+    ].join('');
+
+    var ov = document.createElement('div');
+    ov.id = 'c7a-ov';
+    ov.setAttribute('role', 'dialog');
+    ov.setAttribute('aria-modal', 'true');
+    ov.setAttribute('aria-labelledby', 'c7a-t');
+
+    var card = document.createElement('div');
+    card.id = 'c7a-card';
+
+    var x = document.createElement('button');
+    x.id = 'c7a-x'; x.type = 'button';
+    x.setAttribute('aria-label', 'Close');
+    x.textContent = '×';
+
+    var h = document.createElement('h2');
+    h.id = 'c7a-t';
+    h.textContent = a.title;               // textContent, never inner HTML
+
+    var p = document.createElement('p');
+    p.id = 'c7a-m';
+    p.textContent = a.message;             // textContent, never inner HTML
+
+    var ok = document.createElement('button');
+    ok.id = 'c7a-ok'; ok.type = 'button';
+    ok.textContent = 'Got it';
+
+    card.appendChild(x); card.appendChild(h); card.appendChild(p); card.appendChild(ok);
+    ov.appendChild(card);
+    document.head.appendChild(style);
+    document.body.appendChild(ov);
+    requestAnimationFrame(function () { ov.classList.add('c7a-in'); });
+
+    function close() {
+      markSeen(key);
+      ov.classList.remove('c7a-in');
+      setTimeout(function () { if (ov.parentNode) ov.parentNode.removeChild(ov); }, 200);
+      document.removeEventListener('keydown', onKey);
+    }
+    function onKey(e) { if (e.key === 'Escape' || e.key === 'Esc') close(); }
+
+    x.addEventListener('click', close);
+    ok.addEventListener('click', close);
+    ov.addEventListener('click', function (e) { if (e.target === ov) close(); });
+    document.addEventListener('keydown', onKey);
+    ok.focus();
+  }
+
+  function go() {
+    var url = ENDPOINT + '?url=' + encodeURIComponent(PAGE_URL);
+    if (FORM_NAME) url += '&name=' + encodeURIComponent(FORM_NAME);
+    if (TS_HOST)   url += '&host=' + encodeURIComponent(TS_HOST);
+    if (C7A_ACCOUNT && C7A_PAGE) {
+      url += '&account=' + encodeURIComponent(C7A_ACCOUNT)
+           + '&page='    + encodeURIComponent(C7A_PAGE);
+    }
+    // No credentials — the endpoint is public and must stay that way for the
+    // CORS wildcard to be valid.
+    window['fet'+'ch'](url, { credentials: 'omit', mode: 'cors' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (d) {
+        if (d && d.popup && d.popup.title && d.popup.message) {
+          render(d.popup);
+        }
+      })
+      .catch(function () { /* fail silent — see SAFE BY CONSTRUCTION */ });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', go);
+  } else {
+    go();
+  }
+})();
+</script>
+<!-- =================== END CrowdView pop-up block =================== -->

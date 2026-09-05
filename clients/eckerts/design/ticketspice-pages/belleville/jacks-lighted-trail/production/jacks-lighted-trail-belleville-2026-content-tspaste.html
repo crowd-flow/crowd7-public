@@ -1,0 +1,1206 @@
+<!-- ════════════════════════════════════════════════════════════════════
+     ECKERT'S JACK'S LIGHTED TRAIL · BELLEVILLE · 2026  —  HYBRID-LOADER CONTENT
+     Design overlay on Amanda's existing TicketSpice cart (actions/dates/prices
+     already built by Amanda — this page does NOT rebuild the cart, only the
+     look). Standalone "Jack's Lighted Trail" sub-brand — match the Jack's
+     website theme, NOT Eckert's house style, per Mat directive 2026-08-06.
+     Imagery: harvested from Jack's own Wix site CDN (placeholder-grade until
+     Amanda's Dropbox night photography lands — see Open Asks in state.md).
+     Flash sale: "Launch Day Steal" $10-off tier → sells out into a $7-off
+     Tier 2, September dates only, codeless (no discount code — auto-applied).
+     RESOLVED 2026-08-27 (Amanda, private Slack #crowd7-and-eckerts-farm,
+     09:10 + 12:06 PDT) — the $10/$7 two-tier model is CORRECT; CrowdView's
+     single-$5-off/Sep-7-9-window data was stale last-year carryover, per
+     Amanda directly ("is it possible that some of that info got carried
+     over from last year?"). Confirmed: advertised threshold "first 500"
+     (real TS cap 1000, her words: "advertised, but really 1000"); discount
+     applies to EVERY September visit date incl. the Sep 26 Peak night and
+     Low Sensory Night (Sep 19). WINDOW CLOSED 2026-09-03 (Amanda correction,
+     commit 3d216e2): base window was Mon 8/31–Thu 9/3, EXTENDED through
+     Tue 9/8 end of day — not Mon 9/7. Full price resumes Wed 9/9, which
+     matches CrowdView's `event_phase` rows (Flash Sale 8/31→9/8, In Season
+     9/9→10/30, re-verified 2026-09-04). Page copy, DB and live edge all
+     agree. No October discount. Exact TS ticket-type name for the
+     sold-out/hide-price JS below is still pending Bryan/Aden's cart build
+     (10:07 PDT: building a literal "Launch Day Steal" ticket type — watch
+     for confirmation). Trail Pass general-admission date-tier pricing
+     ($22/$27/$30/$32, CrowdView 2026-08-27) IS confirmed and shipped below
+     as its own "Trail Pass Pricing" section.
+     ════════════════════════════════════════════════════════════════════ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Creepster&family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+    #jlt-funnel {
+        width: 100vw !important;
+        position: relative !important;
+        left: 50% !important; right: 50% !important;
+        margin-left: -50vw !important; margin-right: -50vw !important;
+        overflow: hidden !important;
+        font-family: 'Nunito', -apple-system, sans-serif !important;
+        background: #0a0a0a !important;
+        color: #ffffff !important;
+        padding: 0 !important; box-sizing: border-box !important;
+    }
+
+    /* ── BANNER ── */
+    #jlt-funnel .jlt-banner {
+        width: 100% !important;
+        background: linear-gradient(90deg, #471f73, #7730c5) !important;
+        color: #ffffff !important;
+        text-align: center !important;
+        padding: 11px 20px !important;
+        font-size: 0.8rem !important;
+        letter-spacing: 0.04em !important;
+        display: block !important; box-sizing: border-box !important;
+    }
+    #jlt-funnel .jlt-banner-inner {
+        display: flex !important; align-items: center !important;
+        justify-content: center !important; gap: 10px !important; flex-wrap: wrap !important;
+    }
+    #jlt-funnel .jlt-banner strong { color: #ffe730 !important; }
+    #jlt-funnel .jlt-dot {
+        width: 3px !important; height: 3px !important;
+        background: rgba(255,255,255,0.45) !important;
+        border-radius: 50% !important; display: inline-block !important; flex-shrink: 0 !important;
+    }
+
+    /* ── NAV ── */
+    #jlt-funnel .jlt-nav {
+        width: 100% !important;
+        padding: 0 40px !important;
+        height: 68px !important;
+        display: flex !important; align-items: center !important;
+        justify-content: space-between !important;
+        background: rgba(10,10,10,0.92) !important;
+        border-bottom: 1px solid rgba(255,110,0,0.25) !important;
+        position: sticky !important; top: 0 !important; z-index: 100 !important;
+        box-sizing: border-box !important;
+        backdrop-filter: blur(6px) !important;
+    }
+    #jlt-funnel .jlt-logo-wrap {
+        display: flex !important; align-items: center !important;
+        height: 48px !important; width: 190px !important;
+        flex-shrink: 0 !important; overflow: hidden !important;
+    }
+    #jlt-funnel .jlt-logo-wrap img {
+        height: 48px !important; width: 190px !important;
+        max-width: 190px !important; max-height: 48px !important;
+        object-fit: contain !important; object-position: left center !important; display: block !important;
+    }
+    #jlt-funnel .jlt-nav-right { display: flex !important; align-items: center !important; gap: 16px !important; }
+    #jlt-funnel .jlt-nav-loc {
+        font-size: 0.78rem !important; color: rgba(255,255,255,0.65) !important;
+        display: flex !important; align-items: center !important; gap: 5px !important;
+    }
+    #jlt-funnel .jlt-nav-cta {
+        background: #ff6e00 !important; color: #0a0a0a !important;
+        padding: 9px 22px !important; border-radius: 50px !important;
+        font-size: 0.83rem !important; font-weight: 700 !important;
+        text-decoration: none !important; letter-spacing: 0.03em !important;
+        transition: all 0.3s ease !important; white-space: nowrap !important; display: inline-block !important;
+    }
+    #jlt-funnel .jlt-nav-cta:hover { background: #ffe730 !important; color: #0a0a0a !important; text-decoration: none !important; }
+
+    /* ── HERO ── */
+    #jlt-funnel .jlt-hero {
+        width: 100% !important;
+        min-height: clamp(400px, 68vw, 680px) !important;
+        position: relative !important;
+        display: flex !important; align-items: flex-end !important;
+        overflow: hidden !important;
+        background: url('https://assets.crowd7digital.us/clients/eckerts/design/assets/jacks-lighted-trail/hero-pumpkin-trail-red.jpg') center 40%/cover no-repeat, linear-gradient(135deg, #471f73 0%, #1a0f2e 55%, #0a0a0a 100%) !important;
+    }
+    #jlt-funnel .jlt-hero-overlay {
+        position: absolute !important; inset: 0 !important;
+        background: linear-gradient(to bottom, rgba(10,8,4,0.15) 0%, rgba(10,8,4,0.25) 35%, rgba(10,8,4,0.88) 100%) !important;
+        z-index: 1 !important;
+    }
+    #jlt-funnel .jlt-hero-content {
+        position: relative !important; z-index: 2 !important;
+        padding: 0 48px 48px !important; width: 100% !important; box-sizing: border-box !important;
+    }
+    #jlt-funnel .jlt-hero-eyebrow {
+        font-family: 'Baloo 2', sans-serif !important;
+        font-size: 0.78rem !important; font-weight: 700 !important;
+        letter-spacing: 0.2em !important; text-transform: uppercase !important;
+        color: #f9bb3e !important; margin-bottom: 10px !important; display: block !important;
+        opacity: 0; animation: jltFadeUp 0.6s ease 0.2s forwards;
+    }
+    #jlt-funnel .jlt-hero-title {
+        font-family: 'Creepster', cursive !important;
+        font-size: clamp(2.8rem, 9vw, 6rem) !important; font-weight: 400 !important;
+        color: #ff6e00 !important; line-height: 0.95 !important; display: block !important;
+        text-shadow: 0 0 24px rgba(255,110,0,0.55), 0 4px 20px rgba(0,0,0,0.6) !important;
+        letter-spacing: 0.02em !important;
+        opacity: 0; animation: jltFadeUp 0.7s ease 0.35s forwards;
+    }
+    #jlt-funnel .jlt-hero-sub {
+        font-family: 'Baloo 2', sans-serif !important;
+        font-size: clamp(1rem, 2.4vw, 1.35rem) !important; font-weight: 600 !important;
+        color: #fff18a !important; margin-top: 12px !important; display: block !important;
+        opacity: 0; animation: jltFadeUp 0.7s ease 0.5s forwards;
+    }
+    #jlt-funnel .jlt-hero-dates {
+        display: inline-flex !important; align-items: center !important; gap: 10px !important;
+        margin-top: 22px !important; padding: 10px 18px !important; border-radius: 50px !important;
+        background: rgba(255,110,0,0.14) !important; border: 1px solid rgba(255,110,0,0.4) !important;
+        font-size: 0.85rem !important; color: #ffffff !important;
+        opacity: 0; animation: jltFadeUp 0.7s ease 0.65s forwards;
+    }
+    #jlt-funnel .jlt-hero-dates strong { color: #ffe730 !important; }
+    @keyframes jltFadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ── BENEFITS / ATTRACTIONS BAND ── */
+    #jlt-funnel .jlt-benefits {
+        width: 100% !important; background: #150d08 !important;
+        padding: 40px 48px !important; display: block !important; box-sizing: border-box !important;
+        border-bottom: 1px solid rgba(255,110,0,0.14) !important;
+    }
+    #jlt-funnel .jlt-benefits-grid { display: grid !important; grid-template-columns: repeat(4, 1fr) !important; }
+    #jlt-funnel .jlt-benefit { text-align: center !important; padding: 8px 20px !important; position: relative !important; }
+    #jlt-funnel .jlt-benefit:not(:last-child)::after {
+        content: '' !important; position: absolute !important;
+        right: 0 !important; top: 15% !important; bottom: 15% !important;
+        width: 1px !important; background: rgba(255,110,0,0.16) !important;
+    }
+    #jlt-funnel .jlt-benefit-icon { font-size: 1.8rem !important; margin-bottom: 8px !important; display: block !important; }
+    #jlt-funnel .jlt-benefit-title {
+        font-family: 'Baloo 2', sans-serif !important;
+        font-size: 1rem !important; font-weight: 700 !important;
+        color: #f9bb3e !important; margin-bottom: 3px !important; display: block !important;
+        text-transform: uppercase !important; letter-spacing: 0.02em !important;
+    }
+    #jlt-funnel .jlt-benefit-desc { font-size: 0.76rem !important; color: rgba(255,255,255,0.55) !important; line-height: 1.4 !important; display: block !important; }
+
+    /* ── FEATURE SECTION ── */
+    #jlt-funnel .jlt-feature {
+        width: 100% !important; position: relative !important; overflow: hidden !important;
+        padding: 80px 48px !important; box-sizing: border-box !important; text-align: center !important;
+        background: linear-gradient(180deg, #0a0a0a 0%, #1a0f2e 100%) !important;
+    }
+    #jlt-funnel .jlt-eye {
+        font-family: 'Baloo 2', sans-serif !important;
+        font-size: 0.72rem !important; font-weight: 700 !important;
+        letter-spacing: 0.24em !important; text-transform: uppercase !important;
+        color: #7730c5 !important; margin-bottom: 10px !important; display: block !important;
+    }
+    #jlt-funnel .jlt-title {
+        font-family: 'Baloo 2', sans-serif !important;
+        font-size: clamp(1.9rem, 4.8vw, 3rem) !important; font-weight: 700 !important;
+        color: #f9bb3e !important; line-height: 1.15 !important; display: block !important;
+        text-transform: uppercase !important;
+    }
+    #jlt-funnel .jlt-title em { font-style: normal !important; color: #ff6e00 !important; }
+    #jlt-funnel .jlt-feature-copy {
+        max-width: 680px !important; margin: 18px auto 0 !important;
+        font-size: 1.02rem !important; line-height: 1.7 !important; color: rgba(255,255,255,0.78) !important;
+    }
+
+    /* ── GALLERY ── */
+    #jlt-funnel .jlt-gallery { width: 100% !important; background: #0a0a0a !important; padding: 0 0 72px !important; overflow: hidden !important; display: block !important; }
+    #jlt-funnel .jlt-gallery-mask {
+        width: 100% !important; overflow: hidden !important;
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%) !important;
+        mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%) !important;
+    }
+    #jlt-funnel .jlt-gallery-track {
+        display: flex !important; gap: 16px !important; width: max-content !important;
+        animation: jltMarquee 28s linear infinite !important; padding: 8px 0 !important;
+    }
+    #jlt-funnel .jlt-gallery-track:hover { animation-play-state: paused !important; }
+    @keyframes jltMarquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    #jlt-funnel .jlt-gcard {
+        width: 380px !important; height: 260px !important;
+        border-radius: 20px !important; overflow: hidden !important;
+        flex-shrink: 0 !important; position: relative !important; cursor: pointer !important;
+        background: linear-gradient(135deg, #471f73, #1a0f2e) !important;
+        display: flex !important; align-items: center !important; justify-content: center !important;
+        transition: transform 0.4s ease, box-shadow 0.4s ease !important;
+        border: 1px solid rgba(255,110,0,0.18) !important;
+    }
+    #jlt-funnel .jlt-gcard:hover { transform: scale(1.03) translateY(-5px) !important; box-shadow: 0 24px 50px rgba(255,110,0,0.25) !important; z-index: 2 !important; }
+    #jlt-funnel .jlt-gcard img { width: 100% !important; height: 100% !important; object-fit: cover !important; display: block !important; }
+    #jlt-funnel .jlt-gcard-label {
+        position: absolute !important; bottom: 12px !important; left: 12px !important;
+        background: rgba(10,10,10,0.7) !important; backdrop-filter: blur(8px) !important;
+        color: #ffe730 !important; font-size: 0.68rem !important; letter-spacing: 0.1em !important;
+        text-transform: uppercase !important; font-weight: 700 !important;
+        padding: 5px 12px !important; border-radius: 20px !important; z-index: 2 !important;
+    }
+
+    /* ── ATTRACTION CARDS ── */
+    #jlt-funnel .jlt-attractions { width: 100% !important; background: #150d08 !important; padding: 72px 48px !important; box-sizing: border-box !important; }
+    #jlt-funnel .jlt-attractions-header { text-align: center !important; margin-bottom: 44px !important; }
+    #jlt-funnel .jlt-agrid {
+        display: grid !important; grid-template-columns: repeat(4, 1fr) !important;
+        gap: 20px !important; max-width: 1180px !important; margin: 0 auto !important;
+    }
+    #jlt-funnel .jlt-acard {
+        border-radius: 18px !important; overflow: hidden !important; position: relative !important;
+        height: 300px !important; display: flex !important; align-items: flex-end !important;
+        transition: transform 0.35s ease, box-shadow 0.35s ease !important;
+    }
+    #jlt-funnel .jlt-acard:hover { transform: translateY(-6px) !important; box-shadow: 0 20px 44px rgba(255,110,0,0.22) !important; }
+    #jlt-funnel .jlt-acard img { position: absolute !important; inset: 0 !important; width: 100% !important; height: 100% !important; object-fit: cover !important; }
+    #jlt-funnel .jlt-acard-overlay { position: absolute !important; inset: 0 !important; background: linear-gradient(to bottom, rgba(10,8,4,0.05) 0%, rgba(10,8,4,0.9) 100%) !important; }
+    #jlt-funnel .jlt-acard-body { position: relative !important; z-index: 2 !important; padding: 18px !important; box-sizing: border-box !important; }
+    #jlt-funnel .jlt-acard-title {
+        font-family: 'Baloo 2', sans-serif !important; font-size: 1.1rem !important; font-weight: 800 !important;
+        color: #f9bb3e !important; text-transform: uppercase !important; display: block !important; line-height: 1.15 !important;
+    }
+    #jlt-funnel .jlt-acard-desc { font-size: 0.78rem !important; color: rgba(255,255,255,0.75) !important; margin-top: 4px !important; display: block !important; line-height: 1.4 !important; }
+
+    /* ── TICKET CARDS ── */
+    #jlt-funnel .jlt-tickets { width: 100% !important; background: linear-gradient(180deg, #1a0f2e 0%, #0a0a0a 100%) !important; padding: 80px 48px !important; display: block !important; box-sizing: border-box !important; }
+    #jlt-funnel .jlt-tickets-header { text-align: center !important; margin-bottom: 18px !important; }
+    #jlt-funnel .jlt-flash {
+        text-align: center !important; max-width: 760px !important; margin: 0 auto 44px !important;
+        background: rgba(255,110,0,0.1) !important; border: 1px solid rgba(255,110,0,0.4) !important;
+        border-radius: 14px !important; padding: 18px 24px !important;
+        font-size: 0.9rem !important; color: rgba(255,255,255,0.88) !important; line-height: 1.65 !important;
+    }
+    #jlt-funnel .jlt-flash strong { color: #ffe730 !important; }
+    #jlt-funnel .jlt-flash-tag {
+        display: inline-block !important; background: #ed1c24 !important; color: #fff !important;
+        font-size: 0.62rem !important; font-weight: 800 !important; letter-spacing: 0.12em !important;
+        text-transform: uppercase !important; padding: 4px 10px !important; border-radius: 20px !important;
+        margin-bottom: 10px !important;
+    }
+    #jlt-funnel .jlt-grid {
+        display: grid !important; grid-template-columns: repeat(3, minmax(0, 320px)) !important;
+        gap: 22px !important; justify-content: center !important;
+        max-width: 1040px !important; margin-left: auto !important; margin-right: auto !important;
+    }
+    #jlt-funnel .jlt-card {
+        border-radius: 20px !important; padding: 36px 32px !important;
+        position: relative !important; overflow: hidden !important;
+        transition: transform 0.35s ease, box-shadow 0.35s ease !important;
+        display: flex !important; flex-direction: column !important;
+    }
+    #jlt-funnel .jlt-card:hover { transform: translateY(-6px) !important; }
+    #jlt-funnel a.jlt-card { cursor: pointer !important; text-decoration: none !important; color: inherit !important; }
+    #jlt-funnel .jlt-card-fire { background: linear-gradient(160deg, #ff6e00, #b34d00) !important; color: #0a0a0a !important; }
+    #jlt-funnel .jlt-card-fire:hover { box-shadow: 0 20px 44px rgba(255,110,0,0.4) !important; }
+    #jlt-funnel .jlt-card-purple { background: #2a1747 !important; color: white !important; border: 1px solid rgba(119,48,197,0.5) !important; }
+    #jlt-funnel .jlt-card-purple:hover { box-shadow: 0 20px 44px rgba(71,31,115,0.5) !important; }
+    #jlt-funnel .jlt-card-dark { background: #150d08 !important; color: white !important; border: 1px solid rgba(255,110,0,0.18) !important; }
+    #jlt-funnel .jlt-card-dark:hover { box-shadow: 0 20px 44px rgba(0,0,0,0.4) !important; }
+
+    #jlt-funnel .jlt-card-badge {
+        display: inline-block !important; font-size: 0.62rem !important; font-weight: 800 !important;
+        letter-spacing: 0.14em !important; text-transform: uppercase !important;
+        padding: 4px 10px !important; border-radius: 20px !important; margin-bottom: 14px !important; width: fit-content !important;
+    }
+    #jlt-funnel .jlt-card-badge-dark { background: rgba(10,10,10,0.2) !important; color: #0a0a0a !important; }
+    #jlt-funnel .jlt-card-badge-light { background: rgba(255,255,255,0.14) !important; color: #ffe730 !important; }
+    #jlt-funnel .jlt-card-badge-alert { background: #ed1c24 !important; color: #fff !important; }
+
+    /* ── SOLD-OUT CARD TREATMENT (Bryan request 2026-08-31) ──
+       Colour overlay + diagonal banner across a whole marketing card. Add
+       `jlt-card-soldout` to the card's class list to turn it on; remove that one
+       class to turn it back off. `.jlt-card` already sets overflow:hidden, which
+       is what clips the diagonal band to the card's rounded corners. */
+    #jlt-funnel .jlt-card-soldout:hover { transform: none !important; box-shadow: none !important; }
+    #jlt-funnel .jlt-card-soldout::before {
+        content: "" !important; position: absolute !important;
+        top: 0 !important; right: 0 !important; bottom: 0 !important; left: 0 !important;
+        background: linear-gradient(160deg, rgba(18,6,6,0.62), rgba(62,10,10,0.74)) !important;
+        z-index: 2 !important; pointer-events: none !important;
+    }
+    #jlt-funnel .jlt-card-soldout::after {
+        content: "Sold Out" !important;
+        position: absolute !important; z-index: 3 !important; pointer-events: none !important;
+        left: -16% !important; width: 132% !important; top: 50% !important;
+        transform: translateY(-50%) rotate(-11deg) !important;
+        background: #ed1c24 !important; color: #ffffff !important;
+        text-align: center !important; text-transform: uppercase !important;
+        font-family: 'Baloo 2', -apple-system, sans-serif !important;
+        font-size: 1.85rem !important; font-weight: 800 !important; letter-spacing: 0.18em !important;
+        padding: 12px 0 !important; line-height: 1.15 !important;
+        border-top: 2px solid rgba(255,255,255,0.32) !important;
+        border-bottom: 2px solid rgba(255,255,255,0.32) !important;
+        box-shadow: 0 12px 28px rgba(0,0,0,0.45) !important;
+    }
+    /* the card's identity (badge + title) and its note have to clear the overlay
+       and flip to light text, or the dim swallows them. Selectors are doubled up
+       (.jlt-card.jlt-card-soldout) to outrank the later .jlt-card-fire colour rules. */
+    #jlt-funnel .jlt-card.jlt-card-soldout .jlt-card-badge,
+    #jlt-funnel .jlt-card.jlt-card-soldout h3,
+    #jlt-funnel .jlt-card.jlt-card-soldout .jlt-card-note {
+        position: relative !important; z-index: 4 !important;
+    }
+    #jlt-funnel .jlt-card.jlt-card-soldout .jlt-card-badge {
+        background: rgba(255,255,255,0.16) !important; color: #ffffff !important;
+    }
+    #jlt-funnel .jlt-card.jlt-card-soldout h3 { color: #ffffff !important; }
+    #jlt-funnel .jlt-card.jlt-card-soldout .jlt-card-note {
+        color: rgba(255,255,255,0.92) !important; font-weight: 700 !important; font-style: normal !important;
+    }
+
+    /* tag row — lets a card carry more than one badge at the top */
+    #jlt-funnel .jlt-card-tags {
+        display: flex !important; flex-wrap: wrap !important; gap: 6px !important;
+        margin-bottom: 14px !important; align-items: center !important;
+    }
+    #jlt-funnel .jlt-card-tags .jlt-card-badge { margin-bottom: 0 !important; }
+
+    #jlt-funnel .jlt-card-icon { font-size: 2.6rem !important; margin-bottom: 14px !important; display: block !important; }
+    #jlt-funnel .jlt-card h3 {
+        font-family: 'Baloo 2', sans-serif !important;
+        font-size: 1.5rem !important; font-weight: 800 !important;
+        line-height: 1.15 !important; margin-bottom: 14px !important; display: block !important;
+        text-transform: uppercase !important;
+    }
+    #jlt-funnel .jlt-card-fire h3 { color: #0a0a0a !important; }
+    #jlt-funnel .jlt-card-purple h3 { color: #ffe730 !important; }
+    #jlt-funnel .jlt-card-dark h3 { color: #f9bb3e !important; }
+    #jlt-funnel .jlt-card-bullets { list-style: none !important; padding: 0 !important; margin: 0 0 auto !important; display: flex !important; flex-direction: column !important; gap: 6px !important; }
+    #jlt-funnel .jlt-card-bullets li { font-size: 0.92rem !important; line-height: 1.55 !important; display: flex !important; align-items: flex-start !important; gap: 8px !important; }
+    #jlt-funnel .jlt-card-fire .jlt-card-bullets li { color: rgba(10,10,10,0.82) !important; }
+    #jlt-funnel .jlt-card-purple .jlt-card-bullets li { color: rgba(255,255,255,0.8) !important; }
+    #jlt-funnel .jlt-card-dark .jlt-card-bullets li { color: rgba(255,255,255,0.7) !important; }
+
+    #jlt-funnel .jlt-card-price { display: flex !important; align-items: baseline !important; gap: 6px !important; margin-top: 20px !important; padding-top: 16px !important; }
+    #jlt-funnel .jlt-card-fire .jlt-card-price { border-top: 1px solid rgba(10,10,10,0.22) !important; }
+    #jlt-funnel .jlt-card-purple .jlt-card-price { border-top: 1px solid rgba(255,255,255,0.16) !important; }
+    #jlt-funnel .jlt-card-dark .jlt-card-price { border-top: 1px solid rgba(255,110,0,0.18) !important; }
+    #jlt-funnel .jlt-price-num { font-family: 'Baloo 2', sans-serif !important; font-size: 2.6rem !important; font-weight: 800 !important; line-height: 1 !important; }
+    #jlt-funnel .jlt-card-fire .jlt-price-num { color: #0a0a0a !important; }
+    #jlt-funnel .jlt-card-purple .jlt-price-num { color: #ffe730 !important; }
+    #jlt-funnel .jlt-card-dark .jlt-price-num { color: #ff6e00 !important; }
+    #jlt-funnel .jlt-price-label { font-size: 0.86rem !important; line-height: 1.4 !important; }
+    #jlt-funnel .jlt-card-fire .jlt-price-label { color: rgba(10,10,10,0.65) !important; }
+    #jlt-funnel .jlt-card-purple .jlt-price-label { color: rgba(255,255,255,0.55) !important; }
+    #jlt-funnel .jlt-card-dark .jlt-price-label { color: rgba(255,255,255,0.45) !important; }
+    #jlt-funnel .jlt-card-note { font-size: 0.72rem !important; font-style: italic !important; margin-top: 10px !important; display: block !important; line-height: 1.5 !important; }
+    #jlt-funnel .jlt-card-fire .jlt-card-note { color: rgba(10,10,10,0.6) !important; }
+    #jlt-funnel .jlt-card-purple .jlt-card-note { color: rgba(255,255,255,0.42) !important; }
+    #jlt-funnel .jlt-card-dark .jlt-card-note { color: rgba(255,255,255,0.4) !important; }
+    #jlt-funnel .jlt-placeholder { color: #ed1c24 !important; font-weight: 700 !important; }
+    #jlt-funnel .jlt-card-price .jlt-price-num.jlt-placeholder { font-size: 1.3rem !important; line-height: 1.25 !important; letter-spacing: 0.01em !important; }
+    #jlt-funnel .jlt-closed-badge {
+        display: inline-block !important; margin-top: 4px !important;
+        background: rgba(237,28,36,0.16) !important; border: 1px solid rgba(237,28,36,0.55) !important;
+        color: #ff8a8a !important; font-size: 0.66rem !important; font-weight: 800 !important;
+        letter-spacing: 0.08em !important; text-transform: uppercase !important;
+        padding: 3px 10px !important; border-radius: 20px !important;
+    }
+
+    /* ── INFO ROW ── */
+    #jlt-funnel .jlt-info { width: 100% !important; background: linear-gradient(90deg, #471f73, #7730c5) !important; padding: 0 !important; display: block !important; box-sizing: border-box !important; }
+    #jlt-funnel .jlt-info-grid { display: grid !important; grid-template-columns: repeat(4, 1fr) !important; }
+    #jlt-funnel .jlt-info-item { text-align: center !important; padding: 28px 20px !important; position: relative !important; }
+    #jlt-funnel .jlt-info-item:not(:last-child)::after { content: '' !important; position: absolute !important; right: 0 !important; top: 20% !important; bottom: 20% !important; width: 1px !important; background: rgba(255,255,255,0.18) !important; }
+    #jlt-funnel .jlt-info-icon { font-size: 1.5rem !important; display: block !important; margin-bottom: 6px !important; }
+    #jlt-funnel .jlt-info-label { font-size: 0.62rem !important; font-weight: 700 !important; letter-spacing: 0.16em !important; text-transform: uppercase !important; color: rgba(255,255,255,0.65) !important; display: block !important; margin-bottom: 4px !important; }
+    #jlt-funnel .jlt-info-value { font-family: 'Baloo 2', sans-serif !important; font-size: 0.95rem !important; font-weight: 700 !important; color: white !important; display: block !important; line-height: 1.3 !important; }
+
+    /* ── EMAIL CAPTURE ── */
+
+    /* ── FOOTER ── */
+    #jlt-funnel .jlt-footer { width: 100% !important; background: #0a0a0a !important; border-top: 1px solid rgba(255,110,0,0.12) !important; padding: 24px 48px !important; text-align: center !important; box-sizing: border-box !important; }
+    #jlt-funnel .jlt-footer-text { font-size: 0.72rem !important; color: rgba(255,255,255,0.35) !important; }
+
+    /* ── REVEAL ── */
+    #jlt-funnel .jltr { opacity: 0 !important; transform: translateY(28px) !important; transition: opacity 0.7s cubic-bezier(.16,1,.3,1), transform 0.7s cubic-bezier(.16,1,.3,1) !important; }
+    #jlt-funnel .jltr.jlton { opacity: 1 !important; transform: none !important; }
+    #jlt-funnel .jltr.d1 { transition-delay: 0.1s !important; }
+    #jlt-funnel .jltr.d2 { transition-delay: 0.2s !important; }
+    #jlt-funnel .jltr.d3 { transition-delay: 0.3s !important; }
+
+
+    /* ── SPECIAL NIGHTS ── */
+    #jlt-funnel .jlt-nights { width: 100% !important; background: #0a0a0a !important; padding: 72px 48px !important; box-sizing: border-box !important; }
+    #jlt-funnel .jlt-nights-header { text-align: center !important; margin-bottom: 38px !important; }
+    #jlt-funnel .jlt-ngrid { display: grid !important; grid-template-columns: repeat(4, 1fr) !important; gap: 18px !important; max-width: 1180px !important; margin: 0 auto !important; }
+    #jlt-funnel .jlt-ncard { background: linear-gradient(160deg, #1c1030, #0d0716) !important; border: 1px solid rgba(119,48,197,0.55) !important; border-radius: 16px !important; padding: 26px 20px !important; text-align: center !important; display: flex !important; flex-direction: column !important; box-shadow: 0 18px 40px rgba(0,0,0,0.5) !important; box-sizing: border-box !important; }
+    #jlt-funnel .jlt-ndate { display: inline-block !important; align-self: center !important; background: #ff6e00 !important; color: #0a0a0a !important; font-family: 'Baloo 2', sans-serif !important; font-weight: 800 !important; font-size: 0.7rem !important; letter-spacing: 0.1em !important; text-transform: uppercase !important; padding: 5px 13px !important; border-radius: 999px !important; margin-bottom: 14px !important; }
+    #jlt-funnel .jlt-nicon { display: block !important; font-size: 1.7rem !important; line-height: 1 !important; margin-bottom: 10px !important; }
+    #jlt-funnel .jlt-nname { display: block !important; font-family: 'Baloo 2', sans-serif !important; font-weight: 700 !important; font-size: 1.02rem !important; color: #f9bb3e !important; line-height: 1.2 !important; text-transform: uppercase !important; margin-bottom: 8px !important; }
+    #jlt-funnel .jlt-ntime { display: block !important; font-size: 0.8rem !important; color: rgba(255,255,255,0.78) !important; margin-bottom: 14px !important; }
+    #jlt-funnel .jlt-nphases { display: block !important; margin-bottom: 14px !important; }
+    #jlt-funnel .jlt-nphase { display: block !important; font-size: 0.74rem !important; color: rgba(255,255,255,0.78) !important; line-height: 1.5 !important; }
+    #jlt-funnel .jlt-nphase strong { color: #f9bb3e !important; }
+    #jlt-funnel .jlt-nprice { display: block !important; font-family: 'Baloo 2', sans-serif !important; font-weight: 800 !important; font-size: 1.55rem !important; color: #ffffff !important; line-height: 1 !important; }
+    #jlt-funnel .jlt-nper { display: block !important; margin-bottom: 14px !important; font-size: 0.66rem !important; letter-spacing: 0.14em !important; text-transform: uppercase !important; color: rgba(255,255,255,0.5) !important; margin-top: 4px !important; }
+    #jlt-funnel .jlt-nnote { display: block !important; margin-top: auto !important; font-size: 0.72rem !important; color: rgba(255,255,255,0.62) !important; line-height: 1.45 !important; padding-top: 12px !important; border-top: 1px solid rgba(255,255,255,0.1) !important; }
+    #jlt-funnel .jlt-nights-foot { display: block !important; text-align: center !important; margin-top: 26px !important; font-size: 0.78rem !important; color: rgba(255,255,255,0.55) !important; }
+
+    /* ── MAP / DIRECTIONS ── */
+    #jlt-funnel .jlt-map { width: 100% !important; background: #0a0a0a !important; padding: 72px 48px !important; text-align: center !important; box-sizing: border-box !important; }
+    #jlt-funnel .jlt-map-header { margin-bottom: 30px !important; }
+    #jlt-funnel .jlt-map-frame { display: block !important; max-width: 860px !important; margin: 0 auto !important; border-radius: 18px !important; overflow: hidden !important; border: 2px solid rgba(119,48,197,0.65) !important; box-shadow: 0 0 44px rgba(119,48,197,0.38) !important; cursor: zoom-in !important; background: #0a0a0a !important; line-height: 0 !important; }
+    #jlt-funnel .jlt-map-frame img { width: 100% !important; height: auto !important; display: block !important; max-width: 100% !important; }
+    #jlt-funnel .jlt-map-hint { display: block !important; margin-top: 14px !important; font-family: 'Baloo 2', sans-serif !important; font-size: 0.74rem !important; font-weight: 700 !important; letter-spacing: 0.18em !important; text-transform: uppercase !important; color: #f9bb3e !important; }
+    #jlt-funnel .jlt-stops { max-width: 900px !important; margin: 30px auto 0 !important; display: flex !important; flex-wrap: wrap !important; justify-content: center !important; gap: 10px !important; }
+    #jlt-funnel .jlt-stop { display: inline-block !important; background: rgba(119,48,197,0.18) !important; border: 1px solid rgba(119,48,197,0.6) !important; border-radius: 999px !important; padding: 8px 16px !important; font-family: 'Baloo 2', sans-serif !important; font-weight: 600 !important; font-size: 0.8rem !important; color: #ffffff !important; letter-spacing: 0.02em !important; white-space: nowrap !important; }
+    #jlt-funnel .jlt-map-foot { display: block !important; margin-top: 24px !important; font-size: 0.82rem !important; color: rgba(255,255,255,0.6) !important; }
+    /* ── MAP LIGHTBOX ── */
+    #jlt-funnel .jlt-lb { position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important; background: rgba(0,0,0,0.94) !important; z-index: 99999 !important; display: none !important; align-items: center !important; justify-content: center !important; padding: 24px !important; cursor: zoom-out !important; box-sizing: border-box !important; }
+    #jlt-funnel .jlt-lb.jlt-lb-open { display: flex !important; }
+    #jlt-funnel .jlt-lb img { max-width: 100% !important; max-height: 90vh !important; width: auto !important; height: auto !important; border-radius: 12px !important; border: 2px solid rgba(119,48,197,0.6) !important; }
+    #jlt-funnel .jlt-lb-close { position: absolute !important; top: 16px !important; right: 22px !important; color: #f9bb3e !important; font-family: 'Baloo 2', sans-serif !important; font-size: 2rem !important; line-height: 1 !important; background: none !important; border: 0 !important; cursor: pointer !important; padding: 6px 10px !important; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1080px) {
+        #jlt-funnel .jlt-grid { grid-template-columns: repeat(2, minmax(0, 380px)) !important; max-width: 820px !important; }
+        #jlt-funnel .jlt-agrid { grid-template-columns: repeat(2, 1fr) !important; }
+        #jlt-funnel .jlt-ngrid { grid-template-columns: repeat(2, 1fr) !important; max-width: 760px !important; }
+    }
+    @media (max-width: 860px) {
+        #jlt-funnel .jlt-nav { padding: 0 24px !important; }
+        #jlt-funnel .jlt-hero-content { padding: 0 28px 32px !important; }
+        #jlt-funnel .jlt-benefits { padding: 32px 24px !important; }
+        #jlt-funnel .jlt-feature { padding: 56px 24px !important; }
+        #jlt-funnel .jlt-attractions { padding: 56px 24px !important; }
+        #jlt-funnel .jlt-tickets { padding: 56px 24px !important; }
+        #jlt-funnel .jlt-info-grid { grid-template-columns: 1fr 1fr !important; }
+        #jlt-funnel .jlt-info-item:nth-child(2n)::after { display: none !important; }
+        #jlt-funnel .jlt-gcard { width: 300px !important; height: 210px !important; }
+        #jlt-funnel .jlt-acard { height: 240px !important; }
+        #jlt-funnel .jlt-nights { padding: 56px 24px !important; }
+        #jlt-funnel .jlt-map { padding: 56px 24px !important; }
+    }
+    @media (max-width: 560px) {
+        #jlt-funnel .jlt-card-soldout::after { font-size: 1.4rem !important; letter-spacing: 0.14em !important; padding: 10px 0 !important; }
+        #jlt-funnel .jlt-nav { padding: 0 16px !important; }
+        #jlt-funnel .jlt-logo-wrap { width: 130px !important; height: 36px !important; }
+        #jlt-funnel .jlt-logo-wrap img { width: 130px !important; height: 36px !important; max-width: 130px !important; max-height: 36px !important; }
+        #jlt-funnel .jlt-nav-cta { padding: 8px 16px !important; font-size: 0.76rem !important; }
+        #jlt-funnel .jlt-hero-content { padding: 0 18px 24px !important; }
+        #jlt-funnel .jlt-nav-loc { display: none !important; }
+        #jlt-funnel .jlt-benefits { padding: 24px 16px !important; }
+        #jlt-funnel .jlt-benefits-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 18px 0 !important; }
+        #jlt-funnel .jlt-benefit:nth-child(2n)::after { display: none !important; }
+        #jlt-funnel .jlt-feature { padding: 48px 16px !important; }
+        #jlt-funnel .jlt-attractions { padding: 48px 16px !important; }
+        #jlt-funnel .jlt-agrid { grid-template-columns: 1fr 1fr !important; gap: 12px !important; }
+        #jlt-funnel .jlt-acard { height: 180px !important; }
+        #jlt-funnel .jlt-tickets { padding: 48px 16px !important; }
+        #jlt-funnel .jlt-grid { grid-template-columns: 1fr !important; }
+        #jlt-funnel .jlt-gcard { width: 240px !important; height: 170px !important; }
+        #jlt-funnel .jlt-nights { padding: 48px 16px !important; }
+        #jlt-funnel .jlt-ngrid { grid-template-columns: 1fr !important; }
+        #jlt-funnel .jlt-map { padding: 48px 16px !important; }
+        #jlt-funnel .jlt-stop { font-size: 0.72rem !important; padding: 7px 13px !important; }
+    }
+</style>
+
+<div id="jlt-funnel">
+
+    <!-- BANNER -->
+    <div class="jlt-banner">
+        <div class="jlt-banner-inner">
+            <span>🎃 <strong>Flash Sale Ends Tue, Sept. 8!</strong></span>
+            <span class="jlt-dot"></span>
+            <span>Opening Fri, Sept. 11</span>
+            <span class="jlt-dot"></span>
+            <span>Belleville Farm · 2026</span>
+        </div>
+    </div>
+
+    <!-- NAV -->
+    <div class="jlt-nav">
+        <div class="jlt-logo-wrap">
+            <img src="https://assets.crowd7digital.us/clients/eckerts/design/assets/jacks-lighted-trail/logo-jacks-lighted-trail.png" alt="Jack's Lighted Trail">
+        </div>
+        <div class="jlt-nav-right">
+            <div class="jlt-nav-loc">
+                <svg width="12" height="12" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                    <circle cx="12" cy="11" r="3"/>
+                </svg>
+                Belleville, IL
+            </div>
+            <a href="#ticketBlock" class="jlt-nav-cta">Get Tickets</a>
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <div class="jlt-hero">
+        <div class="jlt-hero-overlay"></div>
+        <div class="jlt-hero-content">
+            <span class="jlt-hero-eyebrow">St. Louis's Glowing Pumpkin Experience</span>
+            <span class="jlt-hero-title">Jack's Lighted Trail</span>
+            <span class="jlt-hero-sub">the spookiest event near st. louis</span>
+            <div class="jlt-hero-dates">
+                🎃 <strong>September Savings</strong> — <strong>$7 off</strong>
+            </div>
+        </div>
+    </div>
+
+    <!-- BENEFITS -->
+    <div class="jlt-benefits">
+        <div class="jlt-benefits-grid">
+            <div class="jlt-benefit">
+                <span class="jlt-benefit-icon">🌽</span>
+                <span class="jlt-benefit-title">Corn Stalk Lighted Path</span>
+                <span class="jlt-benefit-desc">A glowing trail through towering corn stalks</span>
+            </div>
+            <div class="jlt-benefit">
+                <span class="jlt-benefit-icon">👨‍👩‍👧‍👦</span>
+                <span class="jlt-benefit-title">Family Fun</span>
+                <span class="jlt-benefit-desc">Made for all ages — from twinkling pumpkins to friendly surprises</span>
+            </div>
+            <div class="jlt-benefit">
+                <span class="jlt-benefit-icon">🍩</span>
+                <span class="jlt-benefit-title">Tasty Treats</span>
+                <span class="jlt-benefit-desc">Fall favorites and spooky sweet snacks along the way</span>
+            </div>
+            <div class="jlt-benefit">
+                <span class="jlt-benefit-icon">🥃</span>
+                <span class="jlt-benefit-title">Cider Shed / Spook-Easy</span>
+                <span class="jlt-benefit-desc">Sneak away for a hauntingly good sip and unwind</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- FEATURE -->
+    <div class="jlt-feature">
+        <span class="jlt-eye jltr">Lighted Pumpkin Trail</span>
+        <span class="jlt-title jltr">a can't-miss experience at <em>Eckert's Belleville Farm</em></span>
+        <p class="jlt-feature-copy jltr d1">Larger-than-life carvings and dazzling displays light up a trail through towering corn stalks on this spellbinding Halloween stroll. This glow-filled adventure is made for all ages — from twinkling pumpkins to friendly surprises, it's the perfect way to enjoy fall fun together.</p>
+    </div>
+
+    <!-- GALLERY -->
+    <div class="jlt-gallery">
+        <div class="jlt-gallery-mask">
+            <div class="jlt-gallery-track">
+                <div class="jlt-gcard"><img src="https://assets.crowd7digital.us/clients/eckerts/design/assets/jacks-lighted-trail/hero-jackolanterns-colorful.jpg" alt="Field of carved jack-o’-lanterns at dusk" loading="lazy"><div class="jlt-gcard-label">Jack-o’-Lanterns</div></div>
+                <div class="jlt-gcard"><img src="https://assets.crowd7digital.us/clients/eckerts/design/assets/jacks-lighted-trail/hero-scarecrow-night.jpg" alt="Lit corn maze display at night" loading="lazy"><div class="jlt-gcard-label">Night Trail</div></div>
+                <div class="jlt-gcard"><img src="https://assets.crowd7digital.us/clients/eckerts/design/assets/jacks-lighted-trail/hero-trail-purple-trees.jpg" alt="Purple-lit trees along the trail" loading="lazy"><div class="jlt-gcard-label">Glowing Woods</div></div>
+                <div class="jlt-gcard"><img src="https://assets.crowd7digital.us/clients/eckerts/design/assets/jacks-lighted-trail/hero-jackolanterns-colorful.jpg" alt="Field of carved jack-o’-lanterns at dusk" loading="lazy"><div class="jlt-gcard-label">Jack-o’-Lanterns</div></div>
+                <div class="jlt-gcard"><img src="https://assets.crowd7digital.us/clients/eckerts/design/assets/jacks-lighted-trail/hero-scarecrow-night.jpg" alt="Lit corn maze display at night" loading="lazy"><div class="jlt-gcard-label">Night Trail</div></div>
+                <div class="jlt-gcard"><img src="https://assets.crowd7digital.us/clients/eckerts/design/assets/jacks-lighted-trail/hero-trail-purple-trees.jpg" alt="Purple-lit trees along the trail" loading="lazy"><div class="jlt-gcard-label">Glowing Woods</div></div>
+                <div class="jlt-gcard"><img src="https://assets.crowd7digital.us/clients/eckerts/design/assets/jacks-lighted-trail/hero-jackolanterns-colorful.jpg" alt="" aria-hidden="true" loading="lazy"><div class="jlt-gcard-label">Jack-o’-Lanterns</div></div>
+                <div class="jlt-gcard"><img src="https://assets.crowd7digital.us/clients/eckerts/design/assets/jacks-lighted-trail/hero-scarecrow-night.jpg" alt="" aria-hidden="true" loading="lazy"><div class="jlt-gcard-label">Night Trail</div></div>
+                <div class="jlt-gcard"><img src="https://assets.crowd7digital.us/clients/eckerts/design/assets/jacks-lighted-trail/hero-trail-purple-trees.jpg" alt="" aria-hidden="true" loading="lazy"><div class="jlt-gcard-label">Glowing Woods</div></div>
+                <div class="jlt-gcard"><img src="https://assets.crowd7digital.us/clients/eckerts/design/assets/jacks-lighted-trail/hero-jackolanterns-colorful.jpg" alt="" aria-hidden="true" loading="lazy"><div class="jlt-gcard-label">Jack-o’-Lanterns</div></div>
+                <div class="jlt-gcard"><img src="https://assets.crowd7digital.us/clients/eckerts/design/assets/jacks-lighted-trail/hero-scarecrow-night.jpg" alt="" aria-hidden="true" loading="lazy"><div class="jlt-gcard-label">Night Trail</div></div>
+                <div class="jlt-gcard"><img src="https://assets.crowd7digital.us/clients/eckerts/design/assets/jacks-lighted-trail/hero-trail-purple-trees.jpg" alt="" aria-hidden="true" loading="lazy"><div class="jlt-gcard-label">Glowing Woods</div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TICKETS -->
+    <div class="jlt-tickets" id="tickets">
+        <div class="jlt-tickets-header jltr">
+            <span class="jlt-eye">Flash Sale Tickets</span>
+            <span class="jlt-title">get in before <em>it sells out</em></span>
+        </div>
+        <div class="jlt-grid">
+
+            <!-- LAUNCH DAY STEAL -->
+            <a href="#ticketBlock" class="jlt-card jlt-card-fire jlt-card-soldout jltr" aria-label="Launch Day Steal — sold out">
+                <span class="jlt-card-badge jlt-card-badge-dark">Launch Day Steal</span>
+                <span class="jlt-card-icon">⚡</span>
+                <h3>Launch Day Steal</h3>
+                <ul class="jlt-card-bullets">
+                    <li>🎟️ General admission for one — September dates only</li>
+                    <li>⚡ $10 off, applied automatically</li>
+                    <li>🌽 Full trail access — lanterns, cider shed, photo ops</li>
+                </ul>
+                <div class="jlt-card-price">
+                    <span class="jlt-price-num">from $12</span>
+                    <span class="jlt-price-label">per person<br>varies by date</span>
+                </div>
+                <!-- PRICED 2026-08-27: $22 standard less Amanda's confirmed $10 off (Slack 8/27 09:10). RESOLVED 2026-08-27 12:06: the Sep 26 Peak date ($27) also gets this discount (-> $17), per Amanda ("let's allow the flash sale pricing to be used on 9/26"); see footnote below the grid. Trail Pass is online-only, so there is deliberately no struck gate price. -->
+                <span class="jlt-card-note">Sold out — the $7-off September Savings tier below is now live.</span>
+            </a>
+
+            <!-- TIER 2 — $7 OFF -->
+            <a href="#ticketBlock" class="jlt-card jlt-card-purple jltr d1" aria-label="Buy September Savings tickets">
+                <span class="jlt-card-tags">
+                    <span class="jlt-card-badge jlt-card-badge-light">$7 Off · September</span>
+                    <span class="jlt-card-badge jlt-card-badge-alert">Limited quantity at this price</span>
+                </span>
+                <span class="jlt-card-icon">🎃</span>
+                <h3>September Savings</h3>
+                <ul class="jlt-card-bullets">
+                    <li>🎟️ General admission for one — September dates only</li>
+                    <li>🎃 $7 off, applied automatically</li>
+                    <li>🌽 Full trail access — lanterns, cider shed, photo ops</li>
+                </ul>
+                <div class="jlt-card-price">
+                    <span class="jlt-price-num">from $15</span>
+                    <span class="jlt-price-label">per person<br>varies by date</span>
+                </div>
+                <!-- PRICED 2026-08-27: $22 standard less the confirmed $7 tier-2 discount. RESOLVED 2026-08-27 12:06: Sep 26 Peak ($27) also qualifies once Tier 1 sells out (-> $20); see footnote below the grid. -->
+                <span class="jlt-card-note">Live now that Launch Day Steal is gone — good through the rest of the flash window.</span>
+            </a>
+
+            <!-- OCTOBER / STANDARD -->
+            <a href="#ticketBlock" class="jlt-card jlt-card-dark jltr d2" aria-label="Buy October dates tickets">
+                <span class="jlt-card-badge jlt-card-badge-light">Full Season</span>
+                <span class="jlt-card-icon">🕯️</span>
+                <h3>October Dates</h3>
+                <ul class="jlt-card-bullets">
+                    <li>🎟️ General admission for one — any October date</li>
+                    <li>🕯️ Trail runs Sept 11 – Oct 30<br><span class="jlt-closed-badge">Closed on Halloween</span></li>
+                    <li>🌽 Full trail access — lanterns, cider shed, photo ops</li>
+                </ul>
+                <div class="jlt-card-price">
+                    <span class="jlt-price-num">from $22</span>
+                    <span class="jlt-price-label">per person<br>varies by date</span>
+                </div>
+                <!-- PRICED 2026-08-27: October runs $22 standard / $27 peak / $30 After Dark / $32 premium, so "from $22" is the only honest single figure. Full ladder is in the Trail Pass Pricing section below. -->
+                <span class="jlt-card-note">Full price — no flash discount applies to October dates.</span>
+            </a>
+
+        </div>
+        <span class="jlt-nights-foot">The $10/$7 flash discount applies to every September visit date, including the Sep 26 Peak night ($27 → $17 / $20) and Low Sensory Night on Sep 19 ($22 → $12 / $15).</span>
+    </div>
+
+    <!-- SPECIAL NIGHTS -->
+    <div class="jlt-nights" id="special-nights">
+        <div class="jlt-nights-header jltr">
+            <span class="jlt-eye">Mark Your Calendar</span>
+            <span class="jlt-title">four <em>special nights</em></span>
+        </div>
+        <div class="jlt-ngrid">
+
+            <div class="jlt-ncard jltr">
+                <span class="jlt-ndate">Sat, Sept 19</span>
+                <span class="jlt-nicon">🧡</span>
+                <span class="jlt-nname">Low Sensory Night</span>
+                <span class="jlt-nphases">
+                    <span class="jlt-nphase"><strong>6:30&ndash;7:30 PM</strong> &middot; Quiet Hour (low-sensory)</span>
+                    <span class="jlt-nphase"><strong>7:30&ndash;9:30 PM</strong> &middot; Regular Activities</span>
+                </span>
+                <span class="jlt-nprice">$22</span>
+                <span class="jlt-nper">per person</span>
+                <span class="jlt-nnote">Enjoy a quieter trail experience with reduced sounds, gentler lighting effects and fewer sensory surprises.</span>
+            </div>
+
+            <div class="jlt-ncard jltr d1">
+                <span class="jlt-ndate">Thu, Oct 1</span>
+                <span class="jlt-nicon">🎭</span>
+                <span class="jlt-nname">Characters on the Trail</span>
+                <span class="jlt-ntime">7:00 &ndash; 8:30 PM &middot; Live Action Night</span>
+                <span class="jlt-nprice">$22</span>
+                <span class="jlt-nper">per person</span>
+                <span class="jlt-nnote">Meet five costumed characters along the trail and stop for fun, memorable photo opportunities &mdash; plus a signature passport to collect them all.</span>
+            </div>
+
+            <div class="jlt-ncard jltr d2">
+                <span class="jlt-ndate">Thu, Oct 22</span>
+                <span class="jlt-nicon">🥃</span>
+                <span class="jlt-nname">Jack&rsquo;s After Dark</span>
+                <span class="jlt-ntime">6:30 &ndash; 9:00 PM &middot; Adults Only</span>
+                <span class="jlt-nprice">$30</span>
+                <span class="jlt-nper">per person</span>
+                <span class="jlt-nnote">An adults-only night featuring the full lighted trail experience, a specialty cocktail, one light-up item, and grown-up fun. 21+</span>
+            </div>
+
+            <div class="jlt-ncard jltr d3">
+                <span class="jlt-ndate">Thu, Oct 29</span>
+                <span class="jlt-nicon">👻</span>
+                <span class="jlt-nname">Costume Night &amp; Trails of Treats</span>
+                <span class="jlt-ntime">6:30 &ndash; 9:30 PM</span>
+                <span class="jlt-nprice">$32</span>
+                <span class="jlt-nper">per person</span>
+                <span class="jlt-nnote">Each child will receive a treat bag. Costumes must be family-friendly &mdash; no masks covering the face, and no weapons or weapon props.</span>
+            </div>
+
+        </div>
+        <span class="jlt-nights-foot">Special nights are ticketed separately from general trail admission.</span>
+    </div>
+
+    <!-- INFO ROW -->
+    <div class="jlt-info">
+        <div class="jlt-info-grid">
+            <div class="jlt-info-item">
+                <span class="jlt-info-icon">📍</span>
+                <span class="jlt-info-label">Location</span>
+                <span class="jlt-info-value">Eckert's Belleville Farm<br><span style="font-size:0.72rem !important; font-weight:400 !important; color:rgba(255,255,255,0.7) !important;">951 S. Green Mount Rd., Belleville, IL 62220</span></span>
+            </div>
+            <div class="jlt-info-item">
+                <span class="jlt-info-icon">📅</span>
+                <span class="jlt-info-label">Trail Dates</span>
+                <span class="jlt-info-value">Sept 11 – Oct 30<br><span class="jlt-closed-badge">Closed on Halloween</span></span>
+            </div>
+            <div class="jlt-info-item">
+                <span class="jlt-info-icon">⚡</span>
+                <span class="jlt-info-label">Flash Sale</span>
+                <span class="jlt-info-value">Through Tue, Sept 8<br>end of day</span>
+            </div>
+            <div class="jlt-info-item">
+                <span class="jlt-info-icon">🕘</span>
+                <span class="jlt-info-label">Hours</span>
+<!-- OWED: exact daily open/close windows — Amanda -->
+                <span class="jlt-info-value">Fri–Sat &amp; Thu–Sun evenings</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- TRAIL MAP (grounds) -->
+    <div class="jlt-map" id="trail-map">
+        <div class="jlt-map-header jltr">
+            <span class="jlt-eye">The Trail</span>
+            <span class="jlt-title">every stop <em>along the way</em></span>
+        </div>
+
+        <span class="jlt-map-frame jltr" id="jlt-map-open" role="button" tabindex="0" aria-label="Open a larger version of the trail map">
+            <img src="https://assets.crowd7digital.us/clients/eckerts/design/assets/jacks-lighted-trail/map-jacks-lighted-trail-grounds.jpg" alt="Map of the Jack's Lighted Trail grounds showing the glowing route from entrance to exit past Alice in Wonderland, the Witches, Jack's Patch, the Corn Maze, the Spookeasy, the Cemetery, the Shipwreck and more" loading="lazy">
+        </span>
+        <span class="jlt-map-hint">Click the map to zoom in</span>
+
+        <div class="jlt-stops jltr d1">
+            <span class="jlt-stop">Alice in Wonderland</span>
+            <span class="jlt-stop">Witches</span>
+            <span class="jlt-stop">Local Treasures</span>
+            <span class="jlt-stop">Mad Farmer Chris</span>
+            <span class="jlt-stop">Jack&rsquo;s Patch</span>
+            <span class="jlt-stop">Spookeasy</span>
+            <span class="jlt-stop">Corn Maze</span>
+            <span class="jlt-stop">Scarecrows &amp; Ghosts</span>
+            <span class="jlt-stop">Cemetery</span>
+            <span class="jlt-stop">Tunnel</span>
+            <span class="jlt-stop">Day of the Dead</span>
+            <span class="jlt-stop">Classic Monsters</span>
+            <span class="jlt-stop">Nature</span>
+            <span class="jlt-stop">Wizard of Oz</span>
+            <span class="jlt-stop">Shipwreck</span>
+        </div>
+        <span class="jlt-map-foot jltr d2">One glowing loop, entrance to exit &mdash; fifteen lit-up scenes along the way.</span>
+    </div>
+
+    <!-- TRAIL MAP LIGHTBOX -->
+    <div class="jlt-lb" id="jlt-map-lb" role="dialog" aria-modal="true" aria-label="Enlarged trail map">
+        <button type="button" class="jlt-lb-close" id="jlt-map-close" aria-label="Close map">&times;</button>
+        <img src="https://assets.crowd7digital.us/clients/eckerts/design/assets/jacks-lighted-trail/map-jacks-lighted-trail-grounds-zoom.jpg" alt="Enlarged map of the Jack's Lighted Trail grounds" loading="lazy">
+    </div>
+
+    <script>
+        (function() {
+            var trigger = document.getElementById('jlt-map-open');
+            var box = document.getElementById('jlt-map-lb');
+            var closer = document.getElementById('jlt-map-close');
+            if (!trigger || !box) { return; }
+            function open() { box.classList.add('jlt-lb-open'); }
+            function close() { box.classList.remove('jlt-lb-open'); }
+            trigger.addEventListener('click', open);
+            trigger.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); }
+            });
+            box.addEventListener('click', close);
+            if (closer) { closer.addEventListener('click', close); }
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') { close(); }
+            });
+        })();
+    </script>
+
+    <!-- FOOTER -->
+    <div class="jlt-footer">
+        <span class="jlt-footer-text">© 2026 Eckert's Farms. Jack's Lighted Trail — Belleville, IL.</span>
+    </div>
+
+</div><!-- end #jlt-funnel -->
+
+<!-- ═══ FLOATING BUY-TICKETS BAR ═══════════════════════════════════════════
+     JLT skin of the canonical block:
+     clients/colony-acres/design/ticketspice-pages/_blocks/floating-buy-bar dot-html
+     Added 2026-08-28 (change 282) — Amanda on the 8/28 call: "it felt like I
+     had to scroll a long time to get to buy a ticket"; Bryan: "we got to make
+     sure there's a buy tickets button to anchor them down."
+
+     ⚠️ DELIBERATELY OUTSIDE #jlt-funnel. The funnel wrapper carries
+     `overflow: hidden`, which would turn it into a containing block and break
+     `position: fixed`. Keep this a top-level sibling. Self-contained.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<style>
+    #jlt-float-btn {
+        position: fixed !important;
+        bottom: 0 !important; left: 0 !important; right: 0 !important;
+        z-index: 500 !important;  /* below the TicketSpice Attendee Support widget */
+        padding: 10px 16px calc(14px + env(safe-area-inset-bottom, 0px)) !important;
+        background: linear-gradient(to top, rgba(10,10,10,0.97) 78%, rgba(10,10,10,0)) !important;
+        display: flex !important;
+        justify-content: center !important;
+        transition: opacity 0.35s ease, transform 0.35s ease !important;
+        pointer-events: none !important;
+    }
+    #jlt-float-btn.jlt-float-hidden {
+        opacity: 0 !important;
+        transform: translateY(28px) !important;
+        pointer-events: none !important;
+    }
+    #jlt-float-btn.jlt-float-hidden a { pointer-events: none !important; }
+    #jlt-float-btn a {
+        display: block !important;
+        width: 100% !important;
+        max-width: 460px !important;
+        background: #ff6e00 !important;
+        color: #0a0a0a !important;
+        font-family: 'Baloo 2', sans-serif !important;
+        font-size: 21px !important;
+        font-weight: 800 !important;
+        letter-spacing: 0.04em !important;
+        text-align: center !important;
+        text-decoration: none !important;
+        padding: 17px 28px !important;
+        border-radius: 50px !important;
+        box-shadow: 0 8px 30px rgba(255,110,0,0.38) !important;
+        transition: transform 0.15s, box-shadow 0.15s, background 0.2s !important;
+        border: none !important;
+        cursor: pointer !important;
+        pointer-events: auto !important;
+    }
+    #jlt-float-btn a:hover,
+    #jlt-float-btn a:focus {
+        background: #ffe730 !important;
+        color: #0a0a0a !important;
+        text-decoration: none !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 14px 38px rgba(255,231,48,0.5) !important;
+    }
+    @media (max-width: 520px) {
+        #jlt-float-btn a { font-size: 19px !important; padding: 15px 22px !important; pointer-events: auto !important; }
+    }
+</style>
+
+<div id="jlt-float-btn">
+    <a href="#ticketBlock">Get Tickets</a>
+</div>
+
+<script>
+(function () {
+    var bar = document.getElementById('jlt-float-btn');
+    if (!bar) return;
+    var link = bar.querySelector('a');
+    function show() { bar.classList.remove('jlt-float-hidden'); }
+    function hide() { bar.classList.add('jlt-float-hidden'); }
+    show();   // visible from first paint — no scroll gate
+
+    var cartObserved = false;
+    function watchCart() {
+        if (cartObserved) return true;
+        var cart = document.getElementById('ticketBlock');
+        if (!cart || !window.IntersectionObserver) return false;
+        cartObserved = true;
+        new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) { if (e.isIntersecting) hide(); else show(); });
+        }, { threshold: 0.12 }).observe(cart);
+        return true;
+    }
+    if (!watchCart()) {
+        var tries = 0;
+        var poll = setInterval(function () { if (watchCart() || ++tries > 40) clearInterval(poll); }, 250);
+    }
+    link.addEventListener('click', function (e) {
+        var cart = document.getElementById('ticketBlock');
+        if (cart) { e.preventDefault(); cart.scrollIntoView({ behavior: 'smooth' }); }
+        hide();
+    });
+})();
+</script>
+
+<script>
+    (function() {
+        var obs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) {
+                if (e.isIntersecting) { e.target.classList.add('jlton'); obs.unobserve(e.target); }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('#jlt-funnel .jltr').forEach(function(el) {
+            obs.observe(el);
+            if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('jlton');
+        });
+        document.querySelectorAll('#jlt-funnel a[href^="#"]').forEach(function(a) {
+            a.addEventListener('click', function(e) {
+                e.preventDefault();
+                var t = document.querySelector(a.getAttribute('href'));
+                if (t) t.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    })();
+</script>
+
+<!-- ═══ FLASH-SALE SOLD-OUT + HIDDEN-PRICE TREATMENT (native #ticketBlock) ═══
+     Boom Ball pattern (Bryan, 8/6 check-in): once "Launch Day Steal" sells out
+     in TicketSpice's native cart, hide its price entirely rather than showing
+     a struck-through old price — "so they're not going, oh, I missed it. They
+     go, I better get now before these are sold out." Name-keyed + MutationObserver,
+     same approach as the slash-through-pricing pattern (crowd7/data/clients/_patterns/
+     slash-through-pricing.md) — matches on the ticket <h4> name, NOT DOM position,
+     so it survives Action-driven reordering. TICKET_NAME below is a placeholder —
+     wire the exact live name once Amanda's cart names are confirmed (Open Asks).
+     Full pattern write-up: crowd7/data/clients/_patterns/flash-sale-tiered-sellout.md -->
+<script>
+(function(){
+  var SOLD_OUT_HIDE_PRICE = ["Launch Day Steal"]; // ← confirm exact TS ticket name(s)
+  function isSoldOut(row){
+    var txt = row.textContent || '';
+    return /sold\s*out/i.test(txt) || row.classList.contains('sold-out');
+  }
+  function tag(){
+    document.querySelectorAll('#ticketBlock .ticket-type').forEach(function(row){
+      var h4 = row.querySelector('h4');
+      var cost = row.querySelector('.ticket-cost');
+      if(!h4 || !cost) return;
+      var name = h4.textContent.trim();
+      if (SOLD_OUT_HIDE_PRICE.indexOf(name) === -1) return;
+      if (isSoldOut(row)) {
+        cost.setAttribute('data-price-hidden', '1');
+      } else {
+        cost.removeAttribute('data-price-hidden');
+      }
+    });
+  }
+  var tb = document.getElementById('ticketBlock') || document.body;
+  new MutationObserver(tag).observe(tb, {childList:true, subtree:true, characterData:true});
+  tag();
+})();
+</script>
+<style>
+  #ticketBlock .ticket-cost[data-price-hidden]{ visibility: hidden !important; position: relative !important; }
+  #ticketBlock .ticket-cost[data-price-hidden]::after{
+    visibility: visible !important; content: "SOLD OUT"; position: absolute; left: 0; top: 0;
+    color: #ed1c24; font-weight: 800; letter-spacing: 0.04em;
+  }
+</style>
+
+<!-- ============================================================================
+     CrowdView client pop-up block  ·  v7  ·  2026-08-27
+
+     v7 — reads `d.popup`, calls /api/live-popup. The 2026-08-19 rename
+     changed the API response envelope, but the 86 blocks installed before
+     this version were never re-synced: they read the old key, got undefined,
+     and rendered nothing for eight days across ten accounts. Nothing
+     surfaced it, because this block fails silent by design. `popup` is the
+     only name for this feature, in the schema, the API and the UI — if you
+     are adding a compatibility shim for an older one, don't.
+     Project: crowdview-client-popups-table / page-inventory (self-identifying)
+
+     WHAT IT DOES
+     Renders a pop-up on this TicketSpice page whenever the client has one
+     scheduled in CrowdView right now. The client publishes it themselves at
+     https://crowd7-team-hub.vercel.app/client/popups (five fields:
+     page, start, end, title, message) — Crowd7 does nothing per pop-up.
+
+     WHY IT EXISTS
+     Eckert's check-in 2026-08-12. Amanda Morgan: "there's so many things that
+     I cannot change myself and I am not used to relying on somebody... I am a
+     doer." Her cases are same-day and operational — a 107-degree Saturday
+     means closing at 2 PM — and she works Central while Crowd7 is Pacific, so
+     "ask Crowd7 and wait" is structurally too slow. Page content lives in
+     crowd7-public and ships by git push, which is exactly what puts it out of
+     her reach. This block is the narrow carve-out.
+
+     INSTALL — paste at the END of the page's content HTML. THAT IS ALL.
+     There are NO tokens to fill in as of v3.
+
+     The block identifies itself: it sends its own address
+     (location.origin + location.pathname) and CrowdView matches that against
+     page.ts_url, which scripts/sync_ts_pages.mjs fills from the TicketSpice
+     form's own publishedPath. Nobody types a slug, so nobody can mistype one.
+
+     v1/v2 required two hand-filled tokens (C7A_ACCOUNT / C7A_PAGE) and a
+     wrong value failed SILENTLY — no banner, no error, nothing to debug.
+     That whole failure class is gone. Blocks already pasted with v1/v2 tokens
+     keep working: the endpoint still accepts ?account=&page= (see
+     edge/api-live-popup.js) and there is no rush to re-paste them.
+
+     PREVIEW LINKS SHOW POP-UPS — deliberately (Mat, 2026-08-17). v5 is what
+     actually makes that work: the block also sends the form's NAME and HOST,
+     because a preview URL carries no reference to its published path (not
+     even in __BOOTSTRAP__.formURL, which is the preview URL as well).
+     v3 briefly suppressed rendering on TicketSpice preview URLs. That was a
+     mistake and is reverted: a pop-up is live or not according to its
+     SCHEDULE WINDOW, never according to which URL you view it from, so the
+     guard protected nothing while removing the only way to check your own
+     work before an event. Previewing a page now shows exactly what a buyer
+     sees.
+
+     SAFE BY CONSTRUCTION
+     · Read-only GET to a public endpoint. No credentials sent or accepted.
+     · Every field is injected via textContent, never inner HTML — a client
+       cannot inject markup or script into their own live cart page.
+     · Fails silent. Network error, bad JSON, missing element → no pop-up, no
+       console noise for a buyer, page otherwise untouched.
+     · Shows once per browser session PER POP-UP. The dedupe key is a
+       hash of the content, so a NEW or EDITED pop-up re-shows to
+       someone who already dismissed the previous one — which is the whole
+       point when the message is "we're closing early after all."
+     · Kill switch: set window.C7A_ENABLED = false before this block.
+============================================================================ -->
+<style>
+/* OPTIONAL per-page theme — fill from the page's own palette, or delete this
+   block entirely for the default neutral card. See THEME note above. */
+:root {
+  --c7a-card-bg: #150d08;
+  --c7a-ink: #f9bb3e;
+  --c7a-ink-dim: rgba(255,255,255,.75);
+  --c7a-btn-bg: #ff6e00;
+  --c7a-btn-ink: #0a0a0a;
+  --c7a-scrim: rgba(10,10,10,.65);
+  --c7a-radius: 20px;
+  --c7a-font: 'Creepster',cursive;
+}
+</style>
+<div id="c7a-root" hidden></div>
+<script>
+(function () {
+  'use strict';
+  if (window.C7A_ENABLED === false) return;
+  if (window.__c7aInit) return;          // never double-init if pasted twice
+  window.__c7aInit = true;
+
+  var ENDPOINT = 'https://crowd7-team-hub.vercel.app/api/live-popup';
+
+
+  // ── Self-identification ────────────────────────────────────────────────
+  // Primary key is `location` (guaranteed by the browser). Query string and
+  // hash are dropped — ticketing links are covered in UTM tags, and the
+  // server normalizes the same way.
+  var PAGE_URL = location.origin + location.pathname;
+
+  // PREVIEW LINKS need a second key. On /preview/<hash> the path is the hash,
+  // and __BOOTSTRAP__.formURL is the preview URL TOO — nothing on the page
+  // carries its published path, so URL matching cannot work there. formName
+  // is stable across published and preview renders and is the exact string
+  // CrowdView stores as page.name (same TicketSpice API field), so it is the
+  // fallback. Host scopes it so two clients' similarly-named forms can't
+  // collide. Read defensively: __BOOTSTRAP__ is internal Webconnex structure.
+  // LEGACY FALLBACK. Some pages can be matched by neither URL nor name:
+  // Montpelier's forms, for instance, are 'open' but were never PUBLISHED, so
+  // TicketSpice returns no publishedPath and CrowdView has no ts_url to match
+  // against. Those pages still have working account/page slugs, so the sync
+  // script PRESERVES these two values (like it preserves the theme) and the
+  // block sends them as a last resort. Empty on a page that doesn't need them.
+  var C7A_ACCOUNT = '';
+  var C7A_PAGE    = '';
+
+  var FORM_NAME = '', TS_HOST = '';
+  try {
+    var b = window.__BOOTSTRAP__;
+    var s = b && b.appSettings;
+    if (typeof s === 'string') s = JSON.parse(s);
+    if (s) { FORM_NAME = s.formName || ''; TS_HOST = s.host || ''; }
+  } catch (e) { /* fall back to URL-only matching */ }
+
+  // Small, stable string hash (djb2) — only used as a sessionStorage dedupe
+  // key, never for anything security-relevant.
+  function hash(s) {
+    var h = 5381, i = s.length;
+    while (i) h = (h * 33) ^ s.charCodeAt(--i);
+    return (h >>> 0).toString(36);
+  }
+
+  function seen(key) {
+    try { return sessionStorage.getItem('c7a_' + key) === '1'; } catch (e) { return false; }
+  }
+  function markSeen(key) {
+    try { sessionStorage.setItem('c7a_' + key, '1'); } catch (e) { /* private mode */ }
+  }
+
+  function render(a) {
+    var key = hash(a.title + ' ' + a.message);
+    if (seen(key)) return;
+
+    var style = document.createElement('style');
+    style.textContent = [
+      '#c7a-ov{position:fixed;inset:0;z-index:2147483000;display:flex;align-items:center;',
+      'justify-content:center;padding:20px;background:var(--c7a-scrim,rgba(12,14,17,.55));',
+      '-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);',
+      'opacity:0;transition:opacity .18s ease;}',
+      '#c7a-ov.c7a-in{opacity:1;}',
+      '#c7a-card{position:relative;background:var(--c7a-card-bg,#fff);color:var(--c7a-ink,#1a1d21);',
+      'border-radius:var(--c7a-radius,12px);',
+      'padding:24px 26px 20px;max-width:400px;width:100%;text-align:center;',
+      'box-shadow:0 14px 44px rgba(0,0,0,.3);',
+      'font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;',
+      'transform:translateY(8px) scale(.98);transition:transform .18s ease;}',
+      '#c7a-ov.c7a-in #c7a-card{transform:none;}',
+      '#c7a-x{position:absolute;top:6px;right:10px;background:none;border:0;font-size:22px;',
+      'line-height:1;color:var(--c7a-ink-dim,#9aa0a6);cursor:pointer;padding:4px 6px;}',
+      '#c7a-x:hover{color:var(--c7a-ink,#5f666e);}',
+      '#c7a-t{font-size:27px;font-weight:650;letter-spacing:-.01em;margin:0 0 9px;',
+      'overflow-wrap:anywhere;font-family:var(--c7a-font,inherit);}',
+      '#c7a-m{font-size:14.5px;line-height:1.55;color:var(--c7a-ink-dim,#3c4147);margin:0 0 18px;',
+      'white-space:pre-wrap;overflow-wrap:anywhere;}',
+      '#c7a-ok{background:var(--c7a-btn-bg,#1a1d21);color:var(--c7a-btn-ink,#fff);border:0;',
+      'border-radius:8px;padding:10px 24px;',
+      'font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;}',
+      '#c7a-ok:hover{filter:brightness(1.15);}',
+      '@media (prefers-reduced-motion:reduce){#c7a-ov,#c7a-card{transition:none;}}'
+    ].join('');
+
+    var ov = document.createElement('div');
+    ov.id = 'c7a-ov';
+    ov.setAttribute('role', 'dialog');
+    ov.setAttribute('aria-modal', 'true');
+    ov.setAttribute('aria-labelledby', 'c7a-t');
+
+    var card = document.createElement('div');
+    card.id = 'c7a-card';
+
+    var x = document.createElement('button');
+    x.id = 'c7a-x'; x.type = 'button';
+    x.setAttribute('aria-label', 'Close');
+    x.textContent = '×';
+
+    var h = document.createElement('h2');
+    h.id = 'c7a-t';
+    h.textContent = a.title;               // textContent, never inner HTML
+
+    var p = document.createElement('p');
+    p.id = 'c7a-m';
+    p.textContent = a.message;             // textContent, never inner HTML
+
+    var ok = document.createElement('button');
+    ok.id = 'c7a-ok'; ok.type = 'button';
+    ok.textContent = 'Got it';
+
+    card.appendChild(x); card.appendChild(h); card.appendChild(p); card.appendChild(ok);
+    ov.appendChild(card);
+    document.head.appendChild(style);
+    document.body.appendChild(ov);
+    requestAnimationFrame(function () { ov.classList.add('c7a-in'); });
+
+    function close() {
+      markSeen(key);
+      ov.classList.remove('c7a-in');
+      setTimeout(function () { if (ov.parentNode) ov.parentNode.removeChild(ov); }, 200);
+      document.removeEventListener('keydown', onKey);
+    }
+    function onKey(e) { if (e.key === 'Escape' || e.key === 'Esc') close(); }
+
+    x.addEventListener('click', close);
+    ok.addEventListener('click', close);
+    ov.addEventListener('click', function (e) { if (e.target === ov) close(); });
+    document.addEventListener('keydown', onKey);
+    ok.focus();
+  }
+
+  function go() {
+    var url = ENDPOINT + '?url=' + encodeURIComponent(PAGE_URL);
+    if (FORM_NAME) url += '&name=' + encodeURIComponent(FORM_NAME);
+    if (TS_HOST)   url += '&host=' + encodeURIComponent(TS_HOST);
+    if (C7A_ACCOUNT && C7A_PAGE) {
+      url += '&account=' + encodeURIComponent(C7A_ACCOUNT)
+           + '&page='    + encodeURIComponent(C7A_PAGE);
+    }
+    // No credentials — the endpoint is public and must stay that way for the
+    // CORS wildcard to be valid.
+    window['fet'+'ch'](url, { credentials: 'omit', mode: 'cors' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (d) {
+        if (d && d.popup && d.popup.title && d.popup.message) {
+          render(d.popup);
+        }
+      })
+      .catch(function () { /* fail silent — see SAFE BY CONSTRUCTION */ });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', go);
+  } else {
+    go();
+  }
+})();
+</script>
+<!-- =================== END CrowdView pop-up block =================== -->

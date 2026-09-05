@@ -1,0 +1,875 @@
+<!-- ════════════════════════════════════════════════════════════════════
+     ECKERT'S SUNFLOWER FESTIVAL · BELLEVILLE · 2026  —  HYBRID-LOADER CONTENT
+     Standalone rebranded festival. Sunflower-gold sub-brand.
+     Ticket structure + pricing per Amanda's 7/8/26 Slack spec (supersedes
+     the earlier 7/2-call package set). Flash-sale window per Amanda's
+     7/9 message (July 24–26), confirmed feasible by Mat same day.
+     PENDING (clearly tagged in-page): real sunflower photos (Amanda→Dropbox),
+     flash-sale price sign-off on the new package set (Jill/Angie).
+     ════════════════════════════════════════════════════════════════════ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+    #sf-funnel {
+        width: 100vw !important;
+        position: relative !important;
+        left: 50% !important; right: 50% !important;
+        margin-left: -50vw !important; margin-right: -50vw !important;
+        overflow: hidden !important;
+        font-family: 'Open Sans', sans-serif !important;
+        background: #FFFBEF !important;
+        color: #241A08 !important;
+        padding: 0 !important; box-sizing: border-box !important;
+    }
+
+    /* ── BANNER ── */
+    #sf-funnel .sf-banner {
+        width: 100% !important;
+        background: #C98A14 !important;
+        color: #ffffff !important;
+        text-align: center !important;
+        padding: 11px 20px !important;
+        font-size: 0.8rem !important;
+        letter-spacing: 0.06em !important;
+        display: block !important; box-sizing: border-box !important;
+    }
+    #sf-funnel .sf-banner-inner {
+        display: flex !important; align-items: center !important;
+        justify-content: center !important; gap: 10px !important; flex-wrap: wrap !important;
+    }
+    #sf-funnel .sf-dot {
+        width: 3px !important; height: 3px !important;
+        background: rgba(255,255,255,0.45) !important;
+        border-radius: 50% !important; display: inline-block !important; flex-shrink: 0 !important;
+    }
+
+    /* ── NAV ── */
+    #sf-funnel .sf-nav {
+        width: 100% !important;
+        padding: 0 40px !important;
+        height: 64px !important;
+        display: flex !important; align-items: center !important;
+        justify-content: space-between !important;
+        background: rgba(224,162,31,0.97) !important;
+        position: sticky !important; top: 0 !important; z-index: 100 !important;
+        box-sizing: border-box !important;
+        box-shadow: 0 2px 16px rgba(176,120,10,0.35) !important;
+    }
+    #sf-funnel .sf-logo-wrap {
+        display: flex !important; align-items: center !important;
+        height: 44px !important; width: 160px !important;
+        flex-shrink: 0 !important; overflow: hidden !important;
+    }
+    #sf-funnel .sf-logo-wrap img {
+        height: 44px !important; width: 160px !important;
+        max-width: 160px !important; max-height: 44px !important;
+        object-fit: contain !important; object-position: left center !important; display: block !important;
+    }
+    #sf-funnel .sf-nav-right { display: flex !important; align-items: center !important; gap: 16px !important; }
+    #sf-funnel .sf-nav-loc {
+        font-size: 0.78rem !important; color: rgba(255,255,255,0.8) !important;
+        display: flex !important; align-items: center !important; gap: 5px !important;
+    }
+    #sf-funnel .sf-nav-cta {
+        background: #2F6B4F !important; color: #FFD86B !important;
+        padding: 9px 22px !important; border-radius: 50px !important;
+        font-size: 0.83rem !important; font-weight: 700 !important;
+        text-decoration: none !important; letter-spacing: 0.03em !important;
+        transition: all 0.3s ease !important; white-space: nowrap !important; display: inline-block !important;
+    }
+    #sf-funnel .sf-nav-cta:hover { background: #24503A !important; color: #FFE08A !important; text-decoration: none !important; }
+
+    /* ── HERO ── (placeholder gradient — swap to a sunflower photo from Amanda's Dropbox set) */
+    #sf-funnel .sf-hero {
+        width: 100% !important;
+        min-height: clamp(320px, 55vw, 580px) !important;
+        position: relative !important;
+        display: flex !important; align-items: flex-end !important;
+        overflow: hidden !important;
+        background: url('https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/sunflowers/web/family-pictures-sunflowers.jpg') center 30%/cover no-repeat, linear-gradient(135deg, #F2B705 0%, #E0A21F 45%, #9C6B0E 100%) !important;
+    }
+    #sf-funnel .sf-hero-overlay {
+        position: absolute !important; inset: 0 !important;
+        background: linear-gradient(to bottom, rgba(40,30,8,0.05) 0%, rgba(40,30,8,0.15) 40%, rgba(40,30,8,0.6) 100%) !important;
+        z-index: 1 !important;
+    }
+    #sf-funnel .sf-hero-placeholder-tag {
+        position: absolute !important; top: 14px !important; right: 16px !important; z-index: 3 !important;
+        background: rgba(36,26,8,0.7) !important; color: #FFE08A !important;
+        font-size: 0.6rem !important; letter-spacing: 0.12em !important; text-transform: uppercase !important;
+        font-weight: 700 !important; padding: 5px 11px !important; border-radius: 20px !important;
+    }
+    #sf-funnel .sf-hero-content {
+        position: relative !important; z-index: 2 !important;
+        padding: 0 48px 48px !important; width: 100% !important; box-sizing: border-box !important;
+    }
+    #sf-funnel .sf-hero-eyebrow {
+        font-size: 0.7rem !important; font-weight: 700 !important;
+        letter-spacing: 0.2em !important; text-transform: uppercase !important;
+        color: rgba(255,255,255,0.85) !important; margin-bottom: 10px !important; display: block !important;
+        opacity: 0; animation: sfFadeUp 0.6s ease 0.2s forwards;
+    }
+    #sf-funnel .sf-hero-title {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: clamp(2.6rem, 8vw, 5rem) !important; font-weight: 700 !important;
+        color: white !important; line-height: 1.0 !important; display: block !important;
+        text-shadow: 0 2px 20px rgba(0,0,0,0.35) !important;
+        opacity: 0; animation: sfFadeUp 0.7s ease 0.35s forwards;
+    }
+    #sf-funnel .sf-hero-title em { font-style: italic !important; color: #FFE08A !important; }
+    @keyframes sfFadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ── BENEFITS ── */
+    #sf-funnel .sf-benefits {
+        width: 100% !important; background: white !important;
+        padding: 36px 48px !important; display: block !important; box-sizing: border-box !important;
+        border-bottom: 1px solid rgba(201,138,20,0.1) !important;
+    }
+    #sf-funnel .sf-benefits-grid { display: grid !important; grid-template-columns: repeat(4, 1fr) !important; }
+    #sf-funnel .sf-benefit { text-align: center !important; padding: 8px 20px !important; position: relative !important; }
+    #sf-funnel .sf-benefit:not(:last-child)::after {
+        content: '' !important; position: absolute !important;
+        right: 0 !important; top: 15% !important; bottom: 15% !important;
+        width: 1px !important; background: rgba(201,138,20,0.14) !important;
+    }
+    #sf-funnel .sf-benefit-icon { font-size: 1.7rem !important; margin-bottom: 8px !important; display: block !important; }
+    #sf-funnel .sf-benefit-title {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 1rem !important; font-weight: 600 !important;
+        color: #241A08 !important; margin-bottom: 3px !important; display: block !important;
+    }
+    #sf-funnel .sf-benefit-desc { font-size: 0.75rem !important; color: #8a6a2a !important; line-height: 1.4 !important; display: block !important; }
+
+    /* ── GALLERY ── (placeholder cards — swap to sunflower photos from Amanda's Dropbox set) */
+    #sf-funnel .sf-gallery { width: 100% !important; background: #FFFBEF !important; padding: 64px 0 !important; overflow: hidden !important; display: block !important; }
+    #sf-funnel .sf-gallery-header { text-align: center !important; padding: 0 48px !important; margin-bottom: 40px !important; }
+    #sf-funnel .sf-eye {
+        font-size: 0.7rem !important; font-weight: 600 !important;
+        letter-spacing: 0.22em !important; text-transform: uppercase !important;
+        color: #3D7A4F !important; margin-bottom: 8px !important; display: block !important;
+    }
+    #sf-funnel .sf-title {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: clamp(1.8rem, 4.5vw, 2.8rem) !important; font-weight: 700 !important;
+        color: #241A08 !important; line-height: 1.15 !important; display: block !important;
+    }
+    #sf-funnel .sf-title em { font-style: italic !important; color: #C98A14 !important; }
+    #sf-funnel .sf-gallery-mask {
+        width: 100% !important; overflow: hidden !important;
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%) !important;
+        mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%) !important;
+    }
+    #sf-funnel .sf-gallery-track {
+        display: flex !important; gap: 16px !important; width: max-content !important;
+        animation: sfMarquee 24s linear infinite !important; padding: 8px 0 !important;
+    }
+    #sf-funnel .sf-gallery-track:hover { animation-play-state: paused !important; }
+    @keyframes sfMarquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    #sf-funnel .sf-gcard {
+        width: 380px !important; height: 260px !important;
+        border-radius: 20px !important; overflow: hidden !important;
+        flex-shrink: 0 !important; position: relative !important; cursor: pointer !important;
+        background: linear-gradient(135deg, #FFE08A, #E0A21F) !important;
+        display: flex !important; align-items: center !important; justify-content: center !important;
+        font-size: 3rem !important; transition: transform 0.4s ease, box-shadow 0.4s ease !important;
+    }
+    #sf-funnel .sf-gcard:hover { transform: scale(1.03) translateY(-5px) !important; box-shadow: 0 24px 50px rgba(201,138,20,0.25) !important; z-index: 2 !important; }
+    #sf-funnel .sf-gcard img { width: 100% !important; height: 100% !important; object-fit: cover !important; display: block !important; }
+    #sf-funnel .sf-gcard-label {
+        position: absolute !important; bottom: 12px !important; left: 12px !important;
+        background: rgba(36,26,8,0.6) !important; backdrop-filter: blur(8px) !important;
+        color: white !important; font-size: 0.68rem !important; letter-spacing: 0.1em !important;
+        text-transform: uppercase !important; font-weight: 700 !important;
+        padding: 5px 12px !important; border-radius: 20px !important; z-index: 2 !important;
+    }
+
+    /* ── TICKET CARDS ── */
+    #sf-funnel .sf-tickets { width: 100% !important; background: #FBF1D6 !important; padding: 72px 48px !important; display: block !important; box-sizing: border-box !important; }
+    #sf-funnel .sf-tickets-header { text-align: center !important; margin-bottom: 18px !important; }
+    #sf-funnel .sf-flash {
+        text-align: center !important; max-width: 660px !important; margin: 0 auto 40px !important;
+        background: #2F6B4F !important; border: 1px solid rgba(201,138,20,0.5) !important;
+        border-radius: 14px !important; padding: 16px 22px !important;
+        font-size: 0.86rem !important; color: #FFE08A !important; line-height: 1.6 !important;
+    }
+    #sf-funnel .sf-flash strong { color: #FFD86B !important; }
+    #sf-funnel .sf-grid {
+        display: grid !important; grid-template-columns: repeat(3, minmax(0, 300px)) !important;
+        gap: 22px !important; justify-content: center !important;
+        max-width: 980px !important; margin-left: auto !important; margin-right: auto !important;
+    }
+    #sf-funnel .sf-card {
+        border-radius: 20px !important; padding: 36px 32px !important;
+        position: relative !important; overflow: hidden !important;
+        transition: transform 0.35s ease, box-shadow 0.35s ease !important;
+        display: flex !important; flex-direction: column !important;
+    }
+    #sf-funnel .sf-card:hover { transform: translateY(-6px) !important; }
+    #sf-funnel a.sf-card { cursor: pointer !important; text-decoration: none !important; color: inherit !important; }
+    #sf-funnel .sf-card-dark { background: #2F6B4F !important; color: white !important; }
+    #sf-funnel .sf-card-dark:hover { box-shadow: 0 20px 44px rgba(20,60,40,0.4) !important; }
+    #sf-funnel .sf-card-gold { background: #E0A21F !important; color: #241A08 !important; }
+    #sf-funnel .sf-card-gold:hover { box-shadow: 0 20px 44px rgba(201,138,20,0.4) !important; }
+    #sf-funnel .sf-card-cream { background: linear-gradient(145deg, #FFF3CF, #FFFBEF) !important; border: 1px solid rgba(201,138,20,0.16) !important; }
+    #sf-funnel .sf-card-cream:hover { box-shadow: 0 20px 44px rgba(201,138,20,0.14) !important; }
+
+    #sf-funnel .sf-card-badge {
+        display: inline-block !important; font-size: 0.62rem !important; font-weight: 700 !important;
+        letter-spacing: 0.14em !important; text-transform: uppercase !important;
+        padding: 4px 10px !important; border-radius: 20px !important; margin-bottom: 14px !important; width: fit-content !important;
+    }
+    #sf-funnel .sf-card-badge-light { background: rgba(255,255,255,0.18) !important; color: white !important; }
+    #sf-funnel .sf-card-badge-dark { background: rgba(36,26,8,0.16) !important; color: #241A08 !important; }
+    #sf-funnel .sf-card-badge-gold { background: #FFD86B !important; color: #7a5208 !important; }
+
+    #sf-funnel .sf-card-icon { font-size: 2.6rem !important; margin-bottom: 14px !important; display: block !important; }
+    #sf-funnel .sf-card h3 {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 1.55rem !important; font-weight: 700 !important;
+        line-height: 1.15 !important; margin-bottom: 14px !important; display: block !important;
+    }
+    #sf-funnel .sf-card-cream h3 { color: #241A08 !important; }
+    #sf-funnel .sf-card-gold h3 { color: #241A08 !important; }
+    #sf-funnel .sf-card-dark h3 { color: white !important; }
+    #sf-funnel .sf-card-bullets { list-style: none !important; padding: 0 !important; margin: 0 0 auto !important; display: flex !important; flex-direction: column !important; gap: 6px !important; }
+    #sf-funnel .sf-card-bullets li { font-size: 0.95rem !important; line-height: 1.55 !important; display: flex !important; align-items: flex-start !important; gap: 8px !important; }
+    #sf-funnel .sf-card-cream .sf-card-bullets li { color: #5a4516 !important; }
+    #sf-funnel .sf-card-gold .sf-card-bullets li { color: #3a2c0c !important; }
+    #sf-funnel .sf-card-dark .sf-card-bullets li { color: rgba(255,255,255,0.85) !important; }
+
+    #sf-funnel .sf-card-price { display: flex !important; align-items: baseline !important; gap: 6px !important; margin-top: 20px !important; padding-top: 16px !important; }
+    #sf-funnel .sf-card-gold .sf-card-price { border-top: 1px solid rgba(36,26,8,0.2) !important; }
+    #sf-funnel .sf-card-cream .sf-card-price { border-top: 1px solid rgba(201,138,20,0.16) !important; }
+    #sf-funnel .sf-card-dark .sf-card-price { border-top: 1px solid rgba(255,255,255,0.15) !important; }
+    #sf-funnel .sf-price-num { font-family: 'Zilla Slab', 'Times New Roman', serif !important; font-size: 2.8rem !important; font-weight: 700 !important; line-height: 1 !important; }
+    #sf-funnel .sf-card-cream .sf-price-num { color: #C98A14 !important; }
+    #sf-funnel .sf-card-gold .sf-price-num { color: #241A08 !important; }
+    #sf-funnel .sf-card-dark .sf-price-num { color: #FFD86B !important; }
+    #sf-funnel .sf-price-label { font-size: 0.88rem !important; line-height: 1.4 !important; }
+    #sf-funnel .sf-card-cream .sf-price-label { color: #a98a4a !important; }
+    #sf-funnel .sf-card-gold .sf-price-label { color: #5a4516 !important; }
+    #sf-funnel .sf-card-dark .sf-price-label { color: rgba(255,255,255,0.55) !important; }
+    #sf-funnel .sf-card-note { font-size: 0.72rem !important; font-style: italic !important; margin-top: 10px !important; display: block !important; line-height: 1.5 !important; }
+    #sf-funnel .sf-card-dark .sf-card-note { color: rgba(255,255,255,0.4) !important; }
+    #sf-funnel .sf-card-gold .sf-card-note { color: #5a4516 !important; }
+    #sf-funnel .sf-card-cream .sf-card-note { color: #a98a4a !important; }
+
+    /* ── ADD-ON STRIP ── */
+    #sf-funnel .sf-addon-list {
+        max-width: 864px !important; margin: 28px auto 0 !important;
+        display: flex !important; flex-direction: column !important; gap: 14px !important;
+    }
+    #sf-funnel .sf-addon {
+        background: white !important; border: 1px solid rgba(201,138,20,0.2) !important;
+        border-radius: 16px !important; padding: 22px 28px !important;
+        display: flex !important; align-items: center !important; gap: 20px !important; box-sizing: border-box !important;
+    }
+    #sf-funnel .sf-addon-icon { font-size: 2.2rem !important; flex-shrink: 0 !important; }
+    #sf-funnel .sf-addon-body { flex: 1 1 auto !important; }
+    #sf-funnel .sf-addon-title { font-family: 'Zilla Slab', serif !important; font-size: 1.2rem !important; font-weight: 700 !important; color: #241A08 !important; display: block !important; margin-bottom: 3px !important; }
+    #sf-funnel .sf-addon-tag {
+        font-size: 0.6rem !important; font-weight: 700 !important; letter-spacing: 0.1em !important;
+        text-transform: uppercase !important; color: #C98A14 !important; background: rgba(201,138,20,0.12) !important;
+        padding: 3px 9px !important; border-radius: 20px !important; margin-left: 8px !important; display: inline-block !important;
+    }
+    #sf-funnel .sf-addon-desc { font-size: 0.85rem !important; color: #8a6a2a !important; line-height: 1.5 !important; display: block !important; }
+    #sf-funnel .sf-addon-price { font-family: 'Zilla Slab', serif !important; font-size: 1.5rem !important; font-weight: 700 !important; color: #C98A14 !important; flex-shrink: 0 !important; }
+
+    /* ── INFO ROW ── */
+    #sf-funnel .sf-info { width: 100% !important; background: #C98A14 !important; padding: 0 !important; display: block !important; box-sizing: border-box !important; }
+    #sf-funnel .sf-info-grid { display: grid !important; grid-template-columns: repeat(4, 1fr) !important; }
+    #sf-funnel .sf-info-item { text-align: center !important; padding: 28px 20px !important; position: relative !important; }
+    #sf-funnel .sf-info-item:not(:last-child)::after { content: '' !important; position: absolute !important; right: 0 !important; top: 20% !important; bottom: 20% !important; width: 1px !important; background: rgba(255,255,255,0.18) !important; }
+    #sf-funnel .sf-info-icon { font-size: 1.5rem !important; display: block !important; margin-bottom: 6px !important; }
+    #sf-funnel .sf-info-label { font-size: 0.62rem !important; font-weight: 700 !important; letter-spacing: 0.16em !important; text-transform: uppercase !important; color: rgba(255,255,255,0.65) !important; display: block !important; margin-bottom: 4px !important; }
+    #sf-funnel .sf-info-value { font-family: 'Zilla Slab', 'Times New Roman', serif !important; font-size: 0.95rem !important; font-weight: 600 !important; color: white !important; display: block !important; line-height: 1.3 !important; }
+
+    /* ── REVEAL ── */
+    #sf-funnel .sfr { opacity: 0 !important; transform: translateY(28px) !important; transition: opacity 0.7s cubic-bezier(.16,1,.3,1), transform 0.7s cubic-bezier(.16,1,.3,1) !important; }
+    #sf-funnel .sfr.sfon { opacity: 1 !important; transform: none !important; }
+    #sf-funnel .sfr.d1 { transition-delay: 0.1s !important; }
+    #sf-funnel .sfr.d2 { transition-delay: 0.2s !important; }
+    #sf-funnel .sfr.d3 { transition-delay: 0.3s !important; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1000px) { #sf-funnel .sf-grid { grid-template-columns: repeat(2, minmax(0, 380px)) !important; max-width: 800px !important; } }
+    @media (max-width: 860px) {
+        #sf-funnel .sf-nav { padding: 0 24px !important; }
+        #sf-funnel .sf-hero-content { padding: 0 28px 32px !important; }
+        #sf-funnel .sf-benefits { padding: 32px 24px !important; }
+        #sf-funnel .sf-tickets { padding: 56px 24px !important; }
+        #sf-funnel .sf-info-grid { grid-template-columns: 1fr 1fr !important; }
+        #sf-funnel .sf-info-item:nth-child(2n)::after { display: none !important; }
+        #sf-funnel .sf-gallery-header { padding: 0 24px !important; }
+        #sf-funnel .sf-gcard { width: 300px !important; height: 210px !important; }
+    }
+    @media (max-width: 560px) {
+        #sf-funnel .sf-nav { padding: 0 16px !important; }
+        #sf-funnel .sf-hero-content { padding: 0 18px 24px !important; }
+        #sf-funnel .sf-nav-loc { display: none !important; }
+        #sf-funnel .sf-benefits { padding: 24px 16px !important; }
+        #sf-funnel .sf-benefits-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 14px 0 !important; }
+        #sf-funnel .sf-benefit:nth-child(2n)::after { display: none !important; }
+        #sf-funnel .sf-tickets { padding: 48px 16px !important; }
+        #sf-funnel .sf-grid { grid-template-columns: 1fr !important; }
+        #sf-funnel .sf-addon { flex-direction: column !important; text-align: center !important; gap: 10px !important; }
+        #sf-funnel .sf-gallery-header { padding: 0 16px !important; }
+        #sf-funnel .sf-gcard { width: 240px !important; height: 170px !important; }
+    }
+</style>
+
+<div id="sf-funnel">
+
+    <!-- BANNER -->
+    <div class="sf-banner">
+        <div class="sf-banner-inner">
+            <span>🌻 <strong>Eckert's Sunflower Festival</strong></span>
+            <span class="sf-dot"></span>
+            <span>Belleville Farm · 2026</span>
+            <span class="sf-dot"></span>
+            <span>Festival Aug 1–22</span>
+        </div>
+    </div>
+
+    <!-- NAV -->
+    <div class="sf-nav">
+        <div class="sf-logo-wrap">
+            <img src="https://s3.amazonaws.com/uploads.webconnex.com/147655%2F1771785967751-Untitled+design+%28100%29.png" alt="Eckert's Farm">
+        </div>
+        <div class="sf-nav-right">
+            <div class="sf-nav-loc">
+                <svg width="12" height="12" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                    <circle cx="12" cy="11" r="3"/>
+                </svg>
+                Belleville, IL
+            </div>
+            <a href="#ticketBlock" class="sf-nav-cta">Get Tickets</a>
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <div class="sf-hero">
+        <div class="sf-hero-overlay"></div>
+        <div class="sf-hero-content">
+            <span class="sf-hero-eyebrow">Eckert's Belleville Farm · 2026</span>
+            <span class="sf-hero-title">Eckert's<br><em>Sunflower Festival</em></span>
+        </div>
+    </div>
+
+    <!-- BENEFITS -->
+    <div class="sf-benefits">
+        <div class="sf-benefits-grid">
+            <div class="sf-benefit">
+                <span class="sf-benefit-icon">🌻</span>
+                <span class="sf-benefit-title">Acres of Sunflowers</span>
+                <span class="sf-benefit-desc">Walk the rows in peak bloom</span>
+            </div>
+            <div class="sf-benefit">
+                <span class="sf-benefit-icon">✂️</span>
+                <span class="sf-benefit-title">Cut-Your-Own</span>
+                <span class="sf-benefit-desc">Take home a fresh-cut stem</span>
+            </div>
+            <div class="sf-benefit">
+                <span class="sf-benefit-icon">📸</span>
+                <span class="sf-benefit-title">Photo Scenes</span>
+                <span class="sf-benefit-desc">Picture-perfect backdrops</span>
+            </div>
+            <div class="sf-benefit">
+                <span class="sf-benefit-icon">🥂</span>
+                <span class="sf-benefit-title">Sips &amp; Treats</span>
+                <span class="sf-benefit-desc">Souvenir mason jar lemonade — boozy or non-alcoholic</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- GALLERY (placeholder cards) -->
+    <div class="sf-gallery">
+        <div class="sf-gallery-header sfr">
+            <span class="sf-eye">In the Fields</span>
+            <span class="sf-title">A field of <em>gold</em></span>
+        </div>
+        <div class="sf-gallery-mask">
+            <div class="sf-gallery-track">
+                <div class="sf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/sunflowers/web/bright-sunflower-field.jpg" alt="Acres of sunflowers in bloom" loading="lazy"><div class="sf-gcard-label">Acres in Bloom</div></div>
+                <div class="sf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/sunflowers/web/two-girls-running-through-flowers.jpg" alt="Kids running through the sunflower field" loading="lazy"><div class="sf-gcard-label">Room to Roam</div></div>
+                <div class="sf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/sunflowers/web/girl-holding-two-sunflowers.jpg" alt="Girl holding fresh-cut sunflowers" loading="lazy"><div class="sf-gcard-label">Cut-Your-Own</div></div>
+                <div class="sf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/sunflowers/web/red-truck-next-to-flower-field.jpg" alt="Vintage red truck by the sunflower field" loading="lazy"><div class="sf-gcard-label">Photo Scenes</div></div>
+                <div class="sf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/sunflowers/web/boy-in-flowers.jpg" alt="Child among the sunflowers" loading="lazy"><div class="sf-gcard-label">For All Ages</div></div>
+                <div class="sf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/sunflowers/web/sunflower-close-up.jpg" alt="Sunflower close-up" loading="lazy"><div class="sf-gcard-label">Golden Blooms</div></div>
+                <div class="sf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/sunflowers/web/two-girls-red-swing-flowers.jpg" alt="Girls on the red swing in the flowers" loading="lazy"><div class="sf-gcard-label">The Swing</div></div>
+                <!-- Duplicate for seamless loop -->
+                <div class="sf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/sunflowers/web/bright-sunflower-field.jpg" alt="" aria-hidden="true" loading="lazy"><div class="sf-gcard-label">Acres in Bloom</div></div>
+                <div class="sf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/sunflowers/web/two-girls-running-through-flowers.jpg" alt="" aria-hidden="true" loading="lazy"><div class="sf-gcard-label">Room to Roam</div></div>
+                <div class="sf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/sunflowers/web/girl-holding-two-sunflowers.jpg" alt="" aria-hidden="true" loading="lazy"><div class="sf-gcard-label">Cut-Your-Own</div></div>
+                <div class="sf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/sunflowers/web/red-truck-next-to-flower-field.jpg" alt="" aria-hidden="true" loading="lazy"><div class="sf-gcard-label">Photo Scenes</div></div>
+                <div class="sf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/sunflowers/web/boy-in-flowers.jpg" alt="" aria-hidden="true" loading="lazy"><div class="sf-gcard-label">For All Ages</div></div>
+                <div class="sf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/sunflowers/web/sunflower-close-up.jpg" alt="" aria-hidden="true" loading="lazy"><div class="sf-gcard-label">Golden Blooms</div></div>
+                <div class="sf-gcard"><img src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/eckerts/design/assets/sunflowers/web/two-girls-red-swing-flowers.jpg" alt="" aria-hidden="true" loading="lazy"><div class="sf-gcard-label">The Swing</div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TICKETS -->
+    <div class="sf-tickets" id="tickets">
+        <div class="sf-tickets-header sfr">
+            <span class="sf-eye">Festival Tickets</span>
+            <span class="sf-title">Pick your <em>sunflower experience</em></span>
+        </div>
+        <div class="sf-grid">
+
+            <!-- GENERAL ADMISSION -->
+            <a href="#ticketBlock" class="sf-card sf-card-gold sfr" aria-label="Buy General Admission tickets">
+                <span class="sf-card-badge sf-card-badge-dark">Most Popular</span>
+                <span class="sf-card-icon">🌻</span>
+                <h3>General Admission</h3>
+                <ul class="sf-card-bullets">
+                    <li>🌻 General admission for one</li>
+                    <li>✂️ One cut-your-own sunflower</li>
+                </ul>
+                <div class="sf-card-price">
+                    <span class="sf-price-num">$12.95</span>
+                    <span class="sf-price-label">online<br><span style="text-decoration:line-through;opacity:0.7;">$18 at gate</span></span>
+                </div>
+            </a>
+
+            <!-- FLOWER POWER PASS -->
+            <a href="#ticketBlock" class="sf-card sf-card-dark sfr d1" aria-label="Buy Flower Power Pass tickets">
+                <span class="sf-card-badge sf-card-badge-gold">Popular Upgrade</span>
+                <span class="sf-card-icon">👑</span>
+                <h3>Flower Power Pass</h3>
+                <ul class="sf-card-bullets">
+                    <li>🌻 General admission for one</li>
+                    <li>✂️ One cut-your-own sunflower</li>
+                    <li>🥂 One souvenir mason jar lemonade — boozy or non-alcoholic</li>
+                    <li>👑 One flower crown</li>
+                </ul>
+                <div class="sf-card-price">
+                    <span class="sf-price-num">$19.95</span>
+                    <span class="sf-price-label">online<br><span style="text-decoration:line-through;opacity:0.7;">$25 at gate</span></span>
+                </div>
+            </a>
+
+            <!-- FAMILY & FRIENDS -->
+            <a href="#ticketBlock" class="sf-card sf-card-cream sfr d2" aria-label="Buy Family &amp; Friends Package tickets">
+                <span class="sf-card-badge sf-card-badge-gold">Best Value</span>
+                <span class="sf-card-icon">👨‍👩‍👧‍👦</span>
+                <h3>Family &amp; Friends<br>Package</h3>
+                <ul class="sf-card-bullets">
+                    <li>👨‍👩‍👧‍👦 General admission for four</li>
+                    <li>✂️ Four cut-your-own sunflowers</li>
+                    <li>🥂 Four souvenir mason jar lemonades — boozy or non-alcoholic</li>
+                    <li>👑 Two flower crowns</li>
+                    <li>🕶️ Two pairs of flower sunglasses</li>
+                </ul>
+                <div class="sf-card-price">
+                    <span class="sf-price-num">$74.95</span>
+                    <span class="sf-price-label">online<br><span style="text-decoration:line-through;opacity:0.7;">$80 at gate</span></span>
+                </div>
+            </a>
+
+        </div>
+    </div>
+
+    <!-- INFO ROW -->
+    <div class="sf-info">
+        <div class="sf-info-grid">
+            <div class="sf-info-item">
+                <span class="sf-info-icon">📍</span>
+                <span class="sf-info-label">Location</span>
+                <span class="sf-info-value">Eckert's Belleville Farm<br><span style="font-size:0.72rem !important; font-weight:400 !important; color:rgba(255,255,255,0.7) !important;">951 S. Green Mount Rd., Belleville, IL 62220</span></span>
+            </div>
+            <div class="sf-info-item">
+                <span class="sf-info-icon">📅</span>
+                <span class="sf-info-label">Festival Dates</span>
+                <span class="sf-info-value">Aug 1–22</span>
+            </div>
+            <div class="sf-info-item">
+                <span class="sf-info-icon">🎟️</span>
+                <span class="sf-info-label">Sales Open</span>
+                <span class="sf-info-value">General admission $12.95<br>tickets on sale now</span>
+            </div>
+            <div class="sf-info-item">
+                <span class="sf-info-icon">🕘</span>
+                <span class="sf-info-label">Hours</span>
+                <span class="sf-info-value">Tue–Sun · 9am–5pm<br>(last wagon out 5pm)</span>
+            </div>
+        </div>
+    </div>
+
+</div><!-- end #sf-funnel -->
+
+<script>
+    (function() {
+        var obs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) {
+                if (e.isIntersecting) { e.target.classList.add('sfon'); obs.unobserve(e.target); }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('#sf-funnel .sfr').forEach(function(el) {
+            obs.observe(el);
+            if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('sfon');
+        });
+        document.querySelectorAll('#sf-funnel a[href^="#"]').forEach(function(a) {
+            a.addEventListener('click', function(e) {
+                e.preventDefault();
+                var t = document.querySelector(a.getAttribute('href'));
+                if (t) t.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    })();
+</script>
+
+  <!-- =================== SHIPPABLE BLOCK START =================== -->
+  <!-- Eckert's Belleville — Sunflower Festival FLASH SALE EXTENSION pop-up. Self-contained: lives in
+       our hybrid-loader content block. Namespaced sfpop-* + IIFE so it can't clash with TicketSpice.
+       FULL CONTROL stays in our HTML — change copy/styling/dates here, never touch TS.
+         • Shows on page load, ONCE PER SESSION, ONLY during the extended window Jul 24–28, 2026
+           (anchored to America/Chicago so it opens/closes at the same instant for every buyer).
+         • Sale was extended 7/27 (Amanda→Bryan, Slack #crowd7-and-eckerts-farm) after ~1,000 flash
+           tickets sold. Original window closed 7/27; this block runs it through Tue 7/28 23:59:59 ET.
+         • COUPON CODE **FLOWER26** — buyers MUST enter it at checkout to get flash pricing.
+           (Corrected 2026-07-27: an earlier version of this block omitted the code on the
+           assumption the discount was applied automatically by a TS date-conditional Action.
+           It is NOT automatic — Mat confirmed the code is required. Never ship a flash popup
+           without confirming whether the discount is code-gated or Action-gated.)
+         • To preview off-window: window.SFPOP_FORCE = true, or append ?sftest=1 to the live URL.
+         • To disable: window.SFPOP_ENABLED = false (or delete this whole block). -->
+  <div id="sfpop-overlay" class="sfpop-overlay" role="dialog" aria-modal="true" aria-labelledby="sfpop-title" hidden>
+    <div class="sfpop-card">
+      <button class="sfpop-close" aria-label="Close">&times;</button>
+      <span class="sfpop-badge">Flash Sale Extended</span>
+      <div class="sfpop-icon">🌻</div>
+      <h3 id="sfpop-title" class="sfpop-h">One More Day — <em>Flash Pricing</em></h3>
+      <p class="sfpop-p">You asked, we listened. Sunflower Festival flash pricing is extended through
+        <strong>Tuesday,&nbsp;July&nbsp;28 at 11:59pm CT</strong>:</p>
+      <ul class="sfpop-list">
+        <li><span class="sfpop-li-ic">🎟️</span> <strong>General Admission $7.95</strong> &mdash; <span class="sfpop-strike">$18 at the gate</span></li>
+        <li><span class="sfpop-li-ic">🌻</span> <strong>Flower Power Pass $19.95</strong></li>
+        <li><span class="sfpop-li-ic">👨‍👩‍👧</span> <strong>Family &amp; Friends Package $74.95</strong></li>
+      </ul>
+      <p class="sfpop-code">Use code <strong>FLOWER26</strong> at checkout</p>
+      <p class="sfpop-note">Festival runs <strong>Aug&nbsp;1&ndash;22</strong> &middot; prices go up Wednesday</p>
+      <button class="sfpop-ok">Get Tickets</button>
+    </div>
+  </div>
+
+  <style>
+    .sfpop-overlay{position:fixed;inset:0;z-index:2147483000;display:flex;align-items:center;justify-content:center;
+      background:rgba(36,26,8,.66);padding:20px;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+    .sfpop-overlay[hidden]{display:none;}
+    .sfpop-card{position:relative;background:#FFFBEF;max-width:440px;width:100%;border-radius:18px;padding:32px 28px 28px;
+      border:3px solid #C98A14;box-shadow:0 24px 60px rgba(36,26,8,.45);text-align:center;
+      font-family:'Open Sans',system-ui,sans-serif;animation:sfpop-in .26s ease;box-sizing:border-box;}
+    @keyframes sfpop-in{from{opacity:0;transform:translateY(16px) scale(.97);}to{opacity:1;transform:none;}}
+    .sfpop-badge{display:inline-block;background:#2F6B4F;color:#fff;font-weight:700;letter-spacing:.08em;
+      text-transform:uppercase;font-size:.68rem;padding:5px 14px;border-radius:50px;margin-bottom:14px;}
+    .sfpop-icon{font-size:2.6rem;line-height:1;margin-bottom:8px;}
+    .sfpop-h{font-family:'Zilla Slab','Times New Roman',serif;font-size:1.5rem;font-weight:700;color:#C98A14;
+      margin:0 0 12px;line-height:1.2;}
+    .sfpop-h em{font-style:italic;color:#241A08;}
+    .sfpop-p{font-size:.96rem;line-height:1.5;color:#5a4516;margin:0 0 14px;}
+    .sfpop-list{list-style:none;margin:0 0 16px;padding:0;text-align:left;display:inline-block;}
+    .sfpop-list li{font-size:.98rem;line-height:1.5;color:#241A08;margin:0 0 8px;padding-left:2px;}
+    .sfpop-li-ic{display:inline-block;width:1.4em;}
+    .sfpop-strike{text-decoration:line-through;opacity:.7;}
+    .sfpop-code{font-size:1rem;color:#5a4516;margin:0 0 14px;}
+    .sfpop-code strong{background:#FFF3CF;color:#241A08;border:1px dashed #C98A14;border-radius:6px;
+      padding:3px 10px;letter-spacing:.06em;font-family:'Zilla Slab','Times New Roman',serif;}
+    .sfpop-note{font-size:.9rem;color:#5a4516;margin:0 0 22px;}
+    .sfpop-note strong{color:#241A08;}
+    .sfpop-ok{background:#C98A14;color:#241A08;border:0;border-radius:50px;padding:13px 40px;font-size:1rem;font-weight:700;
+      cursor:pointer;letter-spacing:.03em;box-shadow:0 8px 24px rgba(201,138,20,.35);transition:background .2s,transform .15s;}
+    .sfpop-ok:hover{background:#E0A21F;transform:translateY(-2px);}
+    .sfpop-close{position:absolute;top:10px;right:14px;background:none;border:0;font-size:1.7rem;line-height:1;
+      color:#a98a4a;cursor:pointer;}
+    .sfpop-close:hover{color:#C98A14;}
+    @media (max-width:480px){ .sfpop-card{padding:28px 22px 24px;} .sfpop-h{font-size:1.3rem;} }
+  </style>
+
+  <script>
+  (function(){
+    if (window.SFPOP_ENABLED === false) return;                // kill switch
+    var ov = document.getElementById('sfpop-overlay');
+    if(!ov) return;
+    var KEY = 'eck_belleville_sunflower_flash_seen';            // once per session
+
+    // Extended flash window: Jul 24–28, 2026 inclusive, anchored to America/Chicago (not the buyer's
+    // local clock) so it opens/closes at the same instant for everyone. Force with window.SFPOP_FORCE=true.
+    function easternStamp(d){
+      var p = {};
+      new Intl.DateTimeFormat('en-US', {
+        timeZone: 'America/Chicago', year:'numeric', month:'2-digit', day:'2-digit',
+        hour:'2-digit', minute:'2-digit', second:'2-digit', hour12:false
+      }).formatToParts(d).forEach(function(x){ p[x.type] = x.value; });
+      return p.year + p.month + p.day + (p.hour === '24' ? '00' : p.hour) + p.minute + p.second;
+    }
+    function inWindow(){
+      if (window.SFPOP_FORCE === true) return true;
+      if (/[?&]sftest=1(&|$)/.test(location.search)) return true;   // QA override: force-show on the live page
+      var now = easternStamp(new Date());                      // YYYYMMDDHHMMSS in America/Chicago
+      return now >= '20260724000000' && now <= '20260728235959';
+    }
+    if(!inWindow()) return;
+    try{ if(sessionStorage.getItem(KEY)) return; }catch(e){}
+
+    function show(){ ov.hidden = false; try{ sessionStorage.setItem(KEY,'1'); }catch(e){} }
+    function hide(){ ov.hidden = true; }
+    ov.querySelector('.sfpop-close').addEventListener('click', hide);
+    ov.addEventListener('click', function(e){ if(e.target===ov) hide(); });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape'||e.keyCode===27) hide(); });
+    ov.querySelector('.sfpop-ok').addEventListener('click', function(){
+      hide();
+      var t = document.getElementById('ticketBlock') || document.getElementById('tickets');
+      if(t) t.scrollIntoView({ behavior:'smooth' });
+    });
+
+    if(document.readyState !== 'loading') setTimeout(show, 900);
+    else document.addEventListener('DOMContentLoaded', function(){ setTimeout(show, 900); });
+  })();
+  </script>
+  <!-- =================== SHIPPABLE BLOCK END =================== -->
+
+<!-- ============================================================================
+     CrowdView client pop-up block  ·  v7  ·  2026-08-27
+
+     v7 — reads `d.popup`, calls /api/live-popup. The 2026-08-19 rename
+     changed the API response envelope, but the 86 blocks installed before
+     this version were never re-synced: they read the old key, got undefined,
+     and rendered nothing for eight days across ten accounts. Nothing
+     surfaced it, because this block fails silent by design. `popup` is the
+     only name for this feature, in the schema, the API and the UI — if you
+     are adding a compatibility shim for an older one, don't.
+     Project: crowdview-client-popups-table / page-inventory (self-identifying)
+
+     WHAT IT DOES
+     Renders a pop-up on this TicketSpice page whenever the client has one
+     scheduled in CrowdView right now. The client publishes it themselves at
+     https://crowd7-team-hub.vercel.app/client/popups (five fields:
+     page, start, end, title, message) — Crowd7 does nothing per pop-up.
+
+     WHY IT EXISTS
+     Eckert's check-in 2026-08-12. Amanda Morgan: "there's so many things that
+     I cannot change myself and I am not used to relying on somebody... I am a
+     doer." Her cases are same-day and operational — a 107-degree Saturday
+     means closing at 2 PM — and she works Central while Crowd7 is Pacific, so
+     "ask Crowd7 and wait" is structurally too slow. Page content lives in
+     crowd7-public and ships by git push, which is exactly what puts it out of
+     her reach. This block is the narrow carve-out.
+
+     INSTALL — paste at the END of the page's content HTML. THAT IS ALL.
+     There are NO tokens to fill in as of v3.
+
+     The block identifies itself: it sends its own address
+     (location.origin + location.pathname) and CrowdView matches that against
+     page.ts_url, which scripts/sync_ts_pages.mjs fills from the TicketSpice
+     form's own publishedPath. Nobody types a slug, so nobody can mistype one.
+
+     v1/v2 required two hand-filled tokens (C7A_ACCOUNT / C7A_PAGE) and a
+     wrong value failed SILENTLY — no banner, no error, nothing to debug.
+     That whole failure class is gone. Blocks already pasted with v1/v2 tokens
+     keep working: the endpoint still accepts ?account=&page= (see
+     edge/api-live-popup.js) and there is no rush to re-paste them.
+
+     PREVIEW LINKS SHOW POP-UPS — deliberately (Mat, 2026-08-17). v5 is what
+     actually makes that work: the block also sends the form's NAME and HOST,
+     because a preview URL carries no reference to its published path (not
+     even in __BOOTSTRAP__.formURL, which is the preview URL as well).
+     v3 briefly suppressed rendering on TicketSpice preview URLs. That was a
+     mistake and is reverted: a pop-up is live or not according to its
+     SCHEDULE WINDOW, never according to which URL you view it from, so the
+     guard protected nothing while removing the only way to check your own
+     work before an event. Previewing a page now shows exactly what a buyer
+     sees.
+
+     SAFE BY CONSTRUCTION
+     · Read-only GET to a public endpoint. No credentials sent or accepted.
+     · Every field is injected via textContent, never inner HTML — a client
+       cannot inject markup or script into their own live cart page.
+     · Fails silent. Network error, bad JSON, missing element → no pop-up, no
+       console noise for a buyer, page otherwise untouched.
+     · Shows once per browser session PER POP-UP. The dedupe key is a
+       hash of the content, so a NEW or EDITED pop-up re-shows to
+       someone who already dismissed the previous one — which is the whole
+       point when the message is "we're closing early after all."
+     · Kill switch: set window.C7A_ENABLED = false before this block.
+============================================================================ -->
+<style>
+/* OPTIONAL per-page theme — fill from the page's own palette, or delete this
+   block entirely for the default neutral card. See THEME note above. */
+:root {
+  --c7a-card-bg: #FFFBEF;
+  --c7a-ink: #241A08;
+  --c7a-ink-dim: #5a4516;
+  --c7a-btn-bg: #C98A14;
+  --c7a-btn-ink: #241A08;
+  --c7a-scrim: rgba(36,26,8,.55);
+  --c7a-radius: 18px;
+  --c7a-font: 'Zilla Slab','Times New Roman',serif;
+}
+</style>
+<div id="c7a-root" hidden></div>
+<script>
+(function () {
+  'use strict';
+  if (window.C7A_ENABLED === false) return;
+  if (window.__c7aInit) return;          // never double-init if pasted twice
+  window.__c7aInit = true;
+
+  var ENDPOINT = 'https://crowd7-team-hub.vercel.app/api/live-popup';
+
+
+  // ── Self-identification ────────────────────────────────────────────────
+  // Primary key is `location` (guaranteed by the browser). Query string and
+  // hash are dropped — ticketing links are covered in UTM tags, and the
+  // server normalizes the same way.
+  var PAGE_URL = location.origin + location.pathname;
+
+  // PREVIEW LINKS need a second key. On /preview/<hash> the path is the hash,
+  // and __BOOTSTRAP__.formURL is the preview URL TOO — nothing on the page
+  // carries its published path, so URL matching cannot work there. formName
+  // is stable across published and preview renders and is the exact string
+  // CrowdView stores as page.name (same TicketSpice API field), so it is the
+  // fallback. Host scopes it so two clients' similarly-named forms can't
+  // collide. Read defensively: __BOOTSTRAP__ is internal Webconnex structure.
+  // LEGACY FALLBACK. Some pages can be matched by neither URL nor name:
+  // Montpelier's forms, for instance, are 'open' but were never PUBLISHED, so
+  // TicketSpice returns no publishedPath and CrowdView has no ts_url to match
+  // against. Those pages still have working account/page slugs, so the sync
+  // script PRESERVES these two values (like it preserves the theme) and the
+  // block sends them as a last resort. Empty on a page that doesn't need them.
+  var C7A_ACCOUNT = 'eckerts';
+  var C7A_PAGE    = 'belleville-sunflower-festival';
+
+  var FORM_NAME = '', TS_HOST = '';
+  try {
+    var b = window.__BOOTSTRAP__;
+    var s = b && b.appSettings;
+    if (typeof s === 'string') s = JSON.parse(s);
+    if (s) { FORM_NAME = s.formName || ''; TS_HOST = s.host || ''; }
+  } catch (e) { /* fall back to URL-only matching */ }
+
+  // Small, stable string hash (djb2) — only used as a sessionStorage dedupe
+  // key, never for anything security-relevant.
+  function hash(s) {
+    var h = 5381, i = s.length;
+    while (i) h = (h * 33) ^ s.charCodeAt(--i);
+    return (h >>> 0).toString(36);
+  }
+
+  function seen(key) {
+    try { return sessionStorage.getItem('c7a_' + key) === '1'; } catch (e) { return false; }
+  }
+  function markSeen(key) {
+    try { sessionStorage.setItem('c7a_' + key, '1'); } catch (e) { /* private mode */ }
+  }
+
+  function render(a) {
+    var key = hash(a.title + ' ' + a.message);
+    if (seen(key)) return;
+
+    var style = document.createElement('style');
+    style.textContent = [
+      '#c7a-ov{position:fixed;inset:0;z-index:2147483000;display:flex;align-items:center;',
+      'justify-content:center;padding:20px;background:var(--c7a-scrim,rgba(12,14,17,.55));',
+      '-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);',
+      'opacity:0;transition:opacity .18s ease;}',
+      '#c7a-ov.c7a-in{opacity:1;}',
+      '#c7a-card{position:relative;background:var(--c7a-card-bg,#fff);color:var(--c7a-ink,#1a1d21);',
+      'border-radius:var(--c7a-radius,12px);',
+      'padding:24px 26px 20px;max-width:400px;width:100%;text-align:center;',
+      'box-shadow:0 14px 44px rgba(0,0,0,.3);',
+      'font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;',
+      'transform:translateY(8px) scale(.98);transition:transform .18s ease;}',
+      '#c7a-ov.c7a-in #c7a-card{transform:none;}',
+      '#c7a-x{position:absolute;top:6px;right:10px;background:none;border:0;font-size:22px;',
+      'line-height:1;color:var(--c7a-ink-dim,#9aa0a6);cursor:pointer;padding:4px 6px;}',
+      '#c7a-x:hover{color:var(--c7a-ink,#5f666e);}',
+      '#c7a-t{font-size:27px;font-weight:650;letter-spacing:-.01em;margin:0 0 9px;',
+      'overflow-wrap:anywhere;font-family:var(--c7a-font,inherit);}',
+      '#c7a-m{font-size:14.5px;line-height:1.55;color:var(--c7a-ink-dim,#3c4147);margin:0 0 18px;',
+      'white-space:pre-wrap;overflow-wrap:anywhere;}',
+      '#c7a-ok{background:var(--c7a-btn-bg,#1a1d21);color:var(--c7a-btn-ink,#fff);border:0;',
+      'border-radius:8px;padding:10px 24px;',
+      'font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;}',
+      '#c7a-ok:hover{filter:brightness(1.15);}',
+      '@media (prefers-reduced-motion:reduce){#c7a-ov,#c7a-card{transition:none;}}'
+    ].join('');
+
+    var ov = document.createElement('div');
+    ov.id = 'c7a-ov';
+    ov.setAttribute('role', 'dialog');
+    ov.setAttribute('aria-modal', 'true');
+    ov.setAttribute('aria-labelledby', 'c7a-t');
+
+    var card = document.createElement('div');
+    card.id = 'c7a-card';
+
+    var x = document.createElement('button');
+    x.id = 'c7a-x'; x.type = 'button';
+    x.setAttribute('aria-label', 'Close');
+    x.textContent = '×';
+
+    var h = document.createElement('h2');
+    h.id = 'c7a-t';
+    h.textContent = a.title;               // textContent, never inner HTML
+
+    var p = document.createElement('p');
+    p.id = 'c7a-m';
+    p.textContent = a.message;             // textContent, never inner HTML
+
+    var ok = document.createElement('button');
+    ok.id = 'c7a-ok'; ok.type = 'button';
+    ok.textContent = 'Got it';
+
+    card.appendChild(x); card.appendChild(h); card.appendChild(p); card.appendChild(ok);
+    ov.appendChild(card);
+    document.head.appendChild(style);
+    document.body.appendChild(ov);
+    requestAnimationFrame(function () { ov.classList.add('c7a-in'); });
+
+    function close() {
+      markSeen(key);
+      ov.classList.remove('c7a-in');
+      setTimeout(function () { if (ov.parentNode) ov.parentNode.removeChild(ov); }, 200);
+      document.removeEventListener('keydown', onKey);
+    }
+    function onKey(e) { if (e.key === 'Escape' || e.key === 'Esc') close(); }
+
+    x.addEventListener('click', close);
+    ok.addEventListener('click', close);
+    ov.addEventListener('click', function (e) { if (e.target === ov) close(); });
+    document.addEventListener('keydown', onKey);
+    ok.focus();
+  }
+
+  function go() {
+    var url = ENDPOINT + '?url=' + encodeURIComponent(PAGE_URL);
+    if (FORM_NAME) url += '&name=' + encodeURIComponent(FORM_NAME);
+    if (TS_HOST)   url += '&host=' + encodeURIComponent(TS_HOST);
+    if (C7A_ACCOUNT && C7A_PAGE) {
+      url += '&account=' + encodeURIComponent(C7A_ACCOUNT)
+           + '&page='    + encodeURIComponent(C7A_PAGE);
+    }
+    // No credentials — the endpoint is public and must stay that way for the
+    // CORS wildcard to be valid.
+    window['fet'+'ch'](url, { credentials: 'omit', mode: 'cors' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (d) {
+        if (d && d.popup && d.popup.title && d.popup.message) {
+          render(d.popup);
+        }
+      })
+      .catch(function () { /* fail silent — see SAFE BY CONSTRUCTION */ });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', go);
+  } else {
+    go();
+  }
+})();
+</script>
+<!-- =================== END CrowdView pop-up block =================== -->

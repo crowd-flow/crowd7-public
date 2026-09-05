@@ -1,0 +1,972 @@
+<!--
+  ============================================================
+  MONTPELIER FARMS — FLASH SALE 2026 — TicketSpice content block
+  ============================================================
+  1720 Crain Hwy, Upper Marlboro, MD · Adrianne Dunn (Owner/Operator)
+  Rebuilt 2026-08-13 by Crowdly on Mat's directive.
+
+  ⚡ SECOND REBUILD, same day. The first pass this morning invented a
+  wine/gold palette and a text wordmark because I concluded "no brand
+  assets exist" from the email attachments. Wrong — their whole brand was
+  on their own website. Now built on the real thing.
+
+  🎨 REAL BRAND, sampled from their own primary logo:
+     forest green #2F4640  — the MONTPELIER wordmark
+     brick red    #B04A3A  — the barn roof + FAMILY FARM PARK
+     Assets scraped from montpelierfarms.com 2026-08-13 and committed to
+     crowd7-public/clients/montpelier/design/assets/ (see its README).
+
+  📛 NAME — "Montpelier Farms" (Mat's call 2026-08-13). Their assets carry
+     three variants: the logos read "Montpelier Farms", the badge and the
+     TicketSpice header read "Montpelier Family Farm Park", and Adrianne
+     signs "Montpelier Farms, LLC". Use Montpelier Farms throughout.
+
+  ⚡ ARCHITECTURE — TWO SEPARATE PAGES (Bryan, phone 2026-08-13,
+     transcript 8.13.26.Crowd7CallWithBryanJaphet).
+       THIS PAGE = Flash Sale 2026    — ANY-DAY, no date selection
+       SIBLING   = Fall Festival 2026 — day-based, in-season pricing
+                   (../fall-festival/)
+     Bryan verbatim: "Because it's not day based. So the day based page,
+     once you publish it, you can't go back... if we're trying to get them
+     to buy in any day, we don't want them to pick a day and then pick a
+     day ticket."
+     Supersedes the one-page-three-phases plan built earlier today.
+
+  ⚠️ UNRESOLVED CONFLICT — Adrianne vs Bryan.
+     Adrianne, email 2026-08-12: "We will not be doing Any Day, Any Time
+     ticketing for any of the sales due to our capacity issues... We need
+     them to be able to pick a date and time on the Flash Sale and Labor
+     Day Sale pages."
+     Bryan, phone 2026-08-13: the flash page is deliberately any-day.
+     Built to Bryan's spec (most recent; he owns the relationship).
+     SETTLE WITH ADRIANNE BEFORE PUBLISH - she cited capacity, which is an
+     operational constraint, not a preference.
+
+  📋 PRICING — Bryan's 2026-08-13 email to Adrianne, which supersedes the
+     5/27 event-info where they differ:
+       Flash General ............ $17.95
+       Flash Super Pass ......... $33.95   (door $48.95)
+                                          ↑ was $35.95 until 2026-08-24.
+                                          Adrienne recalculated on the 8/20
+                                          call: $33.95 is a true 30% off the
+                                          $48.95 door price AND keeps the
+                                          "95" ending, so a buyer can't back
+                                          into the math and find a smaller
+                                          discount than advertised. The TS
+                                          ticket TYPE is repriced separately
+                                          — CrowdView build request #19 row 1.
+                                          Page and cart must move together.
+       Flash Family 4-Pack ...... $69.95
+     40% off, capped at 3,750 tickets. Ultimate excluded from the flash
+     sale (Bryan: "hard to get 40% off that early"); Adrianne agreed.
+
+  ⚠️ ADD-ONS ARE PAID, NOT INCLUDED. Corrected 2026-08-13 from a live
+     capture of their TicketSpice page. The first build listed Mega Slide,
+     Duck Races, Paint-a-Pumpkin, Mining Mania and Paintball as "included
+     with admission" — they are à-la-carte. Prices below are theirs,
+     verbatim from the cart. This also explains the Ultimate Pass: its
+     inclusions are exactly this add-on list, which is why Bryan calls it
+     the price anchor.
+
+  🔄 UPDATE 2026-08-14 (Bryan 1:1, Mat + Bryan). Bryan: "I would rather
+     that section be all the, what's at the farm" — the add-ons grid above
+     read as a money-grab ahead of the flash sale. The marketing section
+     that used to list these paid add-ons with prices is now a pill list of
+     what's INCLUDED with General Admission (sourced from
+     montpelierfarms.com/attractions, 2026-08-14 — see
+     work/crowd7/projects/montpelier-attractions-pills/artifacts/attraction-list.md).
+     Paid add-ons are no longer shown on this page at all — they still
+     upsell natively in the TicketSpice cart, same as before. "+ fees" was
+     also added next to every displayed ticket price per the same 8/14 call.
+
+
+  ⚠️ HOURS are exact, from the same live capture — NOT the vague
+     "shorter hours" language of the 5/27 spec. Note Friday in October is
+     EVENING ONLY (5-10pm), which the earlier build got wrong by implying
+     Tue-Sun were all daytime.
+
+  ✅ ANY-DAY BY DESIGN. No date picker, no time slot. That is the entire
+     reason this exists as a page separate from Fall Festival.
+
+  ⚠️ THE 3,750 CAP IS DELIBERATELY NOT SHOWN TO CUSTOMERS (Mat 2026-08-13).
+     The cap is real and stays configured in TicketSpice - it just is not
+     published on the page. Copy says "limited quantity" instead. Do not
+     reinstate the figure in customer-facing copy without asking.
+
+  🚩 STILL OPEN — do not invent answers:
+     1. Family 4-Pack inclusion item — nothing locked; sold on price alone.
+     2. GA door price — never stated, so no struck compare-at on that card.
+        Super Pass has one ($48.95) because Bryan stated it.
+     3. ZIP CODE CONFLICT — their TicketSpice page says 20772, Adrianne's
+        email signature says 20774. Using 20772 (the cart is what buyers
+        navigate from) but this needs confirming.
+     4. Group check-in scanning for the 4-Pack — broke for Tulips spring
+        2026, still untested. Gates the flash sale, not this build.
+
+  NATIVE TS CART: ticket types, prices, the 3,750 cap, date/time selection,
+  add-on products and the cap-redirect all stay native in TicketSpice.
+
+  ✏️ 2026-08-14 — Adrianne punch-list content fixes (CrowdView request #8,
+     thread 19ffe8864a491075). Applied here: Super Pass "2 & under free"
+     line removed (GA-only benefit); GA + Family 4-Pack "2 & under free"
+     qualified "for General Admission"; "Choose your Pass" lede replaced
+     with Adrianne's verbatim copy; hayride/animals framing on the benefits
+     row no longer implies the hayride is how you reach the animals;
+     Mining Mania add-on now reads "Prices Vary" (matches their own site,
+     the 6 individual prices are still unconfirmed — see project state.md);
+     Paintball add-on gained the 300-shot/$25 tier; hero copy now signals
+     more than the 4 listed attractions ("and so much more"). "Spookly"
+     was never in this build (N/A). Ultimate was already excluded (N/A).
+
+  ✅ 2026-08-24 — Family 4-Pack bullet REVERTED to the pre-8/15 wording
+     (CrowdView design request #4 row 1). It read "Use them together or
+     split across separate visits" until Bryan's 8/15 screencast pass
+     (crowd7-public@4fae61c) changed it to "Use them together, in one
+     visit" to steer buyers toward the Season Pass. Adrienne reversed
+     that on the 8/20 call — "If you buy a family pass, you can come, you
+     know, separate. You don't need to all come together," and
+     specifically "the language he had at first, I liked that better."
+     Mat's call 2026-08-24: the 8/20 call with the client is the source
+     of truth for this change. So this is a restore of her preferred
+     wording, not new copy. ⚠️ The matching line in the EMAIL SEQUENCE is
+     a separate row (design request #4 row 14) and is NOT done.
+
+  ✅ 2026-08-23 — attraction count corrected 35+ → 30+ (Adrienne said
+     "30" twice, unprompted, on the 8/20 call — newer client comms win
+     over the 8/14 email; matches their own homepage + the live TS cart's
+     GA description). GA card copy also rewritten to her exact 8/20
+     wording: "corn maze, pumpkin patch, animals + 30 attractions."
+     See projects/montpelier-flash-sale-edits-aug2026/state.md.
+
+  ✏️ 2026-08-14 (pass 2) — Mat's calls: attraction count set to 35+
+     (her email number, over the site's 30+) in the hero copy; Super Pass
+     card rewritten to her exact inclusion list (GA + Super Mega Slide +
+     Duck Races + Paint-a-Pumpkin + Mining Mania gems/seashells only —
+     no paintball/buddy pass, those are Ultimate-tier). Draft record:
+     projects/montpelier-flash-sale-edits-aug2026/artifacts/superpass-copy-draft.md
+
+  🚨 NOT FIXABLE HERE — TicketSpice-native, needs Mat/Bryan in the TS
+     admin panel, not a content edit:
+     - The Family 4-Pack ticket TYPE is priced $17.49 in TicketSpice
+       itself (confirmed live 2026-08-14: montpelier.ticketspice.com
+       preview cart shows "Family 4-Pack General Admission: $19.60
+       ($17.49 + $2.11 fee)"). This card already displays $69.95
+       correctly — the bug is the underlying TS ticket price, not this
+       page's copy. Someone appears to have configured TS off Bryan's
+       8/13 email, which itself transposed GA and Family 4-Pack figures.
+     - Ultimate Pass Admission ($65.95) is still a live, purchasable
+       ticket type on the flash-sale TS event even though it's absent
+       from this page's cards — hiding/disabling it for the flash sale
+       is a TS admin action.
+  ============================================================
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;0,700;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+    #fs-funnel {
+        --fs-green:    #2F4640;
+        --fs-green-dk: #22332E;
+        --fs-green-lt: #3F5C53;
+        --fs-red:      #B04A3A;
+        --fs-red-dk:   #8E3A2C;
+        --fs-red-lt:   #C86A57;
+        --fs-gold:     #D9A441;
+        --fs-cream:    #FBF7F0;
+        --fs-sand:     #F0E6D8;
+        --fs-sand-dk:  #DBCBB4;
+        --fs-ink:      #2A2A28;
+
+        width: 100vw !important;
+        position: relative !important;
+        left: 50% !important; right: 50% !important;
+        margin-left: -50vw !important; margin-right: -50vw !important;
+        overflow: hidden !important;
+        font-family: 'Inter', -apple-system, sans-serif !important;
+        background: var(--fs-cream) !important;
+        color: var(--fs-ink) !important;
+        padding: 0 !important;
+    }
+    #fs-funnel *, #fs-funnel *::before, #fs-funnel *::after { box-sizing: border-box !important; }
+
+    #fs-funnel .fsr { opacity: 0 !important; transform: translateY(20px) !important;
+        transition: opacity .65s ease, transform .65s ease !important; }
+    #fs-funnel .fsr.fson { opacity: 1 !important; transform: none !important; }
+    #fs-funnel .d1 { transition-delay: .09s !important; }
+    #fs-funnel .d2 { transition-delay: .18s !important; }
+    #fs-funnel .d3 { transition-delay: .27s !important; }
+
+    #fs-funnel .fs-sec { padding: clamp(56px, 7.5vw, 92px) 24px !important; }
+    /* Pills section relocated ABOVE the pass cards (Bryan screencast 2026-08-15):
+       "the first thing they see is these" — the 4 GA bullets undersold the farm.
+       Compact padding so it frames the cards instead of competing with them. */
+    #fs-funnel .fs-addons-compact { padding-top: clamp(40px, 5vw, 60px) !important; padding-bottom: clamp(28px, 3.5vw, 40px) !important; }
+    #fs-funnel .fs-addons-compact .fs-lede { margin-bottom: 4px !important; }
+    #fs-funnel .fs-eye {
+        display: block !important; font-size: .71rem !important; font-weight: 600 !important;
+        letter-spacing: .2em !important; text-transform: uppercase !important;
+        color: var(--fs-red) !important; margin-bottom: 13px !important;
+    }
+    #fs-funnel .fs-title {
+        display: block !important; font-family: 'Bitter', Georgia, serif !important;
+        font-size: clamp(1.9rem, 4.3vw, 2.9rem) !important; font-weight: 700 !important;
+        line-height: 1.14 !important; color: var(--fs-green) !important; margin: 0 !important;
+    }
+    #fs-funnel .fs-title em { font-style: italic !important; color: var(--fs-red) !important; }
+    #fs-funnel .fs-lede {
+        font-size: 1.01rem !important; line-height: 1.68 !important;
+        color: #55584F !important; margin: 16px 0 0 !important; max-width: 54ch !important;
+    }
+    #fs-funnel .fs-head { text-align: center !important; max-width: 720px !important; margin: 0 auto clamp(32px,4.5vw,50px) !important; }
+    #fs-funnel .fs-head .fs-lede { margin-left: auto !important; margin-right: auto !important; }
+
+    /* ── BANNER ── */
+    #fs-funnel .fs-banner {
+        background: var(--fs-red) !important; text-align: center !important;
+        padding: 11px 20px !important; font-size: .79rem !important; letter-spacing: .05em !important;
+    }
+    /* TS ships its own span/strong colour rules; inherited colour loses to them */
+    #fs-funnel .fs-banner, #fs-funnel .fs-banner span, #fs-funnel .fs-banner strong { color: #ffffff !important; }
+    #fs-funnel .fs-banner-inner { display: flex !important; align-items: center !important;
+        justify-content: center !important; gap: 11px !important; flex-wrap: wrap !important; }
+    #fs-funnel .fs-dot { width: 3px !important; height: 3px !important; border-radius: 50% !important;
+        background: rgba(255,255,255,.5) !important; display: inline-block !important; flex-shrink: 0 !important; }
+
+    /* ── NAV ── */
+    #fs-funnel .fs-nav {
+        height: 128px !important; padding: 0 clamp(16px,4vw,40px) !important;
+        display: flex !important; align-items: center !important; justify-content: space-between !important;
+        background: rgba(34,51,46,.97) !important; position: sticky !important; top: 0 !important;
+        z-index: 100 !important; box-shadow: 0 2px 18px rgba(34,51,46,.32) !important;
+    }
+    #fs-funnel .fs-logo { height: 108px !important; width: auto !important; display: block !important; flex-shrink: 0 !important; }
+    #fs-funnel .fs-nav-right { display: flex !important; align-items: center !important; gap: 16px !important; }
+    #fs-funnel .fs-nav-loc { font-size: .79rem !important; color: rgba(255,255,255,.66) !important; }
+    #fs-funnel .fs-nav-cta {
+        background: var(--fs-red) !important; color: #fff !important; text-decoration: none !important;
+        font-weight: 600 !important; font-size: .83rem !important; padding: 11px 22px !important;
+        border-radius: 6px !important; white-space: nowrap !important;
+        transition: background .2s, transform .15s !important;
+    }
+    #fs-funnel .fs-nav-cta:hover { background: var(--fs-red-lt) !important; transform: translateY(-1px) !important; color: #fff !important; }
+
+    /* ── HERO ── */
+    #fs-funnel .fs-hero {
+        position: relative !important; width: 100% !important;
+        min-height: clamp(420px, 64vw, 660px) !important;
+        display: flex !important; align-items: flex-end !important; overflow: hidden !important;
+        background-image: url('https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/montpelier/design/assets/photos/hero-family-in-pumpkins.jpg') !important;
+        background-size: cover !important; background-position: center 42% !important;
+    }
+    #fs-funnel .fs-hero-vid {
+        position: absolute !important; inset: 0 !important; z-index: 0 !important;
+        width: 100% !important; height: 100% !important;
+        object-fit: cover !important; object-position: center 42% !important;
+        pointer-events: none !important;
+    }
+    @media (prefers-reduced-motion: reduce) {
+        #fs-funnel .fs-hero-vid { display: none !important; }
+    }
+    #fs-funnel .fs-hero-scrim {
+        position: absolute !important; inset: 0 !important; z-index: 1 !important;
+        background: linear-gradient(to top,
+            rgba(34,51,46,.88) 0%, rgba(34,51,46,.55) 26%, rgba(34,51,46,.18) 48%, rgba(34,51,46,0) 66%) !important;
+    }
+    #fs-funnel .fs-hero-inner {
+        position: relative !important; z-index: 2 !important; width: 100% !important;
+        max-width: 1120px !important; margin: 0 auto !important;
+        padding: 0 24px clamp(40px,5.5vw,68px) !important;
+    }
+    #fs-funnel .fs-flash-pill {
+        display: inline-block !important; background: var(--fs-red) !important; color: #fff !important;
+        font-size: .73rem !important; font-weight: 700 !important; letter-spacing: .13em !important;
+        text-transform: uppercase !important; padding: 9px 18px !important; border-radius: 6px !important;
+        margin-bottom: 18px !important;
+    }
+    #fs-funnel .fs-hero-title {
+        display: block !important; font-family: 'Bitter', Georgia, serif !important;
+        font-size: clamp(2.4rem, 7vw, 4.6rem) !important; font-weight: 700 !important;
+        line-height: 1.05 !important; color: #fff !important; margin-bottom: 15px !important;
+        text-shadow: 0 3px 24px rgba(0,0,0,.4) !important;
+    }
+    #fs-funnel .fs-hero-title em { font-style: italic !important; color: var(--fs-gold) !important; }
+    #fs-funnel .fs-hero-sub {
+        display: block !important; max-width: 54ch !important; font-size: 1.05rem !important;
+        line-height: 1.64 !important; color: rgba(255,255,255,.94) !important;
+        text-shadow: 0 2px 14px rgba(0,0,0,.45) !important;
+    }
+
+    /* ── 04 SEASON STRIP · thin band under the hero (house block 04) ── */
+    #fs-funnel .fs-seasonbar {
+        background: var(--fs-green) !important; padding: 15px 20px !important; text-align: center !important;
+    }
+    #fs-funnel .fs-seasonbar, #fs-funnel .fs-seasonbar span { color: #ffffff !important; }
+    #fs-funnel .fs-seasonbar-t {
+        display: inline-block !important; font-size: clamp(.95rem,2.2vw,1.18rem) !important;
+        font-weight: 700 !important; letter-spacing: .02em !important; line-height: 1.5 !important;
+    }
+    #fs-funnel .fs-sb-dot { opacity: .5 !important; padding: 0 12px !important; }
+
+    /* ── 05 BENEFITS · 4 highlights, divided (house block 05) ── */
+    #fs-funnel .fs-benefits { background: #fff !important; padding: clamp(34px,4.5vw,52px) 24px !important; }
+    #fs-funnel .fs-benefits-grid {
+        display: grid !important; grid-template-columns: repeat(4,1fr) !important;
+        max-width: 1120px !important; margin: 0 auto !important;
+    }
+    #fs-funnel .fs-benefit {
+        text-align: center !important; padding: 4px 18px !important;
+        border-right: 1px solid var(--fs-sand-dk) !important;
+    }
+    #fs-funnel .fs-benefit:last-child { border-right: none !important; }
+    #fs-funnel .fs-benefit-ico {
+        display: block !important; font-size: 1.7rem !important; line-height: 1 !important;
+        margin-bottom: 10px !important;
+    }
+    #fs-funnel .fs-benefit-title {
+        display: block !important; font-family: 'Bitter', Georgia, serif !important;
+        font-size: 1.02rem !important; font-weight: 700 !important;
+        color: var(--fs-green) !important; margin-bottom: 6px !important;
+    }
+    #fs-funnel .fs-benefit-desc { display: block !important; font-size: .86rem !important;
+        line-height: 1.5 !important; color: #6E7268 !important; }
+
+    /* ── TICKETS ── */
+    #fs-funnel .fs-tickets { background: var(--fs-sand) !important; }
+    #fs-funnel .fs-grid { display: grid !important; grid-template-columns: repeat(3,minmax(0,1fr)) !important;
+        gap: 22px !important; max-width: 1120px !important; margin: 0 auto !important; }
+    #fs-funnel .fs-card {
+        background: #fff !important; border-radius: 14px !important; padding: 34px 28px !important;
+        display: flex !important; flex-direction: column !important; position: relative !important;
+        box-shadow: 0 14px 40px rgba(42,42,40,.11) !important;
+    }
+    #fs-funnel .fs-card-feature { background: var(--fs-green) !important; }
+    #fs-funnel .fs-badge {
+        position: absolute !important; top: -12px !important; left: 28px !important;
+        font-size: .64rem !important; font-weight: 700 !important; letter-spacing: .13em !important;
+        text-transform: uppercase !important; padding: 6px 14px !important; border-radius: 5px !important;
+        background: var(--fs-red) !important; color: #fff !important;
+    }
+    #fs-funnel .fs-card-feature .fs-badge { background: var(--fs-gold) !important; color: var(--fs-green-dk) !important; }
+    #fs-funnel .fs-card h3 {
+        font-family: 'Bitter', Georgia, serif !important; font-size: 1.38rem !important;
+        font-weight: 700 !important; margin: 6px 0 5px !important; color: var(--fs-green) !important;
+    }
+    #fs-funnel .fs-card-feature h3 { color: #fff !important; }
+    #fs-funnel .fs-card-sub { display: block !important; font-size: .83rem !important; color: #7C8078 !important; margin-bottom: 20px !important; }
+    #fs-funnel .fs-card-feature .fs-card-sub { color: rgba(255,255,255,.72) !important; }
+    #fs-funnel .fs-price-row { display: flex !important; align-items: baseline !important; gap: 11px !important; flex-wrap: wrap !important; }
+    #fs-funnel .fs-price {
+        font-family: 'Bitter', Georgia, serif !important; font-size: 2.45rem !important;
+        font-weight: 700 !important; line-height: 1 !important; color: var(--fs-red) !important;
+    }
+    #fs-funnel .fs-card-feature .fs-price { color: #fff !important; }
+    #fs-funnel .fs-was { font-size: 1.04rem !important; color: #9BA096 !important;
+        text-decoration: line-through !important; text-decoration-thickness: 2px !important; }
+    #fs-funnel .fs-fee-note { font-size: .74rem !important; font-weight: 500 !important; color: #9BA096 !important; }
+    #fs-funnel .fs-card-feature .fs-fee-note { color: rgba(255,255,255,.58) !important; }
+    #fs-funnel .fs-card-feature .fs-was { color: rgba(255,255,255,.58) !important; }
+    #fs-funnel .fs-save {
+        display: inline-block !important; font-size: .69rem !important; font-weight: 700 !important;
+        letter-spacing: .08em !important; text-transform: uppercase !important;
+        background: var(--fs-red) !important; color: #fff !important; padding: 4px 11px !important; border-radius: 4px !important;
+    }
+    #fs-funnel .fs-card-feature .fs-save { background: var(--fs-gold) !important; color: var(--fs-green-dk) !important; }
+    #fs-funnel .fs-list { list-style: none !important; padding: 0 !important; margin: 22px 0 0 !important; flex-grow: 1 !important; }
+    #fs-funnel .fs-list li {
+        display: flex !important; gap: 11px !important; align-items: flex-start !important;
+        font-size: .91rem !important; line-height: 1.5 !important; color: #4E524A !important; padding: 8px 0 !important;
+    }
+    #fs-funnel .fs-card-feature .fs-list li { color: rgba(255,255,255,.9) !important; }
+    #fs-funnel .fs-tick { color: var(--fs-red) !important; font-weight: 700 !important; flex-shrink: 0 !important; }
+    #fs-funnel .fs-card-feature .fs-tick { color: var(--fs-gold) !important; }
+    #fs-funnel .fs-card-note {
+        font-size: .76rem !important; line-height: 1.5 !important; color: #8A8E85 !important;
+        margin-top: 18px !important; padding-top: 15px !important; border-top: 1px solid var(--fs-sand-dk) !important;
+    }
+    #fs-funnel .fs-card-feature .fs-card-note { color: rgba(255,255,255,.7) !important; border-top-color: rgba(255,255,255,.2) !important; }
+    #fs-funnel .fs-cap {
+        max-width: 1120px !important; margin: 22px auto 0 !important; text-align: center !important;
+        background: var(--fs-green) !important; padding: 17px 24px !important; border-radius: 10px !important;
+        font-size: .89rem !important; line-height: 1.5 !important;
+    }
+    #fs-funnel .fs-cap, #fs-funnel .fs-cap span, #fs-funnel .fs-cap strong { color: #ffffff !important; }
+    #fs-funnel .fs-cap strong { color: var(--fs-gold) !important; }
+
+    /* ── ADD-ONS (paid, not included) ── */
+    #fs-funnel .fs-addons { background: var(--fs-cream) !important; }
+    #fs-funnel .fs-pill-wrap {
+        display: flex !important; flex-wrap: wrap !important; justify-content: center !important;
+        gap: 10px !important; max-width: 900px !important; margin: 0 auto !important;
+    }
+    #fs-funnel .fs-pill {
+        display: inline-flex !important; align-items: center !important; gap: 6px !important;
+        background: #fff !important; border: 1px solid var(--fs-sand-dk) !important;
+        border-radius: 999px !important; padding: 9px 16px !important;
+        font-size: .87rem !important; font-weight: 500 !important; color: #4E524A !important;
+        white-space: nowrap !important;
+    }
+
+    /* ── HOURS ── */
+    #fs-funnel .fs-hours { background: var(--fs-green-dk) !important; }
+    #fs-funnel .fs-hours .fs-title { color: #fff !important; }
+    #fs-funnel .fs-hours .fs-title em { color: var(--fs-gold) !important; }
+    #fs-funnel .fs-hours .fs-eye { color: var(--fs-gold) !important; }
+    #fs-funnel .fs-months { display: grid !important; grid-template-columns: repeat(3,1fr) !important;
+        gap: 16px !important; max-width: 1060px !important; margin: 0 auto !important; }
+    #fs-funnel .fs-month {
+        background: rgba(255,255,255,.07) !important; border: 1px solid rgba(255,255,255,.18) !important;
+        border-radius: 12px !important; padding: 24px 22px !important;
+    }
+    #fs-funnel .fs-month-n { display: block !important; font-family: 'Bitter', serif !important;
+        font-size: 1.14rem !important; font-weight: 700 !important; color: var(--fs-gold) !important; margin-bottom: 12px !important; }
+    #fs-funnel .fs-hr { display: flex !important; justify-content: space-between !important; gap: 12px !important;
+        padding: 7px 0 !important; border-bottom: 1px solid rgba(255,255,255,.1) !important;
+        font-size: .88rem !important; color: rgba(255,255,255,.86) !important; }
+    #fs-funnel .fs-hr:last-child { border-bottom: none !important; }
+    #fs-funnel .fs-hr b { color: #fff !important; font-weight: 600 !important; white-space: nowrap !important; }
+    #fs-funnel .fs-hours-note { text-align: center !important; margin: 26px auto 0 !important; max-width: 640px !important;
+        font-size: .87rem !important; line-height: 1.6 !important; color: rgba(255,255,255,.66) !important; }
+
+    /* ── INFO ── */
+    #fs-funnel .fs-info { background: var(--fs-cream) !important; border-top: 1px solid var(--fs-sand-dk) !important;
+        padding: clamp(42px,5.5vw,66px) 24px !important; }
+    #fs-funnel .fs-info-grid { display: grid !important; grid-template-columns: repeat(4,1fr) !important;
+        gap: clamp(18px,3vw,36px) !important; max-width: 1120px !important; margin: 0 auto !important; text-align: center !important; }
+    #fs-funnel .fs-info-l { display: block !important; font-size: .67rem !important; font-weight: 700 !important;
+        letter-spacing: .14em !important; text-transform: uppercase !important; color: var(--fs-red) !important; margin-bottom: 8px !important; }
+    #fs-funnel .fs-info-v { display: block !important; font-size: .92rem !important; line-height: 1.55 !important; color: #55584F !important; }
+
+    @media (max-width: 900px) {
+        #fs-funnel .fs-grid, #fs-funnel .fs-months { grid-template-columns: 1fr !important; max-width: 470px !important; }
+        #fs-funnel .fs-info-grid { grid-template-columns: repeat(2,1fr) !important; gap: 28px 18px !important; }
+        #fs-funnel .fs-benefits-grid { grid-template-columns: repeat(2,1fr) !important; row-gap: 26px !important; }
+        #fs-funnel .fs-benefit:nth-child(2) { border-right: none !important; }
+    }
+    @media (max-width: 560px) {
+        #fs-funnel .fs-nav { height: 96px !important; padding: 0 14px !important; }
+        #fs-funnel .fs-logo { height: 76px !important; }
+        #fs-funnel .fs-nav-loc { display: none !important; }
+        #fs-funnel .fs-sec { padding-bottom: 96px !important; }
+        #fs-funnel .fs-pill { font-size: .82rem !important; padding: 8px 13px !important; white-space: normal !important; text-align: center !important; }
+    }
+</style>
+
+<div id="fs-funnel">
+
+    <div class="fs-banner">
+        <div class="fs-banner-inner">
+            <span>🎃 <strong>Flash Sale — 40% Off</strong></span>
+            <span class="fs-dot"></span>
+            <span>August 26–30 only</span>
+            <span class="fs-dot"></span>
+            <span>Limited quantity</span>
+        </div>
+    </div>
+
+    <div class="fs-nav">
+        <img class="fs-logo" src="https://raw.githubusercontent.com/crowd-flow/crowd7-public/master/clients/montpelier/design/assets/logos/montpelier-logo-cream-stacked.png" alt="Montpelier Farms">
+        <div class="fs-nav-right">
+            <span class="fs-nav-loc">Upper Marlboro, MD</span>
+            <a href="#ticketBlock" class="fs-nav-cta">Get Tickets</a>
+        </div>
+    </div>
+
+    <div class="fs-hero">
+        <video class="fs-hero-vid" autoplay muted loop playsinline preload="metadata" poster="https://d19t3dgo9qh6v3.cloudfront.net/montpelier/mp-hero-poster.jpg" aria-hidden="true" tabindex="-1">
+            <source src="https://d19t3dgo9qh6v3.cloudfront.net/montpelier/mp-hero-web.webm" type="video/webm">
+            <source src="https://d19t3dgo9qh6v3.cloudfront.net/montpelier/mp-hero-web.mp4" type="video/mp4">
+        </video>
+        <div class="fs-hero-scrim"></div>
+        <div class="fs-hero-inner">
+            <span class="fs-flash-pill">⚡ Flash Sale · Aug 26–30</span>
+            <span class="fs-hero-title">Fall Festival <em>2026</em></span>
+            <span class="fs-hero-sub">Save 40% on tickets — five days only, limited quantity. The 7-acre corn maze, pumpkin patch, hay rides, giant hill slides, barnyard animals — 30+ attractions and so much more, all season long.</span>
+        </div>
+    </div>
+
+    <!-- 04 · SEASON STRIP (house block 04) -->
+    <div class="fs-seasonbar">
+        <span class="fs-seasonbar-t">Sale: August 26 – 30<span class="fs-sb-dot">·</span>Valid September 12 – November 8<span class="fs-sb-dot">·</span>Good any operating day</span>
+    </div>
+
+    <!-- 05 · BENEFITS — 4 highlights (house block 05) -->
+    <div class="fs-benefits">
+        <div class="fs-benefits-grid fsr">
+            <div class="fs-benefit">
+                <span class="fs-benefit-ico">🌽</span>
+                <span class="fs-benefit-title">7-Acre Corn Maze</span>
+                <span class="fs-benefit-desc">Wind your way through the interactive maze</span>
+            </div>
+            <div class="fs-benefit">
+                <span class="fs-benefit-ico">🎃</span>
+                <span class="fs-benefit-title">Pumpkin Patch</span>
+                <span class="fs-benefit-desc">Pick your own, straight out of the field</span>
+            </div>
+            <div class="fs-benefit">
+                <span class="fs-benefit-ico">⛰️</span>
+                <span class="fs-benefit-title">Giant Hill Slides</span>
+                <span class="fs-benefit-desc">Race a friend down the hillside</span>
+            </div>
+            <div class="fs-benefit">
+                <span class="fs-benefit-ico">🚜</span>
+                <span class="fs-benefit-title">Hay Rides &amp; Barnyard</span>
+                <span class="fs-benefit-desc">Two of our most-loved stops on the farm</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="fs-sec fs-addons fs-addons-compact">
+        <div class="fs-head mfr">
+            <span class="fs-eye">Included With Every Ticket</span>
+            <span class="fs-title">30+ attractions <em>at the farm</em></span>
+            <p class="fs-lede">Every General Admission includes access to all of this &mdash; no extra charge.</p>
+        </div>
+        <div class="fs-pill-wrap mfr d1">
+            <span class="fs-pill">🌽 7-Acre Interactive Corn Maze</span>
+            <span class="fs-pill">🌽 Kids Corn Maze</span>
+            <span class="fs-pill">🛝 Giant Hill Slides</span>
+            <span class="fs-pill">🚜 Hayrides</span>
+            <span class="fs-pill">🐐 Animals</span>
+            <span class="fs-pill">🏎️ Trike Track</span>
+            <span class="fs-pill">🧒 Kids Corral Playground</span>
+            <span class="fs-pill">🌾 Corn Pit</span>
+            <span class="fs-pill">🪵 Wooden Playsets</span>
+            <span class="fs-pill">🐷 Pig Races</span>
+            <span class="fs-pill">🧩 Puzzle Mania</span>
+            <span class="fs-pill">🏀 Barnyard Basketball</span>
+            <span class="fs-pill">🎃 Pumpkin Bowling</span>
+            <span class="fs-pill">🤠 Roping Range</span>
+            <span class="fs-pill">🥅 Penalty Paddock</span>
+            <span class="fs-pill">🌾 Hay-n-Play</span>
+            <span class="fs-pill">🪢 Tug O' War</span>
+            <span class="fs-pill">🛝 Mini Hill Slide</span>
+            <span class="fs-pill">📸 Photo Ops</span>
+            <span class="fs-pill">🔥 Public Bonfire</span>
+            <span class="fs-pill">🎃 Giant Pumpkin Pad</span>
+            <span class="fs-pill">🌀 Red Barn Twister</span>
+            <span class="fs-pill">🏐 Barnyard Ball Wall</span>
+            <span class="fs-pill">🚜 Combine Slide</span>
+        </div>
+    </div>
+
+    <div class="fs-sec fs-tickets" id="tickets">
+        <div class="fs-head mfr">
+            <span class="fs-eye">Flash Sale Pricing</span>
+            <span class="fs-title">Choose your <em>pass</em></span>
+            <p class="fs-lede">Every flash sale ticket is good on any operating day of the season and no reservation is required! Ages 2 and under are always free for General Admission.</p>
+        </div>
+        <div class="fs-grid">
+
+            <div class="fs-card mfr">
+                <span class="fs-badge">Best Value</span>
+                <h3>General Admission</h3>
+                <span class="fs-card-sub">One day, one admission</span>
+                <div class="fs-price-row">
+                    <span class="fs-price">$17.95</span>
+                    <span class="fs-fee-note">+ fees</span>
+                    <span class="fs-save">40% Off</span>
+                </div>
+                <ul class="fs-list">
+                    <li><span class="fs-tick">🌽</span><span>7-acre interactive corn maze</span></li>
+                    <li><span class="fs-tick">🎃</span><span>Pumpkin patch &amp; animals</span></li>
+                    <li><span class="fs-tick">✨</span><span>30+ attractions and so much more</span></li>
+                    <li><span class="fs-tick">👶</span><span>Ages 2 &amp; under free for General Admission</span></li>
+                </ul>
+                <span class="fs-card-note">Good for one entry on any operating day of the 2026 season. No date selection needed.</span>
+            </div>
+
+            <div class="fs-card fs-card-feature mfr d1">
+                <span class="fs-badge">Best Opportunity</span>
+                <h3>Super Pass</h3>
+                <span class="fs-card-sub">Admission plus the big attractions</span>
+                <div class="fs-price-row">
+                    <span class="fs-price">$33.95</span>
+                    <span class="fs-fee-note">+ fees</span>
+                    <span class="fs-was">$48.95</span>
+                </div>
+                <ul class="fs-list">
+                    <li><span class="fs-tick">🎟️</span><span>Everything in General Admission</span></li>
+                    <li><span class="fs-tick">🛝</span><span>Super Mega Slide</span></li>
+                    <li><span class="fs-tick">🦆</span><span>Duck Races</span></li>
+                    <li><span class="fs-tick">🎨</span><span>Paint-a-Pumpkin</span></li>
+                    <li><span class="fs-tick">💎</span><span>Mining Mania — gems or seashells</span></li>
+                </ul>
+                <span class="fs-card-note">$48.95 at the door on peak weekends. Good any operating day of the season.</span>
+            </div>
+
+            <div class="fs-card mfr d2">
+                <span class="fs-badge">Family Deal</span>
+                <h3>Family 4-Pack</h3>
+                <span class="fs-card-sub">Four general admissions, one purchase</span>
+                <div class="fs-price-row">
+                    <span class="fs-price">$69.95</span>
+                    <span class="fs-fee-note">+ fees</span>
+                    <span class="fs-save">For Four</span>
+                </div>
+                <ul class="fs-list">
+                    <li><span class="fs-tick">👨‍👩‍👧‍👦</span><span>Four general admission tickets</span></li>
+                    <li><span class="fs-tick">📅</span><span>Use them together or split across separate visits</span></li>
+                    <li><span class="fs-tick">🎟️</span><span>Everything General Admission includes</span></li>
+                    <li><span class="fs-tick">👶</span><span>Ages 2 &amp; under free for General Admission</span></li>
+                </ul>
+                <span class="fs-card-note">Bought in one transaction. Good any operating day of the season.</span>
+            </div>
+
+        </div>
+
+        <div class="fs-cap mfr d3">
+            <span>⏳ <strong>Limited quantity.</strong> When they're gone the flash sale closes — full-season pricing resumes August 31.</span>
+        </div>
+    </div>
+
+    <div class="fs-sec fs-hours">
+        <div class="fs-head mfr">
+            <span class="fs-eye">September 12 – November 8</span>
+            <span class="fs-title">When we're <em>open</em></span>
+        </div>
+        <div class="fs-months mfr d1">
+            <div class="fs-month">
+                <span class="fs-month-n">September</span>
+                <div class="fs-hr"><span>Saturday</span><b>10am – 9pm</b></div>
+                <div class="fs-hr"><span>Sunday</span><b>10am – 6pm</b></div>
+            </div>
+            <div class="fs-month">
+                <span class="fs-month-n">October</span>
+                <div class="fs-hr"><span>Tue – Thu · Playdays</span><b>10am – 3pm</b></div>
+                <div class="fs-hr"><span>Friday</span><b>5pm – 10pm</b></div>
+                <div class="fs-hr"><span>Saturday</span><b>10am – 10pm</b></div>
+                <div class="fs-hr"><span>Sunday</span><b>10am – 7pm</b></div>
+            </div>
+            <div class="fs-month">
+                <span class="fs-month-n">November</span>
+                <div class="fs-hr"><span>Saturday</span><b>10am – 9pm</b></div>
+                <div class="fs-hr"><span>Sunday</span><b>10am – 6pm</b></div>
+            </div>
+        </div>
+        <p class="fs-hours-note">Last admission is sold one hour before close. Weekday Playdays run Tuesday through Thursday in October. Our final weekend is November 7–8.</p>
+    </div>
+
+    <div class="fs-info">
+        <div class="fs-info-grid">
+            <div>
+                <span class="fs-info-l">Location</span>
+                <span class="fs-info-v">1720 Crain Hwy<br>Upper Marlboro, MD 20772</span>
+            </div>
+            <div>
+                <span class="fs-info-l">Season</span>
+                <span class="fs-info-v">September 12 –<br>November 8, 2026</span>
+            </div>
+            <div>
+                <span class="fs-info-l">Flash Sale</span>
+                <span class="fs-info-v">August 26–30<br>limited quantity</span>
+            </div>
+            <div>
+                <span class="fs-info-l">Who Needs a Ticket</span>
+                <span class="fs-info-v">Everyone 3 and up<br>2 &amp; under free for General Admission</span>
+            </div>
+        </div>
+    </div>
+
+</div><!-- end #fs-funnel -->
+
+<script>
+    (function() {
+        var obs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) {
+                if (e.isIntersecting) { e.target.classList.add('fson'); obs.unobserve(e.target); }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('#fs-funnel .fsr').forEach(function(el) {
+            obs.observe(el);
+            if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('fson');
+        });
+        document.querySelectorAll('#fs-funnel a[href^="#"]').forEach(function(a) {
+            a.addEventListener('click', function(e) {
+                e.preventDefault();
+                var t = document.querySelector(a.getAttribute('href'));
+                if (t) t.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    })();
+</script>
+
+<style>
+    #fs-float {
+        position: fixed !important; bottom: 0 !important; left: 0 !important; right: 0 !important;
+        z-index: 500 !important;  /* stay BELOW the TicketSpice Attendee
+                                    Support chat widget — their product
+                                    surface outranks our CTA */ padding: 12px 16px 20px !important;
+        background: linear-gradient(to top, rgba(251,247,240,.97) 55%, transparent) !important;
+        display: flex !important; justify-content: center !important;
+        transition: opacity .35s ease, transform .35s ease !important;
+        /* let the TicketSpice Attendee Support chat widget (and anything
+           else beneath) receive clicks through the transparent band */
+        pointer-events: none !important;
+    }
+    #fs-float.fs-float-hidden { opacity: 0 !important; transform: translateY(24px) !important; pointer-events: none !important; }
+    #fs-float.fs-float-hidden a { pointer-events: none !important; }
+    #fs-float a {
+        display: block !important; width: 100% !important; max-width: 480px !important;
+        background: #B04A3A !important; color: #fff !important;
+        font-family: 'Bitter', Georgia, serif !important;
+        font-size: 21px !important; font-weight: 700 !important; letter-spacing: .03em !important;
+        text-align: center !important; text-decoration: none !important;
+        padding: 18px 28px !important; border-radius: 8px !important;
+        box-shadow: 0 8px 30px rgba(176,74,58,.42) !important;
+        transition: transform .15s, box-shadow .15s, background .2s !important;
+        pointer-events: auto !important;
+    }
+    #fs-float a:hover { background: #8E3A2C !important; transform: translateY(-2px) !important; color: #fff !important; }
+</style>
+<div id="fs-float">
+    <a href="#ticketBlock">Get Flash Sale Tickets</a>
+</div>
+<script>
+    (function() {
+        var fb = document.getElementById('fs-float');
+        if (fb) { fb.querySelector('a').addEventListener('click', function() { fb.classList.add('fs-float-hidden'); }); }
+    })();
+</script>
+
+<!-- ============================================================================
+     CrowdView client pop-up block  ·  v7  ·  2026-08-27
+
+     v7 — reads `d.popup`, calls /api/live-popup. The 2026-08-19 rename
+     changed the API response envelope, but the 86 blocks installed before
+     this version were never re-synced: they read the old key, got undefined,
+     and rendered nothing for eight days across ten accounts. Nothing
+     surfaced it, because this block fails silent by design. `popup` is the
+     only name for this feature, in the schema, the API and the UI — if you
+     are adding a compatibility shim for an older one, don't.
+     Project: crowdview-client-popups-table / page-inventory (self-identifying)
+
+     WHAT IT DOES
+     Renders a pop-up on this TicketSpice page whenever the client has one
+     scheduled in CrowdView right now. The client publishes it themselves at
+     https://crowd7-team-hub.vercel.app/client/popups (five fields:
+     page, start, end, title, message) — Crowd7 does nothing per pop-up.
+
+     WHY IT EXISTS
+     Eckert's check-in 2026-08-12. Amanda Morgan: "there's so many things that
+     I cannot change myself and I am not used to relying on somebody... I am a
+     doer." Her cases are same-day and operational — a 107-degree Saturday
+     means closing at 2 PM — and she works Central while Crowd7 is Pacific, so
+     "ask Crowd7 and wait" is structurally too slow. Page content lives in
+     crowd7-public and ships by git push, which is exactly what puts it out of
+     her reach. This block is the narrow carve-out.
+
+     INSTALL — paste at the END of the page's content HTML. THAT IS ALL.
+     There are NO tokens to fill in as of v3.
+
+     The block identifies itself: it sends its own address
+     (location.origin + location.pathname) and CrowdView matches that against
+     page.ts_url, which scripts/sync_ts_pages.mjs fills from the TicketSpice
+     form's own publishedPath. Nobody types a slug, so nobody can mistype one.
+
+     v1/v2 required two hand-filled tokens (C7A_ACCOUNT / C7A_PAGE) and a
+     wrong value failed SILENTLY — no banner, no error, nothing to debug.
+     That whole failure class is gone. Blocks already pasted with v1/v2 tokens
+     keep working: the endpoint still accepts ?account=&page= (see
+     edge/api-live-popup.js) and there is no rush to re-paste them.
+
+     PREVIEW LINKS SHOW POP-UPS — deliberately (Mat, 2026-08-17). v5 is what
+     actually makes that work: the block also sends the form's NAME and HOST,
+     because a preview URL carries no reference to its published path (not
+     even in __BOOTSTRAP__.formURL, which is the preview URL as well).
+     v3 briefly suppressed rendering on TicketSpice preview URLs. That was a
+     mistake and is reverted: a pop-up is live or not according to its
+     SCHEDULE WINDOW, never according to which URL you view it from, so the
+     guard protected nothing while removing the only way to check your own
+     work before an event. Previewing a page now shows exactly what a buyer
+     sees.
+
+     SAFE BY CONSTRUCTION
+     · Read-only GET to a public endpoint. No credentials sent or accepted.
+     · Every field is injected via textContent, never inner HTML — a client
+       cannot inject markup or script into their own live cart page.
+     · Fails silent. Network error, bad JSON, missing element → no pop-up, no
+       console noise for a buyer, page otherwise untouched.
+     · Shows once per browser session PER POP-UP. The dedupe key is a
+       hash of the content, so a NEW or EDITED pop-up re-shows to
+       someone who already dismissed the previous one — which is the whole
+       point when the message is "we're closing early after all."
+     · Kill switch: set window.C7A_ENABLED = false before this block.
+============================================================================ -->
+<style>
+/* OPTIONAL per-page theme — fill from the page's own palette, or delete this
+   block entirely for the default neutral card. See THEME note above. */
+:root {
+  --c7a-card-bg: #FBF7F0;
+  --c7a-ink: #2A2A28;
+  --c7a-ink-dim: #55584F;
+  --c7a-btn-bg: #B04A3A;
+  --c7a-btn-ink: #ffffff;
+  --c7a-scrim: rgba(42,42,40,.55);
+  --c7a-radius: 14px;
+  --c7a-font: 'Bitter',Georgia,serif;
+}
+</style>
+<div id="c7a-root" hidden></div>
+<script>
+(function () {
+  'use strict';
+  if (window.C7A_ENABLED === false) return;
+  if (window.__c7aInit) return;          // never double-init if pasted twice
+  window.__c7aInit = true;
+
+  var ENDPOINT = 'https://crowd7-team-hub.vercel.app/api/live-popup';
+
+
+  // ── Self-identification ────────────────────────────────────────────────
+  // Primary key is `location` (guaranteed by the browser). Query string and
+  // hash are dropped — ticketing links are covered in UTM tags, and the
+  // server normalizes the same way.
+  var PAGE_URL = location.origin + location.pathname;
+
+  // PREVIEW LINKS need a second key. On /preview/<hash> the path is the hash,
+  // and __BOOTSTRAP__.formURL is the preview URL TOO — nothing on the page
+  // carries its published path, so URL matching cannot work there. formName
+  // is stable across published and preview renders and is the exact string
+  // CrowdView stores as page.name (same TicketSpice API field), so it is the
+  // fallback. Host scopes it so two clients' similarly-named forms can't
+  // collide. Read defensively: __BOOTSTRAP__ is internal Webconnex structure.
+  // LEGACY FALLBACK. Some pages can be matched by neither URL nor name:
+  // Montpelier's forms, for instance, are 'open' but were never PUBLISHED, so
+  // TicketSpice returns no publishedPath and CrowdView has no ts_url to match
+  // against. Those pages still have working account/page slugs, so the sync
+  // script PRESERVES these two values (like it preserves the theme) and the
+  // block sends them as a last resort. Empty on a page that doesn't need them.
+  var C7A_ACCOUNT = 'montpelier';
+  var C7A_PAGE    = 'flash-sale-2026';
+
+  var FORM_NAME = '', TS_HOST = '';
+  try {
+    var b = window.__BOOTSTRAP__;
+    var s = b && b.appSettings;
+    if (typeof s === 'string') s = JSON.parse(s);
+    if (s) { FORM_NAME = s.formName || ''; TS_HOST = s.host || ''; }
+  } catch (e) { /* fall back to URL-only matching */ }
+
+  // Small, stable string hash (djb2) — only used as a sessionStorage dedupe
+  // key, never for anything security-relevant.
+  function hash(s) {
+    var h = 5381, i = s.length;
+    while (i) h = (h * 33) ^ s.charCodeAt(--i);
+    return (h >>> 0).toString(36);
+  }
+
+  function seen(key) {
+    try { return sessionStorage.getItem('c7a_' + key) === '1'; } catch (e) { return false; }
+  }
+  function markSeen(key) {
+    try { sessionStorage.setItem('c7a_' + key, '1'); } catch (e) { /* private mode */ }
+  }
+
+  function render(a) {
+    var key = hash(a.title + ' ' + a.message);
+    if (seen(key)) return;
+
+    var style = document.createElement('style');
+    style.textContent = [
+      '#c7a-ov{position:fixed;inset:0;z-index:2147483000;display:flex;align-items:center;',
+      'justify-content:center;padding:20px;background:var(--c7a-scrim,rgba(12,14,17,.55));',
+      '-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);',
+      'opacity:0;transition:opacity .18s ease;}',
+      '#c7a-ov.c7a-in{opacity:1;}',
+      '#c7a-card{position:relative;background:var(--c7a-card-bg,#fff);color:var(--c7a-ink,#1a1d21);',
+      'border-radius:var(--c7a-radius,12px);',
+      'padding:24px 26px 20px;max-width:400px;width:100%;text-align:center;',
+      'box-shadow:0 14px 44px rgba(0,0,0,.3);',
+      'font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;',
+      'transform:translateY(8px) scale(.98);transition:transform .18s ease;}',
+      '#c7a-ov.c7a-in #c7a-card{transform:none;}',
+      '#c7a-x{position:absolute;top:6px;right:10px;background:none;border:0;font-size:22px;',
+      'line-height:1;color:var(--c7a-ink-dim,#9aa0a6);cursor:pointer;padding:4px 6px;}',
+      '#c7a-x:hover{color:var(--c7a-ink,#5f666e);}',
+      '#c7a-t{font-size:27px;font-weight:650;letter-spacing:-.01em;margin:0 0 9px;',
+      'overflow-wrap:anywhere;font-family:var(--c7a-font,inherit);}',
+      '#c7a-m{font-size:14.5px;line-height:1.55;color:var(--c7a-ink-dim,#3c4147);margin:0 0 18px;',
+      'white-space:pre-wrap;overflow-wrap:anywhere;}',
+      '#c7a-ok{background:var(--c7a-btn-bg,#1a1d21);color:var(--c7a-btn-ink,#fff);border:0;',
+      'border-radius:8px;padding:10px 24px;',
+      'font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;}',
+      '#c7a-ok:hover{filter:brightness(1.15);}',
+      '@media (prefers-reduced-motion:reduce){#c7a-ov,#c7a-card{transition:none;}}'
+    ].join('');
+
+    var ov = document.createElement('div');
+    ov.id = 'c7a-ov';
+    ov.setAttribute('role', 'dialog');
+    ov.setAttribute('aria-modal', 'true');
+    ov.setAttribute('aria-labelledby', 'c7a-t');
+
+    var card = document.createElement('div');
+    card.id = 'c7a-card';
+
+    var x = document.createElement('button');
+    x.id = 'c7a-x'; x.type = 'button';
+    x.setAttribute('aria-label', 'Close');
+    x.textContent = '×';
+
+    var h = document.createElement('h2');
+    h.id = 'c7a-t';
+    h.textContent = a.title;               // textContent, never inner HTML
+
+    var p = document.createElement('p');
+    p.id = 'c7a-m';
+    p.textContent = a.message;             // textContent, never inner HTML
+
+    var ok = document.createElement('button');
+    ok.id = 'c7a-ok'; ok.type = 'button';
+    ok.textContent = 'Got it';
+
+    card.appendChild(x); card.appendChild(h); card.appendChild(p); card.appendChild(ok);
+    ov.appendChild(card);
+    document.head.appendChild(style);
+    document.body.appendChild(ov);
+    requestAnimationFrame(function () { ov.classList.add('c7a-in'); });
+
+    function close() {
+      markSeen(key);
+      ov.classList.remove('c7a-in');
+      setTimeout(function () { if (ov.parentNode) ov.parentNode.removeChild(ov); }, 200);
+      document.removeEventListener('keydown', onKey);
+    }
+    function onKey(e) { if (e.key === 'Escape' || e.key === 'Esc') close(); }
+
+    x.addEventListener('click', close);
+    ok.addEventListener('click', close);
+    ov.addEventListener('click', function (e) { if (e.target === ov) close(); });
+    document.addEventListener('keydown', onKey);
+    ok.focus();
+  }
+
+  function go() {
+    var url = ENDPOINT + '?url=' + encodeURIComponent(PAGE_URL);
+    if (FORM_NAME) url += '&name=' + encodeURIComponent(FORM_NAME);
+    if (TS_HOST)   url += '&host=' + encodeURIComponent(TS_HOST);
+    if (C7A_ACCOUNT && C7A_PAGE) {
+      url += '&account=' + encodeURIComponent(C7A_ACCOUNT)
+           + '&page='    + encodeURIComponent(C7A_PAGE);
+    }
+    // No credentials — the endpoint is public and must stay that way for the
+    // CORS wildcard to be valid.
+    window['fet'+'ch'](url, { credentials: 'omit', mode: 'cors' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (d) {
+        if (d && d.popup && d.popup.title && d.popup.message) {
+          render(d.popup);
+        }
+      })
+      .catch(function () { /* fail silent — see SAFE BY CONSTRUCTION */ });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', go);
+  } else {
+    go();
+  }
+})();
+</script>
+<!-- =================== END CrowdView pop-up block =================== -->
