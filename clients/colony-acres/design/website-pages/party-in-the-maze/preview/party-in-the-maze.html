@@ -86,6 +86,36 @@
 .et_pb_row_2 { margin-top: 52px !important; }
 @media only screen and (max-width:980px) { .et_pb_row_2 { margin-top: 40px !important; } }
 @media only screen and (max-width:767px) { .et_pb_row_2 { margin-top: 30px !important; } }
+
+/* ---- Crowd7 addition 2026-09-06: real CTA button + season dates in the sidebar
+        box, and the reconciled package copy. Ships CrowdView changes [192] + [193]
+        (Katie's 8/6 supplied copy + "make it a button, not a link"). The button
+        deliberately matches the SITEWIDE .ca-ticket-btn (_global/ticket-btn) so
+        every "buy" affordance on this site reads as the same element. ---- */
+.ca-cta-wrap { margin: 18px 0 0 !important; }
+.ca-cta-btn {
+  display:inline-block !important; background:#fb8f22 !important;
+  color:#FFFFFF !important; font-family:'Source Sans Pro',Helvetica,Arial,sans-serif !important;
+  font-weight:700 !important; font-size:16px !important; line-height:1.15 !important;
+  letter-spacing:.03em !important; text-transform:uppercase !important;
+  padding:13px 22px !important; border-radius:2px !important;
+  text-decoration:none !important; text-align:center !important;
+  transition:background-color .15s ease !important;
+}
+.ca-cta-btn:hover, .ca-cta-btn:focus { background:#e07d12 !important; color:#FFFFFF !important; text-decoration:none !important; }
+/* in the narrow brown sidebar the button goes full-width so it can't look like a stray word */
+.et_pb_text_2 .ca-cta-btn { display:block !important; width:100% !important; box-sizing:border-box !important; }
+.et_pb_text_2 .ca-season { margin:14px 0 0 !important; font-size:15px !important; line-height:1.35 !important; }
+.et_pb_text_2 .ca-season strong { font-size:17px !important; }
+.et_pb_text_2 .ca-season-note { margin:8px 0 0 !important; font-size:13px !important; opacity:.88 !important; line-height:1.35 !important; }
+.et_pb_text_4 h5 {
+  font-family:'Source Sans Pro',Helvetica,Arial,Lucida,sans-serif !important; font-weight:700 !important;
+  font-size:19px !important; color:#009A44 !important; line-height:1.25 !important; margin:22px 0 6px !important;
+}
+.et_pb_text_4 .ca-value-note { font-size:14px !important; color:#666666 !important; margin-top:10px !important; }
+.cc-callout__cta { margin:10px 0 0 !important; }
+.cc-callout__cta a { color:#E68B2F !important; font-weight:700 !important; text-decoration:none !important; }
+.cc-callout__cta a:hover { text-decoration:underline !important; }
 </style>
 <div class="et_pb_section et_pb_section_1 et_section_regular" >
 				
@@ -105,7 +135,7 @@
 				
 				
 				
-				<div class="et_pb_text_inner"><h4>Now Taking Reservations!</h4><p style="margin-top:12px;"><a href="https://colonyacres.ticketspice.com/colony-acres-party-pavilion-rental-2026" target="_blank" rel="noopener" style="color:#FFFFFF; text-decoration:underline; font-weight:700;">Reserve Your Party Pavilion</a></p></div>
+				<div class="et_pb_text_inner"><h4>Now Taking Reservations!</h4><p class="ca-season">Fall Harvest Festival<br /><strong>Sept 19 &ndash; Oct 31, 2026</strong></p><p class="ca-season-note">Pavilion reservations are available on Fall Harvest Festival weekends.</p><p class="ca-cta-wrap"><a class="ca-cta-btn" href="https://colonyacres.ticketspice.com/colony-acres-party-pavilion-rental-2026" target="_blank" rel="noopener">Reserve Your Party Pavilion</a></p></div>
 			</div><div class="et_pb_with_border et_pb_module et_pb_text et_pb_text_3  et_pb_text_align_center et_pb_bg_layout_light">
 				
 				
@@ -126,9 +156,8 @@
 				<div class="et_pb_code_inner"><div class="cc-callout">
     <div class="cc-callout__icon" aria-hidden="true">✨</div>
     <div class="cc-callout__content">
-      <h4 class="cc-callout__title">Party Pavilion Packages</h4>
-      <p class="cc-callout__body">Our party pavilion packages are complete with your tent reservation and admissions, with the option to add on. Prices and booking links coming soon.</p> 
-    </div>
+      <h4 class="cc-callout__title">Fun Yard Pavilion Package &mdash; $199 + tax &amp; fees</h4>
+      <p class="cc-callout__body">Your private pavilion for <strong>2 hours</strong> plus <strong>12 all-day Fun Yard admissions</strong> &mdash; a $230+ value. Additional guests $13 each. Available Fall Harvest Festival weekends.</p><p class="cc-callout__cta"><a href="https://colonyacres.ticketspice.com/colony-acres-party-pavilion-rental-2026" target="_blank" rel="noopener">Reserve your pavilion &rarr;</a></p></div>
   </div>
 
   <style>
@@ -183,17 +212,31 @@
 				
 				
 				<div class="et_pb_text_inner"><h2>Host a Private Event each Fall!</h2>
-<p>Additional Admissions can be purchased for your group. Looking for a unique private party location? Look no further than the Party Pavilions at Colony Acres.</p>
-<p style="margin: 0in; vertical-align: baseline;"><span style="font-size: 11.5pt; font-family: 'Open Sans',sans-serif; color: #666666;">Reserve your own private party pavilion located within our maze. Designed like an island, these spaces provide the perfect spot for your group to gather and celebrate in your space. Plus, you’re welcome to bring a few of your own party decorations to add a personal touch to the festivities. (Decor exclusions apply.)</span></p>
-<p>Your $50+tax reservation includes:</p>
+<p>Looking for a fun, easy way to celebrate? Reserve a private Party Pavilion at Colony Acres and spend the day making memories with your favorite people.</p>
+<p>Located within our corn maze and designed like a private island, our covered pavilions give your group a dedicated place to gather while enjoying everything the Fall Harvest Festival has to offer. They&rsquo;re perfect for birthdays, family celebrations, scout troops, sports teams, church groups, and more.</p>
+<p>Personalize your space with a few simple, wind-friendly decorations to make it your own. <em>(Decoration restrictions apply.)</em></p>
+<h5>Fun Yard Pavilion Package &mdash; $199 + tax &amp; fees</h5>
+<p>Your reservation includes:</p>
 <ul>
-<li>Use of our private tented picnic spaces in our maze for 2 hours</li>
-<li>3 picnic tables and 1 garbage can</li>
-<li>$50+ tax due with reservation.</li>
-<li>Reservations can be made through the link below.</li>
+<li>Private Party Pavilion for <strong>2 hours</strong></li>
+<li><strong>12 all-day Fun Yard admissions</strong> (ages 3+)</li>
+<li><strong>3 picnic tables</strong> and <strong>1 garbage can</strong></li>
+<li>Admission is valid for the entire day during public operating hours</li>
+<li>Bring your own birthday cake, cupcakes, or pre-packaged treats</li>
 </ul>
-<p><em>Admissions are additional and can be purchased at a discounted rate online or regular price at the gate. Admissions are non-date specific, but the party reservation is. Additional discounts for groups of 20+ when purchased as 1 transaction.</em></p>
-<p>*Please Note: Party Pavilions are ONLY available during our Fall Harvest Season.  Contact us directly for private event inquiries outside of the fall season.</p></div>
+<p class="ca-value-note"><em>12 Fun Yard admissions ($180) + reserved pavilion ($50) = <strong>$230+ included value</strong> for $199.</em></p>
+<h5>Additional Guests</h5>
+<p>Need room for more? Additional Fun Yard admissions may be purchased with your Pavilion Package for <strong>$13 + tax &amp; fees per guest</strong> (ages 3+) &mdash; a special 100th anniversary price.</p>
+<h5>Reservation Information</h5>
+<ul>
+<li>Reservations are available during <strong>Fall Harvest Festival weekends</strong>.</li>
+<li>Pavilion reservations are <strong>date and time specific</strong>.</li>
+<li>Your pavilion serves as your private gathering space while your guests enjoy the farm throughout the day.</li>
+<li>Food, drinks, and farm favorites&mdash;including pizza&mdash;can be added during checkout.</li>
+</ul>
+<p><strong>Reserve your space, invite your guests, and spend the day making memories together.</strong></p>
+<p class="ca-cta-wrap"><a class="ca-cta-btn" href="https://colonyacres.ticketspice.com/colony-acres-party-pavilion-rental-2026" target="_blank" rel="noopener">Reserve Your Party Pavilion</a></p>
+<p>*Please Note: Party Pavilions are ONLY available during our Fall Harvest Season.  Contact us directly for private event inquiries outside of the fall season.</p></div>
 			</div>
 			</div>
 				
