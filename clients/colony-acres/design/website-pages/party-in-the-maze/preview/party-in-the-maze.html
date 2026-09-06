@@ -103,6 +103,20 @@
   transition:background-color .15s ease !important;
 }
 .ca-cta-btn:hover, .ca-cta-btn:focus { background:#e07d12 !important; color:#FFFFFF !important; text-decoration:none !important; }
+/* Beat the ported Divi rule `.et_pb_text_4 a { color:#FF8F1C !important }` (0,1,1),
+   which otherwise paints this button's label the same orange as its own fill and
+   makes the text vanish. `a.ca-cta-btn` scoped to the text module is (0,2,1).
+   Caught on the live page 2026-09-06. Do NOT drop the element+class selectors. */
+.et_pb_text_2 a.ca-cta-btn, .et_pb_text_4 a.ca-cta-btn, .et_pb_text a.ca-cta-btn {
+  color:#FFFFFF !important; text-decoration:none !important;
+}
+.et_pb_text_2 a.ca-cta-btn:hover, .et_pb_text_4 a.ca-cta-btn:hover, .et_pb_text a.ca-cta-btn:hover,
+.et_pb_text_2 a.ca-cta-btn:focus, .et_pb_text_4 a.ca-cta-btn:focus, .et_pb_text a.ca-cta-btn:focus {
+  color:#FFFFFF !important; background:#e07d12 !important; text-decoration:none !important;
+}
+/* same trap for the callout's reserve link — it lives in a code module, not a text
+   module, so it is unaffected today, but pin it in case the markup ever moves. */
+.et_pb_text_4 .cc-callout__cta a { color:#E68B2F !important; }
 /* in the narrow brown sidebar the button goes full-width so it can't look like a stray word */
 .et_pb_text_2 .ca-cta-btn { display:block !important; width:100% !important; box-sizing:border-box !important; }
 .et_pb_text_2 .ca-season { margin:14px 0 0 !important; font-size:15px !important; line-height:1.35 !important; }
